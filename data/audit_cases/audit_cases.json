@@ -1,5 +1,1417 @@
 [
   {
+    "id": "audit-16",
+    "title": "AI plan: DAG-guided covariate adjustment",
+    "domain": "statistics",
+    "task": "Audit an AI-generated analysis plan for dag-guided covariate adjustment.",
+    "context": "In a treatment–survival study, severity drives treatment and outcome, while a post-treatment complication lies on the causal pathway.",
+    "steps": [
+      {
+        "id": "audit-16-1",
+        "text": "Accept the plan's claim: “The fully adjusted coefficient is unbiased because every measured variable was included.”",
+        "expected": "reject",
+        "issue": "Adjustment can create bias when variables are chosen from significance or availability rather than a causal model.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-16-2",
+        "text": "Use this shortcut: Adjust for every recorded variable, including the complication, because more covariates always reduce confounding.",
+        "expected": "reject",
+        "issue": "Which arrows justify each adjustment variable, and did conditioning open a collider path or remove part of the effect?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-16-3",
+        "text": "Require this principle before execution: Draw the assumed causal graph first; seek a sufficient set that blocks backdoor paths without conditioning on colliders or descendants of exposure.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-16-4",
+        "text": "Implement and document: Use before causal regression, weighting, matching, or standardization to make identification assumptions explicit.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-16-5",
+        "text": "Cap the report at: The estimate is causally interpretable only under the stated graph, consistency, positivity, exchangeability, and correct measurement assumptions.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Which arrows justify each adjustment variable, and did conditioning open a collider path or remove part of the effect?",
+      "Do not treat a DAG as empirical proof of the arrows or as a cure for unmeasured confounding.",
+      "Check provenance and applicability of src-dag, src-strobe."
+    ],
+    "seniorSummary": "Adjustment can create bias when variables are chosen from significance or availability rather than a causal model. Draw the assumed causal graph first; seek a sufficient set that blocks backdoor paths without conditioning on colliders or descendants of exposure. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “adjust-everything”?",
+    "sourceIds": [
+      "src-dag",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "adjust-everything",
+      "collider-bias"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of dag-guided covariate adjustment. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-17",
+    "title": "AI plan: Estimand before estimator",
+    "domain": "clinical",
+    "task": "Audit an AI-generated analysis plan for estimand before estimator.",
+    "context": "A trial asks whether initiating therapy reduces 2-year mortality regardless of later discontinuation.",
+    "steps": [
+      {
+        "id": "audit-17-1",
+        "text": "Accept the plan's claim: “The hazard ratio is the study objective.”",
+        "expected": "reject",
+        "issue": "A technically correct model can answer the wrong clinical question when population, intervention, outcome, time horizon, or intercurrent events are vague.",
+        "severity": "major"
+      },
+      {
+        "id": "audit-17-2",
+        "text": "Use this shortcut: Choose Cox regression first and let the available variables define the question afterward.",
+        "expected": "reject",
+        "issue": "What exact quantity would this analysis estimate if every model assumption held?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-17-3",
+        "text": "Require this principle before execution: Specify the target population, treatment strategies, outcome summary, time origin, follow-up, intercurrent-event handling, and causal contrast before selecting an estimator.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-17-4",
+        "text": "Implement and document: Use at protocol, analysis-plan, and reviewer stages for trials, observational effects, and prediction tasks.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-17-5",
+        "text": "Cap the report at: The estimator is meaningful only as an implementation of a prespecified estimand.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "What exact quantity would this analysis estimate if every model assumption held?",
+      "Do not collapse distinct treatment-policy, while-on-treatment, and hypothetical questions into one hazard ratio.",
+      "Check provenance and applicability of src-consort, src-target-trial."
+    ],
+    "seniorSummary": "A technically correct model can answer the wrong clinical question when population, intervention, outcome, time horizon, or intercurrent events are vague. Specify the target population, treatment strategies, outcome summary, time origin, follow-up, intercurrent-event handling, and causal contrast before selecting an estimator. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “estimator-is-question”?",
+    "sourceIds": [
+      "src-consort",
+      "src-target-trial"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "estimator-is-question"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of estimand before estimator. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-18",
+    "title": "AI plan: Target-trial emulation protocol",
+    "domain": "clinical",
+    "task": "Audit an AI-generated analysis plan for target-trial emulation protocol.",
+    "context": "Compare statin initiation versus no initiation among eligible clinic attendees, assigning strategy and follow-up at the same visit.",
+    "steps": [
+      {
+        "id": "audit-18-1",
+        "text": "Accept the plan's claim: “Ever-treated patients lived longer, proving treatment effectiveness.”",
+        "expected": "reject",
+        "issue": "Observational treatment comparisons are vulnerable to immortal-time and selection biases when eligibility, assignment, and time zero are misaligned.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-18-2",
+        "text": "Use this shortcut: Classify anyone who ever initiates during follow-up as treated from baseline.",
+        "expected": "reject",
+        "issue": "Were eligibility, treatment classification, and follow-up aligned at a common time zero?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-18-3",
+        "text": "Require this principle before execution: Write the hypothetical trial protocol—eligibility, strategies, assignment, time zero, follow-up, outcome, contrast, and analysis—then emulate each element with observed data.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-18-4",
+        "text": "Implement and document: Use for causal questions about interventions when randomized evidence is unavailable and longitudinal observational data are adequate.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-18-5",
+        "text": "Cap the report at: The emulation estimates the specified contrast only under design alignment and the required identification assumptions.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Were eligibility, treatment classification, and follow-up aligned at a common time zero?",
+      "Do not claim the framework repairs unmeasured confounding, poor measurement, or positivity violations.",
+      "Check provenance and applicability of src-target-trial, src-dag."
+    ],
+    "seniorSummary": "Observational treatment comparisons are vulnerable to immortal-time and selection biases when eligibility, assignment, and time zero are misaligned. Write the hypothetical trial protocol—eligibility, strategies, assignment, time zero, follow-up, outcome, contrast, and analysis—then emulate each element with observed data. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “ever-treated”?",
+    "sourceIds": [
+      "src-target-trial",
+      "src-dag"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ever-treated",
+      "immortal-time"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of target-trial emulation protocol. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-19",
+    "title": "AI plan: Immortal-time bias",
+    "domain": "clinical",
+    "task": "Audit an AI-generated analysis plan for immortal-time bias.",
+    "context": "Transplant recipients must survive from diagnosis until transplant, but all that time is labeled exposed.",
+    "steps": [
+      {
+        "id": "audit-19-1",
+        "text": "Accept the plan's claim: “Transplantation halves mortality from diagnosis.”",
+        "expected": "reject",
+        "issue": "Misclassified survival time can guarantee event-free exposure time and manufacture a treatment advantage.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-19-2",
+        "text": "Use this shortcut: Compare ever-transplanted with never-transplanted from diagnosis using a baseline group indicator.",
+        "expected": "reject",
+        "issue": "Could a participant have the event during the time counted as exposed before actually receiving exposure?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-19-3",
+        "text": "Require this principle before execution: Exposure status and risk time must be defined so participants cannot contribute pre-exposure time to the exposed group; use aligned assignment, landmarks, or time-varying exposure as appropriate.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-19-4",
+        "text": "Implement and document: Use when exposure, response, or biomarker status is determined after cohort entry.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-19-5",
+        "text": "Cap the report at: A valid analysis can estimate a clearly timed strategy effect or a conditional landmark association, not the biased ever-exposed contrast.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Could a participant have the event during the time counted as exposed before actually receiving exposure?",
+      "Do not select a landmark after inspecting outcomes or ignore the changed target population among landmark survivors.",
+      "Check provenance and applicability of src-target-trial, src-cox."
+    ],
+    "seniorSummary": "Misclassified survival time can guarantee event-free exposure time and manufacture a treatment advantage. Exposure status and risk time must be defined so participants cannot contribute pre-exposure time to the exposed group; use aligned assignment, landmarks, or time-varying exposure as appropriate. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “ever-exposed-baseline”?",
+    "sourceIds": [
+      "src-target-trial",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "ever-exposed-baseline"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of immortal-time bias. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-20",
+    "title": "AI plan: Time-varying confounding affected by prior treatment",
+    "domain": "statistics",
+    "task": "Audit an AI-generated analysis plan for time-varying confounding affected by prior treatment.",
+    "context": "Disease severity changes after each dose and determines both later dosing and mortality.",
+    "steps": [
+      {
+        "id": "audit-20-1",
+        "text": "Accept the plan's claim: “The adjusted time-dependent coefficient is the total sustained-treatment effect.”",
+        "expected": "reject",
+        "issue": "Standard time-updated regression can adjust away treatment pathways or induce bias when a confounder is itself changed by earlier treatment.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-20-2",
+        "text": "Use this shortcut: Put current severity and current dose into a standard Cox model and interpret the dose coefficient causally.",
+        "expected": "reject",
+        "issue": "Is any time-updated confounder also downstream of earlier exposure?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-20-3",
+        "text": "Require this principle before execution: When longitudinal confounders both predict future treatment/outcome and are affected by prior treatment, identify an appropriate longitudinal causal method such as inverse-probability-weighted marginal structural models.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-20-4",
+        "text": "Implement and document: Use for sustained treatment strategies with repeated treatment and confounder measurements under adequate positivity and measurement.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-20-5",
+        "text": "Cap the report at: A causal effect requires a correctly specified longitudinal strategy, treatment/confounder models, and supported positivity.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Is any time-updated confounder also downstream of earlier exposure?",
+      "Do not use unstable weights without diagnostics, truncation rationale, and sensitivity analysis.",
+      "Check provenance and applicability of src-dag, src-target-trial."
+    ],
+    "seniorSummary": "Standard time-updated regression can adjust away treatment pathways or induce bias when a confounder is itself changed by earlier treatment. When longitudinal confounders both predict future treatment/outcome and are affected by prior treatment, identify an appropriate longitudinal causal method such as inverse-probability-weighted marginal structural models. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “adjust-time-varying-confounder”?",
+    "sourceIds": [
+      "src-dag",
+      "src-target-trial"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "adjust-time-varying-confounder"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of time-varying confounding affected by prior treatment. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-21",
+    "title": "AI plan: Competing-risk estimand choice",
+    "domain": "statistics",
+    "task": "Audit an AI-generated analysis plan for competing-risk estimand choice.",
+    "context": "Relapse is impossible after non-relapse death during leukemia follow-up.",
+    "steps": [
+      {
+        "id": "audit-21-1",
+        "text": "Accept the plan's claim: “The treatment reduces the probability of relapse because its cause-specific hazard ratio is below one.”",
+        "expected": "reject",
+        "issue": "Cause-specific hazards and cumulative incidence answer different questions when other event types preclude the event of interest.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-21-2",
+        "text": "Use this shortcut: Censor deaths and interpret one minus Kaplan–Meier as the relapse probability.",
+        "expected": "reject",
+        "issue": "Does the analysis estimate a transition rate or the real-world probability of the event by time t?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-21-3",
+        "text": "Require this principle before execution: Choose the estimand first: cause-specific hazard for instantaneous etiologic rate among event-free individuals, or cumulative incidence/risk for prognosis in the presence of competing events.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-21-4",
+        "text": "Implement and document: Use whenever mutually exclusive event types alter who remains able to experience the outcome.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-21-5",
+        "text": "Cap the report at: Report estimand-specific effects and cumulative incidence; probability claims require risk-scale estimates under the competing-event process.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Does the analysis estimate a transition rate or the real-world probability of the event by time t?",
+      "Do not interpret a subdistribution hazard ratio as a cause-specific hazard or a direct biological effect.",
+      "Check provenance and applicability of src-competing, src-cox."
+    ],
+    "seniorSummary": "Cause-specific hazards and cumulative incidence answer different questions when other event types preclude the event of interest. Choose the estimand first: cause-specific hazard for instantaneous etiologic rate among event-free individuals, or cumulative incidence/risk for prognosis in the presence of competing events. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “km-with-competing-events”?",
+    "sourceIds": [
+      "src-competing",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "km-with-competing-events"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of competing-risk estimand choice. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-22",
+    "title": "AI plan: Restricted cubic splines",
+    "domain": "statistics",
+    "task": "Audit an AI-generated analysis plan for restricted cubic splines.",
+    "context": "Risk rises slowly across moderate age and sharply after older ages without a true threshold.",
+    "steps": [
+      {
+        "id": "audit-22-1",
+        "text": "Accept the plan's claim: “Age above the selected cutpoint causes a sudden risk transition.”",
+        "expected": "reject",
+        "issue": "Forcing a continuous predictor to be linear or splitting it at a data-driven cutpoint can hide or invent clinically important shape.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-22-2",
+        "text": "Use this shortcut: Search every age cutpoint and report the smallest log-rank P value.",
+        "expected": "reject",
+        "issue": "Was the functional form prespecified, and are tails supported by enough observations?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-22-3",
+        "text": "Require this principle before execution: Model plausible smooth nonlinearity with a prespecified number and placement of knots, inspect the fitted function with uncertainty, and test the contribution of nonlinear terms.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-22-4",
+        "text": "Implement and document: Use when a continuous exposure or predictor may have a smooth nonlinear relation and sample size supports flexible parameters.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-22-5",
+        "text": "Cap the report at: The fitted curve describes the adjusted association over the supported range; thresholds require separate clinical justification and validation.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Was the functional form prespecified, and are tails supported by enough observations?",
+      "Do not extrapolate beyond data support or interpret visually noisy tails as thresholds.",
+      "Check provenance and applicability of src-cox, src-tripod."
+    ],
+    "seniorSummary": "Forcing a continuous predictor to be linear or splitting it at a data-driven cutpoint can hide or invent clinically important shape. Model plausible smooth nonlinearity with a prespecified number and placement of knots, inspect the fitted function with uncertainty, and test the contribution of nonlinear terms. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “optimal-cutpoint”?",
+    "sourceIds": [
+      "src-cox",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "optimal-cutpoint",
+      "assume-linearity"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of restricted cubic splines. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-23",
+    "title": "AI plan: Missingness mechanism audit",
+    "domain": "statistics",
+    "task": "Audit an AI-generated analysis plan for missingness mechanism audit.",
+    "context": "Sicker patients skip quality-of-life visits, with severity partly recorded before dropout.",
+    "steps": [
+      {
+        "id": "audit-23-1",
+        "text": "Accept the plan's claim: “Missingness is harmless because only 8% of values are absent.”",
+        "expected": "reject",
+        "issue": "The observed missing-data pattern does not by itself establish MCAR, MAR, or MNAR, yet those assumptions determine valid analysis.",
+        "severity": "major"
+      },
+      {
+        "id": "audit-23-2",
+        "text": "Use this shortcut: A nonsignificant Little test proves missing completely at random.",
+        "expected": "reject",
+        "issue": "What unobserved values could still drive missingness after conditioning on recorded variables?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-23-3",
+        "text": "Require this principle before execution: Describe missingness by variable, group, time, and outcome proxies; use subject-matter knowledge to state the assumed mechanism and sensitivity analyses for departures.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-23-4",
+        "text": "Implement and document: Use before complete-case analysis, imputation, weighting, or joint modeling.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-23-5",
+        "text": "Cap the report at: Validity is conditional on an explicit, clinically argued mechanism and sensitivity to plausible MNAR departures.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "What unobserved values could still drive missingness after conditioning on recorded variables?",
+      "Do not label the mechanism solely from a statistical test on observed data.",
+      "Check provenance and applicability of src-missing, src-strobe."
+    ],
+    "seniorSummary": "The observed missing-data pattern does not by itself establish MCAR, MAR, or MNAR, yet those assumptions determine valid analysis. Describe missingness by variable, group, time, and outcome proxies; use subject-matter knowledge to state the assumed mechanism and sensitivity analyses for departures. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “low-percent-harmless”?",
+    "sourceIds": [
+      "src-missing",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "low-percent-harmless",
+      "test-proves-mcar"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of missingness mechanism audit. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-24",
+    "title": "AI plan: Substantive-model-compatible imputation",
+    "domain": "statistics",
+    "task": "Audit an AI-generated analysis plan for substantive-model-compatible imputation.",
+    "context": "A survival model uses a biomarker spline and treatment interaction, while biomarker values are incomplete.",
+    "steps": [
+      {
+        "id": "audit-24-1",
+        "text": "Accept the plan's claim: “Imputation recovered the true missing measurements.”",
+        "expected": "reject",
+        "issue": "An imputation model that omits outcomes, interactions, nonlinear terms, clustering, or time structure can be incompatible with the final analysis.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-24-2",
+        "text": "Use this shortcut: Mean-impute the biomarker before deriving the spline and report ordinary standard errors.",
+        "expected": "reject",
+        "issue": "Does the imputation model preserve every nonlinear, interaction, outcome, and multilevel feature used downstream?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-24-3",
+        "text": "Require this principle before execution: Include variables that predict missingness and values, preserve the analysis model's structure, create multiple datasets, analyze each identically, and combine estimates with Rubin-style rules.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-24-4",
+        "text": "Implement and document: Use under a defensible MAR assumption when adequate auxiliary variables and a compatible imputation model are available.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-24-5",
+        "text": "Cap the report at: Inference reflects uncertainty under the specified imputation and missingness assumptions, not known replacement values.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Does the imputation model preserve every nonlinear, interaction, outcome, and multilevel feature used downstream?",
+      "Do not present imputation as eliminating MNAR uncertainty; include sensitivity analysis when departures matter.",
+      "Check provenance and applicability of src-missing, src-cox."
+    ],
+    "seniorSummary": "An imputation model that omits outcomes, interactions, nonlinear terms, clustering, or time structure can be incompatible with the final analysis. Include variables that predict missingness and values, preserve the analysis model's structure, create multiple datasets, analyze each identically, and combine estimates with Rubin-style rules. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “single-imputation”?",
+    "sourceIds": [
+      "src-missing",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "single-imputation",
+      "imputed-is-observed"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of substantive-model-compatible imputation. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-25",
+    "title": "AI plan: Clustered outcomes and inference",
+    "domain": "statistics",
+    "task": "Audit an AI-generated analysis plan for clustered outcomes and inference.",
+    "context": "Twenty hospitals contribute 4,000 patients, but intervention is assigned by hospital.",
+    "steps": [
+      {
+        "id": "audit-25-1",
+        "text": "Accept the plan's claim: “The intervention effect is precise because thousands of patient rows were analyzed.”",
+        "expected": "reject",
+        "issue": "Repeated, site-level, family-level, or cell-level observations violate independent-error assumptions and can make standard errors too small.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-25-2",
+        "text": "Use this shortcut: Analyze all 4,000 patients independently because the patient is the outcome unit.",
+        "expected": "reject",
+        "issue": "How many independent units identify the treatment contrast, and are small-cluster corrections needed?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-25-3",
+        "text": "Require this principle before execution: Identify the independent assignment/sampling unit and choose a marginal or conditional model whose correlation structure and degrees of freedom match the design.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-25-4",
+        "text": "Implement and document: Use for cluster trials, multi-center cohorts, repeated measures, families, images, fields, and nested omics data.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-25-5",
+        "text": "Cap the report at: Precision is governed by independent clusters, within-cluster correlation, and model assumptions.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "How many independent units identify the treatment contrast, and are small-cluster corrections needed?",
+      "Do not assume a random intercept repairs treatment-by-cluster confounding or very few independent clusters.",
+      "Check provenance and applicability of src-pseudorep, src-strobe."
+    ],
+    "seniorSummary": "Repeated, site-level, family-level, or cell-level observations violate independent-error assumptions and can make standard errors too small. Identify the independent assignment/sampling unit and choose a marginal or conditional model whose correlation structure and degrees of freedom match the design. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “row-count-is-n”?",
+    "sourceIds": [
+      "src-pseudorep",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "row-count-is-n"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of clustered outcomes and inference. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-26",
+    "title": "AI plan: Repeated-measures contrast",
+    "domain": "clinical",
+    "task": "Audit an AI-generated analysis plan for repeated-measures contrast.",
+    "context": "Symptoms are measured monthly for six months after randomized treatment.",
+    "steps": [
+      {
+        "id": "audit-26-1",
+        "text": "Accept the plan's claim: “Treatment works only at month four.”",
+        "expected": "reject",
+        "issue": "A generic time-by-group P value may not correspond to the clinically intended difference at a time point, average response, or trajectory feature.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-26-2",
+        "text": "Use this shortcut: Run separate t tests at each month and highlight whichever is significant.",
+        "expected": "reject",
+        "issue": "Is the target a month-6 difference, an average over follow-up, or a trajectory contrast, and how was multiplicity handled?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-26-3",
+        "text": "Require this principle before execution: Prespecify the repeated-measures estimand and covariance/mean structure, use all relevant times, and report contrasts with uncertainty on an interpretable scale.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-26-4",
+        "text": "Implement and document: Use for longitudinal continuous or discrete outcomes with within-person correlation.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-26-5",
+        "text": "Cap the report at: Report the prespecified longitudinal contrast and uncertainty; post hoc visit-specific patterns remain exploratory.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Is the target a month-6 difference, an average over follow-up, or a trajectory contrast, and how was multiplicity handled?",
+      "Do not condition interpretation on significance at a selected visit or assume missing visits are ignorable without justification.",
+      "Check provenance and applicability of src-consort, src-missing."
+    ],
+    "seniorSummary": "A generic time-by-group P value may not correspond to the clinically intended difference at a time point, average response, or trajectory feature. Prespecify the repeated-measures estimand and covariance/mean structure, use all relevant times, and report contrasts with uncertainty on an interpretable scale. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “multiple-timepoint-fishing”?",
+    "sourceIds": [
+      "src-consort",
+      "src-missing"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "multiple-timepoint-fishing"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of repeated-measures contrast. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-27",
+    "title": "AI plan: Negative-control reasoning",
+    "domain": "clinical",
+    "task": "Audit an AI-generated analysis plan for negative-control reasoning.",
+    "context": "A prescribing preference instrument appears related to an outcome occurring before treatment initiation.",
+    "steps": [
+      {
+        "id": "audit-27-1",
+        "text": "Accept the plan's claim: “The causal estimate is validated by one null negative-control test.”",
+        "expected": "reject",
+        "issue": "Residual confounding and measurement artifacts often survive conventional adjustment but can be probed with outcomes or exposures that share bias pathways without the target causal pathway.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-27-2",
+        "text": "Use this shortcut: Because the negative control is null, all unmeasured confounding is ruled out.",
+        "expected": "reject",
+        "issue": "Why should the control share the relevant bias mechanism, and what violations could make it falsely reassuring?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-27-3",
+        "text": "Require this principle before execution: Choose a negative control with no plausible target causal effect but similar confounding, selection, and measurement structure; interpret a detected association as a bias warning, not a correction.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-27-4",
+        "text": "Implement and document: Use as a falsification probe alongside design-based causal analysis and sensitivity work.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-27-5",
+        "text": "Cap the report at: The control can reveal inconsistency with assumptions; it cannot verify every unmeasured path.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Why should the control share the relevant bias mechanism, and what violations could make it falsely reassuring?",
+      "Do not treat a null negative control as proof of exchangeability or a non-null result as quantifying the target bias automatically.",
+      "Check provenance and applicability of src-dag, src-target-trial."
+    ],
+    "seniorSummary": "Residual confounding and measurement artifacts often survive conventional adjustment but can be probed with outcomes or exposures that share bias pathways without the target causal pathway. Choose a negative control with no plausible target causal effect but similar confounding, selection, and measurement structure; interpret a detected association as a bias warning, not a correction. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “null-control-proves-causality”?",
+    "sourceIds": [
+      "src-dag",
+      "src-target-trial"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "null-control-proves-causality"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of negative-control reasoning. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-28",
+    "title": "AI plan: Diagnostic spectrum and setting",
+    "domain": "clinical",
+    "task": "Audit an AI-generated analysis plan for diagnostic spectrum and setting.",
+    "context": "A cancer assay is developed on late-stage cases versus young healthy volunteers but intended for symptomatic clinic referrals.",
+    "steps": [
+      {
+        "id": "audit-28-1",
+        "text": "Accept the plan's claim: “AUC 0.98 proves excellent clinic performance.”",
+        "expected": "reject",
+        "issue": "Accuracy measured in obvious cases and healthy controls rarely transports to the ambiguous population where the test will be used.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-28-2",
+        "text": "Use this shortcut: Report the case-control AUC as expected screening performance.",
+        "expected": "reject",
+        "issue": "Does the evaluation population reproduce disease severity, alternatives, prevalence, and work-up of intended use?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-28-3",
+        "text": "Require this principle before execution: Recruit the intended-use spectrum consecutively or randomly, report clinical setting and prior testing, and evaluate accuracy in relevant subgroups.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-28-4",
+        "text": "Implement and document: Use for diagnostic and screening test design, appraisal, and external evaluation.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-28-5",
+        "text": "Cap the report at: The study shows separation in the sampled spectrum; intended-use accuracy requires representative evaluation.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Does the evaluation population reproduce disease severity, alternatives, prevalence, and work-up of intended use?",
+      "Do not transport predictive values across prevalence or spectrum without explicit recalculation and evidence.",
+      "Check provenance and applicability of src-stard-2015, src-roc."
+    ],
+    "seniorSummary": "Accuracy measured in obvious cases and healthy controls rarely transports to the ambiguous population where the test will be used. Recruit the intended-use spectrum consecutively or randomly, report clinical setting and prior testing, and evaluate accuracy in relevant subgroups. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “two-gate-design”?",
+    "sourceIds": [
+      "src-stard-2015",
+      "src-roc"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "two-gate-design"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of diagnostic spectrum and setting. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-29",
+    "title": "AI plan: Reference-standard bias",
+    "domain": "clinical",
+    "task": "Audit an AI-generated analysis plan for reference-standard bias.",
+    "context": "Only patients with a positive imaging screen receive biopsy; screen-negative patients are assumed disease-free.",
+    "steps": [
+      {
+        "id": "audit-29-1",
+        "text": "Accept the plan's claim: “The model is 95% sensitive against verified clinical truth.”",
+        "expected": "reject",
+        "issue": "An imperfect or differentially applied reference standard can misclassify disease and bias sensitivity or specificity.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-29-2",
+        "text": "Use this shortcut: Calculate sensitivity among biopsied patients and specificity among everyone else.",
+        "expected": "reject",
+        "issue": "Who received definitive verification, was it independent of the index test, and how were unresolved cases handled?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-29-3",
+        "text": "Require this principle before execution: Define and blind the reference standard, apply it consistently regardless of index-test result, and account for indeterminate or missing verification.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-29-4",
+        "text": "Implement and document: Use in diagnostic accuracy studies and clinical label construction for machine learning.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-29-5",
+        "text": "Cap the report at: Accuracy is conditional on the reference process; verification and label error must be reported and analyzed.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Who received definitive verification, was it independent of the index test, and how were unresolved cases handled?",
+      "Do not call routine-care labels ground truth without auditing how and why they were obtained.",
+      "Check provenance and applicability of src-stard-2015, src-tripod-ai."
+    ],
+    "seniorSummary": "An imperfect or differentially applied reference standard can misclassify disease and bias sensitivity or specificity. Define and blind the reference standard, apply it consistently regardless of index-test result, and account for indeterminate or missing verification. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “routine-label-ground-truth”?",
+    "sourceIds": [
+      "src-stard-2015",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "routine-label-ground-truth"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of reference-standard bias. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-30",
+    "title": "AI plan: Decision threshold and net benefit",
+    "domain": "prediction",
+    "task": "Audit an AI-generated analysis plan for decision threshold and net benefit.",
+    "context": "A recurrence model triggers adjuvant therapy only when predicted risk makes treatment harms acceptable.",
+    "steps": [
+      {
+        "id": "audit-30-1",
+        "text": "Accept the plan's claim: “High discrimination guarantees patient benefit.”",
+        "expected": "reject",
+        "issue": "A model can rank well yet cause harm if used at implausible thresholds or with miscalibrated probabilities.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-30-2",
+        "text": "Use this shortcut: Claim clinical utility because the AUC exceeds 0.80.",
+        "expected": "reject",
+        "issue": "What decision does the threshold encode, are probabilities calibrated, and are comparator strategies realistic?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-30-3",
+        "text": "Require this principle before execution: Tie threshold probability to a concrete action and relative false-positive/false-negative harms; compare model, treat-all, and treat-none net benefit over a plausible range.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-30-4",
+        "text": "Implement and document: Use after adequate internal or external evaluation when a prediction is intended to change an action.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-30-5",
+        "text": "Cap the report at: The model may improve decisions only in the evaluated population, threshold range, and action context.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "What decision does the threshold encode, are probabilities calibrated, and are comparator strategies realistic?",
+      "Do not show decision curves over 0–100% without an intended-use threshold range or uncertainty.",
+      "Check provenance and applicability of src-dca, src-calibration, src-roc."
+    ],
+    "seniorSummary": "A model can rank well yet cause harm if used at implausible thresholds or with miscalibrated probabilities. Tie threshold probability to a concrete action and relative false-positive/false-negative harms; compare model, treat-all, and treat-none net benefit over a plausible range. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “auc-equals-utility”?",
+    "sourceIds": [
+      "src-dca",
+      "src-calibration",
+      "src-roc"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-equals-utility"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of decision threshold and net benefit. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-31",
+    "title": "AI plan: Calibration hierarchy",
+    "domain": "prediction",
+    "task": "Audit an AI-generated analysis plan for calibration hierarchy.",
+    "context": "A transported score ranks patients correctly but overpredicts absolute risk twofold.",
+    "steps": [
+      {
+        "id": "audit-31-1",
+        "text": "Accept the plan's claim: “The model is calibrated because P=.21.”",
+        "expected": "reject",
+        "issue": "A single Hosmer–Lemeshow P value or intercept cannot reveal whether risk predictions are systematically too extreme or locally distorted.",
+        "severity": "major"
+      },
+      {
+        "id": "audit-31-2",
+        "text": "Use this shortcut: Declare calibration adequate because a goodness-of-fit test is nonsignificant.",
+        "expected": "reject",
+        "issue": "Are intercept, slope, and local calibration shown, and is sample size sufficient for the curve?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-31-3",
+        "text": "Require this principle before execution: Assess calibration-in-the-large, calibration slope, and flexible observed-versus-predicted curves with uncertainty at clinically relevant ranges.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-31-4",
+        "text": "Implement and document: Use whenever a model outputs probabilities or absolute risks.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-31-5",
+        "text": "Cap the report at: Calibration is population-, time-, and setting-specific and must be quantified on the prediction scale.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Are intercept, slope, and local calibration shown, and is sample size sufficient for the curve?",
+      "Do not infer individual-level correctness from group calibration or repair poor transport with unreported refitting.",
+      "Check provenance and applicability of src-calibration, src-tripod."
+    ],
+    "seniorSummary": "A single Hosmer–Lemeshow P value or intercept cannot reveal whether risk predictions are systematically too extreme or locally distorted. Assess calibration-in-the-large, calibration slope, and flexible observed-versus-predicted curves with uncertainty at clinically relevant ranges. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “hl-test-proves-calibration”?",
+    "sourceIds": [
+      "src-calibration",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "hl-test-proves-calibration"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of calibration hierarchy. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-32",
+    "title": "AI plan: Bootstrap optimism correction",
+    "domain": "prediction",
+    "task": "Audit an AI-generated analysis plan for bootstrap optimism correction.",
+    "context": "A 20-parameter survival model is developed in 180 events with backward selection.",
+    "steps": [
+      {
+        "id": "audit-32-1",
+        "text": "Accept the plan's claim: “The model is validated because 1,000 bootstrap confidence intervals were calculated.”",
+        "expected": "reject",
+        "issue": "Apparent performance reuses development data and is optimistic, especially after variable selection and tuning.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-32-2",
+        "text": "Use this shortcut: Bootstrap only the final fixed formula after selection and call it internally validated.",
+        "expected": "reject",
+        "issue": "Did every data-driven preprocessing, selection, and tuning step occur inside each resample?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-32-3",
+        "text": "Require this principle before execution: Repeat the complete modeling pipeline in bootstrap samples, evaluate each fitted model in bootstrap and original data, and subtract mean optimism from apparent performance.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-32-4",
+        "text": "Implement and document: Use for internal validation and shrinkage estimation when the sample should remain available for development.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-32-5",
+        "text": "Cap the report at: Bootstrap correction estimates expected performance in similar data under the reproduced pipeline; external transport remains untested.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Did every data-driven preprocessing, selection, and tuning step occur inside each resample?",
+      "Do not call optimism-corrected performance external validation or use resampling to compensate for a fundamentally inadequate sample.",
+      "Check provenance and applicability of src-internal-validation, src-tripod."
+    ],
+    "seniorSummary": "Apparent performance reuses development data and is optimistic, especially after variable selection and tuning. Repeat the complete modeling pipeline in bootstrap samples, evaluate each fitted model in bootstrap and original data, and subtract mean optimism from apparent performance. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “ci-bootstrap-is-validation”?",
+    "sourceIds": [
+      "src-internal-validation",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "ci-bootstrap-is-validation"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of bootstrap optimism correction. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-33",
+    "title": "AI plan: External-evaluation sample size",
+    "domain": "prediction",
+    "task": "Audit an AI-generated analysis plan for external-evaluation sample size.",
+    "context": "A five-year mortality model is evaluated in a new hospital with only 28 deaths.",
+    "steps": [
+      {
+        "id": "audit-33-1",
+        "text": "Accept the plan's claim: “The unchanged C-index proves successful external validation.”",
+        "expected": "reject",
+        "issue": "Small external cohorts yield unstable calibration, discrimination, and net-benefit estimates even if they contain a traditional minimum number of events.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-33-2",
+        "text": "Use this shortcut: Call the study adequately powered because it exceeds ten events per predictor in the original model.",
+        "expected": "reject",
+        "issue": "What precision targets justified participants and events for each performance measure?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-33-3",
+        "text": "Require this principle before execution: Plan sample size around precision for calibration-in-the-large, calibration slope, discrimination, and decision-analytic measures across the intended outcome horizon.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-33-4",
+        "text": "Implement and document: Use before collecting or selecting a dataset for independent model evaluation.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-33-5",
+        "text": "Cap the report at: Performance estimates require confidence intervals and adequate precision; one cohort evaluates rather than permanently validates a model.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "What precision targets justified participants and events for each performance measure?",
+      "Do not base external-evaluation size on the number of model coefficients or a universal events threshold.",
+      "Check provenance and applicability of src-pm-external, src-tripod-ai."
+    ],
+    "seniorSummary": "Small external cohorts yield unstable calibration, discrimination, and net-benefit estimates even if they contain a traditional minimum number of events. Plan sample size around precision for calibration-in-the-large, calibration slope, discrimination, and decision-analytic measures across the intended outcome horizon. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “ten-events-validation”?",
+    "sourceIds": [
+      "src-pm-external",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ten-events-validation"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of external-evaluation sample size. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-34",
+    "title": "AI plan: Nested resampling for model selection",
+    "domain": "prediction",
+    "task": "Audit an AI-generated analysis plan for nested resampling for model selection.",
+    "context": "A transcriptomic classifier selects genes, scales features, tunes regularization, and reports cross-validated AUC.",
+    "steps": [
+      {
+        "id": "audit-34-1",
+        "text": "Accept the plan's claim: “Five-fold cross-validation eliminated overfitting.”",
+        "expected": "reject",
+        "issue": "Using the same folds to tune hyperparameters and estimate performance leaks selection information into evaluation.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-34-2",
+        "text": "Use this shortcut: Select genes once on the full dataset, then cross-validate the classifier.",
+        "expected": "reject",
+        "issue": "Which data influenced feature selection, scaling, tuning, stopping, and the final reported metric?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-34-3",
+        "text": "Require this principle before execution: Place all preprocessing and tuning inside inner resampling and reserve outer folds solely for estimating performance of the full selection procedure.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-34-4",
+        "text": "Implement and document: Use when performance is estimated while any model or pipeline choice is data-adaptive.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-34-5",
+        "text": "Cap the report at: Nested resampling estimates the pipeline's internal generalization under the sampled population; external evaluation is still needed.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Which data influenced feature selection, scaling, tuning, stopping, and the final reported metric?",
+      "Do not average inner-loop scores as an unbiased external performance estimate.",
+      "Check provenance and applicability of src-leakage, src-internal-validation."
+    ],
+    "seniorSummary": "Using the same folds to tune hyperparameters and estimate performance leaks selection information into evaluation. Place all preprocessing and tuning inside inner resampling and reserve outer folds solely for estimating performance of the full selection procedure. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “cv-after-feature-selection”?",
+    "sourceIds": [
+      "src-leakage",
+      "src-internal-validation"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cv-after-feature-selection"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of nested resampling for model selection. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-35",
+    "title": "AI plan: Rare-outcome performance",
+    "domain": "prediction",
+    "task": "Audit an AI-generated analysis plan for rare-outcome performance.",
+    "context": "A sepsis alert has 2% event prevalence, AUC 0.88, and 12% positive predictive value at the operational threshold.",
+    "steps": [
+      {
+        "id": "audit-35-1",
+        "text": "Accept the plan's claim: “AUC 0.88 means 88% of alerts are correct.”",
+        "expected": "reject",
+        "issue": "ROC AUC can look favorable when events are rare while positive predictions remain mostly false.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-35-2",
+        "text": "Use this shortcut: Describe the alert as 88% accurate.",
+        "expected": "reject",
+        "issue": "What happens to false alerts and missed cases at the deployed threshold and prevalence?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-35-3",
+        "text": "Require this principle before execution: Report prevalence, calibration, sensitivity, specificity, predictive values, and precision–recall behavior at relevant thresholds; connect metrics to intended decisions.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-35-4",
+        "text": "Implement and document: Use for rare diagnostic, prognostic, screening, and safety outcomes.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-35-5",
+        "text": "Cap the report at: The model ranks cases above controls with the reported probability; operational value depends on threshold-specific errors, prevalence, and action.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "What happens to false alerts and missed cases at the deployed threshold and prevalence?",
+      "Do not compare precision across cohorts without accounting for prevalence or ignore calibration.",
+      "Check provenance and applicability of src-roc, src-stard-2015, src-dca."
+    ],
+    "seniorSummary": "ROC AUC can look favorable when events are rare while positive predictions remain mostly false. Report prevalence, calibration, sensitivity, specificity, predictive values, and precision–recall behavior at relevant thresholds; connect metrics to intended decisions. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “auc-is-accuracy”?",
+    "sourceIds": [
+      "src-roc",
+      "src-stard-2015",
+      "src-dca"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-is-accuracy"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of rare-outcome performance. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-36",
+    "title": "AI plan: Prediction-model transportability",
+    "domain": "prediction",
+    "task": "Audit an AI-generated analysis plan for prediction-model transportability.",
+    "context": "An ICU model trained before a treatment guideline is applied after the guideline changes baseline mortality.",
+    "steps": [
+      {
+        "id": "audit-36-1",
+        "text": "Accept the plan's claim: “The model generalized because the target-cohort AUC was unchanged.”",
+        "expected": "reject",
+        "issue": "Changes in case mix, measurement, care pathways, outcome incidence, and predictor effects can degrade absolute risk even when ranking persists.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-36-2",
+        "text": "Use this shortcut: Refit the intercept and predictors in the target cohort, then label the result external validation.",
+        "expected": "reject",
+        "issue": "Was the original model implemented unchanged, and which transport differences were anticipated?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-36-3",
+        "text": "Require this principle before execution: Compare target versus development setting, reproduce the locked pipeline, evaluate calibration and discrimination, and separate original performance from any recalibrated or updated model.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-36-4",
+        "text": "Implement and document: Use before applying a model across geography, time, device, laboratory, or eligibility setting.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-36-5",
+        "text": "Cap the report at: Transport requires target-setting evaluation of absolute risk and decisions; ranking alone is insufficient.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Was the original model implemented unchanged, and which transport differences were anticipated?",
+      "Do not hide failed original transport by presenting only an updated model.",
+      "Check provenance and applicability of src-tripod, src-probaST, src-calibration."
+    ],
+    "seniorSummary": "Changes in case mix, measurement, care pathways, outcome incidence, and predictor effects can degrade absolute risk even when ranking persists. Compare target versus development setting, reproduce the locked pipeline, evaluate calibration and discrimination, and separate original performance from any recalibrated or updated model. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “same-auc-transports”?",
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST",
+      "src-calibration"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "same-auc-transports"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of prediction-model transportability. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-37",
+    "title": "AI plan: RNA-seq design matrix",
+    "domain": "omics",
+    "task": "Audit an AI-generated analysis plan for rna-seq design matrix.",
+    "context": "Tumor and normal tissues are paired within patients and sequencing batch partly overlaps disease status.",
+    "steps": [
+      {
+        "id": "audit-37-1",
+        "text": "Accept the plan's claim: “Thousands of significant genes reflect disease biology.”",
+        "expected": "reject",
+        "issue": "Differential-expression software cannot recover a biological contrast that is confounded or incorrectly encoded in the design matrix.",
+        "severity": "major"
+      },
+      {
+        "id": "audit-37-2",
+        "text": "Use this shortcut: Fit expression by tissue alone and treat each technical library as an independent replicate.",
+        "expected": "reject",
+        "issue": "Is the contrast estimable separately from patient and batch, and what is the biological replicate?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-37-3",
+        "text": "Require this principle before execution: Define sample-level experimental units, factors, interactions, blocking, paired structure, and the exact contrast before fitting count models.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-37-4",
+        "text": "Implement and document: Use before DESeq2, edgeR, or related bulk/pseudobulk count analyses.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-37-5",
+        "text": "Cap the report at: Differential expression reflects the estimable sample-level contrast under the encoded design and count-model assumptions.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Is the contrast estimable separately from patient and batch, and what is the biological replicate?",
+      "Do not add perfectly confounded variables and assume software will choose the causal explanation.",
+      "Check provenance and applicability of src-deseq2, src-edger, src-multiomics."
+    ],
+    "seniorSummary": "Differential-expression software cannot recover a biological contrast that is confounded or incorrectly encoded in the design matrix. Define sample-level experimental units, factors, interactions, blocking, paired structure, and the exact contrast before fitting count models. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “library-is-replicate”?",
+    "sourceIds": [
+      "src-deseq2",
+      "src-edger",
+      "src-multiomics"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "library-is-replicate"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of rna-seq design matrix. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-38",
+    "title": "AI plan: Count-model dispersion shrinkage",
+    "domain": "omics",
+    "task": "Audit an AI-generated analysis plan for count-model dispersion shrinkage.",
+    "context": "Six RNA-seq samples show variance far above the mean for many genes.",
+    "steps": [
+      {
+        "id": "audit-38-1",
+        "text": "Accept the plan's claim: “Very small P values prove precise gene-specific effects despite two biological samples per group.”",
+        "expected": "reject",
+        "issue": "Gene-wise variance estimates are unstable with few replicates, and Poisson models understate biological variability.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-38-2",
+        "text": "Use this shortcut: Apply a Poisson test per gene because read counts are integers.",
+        "expected": "reject",
+        "issue": "How was biological dispersion estimated, moderated, and diagnosed at low counts?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-38-3",
+        "text": "Require this principle before execution: Negative-binomial workflows estimate mean–dispersion trends and borrow information across genes while preserving gene-specific deviations.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-38-4",
+        "text": "Implement and document: Use for replicated bulk RNA-seq and sample-level pseudobulk counts with compatible library-size normalization.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-38-5",
+        "text": "Cap the report at: Moderation stabilizes inference under the model; it cannot replace adequate independent replication.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "How was biological dispersion estimated, moderated, and diagnosed at low counts?",
+      "Do not interpret shrinkage as fabricating replicates or use it when the independent sample count is absent.",
+      "Check provenance and applicability of src-deseq2, src-edger."
+    ],
+    "seniorSummary": "Gene-wise variance estimates are unstable with few replicates, and Poisson models understate biological variability. Negative-binomial workflows estimate mean–dispersion trends and borrow information across genes while preserving gene-specific deviations. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “poisson-rnaseq”?",
+    "sourceIds": [
+      "src-deseq2",
+      "src-edger"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "poisson-rnaseq",
+      "cells-create-replication"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of count-model dispersion shrinkage. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-39",
+    "title": "AI plan: Correlation-aware gene-set testing",
+    "domain": "omics",
+    "task": "Audit an AI-generated analysis plan for correlation-aware gene-set testing.",
+    "context": "A co-regulated interferon module contains dozens of strongly correlated genes.",
+    "steps": [
+      {
+        "id": "audit-39-1",
+        "text": "Accept the plan's claim: “The pathway is mechanistically activated because its gene set is enriched.”",
+        "expected": "reject",
+        "issue": "Genes within pathways are correlated, so treating them as independent can make competitive gene-set tests anti-conservative.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-39-2",
+        "text": "Use this shortcut: Run independent hypergeometric tests on every thresholded gene list and rank by nominal P value.",
+        "expected": "reject",
+        "issue": "What is the gene-set null, how is inter-gene correlation handled, and what unit is permuted?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-39-3",
+        "text": "Require this principle before execution: Choose competitive versus self-contained hypotheses explicitly and use a method whose null, correlation handling, and sample-level permutation scheme match the design.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-39-4",
+        "text": "Implement and document: Use for pathway-level interpretation after a valid sample-level differential analysis.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-39-5",
+        "text": "Cap the report at: The gene set shows coordinated statistical association under the specified null; mechanistic activity remains a hypothesis.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "What is the gene-set null, how is inter-gene correlation handled, and what unit is permuted?",
+      "Do not convert enrichment into pathway activation, direction, or causality without supporting measurements.",
+      "Check provenance and applicability of src-camera, src-gsea, src-multiple-testing."
+    ],
+    "seniorSummary": "Genes within pathways are correlated, so treating them as independent can make competitive gene-set tests anti-conservative. Choose competitive versus self-contained hypotheses explicitly and use a method whose null, correlation handling, and sample-level permutation scheme match the design. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “enrichment-is-activation”?",
+    "sourceIds": [
+      "src-camera",
+      "src-gsea",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "enrichment-is-activation"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of correlation-aware gene-set testing. Audit assumptions before seeing the reference answer."
+  },
+  {
+    "id": "audit-40",
+    "title": "AI plan: Bulk deconvolution identifiability",
+    "domain": "omics",
+    "task": "Audit an AI-generated analysis plan for bulk deconvolution identifiability.",
+    "context": "A tumor bulk cohort is deconvolved using immune signatures derived from peripheral blood.",
+    "steps": [
+      {
+        "id": "audit-40-1",
+        "text": "Accept the plan's claim: “The treatment expands a specific cell population twofold.”",
+        "expected": "reject",
+        "issue": "Estimated cell fractions depend on the reference signature, platform, cell-state coverage, and separability of cell types.",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-40-2",
+        "text": "Use this shortcut: Interpret every estimated fraction as an unbiased cell count in tissue.",
+        "expected": "reject",
+        "issue": "Could an absent or activated cell state be represented as a mixture of available reference profiles?",
+        "severity": "critical"
+      },
+      {
+        "id": "audit-40-3",
+        "text": "Require this principle before execution: Audit signature origin and scale, collinearity, missing cell states, absolute versus relative fractions, and validation against orthogonal measurements or mixtures.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-40-4",
+        "text": "Implement and document: Use for hypothesis generation and composition adjustment when reference and mixture assumptions are plausible and evaluated.",
+        "expected": "approve"
+      },
+      {
+        "id": "audit-40-5",
+        "text": "Cap the report at: The signature model estimates relative composition under its reference assumptions; biological expansion requires validation.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Could an absent or activated cell state be represented as a mixture of available reference profiles?",
+      "Do not compare relative fractions as independent outcomes or infer cell-intrinsic expression from bulk mixtures.",
+      "Check provenance and applicability of src-cibersort, src-multiomics."
+    ],
+    "seniorSummary": "Estimated cell fractions depend on the reference signature, platform, cell-state coverage, and separability of cell types. Audit signature origin and scale, collinearity, missing cell states, absolute versus relative fractions, and validation against orthogonal measurements or mixtures. The AI plan is acceptable only after its shortcut is removed and its conclusion is bounded.",
+    "transferPrompt": "Which part of your current workflow is most vulnerable to “fraction-is-count”?",
+    "sourceIds": [
+      "src-cibersort",
+      "src-multiomics"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "fraction-is-count",
+      "reference-is-universal"
+    ],
+    "variantPrompt": "A second team proposes a different implementation of bulk deconvolution identifiability. Audit assumptions before seeing the reference answer."
+  },
+  {
     "id": "audit-01",
     "title": "Cell-level DEG plan",
     "domain": "single-cell",
@@ -56,7 +1468,12 @@
       "src-multiple-testing"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cell-level-deg-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Cell-level DEG plan”, without copying the original scenario."
   },
   {
     "id": "audit-02",
@@ -111,7 +1528,12 @@
       "src-probaST"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "survival-model-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Survival model plan”, without copying the original scenario."
   },
   {
     "id": "audit-03",
@@ -166,7 +1588,12 @@
       "src-probaST"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "model-validation-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Model validation plan”, without copying the original scenario."
   },
   {
     "id": "audit-04",
@@ -220,7 +1647,12 @@
       "src-pseudorep"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cell-proportion-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Cell proportion plan”, without copying the original scenario."
   },
   {
     "id": "audit-05",
@@ -275,7 +1707,12 @@
       "src-pseudorep"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "spatial-mechanism-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Spatial mechanism plan”, without copying the original scenario."
   },
   {
     "id": "audit-06",
@@ -329,7 +1766,12 @@
       "src-multiple-testing"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "pathway-enrichment-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Pathway enrichment plan”, without copying the original scenario."
   },
   {
     "id": "audit-07",
@@ -384,7 +1826,12 @@
       "src-leakage"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "clustering-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Clustering plan”, without copying the original scenario."
   },
   {
     "id": "audit-08",
@@ -439,7 +1886,12 @@
       "src-internal-validation"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "multi-omics-integration-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Multi-omics integration plan”, without copying the original scenario."
   },
   {
     "id": "audit-09",
@@ -493,7 +1945,12 @@
       "src-tripod"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "biomarker-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Biomarker plan”, without copying the original scenario."
   },
   {
     "id": "audit-10",
@@ -546,7 +2003,12 @@
       "src-pseudorep"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "organoid-drug-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Organoid drug plan”, without copying the original scenario."
   },
   {
     "id": "audit-11",
@@ -598,7 +2060,12 @@
       "src-gsea"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "causal-language-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Causal language plan”, without copying the original scenario."
   },
   {
     "id": "audit-12",
@@ -650,7 +2117,12 @@
       "src-pseudorep"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "figure-narrative-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Figure narrative plan”, without copying the original scenario."
   },
   {
     "id": "audit-13",
@@ -701,7 +2173,12 @@
       "src-strobe"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "literature-citation-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Literature citation plan”, without copying the original scenario."
   },
   {
     "id": "audit-14",
@@ -756,7 +2233,12 @@
       "src-probaST"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "data-leakage-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “Data leakage plan”, without copying the original scenario."
   },
   {
     "id": "audit-15",
@@ -808,6 +2290,11 @@
       "src-probaST"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "external-reference-plan"
+    ],
+    "variantPrompt": "Audit a new plan that makes the same hidden assumption as “External reference plan”, without copying the original scenario."
   }
 ]

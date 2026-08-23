@@ -6,10 +6,10 @@ export const isTauri = (): boolean => typeof window !== "undefined" && "__TAURI_
 const browserStateKey = "researchos-browser-state-v1";
 const transientKeys = new Map<string, string>();
 
-export async function loadPersistedState(): Promise<AppStateData | null> {
-  if (isTauri()) return invoke<AppStateData | null>("load_state");
+export async function loadPersistedState(): Promise<unknown | null> {
+  if (isTauri()) return invoke<unknown | null>("load_state");
   const raw = localStorage.getItem(browserStateKey);
-  return raw ? JSON.parse(raw) as AppStateData : null;
+  return raw ? JSON.parse(raw) as unknown : null;
 }
 
 export async function savePersistedState(state: AppStateData): Promise<void> {
@@ -70,8 +70,17 @@ export async function verifyEvidence(kind: "pmid" | "doi", identifier: string): 
   return invoke("verify_evidence", { kind, identifier });
 }
 
-export async function databaseHealth(): Promise<{ ok: boolean; integrity: string; path: string; schemaVersion: number }> {
-  if (!isTauri()) return { ok: true, integrity: "browser-preview", path: "localStorage preview", schemaVersion: 1 };
+export interface DatabaseHealth {
+  ok: boolean;
+  integrity: string;
+  path: string;
+  schemaVersion: number;
+  recoverySnapshots?: number;
+  journalMode?: string;
+}
+
+export async function databaseHealth(): Promise<DatabaseHealth> {
+  if (!isTauri()) return { ok: true, integrity: "browser-preview", path: "localStorage preview", schemaVersion: 2, recoverySnapshots: 0, journalMode: "localStorage" };
   return invoke("database_health");
 }
 
@@ -84,4 +93,3 @@ export async function importBackup(source: string): Promise<void> {
   if (!isTauri()) throw new Error("SQLite backup import requires the desktop build.");
   return invoke("import_backup", { source });
 }
-

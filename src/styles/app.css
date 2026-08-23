@@ -169,6 +169,42 @@ kbd { font-family: "Segoe UI", sans-serif; font-size: 10px; color: var(--faint);
 .method-feedback-grid p, .senior-review p { margin: 7px 0 0; }
 .method-feedback-grid .danger-block { background: var(--danger-soft); }
 .senior-review ul, .senior-review ol { margin: 8px 0 0; padding-left: 18px; line-height: 1.6; }
+.ai-review-panel { margin-top: 16px; padding: 14px; border: 1px solid var(--line-strong); background: var(--surface-2); }
+.ai-review-panel > button { margin: 8px 0; }
+.ai-review-panel > small { display: block; color: var(--muted); margin-top: 5px; }
+.ai-generated { margin-top: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ai-review-panel pre { max-height: 180px; overflow: auto; white-space: pre-wrap; font-size: 10px; }
+.pending-tag { display: inline-flex; align-items: center; gap: 4px; color: var(--warning); }
+.onboarding-overlay { min-height: 100vh; display: grid; place-items: center; padding: 32px; background: radial-gradient(circle at 25% 20%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 35%), var(--bg); }
+.onboarding-card { width: min(760px, 100%); min-height: 520px; padding: 46px; border: 1px solid var(--line-strong); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.16); }
+.onboarding-card h1 { max-width: 600px; font-size: clamp(32px, 5vw, 54px); line-height: 1.02; margin: 18px 0; }
+.onboarding-card > p { max-width: 640px; color: var(--muted); line-height: 1.7; }
+.onboarding-progress { height: 3px; background: var(--surface-3); margin: -46px -46px 42px; }
+.onboarding-progress i { display: block; height: 100%; background: var(--accent); transition: width .25s ease; }
+.onboarding-principles { display: grid; gap: 10px; margin: 28px 0; }
+.onboarding-principles span { display: flex; align-items: center; gap: 10px; font-weight: 650; }
+.onboarding-principles svg { width: 17px; color: var(--accent); }
+.choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; margin: 28px 0; }
+.choice-grid button { text-align: left; padding: 14px; background: var(--surface-2); color: var(--text); border-color: var(--line); }
+.choice-grid button.selected { border-color: var(--accent); box-shadow: inset 3px 0 var(--accent); }
+.familiarity-grid { display: grid; gap: 10px; margin: 28px 0; }
+.familiarity-grid label { display: grid; grid-template-columns: 1fr 220px; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 10px; text-transform: capitalize; }
+.global-search-results { position: absolute; z-index: 20; top: 122px; left: 8px; right: 8px; max-height: 430px; overflow: auto; padding: 5px; border: 1px solid var(--line-strong); background: var(--surface); box-shadow: var(--shadow); }
+.workspace-sidebar { position: relative; }
+.global-search-results button { width: 100%; display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: start; gap: 8px; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 9px 7px; }
+.global-search-results button:hover { background: var(--accent-soft); }
+.global-search-results button span { min-width: 0; display: grid; gap: 2px; }
+.global-search-results button strong, .global-search-results button small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.global-search-results button small { color: var(--muted); font-weight: 400; }
+.global-search-results button em { font-style: normal; font-size: 8px; color: var(--faint); text-transform: uppercase; }
+.assessment-rubric { margin-top: 26px; border: 1px solid var(--line-strong); padding: 18px; background: var(--surface-2); }
+.rubric-row { display: grid; grid-template-columns: 1fr auto; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.rubric-row strong { text-transform: capitalize; }
+.rubric-row p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
+.rubric-row > div:last-child { display: flex; gap: 6px; }
+.rubric-row button { min-width: 68px; display: grid; gap: 2px; }
+.rubric-row button small { font-size: 8px; text-transform: uppercase; }
+.rubric-row button.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
 .calibration-row { margin-top: 15px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; background: var(--surface-2); border: 1px solid var(--line); padding: 9px; }
 .calibration-row > span { flex: 1 1 220px; font-size: 11px; color: var(--muted); }
 .calibration-row button { font-size: 11px; }
@@ -372,6 +408,14 @@ kbd { font-family: "Segoe UI", sans-serif; font-size: 10px; color: var(--faint);
 .database-status > div { display: grid; gap: 5px; }
 .backup-actions { display: flex; gap: 8px; }
 .danger-button { color: var(--danger); border-color: var(--danger); width: fit-content; }
+.health-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.health-grid article { display: grid; grid-template-columns: auto 1fr; gap: 3px 8px; padding: 12px; border: 1px solid var(--line); background: var(--surface-2); }
+.health-grid article svg { grid-row: 1 / 4; width: 17px; color: var(--accent); }
+.health-grid article span, .health-grid article small { color: var(--muted); font-size: 10px; }
+.health-inventory { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); }
+.health-inventory > span { display: grid; gap: 3px; padding: 12px; font: 18px "Cascadia Code", monospace; border-right: 1px solid var(--line); }
+.health-inventory > span:last-child { border-right: 0; }
+.health-inventory small { font: 9px system-ui, sans-serif; color: var(--muted); text-transform: uppercase; }
 
 .overlay { position: fixed; inset: 0; z-index: 50; background: rgb(15 22 26 / .43); display: flex; align-items: flex-start; justify-content: center; padding-top: 14vh; }
 .command-palette { width: min(620px, calc(100vw - 70px)); background: var(--surface); border: 1px solid var(--line-strong); box-shadow: var(--shadow); }
@@ -395,4 +439,3 @@ kbd { font-family: "Segoe UI", sans-serif; font-size: 10px; color: var(--faint);
   .daily-task { grid-template-columns: 42px minmax(0, 1fr) 80px; }
   .task-actions { grid-column: 2 / -1; }
 }
-

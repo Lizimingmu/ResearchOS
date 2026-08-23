@@ -1,7 +1,9 @@
-import type { PropsWithChildren } from "react";
+import { lazy, Suspense, type PropsWithChildren } from "react";
 import { Command, Search } from "lucide-react";
 import { navigation } from "../app/navigation";
 import { useAppStore } from "../state/store";
+
+const GlobalSearchResults = lazy(() => import("./GlobalSearchResults").then((module) => ({ default: module.GlobalSearchResults })));
 
 export function AppShell({ children }: PropsWithChildren) {
   const view = useAppStore((state) => state.view);
@@ -9,6 +11,7 @@ export function AppShell({ children }: PropsWithChildren) {
   const setPaletteOpen = useAppStore((state) => state.setPaletteOpen);
   const globalSearch = useAppStore((state) => state.globalSearch);
   const setGlobalSearch = useAppStore((state) => state.setGlobalSearch);
+  const persistenceStatus = useAppStore((state) => state.persistenceStatus);
   const active = navigation.find((item) => item.id === view)!;
 
   return (
@@ -30,19 +33,20 @@ export function AppShell({ children }: PropsWithChildren) {
         </button>
       </nav>
       <aside className="workspace-sidebar">
-        <div className="sidebar-title"><span>RESEARCHOS</span><small>v0.9</small></div>
+        <div className="sidebar-title"><span>RESEARCHOS</span><small>v0.10</small></div>
         <button className="command-trigger" onClick={() => setPaletteOpen(true)}><Command size={14} /><span>Command palette</span><kbd>Ctrl K</kbd></button>
         <label className="sidebar-search">
           <Search size={14} />
           <input id="workspace-search" aria-label="Workspace search" value={globalSearch} onChange={(event) => setGlobalSearch(event.target.value)} placeholder="Filter workspace" />
         </label>
+        {globalSearch.trim().length >= 2 && <Suspense fallback={null}><GlobalSearchResults /></Suspense>}
         <div className="sidebar-section-label">WORKSPACES</div>
         {navigation.map((item) => {
           const Icon = item.icon;
           return <button key={item.id} className={`sidebar-nav-item ${item.id === view ? "active" : ""}`} onClick={() => setView(item.id)}><Icon size={15} /><span>{item.label}</span>{item.key && <kbd>{item.key}</kbd>}</button>;
         })}
         <div className="sidebar-footer">
-          <span className="status-dot" /> Local-first · offline ready
+          <span className={`status-dot ${persistenceStatus}`} /> Local-first · {persistenceStatus === "error" ? "save error" : persistenceStatus === "saving" ? "saving" : "offline ready"}
         </div>
       </aside>
       <main className="workspace-main">

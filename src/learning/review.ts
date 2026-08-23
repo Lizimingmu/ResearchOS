@@ -12,7 +12,7 @@ export interface ReviewOutcome {
 
 /**
  * FSRS-compatible scheduling boundary. The state fields and output shape match
- * the information FSRS needs, while v0.9 uses a deterministic offline fallback.
+ * the information FSRS needs, while v0.10 uses a deterministic offline fallback.
  * A mature FSRS package can replace this function without migrating stored data.
  */
 export function scheduleReview(
@@ -75,4 +75,3 @@ export function createReviewItem(id: string, conceptId: string, conceptType: Rev
     dangerousMisconception: false,
   };
 }
-

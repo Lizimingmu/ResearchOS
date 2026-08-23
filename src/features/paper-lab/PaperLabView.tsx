@@ -67,9 +67,10 @@ export function PaperLabView() {
           sourceIds={pattern.sourceIds}
           transferPrompt={mode.transfer}
           placeholder="Write from the paper/figure before opening legends or external summaries…"
+          difficulty={pattern.difficulty}
+          variantPrompt={`Reconstruct the same evidence function in an unfamiliar paper using the ${pattern.title} pattern, then state one claim the figures cannot support.`}
         />
       </aside>
     </div>
   );
 }
-

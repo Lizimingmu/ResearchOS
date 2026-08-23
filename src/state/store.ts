@@ -2,10 +2,14 @@ import { create } from "zustand";
 import { examplePapers } from "../data/examplePapers";
 import type {
   AIProvider,
+  AIReviewRecord,
   AppSettings,
   AppStateData,
   AssessmentResult,
   Confidence,
+  DifficultyLevel,
+  DraftResponse,
+  Misconception,
   Paper,
   Project,
   ReviewItem,
@@ -16,6 +20,7 @@ import type {
 import { createReviewItem, scheduleReview } from "../learning/review";
 import { makeId } from "../lib/ids";
 import { loadPersistedState, savePersistedState } from "../services/desktop";
+import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
 
 const providers: AIProvider[] = [
   { id: "openai", name: "OpenAI-compatible", template: "openai", baseUrl: "https://api.openai.com/v1", model: "gpt-5-mini", temperature: 0.2, maxTokens: 1200, hasApiKey: false },
@@ -28,7 +33,7 @@ const defaultSettings: AppSettings = {
   theme: "system",
   startPage: "today",
   dailyMinutes: 40,
-  weights: { weakness: 0.35, projectRelevance: 0.30, frontierValue: 0.20, reviewDue: 0.15 },
+  weights: { weakness: 0.30, projectRelevance: 0.25, frontierValue: 0.15, reviewDue: 0.15, misconception: 0.15 },
   pubmedVerification: true,
   doiVerification: true,
   offlineMode: false,
@@ -36,7 +41,7 @@ const defaultSettings: AppSettings = {
 };
 
 export const createInitialState = (): AppStateData => ({
-  schemaVersion: 1,
+  schemaVersion: CURRENT_STATE_SCHEMA,
   papers: examplePapers.map((paper) => ({ ...paper, tags: [...paper.tags] })),
   projects: [],
   responses: [],
@@ -49,6 +54,9 @@ export const createInitialState = (): AppStateData => ({
   snoozedTaskIds: [],
   assessmentHistory: [],
   notesByPaperId: {},
+  draftResponses: {},
+  misconceptions: [],
+  onboarding: { completed: false, interests: [], familiarity: {}, baselineCompleted: false },
 });
 
 export interface ToastMessage {
@@ -59,6 +67,8 @@ export interface ToastMessage {
 
 interface AppStore extends AppStateData {
   hydrated: boolean;
+  persistenceStatus: "idle" | "saving" | "saved" | "error";
+  lastSavedAt?: string;
   view: ViewId;
   selectedPaperId?: string;
   selectedMethodId: string;
@@ -83,17 +93,24 @@ interface AppStore extends AppStateData {
   addProject: (project: Project) => void;
   updateProject: (id: string, patch: Partial<Project>) => void;
   submitResponse: (input: Omit<UserResponse, "id" | "submittedAt" | "locked">) => UserResponse;
+  saveDraft: (draft: Omit<DraftResponse, "updatedAt">) => void;
+  clearDraft: (taskId: string) => void;
   saveTransfer: (responseId: string, transferText: string, projectId?: string) => void;
+  saveAiReview: (responseId: string, review: AIReviewRecord) => void;
   ensureReview: (conceptId: string, conceptType: ReviewItem["conceptType"], prompt: string) => void;
   rateReview: (reviewItemId: string, correctness: number, confidence: Confidence) => void;
   addSkillEvidence: (evidence: Omit<SkillEvidence, "id" | "createdAt">) => void;
+  recordCalibration: (input: { responseId: string; conceptId: string; conceptType: ReviewItem["conceptType"]; skillId: string; prompt: string; variantPrompt?: string; difficulty?: DifficultyLevel; score: number }) => void;
   updateSettings: (patch: Partial<AppSettings>) => void;
   updateWeights: (patch: Partial<AppSettings["weights"]>) => void;
   updateProvider: (id: string, patch: Partial<AIProvider>) => void;
   completeTask: (id: string) => void;
+  completeTargetForToday: (targetId: string) => void;
   snoozeTask: (id: string) => void;
   addAssessment: (assessment: AssessmentResult) => void;
-  replaceData: (data: AppStateData) => void;
+  updateAssessment: (id: string, patch: Partial<AssessmentResult>) => void;
+  completeOnboarding: (interests: string[], familiarity: AppStateData["onboarding"]["familiarity"]) => void;
+  replaceData: (data: unknown) => void;
   resetDemo: () => void;
 }
 
@@ -112,24 +129,41 @@ function stateData(state: AppStore): AppStateData {
     snoozedTaskIds: state.snoozedTaskIds,
     assessmentHistory: state.assessmentHistory,
     notesByPaperId: state.notesByPaperId,
+    draftResponses: state.draftResponses,
+    misconceptions: state.misconceptions,
+    onboarding: state.onboarding,
   };
 }
 
 let persistTimer: ReturnType<typeof setTimeout> | undefined;
-const schedulePersist = (get: () => AppStore) => {
+const schedulePersist = (get: () => AppStore, report: (status: AppStore["persistenceStatus"], error?: unknown) => void) => {
   if (persistTimer) clearTimeout(persistTimer);
+  report("saving");
   persistTimer = setTimeout(() => {
-    void savePersistedState(stateData(get())).catch((error) => {
-      console.error("ResearchOS persistence failed", error);
-    });
+    void savePersistedState(stateData(get()))
+      .then(() => report("saved"))
+      .catch((error) => report("error", error));
   }, 80);
 };
 
 export const useAppStore = create<AppStore>((set, get) => {
   const initial = createInitialState();
+  const reportPersistence = (status: AppStore["persistenceStatus"], error?: unknown) => {
+    if (status === "error") {
+      set({
+        persistenceStatus: "error",
+        toast: { id: makeId("toast"), tone: "error", text: `Changes are in memory but could not be saved: ${String(error)}` },
+      });
+      return;
+    }
+    set({ persistenceStatus: status, lastSavedAt: status === "saved" ? new Date().toISOString() : get().lastSavedAt });
+  };
+  const queuePersist = () => schedulePersist(get, reportPersistence);
+  const todayTargetMarker = (targetId: string, now = new Date()) => `target:${now.toISOString().slice(0, 10)}:${targetId}`;
   return {
     ...initial,
     hydrated: false,
+    persistenceStatus: "idle",
     view: "today",
     selectedPaperId: initial.papers[0]?.id,
     selectedMethodId: "statistical-unit",
@@ -141,17 +175,24 @@ export const useAppStore = create<AppStore>((set, get) => {
     hydrate: async () => {
       try {
         const persisted = await loadPersistedState();
-        if (persisted?.schemaVersion === 1) {
-          set({ ...persisted, hydrated: true, view: (persisted.settings.startPage as ViewId) || "today", selectedPaperId: persisted.papers[0]?.id });
-        } else {
-          set({ hydrated: true });
-          await savePersistedState(stateData(get()));
-        }
+        const migrated = persisted === null ? initial : migratePersistedState(persisted, initial);
+        set({ ...migrated, hydrated: true, persistenceStatus: "idle", view: (migrated.settings.startPage as ViewId) || "today", selectedPaperId: migrated.papers[0]?.id });
+        await savePersistedState(migrated);
+        reportPersistence("saved");
       } catch (error) {
-        set({ hydrated: true, toast: { id: makeId("toast"), tone: "error", text: `Local database unavailable. Continuing with in-memory seed data: ${String(error)}` } });
+        set({ hydrated: true, persistenceStatus: "error", toast: { id: makeId("toast"), tone: "error", text: `Local database was not changed. Continuing in memory: ${String(error)}` } });
       }
     },
-    persistNow: () => savePersistedState(stateData(get())),
+    persistNow: async () => {
+      reportPersistence("saving");
+      try {
+        await savePersistedState(stateData(get()));
+        reportPersistence("saved");
+      } catch (error) {
+        reportPersistence("error", error);
+        throw error;
+      }
+    },
     setView: (view) => set({ view }),
     selectPaper: (selectedPaperId) => set({ selectedPaperId, view: "paper-lab" }),
     selectMethod: (selectedMethodId) => set({ selectedMethodId, view: "methods" }),
@@ -164,82 +205,189 @@ export const useAppStore = create<AppStore>((set, get) => {
 
     addPaper: (paper) => {
       set((state) => ({ papers: [paper, ...state.papers], selectedPaperId: paper.id }));
-      schedulePersist(get);
+      queuePersist();
     },
     updatePaper: (id, patch) => {
       set((state) => ({ papers: state.papers.map((paper) => paper.id === id ? { ...paper, ...patch } : paper) }));
-      schedulePersist(get);
+      queuePersist();
     },
     addProject: (project) => {
       set((state) => ({ projects: [project, ...state.projects] }));
-      schedulePersist(get);
+      queuePersist();
     },
     updateProject: (id, patch) => {
       set((state) => ({ projects: state.projects.map((project) => project.id === id ? { ...project, ...patch } : project) }));
-      schedulePersist(get);
+      queuePersist();
     },
     submitResponse: (input) => {
       const response: UserResponse = { ...input, id: makeId("response"), submittedAt: new Date().toISOString(), locked: true };
       set((state) => ({ responses: [response, ...state.responses] }));
-      schedulePersist(get);
+      queuePersist();
       return response;
+    },
+    saveDraft: (draft) => {
+      set((state) => ({ draftResponses: { ...state.draftResponses, [draft.taskId]: { ...draft, updatedAt: new Date().toISOString() } } }));
+      queuePersist();
+    },
+    clearDraft: (taskId) => {
+      set((state) => {
+        if (!state.draftResponses[taskId]) return state;
+        const draftResponses = { ...state.draftResponses };
+        delete draftResponses[taskId];
+        return { draftResponses };
+      });
+      queuePersist();
     },
     saveTransfer: (responseId, transferText, projectId) => {
       set((state) => ({ responses: state.responses.map((response) => response.id === responseId ? { ...response, transferText, projectId } : response) }));
-      schedulePersist(get);
+      queuePersist();
+    },
+    saveAiReview: (responseId, aiReview) => {
+      set((state) => ({ responses: state.responses.map((response) => response.id === responseId ? { ...response, aiReview } : response) }));
+      queuePersist();
     },
     ensureReview: (conceptId, conceptType, prompt) => {
       if (get().reviewItems.some((item) => item.conceptId === conceptId)) return;
       set((state) => ({ reviewItems: [createReviewItem(makeId("review"), conceptId, conceptType, prompt), ...state.reviewItems] }));
-      schedulePersist(get);
+      queuePersist();
     },
     rateReview: (reviewItemId, correctness, confidence) => {
       const item = get().reviewItems.find((candidate) => candidate.id === reviewItemId);
       if (!item) return;
       const outcome = scheduleReview(item, correctness, confidence);
+      const resolved = Boolean(item.misconceptionId && item.isVariant && correctness >= 0.75);
+      const reviewedAt = new Date().toISOString();
+      const reviewedItem = {
+        ...outcome.item,
+        dangerousMisconception: item.misconceptionId ? !resolved : outcome.item.dangerousMisconception,
+      };
       set((state) => ({
-        reviewItems: state.reviewItems.map((candidate) => candidate.id === reviewItemId ? outcome.item : candidate),
-        reviewLogs: [{ id: makeId("review-log"), reviewItemId, reviewedAt: new Date().toISOString(), correctness, confidence, nextDue: outcome.nextDue }, ...state.reviewLogs],
+        reviewItems: state.reviewItems.map((candidate) => candidate.id === reviewItemId ? reviewedItem : candidate),
+        reviewLogs: [{ id: makeId("review-log"), reviewItemId, reviewedAt, correctness, confidence, nextDue: outcome.nextDue }, ...state.reviewLogs],
+        misconceptions: state.misconceptions.map((misconception) => misconception.id === item.misconceptionId
+          ? { ...misconception, status: resolved ? "resolved" : "retesting", lastTestedAt: reviewedAt, resolvedAt: resolved ? reviewedAt : undefined }
+          : misconception),
+        completedTaskIds: state.completedTaskIds.includes(todayTargetMarker(item.conceptId))
+          ? state.completedTaskIds
+          : [...state.completedTaskIds, todayTargetMarker(item.conceptId)],
       }));
-      schedulePersist(get);
+      queuePersist();
     },
     addSkillEvidence: (evidence) => {
       set((state) => ({ skillEvidence: [{ ...evidence, id: makeId("skill-evidence"), createdAt: new Date().toISOString() }, ...state.skillEvidence] }));
-      schedulePersist(get);
+      queuePersist();
+    },
+    recordCalibration: ({ responseId, conceptId, conceptType, skillId, prompt, variantPrompt, difficulty, score }) => {
+      const response = get().responses.find((candidate) => candidate.id === responseId);
+      if (!response) return;
+      if (response.correctness !== undefined) {
+        set({ toast: { id: makeId("toast"), tone: "info", text: "Calibration is already locked for this attempt." } });
+        return;
+      }
+      const now = new Date();
+      const nowIso = now.toISOString();
+      const dangerous = score < 0.5 && response.confidence >= 3;
+      const existingMisconception = get().misconceptions.find((item) => item.conceptId === conceptId && item.status !== "resolved");
+      const misconceptionId = dangerous ? existingMisconception?.id ?? makeId("misconception") : undefined;
+      const unfamiliarVariant = variantPrompt ?? `A different research team faces the same underlying decision: ${prompt} Identify the risk and state the defensible conclusion without reusing the original case wording.`;
+      const existingReview = get().reviewItems.find((item) => item.conceptId === conceptId);
+      const baseReview = existingReview ?? createReviewItem(makeId("review"), conceptId, conceptType, prompt, now);
+      const reviewForScheduling: ReviewItem = dangerous ? {
+        ...baseReview,
+        prompt: unfamiliarVariant,
+        variantPrompt: unfamiliarVariant,
+        isVariant: true,
+        misconceptionId,
+        dangerousMisconception: true,
+      } : baseReview;
+      const outcome = scheduleReview(reviewForScheduling, score, response.confidence, now);
+      const evidence: SkillEvidence = {
+        id: makeId("skill-evidence"), skillId, taskId: conceptId, conceptId, responseId, score,
+        delayed: false, blindTransfer: false, confidence: response.confidence, difficulty, misconceptionId, createdAt: nowIso,
+      };
+      const misconception: Misconception | undefined = dangerous ? {
+        id: misconceptionId!, conceptId, conceptType, sourceTaskId: response.taskId,
+        statement: `High-confidence unsafe judgment detected for “${conceptId}”.`,
+        variantPrompt: unfamiliarVariant, detectedAt: existingMisconception?.detectedAt ?? nowIso,
+        confidence: response.confidence, evidenceCount: (existingMisconception?.evidenceCount ?? 0) + 1,
+        status: "unresolved",
+      } : undefined;
+      set((state) => ({
+        responses: state.responses.map((candidate) => candidate.id === responseId ? { ...candidate, correctness: score } : candidate),
+        skillEvidence: [evidence, ...state.skillEvidence.filter((item) => item.responseId !== responseId)],
+        reviewItems: existingReview
+          ? state.reviewItems.map((item) => item.id === existingReview.id ? outcome.item : item)
+          : [outcome.item, ...state.reviewItems],
+        misconceptions: misconception
+          ? [misconception, ...state.misconceptions.filter((item) => item.id !== misconception.id)]
+          : state.misconceptions,
+        completedTaskIds: state.completedTaskIds.includes(todayTargetMarker(conceptId))
+          ? state.completedTaskIds
+          : [...state.completedTaskIds, todayTargetMarker(conceptId)],
+        toast: {
+          id: makeId("toast"),
+          tone: dangerous ? "warning" : "success",
+          text: dangerous ? "High-confidence error captured. An unfamiliar variant is scheduled next." : "Calibration locked and review scheduled.",
+        },
+      }));
+      queuePersist();
     },
     updateSettings: (patch) => {
       set((state) => ({ settings: { ...state.settings, ...patch } }));
-      schedulePersist(get);
+      queuePersist();
     },
     updateWeights: (patch) => {
       set((state) => ({ settings: { ...state.settings, weights: { ...state.settings.weights, ...patch } } }));
-      schedulePersist(get);
+      queuePersist();
     },
     updateProvider: (id, patch) => {
       set((state) => ({ providers: state.providers.map((provider) => provider.id === id ? { ...provider, ...patch } : provider) }));
-      schedulePersist(get);
+      queuePersist();
     },
     completeTask: (id) => {
       set((state) => state.completedTaskIds.includes(id) ? state : ({ completedTaskIds: [...state.completedTaskIds, id] }));
-      schedulePersist(get);
+      queuePersist();
+    },
+    completeTargetForToday: (targetId) => {
+      const marker = todayTargetMarker(targetId);
+      set((state) => state.completedTaskIds.includes(marker) ? state : ({ completedTaskIds: [...state.completedTaskIds, marker] }));
+      queuePersist();
     },
     snoozeTask: (id) => {
       set((state) => state.snoozedTaskIds.includes(id) ? state : ({ snoozedTaskIds: [...state.snoozedTaskIds, id] }));
-      schedulePersist(get);
+      queuePersist();
     },
     addAssessment: (assessment) => {
       set((state) => ({ assessmentHistory: [assessment, ...state.assessmentHistory] }));
-      schedulePersist(get);
+      queuePersist();
+    },
+    updateAssessment: (id, patch) => {
+      set((state) => ({
+        assessmentHistory: state.assessmentHistory.map((assessment) => assessment.id === id ? { ...assessment, ...patch } : assessment),
+        onboarding: patch.kind === "baseline" && patch.score !== undefined ? { ...state.onboarding, baselineCompleted: true } : state.onboarding,
+      }));
+      queuePersist();
+    },
+    completeOnboarding: (interests, familiarity) => {
+      set((state) => ({
+        onboarding: { ...state.onboarding, completed: true, interests, familiarity, completedAt: new Date().toISOString() },
+        view: "assessment",
+      }));
+      queuePersist();
     },
     replaceData: (data) => {
-      set({ ...data, selectedPaperId: data.papers[0]?.id });
-      schedulePersist(get);
+      try {
+        const migrated = migratePersistedState(data, createInitialState());
+        set({ ...migrated, selectedPaperId: migrated.papers[0]?.id });
+        queuePersist();
+      } catch (error) {
+        set({ toast: { id: makeId("toast"), tone: "error", text: `Backup was not applied: ${String(error)}` } });
+      }
     },
     resetDemo: () => {
       const reset = createInitialState();
       set({ ...reset, view: "today", selectedPaperId: reset.papers[0]?.id, toast: { id: makeId("toast"), tone: "info", text: "Demo data reset. AI credentials were not changed." } });
-      schedulePersist(get);
+      queuePersist();
     },
   };
 });
-

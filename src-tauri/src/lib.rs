@@ -33,6 +33,37 @@ impl Serialize for AppError {
 }
 
 type AppResult<T> = Result<T, AppError>;
+const DATABASE_SCHEMA_VERSION: i64 = 2;
+
+fn apply_migrations(connection: &Connection) -> AppResult<()> {
+    connection.execute_batch(include_str!("schema.sql"))?;
+    let current: i64 = connection.query_row("PRAGMA user_version", [], |row| row.get(0))?;
+    if current == 0 {
+        connection.execute(
+            "INSERT OR IGNORE INTO schema_migrations(version, name, applied_at) VALUES(1, 'baseline', ?1)",
+            [Utc::now().to_rfc3339()],
+        )?;
+        connection.execute_batch("PRAGMA user_version = 1;")?;
+    }
+    let after_baseline: i64 = connection.query_row("PRAGMA user_version", [], |row| row.get(0))?;
+    if after_baseline < 2 {
+        let transaction = connection.unchecked_transaction()?;
+        transaction.execute_batch(include_str!("migrations/0002_learning_state.sql"))?;
+        transaction.execute(
+            "INSERT OR IGNORE INTO schema_migrations(version, name, applied_at) VALUES(2, 'learning-state-and-recovery', ?1)",
+            [Utc::now().to_rfc3339()],
+        )?;
+        transaction.execute_batch("PRAGMA user_version = 2;")?;
+        transaction.commit()?;
+    }
+    let final_version: i64 = connection.query_row("PRAGMA user_version", [], |row| row.get(0))?;
+    if final_version != DATABASE_SCHEMA_VERSION {
+        return Err(AppError::Invalid(format!(
+            "unsupported database schema v{final_version}; expected v{DATABASE_SCHEMA_VERSION}"
+        )));
+    }
+    Ok(())
+}
 
 fn init_database(path: &Path) -> AppResult<Connection> {
     if let Some(parent) = path.parent() {
@@ -40,18 +71,29 @@ fn init_database(path: &Path) -> AppResult<Connection> {
     }
     let connection = Connection::open(path)?;
     connection.busy_timeout(Duration::from_secs(5))?;
-    connection.execute_batch(include_str!("schema.sql"))?;
+    apply_migrations(&connection)?;
     Ok(connection)
 }
 
 fn save_state_inner(connection: &Connection, payload: &Value) -> AppResult<()> {
     let serialized = serde_json::to_string(payload)
         .map_err(|error| AppError::Invalid(error.to_string()))?;
-    connection.execute(
+    let transaction = connection.unchecked_transaction()?;
+    transaction.execute(
+        "INSERT INTO state_snapshots(payload, created_at, reason)
+         SELECT payload, ?1, 'before-save' FROM app_state WHERE id = 1",
+        [Utc::now().to_rfc3339()],
+    )?;
+    transaction.execute(
         "INSERT INTO app_state (id, payload, updated_at) VALUES (1, ?1, ?2)
          ON CONFLICT(id) DO UPDATE SET payload = excluded.payload, updated_at = excluded.updated_at",
         params![serialized, Utc::now().to_rfc3339()],
     )?;
+    transaction.execute(
+        "DELETE FROM state_snapshots WHERE id NOT IN (SELECT id FROM state_snapshots ORDER BY id DESC LIMIT 5)",
+        [],
+    )?;
+    transaction.commit()?;
     Ok(())
 }
 
@@ -86,11 +128,15 @@ fn database_health(state: State<'_, DbState>) -> AppResult<Value> {
     let connection = state.connection.lock()
         .map_err(|_| AppError::Invalid("database lock poisoned".into()))?;
     let integrity: String = connection.query_row("PRAGMA integrity_check", [], |row| row.get(0))?;
+    let schema_version: i64 = connection.query_row("PRAGMA user_version", [], |row| row.get(0))?;
+    let snapshot_count: i64 = connection.query_row("SELECT COUNT(*) FROM state_snapshots", [], |row| row.get(0))?;
     Ok(json!({
         "ok": integrity == "ok",
         "integrity": integrity,
         "path": state.path.to_string_lossy(),
-        "schemaVersion": 1
+        "schemaVersion": schema_version,
+        "recoverySnapshots": snapshot_count,
+        "journalMode": "WAL"
     }))
 }
 
@@ -175,7 +221,7 @@ fn secure_delete_api_key(provider_id: String) -> AppResult<()> {
 fn client() -> AppResult<Client> {
     Client::builder()
         .timeout(Duration::from_secs(20))
-        .user_agent("ResearchOS/0.9 (local desktop research training application)")
+        .user_agent("ResearchOS/0.10 (local desktop research training application)")
         .build()
         .map_err(Into::into)
 }
@@ -394,6 +440,8 @@ mod tests {
         let payload = json!({"projects": [{"id": "project-1"}], "version": 1});
         save_state_inner(&connection, &payload).unwrap();
         assert_eq!(load_state_inner(&connection).unwrap(), Some(payload));
+        let schema_version: i64 = connection.query_row("PRAGMA user_version", [], |row| row.get(0)).unwrap();
+        assert_eq!(schema_version, DATABASE_SCHEMA_VERSION);
     }
 
     #[test]
@@ -441,5 +489,37 @@ mod tests {
         save_state_inner(&restored, &json!({"projects": []})).unwrap();
         import_backup_inner(&backup_path, &restored).unwrap();
         assert_eq!(load_state_inner(&restored).unwrap(), Some(expected));
+    }
+
+    #[test]
+    fn repeated_saves_keep_bounded_recovery_snapshots() {
+        let directory = tempdir().unwrap();
+        let connection = init_database(&directory.path().join("snapshots.sqlite3")).unwrap();
+        for version in 0..9 {
+            save_state_inner(&connection, &json!({"version": version})).unwrap();
+        }
+        let snapshots: i64 = connection.query_row("SELECT COUNT(*) FROM state_snapshots", [], |row| row.get(0)).unwrap();
+        assert_eq!(snapshots, 5);
+        assert_eq!(load_state_inner(&connection).unwrap(), Some(json!({"version": 8})));
+    }
+
+    #[test]
+    fn legacy_database_migrates_transactionally_to_v2() {
+        let directory = tempdir().unwrap();
+        let path = directory.path().join("legacy.sqlite3");
+        let connection = Connection::open(&path).unwrap();
+        connection.execute_batch(
+            "CREATE TABLE app_state (id INTEGER PRIMARY KEY, payload TEXT NOT NULL, updated_at TEXT NOT NULL);
+             INSERT INTO app_state(id, payload, updated_at) VALUES(1, '{\"schemaVersion\":1,\"projects\":[{\"id\":\"legacy\"}]}', '2026-01-01');"
+        ).unwrap();
+        drop(connection);
+        let migrated = init_database(&path).unwrap();
+        let version: i64 = migrated.query_row("PRAGMA user_version", [], |row| row.get(0)).unwrap();
+        let misconception_table: String = migrated.query_row(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name='misconceptions'", [], |row| row.get(0)
+        ).unwrap();
+        assert_eq!(version, 2);
+        assert_eq!(misconception_table, "misconceptions");
+        assert_eq!(load_state_inner(&migrated).unwrap().unwrap()["projects"][0]["id"], "legacy");
     }
 }

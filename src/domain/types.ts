@@ -2,11 +2,14 @@ export type ContentOrigin = "verified_seed" | "verified_external" | "user" | "ai
 export type VerificationStatus = "verified" | "pending" | "rejected" | "not_required";
 export type EvidenceTier = "A" | "B" | "C" | "D";
 export type Confidence = 1 | 2 | 3 | 4;
+export type DifficultyLevel = "foundation" | "intermediate" | "advanced" | "frontier";
+export type VerificationScope = "identifier" | "metadata" | "claim" | "not_applicable";
 
 export interface EvidenceSource {
   id: string;
   title: string;
   sourceName: string;
+  year?: number;
   tier: EvidenceTier;
   sourceType: "primary_research" | "guideline" | "methods" | "exemplary_paper" | "official_documentation";
   doi?: string;
@@ -14,6 +17,7 @@ export interface EvidenceSource {
   url?: string;
   coreEvidence: string;
   verificationStatus: VerificationStatus;
+  verificationScope?: VerificationScope;
   lastVerifiedAt?: string;
   contentOrigin: ContentOrigin;
 }
@@ -36,6 +40,8 @@ export interface MethodConcept {
   tags: string[];
   contentOrigin: ContentOrigin;
   verificationStatus: VerificationStatus;
+  difficulty?: DifficultyLevel;
+  misconceptionTags?: string[];
 }
 
 export interface ResearchPattern {
@@ -53,6 +59,8 @@ export interface ResearchPattern {
   sourceIds: string[];
   contentOrigin: ContentOrigin;
   verificationStatus: VerificationStatus;
+  difficulty?: DifficultyLevel;
+  misconceptionTags?: string[];
 }
 
 export interface JudgmentCard {
@@ -70,6 +78,9 @@ export interface JudgmentCard {
   sourceIds: string[];
   contentOrigin: ContentOrigin;
   verificationStatus: VerificationStatus;
+  difficulty?: DifficultyLevel;
+  misconceptionTags?: string[];
+  variantPrompt?: string;
 }
 
 export interface AuditStep {
@@ -93,6 +104,9 @@ export interface AuditCase {
   sourceIds: string[];
   contentOrigin: ContentOrigin;
   verificationStatus: VerificationStatus;
+  difficulty?: DifficultyLevel;
+  misconceptionTags?: string[];
+  variantPrompt?: string;
 }
 
 export interface Paper {
@@ -144,6 +158,27 @@ export interface UserResponse {
   feedback?: string;
   transferText?: string;
   projectId?: string;
+  aiReview?: AIReviewRecord;
+}
+
+export interface StructuredAiReview {
+  correct: string[];
+  missed: string[];
+  severity: "minor" | "major" | "critical" | "uncertain";
+  why: string;
+  transfer: string;
+  uncertainty: string;
+}
+
+export interface AIReviewRecord {
+  id: string;
+  providerId: string;
+  model: string;
+  createdAt: string;
+  verificationStatus: "pending";
+  raw: string;
+  structured?: StructuredAiReview;
+  parseWarning?: string;
 }
 
 export interface ReviewItem {
@@ -160,6 +195,9 @@ export interface ReviewItem {
   lastResponseQuality?: number;
   lastConfidence?: Confidence;
   dangerousMisconception: boolean;
+  misconceptionId?: string;
+  variantPrompt?: string;
+  isVariant?: boolean;
 }
 
 export interface ReviewLog {
@@ -180,6 +218,42 @@ export interface SkillEvidence {
   blindTransfer: boolean;
   confidence: Confidence;
   createdAt: string;
+  responseId?: string;
+  conceptId?: string;
+  difficulty?: DifficultyLevel;
+  misconceptionId?: string;
+}
+
+export interface DraftResponse {
+  taskId: string;
+  userText: string;
+  confidence: Confidence;
+  transferText: string;
+  projectId?: string;
+  updatedAt: string;
+}
+
+export interface Misconception {
+  id: string;
+  conceptId: string;
+  conceptType: ReviewItem["conceptType"];
+  sourceTaskId: string;
+  statement: string;
+  variantPrompt: string;
+  detectedAt: string;
+  lastTestedAt?: string;
+  resolvedAt?: string;
+  confidence: Confidence;
+  evidenceCount: number;
+  status: "unresolved" | "retesting" | "resolved";
+}
+
+export interface OnboardingState {
+  completed: boolean;
+  interests: string[];
+  familiarity: Record<string, "new" | "working" | "experienced">;
+  baselineCompleted: boolean;
+  completedAt?: string;
 }
 
 export interface AIProvider {
@@ -202,6 +276,7 @@ export interface AppSettings {
     projectRelevance: number;
     frontierValue: number;
     reviewDue: number;
+    misconception: number;
   };
   pubmedVerification: boolean;
   doiVerification: boolean;
@@ -223,6 +298,9 @@ export interface AppStateData {
   snoozedTaskIds: string[];
   assessmentHistory: AssessmentResult[];
   notesByPaperId: Record<string, string>;
+  draftResponses: Record<string, DraftResponse>;
+  misconceptions: Misconception[];
+  onboarding: OnboardingState;
 }
 
 export interface AssessmentResult {
@@ -232,6 +310,9 @@ export interface AssessmentResult {
   confidence: Confidence;
   score?: number;
   sourceCase: string;
+  kind?: "baseline" | "blind";
+  rubricVersion?: string;
+  domainScores?: Record<string, number>;
 }
 
 export type ViewId = "today" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "assessment" | "settings";
@@ -247,4 +328,3 @@ export interface DailyTask {
   destination: ViewId;
   rationale: string;
 }
-

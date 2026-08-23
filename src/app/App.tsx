@@ -1,32 +1,22 @@
-import { useEffect, useMemo } from "react";
+import { lazy, Suspense, useEffect, useMemo } from "react";
 import { AppShell } from "../components/AppShell";
 import { CommandPalette } from "../components/CommandPalette";
 import { Toast } from "../components/Toast";
-import { TodayView } from "../features/today/TodayView";
-import { LibraryView } from "../features/library/LibraryView";
-import { PaperLabView } from "../features/paper-lab/PaperLabView";
-import { MethodLabView } from "../features/methods/MethodLabView";
-import { ReviewView } from "../features/review/ReviewView";
-import { AuditView } from "../features/ai-audit/AuditView";
-import { FrontierView } from "../features/frontier/FrontierView";
-import { ProjectsView } from "../features/projects/ProjectsView";
-import { SkillMapView } from "../features/skills/SkillMapView";
-import { AssessmentView } from "../features/assessment/AssessmentView";
-import { SettingsView } from "../features/settings/SettingsView";
+import { Onboarding } from "../components/Onboarding";
 import { useAppStore } from "../state/store";
 
 const views = {
-  today: TodayView,
-  library: LibraryView,
-  "paper-lab": PaperLabView,
-  methods: MethodLabView,
-  review: ReviewView,
-  "ai-audit": AuditView,
-  frontier: FrontierView,
-  projects: ProjectsView,
-  skills: SkillMapView,
-  assessment: AssessmentView,
-  settings: SettingsView,
+  today: lazy(() => import("../features/today/TodayView").then((module) => ({ default: module.TodayView }))),
+  library: lazy(() => import("../features/library/LibraryView").then((module) => ({ default: module.LibraryView }))),
+  "paper-lab": lazy(() => import("../features/paper-lab/PaperLabView").then((module) => ({ default: module.PaperLabView }))),
+  methods: lazy(() => import("../features/methods/MethodLabView").then((module) => ({ default: module.MethodLabView }))),
+  review: lazy(() => import("../features/review/ReviewView").then((module) => ({ default: module.ReviewView }))),
+  "ai-audit": lazy(() => import("../features/ai-audit/AuditView").then((module) => ({ default: module.AuditView }))),
+  frontier: lazy(() => import("../features/frontier/FrontierView").then((module) => ({ default: module.FrontierView }))),
+  projects: lazy(() => import("../features/projects/ProjectsView").then((module) => ({ default: module.ProjectsView }))),
+  skills: lazy(() => import("../features/skills/SkillMapView").then((module) => ({ default: module.SkillMapView }))),
+  assessment: lazy(() => import("../features/assessment/AssessmentView").then((module) => ({ default: module.AssessmentView }))),
+  settings: lazy(() => import("../features/settings/SettingsView").then((module) => ({ default: module.SettingsView }))),
 };
 
 export function App() {
@@ -36,9 +26,23 @@ export function App() {
   const settings = useAppStore((state) => state.settings);
   const setPaletteOpen = useAppStore((state) => state.setPaletteOpen);
   const setView = useAppStore((state) => state.setView);
+  const persistNow = useAppStore((state) => state.persistNow);
+  const onboarding = useAppStore((state) => state.onboarding);
   const View = useMemo(() => views[view], [view]);
 
   useEffect(() => { void hydrate(); }, [hydrate]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    const flush = () => { void persistNow().catch(() => undefined); };
+    const handleVisibility = () => { if (document.visibilityState === "hidden") flush(); };
+    document.addEventListener("visibilitychange", handleVisibility);
+    window.addEventListener("pagehide", flush);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+      window.removeEventListener("pagehide", flush);
+    };
+  }, [hydrated, persistNow]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -76,9 +80,11 @@ export function App() {
     return <div className="boot-screen"><div className="boot-mark">R</div><span>Opening local workspace…</span></div>;
   }
 
+  if (!onboarding.completed) return <Onboarding />;
+
   return (
     <>
-      <AppShell><View /></AppShell>
+      <AppShell><Suspense fallback={<div className="boot-screen"><span>Opening workspace module…</span></div>}><View /></Suspense></AppShell>
       <CommandPalette />
       <Toast />
     </>

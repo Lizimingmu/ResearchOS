@@ -34,9 +34,10 @@ export function MethodLabView() {
           feedback={<div className="method-feedback-grid"><div><span>CORE CONCEPT</span><p>{selected.coreConcept}</p></div><div><span>MINIMAL EXAMPLE</span><p>{selected.minimalExample}</p></div><div className="danger-block"><span>COMMON WRONG PRACTICE</span><p>{selected.commonWrongPractice}</p></div><div><span>REVIEWER ATTACK</span><p>{selected.reviewerAttack}</p></div><div><span>WHEN TO USE</span><p>{selected.whenToUse}</p></div><div><span>WHEN NOT TO USE</span><p>{selected.whenNotToUse}</p></div></div>}
           sourceIds={selected.sourceIds}
           transferPrompt={selected.transferPrompt}
+          difficulty={selected.difficulty}
+          variantPrompt={`A new study encounters ${selected.title.toLowerCase()} under different measurements. Identify the risk and bound the conclusion without repeating this example.`}
         />
       </section>
     </div>
   );
 }
-

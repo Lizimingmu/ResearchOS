@@ -1,5 +1,438 @@
 [
   {
+    "id": "pattern-19",
+    "title": "Target-trial observational effectiveness",
+    "scientificQuestion": "What is the effect of initiating a defined intervention in an eligible real-world population?",
+    "evidenceChain": [
+      "Write target-trial protocol",
+      "Align eligibility, assignment, and time zero",
+      "Model treatment/confounding with diagnostics",
+      "Estimate absolute and relative effects",
+      "Stress-test identification assumptions"
+    ],
+    "figureOrder": [
+      "Protocol emulation diagram",
+      "Eligibility and treatment flow",
+      "Covariate balance/positivity",
+      "Outcome curves and contrasts",
+      "Sensitivity analyses"
+    ],
+    "mustHave": [
+      "Explicit estimand",
+      "Common time zero",
+      "Confounder rationale",
+      "Positivity diagnostics",
+      "Missing-data plan"
+    ],
+    "optionalEnhancements": [
+      "Negative controls",
+      "Quantitative bias analysis",
+      "Alternative strategy definitions"
+    ],
+    "failureModes": [
+      "Ever-treated classification",
+      "Post-baseline eligibility",
+      "Weight instability",
+      "Unmeasured confounding ignored"
+    ],
+    "reviewerAttacks": [
+      "Which trial element is not emulated?",
+      "Are treatment strategies well-defined?",
+      "Where does positivity fail?"
+    ],
+    "overclaims": [
+      "Observational emulation equals randomization",
+      "Weighting removes all confounding"
+    ],
+    "highLevelAdds": [
+      "Per-protocol and assignment-effect contrasts",
+      "Heterogeneity with interaction uncertainty",
+      "Transport to target population"
+    ],
+    "sourceIds": [
+      "src-target-trial",
+      "src-dag"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "target-trial-cures-confounding"
+    ]
+  },
+  {
+    "id": "pattern-20",
+    "title": "Diagnostic accuracy to clinical pathway",
+    "scientificQuestion": "Does an index test accurately and usefully classify the intended-use population?",
+    "evidenceChain": [
+      "Define intended use and threshold",
+      "Recruit representative spectrum",
+      "Apply blinded reference standard",
+      "Estimate threshold metrics with uncertainty",
+      "Connect errors to decisions"
+    ],
+    "figureOrder": [
+      "Participant flow",
+      "Index/reference timing",
+      "ROC and operating points",
+      "Calibration or risk strata",
+      "Decision consequences"
+    ],
+    "mustHave": [
+      "Prespecified threshold",
+      "Reference-standard audit",
+      "Indeterminate results",
+      "Sensitivity and specificity CIs",
+      "Prevalence/context"
+    ],
+    "optionalEnhancements": [
+      "Reader variability",
+      "Subgroup accuracy",
+      "Decision-curve analysis"
+    ],
+    "failureModes": [
+      "Case-control spectrum",
+      "Partial verification",
+      "Data-driven threshold",
+      "AUC-only claim"
+    ],
+    "reviewerAttacks": [
+      "Who was not verified?",
+      "Is threshold transportable?",
+      "What action follows a positive test?"
+    ],
+    "overclaims": [
+      "AUC equals accuracy",
+      "Association proves diagnostic utility"
+    ],
+    "highLevelAdds": [
+      "Prospective pathway evaluation",
+      "Paired test comparison",
+      "Cost/harm analysis"
+    ],
+    "sourceIds": [
+      "src-stard-2015",
+      "src-roc",
+      "src-dca"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-is-utility"
+    ]
+  },
+  {
+    "id": "pattern-21",
+    "title": "Single-cell perturbation with donor replication",
+    "scientificQuestion": "Which cell states and programs respond reproducibly to perturbation across biological donors?",
+    "evidenceChain": [
+      "QC per sample",
+      "Donor-aware state definition",
+      "Pseudobulk or mixed inference",
+      "Differential abundance and expression",
+      "Orthogonal functional validation"
+    ],
+    "figureOrder": [
+      "Design and QC",
+      "State atlas by donor",
+      "Sample-level abundance",
+      "Donor-aware DE/pathways",
+      "Validation"
+    ],
+    "mustHave": [
+      "Donor as replicate",
+      "Doublet/ambient audit",
+      "Batch–condition overlap",
+      "Multiplicity control",
+      "Effect sizes per donor"
+    ],
+    "optionalEnhancements": [
+      "Cell hashing",
+      "Dose/time series",
+      "Perturbation rescue"
+    ],
+    "failureModes": [
+      "Pooled-cell tests",
+      "Integrated-expression DE",
+      "One-marker labels",
+      "UMAP-only evidence"
+    ],
+    "reviewerAttacks": [
+      "How many donors support the contrast?",
+      "Were preprocessing choices outcome-blind?",
+      "Are rare states robust?"
+    ],
+    "overclaims": [
+      "Cell association equals mechanism",
+      "Velocity proves lineage"
+    ],
+    "highLevelAdds": [
+      "Independent cohort",
+      "CRISPR validation",
+      "Spatial confirmation"
+    ],
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-doubletfinder",
+      "src-soupx"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cells-are-replicates"
+    ]
+  },
+  {
+    "id": "pattern-22",
+    "title": "Spatial microenvironment study",
+    "scientificQuestion": "Which replicated tissue neighborhoods associate with phenotype at the platform's resolution?",
+    "evidenceChain": [
+      "Register tissue and QC",
+      "Define cell/spot labels with uncertainty",
+      "Model spatial neighborhoods per sample",
+      "Test phenotype association across samples",
+      "Validate candidate interactions"
+    ],
+    "figureOrder": [
+      "Tissue overview",
+      "Resolution and annotation",
+      "Neighborhood maps",
+      "Patient-level contrasts",
+      "Orthogonal validation"
+    ],
+    "mustHave": [
+      "Physical resolution",
+      "Multiple biological samples",
+      "Spatial null model",
+      "Composition control",
+      "Patient-level uncertainty"
+    ],
+    "optionalEnhancements": [
+      "Serial sections",
+      "Multiplex protein",
+      "Perturbation"
+    ],
+    "failureModes": [
+      "Spots as replicates",
+      "Co-spot equals signaling",
+      "Cherry-picked regions",
+      "No edge correction"
+    ],
+    "reviewerAttacks": [
+      "What is the independent unit?",
+      "Can the assay resolve the claimed interaction?",
+      "How stable are neighborhoods?"
+    ],
+    "overclaims": [
+      "Proximity proves communication",
+      "One section generalizes"
+    ],
+    "highLevelAdds": [
+      "External tissue cohort",
+      "Higher-resolution assay",
+      "Functional co-culture"
+    ],
+    "sourceIds": [
+      "src-spatial-original",
+      "src-spark",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "spots-are-replicates"
+    ]
+  },
+  {
+    "id": "pattern-23",
+    "title": "Multi-omics biomarker development",
+    "scientificQuestion": "Can a locked cross-omics signature predict an individual outcome beyond clinical information?",
+    "evidenceChain": [
+      "Prespecify target and baseline model",
+      "QC each modality",
+      "Nested feature integration",
+      "Optimism-corrected incremental performance",
+      "Locked external evaluation"
+    ],
+    "figureOrder": [
+      "Cohort and modality missingness",
+      "Pipeline schematic",
+      "Nested-resampling performance",
+      "Calibration and utility",
+      "External evaluation"
+    ],
+    "mustHave": [
+      "Patient-level splits",
+      "All preprocessing nested",
+      "Clinical comparator",
+      "Calibration",
+      "Missing-modality strategy"
+    ],
+    "optionalEnhancements": [
+      "Assay-cost reduction",
+      "Decision analysis",
+      "Fairness/subgroup precision"
+    ],
+    "failureModes": [
+      "Feature selection before CV",
+      "Modality-specific leakage",
+      "AUC-only",
+      "Test-set reuse"
+    ],
+    "reviewerAttacks": [
+      "Where could labels leak?",
+      "Does multi-omics add value?",
+      "Can the assay be implemented?"
+    ],
+    "overclaims": [
+      "Cross-validation equals validation",
+      "Latent factor is mechanism"
+    ],
+    "highLevelAdds": [
+      "Prospective silent evaluation",
+      "Preanalytic robustness",
+      "Clinical impact study"
+    ],
+    "sourceIds": [
+      "src-diablo",
+      "src-leakage",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "features-before-cv"
+    ]
+  },
+  {
+    "id": "pattern-24",
+    "title": "Systematic review with estimand alignment",
+    "scientificQuestion": "What does the totality of compatible evidence say about a prespecified intervention, population, outcome, and time horizon?",
+    "evidenceChain": [
+      "Register question and protocol",
+      "Search and screen reproducibly",
+      "Extract estimands and bias domains",
+      "Synthesize compatible effects",
+      "Grade certainty and applicability"
+    ],
+    "figureOrder": [
+      "PRISMA flow",
+      "Study/estimand map",
+      "Risk-of-bias domains",
+      "Effect synthesis",
+      "Certainty and gaps"
+    ],
+    "mustHave": [
+      "Protocol deviations",
+      "Complete search",
+      "Duplicate processes",
+      "Estimand compatibility",
+      "Publication-bias limitations"
+    ],
+    "optionalEnhancements": [
+      "Living updates",
+      "Individual participant data",
+      "Robustness to bias"
+    ],
+    "failureModes": [
+      "Mix effect measures",
+      "Checklist quality score",
+      "Outcome cherry-picking",
+      "Heterogeneity ignored"
+    ],
+    "reviewerAttacks": [
+      "Why are these effects poolable?",
+      "Which studies drive certainty?",
+      "How were deviations handled?"
+    ],
+    "overclaims": [
+      "Random effects solves heterogeneity",
+      "Meta-analysis removes primary-study bias"
+    ],
+    "highLevelAdds": [
+      "Decision thresholds",
+      "Equity/applicability",
+      "Value-of-information analysis"
+    ],
+    "sourceIds": [
+      "src-prisma-2020",
+      "src-strobe",
+      "src-consort"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "mathematical-poolability"
+    ]
+  },
+  {
+    "id": "pattern-25",
+    "title": "Reproducible radiomics transport study",
+    "scientificQuestion": "Does a standardized imaging signature retain calibration and utility across acquisition settings?",
+    "evidenceChain": [
+      "Lock intended use and feature standard",
+      "Audit acquisition/segmentation robustness",
+      "Develop with nested resampling",
+      "Evaluate unchanged across sites",
+      "Assess recalibration separately"
+    ],
+    "figureOrder": [
+      "Imaging and cohort flow",
+      "Feature robustness",
+      "Locked pipeline",
+      "Site-specific calibration/discrimination",
+      "Decision analysis"
+    ],
+    "mustHave": [
+      "IBSI-conformant definitions",
+      "Segmentation sensitivity",
+      "Site-held-out evaluation",
+      "Calibration",
+      "Full implementation details"
+    ],
+    "optionalEnhancements": [
+      "Phantom study",
+      "Prospective silent deployment",
+      "Reader comparison"
+    ],
+    "failureModes": [
+      "Same-name feature mismatch",
+      "Evaluation-site tuning",
+      "Scanner confounding",
+      "AUC-only"
+    ],
+    "reviewerAttacks": [
+      "Can another center reproduce values?",
+      "Was harmonization outcome-blind?",
+      "Which sites support transport?"
+    ],
+    "overclaims": [
+      "Standardization guarantees biology",
+      "One external site validates forever"
+    ],
+    "highLevelAdds": [
+      "Federated evaluation",
+      "Drift monitoring",
+      "Clinical workflow impact"
+    ],
+    "sourceIds": [
+      "src-ibsi",
+      "src-tripod-ai",
+      "src-calibration"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "same-feature-name-same-value"
+    ]
+  },
+  {
     "id": "retrospective-cohort",
     "title": "Retrospective clinical cohort",
     "scientificQuestion": "Within an existing clinical population, how are an exposure and outcome associated?",
@@ -58,7 +491,13 @@
       "src-strobe"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "immortal-time",
+      "selection-on-tissue-availability",
+      "univariable-screening"
+    ]
   },
   {
     "id": "prospective-cohort",
@@ -117,7 +556,13 @@
       "src-strobe"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "differential-follow-up",
+      "outcome-adaptive-analysis",
+      "measurement-drift"
+    ]
   },
   {
     "id": "prognostic-factor",
@@ -179,7 +624,13 @@
       "src-strobe"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "optimal-cutpoint",
+      "sparse-events",
+      "univariable-screening"
+    ]
   },
   {
     "id": "prediction-model",
@@ -243,7 +694,13 @@
       "src-calibration"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "data-leakage",
+      "random-split-in-small-data",
+      "feature-selection-before-cv"
+    ]
   },
   {
     "id": "staging-system",
@@ -303,7 +760,13 @@
       "src-probaST"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "outcome-derived-cutpoints",
+      "tiny-terminal-stage",
+      "no-calibration"
+    ]
   },
   {
     "id": "biomarker-discovery",
@@ -366,7 +829,13 @@
       "src-multiple-testing"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "same-sample-validation",
+      "cutpoint-optimization",
+      "batch-confounded-groups"
+    ]
   },
   {
     "id": "molecular-subtype",
@@ -429,7 +898,13 @@
       "src-multiple-testing"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "choose-k-by-outcome",
+      "batch-defined-clusters",
+      "no-patient-balance"
+    ]
   },
   {
     "id": "bulk-transcriptomics",
@@ -492,7 +967,13 @@
       "src-gsea"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "batch-confounding",
+      "small-n-large-p",
+      "raw-p-values"
+    ]
   },
   {
     "id": "proteomics-subtype",
@@ -554,7 +1035,13 @@
       "src-multiomics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "mnar-missingness-ignored",
+      "batch-clusters",
+      "outcome-selected-k"
+    ]
   },
   {
     "id": "scrna-atlas",
@@ -617,7 +1104,13 @@
       "src-spatial"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "cell-count-as-n",
+      "one-marker-labels",
+      "sample-specific-clusters"
+    ]
   },
   {
     "id": "scrna-mechanism",
@@ -679,7 +1172,13 @@
       "src-trajectory"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "cell-level-deg",
+      "communication-treated-as-fact",
+      "pseudotime-called-lineage"
+    ]
   },
   {
     "id": "spatial-transcriptomics",
@@ -742,7 +1241,13 @@
       "src-cellchat"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "spots-treated-as-cells",
+      "pixels-spots-as-patient-n",
+      "colocalization-called-signaling"
+    ]
   },
   {
     "id": "multiomics",
@@ -805,7 +1310,13 @@
       "src-clustering"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "concatenation-without-scaling",
+      "same-sample-concordance-called-independent",
+      "missing-modality-bias"
+    ]
   },
   {
     "id": "functional-validation",
@@ -865,7 +1376,13 @@
       "src-pseudorep"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-sirna",
+      "no-rescue",
+      "toxicity-confounding"
+    ]
   },
   {
     "id": "drug-organoid",
@@ -925,7 +1442,13 @@
       "src-pseudorep"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "wells-as-biological-n",
+      "one-organoid-line",
+      "selected-doses"
+    ]
   },
   {
     "id": "translational-therapeutic",
@@ -985,7 +1508,13 @@
       "src-remark"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "tool-compound-off-target",
+      "no-normal-cell-control",
+      "single-model"
+    ]
   },
   {
     "id": "diagnostic-model",
@@ -1046,7 +1575,13 @@
       "src-probaST"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "case-control-spectrum-bias",
+      "leakage-from-post-diagnosis-data",
+      "sample-level-split"
+    ]
   },
   {
     "id": "external-validation-study",
@@ -1108,6 +1643,12 @@
       "src-calibration"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "refit-before-validation",
+      "random-split-called-external",
+      "only-auc-c-index"
+    ]
   }
 ]

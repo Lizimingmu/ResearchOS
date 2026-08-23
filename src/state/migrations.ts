@@ -1,0 +1,68 @@
+import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
+
+export const CURRENT_STATE_SCHEMA = 2;
+
+type UnknownRecord = Record<string, unknown>;
+
+const isRecord = (value: unknown): value is UnknownRecord => typeof value === "object" && value !== null && !Array.isArray(value);
+
+function arrayOr<T>(value: unknown, fallback: T[]): T[] {
+  return Array.isArray(value) ? value as T[] : fallback;
+}
+
+function recordOr<T>(value: unknown, fallback: Record<string, T>): Record<string, T> {
+  return isRecord(value) ? value as Record<string, T> : fallback;
+}
+
+/**
+ * Migrates persisted user state without discarding unknown/newer user data.
+ * A future schema is rejected so hydration cannot silently overwrite it.
+ */
+export function migratePersistedState(raw: unknown, defaults: AppStateData): AppStateData {
+  if (!isRecord(raw)) return defaults;
+  const sourceVersion = typeof raw.schemaVersion === "number" ? raw.schemaVersion : 1;
+  if (sourceVersion > CURRENT_STATE_SCHEMA) {
+    throw new Error(`This workspace uses state schema v${sourceVersion}; this build supports v${CURRENT_STATE_SCHEMA}. The database was not changed.`);
+  }
+
+  const settings = isRecord(raw.settings) ? raw.settings : {};
+  const weights = isRecord(settings.weights) ? settings.weights : {};
+  const migratedReviewItems = arrayOr<ReviewItem>(raw.reviewItems, defaults.reviewItems).map((item) => ({
+    ...item,
+    dangerousMisconception: Boolean(item.dangerousMisconception),
+    isVariant: Boolean(item.isVariant),
+  }));
+  const migratedSkillEvidence = arrayOr<SkillEvidence>(raw.skillEvidence, defaults.skillEvidence).map((item) => ({
+    ...item,
+    conceptId: item.conceptId ?? item.taskId,
+  }));
+
+  return {
+    ...defaults,
+    schemaVersion: CURRENT_STATE_SCHEMA,
+    papers: arrayOr(raw.papers, defaults.papers),
+    projects: arrayOr(raw.projects, defaults.projects),
+    responses: arrayOr(raw.responses, defaults.responses),
+    reviewItems: migratedReviewItems,
+    reviewLogs: arrayOr(raw.reviewLogs, defaults.reviewLogs),
+    skillEvidence: migratedSkillEvidence,
+    providers: arrayOr(raw.providers, defaults.providers),
+    settings: {
+      ...defaults.settings,
+      ...settings,
+      weights: {
+        ...defaults.settings.weights,
+        ...weights,
+      },
+    } as AppStateData["settings"],
+    completedTaskIds: arrayOr(raw.completedTaskIds, defaults.completedTaskIds),
+    snoozedTaskIds: arrayOr(raw.snoozedTaskIds, defaults.snoozedTaskIds),
+    assessmentHistory: arrayOr(raw.assessmentHistory, defaults.assessmentHistory),
+    notesByPaperId: recordOr(raw.notesByPaperId, defaults.notesByPaperId),
+    draftResponses: recordOr(raw.draftResponses, defaults.draftResponses),
+    misconceptions: arrayOr(raw.misconceptions, defaults.misconceptions),
+    onboarding: isRecord(raw.onboarding)
+      ? { ...defaults.onboarding, ...raw.onboarding } as AppStateData["onboarding"]
+      : defaults.onboarding,
+  };
+}

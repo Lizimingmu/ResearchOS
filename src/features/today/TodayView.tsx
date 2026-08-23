@@ -1,9 +1,17 @@
 import { ArrowRight, CalendarDays, Clock3, RotateCcw, SkipForward } from "lucide-react";
 import { generateTodayTasks } from "../../learning/scheduler";
 import { useAppStore } from "../../state/store";
+import { useShallow } from "zustand/react/shallow";
 
 export function TodayView() {
-  const state = useAppStore();
+  const state = useAppStore(useShallow((store) => ({
+    schemaVersion: store.schemaVersion, papers: store.papers, projects: store.projects, responses: store.responses,
+    reviewItems: store.reviewItems, reviewLogs: store.reviewLogs, skillEvidence: store.skillEvidence,
+    providers: store.providers, settings: store.settings, completedTaskIds: store.completedTaskIds,
+    snoozedTaskIds: store.snoozedTaskIds, assessmentHistory: store.assessmentHistory,
+    notesByPaperId: store.notesByPaperId, draftResponses: store.draftResponses,
+    misconceptions: store.misconceptions, onboarding: store.onboarding,
+  })));
   const tasks = generateTodayTasks(state);
   const setView = useAppStore((store) => store.setView);
   const selectMethod = useAppStore((store) => store.selectMethod);
@@ -50,8 +58,7 @@ export function TodayView() {
           ))}
         </div>
       )}
-      <footer className="today-footer"><span>Scheduler weights</span><code>0.35 weakness + 0.30 project + 0.20 frontier + 0.15 due</code><button className="link-button" onClick={() => setView("settings")}>Adjust in Settings</button></footer>
+      <footer className="today-footer"><span>Scheduler weights</span><code>{Object.entries(state.settings.weights).map(([key, value]) => `${value.toFixed(2)} ${key}`).join(" + ")}</code><button className="link-button" onClick={() => setView("settings")}>Adjust in Settings</button></footer>
     </div>
   );
 }
-

@@ -1,5 +1,1253 @@
 [
   {
+    "id": "dag-adjustment",
+    "title": "DAG-guided covariate adjustment",
+    "domain": "statistics",
+    "minutes": 8,
+    "whyItMatters": "Adjustment can create bias when variables are chosen from significance or availability rather than a causal model.",
+    "coreConcept": "Draw the assumed causal graph first; seek a sufficient set that blocks backdoor paths without conditioning on colliders or descendants of exposure.",
+    "minimalExample": "In a treatment–survival study, severity drives treatment and outcome, while a post-treatment complication lies on the causal pathway.",
+    "commonWrongPractice": "Adjust for every recorded variable, including the complication, because more covariates always reduce confounding.",
+    "reviewerAttack": "Which arrows justify each adjustment variable, and did conditioning open a collider path or remove part of the effect?",
+    "whenToUse": "Use before causal regression, weighting, matching, or standardization to make identification assumptions explicit.",
+    "whenNotToUse": "Do not treat a DAG as empirical proof of the arrows or as a cure for unmeasured confounding.",
+    "transferPrompt": "Apply “DAG-guided covariate adjustment” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-dag",
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "causal inference",
+      "adjustment",
+      "DAG"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "adjust-everything",
+      "collider-bias"
+    ]
+  },
+  {
+    "id": "estimand-first",
+    "title": "Estimand before estimator",
+    "domain": "clinical",
+    "minutes": 7,
+    "whyItMatters": "A technically correct model can answer the wrong clinical question when population, intervention, outcome, time horizon, or intercurrent events are vague.",
+    "coreConcept": "Specify the target population, treatment strategies, outcome summary, time origin, follow-up, intercurrent-event handling, and causal contrast before selecting an estimator.",
+    "minimalExample": "A trial asks whether initiating therapy reduces 2-year mortality regardless of later discontinuation.",
+    "commonWrongPractice": "Choose Cox regression first and let the available variables define the question afterward.",
+    "reviewerAttack": "What exact quantity would this analysis estimate if every model assumption held?",
+    "whenToUse": "Use at protocol, analysis-plan, and reviewer stages for trials, observational effects, and prediction tasks.",
+    "whenNotToUse": "Do not collapse distinct treatment-policy, while-on-treatment, and hypothetical questions into one hazard ratio.",
+    "transferPrompt": "Apply “Estimand before estimator” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-consort",
+      "src-target-trial"
+    ],
+    "status": "usable",
+    "tags": [
+      "estimand",
+      "protocol",
+      "clinical question"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "estimator-is-question"
+    ]
+  },
+  {
+    "id": "target-trial-protocol",
+    "title": "Target-trial emulation protocol",
+    "domain": "clinical",
+    "minutes": 9,
+    "whyItMatters": "Observational treatment comparisons are vulnerable to immortal-time and selection biases when eligibility, assignment, and time zero are misaligned.",
+    "coreConcept": "Write the hypothetical trial protocol—eligibility, strategies, assignment, time zero, follow-up, outcome, contrast, and analysis—then emulate each element with observed data.",
+    "minimalExample": "Compare statin initiation versus no initiation among eligible clinic attendees, assigning strategy and follow-up at the same visit.",
+    "commonWrongPractice": "Classify anyone who ever initiates during follow-up as treated from baseline.",
+    "reviewerAttack": "Were eligibility, treatment classification, and follow-up aligned at a common time zero?",
+    "whenToUse": "Use for causal questions about interventions when randomized evidence is unavailable and longitudinal observational data are adequate.",
+    "whenNotToUse": "Do not claim the framework repairs unmeasured confounding, poor measurement, or positivity violations.",
+    "transferPrompt": "Apply “Target-trial emulation protocol” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-target-trial",
+      "src-dag"
+    ],
+    "status": "usable",
+    "tags": [
+      "target trial",
+      "time zero",
+      "observational"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ever-treated",
+      "immortal-time"
+    ]
+  },
+  {
+    "id": "immortal-time",
+    "title": "Immortal-time bias",
+    "domain": "clinical",
+    "minutes": 7,
+    "whyItMatters": "Misclassified survival time can guarantee event-free exposure time and manufacture a treatment advantage.",
+    "coreConcept": "Exposure status and risk time must be defined so participants cannot contribute pre-exposure time to the exposed group; use aligned assignment, landmarks, or time-varying exposure as appropriate.",
+    "minimalExample": "Transplant recipients must survive from diagnosis until transplant, but all that time is labeled exposed.",
+    "commonWrongPractice": "Compare ever-transplanted with never-transplanted from diagnosis using a baseline group indicator.",
+    "reviewerAttack": "Could a participant have the event during the time counted as exposed before actually receiving exposure?",
+    "whenToUse": "Use when exposure, response, or biomarker status is determined after cohort entry.",
+    "whenNotToUse": "Do not select a landmark after inspecting outcomes or ignore the changed target population among landmark survivors.",
+    "transferPrompt": "Apply “Immortal-time bias” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-target-trial",
+      "src-cox"
+    ],
+    "status": "usable",
+    "tags": [
+      "survival",
+      "time-varying exposure",
+      "bias"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "ever-exposed-baseline"
+    ]
+  },
+  {
+    "id": "time-varying-confounding",
+    "title": "Time-varying confounding affected by prior treatment",
+    "domain": "statistics",
+    "minutes": 10,
+    "whyItMatters": "Standard time-updated regression can adjust away treatment pathways or induce bias when a confounder is itself changed by earlier treatment.",
+    "coreConcept": "When longitudinal confounders both predict future treatment/outcome and are affected by prior treatment, identify an appropriate longitudinal causal method such as inverse-probability-weighted marginal structural models.",
+    "minimalExample": "Disease severity changes after each dose and determines both later dosing and mortality.",
+    "commonWrongPractice": "Put current severity and current dose into a standard Cox model and interpret the dose coefficient causally.",
+    "reviewerAttack": "Is any time-updated confounder also downstream of earlier exposure?",
+    "whenToUse": "Use for sustained treatment strategies with repeated treatment and confounder measurements under adequate positivity and measurement.",
+    "whenNotToUse": "Do not use unstable weights without diagnostics, truncation rationale, and sensitivity analysis.",
+    "transferPrompt": "Apply “Time-varying confounding affected by prior treatment” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-dag",
+      "src-target-trial"
+    ],
+    "status": "usable",
+    "tags": [
+      "longitudinal",
+      "marginal structural model",
+      "weights"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "adjust-time-varying-confounder"
+    ]
+  },
+  {
+    "id": "competing-risk-question",
+    "title": "Competing-risk estimand choice",
+    "domain": "statistics",
+    "minutes": 8,
+    "whyItMatters": "Cause-specific hazards and cumulative incidence answer different questions when other event types preclude the event of interest.",
+    "coreConcept": "Choose the estimand first: cause-specific hazard for instantaneous etiologic rate among event-free individuals, or cumulative incidence/risk for prognosis in the presence of competing events.",
+    "minimalExample": "Relapse is impossible after non-relapse death during leukemia follow-up.",
+    "commonWrongPractice": "Censor deaths and interpret one minus Kaplan–Meier as the relapse probability.",
+    "reviewerAttack": "Does the analysis estimate a transition rate or the real-world probability of the event by time t?",
+    "whenToUse": "Use whenever mutually exclusive event types alter who remains able to experience the outcome.",
+    "whenNotToUse": "Do not interpret a subdistribution hazard ratio as a cause-specific hazard or a direct biological effect.",
+    "transferPrompt": "Apply “Competing-risk estimand choice” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-competing",
+      "src-cox"
+    ],
+    "status": "usable",
+    "tags": [
+      "competing risks",
+      "cumulative incidence",
+      "survival"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "km-with-competing-events"
+    ]
+  },
+  {
+    "id": "restricted-cubic-splines",
+    "title": "Restricted cubic splines",
+    "domain": "statistics",
+    "minutes": 8,
+    "whyItMatters": "Forcing a continuous predictor to be linear or splitting it at a data-driven cutpoint can hide or invent clinically important shape.",
+    "coreConcept": "Model plausible smooth nonlinearity with a prespecified number and placement of knots, inspect the fitted function with uncertainty, and test the contribution of nonlinear terms.",
+    "minimalExample": "Risk rises slowly across moderate age and sharply after older ages without a true threshold.",
+    "commonWrongPractice": "Search every age cutpoint and report the smallest log-rank P value.",
+    "reviewerAttack": "Was the functional form prespecified, and are tails supported by enough observations?",
+    "whenToUse": "Use when a continuous exposure or predictor may have a smooth nonlinear relation and sample size supports flexible parameters.",
+    "whenNotToUse": "Do not extrapolate beyond data support or interpret visually noisy tails as thresholds.",
+    "transferPrompt": "Apply “Restricted cubic splines” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-cox",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "nonlinearity",
+      "splines",
+      "continuous predictor"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "optimal-cutpoint",
+      "assume-linearity"
+    ]
+  },
+  {
+    "id": "missingness-mechanism",
+    "title": "Missingness mechanism audit",
+    "domain": "statistics",
+    "minutes": 7,
+    "whyItMatters": "The observed missing-data pattern does not by itself establish MCAR, MAR, or MNAR, yet those assumptions determine valid analysis.",
+    "coreConcept": "Describe missingness by variable, group, time, and outcome proxies; use subject-matter knowledge to state the assumed mechanism and sensitivity analyses for departures.",
+    "minimalExample": "Sicker patients skip quality-of-life visits, with severity partly recorded before dropout.",
+    "commonWrongPractice": "A nonsignificant Little test proves missing completely at random.",
+    "reviewerAttack": "What unobserved values could still drive missingness after conditioning on recorded variables?",
+    "whenToUse": "Use before complete-case analysis, imputation, weighting, or joint modeling.",
+    "whenNotToUse": "Do not label the mechanism solely from a statistical test on observed data.",
+    "transferPrompt": "Apply “Missingness mechanism audit” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-missing",
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "missing data",
+      "MAR",
+      "sensitivity"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "low-percent-harmless",
+      "test-proves-mcar"
+    ]
+  },
+  {
+    "id": "multiple-imputation-compatibility",
+    "title": "Substantive-model-compatible imputation",
+    "domain": "statistics",
+    "minutes": 9,
+    "whyItMatters": "An imputation model that omits outcomes, interactions, nonlinear terms, clustering, or time structure can be incompatible with the final analysis.",
+    "coreConcept": "Include variables that predict missingness and values, preserve the analysis model's structure, create multiple datasets, analyze each identically, and combine estimates with Rubin-style rules.",
+    "minimalExample": "A survival model uses a biomarker spline and treatment interaction, while biomarker values are incomplete.",
+    "commonWrongPractice": "Mean-impute the biomarker before deriving the spline and report ordinary standard errors.",
+    "reviewerAttack": "Does the imputation model preserve every nonlinear, interaction, outcome, and multilevel feature used downstream?",
+    "whenToUse": "Use under a defensible MAR assumption when adequate auxiliary variables and a compatible imputation model are available.",
+    "whenNotToUse": "Do not present imputation as eliminating MNAR uncertainty; include sensitivity analysis when departures matter.",
+    "transferPrompt": "Apply “Substantive-model-compatible imputation” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-missing",
+      "src-cox"
+    ],
+    "status": "usable",
+    "tags": [
+      "multiple imputation",
+      "compatibility",
+      "uncertainty"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "single-imputation",
+      "imputed-is-observed"
+    ]
+  },
+  {
+    "id": "clustered-outcomes",
+    "title": "Clustered outcomes and inference",
+    "domain": "statistics",
+    "minutes": 8,
+    "whyItMatters": "Repeated, site-level, family-level, or cell-level observations violate independent-error assumptions and can make standard errors too small.",
+    "coreConcept": "Identify the independent assignment/sampling unit and choose a marginal or conditional model whose correlation structure and degrees of freedom match the design.",
+    "minimalExample": "Twenty hospitals contribute 4,000 patients, but intervention is assigned by hospital.",
+    "commonWrongPractice": "Analyze all 4,000 patients independently because the patient is the outcome unit.",
+    "reviewerAttack": "How many independent units identify the treatment contrast, and are small-cluster corrections needed?",
+    "whenToUse": "Use for cluster trials, multi-center cohorts, repeated measures, families, images, fields, and nested omics data.",
+    "whenNotToUse": "Do not assume a random intercept repairs treatment-by-cluster confounding or very few independent clusters.",
+    "transferPrompt": "Apply “Clustered outcomes and inference” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-pseudorep",
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "clustering",
+      "mixed model",
+      "robust variance"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "row-count-is-n"
+    ]
+  },
+  {
+    "id": "repeated-measures-estimand",
+    "title": "Repeated-measures contrast",
+    "domain": "clinical",
+    "minutes": 8,
+    "whyItMatters": "A generic time-by-group P value may not correspond to the clinically intended difference at a time point, average response, or trajectory feature.",
+    "coreConcept": "Prespecify the repeated-measures estimand and covariance/mean structure, use all relevant times, and report contrasts with uncertainty on an interpretable scale.",
+    "minimalExample": "Symptoms are measured monthly for six months after randomized treatment.",
+    "commonWrongPractice": "Run separate t tests at each month and highlight whichever is significant.",
+    "reviewerAttack": "Is the target a month-6 difference, an average over follow-up, or a trajectory contrast, and how was multiplicity handled?",
+    "whenToUse": "Use for longitudinal continuous or discrete outcomes with within-person correlation.",
+    "whenNotToUse": "Do not condition interpretation on significance at a selected visit or assume missing visits are ignorable without justification.",
+    "transferPrompt": "Apply “Repeated-measures contrast” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-consort",
+      "src-missing"
+    ],
+    "status": "usable",
+    "tags": [
+      "longitudinal",
+      "repeated measures",
+      "contrast"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "multiple-timepoint-fishing"
+    ]
+  },
+  {
+    "id": "negative-control",
+    "title": "Negative-control reasoning",
+    "domain": "clinical",
+    "minutes": 7,
+    "whyItMatters": "Residual confounding and measurement artifacts often survive conventional adjustment but can be probed with outcomes or exposures that share bias pathways without the target causal pathway.",
+    "coreConcept": "Choose a negative control with no plausible target causal effect but similar confounding, selection, and measurement structure; interpret a detected association as a bias warning, not a correction.",
+    "minimalExample": "A prescribing preference instrument appears related to an outcome occurring before treatment initiation.",
+    "commonWrongPractice": "Because the negative control is null, all unmeasured confounding is ruled out.",
+    "reviewerAttack": "Why should the control share the relevant bias mechanism, and what violations could make it falsely reassuring?",
+    "whenToUse": "Use as a falsification probe alongside design-based causal analysis and sensitivity work.",
+    "whenNotToUse": "Do not treat a null negative control as proof of exchangeability or a non-null result as quantifying the target bias automatically.",
+    "transferPrompt": "Apply “Negative-control reasoning” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-dag",
+      "src-target-trial"
+    ],
+    "status": "usable",
+    "tags": [
+      "negative control",
+      "falsification",
+      "confounding"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "null-control-proves-causality"
+    ]
+  },
+  {
+    "id": "spectrum-bias",
+    "title": "Diagnostic spectrum and setting",
+    "domain": "clinical",
+    "minutes": 7,
+    "whyItMatters": "Accuracy measured in obvious cases and healthy controls rarely transports to the ambiguous population where the test will be used.",
+    "coreConcept": "Recruit the intended-use spectrum consecutively or randomly, report clinical setting and prior testing, and evaluate accuracy in relevant subgroups.",
+    "minimalExample": "A cancer assay is developed on late-stage cases versus young healthy volunteers but intended for symptomatic clinic referrals.",
+    "commonWrongPractice": "Report the case-control AUC as expected screening performance.",
+    "reviewerAttack": "Does the evaluation population reproduce disease severity, alternatives, prevalence, and work-up of intended use?",
+    "whenToUse": "Use for diagnostic and screening test design, appraisal, and external evaluation.",
+    "whenNotToUse": "Do not transport predictive values across prevalence or spectrum without explicit recalculation and evidence.",
+    "transferPrompt": "Apply “Diagnostic spectrum and setting” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-stard-2015",
+      "src-roc"
+    ],
+    "status": "usable",
+    "tags": [
+      "diagnosis",
+      "spectrum bias",
+      "transportability"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "two-gate-design"
+    ]
+  },
+  {
+    "id": "reference-standard",
+    "title": "Reference-standard bias",
+    "domain": "clinical",
+    "minutes": 7,
+    "whyItMatters": "An imperfect or differentially applied reference standard can misclassify disease and bias sensitivity or specificity.",
+    "coreConcept": "Define and blind the reference standard, apply it consistently regardless of index-test result, and account for indeterminate or missing verification.",
+    "minimalExample": "Only patients with a positive imaging screen receive biopsy; screen-negative patients are assumed disease-free.",
+    "commonWrongPractice": "Calculate sensitivity among biopsied patients and specificity among everyone else.",
+    "reviewerAttack": "Who received definitive verification, was it independent of the index test, and how were unresolved cases handled?",
+    "whenToUse": "Use in diagnostic accuracy studies and clinical label construction for machine learning.",
+    "whenNotToUse": "Do not call routine-care labels ground truth without auditing how and why they were obtained.",
+    "transferPrompt": "Apply “Reference-standard bias” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-stard-2015",
+      "src-tripod-ai"
+    ],
+    "status": "usable",
+    "tags": [
+      "diagnosis",
+      "reference standard",
+      "label bias"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "routine-label-ground-truth"
+    ]
+  },
+  {
+    "id": "threshold-net-benefit",
+    "title": "Decision threshold and net benefit",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "A model can rank well yet cause harm if used at implausible thresholds or with miscalibrated probabilities.",
+    "coreConcept": "Tie threshold probability to a concrete action and relative false-positive/false-negative harms; compare model, treat-all, and treat-none net benefit over a plausible range.",
+    "minimalExample": "A recurrence model triggers adjuvant therapy only when predicted risk makes treatment harms acceptable.",
+    "commonWrongPractice": "Claim clinical utility because the AUC exceeds 0.80.",
+    "reviewerAttack": "What decision does the threshold encode, are probabilities calibrated, and are comparator strategies realistic?",
+    "whenToUse": "Use after adequate internal or external evaluation when a prediction is intended to change an action.",
+    "whenNotToUse": "Do not show decision curves over 0–100% without an intended-use threshold range or uncertainty.",
+    "transferPrompt": "Apply “Decision threshold and net benefit” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-dca",
+      "src-calibration",
+      "src-roc"
+    ],
+    "status": "usable",
+    "tags": [
+      "decision curve",
+      "clinical utility",
+      "threshold"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-equals-utility"
+    ]
+  },
+  {
+    "id": "calibration-hierarchy",
+    "title": "Calibration hierarchy",
+    "domain": "prediction",
+    "minutes": 7,
+    "whyItMatters": "A single Hosmer–Lemeshow P value or intercept cannot reveal whether risk predictions are systematically too extreme or locally distorted.",
+    "coreConcept": "Assess calibration-in-the-large, calibration slope, and flexible observed-versus-predicted curves with uncertainty at clinically relevant ranges.",
+    "minimalExample": "A transported score ranks patients correctly but overpredicts absolute risk twofold.",
+    "commonWrongPractice": "Declare calibration adequate because a goodness-of-fit test is nonsignificant.",
+    "reviewerAttack": "Are intercept, slope, and local calibration shown, and is sample size sufficient for the curve?",
+    "whenToUse": "Use whenever a model outputs probabilities or absolute risks.",
+    "whenNotToUse": "Do not infer individual-level correctness from group calibration or repair poor transport with unreported refitting.",
+    "transferPrompt": "Apply “Calibration hierarchy” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-calibration",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "calibration",
+      "prediction",
+      "absolute risk"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "hl-test-proves-calibration"
+    ]
+  },
+  {
+    "id": "bootstrap-optimism",
+    "title": "Bootstrap optimism correction",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Apparent performance reuses development data and is optimistic, especially after variable selection and tuning.",
+    "coreConcept": "Repeat the complete modeling pipeline in bootstrap samples, evaluate each fitted model in bootstrap and original data, and subtract mean optimism from apparent performance.",
+    "minimalExample": "A 20-parameter survival model is developed in 180 events with backward selection.",
+    "commonWrongPractice": "Bootstrap only the final fixed formula after selection and call it internally validated.",
+    "reviewerAttack": "Did every data-driven preprocessing, selection, and tuning step occur inside each resample?",
+    "whenToUse": "Use for internal validation and shrinkage estimation when the sample should remain available for development.",
+    "whenNotToUse": "Do not call optimism-corrected performance external validation or use resampling to compensate for a fundamentally inadequate sample.",
+    "transferPrompt": "Apply “Bootstrap optimism correction” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-internal-validation",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "bootstrap",
+      "optimism",
+      "internal validation"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "ci-bootstrap-is-validation"
+    ]
+  },
+  {
+    "id": "external-validation-size",
+    "title": "External-evaluation sample size",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Small external cohorts yield unstable calibration, discrimination, and net-benefit estimates even if they contain a traditional minimum number of events.",
+    "coreConcept": "Plan sample size around precision for calibration-in-the-large, calibration slope, discrimination, and decision-analytic measures across the intended outcome horizon.",
+    "minimalExample": "A five-year mortality model is evaluated in a new hospital with only 28 deaths.",
+    "commonWrongPractice": "Call the study adequately powered because it exceeds ten events per predictor in the original model.",
+    "reviewerAttack": "What precision targets justified participants and events for each performance measure?",
+    "whenToUse": "Use before collecting or selecting a dataset for independent model evaluation.",
+    "whenNotToUse": "Do not base external-evaluation size on the number of model coefficients or a universal events threshold.",
+    "transferPrompt": "Apply “External-evaluation sample size” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-pm-external",
+      "src-tripod-ai"
+    ],
+    "status": "usable",
+    "tags": [
+      "external evaluation",
+      "sample size",
+      "precision"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ten-events-validation"
+    ]
+  },
+  {
+    "id": "nested-resampling",
+    "title": "Nested resampling for model selection",
+    "domain": "prediction",
+    "minutes": 9,
+    "whyItMatters": "Using the same folds to tune hyperparameters and estimate performance leaks selection information into evaluation.",
+    "coreConcept": "Place all preprocessing and tuning inside inner resampling and reserve outer folds solely for estimating performance of the full selection procedure.",
+    "minimalExample": "A transcriptomic classifier selects genes, scales features, tunes regularization, and reports cross-validated AUC.",
+    "commonWrongPractice": "Select genes once on the full dataset, then cross-validate the classifier.",
+    "reviewerAttack": "Which data influenced feature selection, scaling, tuning, stopping, and the final reported metric?",
+    "whenToUse": "Use when performance is estimated while any model or pipeline choice is data-adaptive.",
+    "whenNotToUse": "Do not average inner-loop scores as an unbiased external performance estimate.",
+    "transferPrompt": "Apply “Nested resampling for model selection” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-leakage",
+      "src-internal-validation"
+    ],
+    "status": "usable",
+    "tags": [
+      "nested CV",
+      "leakage",
+      "machine learning"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cv-after-feature-selection"
+    ]
+  },
+  {
+    "id": "precision-recall",
+    "title": "Rare-outcome performance",
+    "domain": "prediction",
+    "minutes": 7,
+    "whyItMatters": "ROC AUC can look favorable when events are rare while positive predictions remain mostly false.",
+    "coreConcept": "Report prevalence, calibration, sensitivity, specificity, predictive values, and precision–recall behavior at relevant thresholds; connect metrics to intended decisions.",
+    "minimalExample": "A sepsis alert has 2% event prevalence, AUC 0.88, and 12% positive predictive value at the operational threshold.",
+    "commonWrongPractice": "Describe the alert as 88% accurate.",
+    "reviewerAttack": "What happens to false alerts and missed cases at the deployed threshold and prevalence?",
+    "whenToUse": "Use for rare diagnostic, prognostic, screening, and safety outcomes.",
+    "whenNotToUse": "Do not compare precision across cohorts without accounting for prevalence or ignore calibration.",
+    "transferPrompt": "Apply “Rare-outcome performance” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-roc",
+      "src-stard-2015",
+      "src-dca"
+    ],
+    "status": "usable",
+    "tags": [
+      "rare outcome",
+      "precision recall",
+      "threshold"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-is-accuracy"
+    ]
+  },
+  {
+    "id": "prediction-transport",
+    "title": "Prediction-model transportability",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Changes in case mix, measurement, care pathways, outcome incidence, and predictor effects can degrade absolute risk even when ranking persists.",
+    "coreConcept": "Compare target versus development setting, reproduce the locked pipeline, evaluate calibration and discrimination, and separate original performance from any recalibrated or updated model.",
+    "minimalExample": "An ICU model trained before a treatment guideline is applied after the guideline changes baseline mortality.",
+    "commonWrongPractice": "Refit the intercept and predictors in the target cohort, then label the result external validation.",
+    "reviewerAttack": "Was the original model implemented unchanged, and which transport differences were anticipated?",
+    "whenToUse": "Use before applying a model across geography, time, device, laboratory, or eligibility setting.",
+    "whenNotToUse": "Do not hide failed original transport by presenting only an updated model.",
+    "transferPrompt": "Apply “Prediction-model transportability” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST",
+      "src-calibration"
+    ],
+    "status": "usable",
+    "tags": [
+      "transportability",
+      "external evaluation",
+      "calibration"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "same-auc-transports"
+    ]
+  },
+  {
+    "id": "rnaseq-design-matrix",
+    "title": "RNA-seq design matrix",
+    "domain": "omics",
+    "minutes": 8,
+    "whyItMatters": "Differential-expression software cannot recover a biological contrast that is confounded or incorrectly encoded in the design matrix.",
+    "coreConcept": "Define sample-level experimental units, factors, interactions, blocking, paired structure, and the exact contrast before fitting count models.",
+    "minimalExample": "Tumor and normal tissues are paired within patients and sequencing batch partly overlaps disease status.",
+    "commonWrongPractice": "Fit expression by tissue alone and treat each technical library as an independent replicate.",
+    "reviewerAttack": "Is the contrast estimable separately from patient and batch, and what is the biological replicate?",
+    "whenToUse": "Use before DESeq2, edgeR, or related bulk/pseudobulk count analyses.",
+    "whenNotToUse": "Do not add perfectly confounded variables and assume software will choose the causal explanation.",
+    "transferPrompt": "Apply “RNA-seq design matrix” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-deseq2",
+      "src-edger",
+      "src-multiomics"
+    ],
+    "status": "usable",
+    "tags": [
+      "RNA-seq",
+      "design matrix",
+      "contrast"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "library-is-replicate"
+    ]
+  },
+  {
+    "id": "dispersion-shrinkage",
+    "title": "Count-model dispersion shrinkage",
+    "domain": "omics",
+    "minutes": 7,
+    "whyItMatters": "Gene-wise variance estimates are unstable with few replicates, and Poisson models understate biological variability.",
+    "coreConcept": "Negative-binomial workflows estimate mean–dispersion trends and borrow information across genes while preserving gene-specific deviations.",
+    "minimalExample": "Six RNA-seq samples show variance far above the mean for many genes.",
+    "commonWrongPractice": "Apply a Poisson test per gene because read counts are integers.",
+    "reviewerAttack": "How was biological dispersion estimated, moderated, and diagnosed at low counts?",
+    "whenToUse": "Use for replicated bulk RNA-seq and sample-level pseudobulk counts with compatible library-size normalization.",
+    "whenNotToUse": "Do not interpret shrinkage as fabricating replicates or use it when the independent sample count is absent.",
+    "transferPrompt": "Apply “Count-model dispersion shrinkage” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-deseq2",
+      "src-edger"
+    ],
+    "status": "usable",
+    "tags": [
+      "negative binomial",
+      "dispersion",
+      "RNA-seq"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "poisson-rnaseq",
+      "cells-create-replication"
+    ]
+  },
+  {
+    "id": "correlated-gene-sets",
+    "title": "Correlation-aware gene-set testing",
+    "domain": "omics",
+    "minutes": 7,
+    "whyItMatters": "Genes within pathways are correlated, so treating them as independent can make competitive gene-set tests anti-conservative.",
+    "coreConcept": "Choose competitive versus self-contained hypotheses explicitly and use a method whose null, correlation handling, and sample-level permutation scheme match the design.",
+    "minimalExample": "A co-regulated interferon module contains dozens of strongly correlated genes.",
+    "commonWrongPractice": "Run independent hypergeometric tests on every thresholded gene list and rank by nominal P value.",
+    "reviewerAttack": "What is the gene-set null, how is inter-gene correlation handled, and what unit is permuted?",
+    "whenToUse": "Use for pathway-level interpretation after a valid sample-level differential analysis.",
+    "whenNotToUse": "Do not convert enrichment into pathway activation, direction, or causality without supporting measurements.",
+    "transferPrompt": "Apply “Correlation-aware gene-set testing” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-camera",
+      "src-gsea",
+      "src-multiple-testing"
+    ],
+    "status": "usable",
+    "tags": [
+      "gene sets",
+      "correlation",
+      "enrichment"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "enrichment-is-activation"
+    ]
+  },
+  {
+    "id": "bulk-deconvolution",
+    "title": "Bulk deconvolution identifiability",
+    "domain": "omics",
+    "minutes": 8,
+    "whyItMatters": "Estimated cell fractions depend on the reference signature, platform, cell-state coverage, and separability of cell types.",
+    "coreConcept": "Audit signature origin and scale, collinearity, missing cell states, absolute versus relative fractions, and validation against orthogonal measurements or mixtures.",
+    "minimalExample": "A tumor bulk cohort is deconvolved using immune signatures derived from peripheral blood.",
+    "commonWrongPractice": "Interpret every estimated fraction as an unbiased cell count in tissue.",
+    "reviewerAttack": "Could an absent or activated cell state be represented as a mixture of available reference profiles?",
+    "whenToUse": "Use for hypothesis generation and composition adjustment when reference and mixture assumptions are plausible and evaluated.",
+    "whenNotToUse": "Do not compare relative fractions as independent outcomes or infer cell-intrinsic expression from bulk mixtures.",
+    "transferPrompt": "Apply “Bulk deconvolution identifiability” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-cibersort",
+      "src-multiomics"
+    ],
+    "status": "usable",
+    "tags": [
+      "deconvolution",
+      "bulk RNA",
+      "composition"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "fraction-is-count",
+      "reference-is-universal"
+    ]
+  },
+  {
+    "id": "proteomics-imputation",
+    "title": "Proteomics missing-value strategy",
+    "domain": "omics",
+    "minutes": 8,
+    "whyItMatters": "Label-free proteomics mixes stochastic missingness with abundance-dependent censoring, so a universal imputation method can distort groups and variances.",
+    "coreConcept": "Inspect missingness by intensity, peptide, protein, batch, and group; align imputation or censored modeling with plausible mechanisms and propagate analysis uncertainty.",
+    "minimalExample": "Low-abundance peptides disappear more often in one acquisition batch, while isolated software failures are scattered.",
+    "commonWrongPractice": "Replace every missing intensity with a small constant before normalization.",
+    "reviewerAttack": "Which missing values are plausibly censored versus random, and how does the strategy alter group differences?",
+    "whenToUse": "Use in label-free proteomics after QC and before differential modeling, with mechanism-specific sensitivity analyses.",
+    "whenNotToUse": "Do not make condition-specific absence equal biological on/off expression without detection-limit evidence.",
+    "transferPrompt": "Apply “Proteomics missing-value strategy” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-proteomics-missing",
+      "src-multiple-testing"
+    ],
+    "status": "usable",
+    "tags": [
+      "proteomics",
+      "missing values",
+      "imputation"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "missing-equals-zero"
+    ]
+  },
+  {
+    "id": "doublet-audit",
+    "title": "Doublet detection audit",
+    "domain": "single-cell",
+    "minutes": 7,
+    "whyItMatters": "Multiplets can create hybrid expression profiles, false transitional states, and misleading rare populations.",
+    "coreConcept": "Estimate expected doublet rates per capture, use sample-aware detection, inspect QC and marker combinations, and report sensitivity limits for homotypic doublets.",
+    "minimalExample": "A cluster co-expresses mutually exclusive T-cell and epithelial markers and has high UMI counts.",
+    "commonWrongPractice": "Label it a novel transdifferentiating population because it lies between clusters in UMAP.",
+    "reviewerAttack": "Were doublets evaluated before biological naming, and could homotypic doublets remain?",
+    "whenToUse": "Use during droplet single-cell QC before clustering and state annotation.",
+    "whenNotToUse": "Do not delete every unusual hybrid state solely from one algorithmic score.",
+    "transferPrompt": "Apply “Doublet detection audit” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-doubletfinder",
+      "src-scrna-best"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "doublet",
+      "QC"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "hybrid-is-transition"
+    ]
+  },
+  {
+    "id": "ambient-rna",
+    "title": "Ambient RNA contamination",
+    "domain": "single-cell",
+    "minutes": 7,
+    "whyItMatters": "Cell-free transcripts can appear broadly across droplets and mimic low-level marker expression in unrelated cell types.",
+    "coreConcept": "Use empty-droplet/background profiles and cluster-specific markers to estimate contamination, compare corrected and uncorrected results, and retain uncertainty.",
+    "minimalExample": "Hemoglobin transcripts appear in nearly every cell type from a blood-rich tissue.",
+    "commonWrongPractice": "Annotate all hemoglobin-positive droplets as erythroid-like cells.",
+    "reviewerAttack": "Does expression exceed the ambient background expected from lysed abundant cells?",
+    "whenToUse": "Use for droplet single-cell datasets, especially necrotic, blood-rich, or high-RNA tissues.",
+    "whenNotToUse": "Do not overcorrect true low-level expression or treat a corrected matrix as ground truth.",
+    "transferPrompt": "Apply “Ambient RNA contamination” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-soupx",
+      "src-scrna-best"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "ambient RNA",
+      "QC"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "one-marker-annotation"
+    ]
+  },
+  {
+    "id": "sctransform-assumptions",
+    "title": "Single-cell variance stabilization",
+    "domain": "single-cell",
+    "minutes": 8,
+    "whyItMatters": "Sequencing depth and mean–variance dependence can dominate feature selection and embeddings if normalization assumptions are ignored.",
+    "coreConcept": "Use a count-aware normalization model, inspect residual depth effects, preserve raw counts for compatible downstream tests, and avoid mixing assay scales silently.",
+    "minimalExample": "Clusters separate mainly by total UMI count before regularized negative-binomial normalization.",
+    "commonWrongPractice": "Regress out every QC variable and use residuals for all differential tests without checking their null model.",
+    "reviewerAttack": "Which assay scale feeds each downstream step, and do residuals still correlate with depth or biology?",
+    "whenToUse": "Use for UMI single-cell preprocessing and variance stabilization when model assumptions fit the assay.",
+    "whenNotToUse": "Do not assume one normalization is optimal for clustering, visualization, differential testing, and absolute expression simultaneously.",
+    "transferPrompt": "Apply “Single-cell variance stabilization” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-sctransform",
+      "src-single-cell-2023"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "normalization",
+      "variance"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "normalization-solves-batch"
+    ]
+  },
+  {
+    "id": "integration-benchmark",
+    "title": "Batch integration: remove less, prove more",
+    "domain": "single-cell",
+    "minutes": 9,
+    "whyItMatters": "Visual batch mixing can be achieved by erasing true biological variation, especially when condition and batch are partially confounded.",
+    "coreConcept": "Benchmark integration on batch removal and biological conservation, keep unintegrated references, test multiple resolutions, and avoid corrected values for unsupported differential inference.",
+    "minimalExample": "Cases were sequenced in one laboratory and controls in another, with no cross-batch condition overlap.",
+    "commonWrongPractice": "Choose the method whose UMAP mixes batches most completely.",
+    "reviewerAttack": "What known biology was preserved, and is the desired condition signal statistically distinguishable from batch?",
+    "whenToUse": "Use when batches share enough biological states to anchor integration and downstream purpose is explicit.",
+    "whenNotToUse": "Do not integrate a perfectly confounded design and claim recovery of condition effects.",
+    "transferPrompt": "Apply “Batch integration: remove less, prove more” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-scib",
+      "src-batch",
+      "src-single-cell-2023"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "integration",
+      "batch"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "mixed-umap-is-correct"
+    ]
+  },
+  {
+    "id": "annotation-evidence",
+    "title": "Cell-type annotation evidence",
+    "domain": "single-cell",
+    "minutes": 7,
+    "whyItMatters": "Single markers, transferred labels, and cluster names can conceal ambiguity, state effects, and reference mismatch.",
+    "coreConcept": "Combine coherent positive and negative marker programs, reference mapping, tissue context, QC, and blinded or orthogonal validation; retain hierarchical uncertainty.",
+    "minimalExample": "A stressed myeloid cluster weakly expresses one dendritic-cell marker after integration.",
+    "commonWrongPractice": "Name the cluster dendritic cells from that marker alone and treat labels as observed truth.",
+    "reviewerAttack": "Which competing identities were considered, and do markers cohere across donors rather than only pooled cells?",
+    "whenToUse": "Use after QC and clustering or reference mapping, before abundance and communication claims.",
+    "whenNotToUse": "Do not force every cluster to the most specific atlas label when evidence supports only a broad lineage.",
+    "transferPrompt": "Apply “Cell-type annotation evidence” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-scrna-best",
+      "src-single-cell-2023"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "annotation",
+      "uncertainty"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "single-marker-label"
+    ]
+  },
+  {
+    "id": "sc-differential-abundance",
+    "title": "Sample-aware differential abundance",
+    "domain": "single-cell",
+    "minutes": 8,
+    "whyItMatters": "Cell counts and neighborhoods are compositional and nested within biological samples; pooled-cell tests exaggerate precision.",
+    "coreConcept": "Define sample-level replication, model counts or proportions with library/composition structure, and use cluster or graph-neighborhood resolution aligned with the question.",
+    "minimalExample": "Eight donors contribute unequal cells across a continuous activated T-cell trajectory.",
+    "commonWrongPractice": "Run a cell-level chi-square test on cluster labels pooled by condition.",
+    "reviewerAttack": "Does uncertainty arise across donors, and are results stable to neighborhood or cluster resolution?",
+    "whenToUse": "Use to compare cell-state abundance across replicated conditions.",
+    "whenNotToUse": "Do not interpret relative abundance as absolute expansion without total-cell or tissue context.",
+    "transferPrompt": "Apply “Sample-aware differential abundance” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-milo",
+      "src-pseudobulk",
+      "src-pseudorep"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "differential abundance",
+      "composition"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cells-are-replicates"
+    ]
+  },
+  {
+    "id": "velocity-assumptions",
+    "title": "RNA velocity assumptions",
+    "domain": "single-cell",
+    "minutes": 9,
+    "whyItMatters": "Velocity arrows can look like lineage direction while depending on splicing kinetics, steady-state or dynamical assumptions, neighborhood smoothing, and sampling.",
+    "coreConcept": "Inspect phase portraits and fit diagnostics, test roots and genes, compare dynamical assumptions, and treat short-term state derivatives separately from lineage fate.",
+    "minimalExample": "A cross-sectional tumor dataset shows arrows from one malignant cluster toward another on UMAP.",
+    "commonWrongPractice": "Conclude that the first clone differentiates into the second in patients.",
+    "reviewerAttack": "Which genes support direction, are kinetic assumptions plausible, and is lineage independently validated?",
+    "whenToUse": "Use for hypothesis generation about near-term transcriptional dynamics in datasets with informative spliced/unspliced counts.",
+    "whenNotToUse": "Do not infer long-term lineage, causal transitions, or chronological order from arrows alone.",
+    "transferPrompt": "Apply “RNA velocity assumptions” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-rna-velocity",
+      "src-trajectory"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "RNA velocity",
+      "trajectory"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "velocity-is-lineage"
+    ]
+  },
+  {
+    "id": "cnv-from-rna",
+    "title": "Copy-number inference from RNA",
+    "domain": "single-cell",
+    "minutes": 8,
+    "whyItMatters": "Expression-derived copy-number patterns can help distinguish aneuploid cells but are confounded by transcriptional programs, reference choice, and low coverage.",
+    "coreConcept": "Use appropriate diploid references, inspect broad chromosome-scale consistency, compare tools and thresholds, and validate key clones with DNA or pathology evidence.",
+    "minimalExample": "Epithelial cells show a broad chromosome-arm expression shift relative to immune references.",
+    "commonWrongPractice": "Call every high-scoring cell malignant and every low-scoring cell normal.",
+    "reviewerAttack": "Could cell state or reference mismatch create the inferred pattern, and is DNA-level support available?",
+    "whenToUse": "Use as a probabilistic tumor-cell or clone annotation aid in suitable single-cell transcriptomes.",
+    "whenNotToUse": "Do not report exact genomic copy number, focal events, or clonality as measured facts.",
+    "transferPrompt": "Apply “Copy-number inference from RNA” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-copykat",
+      "src-scrna-best"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell",
+      "copy number",
+      "tumor"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "rna-cnv-is-dna"
+    ]
+  },
+  {
+    "id": "spatial-autocorrelation",
+    "title": "Spatial autocorrelation testing",
+    "domain": "omics",
+    "minutes": 8,
+    "whyItMatters": "Nearby spots share tissue structure, so tests assuming independent observations can inflate evidence for spatial genes or region differences.",
+    "coreConcept": "Define the spatial null and neighborhood scale, use a model that represents spatial covariance, correct across genes, and distinguish pattern detection from mechanism.",
+    "minimalExample": "A gene forms a smooth gradient across a tissue section with thousands of neighboring spots.",
+    "commonWrongPractice": "Treat every spot as an independent replicate in a two-group t test.",
+    "reviewerAttack": "What spatial covariance remains after modeled structure, and what is the biological replicate across sections or patients?",
+    "whenToUse": "Use to discover spatially variable expression or test region patterns with explicit coordinates.",
+    "whenNotToUse": "Do not treat one section's spots as independent patient-level replication.",
+    "transferPrompt": "Apply “Spatial autocorrelation testing” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-spark",
+      "src-spatial-original",
+      "src-pseudorep"
+    ],
+    "status": "usable",
+    "tags": [
+      "spatial",
+      "autocorrelation",
+      "transcriptomics"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "spots-are-replicates"
+    ]
+  },
+  {
+    "id": "spatial-spot-resolution",
+    "title": "Spatial spot mixture",
+    "domain": "omics",
+    "minutes": 7,
+    "whyItMatters": "Spot-based measurements mix cells and extracellular RNA, so apparent co-expression or proximity may be a resolution artifact.",
+    "coreConcept": "Report physical resolution and capture geometry, estimate composition with uncertainty, compare histology, and reserve cell–cell interaction claims for data that resolve the relevant scale.",
+    "minimalExample": "A 55-µm spot contains tumor, fibroblast, and immune cells and expresses ligands and receptors.",
+    "commonWrongPractice": "Claim direct tumor–immune signaling because ligand and receptor occur in the same spot.",
+    "reviewerAttack": "Can the platform resolve the cells and distances required by the proposed interaction?",
+    "whenToUse": "Use when interpreting spot-based spatial transcriptomics and deconvolution outputs.",
+    "whenNotToUse": "Do not equate co-capture with co-expression in one cell or direct physical contact.",
+    "transferPrompt": "Apply “Spatial spot mixture” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-spatial-original",
+      "src-spatial"
+    ],
+    "status": "usable",
+    "tags": [
+      "spatial",
+      "resolution",
+      "mixture"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "co-spot-is-interaction"
+    ]
+  },
+  {
+    "id": "multiomics-latent-factors",
+    "title": "Multi-omics latent-factor interpretation",
+    "domain": "omics",
+    "minutes": 9,
+    "whyItMatters": "Latent factors summarize covariance but can represent technical variation, composition, or scale differences rather than a biological program.",
+    "coreConcept": "Inspect variance explained by view, feature loadings, sample covariates, robustness, and held-out reconstruction; label factors descriptively before mechanistic interpretation.",
+    "minimalExample": "A factor links methylation and expression but is also strongly associated with processing batch.",
+    "commonWrongPractice": "Name the factor an immune-regulatory mechanism from its top five loadings.",
+    "reviewerAttack": "Does the factor survive batch adjustment and resampling, and which modalities actually contribute?",
+    "whenToUse": "Use for unsupervised discovery of shared and view-specific variation in aligned multi-omics samples.",
+    "whenNotToUse": "Do not infer direction, mediation, or causality from a latent covariance factor.",
+    "transferPrompt": "Apply “Multi-omics latent-factor interpretation” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-mofa-plus",
+      "src-batch"
+    ],
+    "status": "usable",
+    "tags": [
+      "multi-omics",
+      "latent factors",
+      "integration"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "factor-is-mechanism"
+    ]
+  },
+  {
+    "id": "supervised-multiomics",
+    "title": "Supervised multi-omics without leakage",
+    "domain": "omics",
+    "minutes": 9,
+    "whyItMatters": "Outcome-guided feature selection across many modalities can overfit severely if preprocessing or component selection sees evaluation outcomes.",
+    "coreConcept": "Nest normalization, filtering, component tuning, and feature selection inside resampling; keep patient groups together and reserve a locked external evaluation when possible.",
+    "minimalExample": "RNA, methylation, and proteomics from 90 patients are integrated to classify response.",
+    "commonWrongPractice": "Select cross-omic features using all outcome labels, then report cross-validated accuracy on those features.",
+    "reviewerAttack": "Did any target label influence a feature, component, or tuning choice before its outer-fold prediction?",
+    "whenToUse": "Use for supervised cross-omics signatures with adequate independent samples and a fully reproducible pipeline.",
+    "whenNotToUse": "Do not let thousands of molecular measurements substitute for independent patients.",
+    "transferPrompt": "Apply “Supervised multi-omics without leakage” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-diablo",
+      "src-leakage",
+      "src-pmsampsize"
+    ],
+    "status": "usable",
+    "tags": [
+      "multi-omics",
+      "supervised learning",
+      "leakage"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "features-before-cv"
+    ]
+  },
+  {
+    "id": "radiomics-reproducibility",
+    "title": "Radiomics feature reproducibility",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Scanner, reconstruction, resampling, segmentation, and software definitions can shift radiomics features more than biology.",
+    "coreConcept": "Standardize feature definitions and image preprocessing, assess segmentation and acquisition robustness, lock the pipeline, and evaluate across scanners and sites.",
+    "minimalExample": "A texture signature is trained on one reconstruction kernel and tested on a different vendor without harmonization analysis.",
+    "commonWrongPractice": "Assume features with the same names are identical across packages.",
+    "reviewerAttack": "Were feature values benchmarked to a standard and robustness tested across plausible acquisition and segmentation variation?",
+    "whenToUse": "Use before developing or transporting imaging biomarkers.",
+    "whenNotToUse": "Do not use post-outcome harmonization or filter unstable features on the evaluation cohort.",
+    "transferPrompt": "Apply “Radiomics feature reproducibility” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-ibsi",
+      "src-leakage",
+      "src-tripod-ai"
+    ],
+    "status": "usable",
+    "tags": [
+      "radiomics",
+      "reproducibility",
+      "imaging"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "same-feature-name-same-value"
+    ]
+  },
+  {
+    "id": "model-development-size",
+    "title": "Prediction-model development sample size",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "A fixed events-per-variable rule ignores outcome prevalence, anticipated model fit, parameter complexity, and desired shrinkage.",
+    "coreConcept": "Plan participants and events using candidate parameter count, outcome frequency, anticipated performance, global shrinkage, and precision of baseline risk.",
+    "minimalExample": "A binary model considers 30 parameters with 12% outcome prevalence in 400 participants.",
+    "commonWrongPractice": "Declare ten events per variable sufficient after counting a categorical predictor as one variable.",
+    "reviewerAttack": "How many parameters—not labels—are estimated, and what shrinkage and precision criteria are targeted?",
+    "whenToUse": "Use before collecting data or finalizing candidate predictors for clinical prediction development.",
+    "whenNotToUse": "Do not reduce parameters post hoc by univariable screening and claim the original sample was adequate.",
+    "transferPrompt": "Apply “Prediction-model development sample size” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-pmsampsize",
+      "src-tripod-ai"
+    ],
+    "status": "usable",
+    "tags": [
+      "sample size",
+      "prediction",
+      "shrinkage"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ten-epv-rule"
+    ]
+  },
+  {
+    "id": "reporting-vs-bias",
+    "title": "Reporting guideline versus risk of bias",
+    "domain": "clinical",
+    "minutes": 6,
+    "whyItMatters": "Complete reporting enables appraisal but does not make a confounded, underpowered, or misclassified study valid.",
+    "coreConcept": "Use reporting checklists to locate required information, then assess design-specific bias, applicability, precision, and identification separately.",
+    "minimalExample": "An observational paper reports every STROBE item but exposure is severely misclassified.",
+    "commonWrongPractice": "Convert checklist completion into a numerical quality score and rank studies by it.",
+    "reviewerAttack": "Which reported design choices threaten validity even though they are transparently described?",
+    "whenToUse": "Use during protocol writing, manuscript preparation, evidence extraction, and peer review.",
+    "whenNotToUse": "Do not treat reporting adherence as proof of methodological quality or causal validity.",
+    "transferPrompt": "Apply “Reporting guideline versus risk of bias” to one current decision: what would you change, verify, or narrow?",
+    "sourceIds": [
+      "src-strobe",
+      "src-prisma-2020",
+      "src-tripod-ai"
+    ],
+    "status": "usable",
+    "tags": [
+      "reporting",
+      "risk of bias",
+      "appraisal"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "checklist-score-quality"
+    ]
+  },
+  {
     "id": "statistical-unit",
     "title": "Statistical unit",
     "domain": "statistics",
@@ -21,7 +1269,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "biological-replicate",
@@ -44,7 +1296,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "pseudoreplication",
@@ -68,7 +1324,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "confounding",
@@ -91,7 +1351,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "selection-bias",
@@ -115,7 +1379,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "missing-data",
@@ -139,7 +1407,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "multiple-testing",
@@ -162,7 +1434,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "effect-size-vs-p",
@@ -185,7 +1461,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "confidence-interval",
@@ -208,7 +1488,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "cox-ph",
@@ -232,7 +1516,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "multivariable-adjustment",
@@ -256,7 +1544,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "overfitting",
@@ -282,7 +1574,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "internal-validation",
@@ -307,7 +1603,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "external-validation",
@@ -332,7 +1632,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "c-index",
@@ -356,7 +1660,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "calibration",
@@ -380,7 +1688,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "decision-curve",
@@ -404,7 +1716,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "interaction-subgroup",
@@ -428,7 +1744,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "competing-risks",
@@ -451,7 +1771,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "time-dependent-bias",
@@ -474,7 +1798,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "scrna-deg-pseudobulk",
@@ -498,7 +1826,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "batch-effect",
@@ -522,7 +1854,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "patient-level-replication",
@@ -546,7 +1882,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "cluster-annotation",
@@ -569,7 +1909,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "marker-circularity",
@@ -593,7 +1937,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "double-dipping",
@@ -617,7 +1965,11 @@
       "statistics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "statistics"
+    ]
   },
   {
     "id": "pathway-enrichment",
@@ -641,7 +1993,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "gsea-vs-ora",
@@ -665,7 +2021,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "cell-proportion-testing",
@@ -689,7 +2049,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "differential-abundance",
@@ -713,7 +2077,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "trajectory-limits",
@@ -736,7 +2104,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "cell-communication-limits",
@@ -760,7 +2132,11 @@
       "single-cell"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-cell"
+    ]
   },
   {
     "id": "spatial-colocalization",
@@ -784,7 +2160,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "multiomics-integration",
@@ -808,7 +2188,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "discovery-validation",
@@ -834,7 +2218,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "data-leakage",
@@ -858,7 +2246,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "feature-selection-leakage",
@@ -882,7 +2274,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "cross-validation-misuse",
@@ -906,7 +2302,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "clustering-stability",
@@ -930,7 +2330,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "candidate-model-selection",
@@ -955,7 +2359,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "causal-language",
@@ -979,7 +2387,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "power-information",
@@ -1004,7 +2416,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "assay-validation",
@@ -1028,7 +2444,11 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   },
   {
     "id": "model-updating",
@@ -1052,7 +2472,11 @@
       "prediction"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "prediction"
+    ]
   },
   {
     "id": "batch-correction-sensitivity",
@@ -1075,7 +2499,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "spatial-resolution",
@@ -1098,7 +2526,11 @@
       "omics"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "omics"
+    ]
   },
   {
     "id": "reporting-vs-rigor",
@@ -1123,6 +2555,10 @@
       "clinical"
     ],
     "contentOrigin": "verified_seed",
-    "verificationStatus": "verified"
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "clinical"
+    ]
   }
 ]

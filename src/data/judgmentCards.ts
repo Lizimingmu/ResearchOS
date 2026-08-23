@@ -1,4 +1,5 @@
 import type { JudgmentCard } from "../domain/types";
+import { expandedJudgmentCards } from "./expandedTraining.js";
 
 const card = (
   id: string, title: string, domain: string, study: string, analysis: string, claim: string,
@@ -7,9 +8,13 @@ const card = (
 ): JudgmentCard => ({
   id, title, domain, study, analysis, claim, question, expectedFindings, betterApproach,
   maximalConclusion, severity, sourceIds, contentOrigin: "verified_seed", verificationStatus: "verified",
+  difficulty: severity === "critical" ? "advanced" : severity === "major" ? "intermediate" : "foundation",
+  misconceptionTags: [title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")],
+  variantPrompt: `A different study repeats the underlying error in “${title}”. Identify the invalid inference and state the maximal defensible conclusion.`,
 });
 
 export const judgmentCards: JudgmentCard[] = [
+  ...expandedJudgmentCards,
   card("jc-01", "Twelve thousand cells, six patients", "single-cell", "3 patients per subtype; 12,000 cells total.", "Pool cells and run cell-level Wilcoxon DEG.", "Gene X differs, P<0.001.", "What is the main inference problem?", ["Patient is the independent unit", "Cells are nested within patients", "Pseudoreplication makes uncertainty too small", "Between-patient consistency is unknown"], "Use patient×cell-type pseudobulk or a justified hierarchical model; report per-patient effects and FDR.", "In sampled cells, expression differs descriptively; patient-level subtype inference is not established.", "critical", ["src-pseudobulk", "src-pseudorep"]),
   card("jc-02", "Survival HR without time zero", "survival", "Retrospective treatment cohort with treatment started at varying times.", "Classify ever-treated patients as treated from diagnosis and fit Cox regression.", "Treatment reduces mortality by 45%.", "Which design error comes before interpreting the HR?", ["Immortal time", "Exposure is defined using future information", "Time zero is misaligned", "Adjusted Cox covariates do not repair time misclassification"], "Use a time-varying exposure, landmark design with explicit target population, or target-trial emulation.", "No treatment effect conclusion is supportable from the reported analysis.", "critical", ["src-cox", "src-strobe"]),
   card("jc-03", "Significant here, not there", "subgroup", "Randomized trial reports treatment effects by sex.", "Men: HR .72, P=.03; women: HR .91, P=.31.", "Treatment works only in men.", "What statistical comparison is missing?", ["Direct interaction test", "Subgroup power", "Multiplicity", "Confidence intervals for effect difference"], "Test a prespecified treatment×sex interaction on a defined scale and interpret uncertainty.", "Evidence supports an overall effect and uncertain subgroup estimates, not proven sex-specific efficacy.", "major", ["src-consort"]),
@@ -41,4 +46,3 @@ export const judgmentCards: JudgmentCard[] = [
   card("jc-29", "AI invents a PMID", "literature", "An AI response cites PMID 12345678 for a claimed single-cell trial.", "Save citation and explanation directly to verified methods notes.", "The claim is evidence-backed.", "What must happen before verification status changes?", ["Query PubMed/DOI service", "Match title/journal/year/authors", "Confirm source supports claim", "Generated content remains pending by default"], "Resolve the identifier through an official metadata service, inspect the source, and record verification time/provenance.", "The citation is unverified and must remain pending.", "critical", ["src-strobe"]),
   card("jc-30", "Figure story outruns evidence", "scientific storytelling", "Figures show association, spatial proximity, and in vitro knockdown.", "Final model claims a universal human therapeutic mechanism and clinical efficacy.", "The study proves the target will benefit patients.", "Where should the claim boundary stop?", ["Association and proximity are not causal", "In vitro perturbation supports context-specific function", "No in vivo/clinical validation", "Therapeutic window absent"], "State the supported in vitro functional role, distinguish human association, and specify missing in vivo/clinical evidence.", "The target is associated with human disease and contributes to an in vitro phenotype under tested conditions.", "critical", ["src-strobe", "src-pseudorep"]),
 ];
-

@@ -1,4 +1,5 @@
 import type { MethodConcept } from "../domain/types";
+import { expandedMethods } from "./expandedTraining.js";
 
 type Seed = Omit<MethodConcept, "contentOrigin" | "verificationStatus" | "status" | "tags"> & {
   status?: MethodConcept["status"];
@@ -11,9 +12,12 @@ const method = (seed: Seed): MethodConcept => ({
   tags: seed.tags ?? [seed.domain],
   contentOrigin: "verified_seed",
   verificationStatus: "verified",
+  difficulty: seed.difficulty ?? (seed.domain === "prediction" || seed.domain === "single-cell" ? "intermediate" : "foundation"),
+  misconceptionTags: seed.misconceptionTags ?? seed.tags ?? [seed.domain],
 });
 
 export const methodConcepts: MethodConcept[] = [
+  ...expandedMethods,
   method({
     id: "statistical-unit", title: "Statistical unit", domain: "statistics", minutes: 7,
     whyItMatters: "Inference fails when the unit represented by the sample size is not the independent unit that received exposure or generated the outcome.",

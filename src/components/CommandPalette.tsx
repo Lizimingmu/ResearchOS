@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Command, FilePlus2, FlaskConical, FolderPlus, Search, ShieldCheck } from "lucide-react";
-import { methodConcepts } from "../data/methods";
+import type { MethodConcept } from "../domain/types";
 import { useAppStore } from "../state/store";
 
 interface PaletteCommand {
@@ -20,6 +20,7 @@ export function CommandPalette() {
   const notify = useAppStore((state) => state.notify);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
+  const [methods, setMethods] = useState<MethodConcept[]>([]);
   const input = useRef<HTMLInputElement>(null);
 
   const commands = useMemo<PaletteCommand[]>(() => [
@@ -30,8 +31,8 @@ export function CommandPalette() {
     { id: "audit", label: "Audit current analysis", group: "Practice", keywords: "ai plan critique", run: () => setView("ai-audit"), icon: ShieldCheck },
     { id: "evidence", label: "Find evidence", group: "Evidence", keywords: "pmid doi verify", run: () => { setView("library"); notify("Use Verify PMID / DOI in the paper inspector. Unresolved metadata stays pending.", "info"); }, icon: Search },
     { id: "transfer", label: "Create transfer exercise", group: "Practice", keywords: "project action", run: () => setView("projects"), icon: FlaskConical },
-    ...methodConcepts.map((method) => ({ id: `method-${method.id}`, label: `Method: ${method.title}`, group: "Methods", keywords: `${method.domain} ${method.tags.join(" ")}`, run: () => selectMethod(method.id), icon: FlaskConical })),
-  ], [notify, selectMethod, setView]);
+    ...methods.map((method) => ({ id: `method-${method.id}`, label: `Method: ${method.title}`, group: "Methods", keywords: `${method.domain} ${method.tags.join(" ")}`, run: () => selectMethod(method.id), icon: FlaskConical })),
+  ], [methods, notify, selectMethod, setView]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -41,11 +42,12 @@ export function CommandPalette() {
 
   useEffect(() => {
     if (open) {
+      if (!methods.length) void import("../data/methods").then((module) => setMethods(module.methodConcepts));
       setQuery("");
       setActive(0);
       window.setTimeout(() => input.current?.focus(), 0);
     }
-  }, [open]);
+  }, [methods.length, open]);
 
   useEffect(() => { setActive(0); }, [query]);
 
@@ -76,4 +78,3 @@ export function CommandPalette() {
     </div>
   );
 }
-

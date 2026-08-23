@@ -1,6 +1,6 @@
 [package]
 name = "researchos"
-version = "0.9.0"
+version = "0.10.0"
 description = "Medical Research Training & AI Oversight Workspace"
 authors = ["ResearchOS contributors"]
 edition = "2021"
@@ -26,4 +26,3 @@ urlencoding = "2"
 
 [dev-dependencies]
 tempfile = "3"
-

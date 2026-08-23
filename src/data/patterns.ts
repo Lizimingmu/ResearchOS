@@ -1,4 +1,5 @@
 import type { ResearchPattern } from "../domain/types";
+import { expandedPatterns } from "./expandedTraining.js";
 
 const pattern = (
   id: string,
@@ -18,9 +19,12 @@ const pattern = (
   failureModes, reviewerAttacks, overclaims, highLevelAdds, sourceIds,
   contentOrigin: "verified_seed",
   verificationStatus: "verified",
+  difficulty: "intermediate",
+  misconceptionTags: failureModes.slice(0, 3).map((item) => item.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")),
 });
 
 export const researchPatterns: ResearchPattern[] = [
+  ...expandedPatterns,
   pattern(
     "retrospective-cohort", "Retrospective clinical cohort",
     "Within an existing clinical population, how are an exposure and outcome associated?",
@@ -256,4 +260,3 @@ export const researchPatterns: ResearchPattern[] = [
     ["src-tripod", "src-probaST", "src-calibration"],
   ),
 ];
-

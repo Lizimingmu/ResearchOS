@@ -1,4 +1,5 @@
 import type { AuditCase, AuditStep } from "../domain/types";
+import { expandedAuditCases } from "./expandedTraining.js";
 
 const step = (id: string, text: string, expected: AuditStep["expected"], issue?: string, severity?: AuditStep["severity"]): AuditStep => ({ id, text, expected, issue, severity });
 const audit = (
@@ -7,9 +8,13 @@ const audit = (
 ): AuditCase => ({
   id, title, domain, task, context, steps, missedRisks, seniorSummary, transferPrompt, sourceIds,
   contentOrigin: "verified_seed", verificationStatus: "verified",
+  difficulty: steps.some((entry) => entry.severity === "critical") ? "advanced" : "intermediate",
+  misconceptionTags: [title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")],
+  variantPrompt: `Audit a new plan that makes the same hidden assumption as “${title}”, without copying the original scenario.`,
 });
 
 export const auditCases: AuditCase[] = [
+  ...expandedAuditCases,
   audit("audit-01", "Cell-level DEG plan", "single-cell", "Compare subtype 2 vs subtype 1 within tumor macrophages.", "Six patients per subtype; cell yield varies ten-fold.", [
     step("a01-1", "Pool all macrophages by subtype.", "reject", "Removes patient-level replication and hides heterogeneity.", "critical"),
     step("a01-2", "Run cell-level Wilcoxon FindMarkers.", "reject", "Pseudoreplication for a patient-level subtype contrast.", "critical"),
@@ -116,4 +121,3 @@ export const auditCases: AuditCase[] = [
     step("a15-5", "If unrecoverable, label validation infeasible rather than fabricate implementation.", "approve"),
   ], ["Outcome definition compatibility", "Time horizon", "Unit conversion", "Licensing/access"], "A model that cannot be fully implemented cannot be externally validated. Transparency is a methodological prerequisite, not an administrative detail.", "List every artifact another center needs to reproduce your model predictions.", ["src-tripod", "src-probaST"]),
 ];
-

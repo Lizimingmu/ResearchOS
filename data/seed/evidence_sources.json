@@ -11,7 +11,9 @@
     "coreEvidence": "Authoritative reporting framework for observational design, bias, participants, variables, and statistical methods.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2007,
+    "verificationScope": "claim"
   },
   {
     "id": "src-tripod",
@@ -25,7 +27,9 @@
     "coreEvidence": "Reporting and appraisal requirements for prediction model development and validation.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2015,
+    "verificationScope": "claim"
   },
   {
     "id": "src-tripod-ai",
@@ -37,7 +41,9 @@
     "coreEvidence": "Current TRIPOD reporting guidance for clinical prediction models using regression or machine-learning methods; it replaces the 2015 checklist while retaining it as a foundational source.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2024,
+    "verificationScope": "claim"
   },
   {
     "id": "src-consort",
@@ -51,7 +57,9 @@
     "coreEvidence": "Authoritative framework for randomised trial design and reporting.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2010,
+    "verificationScope": "claim"
   },
   {
     "id": "src-remark",
@@ -65,7 +73,9 @@
     "coreEvidence": "Design, analysis, and transparent reporting expectations for prognostic tumor marker studies.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2005,
+    "verificationScope": "claim"
   },
   {
     "id": "src-pseudorep",
@@ -78,7 +88,9 @@
     "coreEvidence": "Explains how treating non-independent observations as replicates inflates apparent sample size and invalidates inference.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2021,
+    "verificationScope": "claim"
   },
   {
     "id": "src-pseudobulk",
@@ -91,7 +103,9 @@
     "coreEvidence": "Benchmarking shows that methods respecting biological replication, including pseudobulk approaches, better control false discoveries.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2021,
+    "verificationScope": "claim"
   },
   {
     "id": "src-multiple-testing",
@@ -103,7 +117,9 @@
     "coreEvidence": "Defines the false discovery rate and a procedure for controlling it across multiple hypotheses.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 1995,
+    "verificationScope": "claim"
   },
   {
     "id": "src-missing",
@@ -116,7 +132,9 @@
     "coreEvidence": "Practical rationale, assumptions, and pitfalls for multiple imputation rather than complete-case analysis.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2009,
+    "verificationScope": "claim"
   },
   {
     "id": "src-cox",
@@ -128,7 +146,9 @@
     "coreEvidence": "Foundational proportional hazards regression model for censored time-to-event data.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 1972,
+    "verificationScope": "claim"
   },
   {
     "id": "src-competing",
@@ -140,7 +160,9 @@
     "coreEvidence": "Foundational subdistribution hazard model for cumulative incidence under competing risks.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 1999,
+    "verificationScope": "claim"
   },
   {
     "id": "src-calibration",
@@ -153,7 +175,9 @@
     "coreEvidence": "Explains calibration-in-the-large, calibration slope, and why discrimination alone is insufficient.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2019,
+    "verificationScope": "claim"
   },
   {
     "id": "src-dca",
@@ -166,7 +190,9 @@
     "coreEvidence": "Introduces net benefit across threshold probabilities to assess clinical utility.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2006,
+    "verificationScope": "claim"
   },
   {
     "id": "src-internal-validation",
@@ -179,7 +205,9 @@
     "coreEvidence": "Shows the role of resampling-based internal validation for estimating optimism.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2001,
+    "verificationScope": "claim"
   },
   {
     "id": "src-gsea",
@@ -192,7 +220,9 @@
     "coreEvidence": "Foundational ranked-list gene-set enrichment method and its permutation framework.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2005,
+    "verificationScope": "claim"
   },
   {
     "id": "src-batch",
@@ -205,7 +235,9 @@
     "coreEvidence": "Describes origins, detection, and consequences of batch effects in high-throughput experiments.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2010,
+    "verificationScope": "claim"
   },
   {
     "id": "src-trajectory",
@@ -218,7 +250,9 @@
     "coreEvidence": "Benchmarks trajectory inference approaches and explains dependence on topology, features, and assumptions.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2019,
+    "verificationScope": "claim"
   },
   {
     "id": "src-cellchat",
@@ -231,7 +265,9 @@
     "coreEvidence": "Defines a ligand-receptor expression-based framework; inferred communication remains a model-based hypothesis.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2021,
+    "verificationScope": "claim"
   },
   {
     "id": "src-spatial",
@@ -244,7 +280,9 @@
     "coreEvidence": "Reviews resolution, measurement, integration, and inference limits in spatial transcriptomics.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2021,
+    "verificationScope": "claim"
   },
   {
     "id": "src-clustering",
@@ -256,7 +294,9 @@
     "coreEvidence": "Defines stability-based checks for whether cluster solutions persist under perturbation.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2009,
+    "verificationScope": "claim"
   },
   {
     "id": "src-leakage",
@@ -268,7 +308,9 @@
     "coreEvidence": "Formalizes information leakage and prevention through correct separation of training and evaluation operations.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2012,
+    "verificationScope": "claim"
   },
   {
     "id": "src-multiomics",
@@ -281,7 +323,9 @@
     "coreEvidence": "Best-practice principles for design, QC, quantification, differential analysis, and interpretation in transcriptomics.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2016,
+    "verificationScope": "claim"
   },
   {
     "id": "src-probaST",
@@ -295,6 +339,399 @@
     "coreEvidence": "Structured assessment of participants, predictors, outcomes, analysis, applicability, and risk of bias in prediction models.",
     "verificationStatus": "verified",
     "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
-    "contentOrigin": "verified_seed"
+    "contentOrigin": "verified_seed",
+    "year": 2019,
+    "verificationScope": "claim"
+  },
+  {
+    "id": "src-prisma-2020",
+    "title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews",
+    "sourceName": "BMJ",
+    "year": 2021,
+    "tier": "B",
+    "sourceType": "guideline",
+    "doi": "10.1136/bmj.n71",
+    "pmid": "33782057",
+    "url": "https://www.prisma-statement.org/",
+    "coreEvidence": "PRISMA 2020 provides a 27-item checklist and flow-diagram framework for transparent reporting of systematic reviews.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-stard-2015",
+    "title": "STARD 2015: an updated list of essential items for reporting diagnostic accuracy studies",
+    "sourceName": "BMJ",
+    "year": 2015,
+    "tier": "B",
+    "sourceType": "guideline",
+    "doi": "10.1136/bmj.h5527",
+    "pmid": "26511519",
+    "coreEvidence": "STARD specifies essential reporting items for diagnostic accuracy studies, including participant flow, index-test thresholds, and reference standards.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-dag",
+    "title": "Causal diagrams for epidemiologic research",
+    "sourceName": "Epidemiology",
+    "year": 1999,
+    "tier": "B",
+    "sourceType": "methods",
+    "doi": "10.1097/00001648-199901000-00008",
+    "pmid": "9888278",
+    "coreEvidence": "Directed acyclic graphs encode causal assumptions and help distinguish confounders from colliders and mediators before model adjustment.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-target-trial",
+    "title": "Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available",
+    "sourceName": "American Journal of Epidemiology",
+    "year": 2016,
+    "tier": "B",
+    "sourceType": "methods",
+    "doi": "10.1093/aje/kwv254",
+    "pmid": "26994063",
+    "coreEvidence": "Explicitly specifying eligibility, treatment strategies, assignment, follow-up, outcomes, causal contrast, and analysis helps prevent design-time biases in observational causal analyses.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-roc",
+    "title": "The meaning and use of the area under a receiver operating characteristic curve",
+    "sourceName": "Radiology",
+    "year": 1982,
+    "tier": "B",
+    "sourceType": "methods",
+    "doi": "10.1148/radiology.143.1.7063747",
+    "pmid": "7063747",
+    "coreEvidence": "ROC AUC summarizes ranking discrimination across thresholds but does not establish calibration or clinical utility.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-deseq2",
+    "title": "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2",
+    "sourceName": "Genome Biology",
+    "year": 2014,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1186/s13059-014-0550-8",
+    "pmid": "25516281",
+    "coreEvidence": "DESeq2 models count data with negative-binomial generalized linear models and shrinks dispersion and fold-change estimates to improve stability.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-edger",
+    "title": "edgeR: a Bioconductor package for differential expression analysis of digital gene expression data",
+    "sourceName": "Bioinformatics",
+    "year": 2010,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1093/bioinformatics/btp616",
+    "pmid": "19910308",
+    "coreEvidence": "edgeR uses negative-binomial models with empirical-Bayes dispersion estimation for replicated count experiments.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-camera",
+    "title": "Camera: a competitive gene set test accounting for inter-gene correlation",
+    "sourceName": "Nucleic Acids Research",
+    "year": 2012,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1093/nar/gks461",
+    "pmid": "22638577",
+    "coreEvidence": "CAMERA adjusts competitive gene-set testing for inter-gene correlation, which otherwise inflates false positives.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-cibersort",
+    "title": "Robust enumeration of cell subsets from tissue expression profiles",
+    "sourceName": "Nature Methods",
+    "year": 2015,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1038/nmeth.3337",
+    "pmid": "25822800",
+    "coreEvidence": "CIBERSORT estimates relative cell-type fractions from bulk expression using a signature matrix; identifiability depends on reference quality and mixture assumptions.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-proteomics-missing",
+    "title": "Accounting for the Multiple Natures of Missing Values in Label-Free Quantitative Proteomics Data Sets to Compare Imputation Strategies",
+    "sourceName": "Journal of Proteome Research",
+    "year": 2016,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1021/acs.jproteome.5b00981",
+    "pmid": "26906401",
+    "coreEvidence": "Proteomics imputation should match the missingness mechanism and analysis stage rather than applying a single method indiscriminately.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-scrna-best",
+    "title": "Current best practices in single-cell RNA-seq analysis: a tutorial",
+    "sourceName": "Molecular Systems Biology",
+    "year": 2019,
+    "tier": "B",
+    "sourceType": "methods",
+    "doi": "10.15252/msb.20188746",
+    "pmid": "31217225",
+    "coreEvidence": "Single-cell workflows require explicit quality control, normalization, feature selection, dimensionality reduction, correction, annotation, and question-specific downstream analysis.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-doubletfinder",
+    "title": "DoubletFinder: Doublet Detection in Single-Cell RNA Sequencing Data Using Artificial Nearest Neighbors",
+    "sourceName": "Cell Systems",
+    "year": 2019,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1016/j.cels.2019.03.003",
+    "pmid": "30954475",
+    "coreEvidence": "DoubletFinder uses artificial nearest neighbors to flag likely doublets; heterotypic doublets are more detectable than homotypic ones.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-soupx",
+    "title": "SoupX removes ambient RNA contamination from droplet-based single-cell RNA sequencing data",
+    "sourceName": "GigaScience",
+    "year": 2020,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1093/gigascience/giaa151",
+    "pmid": "33367645",
+    "coreEvidence": "Ambient cell-free RNA is ubiquitous in droplet data and can create misleading expression unless contamination is estimated and corrected.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-sctransform",
+    "title": "Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression",
+    "sourceName": "Genome Biology",
+    "year": 2019,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1186/s13059-019-1874-1",
+    "pmid": "31870423",
+    "coreEvidence": "Regularized negative-binomial regression can stabilize UMI count variance while reducing sequencing-depth effects without heuristic pseudocount transforms.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-scib",
+    "title": "Benchmarking atlas-level data integration in single-cell genomics",
+    "sourceName": "Nature Methods",
+    "year": 2022,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1038/s41592-021-01336-8",
+    "pmid": "34949812",
+    "coreEvidence": "Integration methods trade batch removal against biological conservation; method choice should be benchmarked for the task and modality rather than inferred from visual mixing alone.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-rna-velocity",
+    "title": "RNA velocity of single cells",
+    "sourceName": "Nature",
+    "year": 2018,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1038/s41586-018-0414-6",
+    "pmid": "30089906",
+    "coreEvidence": "Spliced and unspliced transcript ratios can estimate short-term directional state change under model assumptions; velocity is not direct lineage tracing.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-copykat",
+    "title": "Delineating copy number and clonal substructure in human tumors from single-cell transcriptomes",
+    "sourceName": "Nature Biotechnology",
+    "year": 2021,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1038/s41587-020-00795-2",
+    "pmid": "33462507",
+    "coreEvidence": "copyKAT infers broad copy-number structure from single-cell transcriptomes to separate likely aneuploid tumor cells from diploid cells; inference is not DNA-level confirmation.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-spatial-original",
+    "title": "Visualization and analysis of gene expression in tissue sections by spatial transcriptomics",
+    "sourceName": "Science",
+    "year": 2016,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1126/science.aaf2403",
+    "pmid": "27365449",
+    "coreEvidence": "Spatial transcriptomics links positional barcodes to expression measurements, preserving tissue context while introducing spot-level mixture and resolution constraints.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-spark",
+    "title": "Statistical analysis of spatial expression patterns for spatially resolved transcriptomic studies",
+    "sourceName": "Nature Methods",
+    "year": 2020,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1038/s41592-019-0701-7",
+    "pmid": "31988518",
+    "coreEvidence": "SPARK models spatial expression patterns with generalized linear spatial models while controlling false discoveries across genes.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-mofa-plus",
+    "title": "MOFA+: a statistical framework for comprehensive integration of multi-modal single-cell data",
+    "sourceName": "Genome Biology",
+    "year": 2020,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1186/s13059-020-02015-1",
+    "pmid": "32393329",
+    "coreEvidence": "MOFA+ uses a latent-factor model to separate shared and modality-specific sources of variation across multi-omics views.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-diablo",
+    "title": "DIABLO: an integrative approach for identifying key molecular drivers from multi-omics assays",
+    "sourceName": "Bioinformatics",
+    "year": 2019,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1093/bioinformatics/bty1054",
+    "pmid": "30657866",
+    "coreEvidence": "DIABLO performs supervised multi-omics integration to select correlated features associated with a categorical outcome; validation must remain separated from supervised selection.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-ibsi",
+    "title": "The Image Biomarker Standardization Initiative: Standardized Quantitative Radiomics for High-Throughput Image-based Phenotyping",
+    "sourceName": "Radiology",
+    "year": 2020,
+    "tier": "B",
+    "sourceType": "guideline",
+    "doi": "10.1148/radiol.2020191145",
+    "pmid": "32154773",
+    "coreEvidence": "IBSI standardizes radiomics feature definitions and reference values to improve implementation reproducibility across software.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-pmsampsize",
+    "title": "Minimum sample size for developing a multivariable prediction model: Part II — binary and time-to-event outcomes",
+    "sourceName": "Statistics in Medicine",
+    "year": 2019,
+    "tier": "B",
+    "sourceType": "methods",
+    "doi": "10.1002/sim.7992",
+    "pmid": "30357870",
+    "coreEvidence": "Prediction-model sample size should be justified from outcome frequency, candidate parameters, anticipated performance, and shrinkage—not a universal events-per-variable rule.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-pm-external",
+    "title": "Minimum sample size calculations for external validation of a clinical prediction model with a time-to-event outcome",
+    "sourceName": "Statistics in Medicine",
+    "year": 2022,
+    "tier": "B",
+    "sourceType": "methods",
+    "doi": "10.1002/sim.9275",
+    "pmid": "34915593",
+    "coreEvidence": "External-evaluation sample size should target precision for calibration, discrimination, and net benefit rather than a fixed event count.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-single-cell-2023",
+    "title": "Best practices for single-cell analysis across modalities",
+    "sourceName": "Nature Reviews Genetics",
+    "year": 2023,
+    "tier": "B",
+    "sourceType": "methods",
+    "doi": "10.1038/s41576-023-00586-w",
+    "pmid": "37002403",
+    "coreEvidence": "Cross-modality single-cell analysis should follow question-specific, benchmark-informed workflows and preserve modality-specific measurement assumptions.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
+  },
+  {
+    "id": "src-milo",
+    "title": "Differential abundance testing on single-cell data using k-nearest neighbor graphs",
+    "sourceName": "Nature Biotechnology",
+    "year": 2022,
+    "tier": "A",
+    "sourceType": "primary_research",
+    "doi": "10.1038/s41587-021-01033-z",
+    "url": "https://www.nature.com/articles/s41587-021-01033-z",
+    "coreEvidence": "Milo tests differential abundance in overlapping graph neighborhoods, avoiding dependence on a single hard clustering while requiring sample-aware experimental design.",
+    "verificationStatus": "verified",
+    "verificationScope": "claim",
+    "lastVerifiedAt": "2026-08-24T00:00:00+08:00",
+    "contentOrigin": "verified_external"
   }
 ]
