@@ -1,45 +1,43 @@
-# Content provenance and evidence policy
+# ResearchOS content provenance and evidence policy
 
-## Required metadata
+*Rules that separate sources, claims, instructional status, imports, and optional AI critique.*
 
-Instructional entities include a stable ID, `contentOrigin`, `verificationStatus`, and one or more source IDs where the
-claim depends on external evidence. Sources record tier, type, bibliographic identifiers when available, a bounded core
-evidence statement, and `lastVerifiedAt`.
+---
 
-Origins are `verified_seed`, `human_authored`, `ai_generated`, or `imported`. Verification is `verified`, `pending`, or
-`rejected`. The central invariant is strict: AI-generated content can be pending or rejected, never self-verified.
+## 🏷️ Required metadata
 
-## Evidence tiers
+Every instructional entity has a stable ID, `contentOrigin`, `verificationStatus`, difficulty, misconception tags, and source IDs where a claim depends on evidence. Evidence sources include title, year, source tier/type, identifiers or official URL, bounded core-evidence text, verification date, and `verificationScope`.
 
-- **A** — primary benchmark or empirical research directly supporting a technical claim.
-- **B** — reporting guideline, methods paper, or authoritative appraisal framework.
-- **C** — exemplary paper used for analysis practice, not elevated into general guidance by itself.
-- **D** — local/imported context that may guide a prompt but is not a verified evidence source.
+Origins are `verified_seed`, `verified_external`, `human_authored`, `ai_generated`, or `imported`. Verification states are `verified`, `pending`, and `rejected`. Instructional readiness is separate: a scientifically verified method may remain a `draft` and is then excluded from scheduling.
 
-STROBE is treated as reporting guidance, not a study-quality scoring instrument. The 2015 TRIPOD paper remains as a
-foundational citation and the current official TRIPOD+AI statement is separately registered because it replaces the old
-checklist for contemporary prediction-model reporting.
+## 📚 Evidence tiers
 
-## Verification completed for v0.9
+| Tier | Use |
+|---|---|
+| A | Primary benchmark or empirical study directly supporting a technical claim |
+| B | Methods paper, reporting guideline, or authoritative appraisal framework |
+| C | Example paper for analysis practice, not general guidance by itself |
+| D | Local/imported context that may shape a prompt but is not verified evidence |
 
-On 2026-08-24, DOI/PMID pairs used by the seed set were checked against PubMed metadata where indexed, and guideline
-URLs were checked against their official sites. This review corrected the pseudoreplication, single-cell pseudobulk,
-internal-validation, trajectory-inference, and spatial-transcriptomics records before packaging.
+Reporting checklists such as STROBE, PRISMA, and TRIPOD are transparency frameworks—not numerical risk-of-bias or study-quality scores. Current TRIPOD+AI scope is registered separately from the foundational 2015 TRIPOD record.[^tripod]
 
-Primary verification endpoints:
+## ✅ Verification scopes
 
-- https://pubmed.ncbi.nlm.nih.gov/
-- https://www.strobe-statement.org/
-- https://www.tripod-statement.org/
-- https://www.consort-statement.org/
-- https://www.equator-network.org/
-- https://www.probast.org/
+- `identifier`: the DOI/PMID/URL resolves to the described bibliographic record.
+- `claim`: the bounded instructional statement was checked against the source's reported design/results/scope.
 
-## AI and imported material
+Identifier success alone never upgrades an unsupported claim. The content gate resolves all source foreign keys, blocks duplicate IDs/titles/DOIs/PMIDs, enforces required fields, and prohibits AI self-verification.
 
-Provider output is displayed as an optional review and retains its AI label. It does not overwrite the locked human
-answer or seed senior feedback. Imports and project notes are local context. A future human verification workflow may
-promote material only with explicit reviewer identity, date, and supporting source; v0.9 intentionally has no automatic
-promotion action.
+## 🤖 AI and imported material
 
-No copyrighted PDFs or licensed full text are distributed. Example papers contain public metadata only.
+Optional provider output is a labeled critique shown after a human answer is locked. Exact JSON parsing rejects malformed responses. Provider output cannot edit seed sources, mark itself verified, or become a review answer key.
+
+Imported notes, papers, and project context remain local user material. v0.10 has no automatic promotion workflow. A future promotion mechanism would require reviewer identity, review date, supporting sources, a claim-level rationale, and an auditable state transition.
+
+## 📊 v0.10 provenance outcome
+
+The shipped inventory contains 133 verified-seed and 153 verified-external records, with zero AI-generated verified records. All 286 records pass the verification-state gate; four method drafts are deliberately excluded from practice pending instructional expansion. Full audit evidence is in `CONTENT_AUDIT.md` and `SCIENTIFIC_REVIEW.md`.
+
+No copyrighted PDF or licensed full text is bundled. Example papers contain public metadata only.
+
+[^tripod]: [TRIPOD+AI scope](https://www.tripod-statement.org/scope/)

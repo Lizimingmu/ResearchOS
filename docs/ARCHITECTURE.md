@@ -1,54 +1,69 @@
-# Architecture
+# ResearchOS architecture
 
-## Runtime shape
+*Runtime, trust-boundary, persistence, and release architecture for v0.10.*
 
-```text
-React + TypeScript UI
-  ├─ typed seed content and learning engine
-  ├─ Zustand application store
-  └─ desktop service adapter
-          │ Tauri invoke
-Rust command boundary
-  ├─ SQLite (state, entities, papers, projects, responses, reviews, settings)
-  ├─ Windows Credential Manager (provider secrets)
-  ├─ reqwest (optional provider, PubMed, Crossref)
-  └─ backup integrity and import/export
+---
+
+## 🧩 Runtime shape
+
+```mermaid
+flowchart TB
+  accTitle: ResearchOS local-first architecture
+  accDescr: A React interface calls pure learning services and a central state store, which persists through Tauri commands to SQLite while secrets remain in Windows Credential Manager.
+  UI[React 19 workspaces] --> LE[Pure learning engine]
+  UI --> STORE[Zustand state and actions]
+  DATA[Typed provenance content] --> UI
+  STORE --> ADAPTER[Desktop service adapter]
+  ADAPTER -->|Tauri invoke| RUST[Rust command boundary]
+  RUST --> DB[(SQLite WAL)]
+  RUST --> CREDS[Windows Credential Manager]
+  RUST --> NET[Optional provider / PubMed / Crossref]
+  STORE -->|Browser preview only| LS[localStorage fallback]
+  classDef ui fill:#e8f1ff,stroke:#3767a6,color:#10233d
+  classDef boundary fill:#fff1e6,stroke:#b65d20,color:#4b2510
+  class UI,LE,STORE,DATA,ADAPTER ui
+  class RUST,DB,CREDS,NET,LS boundary
 ```
 
-Tauri creates the WebView window in Rust setup so an explicit WebView data directory can be placed under the selected
-ResearchOS data directory. The default is the operating-system application-data location; `RESEARCHOS_DATA_DIR` is a
-test/development override.
+Tauri creates one WebView window during Rust setup so its data directory can live beneath the selected ResearchOS data directory. That design supports isolated smoke runs and prevents WebView storage from escaping the chosen data root.
 
-## Frontend
+## 🖥️ Frontend boundaries
 
-`src/app` owns shell/navigation and keyboard commands. `src/features` contains one view per work area.
-`src/components/AttemptFlow.tsx` enforces confidence → lock → feedback → transfer. `src/learning` owns pure scheduler,
-review, and skill-evidence functions. `src/data` is typed, provenance-bearing seed content. `src/state/store.ts` owns
-runtime actions and persists serializable state through `src/services/desktop.ts`.
+`src/app` owns routing, lazy view boundaries, restoration, and global keyboard behavior. `src/features` contains workspaces; Paper Lab and PDF.js are lazy-loaded. `src/components/AttemptFlow.tsx` enforces the human-first contract. `src/learning` contains pure scheduler/review/scoring functions. `src/data` contains typed, source-linked seed content. `src/state/store.ts` is the only place that coordinates state mutations and persistence.
 
-## Backend commands
+Calibration is centralized in `recordCalibration`: it writes correctness once, adds one skill-evidence record, creates/updates one review, and opens an explicit misconception only for wrong high-confidence responses. Feature views cannot independently duplicate those side effects.
 
-- `load_state`, `save_state`, `database_health`
-- generic entity create/list/update/delete commands
-- `secure_set_api_key`, `secure_get_api_key`, `secure_delete_api_key`
-- `test_ai_provider`, `ai_review`
-- `verify_evidence` for PubMed E-utilities or Crossref
-- `export_backup`, `import_backup` with SQLite integrity validation
+## 💾 State and database
 
-The schema also materializes first-class tables for forward migration even though v0.9 persists a canonical JSON
-snapshot in `app_state` for atomic desktop restoration.
+The serializable frontend schema is v2 and migrates v1 without dropping user arrays/settings. A future unknown schema is rejected rather than downgraded or overwritten. Drafts, misconceptions, onboarding, assessment runs, recovery state, and persistence diagnostics are first-class state.
 
-## Security and trust boundaries
+Rust applies database migrations transactionally and verifies `PRAGMA user_version=2`. Canonical state is atomically stored in `app_state`; normalized/entity tables remain available for forward evolution. SQLite uses WAL, a five-second busy timeout, and five bounded pre-save snapshots. Backup import opens the candidate read-only, runs `PRAGMA integrity_check`, verifies ResearchOS state, and only then writes restored state.
 
-- API keys are never serialized into the Zustand snapshot or backup database.
-- AI review requires non-empty evidence context, uses a restrained reviewer system instruction, and cannot modify seed sources.
-- Content provenance rejects `contentOrigin: "ai_generated"` combined with `verificationStatus: "verified"`.
-- Network access is opt-in by action and limited by the Tauri content security policy to provider URLs and evidence services.
-- Imported backups are opened read-only, integrity checked, and required to contain ResearchOS state before replacement.
-- Local PDFs remain user-selected files; the distribution includes only public bibliographic metadata.
+## 🔌 Native commands
 
-## Build layout
+- State/data: `load_state`, `save_state`, `database_health`, `upsert_entity`, `list_entities`
+- Secrets: `secure_set_api_key`, `secure_get_api_key`, `secure_delete_api_key`
+- Optional network: `test_ai_provider`, `ai_review`, `verify_evidence`
+- Recovery: `export_backup`, `import_backup`
 
-TypeScript compiles to `.build`, Rollup emits `dist`, Cargo builds `src-tauri/target`, and Tauri packages an NSIS
-installer. `scripts/export-seed.mjs` produces inspectable JSON. `scripts/cargo-proxy.mjs` is an optional development-only
-transport workaround for environments where Cargo's native TLS path is blocked; normal installations use Cargo directly.
+The UI adapter returns structured failures; save errors are exposed in System Health instead of being swallowed.
+
+## 🛡️ Security and scientific trust
+
+- Provider credentials never enter Zustand, SQLite state, backups, exports, prompts, or logs.
+- The learner's answer is locked before optional AI review; model output cannot alter the original response or seed content.
+- AI requests delimit untrusted learner text, use task-specific instructions, require exact JSON, and reject malformed payloads.
+- `contentOrigin=ai_generated` cannot coexist with `verificationStatus=verified`.
+- Identifier resolution and claim verification are separate scopes.
+- Network calls are optional; local learning, projects, PDF use, review, and exports remain functional without a provider.
+- Local PDFs remain user-selected. No licensed full text is distributed.
+
+## ⚡ Performance boundaries
+
+Initial JavaScript is 1,852,793 bytes; Paper Lab (862,770 bytes), its worker (1,232,303 bytes), and expanded training content (81,995 bytes) are separate payloads. Global search demand-loads content indexes. Today uses narrowed Zustand selectors, and deterministic scheduling averages 0.1307 ms.
+
+## 📦 Build and release
+
+TypeScript emits `.build`, Rollup emits `dist`, Cargo builds `src-tauri/target`, and Tauri packages an NSIS current-user installer. Content/performance reports are generated release gates. Version is aligned across npm, Cargo, Tauri, build metadata, artifact names, and schema documentation.
+
+The local Cargo transport proxy/configuration used in the restricted build environment is development-only and is not packaged or retained as release configuration.

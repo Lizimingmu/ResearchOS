@@ -1,49 +1,61 @@
-# ResearchOS v0.9
+# ResearchOS v0.10
 
-ResearchOS is a local-first Windows desktop workspace for deliberate practice in biomedical research judgment,
-methods, evidence calibration, paper reconstruction, project transfer, and human oversight of AI analysis plans.
-It is an educational research tool, not a clinical decision-support system.
+*A local-first Windows desktop system for deliberate practice in medical-research methods, scientific judgment, paper reading, project transfer, and human oversight of AI.*
 
-## Delivered scope
+---
 
-- Tauri 2 / React 19 / TypeScript desktop application with a Rust and SQLite backend.
-- Eleven IDE-style work areas: Today, Library, Paper Lab, Method Lab, Review, AI Audit, Frontier,
-  Projects, Skill Map, Blind Assessment, and Settings.
-- Human-first attempt flow: confidence is recorded and the answer is locked before feedback appears.
-- Evidence provenance on instructional content, including source IDs, DOI/PMID/URL metadata, origin, and verification state.
-- Offline core workflow with optional OpenAI-compatible provider calls and PubMed/Crossref verification.
-- Windows Credential Manager storage for API keys; keys are excluded from state exports.
-- 7-day starter track, 40+ method concepts, 18 research patterns, 30 judgment cards, and 15 AI-audit cases.
-- SQLite backup/import, dark/light themes, keyboard command palette, and an NSIS current-user installer.
+## 🧭 What changed in v0.10
 
-## Install
+- A complete answer → confidence → locked feedback → transfer → delayed variant-review loop.
+- Explicit high-confidence misconceptions that cannot clear until a correct unfamiliar variant.
+- First-run research orientation and a blind three-case baseline assessment.
+- A five-task Today queue balancing foundations, current weaknesses, project relevance, due reviews, and occasional frontier work.
+- 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, and 40 AI-audit cases.
+- Versioned state/SQLite migrations, atomic persistence, five recovery snapshots, health diagnostics, and JSON/CSV/Markdown exports.
+- Demand-loaded search/content/PDF workspaces; initial JavaScript is 36.7% smaller than the audited v0.9 baseline.
 
-Run `release/ResearchOS_0.9.0_x64-setup.exe`. The installer is currently unsigned, so Windows may display a
-publisher warning. User state is stored in the standard ResearchOS application-data directory. Set
-`RESEARCHOS_DATA_DIR` only when an explicit alternate data directory is needed for development or testing.
+ResearchOS is an educational research tool, not clinical decision support. Its mechanisms align with established learning principles, but the product has not been shown in a trial to improve research competence or patient outcomes.
 
-## Develop and verify
+## 📦 Install
 
-Prerequisites are Node.js 20+, Rust stable, Microsoft C++ build tools, WebView2, and NSIS prerequisites used by Tauri.
+Verify `release/ResearchOS_0.10.0_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.10.0_x64.exe` is also provided.
+
+v0.9 artifacts remain in `release/` for rollback and were not overwritten. Exact sizes, schema versions, toolchain, and digests are in `release/BUILD_METADATA_v0.10.0.json`.
+
+## 🛠️ Develop and verify
+
+Prerequisites: Node.js 20+, Rust stable, Microsoft C++ build tools, WebView2, and Tauri/NSIS Windows build prerequisites.
 
 ```powershell
 npm install
+npm run lint
+npm run typecheck
 npm test
-npm run seed:export
-npm run tauri:dev
+npm run content:audit
+npm run performance:audit
+cargo test --manifest-path src-tauri/Cargo.toml
 npm run tauri:build
 ```
 
-The frontend build intentionally uses Rollup directly after TypeScript compilation so it remains usable in restricted
-Windows environments where Vite's esbuild child process is blocked.
+The frontend uses TypeScript plus Rollup after compilation so production builds remain usable where Vite's esbuild child process is restricted.
 
-## Documentation
+## 💾 Data, privacy, and recovery
 
-- `docs/PRODUCT_SPEC.md` — implemented product behavior and acceptance mapping
-- `docs/ARCHITECTURE.md` — components, storage, commands, and security boundaries
-- `docs/LEARNING_ENGINE.md` — scheduler, review model, and skill evidence
-- `docs/CONTENT_PROVENANCE.md` — source tiers, labels, and verification policy
-- `docs/TEST_REPORT.md` — automated, native, persistence, and packaging evidence
-- `docs/FINAL_HANDOFF.md` — artifacts, operation, limitations, and next steps
+Core practice is offline. SQLite stores application state under the Tauri-resolved application-data directory; `RESEARCHOS_DATA_DIR` is an explicit development/test override. Schema v1 migrates transactionally to v2, and each save keeps at most five pre-save recovery snapshots.
 
-The controlling project specification is `ResearchOS_v0.9_Codex_Master_Prompt.md`.
+Provider use is optional and occurs only after a human answer is locked. API keys use Windows Credential Manager and are excluded from state, backups, and exports. Imported backups are opened read-only, integrity checked, and required to contain ResearchOS state before restoration. External PDFs and credentials are not copied into backups.
+
+## 📚 Documentation
+
+- `docs/PRODUCT_SPEC.md` — implemented behavior and non-goals
+- `docs/ARCHITECTURE.md` — runtime, boundaries, persistence, and performance
+- `docs/LEARNING_ENGINE.md` — scheduler and state model
+- `docs/LEARNING_ENGINE_VALIDATION.md` — mechanism-by-mechanism validation and limits
+- `docs/CONTENT_PROVENANCE.md` — source/verification policy
+- `docs/CONTENT_AUDIT.md` and `docs/SCIENTIFIC_REVIEW.md` — automated and human scientific review
+- `docs/UX_AUDIT.md` and `docs/PERFORMANCE_AUDIT.md` — experience/performance evidence
+- `docs/IMPROVEMENT_LOG.md` — autonomous audit loops
+- `docs/TEST_REPORT.md` — final release gates
+- `docs/FINAL_HANDOFF.md` — artifacts, risks, and future work
+
+The controlling specifications are `ResearchOS_v0.9_Codex_Master_Prompt.md` and the v0.10 autonomous-depth directive supplied for this release.

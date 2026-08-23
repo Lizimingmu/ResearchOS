@@ -1,42 +1,45 @@
-# Learning engine
+# ResearchOS learning engine
 
-## Daily scheduler
+*Operational specification for Today, attempts, misconceptions, review, scoring, and blind assessment in v0.10.*
 
-The default priority score is:
+---
 
-```text
-0.35 × weakness + 0.30 × project relevance + 0.20 × frontier value + 0.15 × review due
-```
+## 🎯 Today scheduler
 
-Weights are editable in Settings and persisted. Today produces a bounded five-task queue designed for roughly 30–45
-minutes: retrieval, paper evidence reconstruction, method judgment, AI audit, and project transfer. The queue favors a
-dangerous misconception when one is due but preserves variety.
+Today ranks eligible tasks with five configurable signals: weakness, project relevance, due review, frontier value, and misconception risk. Selection then enforces a bounded five-task mix: foundation, current weakness, project relevance, due retrieval, and occasional frontier material. It never turns accumulated overdue work into a punitive backlog counter.
 
-## Attempt contract
+Difficulty labels are Foundation, Intermediate, Advanced, and Frontier. Variety rules avoid consecutive advanced-heavy tasks. Project and onboarding context affect relevance without overriding urgent misconceptions.
 
-1. Present the problem without the reference answer.
-2. Capture an answer and confidence from 1–4.
+## 🔒 Attempt contract
+
+1. Present an uncued problem and autosave the learner's draft.
+2. Capture confidence before correctness is known.
 3. Lock and persist the original response.
-4. Reveal correct points, omissions, severity, rationale, maximal conclusion, and sources.
-5. Record transfer into a project where applicable.
-6. Create or update a delayed review item.
+4. Reveal source-bounded senior feedback.
+5. Record a concrete project transfer where applicable.
+6. Schedule delayed review and update evidence exactly once.
+7. Optionally request AI critique only after lock; it remains a labeled secondary review.
 
-This contract is shared across methods, judgment cards, reviews, and AI-audit cases. Completion alone is not mastery.
+Opening, drafting, or completing a screen does not equal mastery.
 
-## Review state
+## 🧯 Misconception state machine
 
-Review items retain due date, stability, difficulty, lapse count, last review, and dangerous-misconception status. The
-v0.9 algorithm is FSRS-compatible in state shape and behavior, not a claim of parameter equivalence to the full FSRS
-reference implementation. Correct answers increase stability; partial or wrong answers increase difficulty and shorten
-the interval. Wrong answers at confidence 3–4 are scheduled for the next day and explicitly marked dangerous.
+A wrong response with high confidence opens an explicit misconception linked to the concept and original response. It receives next-day review priority. Review shows an unfamiliar variant rather than the original wording. Only a correct variant resolution closes it; partial/wrong ratings preserve the open misconception and shorten the next interval.
 
-## Skill evidence
+`recordCalibration` is idempotent, so repeated clicks/renders cannot create duplicate correctness, evidence, review, or misconception records.
 
-The skill map aggregates locked responses, correctness, confidence calibration, delay, and transfer evidence into broad
-bands. It withholds a score below two observations, shows low/moderate/substantial evidence rather than false precision,
-and down-weights confidently wrong responses. The displayed numeric approximation is rounded to tens.
+## 🗓️ Review state
 
-## Blind assessment
+Reviews store due date, stability, difficulty, lapse count, last-review time, and misconception linkage. Correct retrieval expands stability; partial/wrong retrieval increases difficulty and shortens the interval. The state is FSRS-compatible but the interval heuristic is not presented as the full FSRS reference optimizer.
 
-Blind assessment uses an unfamiliar case and eight fixed prompts. It records a locked attempt without awarding an
-automatic score. Longitudinal change requires later rubric-based review, preventing mere completion from inflating mastery.
+## 📏 Skill evidence
+
+Scores are withheld below three observations across at least two concepts. Evidence combines correctness, confidence calibration, delayed retrieval, task difficulty, project transfer, and unresolved misconceptions. The UI reports broad bands, reliability, observation count, and last-tested date; rounded values are orientation aids, not validated psychometric traits.
+
+## 🧪 Blind assessment
+
+First-run baseline and later assessment use three unfamiliar cases. The original response is locked, references remain hidden until submission, and six research-judgment domains are scored 0/1/2: framing, design, bias, analysis, interpretation, and transfer. Baseline and later runs can be compared, but assessment completion never creates skill mastery by itself.
+
+## 🧾 Validation boundary
+
+Implementation and state-transition evidence is documented in `LEARNING_ENGINE_VALIDATION.md`. The mechanisms align with retrieval, spacing, interleaving, feedback, transfer, confidence calibration, misconception correction, and blind assessment. That alignment is not proof that ResearchOS improves research competence.

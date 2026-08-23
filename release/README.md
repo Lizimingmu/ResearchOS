@@ -1,4 +1,7 @@
-# ResearchOS v0.9 release
+# ResearchOS Windows releases
 
-The NSIS installer and standalone executable are copied here from the verified Tauri release build. Verify both files
-against `SHA256SUMS.txt` before distribution. This v0.9 build is unsigned.
+The versioned NSIS installers and standalone executables are copied here from verified Tauri release builds. Verify files
+against `SHA256SUMS.txt` before distribution. These builds are unsigned; Windows may show a SmartScreen warning.
+
+The current release is v0.10.0. The v0.9.0 artifacts are retained for rollback and were not overwritten. Reproducible
+version, toolchain, schema, size, and digest information is recorded in `BUILD_METADATA_v0.10.0.json`.
