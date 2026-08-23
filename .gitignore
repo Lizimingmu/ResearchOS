@@ -6,7 +6,7 @@ dist/
 .build/
 .test-build/
 .runtime-data/
-.smoke-data*/
+.smoke-*/
 src-tauri/target/
 src-tauri/gen/
 *.log
