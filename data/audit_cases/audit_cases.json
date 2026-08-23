@@ -1,0 +1,813 @@
+[
+  {
+    "id": "audit-01",
+    "title": "Cell-level DEG plan",
+    "domain": "single-cell",
+    "task": "Compare subtype 2 vs subtype 1 within tumor macrophages.",
+    "context": "Six patients per subtype; cell yield varies ten-fold.",
+    "steps": [
+      {
+        "id": "a01-1",
+        "text": "Pool all macrophages by subtype.",
+        "expected": "reject",
+        "issue": "Removes patient-level replication and hides heterogeneity.",
+        "severity": "critical"
+      },
+      {
+        "id": "a01-2",
+        "text": "Run cell-level Wilcoxon FindMarkers.",
+        "expected": "reject",
+        "issue": "Pseudoreplication for a patient-level subtype contrast.",
+        "severity": "critical"
+      },
+      {
+        "id": "a01-3",
+        "text": "Keep genes with raw P<0.05.",
+        "expected": "reject",
+        "issue": "No multiple-testing control or effect threshold.",
+        "severity": "major"
+      },
+      {
+        "id": "a01-4",
+        "text": "Run KEGG on significant genes.",
+        "expected": "question",
+        "issue": "Only interpretable after a valid DEG result and explicit universe/direction.",
+        "severity": "major"
+      },
+      {
+        "id": "a01-5",
+        "text": "Claim subtype-specific macrophage biology.",
+        "expected": "reject",
+        "issue": "Confounding and patient consistency are unaddressed.",
+        "severity": "critical"
+      }
+    ],
+    "missedRisks": [
+      "Patient-level confounding",
+      "Unequal cell yield",
+      "Per-patient direction",
+      "FDR and effect-size threshold"
+    ],
+    "seniorSummary": "The plan's central error is using cells as independent replicates. Rebuild the contrast at patient×cell-type level and retain subject covariates.",
+    "transferPrompt": "Write the aggregation key and design formula for your analogous comparison.",
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-pseudorep",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-02",
+    "title": "Survival model plan",
+    "domain": "survival",
+    "task": "Test whether a protein predicts overall survival.",
+    "context": "140 patients, 31 deaths, 18 candidate covariates.",
+    "steps": [
+      {
+        "id": "a02-1",
+        "text": "Dichotomize every continuous variable at its median.",
+        "expected": "reject",
+        "issue": "Information loss and arbitrary cutpoints.",
+        "severity": "major"
+      },
+      {
+        "id": "a02-2",
+        "text": "Run univariable Cox models and retain P<0.05 variables.",
+        "expected": "reject",
+        "issue": "Data-driven screening omits confounder/prognostic rationale and adds instability.",
+        "severity": "major"
+      },
+      {
+        "id": "a02-3",
+        "text": "Fit the retained variables plus protein in one Cox model.",
+        "expected": "question",
+        "issue": "31 events may not support the effective complexity; penalization/pre-specification needed.",
+        "severity": "critical"
+      },
+      {
+        "id": "a02-4",
+        "text": "Check proportional hazards and nonlinear functional form.",
+        "expected": "approve"
+      },
+      {
+        "id": "a02-5",
+        "text": "Report adjusted HR and confidence interval.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Event-limited information",
+      "Missing-data plan",
+      "Assay/cutpoint pre-specification",
+      "Internal optimism"
+    ],
+    "seniorSummary": "The AI selected variables and transformations from the same sparse outcome data. The adjusted HR would likely be unstable.",
+    "transferPrompt": "Count events and effective parameters in your planned survival model.",
+    "sourceIds": [
+      "src-cox",
+      "src-remark",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-03",
+    "title": "Model validation plan",
+    "domain": "prediction",
+    "task": "Validate a recurrence model developed at center A.",
+    "context": "Center B has 260 patients and 70 events.",
+    "steps": [
+      {
+        "id": "a03-1",
+        "text": "Refit all coefficients in center B.",
+        "expected": "reject",
+        "issue": "This prevents untouched validation of the original model.",
+        "severity": "critical"
+      },
+      {
+        "id": "a03-2",
+        "text": "Select a new optimal risk threshold in center B.",
+        "expected": "reject",
+        "issue": "Uses validation outcomes to tune the decision rule.",
+        "severity": "major"
+      },
+      {
+        "id": "a03-3",
+        "text": "Report C-index only.",
+        "expected": "reject",
+        "issue": "Absolute-risk calibration and clinical utility are missing.",
+        "severity": "major"
+      },
+      {
+        "id": "a03-4",
+        "text": "Apply the full locked model and preprocessing first.",
+        "expected": "approve"
+      },
+      {
+        "id": "a03-5",
+        "text": "Report calibration intercept, slope, plot, and discrimination.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Missing predictor handling",
+      "Setting/case-mix differences",
+      "Confidence intervals",
+      "Updating must be separate"
+    ],
+    "seniorSummary": "Untouched application must precede any recalibration or model updating.",
+    "transferPrompt": "List the exact model objects that must remain locked in your external validation.",
+    "sourceIds": [
+      "src-tripod",
+      "src-calibration",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-04",
+    "title": "Cell proportion plan",
+    "domain": "single-cell",
+    "task": "Compare regulatory T-cell abundance between responders and nonresponders.",
+    "context": "Five versus five patients with unequal capture depth.",
+    "steps": [
+      {
+        "id": "a04-1",
+        "text": "Pool all cells within response groups.",
+        "expected": "reject",
+        "issue": "Destroys patient-level variation.",
+        "severity": "critical"
+      },
+      {
+        "id": "a04-2",
+        "text": "Apply chi-square test to pooled counts.",
+        "expected": "reject",
+        "issue": "Cells are not independent and composition is ignored.",
+        "severity": "critical"
+      },
+      {
+        "id": "a04-3",
+        "text": "Plot each patient's proportion and total captured cells.",
+        "expected": "approve"
+      },
+      {
+        "id": "a04-4",
+        "text": "Use a sample-aware abundance/compositional model.",
+        "expected": "approve"
+      },
+      {
+        "id": "a04-5",
+        "text": "Interpret captured fraction as absolute tissue abundance.",
+        "expected": "reject",
+        "issue": "Dissociation and sampling affect capture proportions.",
+        "severity": "major"
+      }
+    ],
+    "missedRisks": [
+      "QC/dissociation differences",
+      "Tumor purity",
+      "Covariate imbalance",
+      "Cell label uncertainty"
+    ],
+    "seniorSummary": "The inferential unit is patient; pooled-cell significance cannot establish response-group abundance.",
+    "transferPrompt": "Create a per-patient abundance plot for one cell class in your project.",
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-05",
+    "title": "Spatial mechanism plan",
+    "domain": "spatial",
+    "task": "Test whether macrophages drive exhausted T-cell niches.",
+    "context": "Three tumors; spot-based transcriptomics and matched histology.",
+    "steps": [
+      {
+        "id": "a05-1",
+        "text": "Compute spot-level ligand–receptor scores.",
+        "expected": "question",
+        "issue": "Useful hypothesis generation, but resolution and mixture must be explicit.",
+        "severity": "minor"
+      },
+      {
+        "id": "a05-2",
+        "text": "Pool spots and test adjacency as independent observations.",
+        "expected": "reject",
+        "issue": "Patient/section nesting is ignored.",
+        "severity": "critical"
+      },
+      {
+        "id": "a05-3",
+        "text": "Adjust for tissue compartment and local density.",
+        "expected": "approve"
+      },
+      {
+        "id": "a05-4",
+        "text": "Validate proximity with multiplex imaging.",
+        "expected": "approve"
+      },
+      {
+        "id": "a05-5",
+        "text": "Conclude causal macrophage signaling.",
+        "expected": "reject",
+        "issue": "Proximity/expression lacks direction and perturbation.",
+        "severity": "critical"
+      }
+    ],
+    "missedRisks": [
+      "Spot mixtures",
+      "Three-patient generalizability",
+      "Serial-section dependence",
+      "Functional perturbation"
+    ],
+    "seniorSummary": "The data can establish spatial association, not a causal interaction. Mechanism needs molecular and functional intervention.",
+    "transferPrompt": "Name one anatomical confounder and one perturbation for your spatial hypothesis.",
+    "sourceIds": [
+      "src-spatial",
+      "src-cellchat",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-06",
+    "title": "Pathway enrichment plan",
+    "domain": "omics",
+    "task": "Interpret a tumor-vs-normal transcriptomic contrast.",
+    "context": "12 paired samples; 18,000 tested genes.",
+    "steps": [
+      {
+        "id": "a06-1",
+        "text": "Use paired patient design for gene-level statistics.",
+        "expected": "approve"
+      },
+      {
+        "id": "a06-2",
+        "text": "Select raw P<0.05 genes.",
+        "expected": "reject",
+        "issue": "Multiplicity is ignored.",
+        "severity": "major"
+      },
+      {
+        "id": "a06-3",
+        "text": "Use every known human gene as ORA background.",
+        "expected": "reject",
+        "issue": "Background should reflect genes eligible/tested in the assay.",
+        "severity": "major"
+      },
+      {
+        "id": "a06-4",
+        "text": "Run signed ranked enrichment with FDR.",
+        "expected": "approve"
+      },
+      {
+        "id": "a06-5",
+        "text": "Call enriched pathways activated mechanisms.",
+        "expected": "reject",
+        "issue": "Expression enrichment is not pathway activity or causality.",
+        "severity": "major"
+      }
+    ],
+    "missedRisks": [
+      "Gene-set version",
+      "Redundant sets",
+      "Leading-edge genes",
+      "Patient-level effect consistency"
+    ],
+    "seniorSummary": "A valid paired gene-level statistic and explicit enrichment universe are prerequisites; interpret pathways as programs, not mechanisms.",
+    "transferPrompt": "Record the gene universe and ranking statistic for your next enrichment run.",
+    "sourceIds": [
+      "src-gsea",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-07",
+    "title": "Clustering plan",
+    "domain": "molecular subtype",
+    "task": "Discover proteomic subtypes associated with survival.",
+    "context": "85 tumors, two acquisition batches.",
+    "steps": [
+      {
+        "id": "a07-1",
+        "text": "Normalize and examine batch–clinical balance.",
+        "expected": "approve"
+      },
+      {
+        "id": "a07-2",
+        "text": "Try k=2…10 and choose the smallest survival P value.",
+        "expected": "reject",
+        "issue": "Outcome-guided cluster selection causes double dipping.",
+        "severity": "critical"
+      },
+      {
+        "id": "a07-3",
+        "text": "Check resampling stability and batch composition.",
+        "expected": "approve"
+      },
+      {
+        "id": "a07-4",
+        "text": "Describe pathways distinguishing the selected clusters.",
+        "expected": "question",
+        "issue": "Descriptive only until selection and enrichment are valid.",
+        "severity": "minor"
+      },
+      {
+        "id": "a07-5",
+        "text": "Call the clusters validated clinical subtypes.",
+        "expected": "reject",
+        "issue": "No locked classifier or independent cohort.",
+        "severity": "critical"
+      }
+    ],
+    "missedRisks": [
+      "Missing protein mechanism",
+      "Cluster assignment for new samples",
+      "Multiple survival comparisons",
+      "Small cohort"
+    ],
+    "seniorSummary": "Choose and validate structure independently of the same outcome test; external assignment is needed for a subtype claim.",
+    "transferPrompt": "Choose two perturbations under which your subtype solution should remain stable.",
+    "sourceIds": [
+      "src-clustering",
+      "src-batch",
+      "src-leakage"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-08",
+    "title": "Multi-omics integration plan",
+    "domain": "multi-omics",
+    "task": "Find a cross-omic treatment-response signature.",
+    "context": "Matched RNA, protein, and methylation in 48 patients.",
+    "steps": [
+      {
+        "id": "a08-1",
+        "text": "Filter features using response labels in all patients.",
+        "expected": "reject",
+        "issue": "Supervised selection leaks outcomes into evaluation.",
+        "severity": "critical"
+      },
+      {
+        "id": "a08-2",
+        "text": "Concatenate z-scored modalities.",
+        "expected": "question",
+        "issue": "A baseline is possible but weights, missingness, and scale assumptions need justification.",
+        "severity": "minor"
+      },
+      {
+        "id": "a08-3",
+        "text": "Randomly split omic rows rather than patients.",
+        "expected": "reject",
+        "issue": "Patient identity must define the split.",
+        "severity": "critical"
+      },
+      {
+        "id": "a08-4",
+        "text": "Nest integration, selection, and tuning inside patient-level CV.",
+        "expected": "approve"
+      },
+      {
+        "id": "a08-5",
+        "text": "Compare against modality-specific and clinical baselines.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Small-sample instability",
+      "Missing modalities",
+      "Batch per modality",
+      "Calibration"
+    ],
+    "seniorSummary": "The full integration procedure—not only the last classifier—must be evaluated within patient-level resampling.",
+    "transferPrompt": "Draw your integration and model-selection operations inside an outer patient split.",
+    "sourceIds": [
+      "src-leakage",
+      "src-multiomics",
+      "src-internal-validation"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-09",
+    "title": "Biomarker plan",
+    "domain": "biomarker",
+    "task": "Develop an IHC marker for recurrence risk.",
+    "context": "Discovery tissue microarray and a second core from the same patients.",
+    "steps": [
+      {
+        "id": "a09-1",
+        "text": "Optimize staining cutoff against recurrence.",
+        "expected": "question",
+        "issue": "Permissible discovery, but must be labeled and locked before validation.",
+        "severity": "major"
+      },
+      {
+        "id": "a09-2",
+        "text": "Use the second core from the same patients as external validation.",
+        "expected": "reject",
+        "issue": "This is technical/spatial replication, not independent clinical validation.",
+        "severity": "critical"
+      },
+      {
+        "id": "a09-3",
+        "text": "Report inter-reader and assay reproducibility.",
+        "expected": "approve"
+      },
+      {
+        "id": "a09-4",
+        "text": "Adjust for established clinical prognostic factors.",
+        "expected": "approve"
+      },
+      {
+        "id": "a09-5",
+        "text": "Claim the marker is ready for clinical use.",
+        "expected": "reject",
+        "issue": "External validity and utility are absent.",
+        "severity": "critical"
+      }
+    ],
+    "missedRisks": [
+      "Cutpoint optimism",
+      "Missing-data selection",
+      "Incremental value",
+      "Clinical-grade assay"
+    ],
+    "seniorSummary": "Analytical replication and independent clinical validation answer different questions and must not be conflated.",
+    "transferPrompt": "Separate your biomarker evidence into analytical validity, clinical validity, and utility.",
+    "sourceIds": [
+      "src-remark",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-10",
+    "title": "Organoid drug plan",
+    "domain": "organoid",
+    "task": "Test a targeted drug in patient-derived organoids.",
+    "context": "Two donor lines; eight wells per dose.",
+    "steps": [
+      {
+        "id": "a10-1",
+        "text": "Treat every well as an independent n.",
+        "expected": "reject",
+        "issue": "Wells are nested technical observations.",
+        "severity": "critical"
+      },
+      {
+        "id": "a10-2",
+        "text": "Fit dose-response curves per donor.",
+        "expected": "approve"
+      },
+      {
+        "id": "a10-3",
+        "text": "Report target engagement and normal-cell selectivity.",
+        "expected": "approve"
+      },
+      {
+        "id": "a10-4",
+        "text": "Use the concentration with maximal effect without exposure context.",
+        "expected": "reject",
+        "issue": "Clinical plausibility and dose selection are unaddressed.",
+        "severity": "major"
+      },
+      {
+        "id": "a10-5",
+        "text": "Claim likely patient efficacy.",
+        "expected": "reject",
+        "issue": "Two in vitro donors do not establish clinical benefit.",
+        "severity": "critical"
+      }
+    ],
+    "missedRisks": [
+      "Independent donor number",
+      "Assay reproducibility",
+      "Vehicle/positive controls",
+      "PK/PD"
+    ],
+    "seniorSummary": "Evidence supports responses in tested organoids only; donor-level replication, pharmacology, and in vivo/clinical triangulation are missing.",
+    "transferPrompt": "State your biological replicate and clinically plausible exposure range.",
+    "sourceIds": [
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-11",
+    "title": "Causal language plan",
+    "domain": "scientific reasoning",
+    "task": "Draft a narrative from cross-sectional tumor profiling.",
+    "context": "Expression, survival association, and pathway enrichment only.",
+    "steps": [
+      {
+        "id": "a11-1",
+        "text": "Say the factor is associated with poor survival.",
+        "expected": "approve"
+      },
+      {
+        "id": "a11-2",
+        "text": "Say the factor drives metastasis.",
+        "expected": "reject",
+        "issue": "No perturbation, temporality, or causal identification.",
+        "severity": "critical"
+      },
+      {
+        "id": "a11-3",
+        "text": "Say enriched programs are compatible with EMT biology.",
+        "expected": "approve"
+      },
+      {
+        "id": "a11-4",
+        "text": "Say pathway analysis proves EMT activation.",
+        "expected": "reject",
+        "issue": "Enrichment is annotation-level expression evidence.",
+        "severity": "major"
+      },
+      {
+        "id": "a11-5",
+        "text": "Propose perturbation and rescue as next experiments.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Confounding",
+      "Cell-composition effects",
+      "Independent cohort",
+      "Protein localization"
+    ],
+    "seniorSummary": "Calibrate verbs to evidence: association and program compatibility are supported; mechanistic driving is not.",
+    "transferPrompt": "Audit the causal verbs in one current figure title.",
+    "sourceIds": [
+      "src-strobe",
+      "src-gsea"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-12",
+    "title": "Figure narrative plan",
+    "domain": "storytelling",
+    "task": "Organize a paper on a candidate immune target.",
+    "context": "Data include cohort association, scRNA localization, spatial proximity, cell-line knockdown, and mouse response.",
+    "steps": [
+      {
+        "id": "a12-1",
+        "text": "Open with cohort/question and discovery.",
+        "expected": "approve"
+      },
+      {
+        "id": "a12-2",
+        "text": "Place localization before claiming a cell-specific mechanism.",
+        "expected": "approve"
+      },
+      {
+        "id": "a12-3",
+        "text": "Present spatial proximity as functional validation.",
+        "expected": "reject",
+        "issue": "Spatial association does not validate function.",
+        "severity": "major"
+      },
+      {
+        "id": "a12-4",
+        "text": "Use perturbation then in vivo response to climb the evidence ladder.",
+        "expected": "approve"
+      },
+      {
+        "id": "a12-5",
+        "text": "End with clinical efficacy as established.",
+        "expected": "reject",
+        "issue": "Mouse efficacy is not clinical efficacy.",
+        "severity": "critical"
+      }
+    ],
+    "missedRisks": [
+      "Rescue",
+      "Target engagement",
+      "Independent human validation",
+      "Therapeutic window"
+    ],
+    "seniorSummary": "The narrative should make each figure perform one evidence task and keep the terminal claim at preclinical support.",
+    "transferPrompt": "Label the evidence job of each figure in your draft with one verb phrase.",
+    "sourceIds": [
+      "src-spatial",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-13",
+    "title": "Literature citation plan",
+    "domain": "evidence",
+    "task": "Support a method choice using an AI-generated reading list.",
+    "context": "The AI supplies 12 DOI/PMID pairs without quotations or metadata checks.",
+    "steps": [
+      {
+        "id": "a13-1",
+        "text": "Save all citations as verified because identifiers look plausible.",
+        "expected": "reject",
+        "issue": "Plausible identifiers can be fabricated or mismatched.",
+        "severity": "critical"
+      },
+      {
+        "id": "a13-2",
+        "text": "Resolve identifiers through PubMed/Crossref.",
+        "expected": "approve"
+      },
+      {
+        "id": "a13-3",
+        "text": "Check that each source supports the exact claim.",
+        "expected": "approve"
+      },
+      {
+        "id": "a13-4",
+        "text": "Keep unresolved items pending while offline.",
+        "expected": "approve"
+      },
+      {
+        "id": "a13-5",
+        "text": "Let AI-generated explanation overwrite user notes.",
+        "expected": "reject",
+        "issue": "Original user work and generated content must remain separate.",
+        "severity": "critical"
+      }
+    ],
+    "missedRisks": [
+      "Retractions/corrections",
+      "Guideline version",
+      "Primary vs secondary source",
+      "Verification timestamp"
+    ],
+    "seniorSummary": "Metadata resolution is necessary but not sufficient: claim-level support must also be inspected, and generated content remains distinct.",
+    "transferPrompt": "Choose one citation in your project and record identifier, source type, supported claim, and verification date.",
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-14",
+    "title": "Data leakage plan",
+    "domain": "machine learning",
+    "task": "Build a histology–omics survival model.",
+    "context": "Three slides and multiple tiles per patient; 130 patients.",
+    "steps": [
+      {
+        "id": "a14-1",
+        "text": "Normalize all slides before splitting.",
+        "expected": "question",
+        "issue": "Fixed normalization may be acceptable; learned normalization must be trained within folds.",
+        "severity": "major"
+      },
+      {
+        "id": "a14-2",
+        "text": "Randomly split image tiles into folds.",
+        "expected": "reject",
+        "issue": "Tiles from one patient leak identity across folds.",
+        "severity": "critical"
+      },
+      {
+        "id": "a14-3",
+        "text": "Select genes using all survival outcomes.",
+        "expected": "reject",
+        "issue": "Outcome-aware feature leakage.",
+        "severity": "critical"
+      },
+      {
+        "id": "a14-4",
+        "text": "Group outer folds by patient and nest selection/tuning.",
+        "expected": "approve"
+      },
+      {
+        "id": "a14-5",
+        "text": "Evaluate calibration in addition to discrimination.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Center/slide batch",
+      "Event count",
+      "Multiple candidate models",
+      "Missing modality handling"
+    ],
+    "seniorSummary": "Split by the highest independent unit before every learned operation; tiles and slides cannot cross patient folds.",
+    "transferPrompt": "Identify the highest grouping unit for every modality in your prediction pipeline.",
+    "sourceIds": [
+      "src-leakage",
+      "src-tripod",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "audit-15",
+    "title": "External reference plan",
+    "domain": "validation",
+    "task": "Validate an AI-generated risk score in a public cohort.",
+    "context": "The formula omits preprocessing details and uses unavailable variables.",
+    "steps": [
+      {
+        "id": "a15-1",
+        "text": "Impute unavailable predictors as zero.",
+        "expected": "reject",
+        "issue": "Changes the model without justification and can create systematic error.",
+        "severity": "critical"
+      },
+      {
+        "id": "a15-2",
+        "text": "Infer preprocessing from the validation data.",
+        "expected": "reject",
+        "issue": "The original model is not reproducible/locked.",
+        "severity": "critical"
+      },
+      {
+        "id": "a15-3",
+        "text": "Request the full formula, coding, baseline risk, and preprocessing.",
+        "expected": "approve"
+      },
+      {
+        "id": "a15-4",
+        "text": "Document target-cohort differences and missingness.",
+        "expected": "approve"
+      },
+      {
+        "id": "a15-5",
+        "text": "If unrecoverable, label validation infeasible rather than fabricate implementation.",
+        "expected": "approve"
+      }
+    ],
+    "missedRisks": [
+      "Outcome definition compatibility",
+      "Time horizon",
+      "Unit conversion",
+      "Licensing/access"
+    ],
+    "seniorSummary": "A model that cannot be fully implemented cannot be externally validated. Transparency is a methodological prerequisite, not an administrative detail.",
+    "transferPrompt": "List every artifact another center needs to reproduce your model predictions.",
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  }
+]

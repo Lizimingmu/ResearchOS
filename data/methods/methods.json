@@ -1,0 +1,1128 @@
+[
+  {
+    "id": "statistical-unit",
+    "title": "Statistical unit",
+    "domain": "statistics",
+    "minutes": 7,
+    "whyItMatters": "Inference fails when the unit represented by the sample size is not the independent unit that received exposure or generated the outcome.",
+    "coreConcept": "The statistical unit is the smallest independent unit about which uncertainty is estimated; measurement units nested within it are not extra replicates.",
+    "minimalExample": "Six patients each contribute 2,000 cells. For a patient-level disease contrast, n is 6 patients—not 12,000 cells.",
+    "commonWrongPractice": "Report the number of images, cells, fields, or technical repeats as n while treatment or phenotype varies only between subjects.",
+    "reviewerAttack": "State the experimental unit, nesting structure, and model used to account for within-subject correlation.",
+    "whenToUse": "Before choosing any test; explicitly map exposure, outcome, and clustering levels.",
+    "whenNotToUse": "Do not force all questions to the patient level when a genuinely within-cell estimand is intended; still model dependence.",
+    "transferPrompt": "For one current analysis, write the exposure unit, measurement unit, and inference unit.",
+    "sourceIds": [
+      "src-pseudorep",
+      "src-pseudobulk"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "biological-replicate",
+    "title": "Biological replicate",
+    "domain": "statistics",
+    "minutes": 6,
+    "whyItMatters": "Biological replication supports generalization across independent biological units; technical replication mainly estimates measurement noise.",
+    "coreConcept": "A biological replicate is an independently sampled organism, patient, culture, or experimental unit under the design—not another aliquot from the same unit.",
+    "minimalExample": "Three independently treated organoid lines are biological replicates; three wells seeded from one line are usually technical or nested replicates.",
+    "commonWrongPractice": "Average technical repeats but still describe every well or sequencing lane as an independent biological n.",
+    "reviewerAttack": "Were samples independently generated and randomized, or are repeated measurements being counted as replication?",
+    "whenToUse": "Experimental design, power planning, and any claim intended to generalize beyond the measured material.",
+    "whenNotToUse": "Technical repeats remain useful for assay precision, but cannot replace biological replication.",
+    "transferPrompt": "Classify each replicate in your project as biological, technical, or repeated measurement.",
+    "sourceIds": [
+      "src-pseudorep"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "pseudoreplication",
+    "title": "Pseudoreplication",
+    "domain": "statistics",
+    "minutes": 8,
+    "whyItMatters": "Treating correlated observations as independent makes standard errors too small and creates false confidence.",
+    "coreConcept": "Pseudoreplication occurs when the analysis has more nominal observations than independent experimental units.",
+    "minimalExample": "Two mice per arm with 20 tissue fields per mouse does not create n=40 independent mice per arm.",
+    "commonWrongPractice": "Apply a two-sample test to all fields/cells without aggregation, random effects, cluster-robust inference, or another design-aware method.",
+    "reviewerAttack": "Reanalyze at the independent unit or justify a hierarchical model and report the number of independent units.",
+    "whenToUse": "Audit nested imaging, organoid, repeated-measures, and single-cell analyses.",
+    "whenNotToUse": "Large within-unit samples may improve unit-level measurement precision, but not between-unit degrees of freedom.",
+    "transferPrompt": "Locate one place where your data table has more rows than independent units and document the dependency.",
+    "sourceIds": [
+      "src-pseudorep",
+      "src-pseudobulk"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "confounding",
+    "title": "Confounding",
+    "domain": "clinical",
+    "minutes": 9,
+    "whyItMatters": "An observed exposure–outcome association may reflect a common cause rather than the exposure itself.",
+    "coreConcept": "A confounder causally affects exposure and outcome and is not a consequence of exposure; adjustment should follow a causal/design rationale, not only P values.",
+    "minimalExample": "Treatment is preferentially given to fitter patients; survival differences may reflect performance status.",
+    "commonWrongPractice": "Select covariates solely because they are significant in univariable models or adjust for mediators/colliders.",
+    "reviewerAttack": "Justify the adjustment set, measurement timing, residual confounding, and whether key confounders were unavailable.",
+    "whenToUse": "Observational causal questions and comparative effectiveness analyses.",
+    "whenNotToUse": "Prediction models optimize prediction rather than estimate a causal treatment effect; their covariate logic differs.",
+    "transferPrompt": "Name one plausible common cause of your main exposure and outcome, and how it is measured.",
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "selection-bias",
+    "title": "Selection bias",
+    "domain": "clinical",
+    "minutes": 8,
+    "whyItMatters": "Conditioning inclusion on factors related to exposure and outcome can distort associations before modeling begins.",
+    "coreConcept": "Selection bias arises when analyzed participants differ systematically because selection is related to the target relation or outcome observation.",
+    "minimalExample": "A biomarker study includes only patients with high-quality archived tissue, which is associated with center, era, and survival.",
+    "commonWrongPractice": "Describe exclusions but assume multivariable adjustment automatically repairs selection.",
+    "reviewerAttack": "Provide the flow of eligible/included participants, compare exclusions, and define the target population.",
+    "whenToUse": "Cohort assembly, complete-case samples, tissue availability, case-control sampling, and loss to follow-up.",
+    "whenNotToUse": "Do not label every lack of representativeness as bias; distinguish internal validity from transportability.",
+    "transferPrompt": "Draw the eligibility funnel for your cohort and identify where outcome-related selection could enter.",
+    "sourceIds": [
+      "src-strobe",
+      "src-remark"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "missing-data",
+    "title": "Missing data",
+    "domain": "statistics",
+    "minutes": 10,
+    "whyItMatters": "Complete-case analysis can lose power and introduce bias when missingness depends on observed or unobserved values.",
+    "coreConcept": "Missing-data handling depends on the missingness mechanism, analysis model, auxiliary information, and sensitivity to departures from assumptions.",
+    "minimalExample": "Performance status is more often missing in severely ill patients; dropping them changes the analyzed risk distribution.",
+    "commonWrongPractice": "Use mean imputation or delete incomplete rows without quantifying missingness by variable and group.",
+    "reviewerAttack": "Report amount/pattern, justify assumptions, include outcome and predictors in imputation, and compare sensitivity analyses.",
+    "whenToUse": "Any analysis with incomplete covariates, outcomes, follow-up, or assay measurements.",
+    "whenNotToUse": "Multiple imputation cannot recover variables never measured or rescue grossly nonidentifiable missing-not-at-random processes without assumptions.",
+    "transferPrompt": "Create a missingness table and state the most defensible mechanism for the key incomplete variable.",
+    "sourceIds": [
+      "src-missing",
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "multiple-testing",
+    "title": "Multiple testing",
+    "domain": "statistics",
+    "minutes": 7,
+    "whyItMatters": "Testing many hypotheses increases the chance of discoveries produced by noise.",
+    "coreConcept": "Control an error criterion matched to the claim family—often false discovery rate in discovery omics—and report effect sizes alongside adjusted P values.",
+    "minimalExample": "At alpha .05, 20,000 null gene tests yield roughly 1,000 nominal positives in expectation.",
+    "commonWrongPractice": "Use raw P<.05 after genome-wide testing or correct each selectively reported subset separately.",
+    "reviewerAttack": "Define the hypothesis family, correction method, pre-specification, and handling of exploratory analyses.",
+    "whenToUse": "Multiple endpoints, subgroup scans, omics features, pathways, and candidate model comparisons.",
+    "whenNotToUse": "Do not mechanically adjust unrelated, pre-specified single questions into an artificial family without explaining the estimand.",
+    "transferPrompt": "List the full family of hypotheses behind one reported P value in your project.",
+    "sourceIds": [
+      "src-multiple-testing"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "effect-size-vs-p",
+    "title": "Effect size vs P value",
+    "domain": "statistics",
+    "minutes": 6,
+    "whyItMatters": "Statistical compatibility with a null value is not the magnitude, precision, or importance of an effect.",
+    "coreConcept": "Interpret the estimate and its uncertainty first; P values are sensitive to sample size and do not measure clinical relevance.",
+    "minimalExample": "A hazard ratio 1.03 with P<.001 may be precisely trivial; HR 1.8 with a wide CI may be important but uncertain.",
+    "commonWrongPractice": "Call effects large because P is small, or call groups identical because P>.05.",
+    "reviewerAttack": "Report absolute and relative effect sizes, confidence intervals, and a clinically meaningful threshold.",
+    "whenToUse": "Every inferential result.",
+    "whenNotToUse": "Do not treat a confidence interval as a dichotomous significance test in disguise.",
+    "transferPrompt": "Rewrite one result sentence beginning with the effect estimate rather than the P value.",
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "confidence-interval",
+    "title": "Confidence interval interpretation",
+    "domain": "statistics",
+    "minutes": 6,
+    "whyItMatters": "Intervals communicate effect uncertainty and compatibility better than a significance label.",
+    "coreConcept": "A frequentist 95% interval is generated by a procedure that covers the true parameter in 95% of repeated samples under model assumptions.",
+    "minimalExample": "HR 0.72, 95% CI 0.48–1.08 is compatible with meaningful benefit and slight harm; it is not proof of no effect.",
+    "commonWrongPractice": "Say there is a 95% probability the fixed true parameter lies in this computed interval.",
+    "reviewerAttack": "Discuss precision, clinically relevant values within the interval, and model/measurement assumptions.",
+    "whenToUse": "Effect estimates, performance metrics, calibration, subgroup interactions, and absolute risk.",
+    "whenNotToUse": "Intervals do not capture unmodeled bias, confounding, or data errors.",
+    "transferPrompt": "Identify the most decision-relevant values still compatible with one interval in your work.",
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "cox-ph",
+    "title": "Cox proportional hazards",
+    "domain": "clinical",
+    "minutes": 10,
+    "whyItMatters": "Cox regression handles censoring but its hazard ratio depends on proportional hazards and correct time/variable specification.",
+    "coreConcept": "The model compares instantaneous hazards conditional on survival to time t, assuming a covariate effect that is proportional over time unless modeled otherwise.",
+    "minimalExample": "HR 0.70 compares hazards at a given time among those still at risk; it is not a 30% longer survival time.",
+    "commonWrongPractice": "Interpret HR as a risk ratio, ignore non-proportionality, dichotomize continuous predictors, or use post-baseline variables as fixed covariates.",
+    "reviewerAttack": "Check proportional hazards, functional form, censoring, events-per-parameter, and time origin.",
+    "whenToUse": "Time-to-event outcomes with censoring and a defensible hazard-based estimand.",
+    "whenNotToUse": "Consider alternative estimands/models when hazards cross, competing events dominate, or absolute risk is the decision target.",
+    "transferPrompt": "State time zero, event, censoring rule, and the meaning of the HR in your analysis.",
+    "sourceIds": [
+      "src-cox",
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "multivariable-adjustment",
+    "title": "Multivariable adjustment",
+    "domain": "clinical",
+    "minutes": 9,
+    "whyItMatters": "Adjustment can address measured confounding or improve prediction, but unstable or data-driven specifications create biased estimates.",
+    "coreConcept": "Choose variables based on estimand, causal role, measurement timing, and available information; do not confuse adjusted association with causation.",
+    "minimalExample": "A prognostic biomarker may be adjusted for stage to test incremental prognosis, while a treatment effect needs a confounding set.",
+    "commonWrongPractice": "Enter only variables with univariable P<.05, overfit sparse events, or adjust for post-exposure mediators.",
+    "reviewerAttack": "Explain variable selection, coding, nonlinearity, collinearity, missing data, and parameter-to-information ratio.",
+    "whenToUse": "Confounding control, prognostic modeling, and precision improvement when prespecified.",
+    "whenNotToUse": "Adjustment cannot correct unmeasured confounding or biased cohort selection by itself.",
+    "transferPrompt": "For each adjusted variable, label its role: confounder, precision variable, predictor, mediator, or collider risk.",
+    "sourceIds": [
+      "src-strobe",
+      "src-remark"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "overfitting",
+    "title": "Overfitting",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "A model can learn idiosyncrasies of development data and appear more accurate than it will be in new patients.",
+    "coreConcept": "Overfitting grows when effective model complexity is high relative to information; optimism must be estimated and shrinkage/penalization considered.",
+    "minimalExample": "Selecting 20 genes and coefficients in 40 events can produce an impressive training C-index but unstable external predictions.",
+    "commonWrongPractice": "Report apparent performance from the same data used for feature selection and fitting.",
+    "reviewerAttack": "Quantify effective parameters, internal validation, optimism correction, shrinkage, and external performance.",
+    "whenToUse": "Audit every model-development workflow, including unsupervised choices followed by outcome comparisons.",
+    "whenNotToUse": "A simple model is not automatically safe; small samples and data-driven cutpoints still overfit.",
+    "transferPrompt": "List every data-driven choice made before your final performance estimate.",
+    "sourceIds": [
+      "src-tripod-ai",
+      "src-tripod",
+      "src-probaST",
+      "src-internal-validation"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "internal-validation",
+    "title": "Internal validation",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Internal validation estimates optimism from the full model-development process in the development population.",
+    "coreConcept": "Bootstrap or repeated cross-validation must repeat preprocessing and feature/model selection inside each resample.",
+    "minimalExample": "Bootstrap the entire selection-and-fit pipeline, evaluate in out-of-bootstrap data, and estimate optimism in calibration and discrimination.",
+    "commonWrongPractice": "Use one random train/test split in a small dataset or cross-validate only the final frozen model after global feature selection.",
+    "reviewerAttack": "Was every adaptive step nested, were enough resamples used, and were calibration and optimism reported?",
+    "whenToUse": "Model development before transport to a new setting.",
+    "whenNotToUse": "Internal validation does not establish geographic, temporal, or clinical transportability.",
+    "transferPrompt": "Draw the boundary of one resampling loop and place every preprocessing step inside or outside it.",
+    "sourceIds": [
+      "src-internal-validation",
+      "src-tripod-ai",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "external-validation",
+    "title": "External validation",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Performance in a meaningfully different population tests transportability and reveals calibration drift.",
+    "coreConcept": "External validation applies a locked model—including coefficients and preprocessing—to data separate in time, place, or setting, without refitting before evaluation.",
+    "minimalExample": "A model developed at center A is applied unchanged to later patients from centers B–D, reporting calibration and discrimination.",
+    "commonWrongPractice": "Call a random holdout from the same source 'external' or tune the model on the validation cohort before reporting performance.",
+    "reviewerAttack": "How independent and clinically different is the validation sample, and was the original model fully specified and locked?",
+    "whenToUse": "Before claiming general clinical applicability.",
+    "whenNotToUse": "Recalibration is useful deployment work but should be reported separately from untouched validation performance.",
+    "transferPrompt": "Name the dimension—time, geography, center, spectrum—along which your planned validation is genuinely external.",
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST",
+      "src-calibration"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "c-index",
+    "title": "C-index",
+    "domain": "prediction",
+    "minutes": 7,
+    "whyItMatters": "Discrimination ranks patients but does not show accurate probabilities or clinical usefulness.",
+    "coreConcept": "The concordance index estimates how often predicted order agrees with observed outcome order among comparable pairs, with censoring-specific estimators for survival data.",
+    "minimalExample": "C=0.70 means about 70% concordance among evaluable pairs—not that predictions are 70% accurate.",
+    "commonWrongPractice": "Use C-index alone, compare tiny differences without uncertainty, or calculate it ignoring censoring.",
+    "reviewerAttack": "Report confidence intervals, calibration, appropriate censoring handling, and incremental value relative to a baseline model.",
+    "whenToUse": "Ranking performance for prognostic/time-to-event models.",
+    "whenNotToUse": "Do not infer calibrated absolute risk or clinical net benefit from discrimination alone.",
+    "transferPrompt": "Identify which decision in your project needs ranking, absolute risk, or both.",
+    "sourceIds": [
+      "src-tripod",
+      "src-calibration"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "calibration",
+    "title": "Calibration",
+    "domain": "prediction",
+    "minutes": 9,
+    "whyItMatters": "A model can rank patients well while systematically over- or underestimating their risk.",
+    "coreConcept": "Calibration compares predicted and observed risk; inspect calibration-in-the-large, slope, and flexible plots rather than a single goodness-of-fit test.",
+    "minimalExample": "A calibration slope of 0.65 suggests predictions are too extreme in the validation cohort.",
+    "commonWrongPractice": "Claim calibration from a non-significant Hosmer–Lemeshow test or plot grouped points without uncertainty.",
+    "reviewerAttack": "Show calibration intercept/slope and a smooth plot at clinically relevant horizons, accounting for censoring.",
+    "whenToUse": "Any probabilistic prediction model and any external validation.",
+    "whenNotToUse": "Do not interpret recalibrated performance as untouched transportability.",
+    "transferPrompt": "Choose the clinically meaningful time horizon and specify how observed risk will be estimated there.",
+    "sourceIds": [
+      "src-calibration",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "decision-curve",
+    "title": "Decision curve analysis",
+    "domain": "prediction",
+    "minutes": 9,
+    "whyItMatters": "Statistical performance does not establish whether acting on predictions improves decisions.",
+    "coreConcept": "Decision curves compare net benefit across threshold probabilities against treat-all and treat-none strategies, under explicit relative harm assumptions.",
+    "minimalExample": "At a 10% treatment threshold, a model may identify more true cases without too many weighted false positives.",
+    "commonWrongPractice": "Select a favorable threshold after inspection, ignore implausible threshold ranges, or call net benefit proof of real-world benefit.",
+    "reviewerAttack": "Justify the threshold range, comparator strategies, outcome horizon, and whether predictions were validly estimated.",
+    "whenToUse": "When a prediction would trigger a clinical action with articulable tradeoffs.",
+    "whenNotToUse": "Avoid when no decision, threshold, or consequence is defined.",
+    "transferPrompt": "Write the action triggered by your model and the plausible threshold range for that action.",
+    "sourceIds": [
+      "src-dca",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "interaction-subgroup",
+    "title": "Interaction vs subgroup",
+    "domain": "statistics",
+    "minutes": 8,
+    "whyItMatters": "A significant result in one subgroup and a non-significant result in another does not prove the effects differ.",
+    "coreConcept": "Effect modification is assessed by an interaction contrast on a specified scale, with multiplicity and limited power acknowledged.",
+    "minimalExample": "Treatment HR is 0.75 in men and 0.95 in women; the interaction test—not separate P values—addresses heterogeneity.",
+    "commonWrongPractice": "Claim subgroup specificity because only one subgroup crosses P<.05.",
+    "reviewerAttack": "Was the interaction prespecified, powered, tested directly, and corrected/interpreted for multiplicity?",
+    "whenToUse": "Questions about differential effects across patient or biological contexts.",
+    "whenNotToUse": "Do not perform indiscriminate subgroup fishing in sparse data.",
+    "transferPrompt": "Rewrite one subgroup claim as an explicit interaction hypothesis and name its scale.",
+    "sourceIds": [
+      "src-strobe",
+      "src-consort"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "competing-risks",
+    "title": "Competing risks",
+    "domain": "clinical",
+    "minutes": 10,
+    "whyItMatters": "A competing event prevents the event of interest; censoring it as if ordinary can misestimate absolute incidence.",
+    "coreConcept": "Use cumulative incidence for absolute risk; cause-specific and subdistribution hazards answer different etiologic and prediction questions.",
+    "minimalExample": "Death before recurrence prevents later recurrence and changes the probability of recurrence over time.",
+    "commonWrongPractice": "Use 1−Kaplan–Meier for cause-specific incidence while censoring competing deaths.",
+    "reviewerAttack": "Define competing events and align the estimator—cumulative incidence, cause-specific hazard, or subdistribution hazard—with the estimand.",
+    "whenToUse": "Oncology recurrence, cause-specific mortality, transplant outcomes, and geriatric cohorts.",
+    "whenNotToUse": "A competing event must preclude the outcome, not merely occur alongside it.",
+    "transferPrompt": "List events that prevent your primary event and choose whether your target is cause-specific association or absolute risk.",
+    "sourceIds": [
+      "src-competing"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "time-dependent-bias",
+    "title": "Time-dependent bias",
+    "domain": "clinical",
+    "minutes": 9,
+    "whyItMatters": "Using future exposure information at baseline can create immortal time or reverse temporal ordering.",
+    "coreConcept": "Exposure classification and follow-up must respect when information becomes available; model time-varying exposures when appropriate.",
+    "minimalExample": "Patients classified as 'received maintenance' must survive long enough to receive it; counting earlier survival as exposed biases benefit upward.",
+    "commonWrongPractice": "Define groups using post-baseline treatment and analyze them as baseline groups.",
+    "reviewerAttack": "Draw the timeline, define time zero, exposure assignment, grace period, and risk-set membership.",
+    "whenToUse": "Treatment initiation, response-defined cohorts, dynamic biomarkers, and landmark analyses.",
+    "whenNotToUse": "Landmark analysis changes the target population; it is not a universal repair.",
+    "transferPrompt": "Draw time zero and the earliest time each exposure in your study can be known.",
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "scrna-deg-pseudobulk",
+    "title": "scRNA cell-level DEG vs pseudobulk",
+    "domain": "single-cell",
+    "minutes": 10,
+    "whyItMatters": "Cells from the same patient share biology and processing; treating them as independent often inflates false discoveries.",
+    "coreConcept": "For patient-level conditions, aggregate counts within patient×cell type or use a suitable hierarchical model so biological subjects drive inference.",
+    "minimalExample": "Compare subtype A vs B using one pseudobulk profile per patient and cell type, with library-size-aware count modeling.",
+    "commonWrongPractice": "Pool all cells, run Wilcoxon, and report tiny P values without patient-level replication or effect consistency.",
+    "reviewerAttack": "Show patient numbers, per-patient effects, balance, covariate control, and FDR at the tested feature family.",
+    "whenToUse": "Patient-level disease, treatment, genotype, or outcome contrasts in single-cell data.",
+    "whenNotToUse": "Pseudobulk cannot create replication when only one patient exists per group.",
+    "transferPrompt": "Write the aggregation key and design formula for one planned cell-type DEG analysis.",
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-pseudorep"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "batch-effect",
+    "title": "Batch effect",
+    "domain": "omics",
+    "minutes": 9,
+    "whyItMatters": "Technical variation can align with biology and generate or erase apparent signal.",
+    "coreConcept": "Prevent confounding by design, diagnose with metadata and controls, and correct only under assumptions that preserve relevant biology.",
+    "minimalExample": "All cases sequenced on run 1 and controls on run 2 make disease inseparable from run.",
+    "commonWrongPractice": "Apply integration blindly and claim batch is removed because a UMAP mixes.",
+    "reviewerAttack": "Show the design matrix, batch–condition balance, QC, sensitivity before/after correction, and retained biological signals.",
+    "whenToUse": "High-throughput studies spanning runs, centers, chemistry versions, plates, or acquisition dates.",
+    "whenNotToUse": "No algorithm can identify a disease effect perfectly confounded with batch without extra information.",
+    "transferPrompt": "Cross-tabulate your primary biological group against each technical batch variable.",
+    "sourceIds": [
+      "src-batch",
+      "src-multiomics"
+    ],
+    "status": "usable",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "patient-level-replication",
+    "title": "Patient-level replication",
+    "domain": "single-cell",
+    "minutes": 7,
+    "whyItMatters": "Large numbers of molecular measurements do not substitute for independently sampled patients.",
+    "coreConcept": "Generalization to patients depends on the number, diversity, and balance of patients, with measurements nested within them.",
+    "minimalExample": "Five tumors with 50,000 cells each provide five patient-level replicates for a tumor-level exposure.",
+    "commonWrongPractice": "Advertise cell count as sample size while omitting per-group patient counts and between-patient heterogeneity.",
+    "reviewerAttack": "Report patient-level distributions and demonstrate the result is not driven by one high-cell-yield sample.",
+    "whenToUse": "Single-cell, spatial spots, proteomic features, and repeated biopsies.",
+    "whenNotToUse": "Within-patient mechanistic observations can be valuable but require narrower claims.",
+    "transferPrompt": "Plot or tabulate the target effect separately for each patient.",
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-pseudorep"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "cluster-annotation",
+    "title": "Cluster annotation",
+    "domain": "single-cell",
+    "minutes": 9,
+    "whyItMatters": "Annotation errors propagate into abundance, differential expression, communication, and biological narratives.",
+    "coreConcept": "Annotation integrates multiple positive/negative markers, reference information, tissue context, QC, and uncertainty; labels should match resolution supported by evidence.",
+    "minimalExample": "A T-cell cluster is supported by CD3 genes, lacks myeloid markers, and is checked against a reference before subtype naming.",
+    "commonWrongPractice": "Name a cluster from one marker, circularly use the same gene as outcome, or force every cluster to a precise subtype.",
+    "reviewerAttack": "Provide marker panels, reference mapping, ambiguity, doublet checks, and patient distribution.",
+    "whenToUse": "Every cell-state analysis before downstream comparisons.",
+    "whenNotToUse": "Do not treat automated reference labels as ground truth in a diseased or novel tissue.",
+    "transferPrompt": "For one label, list three positive markers, two exclusion markers, and one plausible alternative.",
+    "sourceIds": [
+      "src-pseudobulk"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "marker-circularity",
+    "title": "Marker circularity",
+    "domain": "single-cell",
+    "minutes": 7,
+    "whyItMatters": "Defining a group by a feature and then testing that feature between groups produces a tautological result.",
+    "coreConcept": "Separate features used to construct labels or select cells from features used to validate or infer biology.",
+    "minimalExample": "Calling cells CXCL13-high and then presenting higher CXCL13 expression as validation adds no independent evidence.",
+    "commonWrongPractice": "Use discovery markers to name clusters, score the same program, and claim independent confirmation.",
+    "reviewerAttack": "Which data/features defined the state, and what orthogonal evidence validates it?",
+    "whenToUse": "Cluster naming, signature construction, responder definitions, and biomarker cutpoints.",
+    "whenNotToUse": "Descriptive restatement is acceptable if explicitly labeled, not presented as validation.",
+    "transferPrompt": "Separate your defining features from your validation features in two lists.",
+    "sourceIds": [
+      "src-leakage",
+      "src-pseudobulk"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "double-dipping",
+    "title": "Double dipping",
+    "domain": "statistics",
+    "minutes": 8,
+    "whyItMatters": "Reusing the same data to select a promising pattern and test it produces optimistic P values and performance.",
+    "coreConcept": "Selection uncertainty must be included by nested resampling, selective inference, or independent confirmation.",
+    "minimalExample": "Choose the cutpoint with the smallest survival P value and report that same P value as if the cutpoint were prespecified.",
+    "commonWrongPractice": "Cluster, select the most separated outcome groups, then run a conventional test ignoring the selection.",
+    "reviewerAttack": "Enumerate adaptive choices and repeat them inside validation or verify the frozen choice independently.",
+    "whenToUse": "Feature selection, cutpoint discovery, cluster choice, pathway prioritization, and figure-driven hypotheses.",
+    "whenNotToUse": "Exploratory reuse is legitimate for hypothesis generation if uncertainty and need for validation are explicit.",
+    "transferPrompt": "Mark which results in your project are discovery and which used untouched data for confirmation.",
+    "sourceIds": [
+      "src-leakage",
+      "src-internal-validation"
+    ],
+    "status": "usable",
+    "tags": [
+      "statistics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "pathway-enrichment",
+    "title": "Pathway enrichment",
+    "domain": "omics",
+    "minutes": 9,
+    "whyItMatters": "Pathway results compress gene-level signals but depend on the gene universe, database, redundancy, and selection procedure.",
+    "coreConcept": "Interpret enrichment as coordinated annotation-level evidence, not direct pathway activity or mechanism; report method, universe, version, effect direction, and FDR.",
+    "minimalExample": "An interferon gene set enriched among upregulated genes supports an expression program compatible with interferon response.",
+    "commonWrongPractice": "Use all genome genes instead of measured/tested genes as background or claim a pathway is activated from an unstratified hit list.",
+    "reviewerAttack": "Define the universe, gene-set database/version, ranking/statistic, redundancy handling, and leading-edge genes.",
+    "whenToUse": "Biological interpretation after a valid gene-level analysis.",
+    "whenNotToUse": "Do not use enrichment to rescue an invalid differential analysis.",
+    "transferPrompt": "State the tested gene universe and database version for your next enrichment analysis.",
+    "sourceIds": [
+      "src-gsea",
+      "src-multiple-testing"
+    ],
+    "status": "usable",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "gsea-vs-ora",
+    "title": "GSEA vs ORA",
+    "domain": "omics",
+    "minutes": 8,
+    "whyItMatters": "Over-representation and ranked-list enrichment answer different questions and have different selection biases.",
+    "coreConcept": "ORA tests whether a selected hit list contains excess set members; GSEA-like methods test whether set members concentrate toward extremes of a ranked list.",
+    "minimalExample": "ORA uses DE genes passing thresholds; GSEA uses the signed statistic for all eligible genes.",
+    "commonWrongPractice": "Call any pathway tool 'GSEA', ignore ranking direction, or compare results produced from different universes.",
+    "reviewerAttack": "Why was this method selected, how was the list/rank constructed, and were sample-label rather than gene-label permutations appropriate?",
+    "whenToUse": "GSEA for distributed coordinated effects; ORA for a well-justified discrete list.",
+    "whenNotToUse": "Neither method establishes causality or cell-type origin by itself.",
+    "transferPrompt": "Choose ORA or ranked enrichment for one contrast and justify the input representation.",
+    "sourceIds": [
+      "src-gsea",
+      "src-multiple-testing"
+    ],
+    "status": "usable",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "cell-proportion-testing",
+    "title": "Cell proportion testing",
+    "domain": "single-cell",
+    "minutes": 9,
+    "whyItMatters": "Cell counts are compositional, overdispersed, and nested within samples; naïve cell-level tests misstate uncertainty.",
+    "coreConcept": "Compare sample-level proportions or counts with a model respecting replication, composition, depth, covariates, and zero inflation as appropriate.",
+    "minimalExample": "Estimate one macrophage proportion per patient and model the group effect with patient-level uncertainty.",
+    "commonWrongPractice": "Pool cells by group and use a chi-square test as if every captured cell were independently sampled.",
+    "reviewerAttack": "Show per-patient distributions, capture/QC balance, compositional sensitivity, and prespecified cell classes.",
+    "whenToUse": "Questions about abundance of annotated cell populations across biological units.",
+    "whenNotToUse": "Captured proportion is not automatically tissue abundance; dissociation and sampling processes matter.",
+    "transferPrompt": "Plot the target population proportion for every patient and annotate total cells/QC.",
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-pseudorep"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "differential-abundance",
+    "title": "Differential abundance",
+    "domain": "single-cell",
+    "minutes": 10,
+    "whyItMatters": "Changes may occur in continuous neighborhoods not captured by fixed clusters, but testing must still respect sample replication and multiplicity.",
+    "coreConcept": "Differential abundance methods test cell-state neighborhoods or populations across samples using sample-aware designs; results depend on representation and sampling.",
+    "minimalExample": "Test whether graph neighborhoods have consistent count shifts across treated versus control patients.",
+    "commonWrongPractice": "Treat neighborhood cell membership as independent or describe an abundance association as lineage expansion mechanism.",
+    "reviewerAttack": "Assess sample balance, neighborhood overlap, FDR, annotation sensitivity, and whether shifts are driven by one sample.",
+    "whenToUse": "State shifts that may cut across cluster boundaries.",
+    "whenNotToUse": "Do not interpret capture-frequency differences as proliferation without orthogonal evidence.",
+    "transferPrompt": "State whether your abundance target is a predefined population or a data-derived neighborhood.",
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-multiple-testing"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "trajectory-limits",
+    "title": "Trajectory inference limits",
+    "domain": "single-cell",
+    "minutes": 10,
+    "whyItMatters": "A static snapshot can support an ordering compatible with transition, but not observe lineage or causal progression directly.",
+    "coreConcept": "Pseudotime and trajectory topology depend on sampled states, root choice, features, preprocessing, and method assumptions.",
+    "minimalExample": "Cells ordered from progenitor-like to differentiated expression states suggest a continuum but do not prove individual cells traverse it.",
+    "commonWrongPractice": "Call a UMAP path development, infer direction without information, or map between-patient differences onto within-cell dynamics.",
+    "reviewerAttack": "Justify root/topology, show robustness across methods/features, and seek temporal, lineage, velocity, or perturbation support.",
+    "whenToUse": "Hypothesis generation about continuous state structure and candidate progression.",
+    "whenNotToUse": "Do not claim lineage fate or transition rates from cross-sectional pseudotime alone.",
+    "transferPrompt": "Rewrite your trajectory conclusion using 'consistent with' and name the missing temporal evidence.",
+    "sourceIds": [
+      "src-trajectory"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "cell-communication-limits",
+    "title": "Cell-cell communication limitations",
+    "domain": "single-cell",
+    "minutes": 9,
+    "whyItMatters": "Ligand–receptor co-expression generates hypotheses; it does not demonstrate secretion, binding, signaling, or functional effect.",
+    "coreConcept": "Communication tools combine expression, curated interactions, and model assumptions; evidence is strongest when spatial, protein, perturbation, and phenotype data converge.",
+    "minimalExample": "Tumor ligand and macrophage receptor expression suggests a candidate axis for perturbation.",
+    "commonWrongPractice": "Call inferred edges active signaling and compare edge counts without accounting for cell abundance/expression detectability.",
+    "reviewerAttack": "Validate protein/location, perturb ligand/receptor, show downstream response, and control for abundance and database choice.",
+    "whenToUse": "Prioritize plausible intercellular hypotheses.",
+    "whenNotToUse": "Do not use inference alone to establish mechanism or therapeutic efficacy.",
+    "transferPrompt": "For one inferred axis, specify an orthogonal localization test and a functional perturbation.",
+    "sourceIds": [
+      "src-cellchat",
+      "src-spatial"
+    ],
+    "status": "usable",
+    "tags": [
+      "single-cell"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "spatial-colocalization",
+    "title": "Spatial colocalization ≠ mechanism",
+    "domain": "omics",
+    "minutes": 8,
+    "whyItMatters": "Proximity supports opportunity for interaction, but shared niches and tissue architecture can generate colocalization without causal communication.",
+    "coreConcept": "Separate descriptive adjacency, adjusted spatial association, molecular interaction, and functional mechanism as distinct evidence levels.",
+    "minimalExample": "Exhausted T cells near macrophages may reflect both cells accumulating at invasive margins rather than macrophages causing exhaustion.",
+    "commonWrongPractice": "Treat spot-level co-expression or nearest-neighbor enrichment as direct signaling.",
+    "reviewerAttack": "Control tissue compartment/density, validate resolution, test molecular direction, and add perturbation or functional readout.",
+    "whenToUse": "Map architecture and prioritize mechanistic hypotheses.",
+    "whenNotToUse": "Do not claim causal interaction from colocalization alone.",
+    "transferPrompt": "Place your spatial result on the evidence ladder from expression to functional perturbation.",
+    "sourceIds": [
+      "src-spatial",
+      "src-cellchat"
+    ],
+    "status": "usable",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "multiomics-integration",
+    "title": "Multi-omics integration",
+    "domain": "omics",
+    "minutes": 11,
+    "whyItMatters": "Integration can reveal shared structure but can also align technical effects, erase modality-specific biology, or overstate cross-layer confirmation.",
+    "coreConcept": "Define the integration estimand, sample matching, scaling, missing modalities, confounding, and independent validation before choosing an algorithm.",
+    "minimalExample": "Matched tumor RNA and protein data test whether a subtype has concordant pathway-level shifts across layers.",
+    "commonWrongPractice": "Concatenate features, cluster, and call modalities mutually validating because the same samples drove both results.",
+    "reviewerAttack": "Show modality-specific QC/effects, sample alignment, robustness to method/weights, held-out validation, and discordant findings.",
+    "whenToUse": "When cross-layer information addresses a scientific question better than separate analyses.",
+    "whenNotToUse": "Do not integrate merely to increase technical complexity or when sample identities/design are incompatible.",
+    "transferPrompt": "Write the specific claim that requires two modalities and what each contributes independently.",
+    "sourceIds": [
+      "src-multiomics",
+      "src-batch"
+    ],
+    "status": "usable",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "discovery-validation",
+    "title": "Discovery vs validation",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Evidence generated and judged in the same data is discovery, even when split into several analysis figures.",
+    "coreConcept": "Validation evaluates a locked claim, marker, cutpoint, signature, or model in independent or properly resampled data with prespecified metrics.",
+    "minimalExample": "Select a protein signature in cohort A, lock its formula, and evaluate it unchanged in cohort B.",
+    "commonWrongPractice": "Retune features or thresholds in the validation set and report the tuned performance as validation.",
+    "reviewerAttack": "What exactly was locked, when, and which data remained untouched until final evaluation?",
+    "whenToUse": "Biomarkers, subtypes, models, signatures, and exploratory omics findings.",
+    "whenNotToUse": "Technical replication or repeating a measurement in the same specimens is not external biological validation.",
+    "transferPrompt": "Name one frozen object and one untouched dataset needed to validate your central claim.",
+    "sourceIds": [
+      "src-tripod-ai",
+      "src-tripod",
+      "src-remark",
+      "src-internal-validation"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "data-leakage",
+    "title": "Data leakage",
+    "domain": "prediction",
+    "minutes": 9,
+    "whyItMatters": "Information unavailable at prediction time or from evaluation data can enter model training and produce unrealistically high performance.",
+    "coreConcept": "Define prediction time and split at the independent unit before any learned preprocessing, selection, imputation, augmentation, or tuning.",
+    "minimalExample": "Normalize using all patients before cross-validation; validation patients influence the training transformation.",
+    "commonWrongPractice": "Randomly split cells from the same patients across folds or use post-outcome variables as predictors.",
+    "reviewerAttack": "Audit the pipeline chronologically and repeat every learned step inside training folds grouped by patient.",
+    "whenToUse": "Any predictive, classification, or machine-learning workflow.",
+    "whenNotToUse": "Not all use of global fixed constants is leakage; distinguish learned information from prespecified transformations.",
+    "transferPrompt": "Write what information is available at the exact deployment prediction time.",
+    "sourceIds": [
+      "src-leakage",
+      "src-probaST"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "feature-selection-leakage",
+    "title": "Feature selection leakage",
+    "domain": "prediction",
+    "minutes": 8,
+    "whyItMatters": "Selecting features using all outcomes lets test-fold information shape the model before evaluation.",
+    "coreConcept": "Supervised feature selection is part of model fitting and must occur independently within each training resample.",
+    "minimalExample": "Run differential expression on all patients, retain 50 genes, then cross-validate a classifier: the CV estimate is contaminated.",
+    "commonWrongPractice": "Describe feature selection as preprocessing and perform it once before resampling.",
+    "reviewerAttack": "Provide pipeline code/order and show nested selection in each resample plus final locked feature set.",
+    "whenToUse": "High-dimensional omics model development.",
+    "whenNotToUse": "A genuinely external, prespecified feature set may be fixed outside resampling if its derivation did not use current outcomes.",
+    "transferPrompt": "Move every outcome-aware feature step inside the training-fold boundary in your workflow diagram.",
+    "sourceIds": [
+      "src-leakage",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "cross-validation-misuse",
+    "title": "Cross-validation misuse",
+    "domain": "prediction",
+    "minutes": 10,
+    "whyItMatters": "Cross-validation estimates a full procedure only when splitting matches independence and all tuning is nested.",
+    "coreConcept": "Use grouped splits for clustered samples, nested CV for hyperparameter/model selection, and report variability rather than the best fold.",
+    "minimalExample": "All cells from a patient remain in one fold; inner folds tune the model, outer folds estimate performance.",
+    "commonWrongPractice": "Tune and report performance on the same CV, split repeated measures across folds, or repeat until a favorable seed appears.",
+    "reviewerAttack": "Specify split unit, stratification, nesting, repeats, metric aggregation, and handling of preprocessing.",
+    "whenToUse": "Internal validation when independent external data are unavailable.",
+    "whenNotToUse": "CV cannot demonstrate transportability to different centers or eras.",
+    "transferPrompt": "Name the outer split unit and every operation inside the inner tuning loop.",
+    "sourceIds": [
+      "src-internal-validation",
+      "src-leakage"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "clustering-stability",
+    "title": "Unsupervised clustering stability",
+    "domain": "omics",
+    "minutes": 10,
+    "whyItMatters": "A visually clean cluster solution may change with preprocessing, features, resolution, or sample perturbation.",
+    "coreConcept": "Assess whether the chosen structure is reproducible under resampling and reasonable analysis alternatives, and whether clusters exist across biological samples.",
+    "minimalExample": "Bootstrap samples/features, compare co-clustering, and test whether a subtype appears across centers rather than one batch.",
+    "commonWrongPractice": "Choose k by the most attractive heatmap, then test outcomes as if k were prespecified.",
+    "reviewerAttack": "Show stability, sensitivity, batch/sample composition, external assignment, and uncertainty for borderline samples.",
+    "whenToUse": "Molecular subtyping, cell states, and latent structure discovery.",
+    "whenNotToUse": "Stability does not prove biological or clinical relevance; a stable technical artifact remains possible.",
+    "transferPrompt": "Choose two perturbations that your claimed subtype should survive.",
+    "sourceIds": [
+      "src-clustering",
+      "src-batch"
+    ],
+    "status": "usable",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "candidate-model-selection",
+    "title": "Multiple candidate model selection",
+    "domain": "prediction",
+    "minutes": 9,
+    "whyItMatters": "Trying many algorithms, endpoints, signatures, and thresholds makes the winning model's reported performance optimistic.",
+    "coreConcept": "Treat the entire candidate-search process as one adaptive procedure and evaluate it with nested resampling or untouched data.",
+    "minimalExample": "Twenty algorithms are tuned; inner CV chooses one and outer CV evaluates the choice process.",
+    "commonWrongPractice": "Report only the best cross-validated model without accounting for the comparison that selected it.",
+    "reviewerAttack": "List all candidates and tuning decisions, use nested evaluation, and compare with a simple clinical baseline.",
+    "whenToUse": "Algorithm benchmarking and signature/model selection.",
+    "whenNotToUse": "Do not add models without scientific or deployment rationale merely to search for a higher metric.",
+    "transferPrompt": "Count every model family, feature set, endpoint, and cutpoint tried before choosing the reported result.",
+    "sourceIds": [
+      "src-probaST",
+      "src-leakage",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "causal-language",
+    "title": "Causal language calibration",
+    "domain": "clinical",
+    "minutes": 7,
+    "whyItMatters": "Associational designs do not automatically support claims that an exposure changes an outcome.",
+    "coreConcept": "Match verbs to design and evidence: associated/predictive, spatially compatible, perturbation effect, rescue, in vivo effect, and clinical effect are different levels.",
+    "minimalExample": "Retrospective expression–survival association supports 'associated with prognosis,' not 'drives progression.'",
+    "commonWrongPractice": "Use 'regulates,' 'promotes,' or 'mediates' after cross-sectional correlation and pathway enrichment.",
+    "reviewerAttack": "Identify the intervention, counterfactual contrast, temporality, confounding control, and functional evidence.",
+    "whenToUse": "Every abstract, discussion, figure title, and AI-generated narrative.",
+    "whenNotToUse": "Avoid so much hedging that a randomized or well-controlled perturbation result loses its actual estimand.",
+    "transferPrompt": "Underline causal verbs in one draft paragraph and align each with the strongest evidence level.",
+    "sourceIds": [
+      "src-strobe",
+      "src-consort"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "power-information",
+    "title": "Events and information in survival models",
+    "domain": "clinical",
+    "minutes": 8,
+    "whyItMatters": "For time-to-event models, information is driven mainly by observed events, not total enrollment alone.",
+    "coreConcept": "Model complexity, censoring, predictor distribution, effect size, and events determine precision; simple rules are diagnostic, not universal guarantees.",
+    "minimalExample": "A cohort of 1,000 with 35 deaths may not support a 20-parameter prognostic model.",
+    "commonWrongPractice": "Cite total n while omitting event counts and effective parameters.",
+    "reviewerAttack": "Report events, candidate parameters, penalization, uncertainty, and resampling-based optimism.",
+    "whenToUse": "Planning and auditing survival analyses and prediction models.",
+    "whenNotToUse": "Do not apply a fixed events-per-variable cutoff as a substitute for design-specific power/simulation.",
+    "transferPrompt": "Count outcomes and effective parameters—not just named variables—in your primary survival model.",
+    "sourceIds": [
+      "src-cox",
+      "src-tripod",
+      "src-probaST"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "assay-validation",
+    "title": "Analytical vs clinical validation",
+    "domain": "clinical",
+    "minutes": 8,
+    "whyItMatters": "A clinically associated biomarker is not deployable if the assay is unreliable, and an accurate assay is not necessarily clinically useful.",
+    "coreConcept": "Analytical validity concerns measurement performance; clinical validity concerns association/prediction; clinical utility concerns improved decisions or outcomes.",
+    "minimalExample": "A protein signature requires reproducible assay measurements, external prognostic validation, then evidence that using it changes beneficial decisions.",
+    "commonWrongPractice": "Use independent staining of the same specimens as proof of clinical validation or utility.",
+    "reviewerAttack": "Separate measurement reproducibility, locked cutoff/model validation, and decision-impact evidence.",
+    "whenToUse": "Biomarker and diagnostic/translational studies.",
+    "whenNotToUse": "Do not demand clinical utility trials for early discovery claims; calibrate claim stage instead.",
+    "transferPrompt": "Place your biomarker at analytical validity, clinical validity, or clinical utility, and name the next missing evidence.",
+    "sourceIds": [
+      "src-remark",
+      "src-tripod"
+    ],
+    "status": "usable",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "model-updating",
+    "title": "Model updating after validation",
+    "domain": "prediction",
+    "minutes": 7,
+    "whyItMatters": "Transported models often need recalibration, but updating changes the object being evaluated.",
+    "coreConcept": "Report untouched validation first; then update intercept/baseline hazard, slope, or coefficients with adequate local data and validate the updated model.",
+    "minimalExample": "A model ranks well but overpredicts risk; adjust calibration-in-the-large and reassess on separate or resampled data.",
+    "commonWrongPractice": "Tune on the external cohort and call the resulting metric external validation.",
+    "reviewerAttack": "Distinguish original performance, updating method, effective sample size, and validation of the updated model.",
+    "whenToUse": "Deployment in a population with calibration drift.",
+    "whenNotToUse": "Updating cannot rescue predictors unavailable or defined differently at deployment without redesign.",
+    "transferPrompt": "Specify what would remain locked and what may be updated for your target site.",
+    "sourceIds": [
+      "src-calibration",
+      "src-tripod"
+    ],
+    "status": "draft",
+    "tags": [
+      "prediction"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "batch-correction-sensitivity",
+    "title": "Batch-correction sensitivity",
+    "domain": "omics",
+    "minutes": 8,
+    "whyItMatters": "Integration settings can change neighborhoods, clusters, and differential findings.",
+    "coreConcept": "Evaluate conclusions across plausible correction strategies and inspect both batch mixing and conservation of expected biology.",
+    "minimalExample": "Repeat subtype analysis with uncorrected covariate-aware models and two integration choices.",
+    "commonWrongPractice": "Pick the embedding with maximal mixing and proceed without quantitative or biological sensitivity checks.",
+    "reviewerAttack": "Demonstrate conclusion stability and show that expected controls and rare states were not erased.",
+    "whenToUse": "Integrated atlas and cross-cohort omics analyses.",
+    "whenNotToUse": "Do not correct variables that are identical to the biological contrast of interest.",
+    "transferPrompt": "Name one biological signal that correction should preserve and one technical pattern it should reduce.",
+    "sourceIds": [
+      "src-batch"
+    ],
+    "status": "draft",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "spatial-resolution",
+    "title": "Spatial resolution and deconvolution",
+    "domain": "omics",
+    "minutes": 9,
+    "whyItMatters": "A spatial spot may contain several cell types; inferred cell-type signals inherit reference and mixture assumptions.",
+    "coreConcept": "Match claims to platform resolution and validate deconvolution using histology, marker coherence, simulations, or orthogonal single-cell/imaging data.",
+    "minimalExample": "A tumor–immune boundary spot contains both compartments; co-expression is not necessarily within one cell.",
+    "commonWrongPractice": "Describe spot-level expression as single-cell expression or treat deconvolved proportions as observed counts.",
+    "reviewerAttack": "Report resolution, reference compatibility, uncertainty, histologic validation, and sensitivity to deconvolution method.",
+    "whenToUse": "Spot-based spatial transcriptomics and cell-type mapping.",
+    "whenNotToUse": "Do not infer subcellular localization from multicellular spots.",
+    "transferPrompt": "Write the smallest spatial unit actually observed by your platform and the finest claim it supports.",
+    "sourceIds": [
+      "src-spatial"
+    ],
+    "status": "draft",
+    "tags": [
+      "omics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  },
+  {
+    "id": "reporting-vs-rigor",
+    "title": "Reporting guideline vs study rigor",
+    "domain": "clinical",
+    "minutes": 6,
+    "whyItMatters": "Complete reporting makes a study auditable but does not by itself remove bias or validate the methods.",
+    "coreConcept": "Use reporting checklists to expose design and analysis decisions, then judge validity with design-specific reasoning and risk-of-bias tools.",
+    "minimalExample": "A fully STROBE-compliant retrospective study can still have unmeasured confounding.",
+    "commonWrongPractice": "Claim methodological quality because a checklist score is high.",
+    "reviewerAttack": "Separate reporting completeness from bias, precision, applicability, and causal identification.",
+    "whenToUse": "Manuscript preparation and structured appraisal.",
+    "whenNotToUse": "Do not convert guideline items into an unvalidated total quality score.",
+    "transferPrompt": "Name one well-reported limitation in your study that reporting cannot repair.",
+    "sourceIds": [
+      "src-strobe",
+      "src-consort",
+      "src-tripod"
+    ],
+    "status": "draft",
+    "tags": [
+      "clinical"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified"
+  }
+]
