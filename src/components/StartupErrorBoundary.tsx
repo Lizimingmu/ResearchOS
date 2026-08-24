@@ -18,11 +18,11 @@ export class StartupErrorBoundary extends Component<Props, State> {
     if (!this.state.error) return this.props.children;
     return (
       <main className="startup-error" role="alert">
-        <span className="eyebrow">RESEARCHOS · STARTUP RECOVERY</span>
-        <h1>The workspace could not finish opening.</h1>
-        <p>Your local database was not reset. Retry once; if this remains, include the diagnostic below in a bug report.</p>
+        <span className="eyebrow">RESEARCHOS · 启动恢复</span>
+        <h1>工作区未能完成启动。</h1>
+        <p>本地数据库没有被重置。请重试一次；如果问题仍然存在，请在错误报告中附上下方诊断信息。</p>
         <pre>{this.state.error.message || this.state.error.name}</pre>
-        <button className="primary" onClick={() => window.location.reload()}>Retry startup</button>
+        <button className="primary" onClick={() => window.location.reload()}>重新启动</button>
       </main>
     );
   }

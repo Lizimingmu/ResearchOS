@@ -4,6 +4,19 @@
 
 ---
 
+## 🇨🇳 0.10.2 — 2026-08-24
+
+### Changed
+
+- Localized all application chrome, workflow controls, onboarding, empty states, settings, diagnostics, persistence notices, and startup recovery into Simplified Chinese.
+- Added Chinese display mappings for persisted enum values while retaining the existing schema and stored values.
+- Preserved scientific source titles, identifiers, and verified source material in their original language.
+
+### Validation
+
+- Updated render and startup smoke assertions for the Chinese interface; all 20 frontend tests and 7 Rust tests pass.
+- Re-ran content and performance release gates and rebuilt the standalone executable and NSIS installer.
+
 ## 🩹 0.10.1 — 2026-08-24
 
 ### Fixed

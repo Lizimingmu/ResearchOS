@@ -152,7 +152,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     if (status === "error") {
       set({
         persistenceStatus: "error",
-        toast: { id: makeId("toast"), tone: "error", text: `Changes are in memory but could not be saved: ${String(error)}` },
+        toast: { id: makeId("toast"), tone: "error", text: `更改仍保留在内存中，但无法保存：${String(error)}` },
       });
       return;
     }
@@ -180,7 +180,7 @@ export const useAppStore = create<AppStore>((set, get) => {
         await savePersistedState(migrated);
         reportPersistence("saved");
       } catch (error) {
-        set({ hydrated: true, persistenceStatus: "error", toast: { id: makeId("toast"), tone: "error", text: `Local database was not changed. Continuing in memory: ${String(error)}` } });
+        set({ hydrated: true, persistenceStatus: "error", toast: { id: makeId("toast"), tone: "error", text: `本地数据库未被修改，将继续在内存中运行：${String(error)}` } });
       }
     },
     persistNow: async () => {
@@ -281,7 +281,7 @@ export const useAppStore = create<AppStore>((set, get) => {
       const response = get().responses.find((candidate) => candidate.id === responseId);
       if (!response) return;
       if (response.correctness !== undefined) {
-        set({ toast: { id: makeId("toast"), tone: "info", text: "Calibration is already locked for this attempt." } });
+        set({ toast: { id: makeId("toast"), tone: "info", text: "本次作答的校准结果已经锁定。" } });
         return;
       }
       const now = new Date();
@@ -307,7 +307,7 @@ export const useAppStore = create<AppStore>((set, get) => {
       };
       const misconception: Misconception | undefined = dangerous ? {
         id: misconceptionId!, conceptId, conceptType, sourceTaskId: response.taskId,
-        statement: `High-confidence unsafe judgment detected for “${conceptId}”.`,
+        statement: `检测到关于“${conceptId}”的高信心不安全判断。`,
         variantPrompt: unfamiliarVariant, detectedAt: existingMisconception?.detectedAt ?? nowIso,
         confidence: response.confidence, evidenceCount: (existingMisconception?.evidenceCount ?? 0) + 1,
         status: "unresolved",
@@ -327,7 +327,7 @@ export const useAppStore = create<AppStore>((set, get) => {
         toast: {
           id: makeId("toast"),
           tone: dangerous ? "warning" : "success",
-          text: dangerous ? "High-confidence error captured. An unfamiliar variant is scheduled next." : "Calibration locked and review scheduled.",
+          text: dangerous ? "已记录高信心错误，接下来将安排陌生变式。" : "校准已锁定，并已安排复习。",
         },
       }));
       queuePersist();
@@ -381,12 +381,12 @@ export const useAppStore = create<AppStore>((set, get) => {
         set({ ...migrated, selectedPaperId: migrated.papers[0]?.id });
         queuePersist();
       } catch (error) {
-        set({ toast: { id: makeId("toast"), tone: "error", text: `Backup was not applied: ${String(error)}` } });
+        set({ toast: { id: makeId("toast"), tone: "error", text: `备份未应用：${String(error)}` } });
       }
     },
     resetDemo: () => {
       const reset = createInitialState();
-      set({ ...reset, view: "today", selectedPaperId: reset.papers[0]?.id, toast: { id: makeId("toast"), tone: "info", text: "Demo data reset. AI credentials were not changed." } });
+      set({ ...reset, view: "today", selectedPaperId: reset.papers[0]?.id, toast: { id: makeId("toast"), tone: "info", text: "演示数据已重置，AI 凭据未更改。" } });
       queuePersist();
     },
   };

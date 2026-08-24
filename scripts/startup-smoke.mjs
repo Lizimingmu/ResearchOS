@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { JSDOM } from "jsdom";
 
-const dom = new JSDOM('<div id="root"><div>Opening ResearchOS…</div></div>', {
+const dom = new JSDOM('<div id="root"><div>正在打开 ResearchOS…</div></div>', {
   url: "http://localhost",
   runScripts: "outside-only",
 });
@@ -21,7 +21,7 @@ await new Promise((resolve) => setTimeout(resolve, 500));
 
 const root = document.getElementById("root");
 assert.ok(root?.querySelector(".onboarding-overlay"), "production bundle did not render onboarding");
-assert.match(root.textContent, /Practice judgment, not chat prompts/);
+assert.match(root.textContent, /训练科研判断，而不是练习聊天提示词/);
 assert.ok(localStorage.getItem("researchos-browser-state-v1"), "frontend hydration did not persist initial state");
 
 Object.defineProperty(globalThis, "process", { value: nodeProcess, configurable: true, writable: true });

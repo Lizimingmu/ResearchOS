@@ -79,14 +79,14 @@ export function App() {
   }, [setPaletteOpen, setView]);
 
   if (!hydrated) {
-    return <div className="boot-screen"><div className="boot-mark">R</div><span>Opening local workspace…</span></div>;
+    return <div className="boot-screen"><div className="boot-mark">R</div><span>正在打开本地工作区…</span></div>;
   }
 
   if (!onboarding.completed) return <Onboarding />;
 
   return (
     <>
-      <AppShell><Suspense fallback={<div className="boot-screen"><span>Opening workspace module…</span></div>}><View /></Suspense></AppShell>
+      <AppShell><Suspense fallback={<div className="boot-screen"><span>正在加载工作区模块…</span></div>}><View /></Suspense></AppShell>
       <CommandPalette />
       <Toast />
     </>

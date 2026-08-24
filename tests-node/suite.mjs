@@ -35,7 +35,8 @@ test("unit: startup remains visible when matchMedia is unavailable", () => {
   assert.equal(resolveTheme("system", () => ({ matches: true })), "dark");
   const html = readFileSync(new URL("../dist/index.html", import.meta.url), "utf8");
   const bundle = readFileSync(new URL("../dist/assets/index.js", import.meta.url), "utf8");
-  assert.match(html, /Opening ResearchOS/);
+  assert.match(html, /正在打开 ResearchOS/);
+  assert.match(html, /lang="zh-CN"/);
   assert.match(html, /\.\/assets\/boot\.js/);
   assert.match(html, /\.\/assets\/index\.js/);
   assert.doesNotMatch(bundle, /process\.env\.NODE_ENV/);
@@ -81,7 +82,7 @@ test("unit: v1 state migrates without losing user projects or responses", () => 
 });
 
 test("unit: future state is rejected without downgrade", () => {
-  assert.throws(() => migratePersistedState({ schemaVersion: 99 }, createInitialState()), /was not changed/);
+  assert.throws(() => migratePersistedState({ schemaVersion: 99 }, createInitialState()), /数据库未被修改/);
 });
 
 test("unit: AI review architecture delimits attempts and validates structured output", () => {
@@ -199,8 +200,8 @@ test("integration: project creation and settings survive browser persistence gat
 test("integration: Today component is a desktop queue and contains no chat-first prompt", () => {
   useAppStore.setState({ ...createInitialState(), hydrated: true });
   const html = renderToStaticMarkup(createElement(TodayView));
-  assert.match(html, /Deliberate practice queue/);
-  assert.match(html, /RETRIEVAL/);
+  assert.match(html, /刻意练习队列/);
+  assert.match(html, /提取练习/);
   assert.doesNotMatch(html, /Ask ResearchOS anything/i);
   assert.doesNotMatch(html, /welcome back/i);
 });
@@ -222,7 +223,7 @@ test("integration: PDF import creates a pending local paper visible in Library",
   assert.equal(imported?.title, "imported local methods paper");
   assert.equal(imported?.verificationStatus, "pending");
   const html = renderToStaticMarkup(createElement(LibraryView));
-  assert.match(html, /Import PDF/);
+  assert.match(html, /导入 PDF/);
 });
 
 test("integration: provider configuration persists without an API key field", async () => {

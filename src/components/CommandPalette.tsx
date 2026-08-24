@@ -24,14 +24,14 @@ export function CommandPalette() {
   const input = useRef<HTMLInputElement>(null);
 
   const commands = useMemo<PaletteCommand[]>(() => [
-    { id: "today", label: "Start today", group: "Navigate", keywords: "daily session", run: () => setView("today"), icon: Command },
-    { id: "paper", label: "Open paper", group: "Navigate", keywords: "pdf library", run: () => setView("paper-lab"), icon: FilePlus2 },
-    { id: "project", label: "Add project", group: "Create", keywords: "context research", run: () => setView("projects"), icon: FolderPlus },
-    { id: "review", label: "Go to review", group: "Navigate", keywords: "retrieval due", run: () => setView("review"), icon: ShieldCheck },
-    { id: "audit", label: "Audit current analysis", group: "Practice", keywords: "ai plan critique", run: () => setView("ai-audit"), icon: ShieldCheck },
-    { id: "evidence", label: "Find evidence", group: "Evidence", keywords: "pmid doi verify", run: () => { setView("library"); notify("Use Verify PMID / DOI in the paper inspector. Unresolved metadata stays pending.", "info"); }, icon: Search },
-    { id: "transfer", label: "Create transfer exercise", group: "Practice", keywords: "project action", run: () => setView("projects"), icon: FlaskConical },
-    ...methods.map((method) => ({ id: `method-${method.id}`, label: `Method: ${method.title}`, group: "Methods", keywords: `${method.domain} ${method.tags.join(" ")}`, run: () => selectMethod(method.id), icon: FlaskConical })),
+    { id: "today", label: "开始今日训练", group: "导航", keywords: "daily session 今日 训练", run: () => setView("today"), icon: Command },
+    { id: "paper", label: "打开论文", group: "导航", keywords: "pdf library 论文 文献库", run: () => setView("paper-lab"), icon: FilePlus2 },
+    { id: "project", label: "添加项目", group: "新建", keywords: "context research 项目", run: () => setView("projects"), icon: FolderPlus },
+    { id: "review", label: "进入复习", group: "导航", keywords: "retrieval due 复习", run: () => setView("review"), icon: ShieldCheck },
+    { id: "audit", label: "审查当前分析", group: "训练", keywords: "ai plan critique 审查", run: () => setView("ai-audit"), icon: ShieldCheck },
+    { id: "evidence", label: "查找证据", group: "证据", keywords: "pmid doi verify 核验", run: () => { setView("library"); notify("请在论文检查器中使用“核验 PMID / DOI”。尚未解析的元数据将保持待核验状态。", "info"); }, icon: Search },
+    { id: "transfer", label: "创建迁移练习", group: "训练", keywords: "project action 迁移", run: () => setView("projects"), icon: FlaskConical },
+    ...methods.map((method) => ({ id: `method-${method.id}`, label: `方法：${method.title}`, group: "方法", keywords: `${method.domain} ${method.tags.join(" ")}`, run: () => selectMethod(method.id), icon: FlaskConical })),
   ], [methods, notify, selectMethod, setView]);
 
   const filtered = useMemo(() => {
@@ -59,21 +59,21 @@ export function CommandPalette() {
   };
   return (
     <div className="overlay" onMouseDown={(event) => { if (event.currentTarget === event.target) setOpen(false); }}>
-      <section className="command-palette" role="dialog" aria-modal="true" aria-label="Command palette">
-        <label className="palette-input"><Search size={17} /><input ref={input} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Type a command or method…" onKeyDown={(event) => {
+      <section className="command-palette" role="dialog" aria-modal="true" aria-label="命令面板">
+        <label className="palette-input"><Search size={17} /><input ref={input} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="输入命令或方法…" onKeyDown={(event) => {
           if (event.key === "ArrowDown") { event.preventDefault(); setActive((value) => Math.min(filtered.length - 1, value + 1)); }
           if (event.key === "ArrowUp") { event.preventDefault(); setActive((value) => Math.max(0, value - 1)); }
           if (event.key === "Enter") { event.preventDefault(); execute(filtered[active]); }
           if (event.key === "Escape") setOpen(false);
         }} /></label>
         <div className="palette-results">
-          {filtered.length === 0 && <div className="empty-inline">No command matches this query.</div>}
+          {filtered.length === 0 && <div className="empty-inline">没有匹配的命令。</div>}
           {filtered.map((item, index) => {
             const Icon = item.icon;
             return <button key={item.id} className={index === active ? "active" : ""} onMouseEnter={() => setActive(index)} onClick={() => execute(item)}><Icon size={15} /><span>{item.label}</span><small>{item.group}</small></button>;
           })}
         </div>
-        <footer><span><kbd>↑↓</kbd> navigate</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></footer>
+        <footer><span><kbd>↑↓</kbd> 选择</span><span><kbd>Enter</kbd> 打开</span><span><kbd>Esc</kbd> 关闭</span></footer>
       </section>
     </div>
   );

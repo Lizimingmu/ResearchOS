@@ -42,13 +42,13 @@ export async function deleteProviderKey(providerId: string): Promise<void> {
 }
 
 export async function testProvider(provider: AIProvider): Promise<{ ok: boolean; status: number }> {
-  if (!isTauri()) throw new Error("Provider connection tests run in the desktop build.");
+  if (!isTauri()) throw new Error("模型服务连接测试只能在桌面版中运行。");
   const apiKey = await getProviderKey(provider.id);
   return invoke("test_ai_provider", { provider: { ...provider, apiKey } });
 }
 
 export async function requestAiReview(provider: AIProvider, prompt: string, evidence: string): Promise<string> {
-  if (!isTauri()) throw new Error("AI review is unavailable in browser preview. Seed senior review remains available.");
+  if (!isTauri()) throw new Error("浏览器预览中无法使用 AI 评议，内置专家参考仍可使用。");
   const apiKey = await getProviderKey(provider.id);
   return invoke<string>("ai_review", { provider: { ...provider, apiKey }, prompt, evidence });
 }
@@ -66,7 +66,7 @@ export interface EvidenceVerificationResult {
 }
 
 export async function verifyEvidence(kind: "pmid" | "doi", identifier: string): Promise<EvidenceVerificationResult> {
-  if (!isTauri()) throw new Error("Evidence verification runs in the desktop build. Continue offline with status pending.");
+  if (!isTauri()) throw new Error("证据核验只能在桌面版中运行，可继续离线使用并保持待核验状态。");
   return invoke("verify_evidence", { kind, identifier });
 }
 
@@ -85,11 +85,11 @@ export async function databaseHealth(): Promise<DatabaseHealth> {
 }
 
 export async function exportBackup(destination: string): Promise<string> {
-  if (!isTauri()) throw new Error("SQLite backup export requires the desktop build.");
+  if (!isTauri()) throw new Error("导出 SQLite 备份需要桌面版。");
   return invoke("export_backup", { destination });
 }
 
 export async function importBackup(source: string): Promise<void> {
-  if (!isTauri()) throw new Error("SQLite backup import requires the desktop build.");
+  if (!isTauri()) throw new Error("导入 SQLite 备份需要桌面版。");
   return invoke("import_backup", { source });
 }

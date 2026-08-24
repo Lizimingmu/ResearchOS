@@ -22,7 +22,7 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
   if (!isRecord(raw)) return defaults;
   const sourceVersion = typeof raw.schemaVersion === "number" ? raw.schemaVersion : 1;
   if (sourceVersion > CURRENT_STATE_SCHEMA) {
-    throw new Error(`This workspace uses state schema v${sourceVersion}; this build supports v${CURRENT_STATE_SCHEMA}. The database was not changed.`);
+    throw new Error(`此工作区使用状态架构 v${sourceVersion}；当前版本支持 v${CURRENT_STATE_SCHEMA}。数据库未被修改。`);
   }
 
   const settings = isRecord(raw.settings) ? raw.settings : {};

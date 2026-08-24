@@ -1,10 +1,14 @@
-# ResearchOS v0.10.1
+# ResearchOS v0.10.2
 
 *A local-first Windows desktop system for deliberate practice in medical-research methods, scientific judgment, paper reading, project transfer, and human oversight of AI.*
 
 ---
 
-## 🧭 What changed in v0.10.1
+## 🧭 What changed in v0.10.2
+
+- Simplified Chinese interface across navigation, onboarding, training, review, evidence, project, settings, diagnostics, and startup recovery.
+- Chinese presentation mappings for verification, difficulty, task, persistence, and other stored enum values without changing database-compatible values.
+- Scientific source titles, DOI/PMID identifiers, and verified source text remain in their original language to preserve meaning and provenance.
 
 - A complete answer → confidence → locked feedback → transfer → delayed variant-review loop.
 - Explicit high-confidence misconceptions that cannot clear until a correct unfamiliar variant.
@@ -18,9 +22,9 @@ ResearchOS is an educational research tool, not clinical decision support. Its m
 
 ## 📦 Install
 
-Verify `release/ResearchOS_0.10.1_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.10.1_x64.exe` is also provided.
+Verify `release/ResearchOS_0.10.2_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.10.2_x64.exe` is also provided.
 
-v0.9 artifacts remain in `release/` for rollback and were not overwritten. v0.10.0 is retained for audit but is superseded because its browser bundle referenced a Node-only `process` global and could open as a blank window. Exact v0.10.1 sizes, schema versions, toolchain, and digests are in `release/BUILD_METADATA_v0.10.1.json`.
+Earlier artifacts remain in `release/` for rollback and audit. v0.10.0 must not be distributed because its browser bundle could open as a blank window. Exact v0.10.2 sizes, schema versions, and digests are in `release/BUILD_METADATA_v0.10.2.json`.
 
 ## 🛠️ Develop and verify
 

@@ -1,12 +1,12 @@
 # ResearchOS Final Handoff
 
-*Final v0.10.1 implementation, blank-screen hotfix, verification, packaging, and risk handoff for the autonomous depth-optimization release.*
+*Final v0.10.2 Chinese-interface implementation, blank-screen hotfix, verification, packaging, and risk handoff for the autonomous depth-optimization release.*
 
 ---
 
 ## Version
 
-**0.10.1** on branch `codex/autonomous-depth-v0.10`. Frontend state schema: **2**. SQLite `user_version`: **2**. v0.9 release artifacts remain untouched for rollback. v0.10.0 is retained for audit but superseded. Version alignment is recorded in npm, Cargo, Tauri, artifact names, changelog, checksums, and `release/BUILD_METADATA_v0.10.1.json`.
+**0.10.2** on branch `codex/autonomous-depth-v0.10`. UI locale: **Simplified Chinese (`zh-CN`)**. Frontend state schema: **2**. SQLite `user_version`: **2**. Earlier artifacts remain available for rollback/audit; v0.10.0 is superseded and must not be distributed. Version alignment is recorded in npm, Cargo, Tauri, artifact names, changelog, checksums, and `release/BUILD_METADATA_v0.10.2.json`.
 
 ## Major Improvements
 
@@ -17,6 +17,7 @@
 - Added demand-loaded global search and isolated heavy PDF/content paths from startup.
 - Added automated content/performance release gates and four new audit/validation reports.
 - Corrected the installed v0.10.0 blank screen and added startup recovery plus a production-WebView compatibility gate.
+- Localized application chrome and workflows into Simplified Chinese while preserving original scientific source titles, identifiers, and verified source material.
 
 ## Bugs Fixed
 
@@ -85,11 +86,11 @@ Smoke: **pass for observable release checks** — first launch, DB/WAL/WebView c
 
 ## Build
 
-Installer: `release/ResearchOS_0.10.1_x64-setup.exe` — 5,002,045 bytes<br>
-Executable: `release/ResearchOS_0.10.1_x64.exe` — 15,247,360 bytes<br>
-SHA256: installer `1B895439F7834A7727DBEBAF8808E3ADBC78B88798AC3B5DE77181E1F7AB7D02`; executable `22CD329794AF5DCDDF16C95D5647F5387EE569D3899A55620B0045AED91EF16E`
+Installer: `release/ResearchOS_0.10.2_x64-setup.exe` — 5,016,199 bytes<br>
+Executable: `release/ResearchOS_0.10.2_x64.exe` — 15,263,744 bytes<br>
+SHA256: installer `67F6228F9D4B9325F006FBB6A379B243ADBE9B2AB52C3EA0B17C79C18C5C0834`; executable `D93E87E47C48EDA844D6A1D07E51D4A8DC46EE74403042413EC769AB0FE40302`
 
-The installer is unsigned. `release/SHA256SUMS.txt` retains v0.9, superseded v0.10.0, and corrected v0.10.1 digests.
+The installer is unsigned. `release/SHA256SUMS.txt` retains historical digests and the current v0.10.2 Chinese-interface release digests.
 
 ## Known Limitations
 

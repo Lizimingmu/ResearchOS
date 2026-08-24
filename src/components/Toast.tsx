@@ -12,6 +12,5 @@ export function Toast() {
   }, [toast, clearToast]);
   if (!toast) return null;
   const Icon = toast.tone === "success" ? CheckCircle2 : toast.tone === "error" || toast.tone === "warning" ? AlertTriangle : Info;
-  return <div className={`toast ${toast.tone}`} role="status"><Icon size={16} /><span>{toast.text}</span><button onClick={clearToast} aria-label="Dismiss"><X size={14} /></button></div>;
+  return <div className={`toast ${toast.tone}`} role="status"><Icon size={16} /><span>{toast.text}</span><button onClick={clearToast} aria-label="关闭提示"><X size={14} /></button></div>;
 }
-

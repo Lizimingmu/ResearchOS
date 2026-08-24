@@ -1,6 +1,6 @@
-# ResearchOS v0.10.1 test report
+# ResearchOS v0.10.2 test report
 
-*Final Windows release evidence for code, learning invariants, content, performance, persistence, packaging, and honest coverage limits.*
+*Final Windows Chinese-interface release evidence for code, learning invariants, content, performance, persistence, packaging, and honest coverage limits.*
 
 ---
 
@@ -42,10 +42,10 @@ The same manual-window/data-directory path was retained because a diagnostic Tau
 
 | Artifact | Bytes | SHA-256 |
 |---|---:|---|
-| `ResearchOS_0.10.1_x64.exe` | 15,247,360 | `22CD329794AF5DCDDF16C95D5647F5387EE569D3899A55620B0045AED91EF16E` |
-| `ResearchOS_0.10.1_x64-setup.exe` | 5,002,045 | `1B895439F7834A7727DBEBAF8808E3ADBC78B88798AC3B5DE77181E1F7AB7D02` |
+| `ResearchOS_0.10.2_x64.exe` | 15,263,744 | `D93E87E47C48EDA844D6A1D07E51D4A8DC46EE74403042413EC769AB0FE40302` |
+| `ResearchOS_0.10.2_x64-setup.exe` | 5,016,199 | `67F6228F9D4B9325F006FBB6A379B243ADBE9B2AB52C3EA0B17C79C18C5C0834` |
 
-Hashes were recomputed after the v0.10.1 startup fix and release/NSIS rebuild. v0.10.0 remains archived but is superseded and must not be distributed.
+Hashes were recomputed after the v0.10.2 Chinese-interface release/NSIS rebuild. v0.10.0 remains archived but is superseded and must not be distributed.
 
 ## 🖼️ E2E and visual limitation
 
