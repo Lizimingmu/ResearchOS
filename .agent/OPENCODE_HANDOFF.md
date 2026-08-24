@@ -1,27 +1,69 @@
-# OpenCode Handoff — M013-10 External Pack Remediation
+# OpenCode Handoff — M013-10 Staging Converter and Gate Hardening
 
-## Execute
+## Role and boundary
 
-Patch the supplied M013 external candidate packs and importer gate only. Do not regenerate the scientific corpus, import into production, promote verification status, package, release, bump versions, resume M012, or run Git.
+Use **DeepSeek V4 Pro**. Execute M013-10 engineering work only. Do not generate or rewrite scientific content, import into the production database, promote any verification status, package, release, bump versions, run Git, or resume M012.
 
-## Inputs
+Read `AGENTS.md`, `.agent/SCIENTIFIC_GATES.md`, `.agent/PROBLEM_ATLAS_SPEC.md`, `.agent/SOURCE_INGESTION_SPEC.md`, `.agent/REVIEW_RESULT.md`, `.agent/SCIENTIFIC_CHANGESET.md`, `.agent/M013_SOURCE_PACK_DRY_RUN.md`, and `.agent/M013_SOURCE_METADATA_AUDIT.md`. Preserve the original ZIP and its contents unchanged.
 
-Read `.agent/REVIEW_RESULT.md`, `.agent/SCIENTIFIC_CHANGESET.md`, `.agent/M013_SOURCE_PACK_DRY_RUN.md`, `.agent/M013_SOURCE_METADATA_AUDIT.md`, and the archive's qualification registers. Preserve the original ZIP unchanged.
+## Required engineering work
 
-## Required work
+### 1. Harden untrusted-input validation
 
-1. Make `validateSourcePack` and `dryRunSourcePack` exception-safe for arbitrary JSON shapes; malformed/legacy fields must return deterministic structured errors, never throw `TypeError`.
-2. Build a deterministic staging converter from the archive's snake_case/legacy shape to current v3 field names. Preserve scientific text verbatim, record every mapping, and reject unmappable rows. Do not invent authors, claims, causes, scopes or qualifications.
-3. Add required `contentOrigin`/provenance fields without self-verification. Canonicalize six duplicated DOI/PMID sources across batches and update foreign keys; correct only metadata listed in the audit.
-4. Produce two staged outputs: (a) sources/claims eligible for another scientific review, still pending; (b) quarantined ProblemCards/paths/rubrics. Do not bulk-pad the 166 cards with generic causes.
-5. Extend audits for validator-crash safety, legacy-field rejection/conversion, cross-pack collisions, missing scope/qualification, empty provenance, missing claim boundaries and candidate-cause count.
+- `validateSourcePack` and `dryRunSourcePack` must never throw for arbitrary legacy, malformed, oversized, or malicious JSON shapes.
+- Return deterministic structured validation failures with locations/codes.
+- Add regression coverage for missing arrays, wrong primitive/object types, malformed identifiers, oversize fields, collision-dependent claims, merged-state foreign keys, and rollback.
 
-## Acceptance and stop
+### 2. Add the minimal type/completeness contract
 
-All eight original packs must be safely rejected without a crash. Converted staging packs must pass schema validation and dry-run with zero conflicts, while every scientific item remains pending. Update `IMPLEMENTATION_REPORT.md`; do not overwrite `SCIENTIFIC_CHANGESET.md`. Stop for Codex re-review without calling the apply importer.
+- Canonical `ProblemType`: `diagnostic | judgment | audit`.
+- Staging may additionally use `unclassified`; it is never import-eligible.
+- Do not infer `problemType` from titles, free text, tags, or the number of candidate causes. Legacy rows without an explicit reviewed classification remain `unclassified`.
+- Report scientific completeness separately as `scientifically_complete | scientific_patch_required` (or an equivalent typed result). This reports completeness only; it is not verification or scientific approval.
+- Keep incomplete legacy values absent/null in staging where the canonical production model cannot represent them safely. Do not invent defaults to make rows pass.
 
-## Short prompt
+### 3. Keep the two gates independent
+
+**Structural validation** checks safe parsing, schema/enums, identifiers, references, size/version constraints, collisions, and exception safety.
+
+**Scientific completeness** checks only the declared type's required fields and reports missing items:
+
+- `diagnostic`: requires a real differential with at least two referenced candidate explanations plus discriminating checks, reasoning and claim boundaries. Three useful candidates are preferred, but there is no global `>= 3` rule and no third cause may be fabricated.
+- `judgment`: does not require candidate causes. Check the methodological issue/interpretation, answer or acceptable alternatives, repair, severity, transfer and evidence requirements defined in the specification.
+- `audit`: does not require candidate causes. Check issue list/category, severity, fixability, missing information, corrected approach, boundary and evidence requirements defined in the specification.
+- `unclassified`: always `scientific_patch_required` and `importEligible: false`.
+
+A structurally valid staging document may dry-run successfully while remaining scientifically incomplete and import-ineligible. The apply path must reject every row/document with `scientific_patch_required` or `unclassified`.
+
+### 4. Build a deterministic, auditable legacy-to-v3 staging converter
+
+- Map only machine-deterministic fields: snake_case to camelCase, stable IDs, enums/aliases with explicit lookup tables, `contentOrigin: external_source_pack`, provenance identifiers, canonical source IDs, and updated foreign keys.
+- Preserve supplied scientific text verbatim unless applying an exact Codex-approved patch already listed in `.agent/SCIENTIFIC_CHANGESET.md`.
+- Canonicalize the six DOI collisions, six PMID collisions, and four normalized-title duplicates; disclose every merge/conflict.
+- Never invent or infer scope, qualification, candidate causes, claim boundaries, recommended reasoning, severity, fixability, evidence support, or `problemType`.
+- Never promote `pending`. Missing scientific fields stay missing and produce `scientific_patch_required` plus `importEligible: false`.
+
+### 5. Produce staging reports
+
+Create `.agent/M013_V3_STAGING_REPORT.md` and `.agent/M013_V3_STAGING_REPORT.json` containing exact counts for:
+
+- rows by `problemType`, including `unclassified`;
+- structural pass/reject and error codes;
+- scientific completeness and missing-field reasons by type;
+- source canonicalization, collisions and foreign-key rewrites;
+- pending statuses;
+- dry-run result and explicit `importEligible` result.
+
+Update `.agent/IMPLEMENTATION_REPORT.md`. Update `.agent/SCIENTIFIC_CHANGESET.md` only with an engineering-status note stating that M013-10 added no new scientific claim/content and retained all candidate content as pending; do not overwrite or reinterpret existing Codex decisions.
+
+## Verification and stop condition
+
+Run typecheck/build, frontend tests, source-pack audit, Problem Atlas audit, content/localization/performance/startup gates, and `scripts/validate-agent-handoff.mjs` as applicable. The eight untouched original packs must return structured rejection without a crash. Converted staging must be structurally valid and collision-free in dry-run, while incomplete/unclassified scientific rows remain import-ineligible.
+
+Do not call the apply importer. Stop after reports and automated QA, and return the implementation report for Codex review.
+
+## Short execution prompt
 
 ```text
-在 D:\Agents\ResearchOS 执行 M013-10。读取 .agent/OPENCODE_HANDOFF.md、REVIEW_RESULT.md、SCIENTIFIC_CHANGESET.md 和两个 M013 审计报告。修复 validator 对旧/恶意 JSON 的崩溃，建立保真、可审计的 legacy→v3 staging 转换，合并跨包重复来源并补齐机器可确定字段；不得生成新科研内容、导入生产库、提升 pending、Git 或打包。原始 8 包应安全返回结构化拒绝，转换包应通过 validator/dry-run 后停止等待 Codex 复审。
+读取 AGENTS.md 和 .agent/OPENCODE_HANDOFF.md，执行当前 M013-10。仅做异常安全验证、legacy→v3 可审计 staging 转换、来源去重与双层 gate；不得推断 problemType，不得用全局“候选原因>=3”规则，不得补造任何科研字段。只 dry-run，不导入生产库，不提升 pending，不执行 Git，不打包。完成 QA 和报告后停止，返回 IMPLEMENTATION_REPORT。
 ```

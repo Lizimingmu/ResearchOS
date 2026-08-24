@@ -11,7 +11,7 @@
 | M013-07 | P0 | Add deterministic audits and engineering tests; write reports | OpenCode Pro | Import/state/search/training/status/UI tests and all existing gates pass; reports complete | Changeset Yes |
 | M013-08 | P1 | Diff-based architecture/scientific review | Codex | Completed: `PATCH REQUIRED`; findings recorded in `REVIEW_RESULT.md` | Yes |
 | M013-09 | P0 | Apply requested patches and regression | OpenCode Pro | Every review finding resolved; reproduced failures covered; all gates green; reports updated; stop for re-review | As marked |
-| M013-10 | P0 | Harden external-pack validation and produce auditable legacy→v3 staging conversion | OpenCode Pro | 8 original packs safely rejected without crash; converted staging validates/dry-runs with zero conflicts; no scientific text invented or promoted; no production import | Yes |
+| M013-10 | P0 | Harden external-pack validation and produce auditable legacy→v3 staging conversion | OpenCode Pro | 8 original packs safely reject without crash; explicit problemType/unclassified staging; structural and scientific-completeness results separated; converted staging dry-run is conflict-free but import-ineligible while incomplete; no scientific content inferred, invented or promoted; no production import | Yes |
 | M013-11 | P0 | Re-review staged source/claim packs and quarantined ProblemCard disposition | Codex | Metadata corrections, per-claim scope/support and corpus fitness reviewed from reports/diff only | Yes |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.

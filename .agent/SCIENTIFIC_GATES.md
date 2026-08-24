@@ -1,6 +1,6 @@
 # Scientific Gates
 
-Last updated: 2026-08-24
+Last updated: 2026-08-25
 
 ## Non-negotiable evidence rules
 
@@ -65,18 +65,25 @@ Evidence priority: authoritative guideline/consensus → Nature Protocols → ST
 
 ## RESEARCH PROBLEM ATLAS HIGH-RISK GATE
 
-Problem Atlas trains scientific differential diagnosis, not FAQ recall. OpenCode may implement infrastructure and pending demos, but it may not independently mark the following as verified: diagnostic reference answers, universal experimental/statistical principles, causal interpretations, biological-replicate definitions, claim boundaries, reviewer severity, treatment/experimental inference, protocol critical controls, bioinformatics best-practice claims, or source-authority classification.
+Problem Atlas trains scientific diagnosis, methodological judgment and structured audit, not FAQ recall. OpenCode may implement infrastructure and pending demos, but it may not independently mark the following as verified: diagnostic reference answers, universal experimental/statistical principles, causal interpretations, biological-replicate definitions, claim boundaries, reviewer severity, treatment/experimental inference, protocol critical controls, bioinformatics best-practice claims, or source-authority classification.
 
-A ProblemCard or diagnostic path passes only when:
+A ProblemCard first declares `problemType = diagnostic | judgment | audit`. Legacy staging may use `unclassified`, which is always scientifically incomplete and import-ineligible. The converter must not infer type from prose.
 
-1. Observation is separated from explanation; multiple plausible causes are retained until discriminating evidence changes their rank.
-2. The “next check” is justified by information value and ability to distinguish causes, not convenience or generic additional analysis.
-3. Error localization distinguishes sample, experiment, quantification, statistics and interpretation layers.
-4. The reference answer explains which evidence changed the diagnosis and what remains uncertain.
-5. Claim boundaries and reviewer severity are proportionate to design, statistical unit and evidence.
-6. Wrong + high confidence maps to an underlying misconception and a delayed far-transfer variant, not the same question repeated.
-7. Problem content links to Method/Protocol/Pattern entities rather than copying their teaching text.
-8. Emerging, superseded and deprecated knowledge is visibly distinguished from current verified knowledge.
+Common requirements:
+
+1. Observation/scenario is separated from interpretation, and the reference answer states what remains uncertain.
+2. Claim boundaries and reviewer severity are proportionate to design, statistical unit and evidence.
+3. Wrong + high confidence maps to an underlying misconception and a delayed far-transfer variant, not the same question repeated.
+4. Problem content links to Method/Protocol/Pattern entities rather than copying their teaching text.
+5. Emerging, superseded and deprecated knowledge is visibly distinguished from current verified knowledge.
+
+Type-specific requirements:
+
+- **Diagnostic:** retain scientifically plausible competing explanations until discriminating evidence changes their rank; justify next checks by discrimination value; include sequential evidence only where appropriate. Prefer three useful causes, allow two, and never manufacture an extra cause to meet a number.
+- **Judgment:** require core issue, risky reasoning, acceptable and alternative interpretation, repair strategy, claim boundary, reviewer implication, evidence and far transfer. Candidate causes are not required.
+- **Audit:** require a plan/fragment, embedded issues, category/severity, fatal-versus-fixable status, missing information, corrected approach, claim boundary and evidence. Issues are not forced into a cause-ranking model.
+
+Structural validity and scientific completeness are separate gates. Validators may check deterministic presence, types, enums, references and type-specific required fields, but they may not generate, infer or score scientific truth. `scientifically_complete` does not mean verified. A `scientific_patch_required` item remains pending and cannot be applied to the production learning registry.
 
 Source authority is contextual, not a numeric truth score. Tier B vendor/technical sources may support reagent-specific troubleshooting but cannot by themselves establish a universal methodological principle. Tier D is discovery-only; Tier X is rejected. DOI/PMID existence never upgrades claim verification.
 

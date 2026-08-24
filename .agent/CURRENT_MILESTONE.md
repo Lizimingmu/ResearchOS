@@ -24,3 +24,9 @@ Bulk scientific content generation, automatic web crawling, LLM-selected truth, 
 ## Acceptance sequence
 
 OpenCode M013-01…07 → deterministic QA → Codex diff/scientific review → OpenCode patch → regression → Codex ACCEPT. Only then may M012 resume on the source-first foundation.
+
+## Current patch cycle — M013-10
+
+OpenCode first hardens untrusted-input validation and builds an auditable legacy→v3 staging converter. The schema distinguishes `diagnostic`, `judgment` and `audit`; legacy cards without an explicit reviewed type remain `unclassified`. Structural validity is reported separately from scientific completeness. A staging pack may be structurally valid while `scientific_patch_required` and `importEligible = false`.
+
+M013-10 does not repair scientific content. After its reports are complete, Codex M013-11 will classify/review card types and plan type-specific scientific repairs before any production import.

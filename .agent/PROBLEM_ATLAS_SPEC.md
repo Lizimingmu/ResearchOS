@@ -16,6 +16,7 @@ Observation → Candidate causes → Missing information → Discriminating evid
 ### ProblemCard
 
 - `id`, `schemaVersion`, `domain`, `subdomain`
+- `problemType`: diagnostic | judgment | audit. Staging conversion may use `unclassified`; unclassified cards are never import-eligible.
 - `titleCn`, `titleEn`, `aliases[]`, `keywords[]`
 - `difficulty`, `importance`, `frequency`
 - `observation`, `context`, `whyItMatters`
@@ -28,6 +29,25 @@ Observation → Candidate causes → Missing information → Discriminating evid
 - `evidenceClaimIds[]`
 - `contentOrigin`, `verificationStatus`, `verifiedAt?`
 - `knowledgeStatus`: current | superseded | deprecated | emerging
+
+`problemType` controls scientific completeness. It does not change verification status and must not be inferred from free text by the importer or converter.
+
+### Problem-type completeness
+
+**Diagnostic** cards represent troubleshooting/differential diagnosis. They require an observation, scientifically plausible competing explanations when multiple explanations genuinely exist, discriminating checks, recommended reasoning, claim boundary, common wrong action and evidence claims. Prefer three useful explanations, allow two when scientifically appropriate, and never add a weak cause to satisfy a count. Sequential evidence is required only when the learning design uses evidence updating.
+
+**Judgment** cards represent a methodological interpretation decision. They do not require candidate causes. They require a scenario, core methodological issue, why the interpretation is risky, acceptable interpretation, relevant alternatives, recommended reasoning, claim boundary, repair strategy, proportionate reviewer implication, evidence claims and a far-transfer case.
+
+**Audit** cards represent review of a plan, protocol, manuscript fragment or AI analysis. They do not require differential causes. They require the scenario/plan, multiple embedded issues when present, issue category and severity, fatal-versus-fixable status, missing information, corrected approach, claim boundary and evidence.
+
+Legacy content without an explicit reviewed type is converted as `unclassified` with `scientificCompleteness = scientific_patch_required`. OpenCode/validators must not classify it from titles, keywords or model knowledge.
+
+### Two independent validation layers
+
+1. **Structural validation** checks safe parsing, enums, stable IDs, foreign keys, size bounds, collision/version rules and exception safety. Its result is `structurally_valid` or structured rejection.
+2. **Scientific completeness validation** applies the rules for the declared `problemType`. Its result is `scientifically_complete` or `scientific_patch_required` with missing-field codes.
+
+`scientifically_complete` only means the required structure is present. It is not evidence verification. Pending content remains pending until the formal scientific gate. A structurally valid but scientifically incomplete staging pack must return `importEligible = false`; the apply importer must reject it.
 
 ### DiagnosticCause
 
@@ -99,4 +119,3 @@ Wet Lab ~40; Experimental Design ~30; Statistics/Study Design ~40; Bioinformatic
 ## Acceptance
 
 Structured storage, deterministic search, eight modes, source-first links, version badges, review/misconception/Today/Skill integration, transactional import, validators and tests. No scientific item is self-verified and no release packaging occurs.
-

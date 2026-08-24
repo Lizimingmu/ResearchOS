@@ -8,7 +8,7 @@ Input: `ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip` (8 packs, 120 source 
 
 - Metadata triage: 80/83 unique DOI resolved through Crossref; 5/5 PMID-only records resolved through Europe PMC. Three DOI lookups were rate-limited, not shown invalid. Eight title records and five online/print-year differences require manual normalization; 26 URL-only sources were not exhaustively bulk-resolved.
 - Claim completeness: 86/138 claims have empty scope and 88/138 have empty qualification.
-- Problem Atlas fitness: REJECT the 166-card set as importable learning content. Cards with 0/1/≥3 candidate causes: 139/27/0; 111 lack claim boundaries, 79 lack recommended reasoning, two lack a diagnostic path, and only 21 sequential evidence items plus 30 transfer cases exist.
+- Problem Atlas fitness: BLOCK the 166-card set from import pending reviewed type classification. Cards with 0/1/≥3 candidate causes are 139/27/0, but this count is only a diagnostic-card signal and must not be imposed on judgment/audit cards. All 166 are currently `unclassified`; 111 lack claim boundaries, 79 lack recommended reasoning, two lack a diagnostic path, and only 21 sequential evidence items plus 30 transfer cases exist. Type-specific completeness cannot be approved before classification.
 
 ### SC-PACK-01 — Experimental design, WB, qPCR and IHC
 
@@ -116,10 +116,10 @@ Input: `ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip` (8 packs, 120 source 
 - Risk level: HIGH
 - Verification status: pending
 - Changed files: External Batch03/Batch08 JSON requires staging patch; no product scientific file modified.
-- Reviewer note: None of the 166 ProblemCards is accepted as Atlas-ready; do not pad causes mechanically.
+- Reviewer note: None of the 166 ProblemCards is accepted as Atlas-ready before type classification; do not infer type or pad causes mechanically.
 
 ## Corpus-level disposition
 
 - Evidence sources: retain as candidate metadata after correction/canonicalization; formal metadata verification must be reissued by the gate, not inherited from the producing model.
 - Evidence claims: retain as candidate text; none is approved for `claim_verified` until scope, qualification, location and support type are corrected and re-reviewed.
-- ProblemCards/paths/rubrics: REJECT as importable Problem Atlas content. Preserve in staging for redesign into genuine multiple-hypothesis, evidence-updating cases.
+- ProblemCards/paths/rubrics: BLOCK as importable Problem Atlas content. Preserve as `unclassified` staging records for M013-11 classification and type-specific review. Diagnostic cases require genuine competing explanations and evidence updating; judgment/audit cases must not be forced into a differential-diagnosis shape.
