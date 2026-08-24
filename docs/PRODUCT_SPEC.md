@@ -1,4 +1,4 @@
-# ResearchOS v0.10 product specification
+# ResearchOS v0.10.1 product specification
 
 *Implemented product contract for a medical-research deliberate-practice, scientific-judgment, and AI-oversight desktop system.*
 
@@ -43,7 +43,7 @@ Drafts autosave. A learner must answer and record confidence before feedback, so
 
 ## 📚 Content contract
 
-Release minimums are enforced automatically. v0.10 ships 49 evidence sources, 88 method concepts (84 usable), 25 research patterns, 84 judgment cards, and 40 AI-audit cases. Every scheduled training item has difficulty and misconception metadata plus an unfamiliar review variant where required. Source foreign keys, IDs/titles, DOI/PMID uniqueness, verification scope, and AI self-verification are release gates.
+Release minimums are enforced automatically. v0.10.1 ships 49 evidence sources, 88 method concepts (84 usable), 25 research patterns, 84 judgment cards, and 40 AI-audit cases. Every scheduled training item has difficulty and misconception metadata plus an unfamiliar review variant where required. Source foreign keys, IDs/titles, DOI/PMID uniqueness, verification scope, and AI self-verification are release gates.
 
 ## 📤 Export and recovery
 
@@ -51,8 +51,8 @@ JSON, CSV, and Markdown exports include learning history, weak concepts, notes, 
 
 ## 🚫 Explicit non-goals
 
-No Zotero sync, licensed full-text acquisition, OCR/GROBID, semantic RAG, multi-user sync, autonomous systematic review, automatic evidence promotion, clinical decision support, or psychometrically validated competency certification is included in v0.10.
+No Zotero sync, licensed full-text acquisition, OCR/GROBID, semantic RAG, multi-user sync, autonomous systematic review, automatic evidence promotion, clinical decision support, or psychometrically validated competency certification is included in v0.10.1.
 
 ## ✅ Release acceptance
 
-Acceptance requires lint/typecheck, 19 frontend/integration checks, seven Rust tests, content/performance gates, production/Tauri/NSIS builds, version/hash alignment, release first launch, schema-v2 database creation, integrity check, and same-database restart. Interactive Windows visual acceptance remains separately disclosed when automation cannot observe it.
+Acceptance requires lint/typecheck, 20 frontend/integration checks, a production-bundle startup smoke without Node/WebView compatibility globals, seven Rust tests, content/performance gates, production/Tauri/NSIS builds, version/hash alignment, release first launch, schema-v2 database creation, integrity check, and same-database restart. Interactive Windows visual acceptance remains separately disclosed when automation cannot observe it.

@@ -1,6 +1,6 @@
 # ResearchOS architecture
 
-*Runtime, trust-boundary, persistence, and release architecture for v0.10.*
+*Runtime, trust-boundary, persistence, startup-recovery, and release architecture for v0.10.1.*
 
 ---
 
@@ -60,7 +60,7 @@ The UI adapter returns structured failures; save errors are exposed in System He
 
 ## ⚡ Performance boundaries
 
-Initial JavaScript is 1,852,793 bytes; Paper Lab (862,770 bytes), its worker (1,232,303 bytes), and expanded training content (81,995 bytes) are separate payloads. Global search demand-loads content indexes. Today uses narrowed Zustand selectors, and deterministic scheduling averages 0.1307 ms.
+Initial JavaScript is 663,763 bytes; Paper Lab (859,540 bytes), its worker (1,232,303 bytes), and expanded training content (81,995 bytes) are separate payloads. The Rollup environment plugin replaces Node-only React environment checks at compile time. A static boot shell, resource watchdog, safe theme resolver, and React error boundary prevent startup failures from becoming blank windows. Global search demand-loads content indexes, and deterministic scheduling averages 0.1240 ms.
 
 ## 📦 Build and release
 

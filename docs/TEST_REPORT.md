@@ -1,4 +1,4 @@
-# ResearchOS v0.10 test report
+# ResearchOS v0.10.1 test report
 
 *Final Windows release evidence for code, learning invariants, content, performance, persistence, packaging, and honest coverage limits.*
 
@@ -10,7 +10,8 @@
 |---|---:|---|
 | Lint | PASS | TypeScript project/static correctness gate |
 | Typecheck + production build | PASS | React/TypeScript compilation, Rollup chunks, source maps |
-| Frontend/integration | 19/19 PASS | content/provenance, scheduler, migrations, AI parsing, exports, review, scoring, Today, response lock, misconceptions, drafts, persistence, server render, PDF/provider paths |
+| Frontend/integration | 20/20 PASS | startup environment, content/provenance, scheduler, migrations, AI parsing, exports, review, scoring, Today, response lock, misconceptions, drafts, persistence, server render, PDF/provider paths |
+| Production startup | PASS | actual generated bundle evaluated without Node `process` or WebView `matchMedia`; onboarding rendered and initial state hydrated |
 | Rust backend | 7/7 PASS | state round trip, entity CRUD, backup/restore, URL validation, provenance invariant, bounded snapshots, transactional v1→v2 migration |
 | Content validation | 18/18 PASS | counts, uniqueness, source links, DOI/PMID, difficulty/tags/variants, fields, self-verification invariant |
 | Performance | PASS | initial JS/CSS/content budgets and 2,000-run scheduler benchmark |
@@ -31,7 +32,9 @@
 
 ## 💾 Native and persistence smoke
 
-The rebuilt standalone v0.10 release was run with a fresh isolated data directory. The process remained responsive and created WebView data plus SQLite, WAL, and shared-memory files. `PRAGMA integrity_check` returned `ok`, `user_version` was 2, and migration rows 1 and 2 were present. The process was stopped and restarted against the same database; it remained responsive and integrity again returned `ok`.
+The rebuilt standalone v0.10.1 release was run with a fresh isolated data directory. The process remained responsive and created WebView data plus SQLite, WAL, and shared-memory files. `PRAGMA integrity_check` returned `ok`, `user_version` was 2, and migration rows 1 and 2 were present. The process was stopped and restarted against the same database; it remained responsive and integrity again returned `ok`.
+
+After the installed v0.10.0 blank-screen report, the WebView code cache proved that `index.js` loaded while `app_state` remained absent. Inspection then found unreplaced `process.env.NODE_ENV` at the beginning of the browser bundle. v0.10.1 replaces this at compile time and adds a release assertion that the token cannot remain. A production-bundle smoke with `process` and `matchMedia` deliberately unavailable rendered onboarding and persisted initial browser state.
 
 The same manual-window/data-directory path was retained because a diagnostic Tauri default-window experiment attempted to use sandbox-blocked AppData and failed with Windows `os error 5`. The release path explicitly scopes WebView data below the selected ResearchOS data root and passed the observable smoke checks.
 
@@ -39,10 +42,10 @@ The same manual-window/data-directory path was retained because a diagnostic Tau
 
 | Artifact | Bytes | SHA-256 |
 |---|---:|---|
-| `ResearchOS_0.10.0_x64.exe` | 15,644,672 | `73E240C5CEE3FBF1FB9B4CCC4F82F21E65D581DCB2B8CB91545BF3F2F2D56179` |
-| `ResearchOS_0.10.0_x64-setup.exe` | 5,396,964 | `513DC2C16D099924307F5D28CD87A3D073F17D1679D354E85A8D67DFEA186EB2` |
+| `ResearchOS_0.10.1_x64.exe` | 15,247,360 | `22CD329794AF5DCDDF16C95D5647F5387EE569D3899A55620B0045AED91EF16E` |
+| `ResearchOS_0.10.1_x64-setup.exe` | 5,002,045 | `1B895439F7834A7727DBEBAF8808E3ADBC78B88798AC3B5DE77181E1F7AB7D02` |
 
-Hashes were recomputed after the final native-window implementation was restored and the release/NSIS bundle was rebuilt.
+Hashes were recomputed after the v0.10.1 startup fix and release/NSIS rebuild. v0.10.0 remains archived but is superseded and must not be distributed.
 
 ## 🖼️ E2E and visual limitation
 

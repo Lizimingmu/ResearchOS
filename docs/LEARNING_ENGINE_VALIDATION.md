@@ -1,6 +1,6 @@
 # ResearchOS learning-engine validation
 
-*Mechanism and implementation validation for v0.10; alignment with learning principles is not proof of educational or clinical effectiveness.*
+*Mechanism and implementation validation for v0.10.1; alignment with learning principles is not proof of educational or clinical effectiveness.*
 
 ---
 
@@ -51,13 +51,13 @@ Assessment and practice are intentionally separated: submitting a blind assessme
 
 ## 🗓️ Scheduler validation
 
-Today ranks candidates using editable weights for weakness, project relevance, review-due status, frontier value, and misconception risk, then enforces variety and a bounded five-item queue. It prioritizes dangerous misconceptions without displaying punitive backlog counts. The deterministic benchmark averaged 0.1307 ms per schedule over 2,000 runs.
+Today ranks candidates using editable weights for weakness, project relevance, review-due status, frontier value, and misconception risk, then enforces variety and a bounded five-item queue. It prioritizes dangerous misconceptions without displaying punitive backlog counts. The deterministic benchmark averaged 0.1240 ms per schedule over 2,000 runs.
 
-The review-state shape is FSRS-compatible (due date, stability, difficulty, lapse count, last review), but v0.10 does not claim equivalence with an official FSRS optimizer.
+The review-state shape is FSRS-compatible (due date, stability, difficulty, lapse count, last review), but v0.10.1 does not claim equivalence with an official FSRS optimizer.
 
 ## 🧪 Automated validation
 
-The 19 frontend/integration checks include answer locking, feedback gating, draft persistence, centralized idempotent calibration, due scheduling, high-confidence error capture, variant-only resolution, project-aware ranking, evidence withholding, exports, migration, AI schema parsing, and server rendering. Seven Rust tests cover storage, migration, snapshots, backup/restore, entity behavior, URL validation, and provenance invariants.
+The 20 frontend/integration checks include startup compatibility, answer locking, feedback gating, draft persistence, centralized idempotent calibration, due scheduling, high-confidence error capture, variant-only resolution, project-aware ranking, evidence withholding, exports, migration, AI schema parsing, and server rendering. A separate production-bundle smoke removes Node/WebView compatibility globals and requires onboarding plus hydration. Seven Rust tests cover storage, migration, snapshots, backup/restore, entity behavior, URL validation, and provenance invariants.
 
 ## ⚠️ What remains unvalidated?
 
@@ -71,4 +71,4 @@ The 19 frontend/integration checks include answer locking, feedback gating, draf
 
 ## 🧾 Validation conclusion
 
-ResearchOS v0.10 implements the requested deliberate-practice loop coherently and has automated evidence that its state transitions and safety invariants behave as designed. It must be described as a learning-mechanism implementation—not as a proven intervention for improving scientific ability.
+ResearchOS v0.10.1 implements the requested deliberate-practice loop coherently and has automated evidence that its state transitions and safety invariants behave as designed. It must be described as a learning-mechanism implementation—not as a proven intervention for improving scientific ability.

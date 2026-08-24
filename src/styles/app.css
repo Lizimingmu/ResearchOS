@@ -113,6 +113,10 @@ kbd { font-family: "Segoe UI", sans-serif; font-size: 10px; color: var(--faint);
 .page-header.compact h1 { font-size: 20px; }
 .boot-screen { height: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; background: var(--activity); color: #dce4e5; }
 .boot-mark { width: 38px; height: 38px; background: #dbe7e5; color: #1d302f; display: grid; place-items: center; border-radius: 5px; font: 700 19px Georgia, serif; }
+.startup-error { min-height: 100%; padding: 48px; background: var(--activity); color: #e2e7e5; overflow: auto; }
+.startup-error h1 { margin: 16px 0 10px; font-size: 28px; }
+.startup-error p { max-width: 680px; color: #b8c4c8; }
+.startup-error pre { max-width: 820px; margin: 22px 0; padding: 14px; overflow: auto; white-space: pre-wrap; border: 1px solid #536168; background: #151c21; color: #ffd9d5; }
 .empty-state { border: 1px dashed var(--line-strong); background: var(--surface); min-height: 230px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 28px; color: var(--muted); }
 .empty-state h2 { color: var(--text); }
 .empty-inline { color: var(--muted); padding: 22px; display: flex; align-items: center; justify-content: center; gap: 7px; }

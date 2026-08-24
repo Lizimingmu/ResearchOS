@@ -1,6 +1,6 @@
 # ResearchOS scientific review
 
-*Claim-level review of the v0.10 training inventory; this is a content reliability assessment, not an educational-effectiveness trial.*
+*Claim-level review of the v0.10.1 training inventory; this is a content reliability assessment, not an educational-effectiveness trial.*
 
 ---
 
@@ -52,7 +52,7 @@ The content is deliberately stronger on identifying invalid inference than on pr
 
 ## 🧾 Review conclusion
 
-The v0.10 inventory passes its automated provenance and structure gate with no blocking scientific-content defect found. The conclusion is bounded: the content has auditable sources and cautious claims; it has not been shown by a trial to improve research competence or downstream scientific outcomes.
+The v0.10.1 inventory passes its automated provenance and structure gate with no blocking scientific-content defect found. The conclusion is bounded: the content has auditable sources and cautious claims; it has not been shown by a trial to improve research competence or downstream scientific outcomes.
 
 [^luecken]: [Current best practices in single-cell RNA-seq analysis (PubMed)](https://pubmed.ncbi.nlm.nih.gov/31217225/)
 [^scib]: [Benchmarking atlas-level data integration in single-cell genomics (PubMed)](https://pubmed.ncbi.nlm.nih.gov/34949812/)

@@ -1,12 +1,12 @@
 # ResearchOS Final Handoff
 
-*Final v0.10 implementation, verification, packaging, and risk handoff for the autonomous depth-optimization release.*
+*Final v0.10.1 implementation, blank-screen hotfix, verification, packaging, and risk handoff for the autonomous depth-optimization release.*
 
 ---
 
 ## Version
 
-**0.10.0** on branch `codex/autonomous-depth-v0.10`. Frontend state schema: **2**. SQLite `user_version`: **2**. v0.9 release artifacts remain untouched for rollback. Version alignment is recorded in npm, Cargo, Tauri, artifact names, changelog, checksums, and `release/BUILD_METADATA_v0.10.0.json`.
+**0.10.1** on branch `codex/autonomous-depth-v0.10`. Frontend state schema: **2**. SQLite `user_version`: **2**. v0.9 release artifacts remain untouched for rollback. v0.10.0 is retained for audit but superseded. Version alignment is recorded in npm, Cargo, Tauri, artifact names, changelog, checksums, and `release/BUILD_METADATA_v0.10.1.json`.
 
 ## Major Improvements
 
@@ -16,6 +16,7 @@
 - Expanded scientific training from a starter set to a source-audited multi-month inventory.
 - Added demand-loaded global search and isolated heavy PDF/content paths from startup.
 - Added automated content/performance release gates and four new audit/validation reports.
+- Corrected the installed v0.10.0 blank screen and added startup recovery plus a production-WebView compatibility gate.
 
 ## Bugs Fixed
 
@@ -27,6 +28,7 @@
 - Preserved drafts across navigation/restart and surfaced persistence failure state.
 - Refused future state schemas instead of silently overwriting them.
 - Added transactional database migration and bounded pre-save recovery.
+- Removed Node-only `process.env.NODE_ENV` from the browser bundle, guarded missing `matchMedia`, and added visible startup error recovery.
 
 ## UX Improvements
 
@@ -41,7 +43,7 @@ Screenshot-based visual QA was blocked by the in-app browser's saved localhost p
 
 ## Performance Improvements
 
-Initial JavaScript dropped from 2,925,687 to 1,852,793 bytes (**36.7% reduction**). Paper Lab/PDF worker, expanded content, and global search are lazy/demand-loaded. CSS is 52,516 bytes, expanded training content is 81,995 bytes, and Today scheduling averaged 0.1307 ms over 2,000 deterministic runs.
+Initial JavaScript dropped from 2,925,687 to 663,763 bytes (**77.3% reduction**). Compile-time environment replacement removes React development branches and Node-only globals. Paper Lab/PDF worker, expanded content, and global search are lazy/demand-loaded. CSS is 52,919 bytes, expanded training content is 81,995 bytes, and Today scheduling averaged 0.1240 ms over 2,000 deterministic runs.
 
 ## Learning Engine Improvements
 
@@ -74,20 +76,20 @@ The automated audit passed all 18 structural/provenance/identifier checks with n
 
 ## Tests
 
-Frontend: **19/19 pass** including production compilation and component/server-render coverage<br>
+Frontend: **20/20 pass** including production compilation, startup environment, and component/server-render coverage<br>
 Rust: **7/7 pass**<br>
 Integration: **pass** for learning, migration, persistence, PDF mapping, provider settings, exports, and AI-schema paths<br>
-E2E: **partial** — native process/data restart passed; browser screenshot/click E2E blocked by saved localhost permission<br>
+E2E: **partial** — production bundle rendered/hydrated without Node/WebView compatibility globals and native process/data restart passed; screenshot/click E2E blocked by saved localhost permission<br>
 Content validation: **18/18 pass**, plus performance budgets pass<br>
 Smoke: **pass for observable release checks** — first launch, DB/WAL/WebView creation, schema v2, integrity, stop/restart, existing DB
 
 ## Build
 
-Installer: `release/ResearchOS_0.10.0_x64-setup.exe` — 5,396,964 bytes<br>
-Executable: `release/ResearchOS_0.10.0_x64.exe` — 15,644,672 bytes<br>
-SHA256: installer `513DC2C16D099924307F5D28CD87A3D073F17D1679D354E85A8D67DFEA186EB2`; executable `73E240C5CEE3FBF1FB9B4CCC4F82F21E65D581DCB2B8CB91545BF3F2F2D56179`
+Installer: `release/ResearchOS_0.10.1_x64-setup.exe` — 5,002,045 bytes<br>
+Executable: `release/ResearchOS_0.10.1_x64.exe` — 15,247,360 bytes<br>
+SHA256: installer `1B895439F7834A7727DBEBAF8808E3ADBC78B88798AC3B5DE77181E1F7AB7D02`; executable `22CD329794AF5DCDDF16C95D5647F5387EE569D3899A55620B0045AED91EF16E`
 
-The installer is unsigned. `release/SHA256SUMS.txt` retains both v0.9 and v0.10 digests.
+The installer is unsigned. `release/SHA256SUMS.txt` retains v0.9, superseded v0.10.0, and corrected v0.10.1 digests.
 
 ## Known Limitations
 
@@ -100,7 +102,7 @@ The installer is unsigned. `release/SHA256SUMS.txt` retains both v0.9 and v0.10 
 
 ## Remaining Scientific Risks
 
-- Content can become outdated as methods/guidelines evolve; v0.10 has no automated surveillance/promotion pipeline.
+- Content can become outdated as methods/guidelines evolve; v0.10.1 has no automated surveillance/promotion pipeline.
 - Advanced causal longitudinal methods, MNAR sensitivity, wet-lab validation, evidence synthesis, and mixed methods remain comparatively weak.
 - Difficulty and unfamiliar-variant labels are expert-authored, not psychometrically calibrated.
 - AI/foundation-model, radiomics, spatial, trajectory, communication, and liquid-biopsy topics require continued cautious framing and external validation.

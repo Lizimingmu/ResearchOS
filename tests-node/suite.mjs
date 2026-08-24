@@ -17,6 +17,8 @@ import { createInitialState, useAppStore } from "../.build/state/store.js";
 import { migratePersistedState } from "../.build/state/migrations.js";
 import { buildAiReviewPrompt, parseAiReview } from "../.build/ai/reviewArchitecture.js";
 import { serializeLearningData } from "../.build/services/learningExport.js";
+import { resolveTheme } from "../.build/app/theme.js";
+import { readFileSync } from "node:fs";
 
 class MemoryStorage {
   #values = new Map();
@@ -27,6 +29,17 @@ class MemoryStorage {
 }
 globalThis.localStorage = new MemoryStorage();
 globalThis.window = { localStorage: globalThis.localStorage };
+
+test("unit: startup remains visible when matchMedia is unavailable", () => {
+  assert.equal(resolveTheme("system"), "light");
+  assert.equal(resolveTheme("system", () => ({ matches: true })), "dark");
+  const html = readFileSync(new URL("../dist/index.html", import.meta.url), "utf8");
+  const bundle = readFileSync(new URL("../dist/assets/index.js", import.meta.url), "utf8");
+  assert.match(html, /Opening ResearchOS/);
+  assert.match(html, /\.\/assets\/boot\.js/);
+  assert.match(html, /\.\/assets\/index\.js/);
+  assert.doesNotMatch(bundle, /process\.env\.NODE_ENV/);
+});
 
 test("unit: starter content meets required counts and provenance fields", () => {
   assert.ok(researchPatterns.length >= 25);

@@ -1,6 +1,6 @@
 # ResearchOS learning engine
 
-*Operational specification for Today, attempts, misconceptions, review, scoring, and blind assessment in v0.10.*
+*Operational specification for Today, attempts, misconceptions, review, scoring, and blind assessment in v0.10.1.*
 
 ---
 

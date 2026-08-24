@@ -4,6 +4,7 @@ import { CommandPalette } from "../components/CommandPalette";
 import { Toast } from "../components/Toast";
 import { Onboarding } from "../components/Onboarding";
 import { useAppStore } from "../state/store";
+import { resolveTheme } from "./theme";
 
 const views = {
   today: lazy(() => import("../features/today/TodayView").then((module) => ({ default: module.TodayView }))),
@@ -30,6 +31,10 @@ export function App() {
   const onboarding = useAppStore((state) => state.onboarding);
   const View = useMemo(() => views[view], [view]);
 
+  useEffect(() => {
+    (window as Window & { __RESEARCHOS_BOOT__?: { ready: () => void } }).__RESEARCHOS_BOOT__?.ready();
+  }, []);
+
   useEffect(() => { void hydrate(); }, [hydrate]);
 
   useEffect(() => {
@@ -46,10 +51,7 @@ export function App() {
 
   useEffect(() => {
     const root = document.documentElement;
-    const resolved = settings.theme === "system"
-      ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-      : settings.theme;
-    root.dataset.theme = resolved;
+    root.dataset.theme = resolveTheme(settings.theme);
   }, [settings.theme]);
 
   useEffect(() => {

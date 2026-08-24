@@ -4,6 +4,21 @@
 
 ---
 
+## 🩹 0.10.1 — 2026-08-24
+
+### Fixed
+
+- Replaced `process.env.NODE_ENV` at bundle time so the browser/WebView package no longer references Node's missing `process` global. This was the root cause of the v0.10.0 blank startup window.
+- Guarded system-theme detection when `window.matchMedia` is unavailable.
+- Added a static startup shell, resource/error watchdog, and React error boundary so a future startup failure is visible instead of becoming a white screen.
+- Switched asset references to relative Tauri-safe paths.
+
+### Validation
+
+- Added a production-bundle smoke test that removes both Node `process` and WebView `matchMedia`, then requires onboarding render and initial-state hydration.
+- Added a release assertion that `process.env.NODE_ENV` cannot remain in the generated bundle.
+- Reduced initial JavaScript to 663,763 bytes by eliminating React development branches.
+
 ## 🚀 0.10.0 — 2026-08-24
 
 ### Added

@@ -1,10 +1,10 @@
-# ResearchOS v0.10
+# ResearchOS v0.10.1
 
 *A local-first Windows desktop system for deliberate practice in medical-research methods, scientific judgment, paper reading, project transfer, and human oversight of AI.*
 
 ---
 
-## 🧭 What changed in v0.10
+## 🧭 What changed in v0.10.1
 
 - A complete answer → confidence → locked feedback → transfer → delayed variant-review loop.
 - Explicit high-confidence misconceptions that cannot clear until a correct unfamiliar variant.
@@ -12,15 +12,15 @@
 - A five-task Today queue balancing foundations, current weaknesses, project relevance, due reviews, and occasional frontier work.
 - 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, and 40 AI-audit cases.
 - Versioned state/SQLite migrations, atomic persistence, five recovery snapshots, health diagnostics, and JSON/CSV/Markdown exports.
-- Demand-loaded search/content/PDF workspaces; initial JavaScript is 36.7% smaller than the audited v0.9 baseline.
+- Production-safe React bundling, startup recovery UI, and demand-loaded search/content/PDF workspaces; initial JavaScript is 77.3% smaller than the audited v0.9 baseline.
 
 ResearchOS is an educational research tool, not clinical decision support. Its mechanisms align with established learning principles, but the product has not been shown in a trial to improve research competence or patient outcomes.
 
 ## 📦 Install
 
-Verify `release/ResearchOS_0.10.0_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.10.0_x64.exe` is also provided.
+Verify `release/ResearchOS_0.10.1_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.10.1_x64.exe` is also provided.
 
-v0.9 artifacts remain in `release/` for rollback and were not overwritten. Exact sizes, schema versions, toolchain, and digests are in `release/BUILD_METADATA_v0.10.0.json`.
+v0.9 artifacts remain in `release/` for rollback and were not overwritten. v0.10.0 is retained for audit but is superseded because its browser bundle referenced a Node-only `process` global and could open as a blank window. Exact v0.10.1 sizes, schema versions, toolchain, and digests are in `release/BUILD_METADATA_v0.10.1.json`.
 
 ## 🛠️ Develop and verify
 

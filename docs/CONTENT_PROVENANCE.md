@@ -32,9 +32,9 @@ Identifier success alone never upgrades an unsupported claim. The content gate r
 
 Optional provider output is a labeled critique shown after a human answer is locked. Exact JSON parsing rejects malformed responses. Provider output cannot edit seed sources, mark itself verified, or become a review answer key.
 
-Imported notes, papers, and project context remain local user material. v0.10 has no automatic promotion workflow. A future promotion mechanism would require reviewer identity, review date, supporting sources, a claim-level rationale, and an auditable state transition.
+Imported notes, papers, and project context remain local user material. v0.10.1 has no automatic promotion workflow. A future promotion mechanism would require reviewer identity, review date, supporting sources, a claim-level rationale, and an auditable state transition.
 
-## 📊 v0.10 provenance outcome
+## 📊 v0.10.1 provenance outcome
 
 The shipped inventory contains 133 verified-seed and 153 verified-external records, with zero AI-generated verified records. All 286 records pass the verification-state gate; four method drafts are deliberately excluded from practice pending instructional expansion. Full audit evidence is in `CONTENT_AUDIT.md` and `SCIENTIFIC_REVIEW.md`.
 

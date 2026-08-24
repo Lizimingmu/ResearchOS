@@ -1,6 +1,6 @@
 # ResearchOS autonomous improvement log
 
-*Evidence of repeated audit → implementation → test → re-audit cycles used to produce v0.10.*
+*Evidence of repeated audit → implementation → test → re-audit cycles used to produce v0.10.1.*
 
 ---
 
@@ -53,3 +53,15 @@
 **Verification:** frontend/integration tests, Rust tests, content gate, performance gate, production build, Tauri build, first-launch database creation, integrity check, and same-database restart are run as final gates.
 
 **Re-audit:** no known P0 blocker or correctable P1 scientific/workflow issue remains in the tested scope. Live AI-provider behavior and interactive Windows visual acceptance remain explicit external checks.
+
+## 🩹 Loop 6 — Installed blank-screen regression
+
+**Audit:** the installed v0.10.0 window opened white. Its SQLite/WebView directories existed, the JavaScript was present in WebView code cache, but `app_state` was empty—showing that execution failed before hydration.
+
+**Root cause:** Rollup retained React's `process.env.NODE_ENV` branches. Node-based tests supplied `process`, while WebView2 correctly did not, so module evaluation failed before React mounted. An unconditional `window.matchMedia` call provided a second unhandled startup failure path.
+
+**Implementation:** added compile-time environment replacement, relative asset paths, safe theme detection, a static boot shell, resource/rejection watchdog, and React startup error boundary. Released the correction as v0.10.1 rather than overwriting v0.10.0.
+
+**Verification:** the production bundle contains no `process.env.NODE_ENV`; with both `process` and `matchMedia` removed, it renders onboarding and persists initial state. The automated suite is now 20/20 and initial JavaScript is 663,763 bytes.
+
+**Re-audit:** blank-screen startup is now both fixed and guarded by a test that reproduces the environment difference missed by the original Node-only suite.
