@@ -36,3 +36,14 @@ The temporal-validation correction is supported by methodological literature des
 ## M013-07 — Gate coverage
 
 Extend both deterministic audits so the reproduced failures above cause nonzero exit. Rerun full frontend, source-pack, Problem Atlas, content, localization, performance and startup gates. Update both reports, then stop for a second Codex review. Do not package or execute Git.
+
+## M013-10 — External complete source packs
+
+The archive `ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip` is also **PATCH REQUIRED** and must not be imported.
+
+1. SHA256 verification passed for all 41 files, but the current ResearchOS validator/dry-run crashes on all 8 legacy packs (`TypeError: row.candidateCauseIds is not iterable`) instead of returning structured rejection. Harden untrusted-input validation before any conversion or import.
+2. The packs use legacy/snake_case ProblemCard fields and omit required `contentOrigin` on all 120 sources and 138 claims. They also contain 6 cross-pack DOI conflicts, 6 PMID conflicts and 4 duplicate normalized titles under different source IDs.
+3. Scientific completeness fails: 86/138 claims have no scope and 88/138 have no qualification; 50 sources have no provenance note. No claim may move to `claim_verified`.
+4. Reject the 166 ProblemCards as importable Atlas content: 139 have zero candidate causes, 27 have one, and none has three or more; 111 lack claim boundaries and 79 lack recommended reasoning. This is FAQ-style recall, not multiple-hypothesis scientific differential diagnosis.
+5. Apply the exact group-level scientific patches in `SCIENTIFIC_CHANGESET.md`, including `CLM-QPCR-006`, `CLM-SP-008`, `CLM-AI-004`, `CLM-REV-003`, DESpace URL correction and formal-title normalization. Preserve all scientific content as pending.
+6. Run only staging conversion and dry-run. Do not call the apply importer or mutate a production database. Complete M013-09 and M013-10 regression, then stop for Codex re-review.

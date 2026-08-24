@@ -1,26 +1,27 @@
-# OpenCode Handoff — M013-09 Gate Patches
+# OpenCode Handoff — M013-10 External Pack Remediation
 
 ## Execute
 
-Apply only the patches required by `.agent/REVIEW_RESULT.md`. Use `opencode-go/deepseek-v4-pro`. Do not run Git, package, release, bump versions, broaden M013, or resume M012.
+Patch the supplied M013 external candidate packs and importer gate only. Do not regenerate the scientific corpus, import into production, promote verification status, package, release, bump versions, resume M012, or run Git.
 
-## Read first
+## Inputs
 
-Read `AGENTS.md`, `.agent/PRODUCT_CONSTITUTION.md`, `.agent/SCIENTIFIC_GATES.md`, `.agent/REVIEW_RESULT.md`, `.agent/IMPLEMENTATION_REPORT.md`, `.agent/SCIENTIFIC_CHANGESET.md`, `PROBLEM_ATLAS_SPEC.md`, and `SOURCE_INGESTION_SPEC.md`. Inspect only the files and tests directly implicated by the review findings.
+Read `.agent/REVIEW_RESULT.md`, `.agent/SCIENTIFIC_CHANGESET.md`, `.agent/M013_SOURCE_PACK_DRY_RUN.md`, `.agent/M013_SOURCE_METADATA_AUDIT.md`, and the archive's qualification registers. Preserve the original ZIP unchanged.
 
-## Required patches
+## Required work
 
-1. **Source packs:** repair DOI/PMID validation; make every conflict/rejection block the whole confirmed import; validate the merged state and foreign keys; reject rather than truncate oversized CSV fields; do not force updates; add a minimal select → dry-run → explicit-confirm UI.
-2. **Diagnostics:** reject cross-mode/illegal transitions; require a complete exact AI-verdict answer set; enforce unique error ranks; record a locked baseline ranking before sequential evidence and preserve each post-evidence update.
-3. **Scientific content/UI:** make temporal validation, leakage and single-cell unit statements match the boundaries in `REVIEW_RESULT.md`; correct authority mappings; show pending support as proposed/pending; fix the pseudoreplication rubric wording. Keep all transformed content pending.
-4. **Regression:** extend deterministic audits and focused tests so every reproduced failure in the review exits nonzero or fails a test.
+1. Make `validateSourcePack` and `dryRunSourcePack` exception-safe for arbitrary JSON shapes; malformed/legacy fields must return deterministic structured errors, never throw `TypeError`.
+2. Build a deterministic staging converter from the archive's snake_case/legacy shape to current v3 field names. Preserve scientific text verbatim, record every mapping, and reject unmappable rows. Do not invent authors, claims, causes, scopes or qualifications.
+3. Add required `contentOrigin`/provenance fields without self-verification. Canonicalize six duplicated DOI/PMID sources across batches and update foreign keys; correct only metadata listed in the audit.
+4. Produce two staged outputs: (a) sources/claims eligible for another scientific review, still pending; (b) quarantined ProblemCards/paths/rubrics. Do not bulk-pad the 166 cards with generic causes.
+5. Extend audits for validator-crash safety, legacy-field rejection/conversion, cross-pack collisions, missing scope/qualification, empty provenance, missing claim boundaries and candidate-cause count.
 
 ## Acceptance and stop
 
-Run typecheck/full tests, source-pack and Problem Atlas audits, content/localization/performance/startup gates, handoff validation, and Rust tests only if Rust changes. Update `.agent/IMPLEMENTATION_REPORT.md` with exact commands/results and `.agent/SCIENTIFIC_CHANGESET.md` with only scientific changes. Stop for Codex re-review; do not package or execute Git.
+All eight original packs must be safely rejected without a crash. Converted staging packs must pass schema validation and dry-run with zero conflicts, while every scientific item remains pending. Update `IMPLEMENTATION_REPORT.md`; do not overwrite `SCIENTIFIC_CHANGESET.md`. Stop for Codex re-review without calling the apply importer.
 
-## Host prompt
+## Short prompt
 
 ```text
-在 D:\Agents\ResearchOS 执行 M013-09。读取 AGENTS.md、.agent/OPENCODE_HANDOFF.md 和 .agent/REVIEW_RESULT.md，仅修复审核列出的阻断项并补齐回归测试/审计。保持科研内容 pending；不要 Git、打包、发布、升版或继续 M012。运行全部指定 QA，更新 IMPLEMENTATION_REPORT.md 与 SCIENTIFIC_CHANGESET.md，然后停止等待 Codex 复审。
+在 D:\Agents\ResearchOS 执行 M013-10。读取 .agent/OPENCODE_HANDOFF.md、REVIEW_RESULT.md、SCIENTIFIC_CHANGESET.md 和两个 M013 审计报告。修复 validator 对旧/恶意 JSON 的崩溃，建立保真、可审计的 legacy→v3 staging 转换，合并跨包重复来源并补齐机器可确定字段；不得生成新科研内容、导入生产库、提升 pending、Git 或打包。原始 8 包应安全返回结构化拒绝，转换包应通过 validator/dry-run 后停止等待 Codex 复审。
 ```

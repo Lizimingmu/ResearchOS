@@ -1,0 +1,1468 @@
+{
+  "generatedAt": "2026-08-24T16:21:03.883Z",
+  "accessDate": "2026-08-25",
+  "retrievalContract": {
+    "target": "External source-pack bibliographic identifiers and titles",
+    "scope": "83 unique DOI lookups plus 5 PMID-only lookups; URL-only sources excluded from bulk API resolution",
+    "primaryDatabases": [
+      "Crossref REST API",
+      "Europe PMC REST API"
+    ],
+    "endpoints": [
+      "GET https://api.crossref.org/works/{doi}",
+      "GET https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:{pmid} AND SRC:MED"
+    ],
+    "localChecks": [
+      "normalized title-token Jaccard similarity >= 0.55",
+      "identifier resolution",
+      "declared vs returned year retained for review"
+    ]
+  },
+  "counts": {
+    "sourceRows": 120,
+    "uniqueDois": 83,
+    "resolvedDois": 80,
+    "pmidOnly": 5,
+    "resolvedPmidOnly": 5,
+    "lowSimilarity": 8,
+    "urlOnlyNotBulkResolved": 26
+  },
+  "doiResults": [
+    {
+      "doi": "10.1093/clinchem/hvaf043",
+      "resolved": true,
+      "crossrefTitle": "MIQE 2.0: Revision of the Minimum Information for Publication of Quantitative Real-Time PCR Experiments Guidelines",
+      "crossrefYear": 2025,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-MIQE2",
+          "title": "MIQE 2.0: Revision of the Minimum Information for Publication of Quantitative Real-Time PCR Experiments Guidelines",
+          "year": 2025,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.5858/arpa.2023-0483-cp",
+      "resolved": true,
+      "crossrefTitle": "Principles of Analytic Validation of Immunohistochemical Assays: Guideline Update",
+      "crossrefYear": 2024,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-CAP-IHC-2024",
+          "title": "Principles of Analytic Validation of Immunohistochemical Assays: Guideline Update",
+          "year": 2024,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/nmeth.3995",
+      "resolved": true,
+      "crossrefTitle": "A proposal for validation of antibodies",
+      "crossrefYear": 2016,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-UHLEN-2016",
+          "title": "A proposal for validation of antibodies",
+          "year": 2016,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.2144/btn-2020-0095",
+      "resolved": true,
+      "crossrefTitle": "Antibody Validation for Protein Expression on Tissue Slides: A Protocol for Immunohistochemistry",
+      "crossrefYear": 2020,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-MACNEIL-2020",
+          "title": "Antibody validation for protein expression on tissue slides: a protocol for immunohistochemistry",
+          "year": 2020,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.5858/2010-0702-rair.1",
+      "resolved": true,
+      "crossrefTitle": "Effects of Preanalytical Variables on the Detection of Proteins by Immunohistochemistry in Formalin-Fixed, Paraffin-Embedded Tissue",
+      "crossrefYear": 2011,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-ENGEL-2011",
+          "title": "Effects of preanalytical variables on the detection of proteins by immunohistochemistry in formalin-fixed, paraffin-embedded tissue",
+          "year": 2011,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1586/14789450.2014.939635",
+      "resolved": true,
+      "crossrefTitle": "The necessity of and strategies for improving confidence in the accuracy of western blots",
+      "crossrefYear": 2014,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-GHOSH-2014",
+          "title": "The necessity of and strategies for improving confidence in the accuracy of western blots",
+          "year": 2014,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pone.0087293",
+      "resolved": true,
+      "crossrefTitle": "Evaluating Strategies to Normalise Biological Replicates of Western Blot Data",
+      "crossrefYear": 2014,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-DEGASPERI-2014",
+          "title": "Evaluating strategies to normalise biological replicates of Western blot data",
+          "year": 2014,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pone.0072457",
+      "resolved": true,
+      "crossrefTitle": "Total Protein Analysis as a Reliable Loading Control for Quantitative Fluorescent Western Blotting",
+      "crossrefYear": 2013,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-EATON-2013",
+          "title": "Total protein analysis as a reliable loading control for quantitative fluorescent Western blotting",
+          "year": 2013,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41598-024-70096-0",
+      "resolved": true,
+      "crossrefTitle": "Improving rigor and reproducibility in western blot experiments with the blotRig analysis",
+      "crossrefYear": 2024,
+      "owners": [
+        {
+          "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+          "id": "SRC-OMONDI-2024",
+          "title": "Improving rigor and reproducibility in western blot experiments with the blotRig analysis software",
+          "year": 2024,
+          "titleSimilarity": 0.9230769230769231
+        }
+      ]
+    },
+    {
+      "doi": "10.1080/00031305.2016.1154108",
+      "resolved": true,
+      "crossrefTitle": "The ASA Statement on\n                    <i>p</i>\n                    -Values: Context, Process, and Purpose",
+      "crossrefYear": 2016,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-ASA-PVALUE-2016",
+          "title": "The ASA Statement on p-Values: Context, Process, and Purpose",
+          "year": 2016,
+          "titleSimilarity": 0.9090909090909091
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj.326.7382.219",
+      "resolved": true,
+      "crossrefTitle": "Interaction revisited: the difference between two estimates",
+      "crossrefYear": 2003,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-ALTMAN-INTERACTION-2003",
+          "title": "Interaction revisited: the difference between two estimates",
+          "year": 2003,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/jnci/86.11.829",
+      "resolved": true,
+      "crossrefTitle": "Dangers of Using \"Optimal\" Cutpoints in the Evaluation of Prognostic Factors",
+      "crossrefYear": 1994,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-ALTMAN-CUTPOINT-1994",
+          "title": "Dangers of using \"optimal\" cutpoints in the evaluation of prognostic factors",
+          "year": 1994,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj.b2393",
+      "resolved": true,
+      "crossrefTitle": "Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls",
+      "crossrefYear": 2009,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-STERNE-MI-2009",
+          "title": "Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls",
+          "year": 2009,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/biomet/81.3.515",
+      "resolved": true,
+      "crossrefTitle": "Proportional hazards tests and diagnostics based on weighted residuals",
+      "crossrefYear": 1994,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-GRAMBSCH-PH-1994",
+          "title": "Proportional hazards tests and diagnostics based on weighted residuals",
+          "year": 1994,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1161/circulationaha.115.017719",
+      "resolved": true,
+      "crossrefTitle": "Introduction to the Analysis of Survival Data in the Presence of Competing Risks",
+      "crossrefYear": 2016,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-AUSTIN-COMPETING-2016",
+          "title": "Introduction to the Analysis of Survival Data in the Presence of Competing Risks",
+          "year": 2016,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj-2023-078378",
+      "resolved": true,
+      "crossrefTitle": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+      "crossrefYear": 2024,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-TRIPODAI-2024",
+          "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+          "year": 2024,
+          "titleSimilarity": 1
+        },
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-TRIPODAI-2024-B8",
+          "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models",
+          "year": 2024,
+          "titleSimilarity": 0.5882352941176471
+        }
+      ]
+    },
+    {
+      "doi": "10.7326/m18-1376",
+      "resolved": true,
+      "crossrefTitle": "PROBAST: A Tool to Assess the Risk of Bias and Applicability of Prediction Model Studies",
+      "crossrefYear": 2019,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-PROBAST-2019",
+          "title": "PROBAST: A Tool to Assess the Risk of Bias and Applicability of Prediction Model Studies",
+          "year": 2019,
+          "titleSimilarity": 1
+        },
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-PROBAST-2019-B8",
+          "title": "PROBAST: A Tool to Assess the Risk of Bias and Applicability of Prediction Model Studies",
+          "year": 2019,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/s12916-019-1466-7",
+      "resolved": true,
+      "crossrefTitle": "Calibration: the Achilles heel of predictive analytics",
+      "crossrefYear": 2019,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-CALIBRATION-2019",
+          "title": "Calibration: the Achilles heel of predictive analytics",
+          "year": 2019,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj.m441",
+      "resolved": true,
+      "crossrefTitle": "Calculating the sample size required for developing a clinical prediction model",
+      "crossrefYear": 2020,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-RILEY-DEVELOP-2020",
+          "title": "Calculating the sample size required for developing a clinical prediction model",
+          "year": 2020,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1002/sim.9025",
+      "resolved": true,
+      "crossrefTitle": "Minimum sample size for external validation of a clinical prediction model with a binary outcome",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-RILEY-EXTVAL-2021",
+          "title": "Minimum sample size for external validation of a clinical prediction model with a binary outcome",
+          "year": 2021,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41467-021-21038-1",
+      "resolved": true,
+      "crossrefTitle": "A practical solution to pseudoreplication bias in single-cell studies",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-ZIMMERMAN-2021",
+          "title": "A practical solution to pseudoreplication bias in single-cell studies",
+          "year": 2021,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41467-021-25960-2",
+      "resolved": true,
+      "crossrefTitle": "Confronting false discoveries in single-cell differential expression",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-SQUAIR-2021",
+          "title": "Confronting false discoveries in single-cell differential expression",
+          "year": 2021,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41576-023-00586-w",
+      "resolved": true,
+      "crossrefTitle": "Best practices for single-cell analysis across modalities",
+      "crossrefYear": 2023,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-HEUMOS-2023",
+          "title": "Best practices for single-cell analysis across modalities",
+          "year": 2023,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41592-021-01336-8",
+      "resolved": true,
+      "crossrefTitle": "Benchmarking atlas-level data integration in single-cell genomics",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-LUECKEN-INTEGRATION-2022",
+          "title": "Benchmarking atlas-level data integration in single-cell genomics",
+          "year": 2022,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41587-021-01033-z",
+      "resolved": true,
+      "crossrefTitle": "Differential abundance testing on single-cell data using k-nearest neighbor graphs",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-MILO-2022",
+          "title": "Differential abundance testing on single-cell data using k-nearest neighbor graphs",
+          "year": 2022,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41587-019-0071-9",
+      "resolved": true,
+      "crossrefTitle": "A comparison of single-cell trajectory inference methods",
+      "crossrefYear": 2019,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-SAELENS-2019",
+          "title": "A comparison of single-cell trajectory inference methods",
+          "year": 2019,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pcbi.1010492",
+      "resolved": false,
+      "error": "HTTP 429",
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-RNAV-2022",
+          "title": "RNA velocity unraveled",
+          "year": 2022
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41467-022-30755-0",
+      "resolved": true,
+      "crossrefTitle": "Comparison of methods and resources for cell-cell communication inference from single-cell RNA-Seq data",
+      "crossrefYear": 2022,
+      "owners": [
+        {
+          "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+          "id": "SRC-DIMITROV-CCC-2022",
+          "title": "Comparison of methods and resources for cell-cell communication inference from single-cell RNA-Seq data",
+          "year": 2022,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41592-024-02325-3",
+      "resolved": true,
+      "crossrefTitle": "Systematic comparison of sequencing-based spatial transcriptomic methods",
+      "crossrefYear": 2024,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-YOU-SST-BENCH-2024",
+          "title": "Systematic comparison of sequencing-based spatial transcriptomic methods",
+          "year": 2024,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41592-022-01480-9",
+      "resolved": true,
+      "crossrefTitle": "Benchmarking spatial and single-cell transcriptomics integration methods for transcript distribution prediction and cell type deconvolution",
+      "crossrefYear": 2022,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-LI-ST-DECONV-2022",
+          "title": "Benchmarking spatial and single-cell transcriptomics integration methods for transcript distribution prediction and cell type deconvolution",
+          "year": 2022,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-023-03045-1",
+      "resolved": true,
+      "crossrefTitle": "Disparities in spatially variable gene calling highlight the need for benchmarking spatial transcriptomics methods",
+      "crossrefYear": 2023,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-CHARITAKIS-SVG-2023",
+          "title": "Disparities in spatially variable gene calling highlight the need for benchmarking spatial transcriptomics methods",
+          "year": 2023,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-025-03731-2",
+      "resolved": true,
+      "crossrefTitle": "Systematic benchmarking of computational methods to identify spatially variable genes",
+      "crossrefYear": 2025,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-LI-SVG-BENCH-2025",
+          "title": "Systematic benchmarking of computational methods to identify spatially variable genes",
+          "year": 2025,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41587-022-01273-7",
+      "resolved": true,
+      "crossrefTitle": "Spatially informed cell-type deconvolution for spatial transcriptomics",
+      "crossrefYear": 2022,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-MA-CARD-2022",
+          "title": "Spatially informed cell-type deconvolution for spatial transcriptomics",
+          "year": 2022,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/nbt1329",
+      "resolved": true,
+      "crossrefTitle": "The minimum information about a proteomics experiment (MIAPE)",
+      "crossrefYear": 2007,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-MIAPE-2007",
+          "title": "The minimum information about a proteomics experiment (MIAPE)",
+          "year": 2007,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/bib/bbaa112",
+      "resolved": true,
+      "crossrefTitle": "Proper imputation of missing values in proteomics datasets for differential expression analysis",
+      "crossrefYear": 2020,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-LIU-PROT-MISSING-2021",
+          "title": "Proper imputation of missing values in proteomics datasets for differential expression analysis",
+          "year": 2021,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1021/acs.jproteome.3c00205",
+      "resolved": true,
+      "crossrefTitle": "Evaluating Proteomics Imputation Methods with Improved Criteria",
+      "crossrefYear": 2023,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-HARRIS-PROT-IMPUTE-2023",
+          "title": "Evaluating Proteomics Imputation Methods with Improved Criteria",
+          "year": 2023,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1002/pmic.202200092",
+      "resolved": true,
+      "crossrefTitle": "Dealing with missing values in proteomics data",
+      "crossrefYear": 2022,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-PROT-MISSING-REVIEW-2022",
+          "title": "Dealing with missing values in proteomics data",
+          "year": 2022,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/nature13438",
+      "resolved": true,
+      "crossrefTitle": "Proteogenomic characterization of human colon and rectal cancer",
+      "crossrefYear": 2014,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-CPTAC-CRC-2014",
+          "title": "Proteogenomic characterization of human colon and rectal cancer",
+          "year": 2014,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1016/j.crmeth.2022.100288",
+      "resolved": true,
+      "crossrefTitle": "Experimental reproducibility limits the correlation between mRNA and protein abundances in tumor proteomic profiles",
+      "crossrefYear": 2022,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-UPADHYA-RYAN-2022",
+          "title": "Experimental reproducibility limits the correlation between mRNA and protein abundances in tumor proteomic profiles",
+          "year": 2022,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41576-023-00580-2",
+      "resolved": true,
+      "crossrefTitle": "Methods and applications for single-cell and spatial multi-omics",
+      "crossrefYear": 2023,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-VANDEREYKEN-MULTIOMICS-2023",
+          "title": "Methods and applications for single-cell and spatial multi-omics",
+          "year": 2023,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41592-024-02429-w",
+      "resolved": true,
+      "crossrefTitle": "Benchmarking algorithms for single-cell multi-omics prediction and integration",
+      "crossrefYear": 2024,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-HU-MULTIOMICS-BENCH-2024",
+          "title": "Benchmarking algorithms for single-cell multi-omics prediction and integration",
+          "year": 2024,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41576-023-00679-6",
+      "resolved": true,
+      "crossrefTitle": "Challenges and best practices in omics benchmarking",
+      "crossrefYear": 2024,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-BROOKS-OMICS-BENCH-2024",
+          "title": "Challenges and best practices in omics benchmarking",
+          "year": 2024,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41592-024-02362-y",
+      "resolved": false,
+      "error": "HTTP 429",
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-BERNETT-LEAKAGE-2024",
+          "title": "Guiding questions to avoid data leakage in biological machine learning applications",
+          "year": 2024
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pcbi.1003833",
+      "resolved": true,
+      "crossrefTitle": "Ten Simple Rules for Better Figures",
+      "crossrefYear": 2014,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-ROUGIER-FIGURES-2014",
+          "title": "Ten Simple Rules for Better Figures",
+          "year": 2014,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pbio.1002128",
+      "resolved": true,
+      "crossrefTitle": "Beyond Bar and Line Graphs: Time for a New Data Presentation Paradigm",
+      "crossrefYear": 2015,
+      "owners": [
+        {
+          "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+          "id": "SRC-WEISSGERBER-DATAVIZ-2015",
+          "title": "Beyond bar and line graphs: time for a new data presentation paradigm",
+          "year": 2015,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-014-0550-8",
+      "resolved": true,
+      "crossrefTitle": "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2",
+      "crossrefYear": 2014,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-DESEQ2-2014",
+          "title": "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2",
+          "year": 2014,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/gb-2014-15-2-r29",
+      "resolved": true,
+      "crossrefTitle": "voom: precision weights unlock linear model analysis tools for RNA-seq read counts",
+      "crossrefYear": 2014,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-VOOM-2014",
+          "title": "voom: Precision weights unlock linear model analysis tools for RNA-seq read counts",
+          "year": 2014,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/gb-2010-11-3-r25",
+      "resolved": true,
+      "crossrefTitle": "A scaling normalization method for differential expression analysis of RNA-seq data",
+      "crossrefYear": 2010,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-TMM-2010",
+          "title": "A scaling normalization method for differential expression analysis of RNA-seq data",
+          "year": 2010,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/nrg2825",
+      "resolved": true,
+      "crossrefTitle": "Tackling the widespread and critical impact of batch effects in high-throughput data",
+      "crossrefYear": 2010,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-BATCH-2010",
+          "title": "Tackling the widespread and critical impact of batch effects in high-throughput data",
+          "year": 2010,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1073/pnas.0914005107",
+      "resolved": true,
+      "crossrefTitle": "Independent filtering increases detection power for high-throughput experiments",
+      "crossrefYear": 2010,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-INDFILT-2010",
+          "title": "Independent filtering increases detection power for high-throughput experiments",
+          "year": 2010,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1073/pnas.0506580102",
+      "resolved": false,
+      "error": "HTTP 429",
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-GSEA-2005",
+          "title": "Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles",
+          "year": 2005
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/nar/gks461",
+      "resolved": true,
+      "crossrefTitle": "Camera: a competitive gene set test accounting for inter-gene correlation",
+      "crossrefYear": 2012,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-CAMERA-2012",
+          "title": "Camera: a competitive gene set test accounting for inter-gene correlation",
+          "year": 2012,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pcbi.1002375",
+      "resolved": true,
+      "crossrefTitle": "Ten Years of Pathway Analysis: Current Approaches and Outstanding Challenges",
+      "crossrefYear": 2012,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-PATHWAY-REVIEW-2012",
+          "title": "Ten years of pathway analysis: current approaches and outstanding challenges",
+          "year": 2012,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/1471-2105-14-7",
+      "resolved": true,
+      "crossrefTitle": "GSVA: gene set variation analysis for microarray and RNA-Seq data",
+      "crossrefYear": 2013,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-GSVA-2013",
+          "title": "GSVA: gene set variation analysis for microarray and RNA-seq data",
+          "year": 2013,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1089/omi.2011.0118",
+      "resolved": true,
+      "crossrefTitle": "clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters",
+      "crossrefYear": 2012,
+      "owners": [
+        {
+          "packId": "m013-batch04-bulk-rna-pathway-20260824",
+          "id": "SRC-CLUSTERPROFILER-2012",
+          "title": "clusterProfiler: an R package for comparing biological themes among gene clusters",
+          "year": 2012,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1023/a:1023949509487",
+      "resolved": true,
+      "crossrefTitle": "Consensus Clustering: A Resampling-Based Method for Class Discovery and Visualization of Gene Expression Microarray Data",
+      "crossrefYear": 2003,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-CONSCLUST-2003",
+          "title": "Consensus Clustering: A Resampling-Based Method for Class Discovery and Visualization of Gene Expression Microarray Data",
+          "year": 2003,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/bioinformatics/btq170",
+      "resolved": true,
+      "crossrefTitle": "ConsensusClusterPlus: a class discovery tool with confidence assessments and item tracking",
+      "crossrefYear": 2010,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-CCPLUS-2010",
+          "title": "ConsensusClusterPlus: a class discovery tool with confidence assessments and item tracking",
+          "year": 2010,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1073/pnas.0308531101",
+      "resolved": true,
+      "crossrefTitle": "Metagenes and molecular pattern discovery using matrix factorization",
+      "crossrefYear": 2004,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-NMF-2004",
+          "title": "Metagenes and molecular pattern discovery using matrix factorization",
+          "year": 2004,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/jnci/dji237",
+      "resolved": true,
+      "crossrefTitle": "Reporting Recommendations for Tumor Marker Prognostic Studies (REMARK)",
+      "crossrefYear": 2005,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-REMARK-2005",
+          "title": "Reporting recommendations for tumor marker prognostic studies (REMARK)",
+          "year": 2005,
+          "titleSimilarity": 1
+        },
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-REMARK-2005-B8",
+          "title": "Reporting recommendations for tumor marker prognostic studies (REMARK)",
+          "year": 2005,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pmed.1001216",
+      "resolved": true,
+      "crossrefTitle": "Reporting Recommendations for Tumor Marker Prognostic Studies (REMARK): Explanation and Elaboration",
+      "crossrefYear": 2012,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-REMARK-EXPLAIN-2012",
+          "title": "Reporting Recommendations for Tumor Marker Prognostic Studies (REMARK): Explanation and Elaboration",
+          "year": 2012,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj.e5595",
+      "resolved": true,
+      "crossrefTitle": "Prognosis research strategy (PROGRESS) 1: A framework for researching clinical outcomes",
+      "crossrefYear": 2013,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-PROGRESS1-2013",
+          "title": "PROGRESS 1: A framework for researching clinical outcomes",
+          "year": 2013,
+          "titleSimilarity": 0.7272727272727273
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pmed.1001380",
+      "resolved": true,
+      "crossrefTitle": "Prognosis Research Strategy (PROGRESS) 2: Prognostic Factor Research",
+      "crossrefYear": 2013,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-PROGRESS2-2013",
+          "title": "PROGRESS 2: Prognostic factor research",
+          "year": 2013,
+          "titleSimilarity": 0.7142857142857143
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pmed.1001381",
+      "resolved": true,
+      "crossrefTitle": "Prognosis Research Strategy (PROGRESS) 3: Prognostic Model Research",
+      "crossrefYear": 2013,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-PROGRESS3-2013",
+          "title": "PROGRESS 3: Prognostic model research",
+          "year": 2013,
+          "titleSimilarity": 0.7142857142857143
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj.e5793",
+      "resolved": true,
+      "crossrefTitle": "Prognosis research strategy (PROGRESS) 4: Stratified medicine research",
+      "crossrefYear": 2013,
+      "owners": [
+        {
+          "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+          "id": "SRC-PROGRESS4-2013",
+          "title": "PROGRESS 4: Stratified medicine research",
+          "year": 2013,
+          "titleSimilarity": 0.7142857142857143
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/aje/kwv254",
+      "resolved": true,
+      "crossrefTitle": "Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available: Table 1.",
+      "crossrefYear": 2016,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-TARGETTRIAL-2016",
+          "title": "Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available",
+          "year": 2016,
+          "titleSimilarity": 0.8666666666666667
+        }
+      ]
+    },
+    {
+      "doi": "10.1080/00273171.2011.568786",
+      "resolved": true,
+      "crossrefTitle": "An Introduction to Propensity Score Methods for Reducing the Effects of Confounding in Observational Studies",
+      "crossrefYear": 2011,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-PS-INTRO-2011",
+          "title": "An Introduction to Propensity Score Methods for Reducing the Effects of Confounding in Observational Studies",
+          "year": 2011,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1002/sim.3697",
+      "resolved": true,
+      "crossrefTitle": "Balance diagnostics for comparing the distribution of baseline covariates between treatment groups in propensity‐score matched samples",
+      "crossrefYear": 2009,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-PS-BALANCE-2009",
+          "title": "Balance diagnostics for comparing the distribution of baseline covariates between treatment groups in propensity-score matched samples",
+          "year": 2009,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/aje/kwm324",
+      "resolved": true,
+      "crossrefTitle": "Immortal Time Bias in Pharmacoepidemiology",
+      "crossrefYear": 2008,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-IMMORTAL-2008",
+          "title": "Immortal time bias in observational studies of drug effects",
+          "year": 2008,
+          "titleSimilarity": 0.4
+        }
+      ]
+    },
+    {
+      "doi": "10.7326/m16-2607",
+      "resolved": true,
+      "crossrefTitle": "Sensitivity Analysis in Observational Research: Introducing the E-Value",
+      "crossrefYear": 2017,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-EVALUE-2017",
+          "title": "Sensitivity Analysis in Observational Research: Introducing the E-Value",
+          "year": 2017,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pmed.0040296",
+      "resolved": true,
+      "crossrefTitle": "The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies",
+      "crossrefYear": 2007,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-STROBE-2007",
+          "title": "The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement",
+          "year": 2007,
+          "titleSimilarity": 0.8333333333333334
+        },
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-STROBE-2007-B8",
+          "title": "The STROBE statement",
+          "year": 2007,
+          "titleSimilarity": 0.25
+        }
+      ]
+    },
+    {
+      "doi": "10.1016/s0140-6736(25)00672-5",
+      "resolved": true,
+      "crossrefTitle": "CONSORT 2025 statement: updated guideline for reporting randomised trials",
+      "crossrefYear": 2025,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-CONSORT-2025",
+          "title": "CONSORT 2025 statement: updated guideline for reporting randomised trials",
+          "year": 2025,
+          "titleSimilarity": 1
+        },
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-CONSORT-2025-B8",
+          "title": "CONSORT 2025 statement: updated guideline for reporting randomised trials",
+          "year": 2025,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1016/s0140-6736(25)00770-6",
+      "resolved": true,
+      "crossrefTitle": "SPIRIT 2025 statement: updated guideline for protocols of randomised trials",
+      "crossrefYear": 2025,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-SPIRIT-2025",
+          "title": "SPIRIT 2025 statement: updated guideline for protocols of randomised trials",
+          "year": 2025,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj.h5527",
+      "resolved": true,
+      "crossrefTitle": "STARD 2015: an updated list of essential items for reporting diagnostic accuracy studies",
+      "crossrefYear": 2015,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-STARD-2015",
+          "title": "STARD 2015: An Updated List of Essential Items for Reporting Diagnostic Accuracy Studies",
+          "year": 2015,
+          "titleSimilarity": 1
+        },
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-STARD-2015-B8",
+          "title": "STARD 2015: An Updated List of Essential Items for Reporting Diagnostic Accuracy Studies",
+          "year": 2015,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1371/journal.pbio.3000410",
+      "resolved": true,
+      "crossrefTitle": "The ARRIVE guidelines 2.0: Updated guidelines for reporting animal research",
+      "crossrefYear": 2020,
+      "owners": [
+        {
+          "packId": "m013-batch06-causal-reporting-20260824",
+          "id": "SRC-ARRIVE-2020",
+          "title": "The ARRIVE guidelines 2.0: Updated guidelines for reporting animal research",
+          "year": 2020,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1002/eji.202170126",
+      "resolved": true,
+      "crossrefTitle": "Guidelines for the use of flow cytometry and cell sorting in immunological studies (third edition)",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch07-wetlab-expanded-20260824",
+          "id": "SRC-FLOW-GUIDE-2021",
+          "title": "Guidelines for the use of flow cytometry and cell sorting in immunological studies (third edition)",
+          "year": 2021,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1002/cyto.a.20623",
+      "resolved": true,
+      "crossrefTitle": "MIFlowCyt: The minimum information about a flow cytometry experiment",
+      "crossrefYear": 2008,
+      "owners": [
+        {
+          "packId": "m013-batch07-wetlab-expanded-20260824",
+          "id": "SRC-MIFLOWCYT-2008",
+          "title": "MIFlowCyt: the minimum information about a Flow Cytometry Experiment",
+          "year": 2008,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1101/pdb.prot087288",
+      "resolved": true,
+      "crossrefTitle": "Quantitation of Apoptosis and Necrosis by Annexin V Binding, Propidium Iodide Uptake, and Flow Cytometry",
+      "crossrefYear": 2016,
+      "owners": [
+        {
+          "packId": "m013-batch07-wetlab-expanded-20260824",
+          "id": "SRC-ANNEXIN-2016",
+          "title": "Analyzing Cell Death by Annexin V Staining and Flow Cytometry",
+          "year": 2016,
+          "titleSimilarity": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "doi": "10.1007/978-1-0716-2903-1_7",
+      "resolved": true,
+      "crossrefTitle": "Interference in ELISA",
+      "crossrefYear": 2023,
+      "owners": [
+        {
+          "packId": "m013-batch07-wetlab-expanded-20260824",
+          "id": "SRC-ELISA-INTERFERENCE-2023",
+          "title": "Interferences in Immunoassay",
+          "year": 2023,
+          "titleSimilarity": 0.2
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41592-025-02890-1",
+      "resolved": true,
+      "crossrefTitle": "Selecting the optimal cell migration assay: fundamentals and practical guidelines",
+      "crossrefYear": 2025,
+      "owners": [
+        {
+          "packId": "m013-batch07-wetlab-expanded-20260824",
+          "id": "SRC-MIGRATION-GUIDE-2026",
+          "title": "A practical guideline for the choice and use of cell migration assays",
+          "year": 2026,
+          "titleSimilarity": 0.29411764705882354
+        }
+      ]
+    },
+    {
+      "doi": "10.1007/978-1-61779-207-6_8",
+      "resolved": true,
+      "crossrefTitle": "Transwell® Invasion Assays",
+      "crossrefYear": 2011,
+      "owners": [
+        {
+          "packId": "m013-batch07-wetlab-expanded-20260824",
+          "id": "SRC-TRANSWELL-2011",
+          "title": "Transwell migration and invasion assays",
+          "year": 2011,
+          "titleSimilarity": 0.6
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/bioinformatics/btx162",
+      "resolved": true,
+      "crossrefTitle": "SynergyFinder: a web application for analyzing drug combination dose–response matrix data",
+      "crossrefYear": 2017,
+      "owners": [
+        {
+          "packId": "m013-batch07-wetlab-expanded-20260824",
+          "id": "SRC-SYNERGYFINDER-2017",
+          "title": "SynergyFinder: a web application for analyzing drug combination dose-response matrix data",
+          "year": 2017,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1136/bmj.n71",
+      "resolved": true,
+      "crossrefTitle": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-PRISMA-2020",
+          "title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews",
+          "year": 2021,
+          "titleSimilarity": 1
+        }
+      ]
+    },
+    {
+      "doi": "10.1186/s13643-020-01542-z",
+      "resolved": true,
+      "crossrefTitle": "PRISMA-S: an extension to the PRISMA Statement for Reporting Literature Searches in Systematic Reviews",
+      "crossrefYear": 2021,
+      "owners": [
+        {
+          "packId": "m013-batch08-reviewer-systematic-20260824",
+          "id": "SRC-PRISMAS-2021",
+          "title": "PRISMA-S: an extension to the PRISMA Statement for Reporting Literature Searches in Systematic Reviews",
+          "year": 2021,
+          "titleSimilarity": 1
+        }
+      ]
+    }
+  ],
+  "pmidResults": [
+    {
+      "pmid": "23500130",
+      "resolved": true,
+      "returnedTitle": "Guidelines for reporting quantitative mass spectrometry based experiments in proteomics.",
+      "returnedYear": "2013",
+      "owner": {
+        "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+        "id": "SRC-MIAPE-QUANT-2013",
+        "title": "Guidelines for reporting quantitative mass spectrometry based experiments in proteomics",
+        "year": 2013,
+        "titleSimilarity": 1
+      }
+    },
+    {
+      "pmid": "9888278",
+      "resolved": true,
+      "returnedTitle": "Causal diagrams for epidemiologic research.",
+      "returnedYear": "1999",
+      "owner": {
+        "packId": "m013-batch06-causal-reporting-20260824",
+        "id": "SRC-DAG-1999",
+        "title": "Causal diagrams for epidemiologic research",
+        "year": 1999,
+        "titleSimilarity": 1
+      }
+    },
+    {
+      "pmid": "25482647",
+      "resolved": true,
+      "returnedTitle": "An introduction to the wound healing assay using live-cell microscopy.",
+      "returnedYear": "2014",
+      "owner": {
+        "packId": "m013-batch07-wetlab-expanded-20260824",
+        "id": "SRC-WOUND-2014",
+        "title": "Wound healing assay: an overview of literature methods",
+        "year": 2014,
+        "titleSimilarity": 0.26666666666666666
+      }
+    },
+    {
+      "pmid": "26949479",
+      "resolved": true,
+      "returnedTitle": "Searching for Drug Synergy in Complex Dose-Response Landscapes Using an Interaction Potency Model.",
+      "returnedYear": "2015",
+      "owner": {
+        "packId": "m013-batch07-wetlab-expanded-20260824",
+        "id": "SRC-ZIP-2016",
+        "title": "A new drug-combination model to predict synergistic effects based on the zero interaction potency score",
+        "year": 2016,
+        "titleSimilarity": 0.15384615384615385
+      }
+    },
+    {
+      "pmid": "26388771",
+      "resolved": true,
+      "returnedTitle": "What is synergy? The Saariselkä agreement revisited.",
+      "returnedYear": "2015",
+      "owner": {
+        "packId": "m013-batch07-wetlab-expanded-20260824",
+        "id": "SRC-SYNERGY-WHAT-2015",
+        "title": "What is synergy?",
+        "year": 2015,
+        "titleSimilarity": 0.42857142857142855
+      }
+    }
+  ],
+  "lowSimilarity": [
+    {
+      "identifier": "10.1093/aje/kwm324",
+      "crossrefTitle": "Immortal Time Bias in Pharmacoepidemiology",
+      "packId": "m013-batch06-causal-reporting-20260824",
+      "id": "SRC-IMMORTAL-2008",
+      "title": "Immortal time bias in observational studies of drug effects",
+      "year": 2008,
+      "titleSimilarity": 0.4
+    },
+    {
+      "identifier": "10.1371/journal.pmed.0040296",
+      "crossrefTitle": "The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies",
+      "packId": "m013-batch08-reviewer-systematic-20260824",
+      "id": "SRC-STROBE-2007-B8",
+      "title": "The STROBE statement",
+      "year": 2007,
+      "titleSimilarity": 0.25
+    },
+    {
+      "identifier": "10.1101/pdb.prot087288",
+      "crossrefTitle": "Quantitation of Apoptosis and Necrosis by Annexin V Binding, Propidium Iodide Uptake, and Flow Cytometry",
+      "packId": "m013-batch07-wetlab-expanded-20260824",
+      "id": "SRC-ANNEXIN-2016",
+      "title": "Analyzing Cell Death by Annexin V Staining and Flow Cytometry",
+      "year": 2016,
+      "titleSimilarity": 0.3333333333333333
+    },
+    {
+      "identifier": "10.1007/978-1-0716-2903-1_7",
+      "crossrefTitle": "Interference in ELISA",
+      "packId": "m013-batch07-wetlab-expanded-20260824",
+      "id": "SRC-ELISA-INTERFERENCE-2023",
+      "title": "Interferences in Immunoassay",
+      "year": 2023,
+      "titleSimilarity": 0.2
+    },
+    {
+      "identifier": "10.1038/s41592-025-02890-1",
+      "crossrefTitle": "Selecting the optimal cell migration assay: fundamentals and practical guidelines",
+      "packId": "m013-batch07-wetlab-expanded-20260824",
+      "id": "SRC-MIGRATION-GUIDE-2026",
+      "title": "A practical guideline for the choice and use of cell migration assays",
+      "year": 2026,
+      "titleSimilarity": 0.29411764705882354
+    }
+  ],
+  "pmidLowSimilarity": [
+    {
+      "pmid": "25482647",
+      "resolved": true,
+      "returnedTitle": "An introduction to the wound healing assay using live-cell microscopy.",
+      "returnedYear": "2014",
+      "owner": {
+        "packId": "m013-batch07-wetlab-expanded-20260824",
+        "id": "SRC-WOUND-2014",
+        "title": "Wound healing assay: an overview of literature methods",
+        "year": 2014,
+        "titleSimilarity": 0.26666666666666666
+      }
+    },
+    {
+      "pmid": "26949479",
+      "resolved": true,
+      "returnedTitle": "Searching for Drug Synergy in Complex Dose-Response Landscapes Using an Interaction Potency Model.",
+      "returnedYear": "2015",
+      "owner": {
+        "packId": "m013-batch07-wetlab-expanded-20260824",
+        "id": "SRC-ZIP-2016",
+        "title": "A new drug-combination model to predict synergistic effects based on the zero interaction potency score",
+        "year": 2016,
+        "titleSimilarity": 0.15384615384615385
+      }
+    },
+    {
+      "pmid": "26388771",
+      "resolved": true,
+      "returnedTitle": "What is synergy? The Saariselkä agreement revisited.",
+      "returnedYear": "2015",
+      "owner": {
+        "packId": "m013-batch07-wetlab-expanded-20260824",
+        "id": "SRC-SYNERGY-WHAT-2015",
+        "title": "What is synergy?",
+        "year": 2015,
+        "titleSimilarity": 0.42857142857142855
+      }
+    }
+  ]
+}
