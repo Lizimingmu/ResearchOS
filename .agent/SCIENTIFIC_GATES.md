@@ -63,6 +63,23 @@ An item passes only when:
 
 Evidence priority: authoritative guideline/consensus → Nature Protocols → STAR Protocols → original method paper → high-quality methods review → validated manufacturer protocol → institutional SOP. Manufacturer sources support reagent-specific implementation only unless independently justified.
 
+## RESEARCH PROBLEM ATLAS HIGH-RISK GATE
+
+Problem Atlas trains scientific differential diagnosis, not FAQ recall. OpenCode may implement infrastructure and pending demos, but it may not independently mark the following as verified: diagnostic reference answers, universal experimental/statistical principles, causal interpretations, biological-replicate definitions, claim boundaries, reviewer severity, treatment/experimental inference, protocol critical controls, bioinformatics best-practice claims, or source-authority classification.
+
+A ProblemCard or diagnostic path passes only when:
+
+1. Observation is separated from explanation; multiple plausible causes are retained until discriminating evidence changes their rank.
+2. The “next check” is justified by information value and ability to distinguish causes, not convenience or generic additional analysis.
+3. Error localization distinguishes sample, experiment, quantification, statistics and interpretation layers.
+4. The reference answer explains which evidence changed the diagnosis and what remains uncertain.
+5. Claim boundaries and reviewer severity are proportionate to design, statistical unit and evidence.
+6. Wrong + high confidence maps to an underlying misconception and a delayed far-transfer variant, not the same question repeated.
+7. Problem content links to Method/Protocol/Pattern entities rather than copying their teaching text.
+8. Emerging, superseded and deprecated knowledge is visibly distinguished from current verified knowledge.
+
+Source authority is contextual, not a numeric truth score. Tier B vendor/technical sources may support reagent-specific troubleshooting but cannot by themselves establish a universal methodological principle. Tier D is discovery-only; Tier X is rejected. DOI/PMID existence never upgrades claim verification.
+
 ## Gate result
 
 Codex writes only `ACCEPT`, `REJECT`, or `PATCH REQUIRED` in `REVIEW_RESULT.md`, followed by necessary reasons and exact task IDs. Accepted scientific changes may then move from pending to verified with scope and review date recorded.

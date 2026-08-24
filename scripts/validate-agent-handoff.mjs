@@ -45,6 +45,11 @@ if (!errors.length) {
   if (read("CURRENT_MILESTONE.md").includes("Protocol Lab") && !existsSync(path.join(agentRoot, "PROTOCOL_CURRICULUM.md"))) {
     errors.push("Protocol Lab milestone requires .agent/PROTOCOL_CURRICULUM.md.");
   }
+  if (read("CURRENT_MILESTONE.md").includes("Research Problem Atlas")) {
+    for (const name of ["PROBLEM_ATLAS_SPEC.md", "SOURCE_INGESTION_SPEC.md"]) {
+      if (!existsSync(path.join(agentRoot, name))) errors.push(`M013 requires .agent/${name}.`);
+    }
+  }
 }
 
 console.log(`Agent handoff validation: ${errors.length ? "FAILED" : "PASSED"}`);

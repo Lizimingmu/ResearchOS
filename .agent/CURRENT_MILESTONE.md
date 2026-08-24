@@ -1,26 +1,26 @@
-# Current Milestone — M012 Experimental Protocol Lab
+# Current Milestone — M013 Research Problem Atlas
+
+## Decision
+
+M013 is active before M012 implementation. Source-first infrastructure is a prerequisite for safely producing Protocol Lab and other scientific content. M012 specifications remain preserved; its bulk content/engineering tasks are paused, not cancelled.
 
 ## Outcome
 
-Build a Chinese-first Experimental Protocol Lab that trains experimental reasoning, controls, replication, QC, troubleshooting, quantification, statistical units and claim boundaries. It must not become a step-by-step SOP encyclopedia.
+Create the Research Problem Atlas architecture: structured scientific differential diagnosis, sequential evidence reveal, deterministic problem search, unified Source Registry, claim–evidence mapping, knowledge versioning and transactional source-pack ingestion.
 
-## Deliverable
+## Scope
 
-- A top-level **实验方法（Protocol Lab）** workspace.
-- Structured protocol data model and safe local persistence.
-- 34 curriculum topics defined in `PROTOCOL_CURRICULUM.md`.
-- At least 20 reasoning, 15 troubleshooting, 15 control/replication and 10 AI wet-lab audit cases.
-- Human-first answer locking, staged feedback, misconception/review integration and project transfer.
-- Today, Review, Skill Map, AI Audit, Projects and global-search integration.
-- Deterministic protocol schema/provenance/duplicate/scientific-state validator and engineering tests.
+- Product/data contracts in `PROBLEM_ATLAS_SPEC.md`.
+- Source/claim/import contracts in `SOURCE_INGESTION_SPEC.md`.
+- Chinese-first Problem Atlas workspace and eight diagnostic training modes.
+- Small pending demo set using existing evidence-backed concepts only.
+- Review, misconception, Today, Skill Map, Method/Protocol/Pattern and global-search links.
+- Schema migration, source-pack importer, evidence badges and deterministic validators/tests.
 
-## Constraints
+## Out of scope
 
-- All generated scientific content remains `pending` until Codex review.
-- No universal volumes/times, clinical instructions, device control or unqualified manufacturer-specific parameters.
-- OpenCode performs implementation without any Git command. Codex owns Git and diff review.
-- Existing dirty localization work must be preserved. Packaging is prohibited before Codex `ACCEPT`.
+Bulk scientific content generation, automatic web crawling, LLM-selected truth, automatic verified promotion, hundreds of placeholder cards, release/version packaging, or resuming M012 content production before M013 gate acceptance.
 
 ## Acceptance sequence
 
-OpenCode implementation → automated QA/content audit → Codex diff/scientific review → OpenCode patch → regression → Codex acceptance. Release is a separate milestone.
+OpenCode M013-01…07 → deterministic QA → Codex diff/scientific review → OpenCode patch → regression → Codex ACCEPT. Only then may M012 resume on the source-first foundation.

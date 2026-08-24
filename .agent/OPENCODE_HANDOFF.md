@@ -1,56 +1,66 @@
-# OpenCode Handoff — M012 Experimental Protocol Lab
+# OpenCode Handoff — M013 Research Problem Atlas
 
-## Task IDs
+## Execute
 
-M012-01 through M012-06. Do not package.
+M013-01 through M013-07 only. Use `opencode-go/deepseek-v4-pro`. Do not package, release or execute Git commands.
 
-## Objective
+## Required specification
 
-Implement the Experimental Protocol Lab specified in `CURRENT_MILESTONE.md` and `PROTOCOL_CURRICULUM.md` as a reasoning/troubleshooting/design-training system, not an SOP encyclopedia.
-
-## Model and hard execution rule
-
-Use `opencode-go/deepseek-v4-pro`. **Do not invoke Git in any form.** No status, diff, log, add, commit, checkout, restore or reset. Read files, modify, test and report only. OpenCode filesystem snapshots are disabled because they rely on Git.
-
-## Read first
-
-`AGENTS.md`, `.agent/PRODUCT_CONSTITUTION.md`, `.agent/SCIENTIFIC_GATES.md`, `.agent/PROJECT_STATE.md`, `.agent/CURRENT_MILESTONE.md`, `.agent/PROTOCOL_CURRICULUM.md`, and assigned rows in `.agent/TASK_QUEUE.md`.
-
-Then inspect only direct dependencies: domain types/state migration, navigation/App shell, scheduler/review/scoring integration, existing Human-First attempt components, representative data schemas, validators and tests. Do not scan historical prompts or unrelated areas.
+Read `AGENTS.md`, product constitution, scientific gates, project state, current milestone, task queue, `PROBLEM_ATLAS_SPEC.md` and `SOURCE_INGESTION_SPEC.md`. Do not read historical user prompts. Inspect only directly related existing types/store migration, persistence gateway, navigation/App shell, search, AttemptFlow, scheduler/review/scoring, representative content schemas, validators and tests.
 
 ## Preserve
 
-The worktree already contains uncommitted M011 localization/i18n work. Preserve it and build compatibly on top. Do not reset files or change version/package/release artifacts.
+Existing dirty M011 localization work and committed M012 specification. M012 implementation is paused. Do not delete Protocol curriculum/specification, reset the worktree, change release artifacts or bump versions.
 
-## Implementation requirements
+## Expected modules/files
 
-1. Structured entities: ProtocolConcept, ProtocolStage, ProtocolControl, ProtocolCriticalVariable, ProtocolQCCheckpoint, ProtocolFailureMode, ProtocolTrainingCase and ProtocolEvidence; no monolithic Markdown content field.
-2. Chinese-first navigation, list/search/filter/detail and all eight training modes.
-3. Human-first locked answers, feedback gating, confidence/misconception capture, Review integration and project transfer.
-4. Today tasks appear occasionally with bounded share; add Skill Map domain “实验设计与实验方法” and AI Wet-lab Audit integration.
-5. Meet starter counts without filler. Priority exemplars must be usable.
-6. Every generated scientific seed remains pending. Claim evidence includes claim, source/source type, supporting section, scope, qualification and status.
-7. Add `scripts/protocol-content-audit.mjs` for schema, duplicates, IDs/references, counts, evidence and forbidden self-verification.
-8. Add focused data, learning, scientific-state and UI integration tests. Preserve existing tests.
+Adapt names to existing conventions, but keep responsibilities separate:
 
-## Forbidden design
+- domain types for sources, evidence claims, ProblemCards, causes/checks/paths/evidence/cases and diagnostic sessions;
+- v2→v3 application-state migration plus persistence tests; SQLite/persistence changes only where required by the existing gateway;
+- `src/data/problemAtlas*` small pending demo pack;
+- `src/problem-atlas/search.ts` deterministic search and `diagnosticEngine.ts` pure state transitions;
+- `src/services/sourcePack*` parsers, normalization, dry run and transactional import;
+- `src/features/problem-atlas/ProblemAtlasView.tsx` and focused components;
+- navigation/App lazy route, global search, Today scheduler, Review/misconception, Skill Map and related-entity links;
+- `scripts/source-pack-audit.mjs` and `scripts/problem-atlas-audit.mjs`;
+- focused node/integration tests and package scripts.
 
-No universal volumes/times, clinical patient instructions, device control, automatic experiment execution, unqualified manufacturer parameters, or claims that wells/images/fields equal biological replication.
+Do not turn each entity into one Markdown blob or one huge React component.
 
-## QA
+## Engineering contract
 
-Run handoff validation, typecheck, complete frontend tests, content/localization/protocol audits, performance/startup checks and Rust tests if affected. Fix ordinary failures. If an old M011 failure blocks the suite, fix only the narrow engineering contract and report it.
+1. Implement all normalized fields/enums/foreign keys from both specs. Preserve immutable canonical cards and separate mutable DiagnosticSession history.
+2. Import JSON, per-entity CSV and Markdown/frontmatter as untrusted data. Provide parse/validate/dry-run before explicit confirmed mutation; rollback on any import failure.
+3. Never infer authority tier from branding/journal or promote pending content. Metadata verification and claim verification remain separate.
+4. Support current/superseded/deprecated/emerging, non-destructive supersession links and visible categorical badges.
+5. Search Chinese/English/abbreviation/alias/keywords/related concepts deterministically. No free-chat fallback or generated answer on no match.
+6. Implement eight Human-First modes. Lock every judgment before feedback; sequential troubleshooting records every belief update and revealed evidence.
+7. Reuse existing verified evidence identifiers for demo transformations, but mark every new ProblemCard/path/rubric pending. No external scientific search.
+8. Integrate wrong + high confidence into delayed far-transfer Review; Today schedules at most one new Problem task and never displaces due review.
+9. Link to Method/Protocol/Pattern stable IDs without copying their content.
 
-## Reports
+## Status-transition hard rules
 
-Replace `.agent/IMPLEMENTATION_REPORT.md` with exact files, features, commands/results, failures and remaining issues. Append M012 entries to `.agent/SCIENTIFIC_CHANGESET.md` using required fields, risk and pending state. Never self-verify scientific content. Then stop for Codex review.
+- AI-generated or transformed scientific content cannot enter verified/claim_verified.
+- Metadata-verified source does not verify its claims.
+- Tier D cannot back verified claims; Tier X is rejected.
+- Same identifier with conflicting source IDs is an import conflict.
+- Verified content updates require provenance/audit; supersession never deletes historical learning records.
+- Importer must be idempotent for identical pack ID/content hash.
 
-## Host launch command
+## Tests and automated QA
 
-From a normal PowerShell terminal in `D:\Agents\ResearchOS`:
+Add tests for v2 migration; CRUD/persistence; JSON/CSV/Markdown parsing; invalid schema/enums/IDs; duplicate DOI/PMID/title; broken foreign keys; version cycles; checksums; dry-run non-mutation; transaction rollback; self-verification rejection; status transitions; deterministic fuzzy ranking; filters; locked feedback; sequential history; misconception/far-transfer; Today bound; global navigation/search/open flow.
+
+Validators must emit JSON artifacts and exit nonzero on errors. Run handoff validator, typecheck, full tests, existing content/localization/performance/startup gates, new atlas/source audits, and Rust tests if Rust changed.
+
+## Reports and stop condition
+
+Replace `.agent/IMPLEMENTATION_REPORT.md` with exact files, commands/results, failures and remaining issues. Append only new scientific content/rubric changes to `.agent/SCIENTIFIC_CHANGESET.md`, including source IDs/PMID/DOI and pending state. Stop for Codex review; do not package.
+
+## Host command
 
 ```powershell
-opencode run --pure --auto --model "opencode-go/deepseek-v4-pro" --title "ResearchOS M012 Protocol Lab" "Read AGENTS.md and .agent/OPENCODE_HANDOFF.md. Execute M012-01 through M012-06. HARD RULE: do not invoke any git command; read, modify, test, and report only. Preserve existing dirty localization work. Do not package. Stop after updating IMPLEMENTATION_REPORT.md and SCIENTIFIC_CHANGESET.md."
+opencode run --pure --auto --model "opencode-go/deepseek-v4-pro" --title "ResearchOS M013 Problem Atlas" "Read AGENTS.md and .agent/OPENCODE_HANDOFF.md. Execute only M013-01 through M013-07. Do not invoke Git. Preserve existing work, do not package, run all specified QA, update IMPLEMENTATION_REPORT.md and SCIENTIFIC_CHANGESET.md, then stop for Codex review."
 ```
-
-The outer Codex attempted this dispatch after disabling snapshots and denying `git *`; the managed host blocked OpenCode during initialization with `EPERM: uv_spawn 'git'`. This is a host limitation, not permission for Codex to replace OpenCode as implementer.
