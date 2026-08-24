@@ -44,6 +44,25 @@ UI strings, CSS, navigation, settings, backup UI, keyboard shortcuts, ordinary e
 - Spatial/multi-omics: colocalization, latent factors and ligand–receptor scores are hypotheses or associations unless functional evidence supports more.
 - Reporting guidance: reporting completeness is not proof of low bias or validity.
 
+## EXPERIMENTAL PROTOCOL HIGH-RISK GATE
+
+Protocol Lab is an experimental-reasoning and design-review system, not an SOP encyclopedia. It must not present universal reagent volumes, incubation times, patient-management instructions, or device-control procedures.
+
+Codex reviews every item that defines experimental/statistical units, biological/technical replication, required controls, quantification, allowed/forbidden claims, troubleshooting answers, design rubrics, or the boundary between scientific principle, example implementation and manufacturer-specific instruction.
+
+An item passes only when:
+
+1. The scientific question and experimental unit are explicit before wells, images, fields or repeated reads are counted.
+2. Technical replication improves measurement precision but is never taught as new biological n.
+3. Controls are assay-specific, justified by what they diagnose, and not copied as a generic checklist.
+4. Troubleshooting permits multiple plausible causes and uses new QC evidence to update priority.
+5. Quantification identifies signal range/saturation, normalization, batch handling and the level entering the statistical model.
+6. The allowed claim is no stronger than the readout and design; association, abundance or viability alone is not mechanism.
+7. Concrete conditions are qualified as examples or source/manufacturer-specific, never universal scientific rules.
+8. Claim-level evidence records claim, source type, supporting section, scope, qualification and pending/verified state.
+
+Evidence priority: authoritative guideline/consensus → Nature Protocols → STAR Protocols → original method paper → high-quality methods review → validated manufacturer protocol → institutional SOP. Manufacturer sources support reagent-specific implementation only unless independently justified.
+
 ## Gate result
 
 Codex writes only `ACCEPT`, `REJECT`, or `PATCH REQUIRED` in `REVIEW_RESULT.md`, followed by necessary reasons and exact task IDs. Accepted scientific changes may then move from pending to verified with scope and review date recorded.

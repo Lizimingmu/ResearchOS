@@ -2,14 +2,13 @@
 
 | ID | Priority | Task | Owner | Acceptance criteria | Scientific review required |
 |---|---|---|---|---|---|
-| M011-01 | P0 | Inventory the existing dirty localization diff without discarding user/Codex work | OpenCode Pro | Report changed files and classify engineering vs scientific presentation changes | Yes, only scientific subset |
-| M011-02 | P0 | Repair i18n/localization audit and complete Chinese-first core UI | OpenCode Pro | 21 functional tests plus localization audit pass; no untranslated core control; bilingual method terms retained | No for UI; Yes for scientific paraphrases |
-| M011-03 | P0 | Complete scientific changeset for every changed explanation, answer or rubric | OpenCode Pro | Required fields, source IDs/PMID/DOI, risk and pending status present; no unsupported new claim | Yes |
-| M011-04 | P1 | Run deterministic QA and fix engineering failures | OpenCode Pro | handoff validator, typecheck, tests, content audit, performance audit, startup smoke and Rust tests pass | No |
-| M011-05 | P1 | Codex diff and scientific review | Codex | Review only baseline diff, reports, failures and directly related dependencies; write gate result | Yes |
-| M011-06 | P1 | Apply requested review patches and rerun regression | OpenCode Pro | Exact review findings resolved; full QA remains green | As marked in review |
-| M011-07 | P1 | Release gate and Windows packaging | Codex then OpenCode Pro | Codex ACCEPT; v0.11.0 versions aligned; portable/setup artifacts and SHA256 recorded | Release sign-off |
+| M012-01 | P0 | Implement structured Protocol domain model, seed collections and safe migration | OpenCode Pro | Required entities/fields exist; prior state migrates; AI content cannot self-verify | Yes |
+| M012-02 | P0 | Implement Chinese-first Protocol Lab workspace and training modes | OpenCode Pro | Browse/open/search plus eight specified training modes work | UI No; rubrics Yes |
+| M012-03 | P0 | Produce starter curriculum and cases from Codex specification | OpenCode Pro | 34 topics; ≥20 reasoning, ≥15 troubleshooting, ≥15 control/replication, ≥10 AI audit; no filler | Yes |
+| M012-04 | P0 | Integrate learning system | OpenCode Pro | Today bounded frequency; answer lock; Review/misconception; Skill Map; AI Audit; Project transfer | Learning semantics Yes |
+| M012-05 | P0 | Add deterministic Protocol validator and automated tests | OpenCode Pro | Schema, IDs, duplicates, provenance, evidence fields, pending-state, counts, references and UI/learning tests pass | No |
+| M012-06 | P1 | Write implementation and scientific reports | OpenCode Pro | Exact files/tests/failures; every HIGH scientific item grouped or enumerated with sources and risk | Yes |
+| M012-07 | P1 | Diff-based scientific and architecture review | Codex | Review baseline diff, reports, failures and direct dependencies; write gate result | Yes |
+| M012-08 | P1 | Apply review patches and regression | OpenCode Pro | All exact findings resolved; full QA green | As marked |
 
-## OpenCode task record format
-
-Each execution task must state: `Task ID`, `Objective`, `Allowed files`, `Do not touch`, `Inputs`, `Implementation requirements`, `Commands to run`, `Acceptance criteria`, `Scientific risk`, and `Report destination`. Do not broaden scope without adding a queue item.
+M011 localization work remains an unapproved dependency and must be preserved; do not package or promote it while implementing M012.

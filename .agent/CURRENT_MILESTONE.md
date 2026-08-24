@@ -1,26 +1,26 @@
-# Current Milestone — M011
+# Current Milestone — M012 Experimental Protocol Lab
 
 ## Outcome
 
-Finish the existing Chinese-first localization/i18n work as a stable v0.11.0 candidate without changing core learning semantics or adding unrelated features.
+Build a Chinese-first Experimental Protocol Lab that trains experimental reasoning, controls, replication, QC, troubleshooting, quantification, statistical units and claim boundaries. It must not become a step-by-step SOP encyclopedia.
 
-## Scope
+## Deliverable
 
-- Repair the current localization audit failure and complete Chinese-first UI coverage.
-- Preserve standard English scientific terminology and original paper/source text.
-- Audit existing in-progress scientific paraphrases; do not add new scientific claims.
-- Run deterministic engineering, content, localization, database/Rust, performance and startup gates.
-- Package Windows portable/setup artifacts only after Codex review accepts the candidate.
+- A top-level **实验方法（Protocol Lab）** workspace.
+- Structured protocol data model and safe local persistence.
+- 34 curriculum topics defined in `PROTOCOL_CURRICULUM.md`.
+- At least 20 reasoning, 15 troubleshooting, 15 control/replication and 10 AI wet-lab audit cases.
+- Human-first answer locking, staged feedback, misconception/review integration and project transfer.
+- Today, Review, Skill Map, AI Audit, Projects and global-search integration.
+- Deterministic protocol schema/provenance/duplicate/scientific-state validator and engineering tests.
 
-## Out of scope
+## Constraints
 
-New product features, schema changes, new curricula, new evidence claims, visual redesign, autonomous research functions, or new network providers.
+- All generated scientific content remains `pending` until Codex review.
+- No universal volumes/times, clinical instructions, device control or unqualified manufacturer-specific parameters.
+- OpenCode performs implementation without any Git command. Codex owns Git and diff review.
+- Existing dirty localization work must be preserved. Packaging is prohibited before Codex `ACCEPT`.
 
-## Acceptance
+## Acceptance sequence
 
-1. All TASK_QUEUE M011 items are complete.
-2. `node scripts/validate-agent-handoff.mjs` passes.
-3. Full QA passes with results recorded in `IMPLEMENTATION_REPORT.md`.
-4. All scientific presentation changes are recorded in `SCIENTIFIC_CHANGESET.md`; high-risk items remain pending until Codex accepts them.
-5. Codex diff review returns `ACCEPT` before release packaging.
-6. Final artifacts have size and SHA256 recorded.
+OpenCode implementation → automated QA/content audit → Codex diff/scientific review → OpenCode patch → regression → Codex acceptance. Release is a separate milestone.

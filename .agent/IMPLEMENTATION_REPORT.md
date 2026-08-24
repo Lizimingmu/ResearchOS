@@ -1,9 +1,9 @@
 # Implementation Report
 
 Status: AWAITING OPENCODE
-Task IDs: M011-01 through M011-04
+Task IDs: M012-01 through M012-06
 Agent/model: OpenCode / DeepSeek V4 Pro
-Baseline: 441ece1
+Approved product baseline: 441ece1
 
 ## Changed files
 
@@ -17,19 +17,17 @@ Baseline: 441ece1
 
 | Command | Result | Evidence/output |
 |---|---|---|
-| `node scripts/validate-agent-handoff.mjs` | NOT RUN | |
-| `npm run typecheck` | NOT RUN | |
-| `npm test` | NOT RUN | |
-| `npm run content:audit` | NOT RUN | |
-| `npm run performance:audit` | NOT RUN | |
-| `cargo test --manifest-path src-tauri/Cargo.toml` | NOT RUN | |
+| Agent handoff validator | NOT RUN | |
+| Typecheck and frontend tests | NOT RUN | |
+| Content/localization/protocol audits | NOT RUN | |
+| Performance/startup checks | NOT RUN | |
+| Rust tests if affected | NOT RUN | |
 
 ## Failures
 
-- Known pre-handoff failure: localization navigation-key contract.
+- Pending OpenCode report.
 
 ## Remaining issues
 
-- Scientific paraphrases require changeset completion and Codex review.
-- Packaging is intentionally deferred.
-- OpenCode has not started: Codex sandbox denied its nested `git` process (`EPERM: uv_spawn 'git'`). Use the launch command in `OPENCODE_HANDOFF.md` from a normal terminal.
+- Scientific HIGH-risk content requires Codex review.
+- Packaging is prohibited in this milestone.

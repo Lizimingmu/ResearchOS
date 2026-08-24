@@ -13,5 +13,5 @@ Last updated: 2026-08-24
 - Approved validation: frontend 20/20; Rust 7/7; startup smoke pass; content audit 0 errors/1 warning; performance audit pass.
 - In-progress state: uncommitted Chinese-first localization/i18n changes exist after `441ece1`; latest combined `npm test` reached 21/21 functional tests but failed localization audit because two navigation audit keys do not match the dictionary keys.
 - Blockers: localization audit failure; uncommitted scientific paraphrases need changeset completion and Codex scientific review; no v0.11 release artifact exists. Codex sandbox invocation of OpenCode is blocked by `EPERM: uv_spawn 'git'`; run the handoff command from a normal user terminal or a host that permits OpenCode child processes.
-- Current milestone: M011 Chinese-first localization completion under Codex + OpenCode workflow.
+- Current milestone: M012 Experimental Protocol Lab. M011 localization remains an unapproved in-progress dependency and must be preserved.
 - Do not treat dirty-worktree changes or generated reports as approved until `REVIEW_RESULT.md` says `ACCEPT`.

@@ -1,69 +1,46 @@
-# OpenCode Handoff
+# OpenCode Handoff — M012 Experimental Protocol Lab
 
-## Task ID
+## Task IDs
 
-M011-01 through M011-04
+M012-01 through M012-06. Do not package.
 
 ## Objective
 
-Turn the current uncommitted Chinese-first/i18n work into a reviewable v0.11.0 candidate. Do not package yet.
+Implement the Experimental Protocol Lab specified in `CURRENT_MILESTONE.md` and `PROTOCOL_CURRICULUM.md` as a reasoning/troubleshooting/design-training system, not an SOP encyclopedia.
 
-## Model
+## Model and hard execution rule
 
-Use DeepSeek V4 Pro for implementation and debugging. DeepSeek V4 Flash may be used only for mechanical localization scans, report formatting and metadata cleanup.
+Use `opencode-go/deepseek-v4-pro`. **Do not invoke Git in any form.** No status, diff, log, add, commit, checkout, restore or reset. Read files, modify, test and report only. OpenCode filesystem snapshots are disabled because they rely on Git.
 
-## Required entry context
+## Read first
 
-Read only:
+`AGENTS.md`, `.agent/PRODUCT_CONSTITUTION.md`, `.agent/SCIENTIFIC_GATES.md`, `.agent/PROJECT_STATE.md`, `.agent/CURRENT_MILESTONE.md`, `.agent/PROTOCOL_CURRICULUM.md`, and assigned rows in `.agent/TASK_QUEUE.md`.
 
-1. `.agent/PRODUCT_CONSTITUTION.md`
-2. `.agent/SCIENTIFIC_GATES.md`
-3. `.agent/PROJECT_STATE.md`
-4. `.agent/CURRENT_MILESTONE.md`
-5. `.agent/TASK_QUEUE.md`
-6. Current `git diff 441ece1` and directly imported files needed to compile/fix it
+Then inspect only direct dependencies: domain types/state migration, navigation/App shell, scheduler/review/scoring integration, existing Human-First attempt components, representative data schemas, validators and tests. Do not scan historical prompts or unrelated areas.
 
-Do not reread historical master prompts or scan the full repository unless an architecture-level blocker is reported.
+## Preserve
 
-## Allowed files
+The worktree already contains uncommitted M011 localization/i18n work. Preserve it and build compatibly on top. Do not reset files or change version/package/release artifacts.
 
-Current dirty localization/i18n files, directly related tests/scripts, `.agent/IMPLEMENTATION_REPORT.md`, and `.agent/SCIENTIFIC_CHANGESET.md`. Version/package files are deferred until M011-07.
+## Implementation requirements
 
-## Do not touch
+1. Structured entities: ProtocolConcept, ProtocolStage, ProtocolControl, ProtocolCriticalVariable, ProtocolQCCheckpoint, ProtocolFailureMode, ProtocolTrainingCase and ProtocolEvidence; no monolithic Markdown content field.
+2. Chinese-first navigation, list/search/filter/detail and all eight training modes.
+3. Human-first locked answers, feedback gating, confidence/misconception capture, Review integration and project transfer.
+4. Today tasks appear occasionally with bounded share; add Skill Map domain “实验设计与实验方法” and AI Wet-lab Audit integration.
+5. Meet starter counts without filler. Priority exemplars must be usable.
+6. Every generated scientific seed remains pending. Claim evidence includes claim, source/source type, supporting section, scope, qualification and status.
+7. Add `scripts/protocol-content-audit.mjs` for schema, duplicates, IDs/references, counts, evidence and forbidden self-verification.
+8. Add focused data, learning, scientific-state and UI integration tests. Preserve existing tests.
 
-Learning scheduler semantics, scoring formulas, state/SQLite schema, evidence verification rules, approved release artifacts, or unrelated features. Do not delete or reset existing dirty changes.
+## Forbidden design
 
-## Known first failure
+No universal volumes/times, clinical patient instructions, device control, automatic experiment execution, unqualified manufacturer parameters, or claims that wells/images/fields equal biological replication.
 
-`scripts/localization-audit.mjs` checks `nav.methods` and `nav.skills`, while the dictionary keys are `nav.methodLab` and `nav.skillMap`. Fix the audit/dictionary contract consistently, then run the entire gate; do not stop after this known error.
+## QA
 
-## Scientific handling
+Run handoff validation, typecheck, complete frontend tests, content/localization/protocol audits, performance/startup checks and Rust tests if affected. Fix ordinary failures. If an old M011 failure blocks the suite, fix only the narrow engineering contract and report it.
 
-Any Chinese paraphrase of a method definition, audit rationale, reference answer, assessment rubric or maximal conclusion is scientific content. Record it in `SCIENTIFIC_CHANGESET.md`, preserve the English source text where useful, and leave it pending. Do not invent a citation or promote it to verified.
+## Reports
 
-## Commands
-
-```powershell
-node scripts/validate-agent-handoff.mjs
-npm run typecheck
-npm test
-npm run content:audit
-npm run performance:audit
-cargo test --manifest-path src-tauri/Cargo.toml
-```
-
-If Cargo requires the repository's existing proxy workaround, report that fact and the exact command. Do not package until Codex returns `ACCEPT`.
-
-## Deliverable
-
-Update `IMPLEMENTATION_REPORT.md` with changed files, implementation, exact test outcomes, failures and remaining issues. Update `SCIENTIFIC_CHANGESET.md` only with scientific changes. Then stop for Codex review.
-
-## Launch command
-
-Run from a normal PowerShell terminal in `D:\Agents\ResearchOS`:
-
-```powershell
-opencode run --pure --model "opencode-go/deepseek-v4-pro" --title "ResearchOS M011 localization candidate" "Read AGENTS.md and .agent/OPENCODE_HANDOFF.md, then execute only M011-01 through M011-04. Preserve all existing dirty work, do not package, update both required reports, run the specified QA, and stop for Codex review."
-```
-
-The Codex sandbox attempted this exact delegation on 2026-08-24, but the host denied OpenCode's nested `git` process with `EPERM: uv_spawn 'git'`. This is an execution-host blocker; do not treat it as an implementation failure.
+Replace `.agent/IMPLEMENTATION_REPORT.md` with exact files, features, commands/results, failures and remaining issues. Append M012 entries to `.agent/SCIENTIFIC_CHANGESET.md` using required fields, risk and pending state. Never self-verify scientific content. Then stop for Codex review.

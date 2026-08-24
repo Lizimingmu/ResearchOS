@@ -42,6 +42,9 @@ if (!errors.length) {
   const scientificPaths = ["src/data/", "src/i18n/scientificContent", "src/features/methods/", "src/features/ai-audit/", "src/features/review/", "src/features/assessment/", "src/learning/"];
   const hasScientificWork = changed.split(/\r?\n/).some((line) => scientificPaths.some((part) => line.includes(part)));
   if (hasScientificWork && entryCount === 0) warnings.push("Scientific-path changes exist but the changeset has no completed SC entry yet.");
+  if (read("CURRENT_MILESTONE.md").includes("Protocol Lab") && !existsSync(path.join(agentRoot, "PROTOCOL_CURRICULUM.md"))) {
+    errors.push("Protocol Lab milestone requires .agent/PROTOCOL_CURRICULUM.md.");
+  }
 }
 
 console.log(`Agent handoff validation: ${errors.length ? "FAILED" : "PASSED"}`);

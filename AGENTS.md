@@ -19,6 +19,8 @@ Do not reread historical master prompts by default.
 
 OpenCode must read `.agent/OPENCODE_HANDOFF.md`, preserve unrelated/user changes, update `.agent/IMPLEMENTATION_REPORT.md`, and put only scientific changes in `.agent/SCIENTIFIC_CHANGESET.md`.
 
+OpenCode must not execute any Git command. Project OpenCode configuration disables Git-backed snapshots; outer Codex owns all Git operations.
+
 ## Review entry
 
 Codex reads: `git diff <approved-baseline>..HEAD`, implementation report, scientific changeset, failures, and directly related dependencies. Expand scope only when an architecture-level risk is recorded. Write only `ACCEPT`, `REJECT`, or `PATCH REQUIRED` plus necessary reasons to `.agent/REVIEW_RESULT.md`.
