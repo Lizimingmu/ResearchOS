@@ -9,7 +9,7 @@
 | M013-05 | P0 | Add small pending demo pack from existing evidence-backed concepts | OpenCode Pro | Only pseudoreplication/unit, replication, leakage and validation demos; all transformations pending | Yes |
 | M013-06 | P0 | Integrate Today, Review/misconception, Skill Map, global search and Method/Protocol/Pattern links | OpenCode Pro | Bounded Today share; far-transfer review; no duplicate teaching content | Learning behavior Yes |
 | M013-07 | P0 | Add deterministic audits and engineering tests; write reports | OpenCode Pro | Import/state/search/training/status/UI tests and all existing gates pass; reports complete | Changeset Yes |
-| M013-08 | P1 | Diff-based architecture/scientific review | Codex | Review approved-baseline diff, reports, failures and direct dependencies only | Yes |
-| M013-09 | P1 | Apply requested patches and regression | OpenCode Pro | Findings resolved and all gates green | As marked |
+| M013-08 | P1 | Diff-based architecture/scientific review | Codex | Completed: `PATCH REQUIRED`; findings recorded in `REVIEW_RESULT.md` | Yes |
+| M013-09 | P0 | Apply requested patches and regression | OpenCode Pro | Every review finding resolved; reproduced failures covered; all gates green; reports updated; stop for re-review | As marked |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.
