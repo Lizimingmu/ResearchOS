@@ -44,3 +44,13 @@ Run handoff validation, typecheck, complete frontend tests, content/localization
 ## Reports
 
 Replace `.agent/IMPLEMENTATION_REPORT.md` with exact files, features, commands/results, failures and remaining issues. Append M012 entries to `.agent/SCIENTIFIC_CHANGESET.md` using required fields, risk and pending state. Never self-verify scientific content. Then stop for Codex review.
+
+## Host launch command
+
+From a normal PowerShell terminal in `D:\Agents\ResearchOS`:
+
+```powershell
+opencode run --pure --auto --model "opencode-go/deepseek-v4-pro" --title "ResearchOS M012 Protocol Lab" "Read AGENTS.md and .agent/OPENCODE_HANDOFF.md. Execute M012-01 through M012-06. HARD RULE: do not invoke any git command; read, modify, test, and report only. Preserve existing dirty localization work. Do not package. Stop after updating IMPLEMENTATION_REPORT.md and SCIENTIFIC_CHANGESET.md."
+```
+
+The outer Codex attempted this dispatch after disabling snapshots and denying `git *`; the managed host blocked OpenCode during initialization with `EPERM: uv_spawn 'git'`. This is a host limitation, not permission for Codex to replace OpenCode as implementer.

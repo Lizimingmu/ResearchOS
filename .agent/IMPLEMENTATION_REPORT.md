@@ -25,9 +25,10 @@ Approved product baseline: 441ece1
 
 ## Failures
 
-- Pending OpenCode report.
+- OpenCode did not start: managed Codex host blocked its initialization with `EPERM: uv_spawn 'git'` even though project snapshots are disabled and Git is denied.
 
 ## Remaining issues
 
 - Scientific HIGH-risk content requires Codex review.
 - Packaging is prohibited in this milestone.
+- Run the host launch command in `.agent/OPENCODE_HANDOFF.md`; then replace this report with the real implementation results.
