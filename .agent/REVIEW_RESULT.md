@@ -2,6 +2,17 @@
 
 PATCH REQUIRED
 
+## M013 final-gate re-review — 2026-08-25
+
+The M013-10R importer fixes, strict AI verdicts, unique error-localization ranks, baseline-first UI, pending-support labels, source-tier display and quarantine of all 166 external cards pass review. Independent rerun passed 44/44 tests, source-pack audit, Problem Atlas audit, the 63-check staging gate and handoff validation.
+
+Two focused corrections remain before M013 ACCEPT:
+
+1. **Sequential engine does not validate path-node identity/order.** After a valid baseline, `lockSessionStep` accepts a reveal for a nonexistent node and then accepts a ranking whose `nodeId` differs from the revealed node. A reproduced direct probe accepted `not-a-real-node` followed by `different-node`. Validate against the actual `DiagnosticPath`: reveal only the next unrevealed node, require its allowed evidence, require the following ranking to reference that same node, prevent repeated nodes, and grade completion by unique valid path-node coverage rather than ranking count. Add direct fake/reordered/mismatched-node regressions.
+2. **Temporal-validation reference answer remains internally contradictory and under-linked.** The card correctly says locked-model evaluation in later independent same-centre patients can be temporal/external-in-time validation, but still marks “same centre” itself as a red flag, says external means only a “new source,” instructs that the external-validation conclusion be downgraded to internal results, and gives the reference answer “仅能声明内部性能.” Rewrite consistently: report the random split as internal and the later locked-model cohort separately as temporal validation; do not claim geographic transportability or clinical readiness. Add a pending EvidenceClaim that directly/qualifiedly maps the temporal-validation statement to a suitable existing registry source, or add a Codex-reviewed methods source; do not leave the new high-risk boundary supported only by the internal-validation claim.
+
+This is a micro-patch only. Do not reopen the external corpus, add tutorial code, package, or broaden scope.
+
 ## M013-10 Codex re-review — 2026-08-25
 
 The legacy staging converter, type separation, metadata demotion, collision disclosure and 8/8 structured legacy-pack rejection are accepted in scope. Independent rerun passed 39/39 tests, the 63-check staging gate, source-pack audit and handoff validation. No staged pack is approved for production import.
