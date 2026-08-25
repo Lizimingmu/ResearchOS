@@ -31,6 +31,6 @@ OpenCode first hardens untrusted-input validation and builds an auditable legacy
 
 M013-10 does not repair scientific content. Codex re-review accepted its staging/conversion result in scope but found two importer-gate defects: oversized CSV fields are still truncated, and the identical-import noop shortcut can bypass scientific completeness.
 
-The final pass resolved the importer, UI and most demo corrections. Codex final-gate review found two narrow remaining issues: the engine accepts fake/mismatched sequential path nodes, and the temporal-validation reference answer still mixes an accepted temporal validation result with “internal-only” wording and lacks a direct claim mapping. OpenCode performs M013-11R as a micro-patch only. The 166 external cards remain `unclassified`, pending and import-ineligible; bulk classification/import is deferred.
+M013-11R resolved the sequential-integrity and temporal-validation issues and passed all automated/scientific checks. The only remaining item is a metadata-only PMID correction for the new BMJ source: `19401593` → `19477892`, plus a deterministic DOI→PMID regression assertion. The 166 external cards remain `unclassified`, pending and import-ineligible; bulk classification/import is deferred.
 
 After M013 ACCEPT, M014 adds a short Chinese first-run tutorial and packages the release candidate. The tutorial must explain Today, Problem Atlas, evidence-status badges, lock-before-feedback and Review in about five minutes; it must be skippable, restartable from Help, and use only the existing pending demo content.

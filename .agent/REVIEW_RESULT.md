@@ -2,6 +2,16 @@
 
 PATCH REQUIRED
 
+## M013-11R Codex re-review — 2026-08-25
+
+Sequential path-node/evidence integrity and the temporal-validation claim/rubric now pass engineering and scientific review. Independent rerun passed 45/45 tests, source-pack audit, Problem Atlas audit, the 63-check staging gate and handoff validation.
+
+One deterministic metadata correction remains:
+
+- `pa-src-altman-validation` has the correct title, authors, year and DOI (`10.1136/bmj.b605`), but the recorded PMID `19401593` is wrong. The PubMed record for this exact BMJ article is **PMID `19477892`**. Correct it in `src/data/problemAtlas.ts`, regenerate `data/problem_atlas/source_pack.json`, correct SC-DEMO-01, and add a deterministic DOI→PMID pair assertion so this mismatch cannot pass the source-pack audit again. Keep source/claim status pending.
+
+No other product or scientific change is requested. After this metadata-only patch and green gates, M013 is eligible for ACCEPT.
+
 ## M013 final-gate re-review — 2026-08-25
 
 The M013-10R importer fixes, strict AI verdicts, unique error-localization ranks, baseline-first UI, pending-support labels, source-tier display and quarantine of all 166 external cards pass review. Independent rerun passed 44/44 tests, source-pack audit, Problem Atlas audit, the 63-check staging gate and handoff validation.

@@ -15,6 +15,7 @@
 | M013-10R | P0 | Reject oversized CSV fields and remove identical-import completeness bypass | OpenCode Pro | No truncation; structured oversize rejection; incomplete/unclassified identical pack remains import-ineligible and apply-rejected; focused regressions pass | No |
 | M013-11 | P0 | Final diff/demo-scientific/release gate; keep external corpus quarantined | Codex | M013-09/10R findings resolved; four pending demo cards reviewed; 166 external cards remain unclassified and unimported | Yes |
 | M013-11R | P0 | Close sequential node validation and temporal-validation wording/evidence | OpenCode Pro | Fake/reordered/mismatched nodes rejected; completion requires unique ordered path coverage; random split vs temporal validation wording consistent; temporal claim mapped; focused/full gates pass | Temporal text Yes |
+| M013-11R2 | P0 | Correct Altman validation PMID and pin DOI↔PMID pair | OpenCode Flash | PMID is 19477892 in source, generated pack and changeset; deterministic audit asserts DOI/PMID pairing; all gates pass | Metadata sign-off Yes |
 | M014-01 | P1 | Add a five-minute Chinese first-run tutorial | OpenCode Pro | Skippable/restartable guided flow for Today, Atlas, evidence status, lock-before-feedback and Review; existing demo only; keyboard/accessibility/test coverage | No (copy gate only) |
 | M014-02 | P0 | Release regression, versioning and packaging | OpenCode Pro | All gates pass; tutorial smoke passes; installers/hashes/release notes generated; stop for Codex sign-off | Release sign-off Yes |
 
