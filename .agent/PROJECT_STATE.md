@@ -13,7 +13,7 @@ Last updated: 2026-08-25
 - Candidate working state: M013-01…07 implemented; frontend tests 31/31 and declared source/atlas/content/localization/performance/startup/handoff gates pass; Rust unchanged and not rerun
 - External pack gate: 8/8 attached legacy packs blocked; archive integrity 41/41 PASS, current validator 0/8 and crashes, production mutation NO; see `M013_SOURCE_PACK_DRY_RUN.*` and `M013_SOURCE_METADATA_AUDIT.*`
 - M013-10 contract: ProblemCards use `diagnostic | judgment | audit`, with staging-only `unclassified`; structural validity and type-specific scientific completeness are separate gates, and there is no global three-candidate-cause requirement
-- Current gate: `PATCH REQUIRED` for M013-09 implementation defects plus M013-10 exception-safe validation, legacy staging conversion, collision cleanup and scientific completeness; see `.agent/REVIEW_RESULT.md`
-- Current milestone: OpenCode M013-09/M013-10 patch and regression, then Codex diff/source-pack/scientific re-review
+- Current gate: `PATCH REQUIRED`; M013-10 staging conversion is accepted in scope, but CSV truncation and identical-import completeness bypass remain, and M013-09 engine/UI/scientific corrections are still open; see `.agent/REVIEW_RESULT.md`
+- Current milestone: one bounded OpenCode final patch for M013-09 plus M013-10R, then Codex demo/scientific release gate; the 166 external cards remain quarantined for a later corpus milestone
 - Preserved dependencies: M011 localization remains unapproved; M012 Protocol Lab specification is preserved and implementation remains paused
 - Do not import the attached source packs or treat candidate files, reports, schema 3, metadata, claims or generated content as approved until `.agent/REVIEW_RESULT.md` says `ACCEPT`

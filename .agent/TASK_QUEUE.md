@@ -12,6 +12,9 @@
 | M013-08 | P1 | Diff-based architecture/scientific review | Codex | Completed: `PATCH REQUIRED`; findings recorded in `REVIEW_RESULT.md` | Yes |
 | M013-09 | P0 | Apply requested patches and regression | OpenCode Pro | Every review finding resolved; reproduced failures covered; all gates green; reports updated; stop for re-review | As marked |
 | M013-10 | P0 | Harden external-pack validation and produce auditable legacy→v3 staging conversion | OpenCode Pro | 8 original packs safely reject without crash; explicit problemType/unclassified staging; structural and scientific-completeness results separated; converted staging dry-run is conflict-free but import-ineligible while incomplete; no scientific content inferred, invented or promoted; no production import | Yes |
-| M013-11 | P0 | Re-review staged source/claim packs and quarantined ProblemCard disposition | Codex | Metadata corrections, per-claim scope/support and corpus fitness reviewed from reports/diff only | Yes |
+| M013-10R | P0 | Reject oversized CSV fields and remove identical-import completeness bypass | OpenCode Pro | No truncation; structured oversize rejection; incomplete/unclassified identical pack remains import-ineligible and apply-rejected; focused regressions pass | No |
+| M013-11 | P0 | Final diff/demo-scientific/release gate; keep external corpus quarantined | Codex | M013-09/10R findings resolved; four pending demo cards reviewed; 166 external cards remain unclassified and unimported | Yes |
+| M014-01 | P1 | Add a five-minute Chinese first-run tutorial | OpenCode Pro | Skippable/restartable guided flow for Today, Atlas, evidence status, lock-before-feedback and Review; existing demo only; keyboard/accessibility/test coverage | No (copy gate only) |
+| M014-02 | P0 | Release regression, versioning and packaging | OpenCode Pro | All gates pass; tutorial smoke passes; installers/hashes/release notes generated; stop for Codex sign-off | Release sign-off Yes |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.

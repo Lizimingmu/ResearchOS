@@ -2,6 +2,17 @@
 
 PATCH REQUIRED
 
+## M013-10 Codex re-review — 2026-08-25
+
+The legacy staging converter, type separation, metadata demotion, collision disclosure and 8/8 structured legacy-pack rejection are accepted in scope. Independent rerun passed 39/39 tests, the 63-check staging gate, source-pack audit and handoff validation. No staged pack is approved for production import.
+
+Two importer-gate defects remain:
+
+1. **Oversized CSV fields are still silently truncated.** `parseCsvLine` returns `cell.slice(0, MAX_FIELD_LENGTH)`. This changes untrusted input instead of rejecting it and directly contradicts the existing M013-02 gate. Return a deterministic field/row rejection and add a regression asserting the original 2,001-character value is never accepted or truncated.
+2. **The identical-import shortcut bypasses scientific completeness.** `dryRunSourcePack` returns `noop: true, importEligible: true` whenever a matching import record exists, even if the current document is `scientific_patch_required` or contains `unclassified` cards. A reproduced probe returned `{ completeness: "scientific_patch_required", importEligible: true, noop: true, applyReturned: true }`. A noop may remain idempotent, but it must not override the current structural/scientific gates; apply must reject an incomplete/unclassified document.
+
+M013 as a whole is not accepted because the M013-09 engine/UI/scientific corrections listed below are still explicitly open. For rapid release, the 166 external legacy cards may remain quarantined and unclassified; they do not need to be bulk-classified or imported in this release.
+
 M013 implementation is substantial and all declared automated suites pass, but the candidate fails engineering and scientific gates below.
 
 ## M013-02 — Source-pack transaction and validation
