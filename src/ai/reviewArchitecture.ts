@@ -13,6 +13,7 @@ const taskDirectives: Record<ReviewItem["conceptType"], string> = {
   judgment: "Audit the inference from study and analysis to claim. Identify the first invalid inference and the maximal defensible conclusion.",
   audit: "Review the learner's approval/rejection decisions for an AI analysis plan. Flag unsafe steps, missing provenance, and unbounded claims.",
   paper: "Evaluate reconstruction of question, evidence chain, figure jobs, and claim boundary. Do not invent content absent from the supplied paper evidence.",
+  problem: "Evaluate the learner's diagnostic reasoning: observation separated from explanation, causes retained until evidence changes rank, next check justified by discriminating value, and claim boundary within evidence. Never propose a final diagnosis beyond the supplied case evidence.",
 };
 
 export function buildAiReviewPrompt(input: AiReviewInput): string {

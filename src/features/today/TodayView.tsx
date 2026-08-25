@@ -12,12 +12,19 @@ export function TodayView() {
     snoozedTaskIds: store.snoozedTaskIds, assessmentHistory: store.assessmentHistory,
     notesByPaperId: store.notesByPaperId, draftResponses: store.draftResponses,
     misconceptions: store.misconceptions, onboarding: store.onboarding,
+    problemAtlasSources: store.problemAtlasSources, problemAtlasClaims: store.problemAtlasClaims,
+    problemCards: store.problemCards, diagnosticCauses: store.diagnosticCauses,
+    diagnosticChecks: store.diagnosticChecks, diagnosticPaths: store.diagnosticPaths,
+    diagnosticEvidence: store.diagnosticEvidence, problemTrainingCases: store.problemTrainingCases,
+    diagnosticSessions: store.diagnosticSessions, sourcePackImports: store.sourcePackImports,
+    problemSearchLog: store.problemSearchLog,
   })));
   const tasks = generateTodayTasks(state);
   const setView = useAppStore((store) => store.setView);
   const selectMethod = useAppStore((store) => store.selectMethod);
   const selectAudit = useAppStore((store) => store.selectAudit);
   const selectPaper = useAppStore((store) => store.selectPaper);
+  const selectProblem = useAppStore((store) => store.selectProblem);
   const snoozeTask = useAppStore((store) => store.snoozeTask);
   const notify = useAppStore((store) => store.notify);
   const total = tasks.reduce((sum, task) => sum + task.minutes, 0);
@@ -27,13 +34,14 @@ export function TodayView() {
     if (task.type === "method") selectMethod(task.targetId);
     else if (task.type === "audit") selectAudit(task.targetId);
     else if (task.type === "paper" && state.papers.some((paper) => paper.id === task.targetId)) selectPaper(task.targetId);
+    else if (task.type === "problem") selectProblem(task.targetId);
     else setView(task.destination);
   };
 
   return (
     <div className="page today-page">
       <header className="page-header today-header">
-        <div><span className="eyebrow">今日训练</span><h1>刻意练习队列</h1><p>按顺序完成任务。先独立作答，提交后再解锁反馈与证据。</p></div>
+        <div><span className="eyebrow">今日学习</span><h1>今日科研训练</h1><p>按顺序完成任务。先独立判断，提交后再查看反馈与证据。</p></div>
         <div className="today-date"><CalendarDays size={17} /><span>{date}</span><small>已安排 {total} 分钟</small></div>
       </header>
 

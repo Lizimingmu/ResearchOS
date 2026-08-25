@@ -41,7 +41,7 @@ export function PdfViewer({ path, currentPage, onPageChange }: PdfViewerProps) {
         <button className={fit ? "active" : ""} onClick={() => { setFit(true); setScale(1.05); }}><ScanLine size={14} /> 适合宽度</button>
       </div>
       <div className="pdf-canvas-scroll">
-        {error ? <div className="pdf-empty danger"><FileWarning size={28} /><h3>无法打开 PDF</h3><p>{error}</p><button onClick={() => setError(undefined)}>重试</button></div> : (
+        {error ? <div className="pdf-empty danger"><FileWarning size={28} /><h3>无法打开 PDF</h3><p>文件可能已移动、损坏或当前无法访问。</p><details><summary>查看技术详情</summary><pre>{error}</pre></details><button onClick={() => setError(undefined)}>重试</button></div> : (
           <Document file={url} onLoadSuccess={({ numPages }) => { setPages(numPages); if (currentPage > numPages) onPageChange(numPages); }} onLoadError={(cause) => setError(cause.message || "文件可能已移动或当前无法访问。")} loading={<div className="pdf-loading">正在加载 PDF…</div>}>
             <Page pageNumber={currentPage} scale={scale} renderTextLayer renderAnnotationLayer />
           </Document>

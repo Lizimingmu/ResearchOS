@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { examplePapers } from "../data/examplePapers";
+import { demoSourcePack } from "../data/problemAtlas";
 import type {
   AIProvider,
   AIReviewRecord,
@@ -17,9 +18,11 @@ import type {
   UserResponse,
   ViewId,
 } from "../domain/types";
+import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
 import { createReviewItem, scheduleReview } from "../learning/review";
 import { makeId } from "../lib/ids";
 import { loadPersistedState, savePersistedState } from "../services/desktop";
+import { applySourcePackImport, dryRunSourcePack, type SourcePackDryRun } from "../services/sourcePack";
 import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
 
 const providers: AIProvider[] = [
@@ -30,6 +33,7 @@ const providers: AIProvider[] = [
 ];
 
 const defaultSettings: AppSettings = {
+  language: "zh-CN",
   theme: "system",
   startPage: "today",
   dailyMinutes: 40,
@@ -40,24 +44,52 @@ const defaultSettings: AppSettings = {
   activeProviderId: "openai",
 };
 
-export const createInitialState = (): AppStateData => ({
-  schemaVersion: CURRENT_STATE_SCHEMA,
-  papers: examplePapers.map((paper) => ({ ...paper, tags: [...paper.tags] })),
-  projects: [],
-  responses: [],
-  reviewItems: [createReviewItem("review-starter-statistical-unit", "statistical-unit", "method", "Explain the independent statistical unit in a single-cell patient contrast.")],
-  reviewLogs: [],
-  skillEvidence: [],
-  providers: providers.map((provider) => ({ ...provider })),
-  settings: { ...defaultSettings, weights: { ...defaultSettings.weights } },
-  completedTaskIds: [],
-  snoozedTaskIds: [],
-  assessmentHistory: [],
-  notesByPaperId: {},
-  draftResponses: {},
-  misconceptions: [],
-  onboarding: { completed: false, interests: [], familiarity: {}, baselineCompleted: false },
+const emptyAtlasCollections = () => ({
+  problemAtlasSources: [],
+  problemAtlasClaims: [],
+  problemCards: [],
+  diagnosticCauses: [],
+  diagnosticChecks: [],
+  diagnosticPaths: [],
+  diagnosticEvidence: [],
+  problemTrainingCases: [],
+  diagnosticSessions: [],
+  sourcePackImports: [],
+  problemSearchLog: [],
 });
+
+const seededAtlasCollections = () => {
+  const result = applySourcePackImport(emptyAtlasCollections(), demoSourcePack, { allowUpdates: true });
+  return {
+    ...result.collections,
+    sourcePackImports: [result.importRecord],
+    diagnosticSessions: [],
+    problemSearchLog: [],
+  };
+};
+
+export const createInitialState = (): AppStateData => {
+  const atlas = seededAtlasCollections();
+  return {
+    schemaVersion: CURRENT_STATE_SCHEMA,
+    papers: examplePapers.map((paper) => ({ ...paper, tags: [...paper.tags] })),
+    projects: [],
+    responses: [],
+    reviewItems: [createReviewItem("review-starter-statistical-unit", "statistical-unit", "method", "请说明单细胞患者组间比较中的统计单位（Statistical Unit）。")],
+    reviewLogs: [],
+    skillEvidence: [],
+    providers: providers.map((provider) => ({ ...provider })),
+    settings: { ...defaultSettings, weights: { ...defaultSettings.weights } },
+    completedTaskIds: [],
+    snoozedTaskIds: [],
+    assessmentHistory: [],
+    notesByPaperId: {},
+    draftResponses: {},
+    misconceptions: [],
+    onboarding: { completed: false, interests: [], familiarity: {}, baselineCompleted: false },
+    ...atlas,
+  };
+};
 
 export interface ToastMessage {
   id: string;
@@ -74,6 +106,7 @@ interface AppStore extends AppStateData {
   selectedMethodId: string;
   selectedAuditId: string;
   selectedJudgmentId: string;
+  selectedProblemId: string;
   paletteOpen: boolean;
   globalSearch: string;
   toast?: ToastMessage;
@@ -84,6 +117,7 @@ interface AppStore extends AppStateData {
   selectMethod: (id: string) => void;
   selectAudit: (id: string) => void;
   selectJudgment: (id: string) => void;
+  selectProblem: (id: string) => void;
   setPaletteOpen: (open: boolean) => void;
   setGlobalSearch: (value: string) => void;
   notify: (text: string, tone?: ToastMessage["tone"]) => void;
@@ -112,6 +146,10 @@ interface AppStore extends AppStateData {
   completeOnboarding: (interests: string[], familiarity: AppStateData["onboarding"]["familiarity"]) => void;
   replaceData: (data: unknown) => void;
   resetDemo: () => void;
+  updateDiagnosticSession: (session: DiagnosticSession) => void;
+  recordProblemSearch: (query: string, matched: boolean, matchedCount: number) => void;
+  dryRunSourcePack: (doc: SourcePackDocument) => SourcePackDryRun;
+  confirmSourcePackImport: (doc: SourcePackDocument) => { applied: boolean; dryRun: SourcePackDryRun };
 }
 
 function stateData(state: AppStore): AppStateData {
@@ -132,6 +170,17 @@ function stateData(state: AppStore): AppStateData {
     draftResponses: state.draftResponses,
     misconceptions: state.misconceptions,
     onboarding: state.onboarding,
+    problemAtlasSources: state.problemAtlasSources,
+    problemAtlasClaims: state.problemAtlasClaims,
+    problemCards: state.problemCards,
+    diagnosticCauses: state.diagnosticCauses,
+    diagnosticChecks: state.diagnosticChecks,
+    diagnosticPaths: state.diagnosticPaths,
+    diagnosticEvidence: state.diagnosticEvidence,
+    problemTrainingCases: state.problemTrainingCases,
+    diagnosticSessions: state.diagnosticSessions,
+    sourcePackImports: state.sourcePackImports,
+    problemSearchLog: state.problemSearchLog,
   };
 }
 
@@ -169,6 +218,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectedMethodId: "statistical-unit",
     selectedAuditId: "audit-01",
     selectedJudgmentId: "jc-01",
+    selectedProblemId: initial.problemCards[0]?.id ?? "",
     paletteOpen: false,
     globalSearch: "",
 
@@ -198,6 +248,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectMethod: (selectedMethodId) => set({ selectedMethodId, view: "methods" }),
     selectAudit: (selectedAuditId) => set({ selectedAuditId, view: "ai-audit" }),
     selectJudgment: (selectedJudgmentId) => set({ selectedJudgmentId }),
+    selectProblem: (selectedProblemId) => set({ selectedProblemId, view: "problem-atlas" }),
     setPaletteOpen: (paletteOpen) => set({ paletteOpen }),
     setGlobalSearch: (globalSearch) => set({ globalSearch }),
     notify: (text, tone = "info") => set({ toast: { id: makeId("toast"), tone, text } }),
@@ -386,8 +437,72 @@ export const useAppStore = create<AppStore>((set, get) => {
     },
     resetDemo: () => {
       const reset = createInitialState();
-      set({ ...reset, view: "today", selectedPaperId: reset.papers[0]?.id, toast: { id: makeId("toast"), tone: "info", text: "演示数据已重置，AI 凭据未更改。" } });
+      set({ ...reset, view: "today", selectedPaperId: reset.papers[0]?.id, selectedProblemId: reset.problemCards[0]?.id ?? "", toast: { id: makeId("toast"), tone: "info", text: "演示数据已重置，AI 凭据未更改。" } });
       queuePersist();
+    },
+    updateDiagnosticSession: (session) => {
+      set((state) => ({
+        diagnosticSessions: [
+          session,
+          ...state.diagnosticSessions.filter((entry) => entry.id !== session.id),
+        ],
+      }));
+      queuePersist();
+    },
+    recordProblemSearch: (query, matched, matchedCount) => {
+      const trimmed = query.trim();
+      if (trimmed.length < 3) return;
+      set((state) => {
+        const previous = state.problemSearchLog[0];
+        if (previous && previous.query === trimmed) return state;
+        return {
+          problemSearchLog: [
+            { id: makeId("problem-search"), query: trimmed, matched, matchedCount, createdAt: new Date().toISOString() },
+            ...state.problemSearchLog,
+          ].slice(0, 200),
+        };
+      });
+      queuePersist();
+    },
+    dryRunSourcePack: (doc) => {
+      const state = get();
+      const atlas: Parameters<typeof dryRunSourcePack>[1] = {
+        problemAtlasSources: state.problemAtlasSources,
+        problemAtlasClaims: state.problemAtlasClaims,
+        problemCards: state.problemCards,
+        diagnosticCauses: state.diagnosticCauses,
+        diagnosticChecks: state.diagnosticChecks,
+        diagnosticPaths: state.diagnosticPaths,
+        diagnosticEvidence: state.diagnosticEvidence,
+        problemTrainingCases: state.problemTrainingCases,
+        diagnosticSessions: state.diagnosticSessions,
+        sourcePackImports: state.sourcePackImports,
+        problemSearchLog: state.problemSearchLog,
+      };
+      return dryRunSourcePack(doc, atlas);
+    },
+    confirmSourcePackImport: (doc) => {
+      const state = get();
+      const atlas: Parameters<typeof applySourcePackImport>[0] = {
+        problemAtlasSources: state.problemAtlasSources,
+        problemAtlasClaims: state.problemAtlasClaims,
+        problemCards: state.problemCards,
+        diagnosticCauses: state.diagnosticCauses,
+        diagnosticChecks: state.diagnosticChecks,
+        diagnosticPaths: state.diagnosticPaths,
+        diagnosticEvidence: state.diagnosticEvidence,
+        problemTrainingCases: state.problemTrainingCases,
+        diagnosticSessions: state.diagnosticSessions,
+        sourcePackImports: state.sourcePackImports,
+        problemSearchLog: state.problemSearchLog,
+      };
+      const result = applySourcePackImport(atlas, doc, { allowUpdates: false });
+      set((current) => ({
+        ...result.collections,
+        sourcePackImports: [result.importRecord, ...current.sourcePackImports.filter((record) => record.packId !== doc.packId || record.result === "applied")],
+      }));
+      queuePersist();
+      return { applied: result.importRecord.result === "applied", dryRun: result.dryRun };
     },
   };
 });

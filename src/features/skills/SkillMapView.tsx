@@ -5,6 +5,8 @@ import { useAppStore } from "../../state/store";
 export function SkillMapView() {
   const evidence = useAppStore((state) => state.skillEvidence);
   const summaries = summarizeSkills(evidence);
+  const bandLabel = { "insufficient evidence": "证据不足", developing: "发展中", functional: "可应用", strong: "稳固" } as const;
+  const reliabilityLabel = { low: "低", moderate: "中等", substantial: "较充分" } as const;
   return (
     <div className="page skills-page">
       <header className="page-header">
@@ -18,8 +20,8 @@ export function SkillMapView() {
           return (
             <article key={skill.id}>
               <div><strong>{skill.name}</strong>{skill.score === null ? <small>证据不足，暂不评分</small> : <div className="skill-meter"><i style={{ width: `${Math.round(skill.score * 100)}%` }} /><small>≈{Math.round(skill.score * 10) * 10}/100</small></div>}</div>
-              <span className={`skill-band ${skill.band.replace(" ", "-")}`}>{skill.band}</span>
-              <span>{skill.reliability}<small>{skill.evidenceCount} 条观察 · {skill.conceptCount} 个概念</small></span>
+              <span className={`skill-band ${skill.band.replace(" ", "-")}`}>{bandLabel[skill.band]}</span>
+              <span>{reliabilityLabel[skill.reliability]}<small>{skill.evidenceCount} 条观察 · {skill.conceptCount} 个概念</small></span>
               <span><Trend size={15} /> {{ up: "上升", down: "下降", flat: "稳定", unknown: "未知" }[skill.trend]}<small>{skill.lastTestedAt ? `测试于 ${new Date(skill.lastTestedAt).toLocaleDateString("zh-CN")}` : "尚未测试"}</small></span>
               <span>{skill.recentWeakConcepts.length ? skill.recentWeakConcepts.join(", ") : "暂无证据支持的薄弱点"}</span>
             </article>

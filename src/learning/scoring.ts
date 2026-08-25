@@ -1,13 +1,18 @@
 import type { SkillEvidence } from "../domain/types";
 
 export const topSkills = [
-  { id: "literature", name: "Literature Landscape" },
-  { id: "patterns", name: "Paper Pattern Recognition" },
-  { id: "reasoning", name: "Scientific Reasoning" },
-  { id: "methods", name: "Methods & Statistics" },
-  { id: "omics", name: "Omics Literacy" },
-  { id: "storytelling", name: "Scientific Storytelling" },
-  { id: "ai-oversight", name: "AI Oversight" },
+  { id: "literature", name: "文献版图认知（Literature Landscape）" },
+  { id: "patterns", name: "论文范式识别（Paper Pattern Recognition）" },
+  { id: "reasoning", name: "科学推理（Scientific Reasoning）" },
+  { id: "methods", name: "方法学与统计（Methods & Statistics）" },
+  { id: "omics", name: "组学分析能力（Omics Literacy）" },
+  { id: "storytelling", name: "科研叙事（Scientific Storytelling）" },
+  { id: "ai-oversight", name: "AI 科研监督（AI Oversight）" },
+  { id: "troubleshooting", name: "问题排查（Troubleshooting）" },
+  { id: "failure-recognition", name: "失败模式识别（Failure-mode Recognition）" },
+  { id: "scientific-diagnosis", name: "科学诊断（Scientific Diagnosis）" },
+  { id: "evidence-discrimination", name: "证据鉴别（Evidence Discrimination）" },
+  { id: "claim-calibration", name: "结论校准（Claim Calibration）" },
 ] as const;
 
 export interface SkillSummary {

@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-08-25T07:42:46.861Z",
+  "locale": "zh-CN",
+  "uiCoverageTarget": ">=95%",
+  "checks": [
+    {
+      "name": "default locale",
+      "passed": true,
+      "detail": "今日学习"
+    },
+    {
+      "name": "supported locales",
+      "passed": true,
+      "detail": "zh-CN, en-US"
+    },
+    {
+      "name": "Chinese navigation",
+      "passed": true,
+      "detail": "今日学习 / 文献库 / 论文训练 / 方法学训练 / 科研常见问题库 / 复习 / AI 审核 / 前沿地图 / 科研项目 / 能力图谱 / 能力评估 / 设置"
+    },
+    {
+      "name": "English fallback",
+      "passed": true,
+      "detail": "Today / Library / Paper Lab / Method Lab / Problem Atlas / Review / AI Audit / Frontier / Projects / Skill Map / Assessment / Settings"
+    },
+    {
+      "name": "Method Lab bilingual titles",
+      "passed": true,
+      "detail": "88/88 localized"
+    },
+    {
+      "name": "terminology fields complete",
+      "passed": true,
+      "detail": "35 complete terms"
+    },
+    {
+      "name": "terminology Chinese names unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "English-only UI denylist",
+      "passed": true,
+      "detail": "12 forbidden phrases scanned across 17 core pages"
+    },
+    {
+      "name": "Chinese system font stack",
+      "passed": true,
+      "detail": "Microsoft YaHei UI / Microsoft YaHei"
+    },
+    {
+      "name": "150% and 200% DPI rules",
+      "passed": true,
+      "detail": "DPI media queries present"
+    },
+    {
+      "name": "Chinese uppercase override",
+      "passed": true,
+      "detail": "zh-CN text-transform override present"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

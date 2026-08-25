@@ -6,20 +6,20 @@ import { makeId } from "../../lib/ids";
 import { useAppStore } from "../../state/store";
 
 const cases = [
-  { id: "unfamiliar-oncology-omics-v1", text: "A retrospective multi-center oncology cohort derives a 42-gene recurrence model from bulk RNA-seq. Feature selection, normalization, model tuning, and a random patient split are described. The authors add cell-level scRNA associations in four validation tumors and an AI plan proposes pooled-cell DEG, raw P<.05, KEGG, and a causal mechanism claim." },
-  { id: "unfamiliar-diagnostic-ai-v1", text: "A diagnostic imaging model is trained on surgically verified cases and healthy controls from one hospital. Images from the same patient can enter multiple splits. The proposed report gives AUC, chooses a threshold on the test set, and claims clinical utility for community screening." },
-  { id: "unfamiliar-spatial-causal-v1", text: "Six tumors from responders and six from nonresponders undergo spot-based spatial transcriptomics. One section per patient is analyzed. An AI plan treats spots as replicates, infers ligand–receptor communication from co-location, and claims the pathway causes treatment response." },
+  { id: "unfamiliar-oncology-omics-v1", text: "一项回顾性多中心肿瘤队列研究利用批量 RNA 测序（bulk RNA-seq）开发 42 基因复发模型。研究进行了特征选择、标准化和模型调参，并随机拆分患者。作者又在 4 个验证肿瘤中加入细胞层面的单细胞 RNA 测序（scRNA-seq）关联；AI 方案建议合并全部细胞进行差异表达（DEG），采用未经校正的 P<0.05 做 KEGG 富集，并据此提出因果机制。" },
+  { id: "unfamiliar-diagnostic-ai-v1", text: "一个诊断影像模型使用某医院经手术证实的病例和健康对照进行训练。同一患者的多张图像可能进入不同数据拆分。报告仅给出曲线下面积（AUC），在测试集上选择阈值，并宣称模型可用于社区筛查。" },
+  { id: "unfamiliar-spatial-causal-v1", text: "研究对 6 例治疗响应者和 6 例无响应者的肿瘤开展基于点位的空间转录组学，每位患者分析一个切片。AI 方案把点位当作独立重复，根据空间共定位推断配体—受体通讯，并声称该通路导致治疗响应。" },
 ];
 
 const rubric = [
-  ["question", "States population, target question/estimand, time origin, and conclusion scale."],
-  ["design", "Identifies design mismatch, selection, leakage, or timing threats before choosing a model."],
-  ["unit", "Names the independent biological unit and respects nesting or clustering."],
-  ["bias", "Prioritizes the biases most capable of reversing the claim and names missing assumptions."],
-  ["analysis", "Proposes an analysis aligned with design, multiplicity, missingness, and uncertainty."],
-  ["oversight", "Rejects unsafe AI steps and requires evidence/provenance for generated content."],
-  ["boundary", "States a maximal conclusion no stronger than the measurements and design support."],
-  ["transfer", "Names a concrete verification or workflow change that transfers beyond this case."],
+  ["研究问题", "明确目标人群、目标问题或估计目标（Estimand）、时间起点与结论尺度。"],
+  ["研究设计", "在选择模型前识别设计错配、选择偏倚、数据泄漏和时间对齐风险。"],
+  ["统计单位", "指出独立生物学单位（Biological Replicate），并正确处理嵌套或聚类结构。"],
+  ["偏倚", "优先识别最可能逆转结论的偏倚，并指出缺失的关键假设。"],
+  ["分析方法", "提出与设计、多重检验、缺失数据和不确定性相匹配的分析。"],
+  ["AI 监督", "拒绝不安全的 AI 步骤，并要求生成内容保留证据与来源。"],
+  ["结论边界", "给出不强于测量和研究设计实际支持的最大结论。"],
+  ["科研迁移", "提出一个可迁移到其他项目的具体核查或流程修改动作。"],
 ] as const;
 
 export function AssessmentView() {

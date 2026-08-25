@@ -1,4 +1,18 @@
-export type ContentOrigin = "verified_seed" | "verified_external" | "user" | "ai_generated";
+import type {
+  DiagnosticCause,
+  DiagnosticCheck,
+  DiagnosticEvidence,
+  DiagnosticPath,
+  DiagnosticSession,
+  EvidenceClaim,
+  EvidenceSourceReg,
+  ProblemCard,
+  ProblemSearchLogEntry,
+  ProblemTrainingCase,
+  SourcePackImportRecord,
+} from "./problemAtlas";
+
+export type ContentOrigin = "verified_seed" | "verified_external" | "user" | "ai_generated" | "external_source_pack";
 export type VerificationStatus = "verified" | "pending" | "rejected" | "not_required";
 export type EvidenceTier = "A" | "B" | "C" | "D";
 export type Confidence = 1 | 2 | 3 | 4;
@@ -184,7 +198,7 @@ export interface AIReviewRecord {
 export interface ReviewItem {
   id: string;
   conceptId: string;
-  conceptType: "method" | "judgment" | "audit" | "paper";
+  conceptType: "method" | "judgment" | "audit" | "paper" | "problem";
   prompt: string;
   difficulty: number;
   stability: number;
@@ -268,6 +282,7 @@ export interface AIProvider {
 }
 
 export interface AppSettings {
+  language: "zh-CN" | "en-US";
   theme: "light" | "dark" | "system";
   startPage: string;
   dailyMinutes: number;
@@ -301,6 +316,17 @@ export interface AppStateData {
   draftResponses: Record<string, DraftResponse>;
   misconceptions: Misconception[];
   onboarding: OnboardingState;
+  problemAtlasSources: EvidenceSourceReg[];
+  problemAtlasClaims: EvidenceClaim[];
+  problemCards: ProblemCard[];
+  diagnosticCauses: DiagnosticCause[];
+  diagnosticChecks: DiagnosticCheck[];
+  diagnosticPaths: DiagnosticPath[];
+  diagnosticEvidence: DiagnosticEvidence[];
+  problemTrainingCases: ProblemTrainingCase[];
+  diagnosticSessions: DiagnosticSession[];
+  sourcePackImports: SourcePackImportRecord[];
+  problemSearchLog: ProblemSearchLogEntry[];
 }
 
 export interface AssessmentResult {
@@ -315,11 +341,11 @@ export interface AssessmentResult {
   domainScores?: Record<string, number>;
 }
 
-export type ViewId = "today" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "assessment" | "settings";
+export type ViewId = "today" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "assessment" | "settings";
 
 export interface DailyTask {
   id: string;
-  type: "retrieval" | "paper" | "method" | "audit" | "transfer";
+  type: "retrieval" | "paper" | "method" | "audit" | "problem" | "transfer";
   title: string;
   subtitle: string;
   minutes: number;

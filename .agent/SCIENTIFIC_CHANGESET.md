@@ -2,6 +2,58 @@
 
 Status: READY FOR REVIEW
 
+## M013-09 demo scientific corrections (this cycle)
+
+All four demo cards/claims/paths/rubrics remain `pending` and `ai_generated`. No new sources were added; only exact REVIEW_RESULT M013-05 corrections were applied.
+
+### SC-DEMO-01 — Temporal validation (internal vs external-in-time)
+
+- Concept: `pa-internal-external` validation card. Random 80/20 splitting is internal validation. A locked model evaluated on genuinely later, non-overlapping, independent patients from the same centre may be reported separately as temporal validation/external-in-time; it does not establish geographic transportability or clinical readiness.
+- Claim: Removed every absolute statement that same-centre later-period data "are not external validation" and every remaining "internal-only" contradiction: "same centre" alone is no longer a red flag (red flags are temporal overlap/model not locked, and overclaiming geographic/clinical transportability); "external = new source only," "downgrade all external results to internal," "最多构成" and "仅能声明内部性能" wording replaced across card context/boundary/implications, `pa-val-check-origin`, `pa-val-path` nodes, `pa-val-ev-origin` and `pa-val-case-boundary`. Added pending claim `pa-claim-temporal-validation` (qualifiedly supported by new pending A-level source `pa-src-altman-validation`, BMJ Altman 2009) and linked it from the card, `pa-val-check-origin` and `pa-val-ev-origin`; source and claim remain unverified.
+- Answer/rubric: `pa-val-case-boundary` reference answer now reads: report random-split performance as internal; separately report the locked-model later-cohort result as temporal validation; new-centre evaluation and calibration/clinical-utility evidence are needed for geographic transportability or clinical-use claims.
+- Evidence source IDs: `pa-src-internal-validation` (A), `pa-src-calibration` (C), `pa-src-probast` (S), `pa-src-tripod-ai` (S), `pa-src-altman-validation` (A, pending, Codex-reviewed M013 addition).
+- PMID/DOI: `10.1016/S0895-4356(01)00341-9`; `10.1186/s12916-019-1466-7`; `10.7326/M18-1376`; `10.1136/bmj-2023-078378`; `10.1136/bmj.b605` (PMID 19477892).
+- Risk level: HIGH
+- Verification status: pending
+- Changed files: `src/data/problemAtlas.ts`; `scripts/source-pack-audit.mjs` (allowlist for the Codex-added pending source); regenerated `data/problem_atlas/source_pack.json`.
+
+### SC-DEMO-02 — Leakage parameter-learning qualification
+
+- Concept: `pa-data-leakage` prediction card. Evaluation/external data must not determine preprocessing, imputation, feature-selection or standardization parameters; learn them in development data and apply them locked; prespecified adaptation changes the validation question.
+- Claim: Removed "external untouched data can safely use overall statistics" from `pa-claim-leakage-ops` qualification and `pa-leakage-cause-imp` uncertaintyNote; claim text and `pa-data-leakage` bioinformaticsImplication now state the learn-and-lock rule; `pa-leakage-case-ai` statement/rubric updated consistently.
+- Answer/rubric: `pa-leakage-case-ai` st2 text and rubric updated; other leakage rubrics unchanged.
+- Evidence source IDs: `pa-src-leakage` (C).
+- PMID/DOI: `10.1145/2382577.2382579`.
+- Risk level: HIGH
+- Verification status: pending
+- Changed files: `src/data/problemAtlas.ts`; regenerated `data/problem_atlas/source_pack.json`.
+
+### SC-DEMO-03 — Single-cell unit and pseudobulk qualification
+
+- Concept: `pa-pseudorep` single-cell card. Cells may be the observation/analysis level but are not thereby independent experimental units for patient-group inference; donor dependence must be modeled. Pseudobulk is one defensible aggregation option, not the only valid method.
+- Claim: `pa-claim-patient-unit` qualification no longer suggests cell-proportion questions make cells the independent statistical unit; `pa-pseudorep-cause-cells` uncertaintyNote distinguishes observation level from experimental unit; `pa-claim-pseudobulk` qualification names pseudobulk as one of several donor-dependence-modeling options.
+- Answer/rubric: unchanged (already consistent).
+- Evidence source IDs: `pa-src-pseudobulk` (A), `pa-src-pseudorep` (C).
+- PMID/DOI: `10.1038/s41467-021-25960-2`; `10.1085/jgp.202012826`.
+- Risk level: HIGH
+- Verification status: pending
+- Changed files: `src/data/problemAtlas.ts`; regenerated `data/problem_atlas/source_pack.json`.
+
+### SC-DEMO-04 — Codex-reviewed authority-tier mapping and sequential rubric fix
+
+- Concept: Registry authority tiers are Codex-reviewed M013 mappings, not inherited seed tiers: TRIPOD 2015 / TRIPOD+AI / PROBAST → S; peer-reviewed method/benchmark sources (`pa-src-internal-validation`, `pa-src-pseudobulk`) → A; explanatory review/education (`pa-src-pseudorep`, `pa-src-leakage`, `pa-src-calibration`) → C. Tier B is not used by the demo registry and its UI label no longer reads 技术参考; guidelines are never labeled as technical references.
+- Claim: `pa-pseudorep-case-seq` rubric "患者应排在首位" replaced by the actual candidate explanation ("把细胞当作独立重复" ranks first); ranked entities remain candidate causes, not patients.
+- Answer/rubric: sequential rubric corrected; temporal/leakage/single-cell rubrics updated under SC-DEMO-01…03.
+- Evidence source IDs: `pa-src-tripod`, `pa-src-tripod-ai`, `pa-src-probast`, `pa-src-internal-validation`, `pa-src-pseudobulk`, `pa-src-pseudorep`, `pa-src-leakage`, `pa-src-calibration`.
+- PMID/DOI: `10.7326/M14-0697`; `10.1136/bmj-2023-078378`; `10.7326/M18-1376`; `10.1016/S0895-4356(01)00341-9`; `10.1038/s41467-021-25960-2`; `10.1085/jgp.202012826`; `10.1145/2382577.2382579`; `10.1186/s12916-019-1466-7`.
+- Risk level: HIGH
+- Verification status: pending
+- Changed files: `src/data/problemAtlas.ts`; `src/problem-atlas/labels.ts`; `src/features/problem-atlas/ProblemAtlasView.tsx`; `scripts/source-pack-audit.mjs`; regenerated `data/problem_atlas/source_pack.json`.
+
+## M013-10 engineering status note
+
+M013-10 added **no new scientific claim or content** and **rewrote no scientific text**. The legacy→v3 staging converter retained every candidate content as `pending` (legacy `metadata_verified`/`claim_verified` were demoted to `pending`; nothing was promoted). All 166 ProblemCards remain `unclassified` and import-ineligible pending M013-11 classification. The only text changes applied are the exact metadata corrections already listed below/audited in `M013_SOURCE_METADATA_AUDIT.md`: the DESpace URL correction and the six formal-title corrections (PMID 25482647, 26949479, 26388771; DOI 10.1101/pdb.prot087288, 10.1007/978-1-0716-2903-1_7, 10.1038/s41592-025-02890-1). Claim-level patches above (CLM-QPCR-006, CLM-SP-008, CLM-AI-004, CLM-REV-003 and scope/qualification fills) remain open for M013-11 and were not applied, because no exact patch text is recorded here. See `.agent/M013_V3_STAGING_REPORT.md` for full counts and disclosures.
+
 Input: `ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip` (8 packs, 120 source rows, 138 claims, 166 ProblemCards). Gate result is PATCH REQUIRED. No production import occurred and no item was promoted from `pending`.
 
 ## Corpus findings

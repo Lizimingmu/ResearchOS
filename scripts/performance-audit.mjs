@@ -25,9 +25,10 @@ const generated = await perfBundle.generate({ format: "es" });
 await perfBundle.close();
 const schedulerModule = await import(`data:text/javascript;base64,${Buffer.from(generated.output[0].code).toString("base64")}`);
 const state = {
-  schemaVersion: 2, papers: [{ id: "p1", title: "Paper", tags: [], researchType: "", topic: "", readStatus: "unread", trainingStatus: "active", favorite: false, notes: "", currentPage: 1, createdAt: "2026-01-01", contentOrigin: "user", verificationStatus: "pending" }], projects: [], responses: [], reviewItems: [], reviewLogs: [], skillEvidence: [], providers: [],
+  schemaVersion: 3, papers: [{ id: "p1", title: "Paper", tags: [], researchType: "", topic: "", readStatus: "unread", trainingStatus: "active", favorite: false, notes: "", currentPage: 1, createdAt: "2026-01-01", contentOrigin: "user", verificationStatus: "pending" }], projects: [], responses: [], reviewItems: [], reviewLogs: [], skillEvidence: [], providers: [],
   settings: { theme: "system", startPage: "today", dailyMinutes: 40, weights: { weakness: .3, projectRelevance: .25, frontierValue: .15, reviewDue: .15, misconception: .15 }, pubmedVerification: true, doiVerification: true, offlineMode: true, activeProviderId: "" },
   completedTaskIds: [], snoozedTaskIds: [], assessmentHistory: [], notesByPaperId: {}, draftResponses: {}, misconceptions: [], onboarding: { completed: true, interests: ["Statistics"], familiarity: { methods: "new" }, baselineCompleted: true },
+  problemAtlasSources: [], problemAtlasClaims: [], problemCards: [], diagnosticCauses: [], diagnosticChecks: [], diagnosticPaths: [], diagnosticEvidence: [], problemTrainingCases: [], diagnosticSessions: [], sourcePackImports: [], problemSearchLog: [],
 };
 const started = performance.now();
 for (let index = 0; index < iterations; index += 1) schedulerModule.generateTodayTasks(state, new Date(2026, 7, (index % 27) + 1));

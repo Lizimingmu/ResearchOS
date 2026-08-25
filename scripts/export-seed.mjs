@@ -13,9 +13,10 @@ const modules = await Promise.all([
   import(pathToFileURL(path.join(buildData, "auditCases.js"))),
   import(pathToFileURL(path.join(buildData, "starterTrack.js"))),
   import(pathToFileURL(path.join(buildData, "examplePapers.js"))),
+  import(pathToFileURL(path.join(buildData, "problemAtlas.js"))),
 ]);
 
-const [evidence, methods, patterns, cards, audits, starter, papers] = modules;
+const [evidence, methods, patterns, cards, audits, starter, papers, atlas] = modules;
 const exports = [
   ["data/seed/evidence_sources.json", evidence.evidenceSources],
   ["data/seed/example_papers.json", papers.examplePapers],
@@ -25,6 +26,7 @@ const exports = [
   ["data/patterns/patterns.json", patterns.researchPatterns],
   ["data/judgment_cards/judgment_cards.json", cards.judgmentCards],
   ["data/audit_cases/audit_cases.json", audits.auditCases],
+  ["data/problem_atlas/source_pack.json", atlas.demoSourcePack],
 ];
 
 for (const [relative, value] of exports) {

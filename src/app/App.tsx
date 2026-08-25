@@ -16,6 +16,7 @@ const views = {
   frontier: lazy(() => import("../features/frontier/FrontierView").then((module) => ({ default: module.FrontierView }))),
   projects: lazy(() => import("../features/projects/ProjectsView").then((module) => ({ default: module.ProjectsView }))),
   skills: lazy(() => import("../features/skills/SkillMapView").then((module) => ({ default: module.SkillMapView }))),
+  "problem-atlas": lazy(() => import("../features/problem-atlas/ProblemAtlasView").then((module) => ({ default: module.ProblemAtlasView }))),
   assessment: lazy(() => import("../features/assessment/AssessmentView").then((module) => ({ default: module.AssessmentView }))),
   settings: lazy(() => import("../features/settings/SettingsView").then((module) => ({ default: module.SettingsView }))),
 };
@@ -53,6 +54,10 @@ export function App() {
     const root = document.documentElement;
     root.dataset.theme = resolveTheme(settings.theme);
   }, [settings.theme]);
+
+  useEffect(() => {
+    document.documentElement.lang = settings.language;
+  }, [settings.language]);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {

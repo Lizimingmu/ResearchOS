@@ -1,6 +1,6 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
 
-export const CURRENT_STATE_SCHEMA = 2;
+export const CURRENT_STATE_SCHEMA = 3;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -36,6 +36,10 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     ...item,
     conceptId: item.conceptId ?? item.taskId,
   }));
+  const migratedSessions = arrayOr(raw.diagnosticSessions, defaults.diagnosticSessions).map((session) => ({
+    ...session,
+    steps: Array.isArray(session.steps) ? session.steps : [],
+  }));
 
   return {
     ...defaults,
@@ -64,5 +68,16 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     onboarding: isRecord(raw.onboarding)
       ? { ...defaults.onboarding, ...raw.onboarding } as AppStateData["onboarding"]
       : defaults.onboarding,
+    problemAtlasSources: arrayOr(raw.problemAtlasSources, defaults.problemAtlasSources),
+    problemAtlasClaims: arrayOr(raw.problemAtlasClaims, defaults.problemAtlasClaims),
+    problemCards: arrayOr(raw.problemCards, defaults.problemCards),
+    diagnosticCauses: arrayOr(raw.diagnosticCauses, defaults.diagnosticCauses),
+    diagnosticChecks: arrayOr(raw.diagnosticChecks, defaults.diagnosticChecks),
+    diagnosticPaths: arrayOr(raw.diagnosticPaths, defaults.diagnosticPaths),
+    diagnosticEvidence: arrayOr(raw.diagnosticEvidence, defaults.diagnosticEvidence),
+    problemTrainingCases: arrayOr(raw.problemTrainingCases, defaults.problemTrainingCases),
+    diagnosticSessions: migratedSessions,
+    sourcePackImports: arrayOr(raw.sourcePackImports, defaults.sourcePackImports),
+    problemSearchLog: arrayOr(raw.problemSearchLog, defaults.problemSearchLog),
   };
 }

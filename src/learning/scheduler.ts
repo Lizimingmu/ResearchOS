@@ -1,4 +1,6 @@
 import type { AppStateData, DailyTask } from "../domain/types";
+import { bilingualMethodTitle } from "../i18n/researchTerms";
+import { bilingualAuditTitle } from "../i18n/scientificContent";
 import { auditCases } from "../data/auditCases";
 import { judgmentCards } from "../data/judgmentCards";
 import { usableMethodConcepts } from "../data/methods";
@@ -58,6 +60,15 @@ export function generateTodayTasks(state: AppStateData, now = new Date()): Daily
   const cardSeed = judgmentCards[(now.getDate() - 1) % judgmentCards.length];
   const auditSeed = auditCases[(now.getDate() - 1) % auditCases.length];
   const reviewTarget = dangerous?.conceptId ?? cardSeed.id;
+  const problemPool = state.problemCards;
+  const problemSeed = problemPool
+    .map((problem) => {
+      const score = responseScores.get(problem.id) ?? 0.45;
+      const misconception = unresolved.some((item) => item.conceptId === problem.id) ? 1 : 0;
+      const priority = (1 - score) * 0.55 + relevance(`${problem.titleCn} ${problem.keywords.join(" ")}`, state) * 0.25 + misconception * 0.2;
+      return { problem, priority };
+    })
+    .sort((a, b) => b.priority - a.priority)[0]?.problem;
 
   const tasks: DailyTask[] = [
     {
@@ -77,15 +88,20 @@ export function generateTodayTasks(state: AppStateData, now = new Date()): Daily
       priority: calculatePriority({ weakness: 0.65, projectRelevance: relevance("paper evidence figure", state), frontierValue: 0.7, reviewDue: 0.3, misconception: unresolved.some((item) => item.conceptType === "paper") ? 0.8 : 0 }, weights),
     },
     {
-      id: `${dateKey}-method-${methodSeed.id}`, type: "method", title: methodSeed.title, subtitle: `${methodSeed.domain} method bite — attempt before explanation`, minutes: methodSeed.minutes,
+      id: `${dateKey}-method-${methodSeed.id}`, type: "method", title: bilingualMethodTitle(methodSeed.id, methodSeed.title), subtitle: `${methodSeed.domain === "statistics" ? "统计学" : methodSeed.domain === "clinical" ? "临床研究" : methodSeed.domain === "prediction" ? "预测模型" : methodSeed.domain === "single-cell" ? "单细胞" : "组学"}方法训练——先判断，再查看解释`, minutes: methodSeed.minutes,
       targetId: methodSeed.id, destination: "methods", rationale: "近期证据最弱项或高价值基础方法",
       priority: calculatePriority({ weakness: 1 - (responseScores.get(methodSeed.id) ?? 0.45), projectRelevance: relevance(`${methodSeed.title} ${methodSeed.tags.join(" ")}`, state), frontierValue: methodSeed.difficulty === "frontier" ? 0.9 : 0.55, reviewDue: 0.35, misconception: unresolved.some((item) => item.conceptId === methodSeed.id) ? 1 : 0 }, weights),
     },
     {
-      id: `${dateKey}-audit-${auditSeed.id}`, type: "audit", title: auditSeed.title, subtitle: "逐步批准、质疑或拒绝 AI 方案", minutes: 10,
+      id: `${dateKey}-audit-${auditSeed.id}`, type: "audit", title: bilingualAuditTitle(auditSeed), subtitle: "逐步判断 AI 方案是否合理、需要核查或存在问题", minutes: 10,
       targetId: auditSeed.id, destination: "ai-audit", rationale: "主动 AI 监督训练",
       priority: calculatePriority({ weakness: 0.7, projectRelevance: relevance(`${auditSeed.domain} ${auditSeed.task}`, state), frontierValue: 0.75, reviewDue: 0.25, misconception: unresolved.some((item) => item.conceptType === "audit") ? 0.8 : 0 }, weights),
     },
+    ...(problemSeed ? [{
+      id: `${dateKey}-problem-${problemSeed.id}`, type: "problem" as const, title: `${problemSeed.titleCn}（${problemSeed.titleEn}）`, subtitle: "科研问题库——先给出诊断，再揭示证据", minutes: 5,
+      targetId: problemSeed.id, destination: "problem-atlas" as const, rationale: "问题库最多安排一个新问题任务，且不会挤掉到期复习",
+      priority: calculatePriority({ weakness: 1 - (responseScores.get(problemSeed.id) ?? 0.45), projectRelevance: relevance(`${problemSeed.titleCn} ${problemSeed.keywords.join(" ")}`, state), frontierValue: 0.5, reviewDue: 0.3, misconception: unresolved.some((item) => item.conceptId === problemSeed.id) ? 1 : 0 }, weights),
+    }] : []),
     {
       id: `${dateKey}-transfer`, type: "transfer", title: "把一项原则应用到你的项目", subtitle: state.projects.length ? `以 ${state.projects[0].name} 为情境` : "创建项目情境，或写出可迁移的行动", minutes: 5,
       targetId: state.projects[0]?.id ?? "unbound-transfer", destination: state.projects.length ? "projects" : "projects", rationale: "真正掌握需要完成迁移",

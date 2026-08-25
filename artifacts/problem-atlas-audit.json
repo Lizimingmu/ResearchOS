@@ -1,0 +1,219 @@
+{
+  "generatedAt": "2026-08-25T07:43:03.705Z",
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "checks": [
+    {
+      "name": "demo atlas seeds through the import pipeline",
+      "passed": true,
+      "detail": "4 cards / 9 sources"
+    },
+    {
+      "name": "seed import records the demo pack",
+      "passed": true,
+      "detail": "problem-atlas-demo-v1"
+    },
+    {
+      "name": "cards are Chinese-first with valid cross-links",
+      "passed": true,
+      "detail": "4 cards checked"
+    },
+    {
+      "name": "search: Chinese exact alias",
+      "passed": true,
+      "detail": "pa-pseudorep@2.6, pa-bio-tech-rep@0.6"
+    },
+    {
+      "name": "search: English title match",
+      "passed": true,
+      "detail": "pa-pseudorep@2.6"
+    },
+    {
+      "name": "search: abbreviation/alias expansion",
+      "passed": true,
+      "detail": "pa-pseudorep, pa-data-leakage, pa-bio-tech-rep"
+    },
+    {
+      "name": "search: keyword match",
+      "passed": true,
+      "detail": "pa-data-leakage"
+    },
+    {
+      "name": "search: deterministic fuzzy fallback",
+      "passed": true,
+      "detail": "pa-pseudorep@0.682"
+    },
+    {
+      "name": "search: deterministic ordering",
+      "passed": true,
+      "detail": "stable across repeated calls"
+    },
+    {
+      "name": "search: no match returns empty",
+      "passed": true,
+      "detail": "0 hits"
+    },
+    {
+      "name": "search: unmatched query offers suggestions",
+      "passed": true,
+      "detail": "PROBAST"
+    },
+    {
+      "name": "search: filters apply",
+      "passed": true,
+      "detail": "2 filtered hits"
+    },
+    {
+      "name": "eight modes covered per card",
+      "passed": true,
+      "detail": "32 training cases"
+    },
+    {
+      "name": "engine: correct quick diagnosis scores 1",
+      "passed": true,
+      "detail": "score=1"
+    },
+    {
+      "name": "engine: judgments lock once",
+      "passed": true,
+      "detail": "该判断已经锁定，不能重复提交。"
+    },
+    {
+      "name": "engine: sequential baseline ranking locked first",
+      "passed": true,
+      "detail": "baseline locked"
+    },
+    {
+      "name": "engine: sequential history preserves baseline and every update",
+      "passed": true,
+      "detail": "7 steps"
+    },
+    {
+      "name": "engine: sequential completes with ranking score",
+      "passed": true,
+      "detail": "score=1"
+    },
+    {
+      "name": "engine: inverted ranking scores lower",
+      "passed": true,
+      "detail": "correct=1; inverted=0.8"
+    },
+    {
+      "name": "engine: strict path baseline accepted",
+      "passed": true,
+      "detail": "ok"
+    },
+    {
+      "name": "engine: fake path node rejected",
+      "passed": true,
+      "detail": "未知路径节点（not-a-real-node）：只能按顺序揭示路径中的真实节点。"
+    },
+    {
+      "name": "engine: out-of-order path node rejected",
+      "passed": true,
+      "detail": "只能揭示下一条尚未揭示的路径节点（pa-pseudorep-n1），不能乱序或重复。"
+    },
+    {
+      "name": "engine: fabricated evidence rejected",
+      "passed": true,
+      "detail": "证据 fabricated-evidence 不属于节点 pa-pseudorep-n1 的可用证据，禁止编造。"
+    },
+    {
+      "name": "engine: first path node reveal accepted",
+      "passed": true,
+      "detail": "ok"
+    },
+    {
+      "name": "engine: mismatched reveal/ranking node rejected",
+      "passed": true,
+      "detail": "排序节点（pa-pseudorep-n2）与刚揭示的节点（pa-pseudorep-n1）不一致。"
+    },
+    {
+      "name": "engine: matching ranking accepted",
+      "passed": true,
+      "detail": "ok"
+    },
+    {
+      "name": "engine: repeated path node rejected",
+      "passed": true,
+      "detail": "节点 pa-pseudorep-n1 的证据已经揭示，不能重复。"
+    },
+    {
+      "name": "engine: completion requires every path node ranked",
+      "passed": true,
+      "detail": "completed=false"
+    },
+    {
+      "name": "engine: cross-mode submission rejected",
+      "passed": true,
+      "detail": "该步骤的 mode（differential）与会话 mode（quick）不一致，拒绝提交。"
+    },
+    {
+      "name": "engine: illegal step kind for mode rejected",
+      "passed": true,
+      "detail": "mode quick 不允许 kind boundary。"
+    },
+    {
+      "name": "engine: reveal before baseline rejected",
+      "passed": true,
+      "detail": "序贯排查必须先锁定基线原因排序，再揭示证据。"
+    },
+    {
+      "name": "engine: consecutive reveals rejected",
+      "passed": true,
+      "detail": "每步只能揭示一条尚未揭示的路径节点证据。"
+    },
+    {
+      "name": "engine: partial AI verdicts score incomplete",
+      "passed": true,
+      "detail": "completed=false; score=0"
+    },
+    {
+      "name": "engine: unknown AI verdict IDs rejected",
+      "passed": true,
+      "detail": "completed=false; score=0"
+    },
+    {
+      "name": "engine: duplicate layer ranks rejected",
+      "passed": true,
+      "detail": "错误定位必须为五个层级各分配一个唯一排名（1–5）。"
+    },
+    {
+      "name": "engine: incomplete layer rank list rejected",
+      "passed": true,
+      "detail": "错误定位必须为五个层级各分配一个唯一排名（1–5）。"
+    },
+    {
+      "name": "engine: missing-info expected checks score full",
+      "passed": true,
+      "detail": "score=1"
+    },
+    {
+      "name": "demo pack imports cleanly into empty registry",
+      "passed": true,
+      "detail": "inserts=103; conflicts=0"
+    },
+    {
+      "name": "demo pack applies transactionally",
+      "passed": true,
+      "detail": "4 cards"
+    },
+    {
+      "name": "re-import is idempotent",
+      "passed": true,
+      "detail": "noop=true"
+    },
+    {
+      "name": "broken pack rolls back without mutation",
+      "passed": true,
+      "detail": "threw; state unchanged"
+    }
+  ],
+  "counts": {
+    "cards": 4,
+    "trainingCases": 32,
+    "paths": 4,
+    "causes": 15
+  }
+}

@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Command, FilePlus2, FlaskConical, FolderPlus, Search, ShieldCheck } from "lucide-react";
+import { Command, FilePlus2, FlaskConical, FolderPlus, Search, SearchCheck, ShieldCheck } from "lucide-react";
 import type { MethodConcept } from "../domain/types";
+import type { ProblemCard } from "../domain/problemAtlas";
 import { useAppStore } from "../state/store";
+import { bilingualMethodTitle } from "../i18n/researchTerms";
 
 interface PaletteCommand {
   id: string;
@@ -17,10 +19,12 @@ export function CommandPalette() {
   const setOpen = useAppStore((state) => state.setPaletteOpen);
   const setView = useAppStore((state) => state.setView);
   const selectMethod = useAppStore((state) => state.selectMethod);
+  const selectProblem = useAppStore((state) => state.selectProblem);
   const notify = useAppStore((state) => state.notify);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const [methods, setMethods] = useState<MethodConcept[]>([]);
+  const [problems, setProblems] = useState<ProblemCard[]>([]);
   const input = useRef<HTMLInputElement>(null);
 
   const commands = useMemo<PaletteCommand[]>(() => [
@@ -29,10 +33,12 @@ export function CommandPalette() {
     { id: "project", label: "添加项目", group: "新建", keywords: "context research 项目", run: () => setView("projects"), icon: FolderPlus },
     { id: "review", label: "进入复习", group: "导航", keywords: "retrieval due 复习", run: () => setView("review"), icon: ShieldCheck },
     { id: "audit", label: "审查当前分析", group: "训练", keywords: "ai plan critique 审查", run: () => setView("ai-audit"), icon: ShieldCheck },
+    { id: "problem-atlas", label: "打开科研常见问题库", group: "导航", keywords: "problem atlas diagnose 问题 排查 诊断", run: () => setView("problem-atlas"), icon: SearchCheck },
     { id: "evidence", label: "查找证据", group: "证据", keywords: "pmid doi verify 核验", run: () => { setView("library"); notify("请在论文检查器中使用“核验 PMID / DOI”。尚未解析的元数据将保持待核验状态。", "info"); }, icon: Search },
     { id: "transfer", label: "创建迁移练习", group: "训练", keywords: "project action 迁移", run: () => setView("projects"), icon: FlaskConical },
-    ...methods.map((method) => ({ id: `method-${method.id}`, label: `方法：${method.title}`, group: "方法", keywords: `${method.domain} ${method.tags.join(" ")}`, run: () => selectMethod(method.id), icon: FlaskConical })),
-  ], [methods, notify, selectMethod, setView]);
+    ...methods.map((method) => ({ id: `method-${method.id}`, label: `方法：${bilingualMethodTitle(method.id, method.title)}`, group: "方法", keywords: `${method.title} ${method.domain} ${method.tags.join(" ")}`, run: () => selectMethod(method.id), icon: FlaskConical })),
+    ...problems.map((problem) => ({ id: `problem-${problem.id}`, label: `科研问题：${problem.titleCn}`, group: "科研问题", keywords: `${problem.titleEn} ${problem.aliases.join(" ")} ${problem.keywords.join(" ")}`, run: () => selectProblem(problem.id), icon: SearchCheck })),
+  ], [methods, problems, notify, selectMethod, selectProblem, setView]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -43,11 +49,15 @@ export function CommandPalette() {
   useEffect(() => {
     if (open) {
       if (!methods.length) void import("../data/methods").then((module) => setMethods(module.methodConcepts));
+      if (!problems.length) {
+        const seeded = useAppStore.getState().problemCards;
+        setProblems(seeded);
+      }
       setQuery("");
       setActive(0);
       window.setTimeout(() => input.current?.focus(), 0);
     }
-  }, [methods.length, open]);
+  }, [methods.length, open, problems.length]);
 
   useEffect(() => { setActive(0); }, [query]);
 

@@ -122,13 +122,13 @@
     }
   ],
   "blindAssessmentPrompts": [
-    "Identify the main scientific question.",
-    "Identify the study design and independent unit.",
-    "Reconstruct the evidence chain in 4–6 steps.",
-    "Identify the strongest evidence and explain why.",
-    "Identify three major weaknesses.",
-    "Define the maximal acceptable conclusion.",
-    "Predict the most important reviewer criticism.",
-    "Audit the proposed AI analysis plan."
+    "识别主要科学问题和目标人群。",
+    "识别研究设计与独立统计单位（Statistical Unit）。",
+    "用 4–6 个步骤重建证据链。",
+    "指出最强证据，并解释其证据层级。",
+    "识别三项重大问题（Major Concerns）。",
+    "给出最大可接受结论。",
+    "预测审稿人最可能提出的关键质疑。",
+    "审核所提出的 AI 分析方案。"
   ]
 }

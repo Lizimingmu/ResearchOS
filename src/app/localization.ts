@@ -15,9 +15,9 @@ export const verificationLabel = (value: VerificationStatus) => ({
 }[value]);
 
 export const severityLabel = (value?: string) => ({
-  minor: "轻微",
-  major: "严重",
-  critical: "关键风险",
+  minor: "轻微问题（Minor Concern）",
+  major: "重大问题（Major Concern）",
+  critical: "致命 / 结构性问题（Critical Issue）",
   uncertain: "不确定",
 }[value ?? ""] ?? value ?? "—");
 
@@ -34,7 +34,8 @@ export const taskTypeLabel = (value: string) => ({
   retrieval: "提取练习",
   paper: "论文",
   method: "方法",
-  audit: "审查",
+  audit: "AI 审核",
+  problem: "科研问题",
   transfer: "迁移",
 }[value] ?? value);
 

@@ -1,36 +1,25 @@
-# Current Milestone — M013 Research Problem Atlas
+# Current Milestone — M014 Chinese Tutorial and Release Candidate
 
 ## Decision
 
-M013 is active before M012 implementation. Source-first infrastructure is a prerequisite for safely producing Protocol Lab and other scientific content. M012 specifications remain preserved; its bulk content/engineering tasks are paused, not cancelled.
+M013 is ACCEPTED. M014 adds a concise Chinese-first onboarding tutorial before final release regression and packaging. M012 Protocol Lab and the 166-card external corpus remain deferred.
 
 ## Outcome
 
-Create the Research Problem Atlas architecture: structured scientific differential diagnosis, sequential evidence reveal, deterministic problem search, unified Source Registry, claim–evidence mapping, knowledge versioning and transactional source-pack ingestion.
+A new user can understand ResearchOS's core learning loop in about five minutes without changing real learning history: Today → Problem Atlas → evidence/status boundary → lock-before-feedback → Review.
 
-## Scope
+## Tutorial scope
 
-- Product/data contracts in `PROBLEM_ATLAS_SPEC.md`.
-- Source/claim/import contracts in `SOURCE_INGESTION_SPEC.md`.
-- Chinese-first Problem Atlas workspace and eight diagnostic training modes.
-- Small pending demo set using existing evidence-backed concepts only.
-- Review, misconception, Today, Skill Map, Method/Protocol/Pattern and global-search links.
-- Schema migration, source-pack importer, evidence badges and deterministic validators/tests.
+- Optional first-run launch; visible Skip, Back, Next and Finish controls.
+- Restart from Help/Settings at any time.
+- Chinese primary copy with restrained English research-term bridges.
+- Use existing pending demo content and explicitly explain `待核验`; do not introduce new scientific claims.
+- Tutorial interactions run in preview/sandbox state and must not create responses, reviews, misconceptions, scheduler events, source imports or calibration records.
+- Keyboard navigation, focus management, responsive desktop layout and reduced-motion behavior.
+- Persist skipped/completed state using the existing onboarding/settings mechanism where possible; no schema bump solely for tutorial UI.
 
-## Out of scope
+## Acceptance
 
-Bulk scientific content generation, automatic web crawling, LLM-selected truth, automatic verified promotion, hundreds of placeholder cards, release/version packaging, or resuming M012 content production before M013 gate acceptance.
+First-run, skip, completion persistence, restart, keyboard flow and zero-learning-state-mutation tests pass. All existing 45 tests and deterministic gates remain green. No Git, packaging or version bump during M014-01.
 
-## Acceptance sequence
-
-OpenCode M013-01…07 → deterministic QA → Codex diff/scientific review → OpenCode patch → regression → Codex ACCEPT. Only then may M012 resume on the source-first foundation.
-
-## Current patch cycle — M013-10
-
-OpenCode first hardens untrusted-input validation and builds an auditable legacy→v3 staging converter. The schema distinguishes `diagnostic`, `judgment` and `audit`; legacy cards without an explicit reviewed type remain `unclassified`. Structural validity is reported separately from scientific completeness. A staging pack may be structurally valid while `scientific_patch_required` and `importEligible = false`.
-
-M013-10 does not repair scientific content. Codex re-review accepted its staging/conversion result in scope but found two importer-gate defects: oversized CSV fields are still truncated, and the identical-import noop shortcut can bypass scientific completeness.
-
-M013-11R resolved the sequential-integrity and temporal-validation issues and passed all automated/scientific checks. The only remaining item is a metadata-only PMID correction for the new BMJ source: `19401593` → `19477892`, plus a deterministic DOI→PMID regression assertion. The 166 external cards remain `unclassified`, pending and import-ineligible; bulk classification/import is deferred.
-
-After M013 ACCEPT, M014 adds a short Chinese first-run tutorial and packages the release candidate. The tutorial must explain Today, Problem Atlas, evidence-status badges, lock-before-feedback and Review in about five minutes; it must be skippable, restartable from Help, and use only the existing pending demo content.
+After Codex accepts M014-01, OpenCode performs M014-02 release regression, versioning, packaging, SHA256 and release notes, then stops for final sign-off.

@@ -1,7 +1,18 @@
 import { CircleDot, FileText, FlaskConical, Network, NotebookPen } from "lucide-react";
 import { frontierNodes } from "../../data/examplePapers";
 
+const frontierLabel: Record<string, string> = {
+  "frontier-mtc": "甲状腺髓样癌（Medullary Thyroid Carcinoma）",
+  "frontier-ret": "RET 生物学（RET Biology）",
+  "frontier-resistance": "靶向治疗耐药（Targeted-therapy Resistance）",
+  "frontier-tme": "肿瘤微环境（Tumor Microenvironment）",
+  "frontier-sc": "单细胞图谱（Single-cell Atlases）",
+  "frontier-spatial": "空间组织（Spatial Organization）",
+  "frontier-prognosis": "预后分层（Prognostic Stratification）",
+  "frontier-therapy": "靶向治疗（Targeted Therapy）",
+};
+
 export function FrontierView() {
   const root = frontierNodes[0];
-  return <div className="page frontier-page"><header className="page-header"><div><span className="eyebrow">前沿地图 · 基础版</span><h1>以问题为中心的研究图景</h1><p>节点可关联论文、方法、笔记、问题和项目。待核验节点绝不会被当作事实。</p></div><span className="status-pill pending">仅提供框架 · 暂无自动雷达</span></header><div className="frontier-workspace"><section className="frontier-tree"><div className="frontier-root"><Network size={18} /><strong>{root.label}</strong><span>{root.status === "verified" ? "已核验" : "待核验"}</span></div>{root.children.map((node) => <article key={node.id}><span className="tree-line" /><CircleDot size={14} /><div><strong>{node.label}</strong><small>熟悉度 {node.familiarity}/4 · {node.status === "verified" ? "已核验" : "待核验"}</small></div><span className={`status-pill ${node.status}`}>{node.status === "verified" ? "已核验" : "待核验"}</span></article>)}</section><aside className="frontier-inspector"><span className="eyebrow">节点附件</span><h2>RET 生物学</h2><div className="attachment-row"><FileText size={15} /><span>论文</span><b>0</b></div><div className="attachment-row"><FlaskConical size={15} /><span>方法</span><b>1</b></div><div className="attachment-row"><NotebookPen size={15} /><span>笔记</span><b>0</b></div><section className="frontier-question"><span>关键问题</span><p>哪些耐药机制已在人类肿瘤中得到证实，哪些仅从临床前模型推断而来？</p><small>待核验</small></section><p className="generated-warning">未经核验的前沿提示只用于辅助组织结构。将内容提升为知识前，请先核验引用。</p></aside></div></div>;
+  return <div className="page frontier-page"><header className="page-header"><div><span className="eyebrow">前沿地图 · 基础版</span><h1>以问题为中心的研究图景</h1><p>节点可关联论文、方法、笔记、问题和项目。待核验节点绝不会被当作事实。</p></div><span className="status-pill pending">仅提供框架 · 暂无自动雷达</span></header><div className="frontier-workspace"><section className="frontier-tree"><div className="frontier-root"><Network size={18} /><strong>{frontierLabel[root.id] ?? root.label}</strong><span>{root.status === "verified" ? "已核验" : "待核验"}</span></div>{root.children.map((node) => <article key={node.id}><span className="tree-line" /><CircleDot size={14} /><div><strong>{frontierLabel[node.id] ?? node.label}</strong><small>熟悉度 {node.familiarity}/4 · {node.status === "verified" ? "已核验" : "待核验"}</small></div><span className={`status-pill ${node.status}`}>{node.status === "verified" ? "已核验" : "待核验"}</span></article>)}</section><aside className="frontier-inspector"><span className="eyebrow">节点附件</span><h2>RET 生物学</h2><div className="attachment-row"><FileText size={15} /><span>论文</span><b>0</b></div><div className="attachment-row"><FlaskConical size={15} /><span>方法</span><b>1</b></div><div className="attachment-row"><NotebookPen size={15} /><span>笔记</span><b>0</b></div><section className="frontier-question"><span>关键问题</span><p>哪些耐药机制已在人类肿瘤中得到证实，哪些仅从临床前模型推断而来？</p><small>待核验</small></section><p className="generated-warning">未经核验的前沿提示只用于辅助组织结构。将内容提升为知识前，请先核验引用。</p></aside></div></div>;
 }

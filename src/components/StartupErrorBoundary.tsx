@@ -21,7 +21,8 @@ export class StartupErrorBoundary extends Component<Props, State> {
         <span className="eyebrow">RESEARCHOS · 启动恢复</span>
         <h1>工作区未能完成启动。</h1>
         <p>本地数据库没有被重置。请重试一次；如果问题仍然存在，请在错误报告中附上下方诊断信息。</p>
-        <pre>{this.state.error.message || this.state.error.name}</pre>
+        <p>请重新启动应用；如果问题持续存在，可展开技术详情用于排查。</p>
+        <details><summary>查看技术详情</summary><pre>{this.state.error.message || this.state.error.name}</pre></details>
         <button className="primary" onClick={() => window.location.reload()}>重新启动</button>
       </main>
     );
