@@ -4,7 +4,7 @@
   "sourcePackId": "m013-batch06-causal-reporting-20260824",
   "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
   "originalFileSha256": "6a1b6594b5db595196b364e95776be0bdf97dcb3380bb9aae44026500c6afeec",
-  "convertedAt": "2026-08-25T07:43:32.159Z",
+  "convertedAt": "2026-08-25T08:23:17.278Z",
   "convertedBy": "ResearchOS M013-10 legacy→v3 staging converter",
   "provenance": "Source-first external scientific pre-review. Source metadata and claim scope were manually pre-reviewed against authoritative guidelines, original methods, peer-reviewed benchmarks/reviews, or official technical resources. Final ResearchOS verification remains reserved for Codex/formal source-pack gate.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
   "packSchemaVersion": 1,

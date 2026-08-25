@@ -1,7 +1,7 @@
 # Implementation Report
 
 Status: COMPLETE — awaiting Codex review
-Task IDs: M013-01 through M013-07; M013-10; M013-09 + M013-10R (final patch); M013-11R (micro-patch)
+Task IDs: M013-01 through M013-07; M013-10; M013-09 + M013-10R (final patch); M013-11R (micro-patch); M013-11R2 (metadata patch); M014-01 (tutorial)
 Agent/model: OpenCode / DeepSeek V4 Pro
 Approved product baseline: 441ece1
 
@@ -81,6 +81,22 @@ Modified:
 - `tests-node/suite.mjs` — 45 tests (1 new strict path-integrity test incl. completion-by-node-coverage).
 - `data/problem_atlas/source_pack.json` — regenerated seed export with the corrected temporal content, new claim and new pending source.
 
+## M014-01 changed files (tutorial)
+
+New modules:
+
+- `src/components/Tutorial.tsx` — Chinese-first five-step tutorial panel (今日学习 → 科研常见问题库 → 待核验证据状态 → 先锁定再反馈 → 复习与迁移), about five minutes, using existing pending demo content only. Compact bottom-right guided panel (not a blocking modal, not chat-like): Skip/Back/Next/Finish controls, step progress list, keyboard navigation (← 上一步, →/Enter 下一步, Esc 跳过), focus management (panel focus on open, focus restoration on close), Escape/close behavior, reduced-motion CSS. The Human-First step runs a preview lock exercise in isolated local state via the pure engine (`createDiagnosticSession`/`lockSessionStep`/`gradeSession`) — it never touches the store, so no responses/reviews/misconceptions/calibration/scheduler/import records are written. Exports `TUTORIAL_STEPS`, `TUTORIAL_STEP_LABELS` and pure `tutorialStepFromKey` for deterministic testing.
+
+Modified:
+
+- `src/domain/types.ts` — `OnboardingState` + optional `tutorialCompletedAt`/`tutorialSkippedAt` (no schema bump).
+- `src/state/store.ts` — `tutorialOpen` UI state; `openTutorial`/`skipTutorial`/`completeTutorial` actions with persistence; auto-open decision via pure `shouldAutoOpenTutorial` applied in `hydrate` and after `completeOnboarding`; skip after completion is a no-op; `resetDemo` resets tutorial state.
+- `src/app/App.tsx` — renders `<Tutorial />` alongside the palette/toast.
+- `src/features/settings/SettingsView.tsx` — 常规设置 gets “重新打开新手教程” with the isolation note.
+- `src/styles/app.css` — tutorial panel styles (focus-visible outline, responsive width, `prefers-reduced-motion` disable rule).
+- `scripts/localization-audit.mjs` — `src/components/Tutorial.tsx` added to the UI denylist scan.
+- `tests-node/suite.mjs` — 50 tests (5 new: auto-open decision, keyboard navigation bounds, skip/complete persistence with zero learning-state mutation, first-run visibility + skip persistence + restart via hydrate, panel render incl. final-step Finish control and no chat affordance).
+
 ## Implemented
 
 - M013-01: Source Registry, EvidenceClaim, knowledge-version models (current/superseded/deprecated/emerging + non-destructive supersession links), v2→v3 application-state migration with preservation tests; no automatic claim verification (claims/cards/rubrics stay pending; sources stay metadata_verified with tier inherited from existing verified seeds).
@@ -94,6 +110,7 @@ Modified:
 - M013-09 + M013-10R (this cycle): CSV/Markdown oversize fields deterministically rejected (never truncated); identical-import/noop shortcut no longer bypasses the structural/scientific gates and apply rejects such documents without mutation; diagnostic engine hardened (mode/kind/order validation, baseline-before-reveal sequential protocol with evidence-before/evidence-after history, strict AI-verdict grading, unique error-localization ranks); minimal explicit source-pack import UI with gated confirmation and no forced updates; pending-claim support displayed as proposed (`拟直接支持 · 待核验`) and Tier B relabeled 专业/技术来源 with source type shown separately; the four listed scientific correction groups applied to the pending demo content (temporal validation, leakage learn-and-lock, single-cell unit/pseudobulk qualification, Codex-reviewed authority-tier mapping) plus the sequential rubric fix; the 166 external legacy cards remain `unclassified`, pending and import-ineligible; all demo cards/claims/rubrics remain pending.
 - M013-11R (this cycle): strict path-node/evidence order validation in the sequential engine (next-node reveal, node-owned evidence, reveal/ranking node matching, unique-node-coverage completion) with direct regressions; temporal-validation demo fully de-contradicted (internal-only wording removed, red flags corrected, bounded answer rewritten) and directly backed by a new pending EvidenceClaim on a new pending A-level BMJ methods source; 166 external cards untouched; no tutorial, no Git, no packaging.
 - M013-11R2 (this cycle, metadata-only): corrected `pa-src-altman-validation.pmid` `19401593` → `19477892` (PubMed record for DOI `10.1136/bmj.b605`); regenerated the seed export; corrected SC-DEMO-01; added a deterministic DOI↔PMID pair assertion to the source-pack audit so the mismatch cannot pass again. Source and claim remain pending; no wording/engine/UI/other metadata changed.
+- M014-01 (this cycle): optional Chinese-first five-minute tutorial (Today → Problem Atlas → pending-evidence status → lock-before-feedback → Review) with Skip/Back/Next/Finish, keyboard navigation, focus restoration, Escape close, reduced motion, restart from Settings, persisted skip/completion timestamps on the existing onboarding state, and isolated preview exercises that write nothing to learning records; reuses existing pending demo content only — no new scientific claims, sources, cards or generated answers.
 
 ## Tests
 
@@ -101,12 +118,12 @@ Modified:
 |---|---|---|
 | Agent handoff validator | PASS | `node scripts/validate-agent-handoff.mjs` → Agent handoff validation: PASSED |
 | Typecheck | PASS | `tsc -p tsconfig.build.json --noEmit` → no errors |
-| Full frontend suite | PASS | `npm test` → 45/45 tests (21 existing incl. updated Today bound + 24 M013 incl. M013-09/M013-10R/M013-11R regressions), localization audit PASSED 11 checks, startup smoke PASSED |
+| Full frontend suite | PASS | `npm test` → 50/50 tests (21 existing incl. updated Today bound + 29 M013/M014 incl. 5 M014-01 tutorial tests), localization audit PASSED 11 checks, startup smoke PASSED |
 | Source-pack audit | PASS | `npm run audit:source-pack` → 0 errors, 0 warnings (incl. exception-safety probes, two-gate separation, unclassified blocking, safe parser, CSV-oversize rejection, noop gate, Codex tier mapping); artifacts/source-pack-audit.json + docs/SOURCE_PACK_AUDIT.md |
 | Problem Atlas audit | PASS | `npm run audit:problem-atlas` → 0 errors, 0 warnings (incl. baseline-first sequential protocol, cross-mode/illegal-transition rejection, strict AI verdicts, duplicate-rank rejection); artifacts/problem-atlas-audit.json + docs/PROBLEM_ATLAS_AUDIT.md |
 | M013-10 staging gate | PASS | `npm run staging:audit` → 63/63 checks, 0 failures; 8/8 original packs SHA256-verified, structured rejection without crash; 8/8 staging docs structurally valid, internally collision-free, import-ineligible; 166 unclassified; `.agent/M013_V3_STAGING_REPORT.{md,json}` + `artifacts/m013-v3-staging/` |
 | Content audit | PASS | 0 errors, 1 pre-existing warning; 49 evidence / 88 methods / 84 usable / 25 patterns / 84 cards / 40 audits |
-| Performance audit | PASS | Initial JS 830,599 bytes (budget 1.9 MB); scheduler 0.0719 ms; training chunk and CSS budgets green |
+| Performance audit | PASS | Initial JS 868,012 bytes (budget 1.9 MB); scheduler 0.0679 ms; training chunk and CSS budgets green |
 | Startup smoke | PASS | production bundle renders and hydrates |
 | Seed export | PASS | `npm run seed:export` → 9 machine-readable seed artifacts refreshed (corrected pending content + tiers + problemType) |
 | Rust tests | NOT RUN — no Rust changes | No `src-tauri` files modified; SQLite `user_version` stays 2 (JSON-blob gateway unchanged) |
@@ -119,6 +136,8 @@ New M013-09/M013-10R regression coverage (5 tests): CSV oversize fields rejected
 
 New M013-11R regression coverage (1 test): sequential engine validates path nodes, evidence and ranking targets — fake node, reordered node, fabricated evidence and repeated-node attempts rejected; mismatched reveal/ranking node rejected; completion requires one valid post-reveal ranking for every ordered path node (partial coverage stays incomplete). The Problem Atlas audit additionally covers the same strict cases as gate checks.
 
+New M014-01 tutorial coverage (5 tests): first-run auto-open decision is deterministic (completed onboarding without timestamps opens; skipped/completed/incomplete onboarding does not); keyboard navigation is deterministic and bounded (ArrowRight/Enter/ArrowLeft/Backspace/Escape, clamping); skip and completion persist with zero learning-state mutation (responses/reviews/misconceptions/calibration/scheduler/import records byte-identical before and after); first-run visibility, skip persistence and restart through the hydrate/persistence gateway; panel renders Chinese-first with Skip/Back/Next, the final-step Finish control, the five step labels and no chat affordance.
+
 ## Failures
 
 None remaining. (Fixed during the session: extensionless `.build` imports for direct-node audit execution; fuzzy-distance test fixture; CSV quote-escaping fixture; Tier-X rejection surfaced as an error; seeded-state vs empty-registry fixture in the atlas audit. M013-10 cycle: collision test fixture initially hit within-pack duplicate detection — restructured to a true cross-registry conflict; canonicalization audit count initially summed per-pack rows — corrected to unique canonical IDs; provenance gap count after merge (48 vs pre-merge 50) disclosed with reason; supersession references to out-of-pack legacy sources reclassified as disclosed warnings, not structural failures. M013-09/M013-10R cycle: the old sequential audit/test protocol (reveal-before-ranking) was rewritten to the required baseline-first protocol in engine, view, audit and tests; `parseCsvLine` regression initially missed the import — added. M013-11R cycle: sequential strict checks initially separated from the pattern fallback; consolidated so the no-path fallback also enforces reveal/ranking node matching, and the path-aware mode adds node identity/order/evidence checks.)
@@ -126,8 +145,9 @@ None remaining. (Fixed during the session: extensionless `.build` imports for di
 ## Remaining issues
 
 - M011 localization work remains unapproved and dirty; the localization audit script key mismatch was fixed mechanically (scripts only) so the gate is green again.
-- M012 Protocol Lab implementation remains paused behind M013 ACCEPT, as specified. Tutorial functionality was not added.
-- All M013 demo ProblemCards/paths/rubrics/claims remain pending (HIGH risk) and require Codex scientific review per `.agent/SCIENTIFIC_GATES.md`; the correction groups are recorded in `SCIENTIFIC_CHANGESET.md` (SC-DEMO-01…04). The new temporal source `pa-src-altman-validation` and claim `pa-claim-temporal-validation` are pending and unverified.
+- M012 Protocol Lab implementation remains paused behind M013 ACCEPT, as specified. Tutorial functionality was added in M014-01 only; M014-02 release regression/packaging remains for after Codex tutorial review.
+- All M013 demo ProblemCards/paths/rubrics/claims remain pending (HIGH risk) and require Codex scientific review per `.agent/SCIENTIFIC_GATES.md`; the correction groups are recorded in `SCIENTIFIC_CHANGESET.md` (SC-DEMO-01…04). The new temporal source `pa-src-altman-validation` and claim `pa-claim-temporal-validation` are pending and unverified. M014-01 added no scientific content.
 - All 166 staged legacy cards remain `unclassified` (import-ineligible) until M013-11 classifies them; claim-level scientific patches listed in `SCIENTIFIC_CHANGESET.md` (CLM-QPCR-006, CLM-SP-008, CLM-AI-004, CLM-REV-003 and scope/qualification fills) remain open because no exact patch text exists.
 - The source-pack import UI is a minimal explicit flow (file picker → dry-run → gated confirm); it uses `allowUpdates: false`, so content changes to existing rows are never silently forced.
+- The tutorial auto-opens once for users whose onboarding is complete and who have neither completed nor skipped it (including existing users upgrading to this build); it is always skippable and restartable from Settings.
 - Packaging/release is prohibited; no version bump, no Git operations performed.

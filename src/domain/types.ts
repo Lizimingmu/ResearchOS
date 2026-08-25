@@ -268,6 +268,8 @@ export interface OnboardingState {
   familiarity: Record<string, "new" | "working" | "experienced">;
   baselineCompleted: boolean;
   completedAt?: string;
+  tutorialCompletedAt?: string;
+  tutorialSkippedAt?: string;
 }
 
 export interface AIProvider {

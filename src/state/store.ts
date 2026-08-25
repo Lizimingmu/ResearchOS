@@ -44,8 +44,7 @@ const defaultSettings: AppSettings = {
   activeProviderId: "openai",
 };
 
-const emptyAtlasCollections = () => ({
-  problemAtlasSources: [],
+const emptyAtlasCollections = () => ({  problemAtlasSources: [],
   problemAtlasClaims: [],
   problemCards: [],
   diagnosticCauses: [],
@@ -68,8 +67,7 @@ const seededAtlasCollections = () => {
   };
 };
 
-export const createInitialState = (): AppStateData => {
-  const atlas = seededAtlasCollections();
+export const createInitialState = (): AppStateData => {  const atlas = seededAtlasCollections();
   return {
     schemaVersion: CURRENT_STATE_SCHEMA,
     papers: examplePapers.map((paper) => ({ ...paper, tags: [...paper.tags] })),
@@ -91,6 +89,9 @@ export const createInitialState = (): AppStateData => {
   };
 };
 
+export const shouldAutoOpenTutorial = (onboarding: AppStateData["onboarding"]): boolean =>
+  onboarding.completed === true && onboarding.tutorialCompletedAt == null && onboarding.tutorialSkippedAt == null;
+
 export interface ToastMessage {
   id: string;
   tone: "info" | "success" | "warning" | "error";
@@ -102,6 +103,7 @@ interface AppStore extends AppStateData {
   persistenceStatus: "idle" | "saving" | "saved" | "error";
   lastSavedAt?: string;
   view: ViewId;
+  tutorialOpen: boolean;
   selectedPaperId?: string;
   selectedMethodId: string;
   selectedAuditId: string;
@@ -146,6 +148,9 @@ interface AppStore extends AppStateData {
   completeOnboarding: (interests: string[], familiarity: AppStateData["onboarding"]["familiarity"]) => void;
   replaceData: (data: unknown) => void;
   resetDemo: () => void;
+  openTutorial: () => void;
+  skipTutorial: () => void;
+  completeTutorial: () => void;
   updateDiagnosticSession: (session: DiagnosticSession) => void;
   recordProblemSearch: (query: string, matched: boolean, matchedCount: number) => void;
   dryRunSourcePack: (doc: SourcePackDocument) => SourcePackDryRun;
@@ -184,8 +189,7 @@ function stateData(state: AppStore): AppStateData {
   };
 }
 
-let persistTimer: ReturnType<typeof setTimeout> | undefined;
-const schedulePersist = (get: () => AppStore, report: (status: AppStore["persistenceStatus"], error?: unknown) => void) => {
+let persistTimer: ReturnType<typeof setTimeout> | undefined;const schedulePersist = (get: () => AppStore, report: (status: AppStore["persistenceStatus"], error?: unknown) => void) => {
   if (persistTimer) clearTimeout(persistTimer);
   report("saving");
   persistTimer = setTimeout(() => {
@@ -214,6 +218,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     hydrated: false,
     persistenceStatus: "idle",
     view: "today",
+    tutorialOpen: false,
     selectedPaperId: initial.papers[0]?.id,
     selectedMethodId: "statistical-unit",
     selectedAuditId: "audit-01",
@@ -226,7 +231,7 @@ export const useAppStore = create<AppStore>((set, get) => {
       try {
         const persisted = await loadPersistedState();
         const migrated = persisted === null ? initial : migratePersistedState(persisted, initial);
-        set({ ...migrated, hydrated: true, persistenceStatus: "idle", view: (migrated.settings.startPage as ViewId) || "today", selectedPaperId: migrated.papers[0]?.id });
+        set({ ...migrated, hydrated: true, persistenceStatus: "idle", view: (migrated.settings.startPage as ViewId) || "today", selectedPaperId: migrated.papers[0]?.id, tutorialOpen: shouldAutoOpenTutorial(migrated.onboarding) });
         await savePersistedState(migrated);
         reportPersistence("saved");
       } catch (error) {
@@ -422,6 +427,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     completeOnboarding: (interests, familiarity) => {
       set((state) => ({
         onboarding: { ...state.onboarding, completed: true, interests, familiarity, completedAt: new Date().toISOString() },
+        tutorialOpen: shouldAutoOpenTutorial({ ...state.onboarding, completed: true, interests, familiarity }),
         view: "assessment",
       }));
       queuePersist();
@@ -437,7 +443,28 @@ export const useAppStore = create<AppStore>((set, get) => {
     },
     resetDemo: () => {
       const reset = createInitialState();
-      set({ ...reset, view: "today", selectedPaperId: reset.papers[0]?.id, selectedProblemId: reset.problemCards[0]?.id ?? "", toast: { id: makeId("toast"), tone: "info", text: "演示数据已重置，AI 凭据未更改。" } });
+      set({ ...reset, view: "today", tutorialOpen: false, selectedPaperId: reset.papers[0]?.id, selectedProblemId: reset.problemCards[0]?.id ?? "", toast: { id: makeId("toast"), tone: "info", text: "演示数据已重置，AI 凭据未更改。" } });
+      queuePersist();
+    },
+    openTutorial: () => {
+      set({ tutorialOpen: true });
+    },
+    skipTutorial: () => {
+      const now = new Date().toISOString();
+      set((state) => ({
+        tutorialOpen: false,
+        onboarding: state.onboarding.tutorialCompletedAt == null
+          ? { ...state.onboarding, tutorialSkippedAt: now }
+          : state.onboarding,
+      }));
+      queuePersist();
+    },
+    completeTutorial: () => {
+      const now = new Date().toISOString();
+      set((state) => ({
+        tutorialOpen: false,
+        onboarding: { ...state.onboarding, tutorialCompletedAt: now },
+      }));
       queuePersist();
     },
     updateDiagnosticSession: (session) => {

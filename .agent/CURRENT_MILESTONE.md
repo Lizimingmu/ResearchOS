@@ -1,25 +1,23 @@
-# Current Milestone — M014 Chinese Tutorial and Release Candidate
+# Current Milestone — M014-02 Release Candidate
 
 ## Decision
 
-M013 is ACCEPTED. M014 adds a concise Chinese-first onboarding tutorial before final release regression and packaging. M012 Protocol Lab and the 166-card external corpus remain deferred.
+M013 and M014-01 are ACCEPTED. M014-02 turns the accepted Problem Atlas plus Chinese tutorial into a fully verified Windows release candidate. M012 Protocol Lab and the 166-card external corpus remain deferred.
 
 ## Outcome
 
-A new user can understand ResearchOS's core learning loop in about five minutes without changing real learning history: Today → Problem Atlas → evidence/status boundary → lock-before-feedback → Review.
+Produce a versioned ResearchOS Windows release candidate whose frontend, Rust/Tauri persistence, migrations, tutorial, backup/restore, installers, hashes, and release notes are reproducibly verified.
 
-## Tutorial scope
+## Release scope
 
-- Optional first-run launch; visible Skip, Back, Next and Finish controls.
-- Restart from Help/Settings at any time.
-- Chinese primary copy with restrained English research-term bridges.
-- Use existing pending demo content and explicitly explain `待核验`; do not introduce new scientific claims.
-- Tutorial interactions run in preview/sandbox state and must not create responses, reviews, misconceptions, scheduler events, source imports or calibration records.
-- Keyboard navigation, focus management, responsive desktop layout and reduced-motion behavior.
-- Persist skipped/completed state using the existing onboarding/settings mechanism where possible; no schema bump solely for tutorial UI.
+- Bump the product consistently to `0.11.0` in package, Tauri, UI/release metadata, and generated release notes.
+- Run frontend tests and every deterministic audit from the accepted M014-01 gate.
+- Run Rust tests/checks and a Tauri production build; verify schema 3 / SQLite user version 2 compatibility and preservation of existing v0.10.2 user data.
+- Perform packaged-app smoke tests for first launch, tutorial skip/finish/reopen, ordinary and compact Windows sizing, keyboard/focus behavior, core navigation, and restart persistence.
+- Verify backup/export and restore/import round trip without learning-state loss.
+- Generate portable/setup deliverables as supported by the existing release workflow, SHA256 files, and concise Chinese release notes.
+- Keep all pending demo scientific content pending. Keep all 166 external staging cards unclassified, quarantined, and production-import-ineligible.
 
 ## Acceptance
 
-First-run, skip, completion persistence, restart, keyboard flow and zero-learning-state-mutation tests pass. All existing 45 tests and deterministic gates remain green. No Git, packaging or version bump during M014-01.
-
-After Codex accepts M014-01, OpenCode performs M014-02 release regression, versioning, packaging, SHA256 and release notes, then stops for final sign-off.
+All automated gates, Rust/Tauri checks, packaged-app smoke tests, migration/backup round trips, installer launch checks, hashes, and handoff validation pass. Reports list exact commands, artifacts, sizes, and SHA256 values. OpenCode performs no Git operation and stops for Codex final release sign-off.

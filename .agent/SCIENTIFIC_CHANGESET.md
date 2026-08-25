@@ -2,6 +2,10 @@
 
 Status: READY FOR REVIEW
 
+## M014-01 engineering status note
+
+M014-01 added **no scientific content**: no new claims, sources, cards, answers or generated scientific text. The Chinese tutorial reuses existing pending demo content only; its preview exercise runs in isolated local state. Existing entries above are unchanged.
+
 ## M013-09 demo scientific corrections (this cycle)
 
 All four demo cards/claims/paths/rubrics remain `pending` and `ai_generated`. No new sources were added; only exact REVIEW_RESULT M013-05 corrections were applied.

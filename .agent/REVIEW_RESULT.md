@@ -2,11 +2,13 @@
 
 ACCEPT
 
-M013 Research Problem Atlas is accepted for integration and release-candidate preparation.
+M014-01 Chinese first-run tutorial is accepted for release-candidate integration.
 
-- Independent final regression: 45/45 tests; source-pack, Problem Atlas, staging 63/63, content, localization, performance, startup, seed and handoff gates pass.
-- Import validation, transaction/noop gates, sequential Human-First behavior, strict grading and Chinese-first UI satisfy the reviewed contracts.
-- SC-DEMO-01…04 scientific corrections are accepted while retaining `verificationStatus = pending`; pending presentation remains explicit.
-- `pa-src-altman-validation` metadata is corrected to DOI `10.1136/bmj.b605` / PMID `19477892`, with deterministic audit coverage.
-- All 166 external legacy cards remain `unclassified`, pending, quarantined and production-import-ineligible. This corpus is not part of the M013 acceptance.
-- No release package has yet been produced. M014 tutorial and release packaging require their own regression/sign-off.
+- Diff review confirms a five-step Chinese-first tutorial covering Today, Problem Atlas, pending evidence status, lock-before-feedback, and review/transfer.
+- Tutorial state is transient except for `tutorialCompletedAt` / `tutorialSkippedAt`; the preview uses local React state and pure diagnostic-engine functions. No response, review, misconception, calibration, scheduler, import, or search record is written.
+- First-run launch, skip/completion persistence, Settings restart, bounded keyboard navigation, focus restoration, reduced-motion CSS, and constrained viewport layout are implemented.
+- Independent regression passed: 50/50 tests, localization, startup, source-pack, Problem Atlas, staging 63/63, content, performance, seed export, and agent-handoff validation.
+- No scientific claims, sources, cards, answers, or verification statuses changed. Existing pending demo content remains explicitly pending.
+- Browser visual smoke could not be performed because the saved in-app-browser permission blocks localhost access. M014-02 must run the packaged-app visual smoke on an ordinary and compact Windows window before release packaging is signed.
+
+No release package has yet been produced. M014-02 owns final regression, versioning, Rust/Tauri verification, packaging, SHA256, and release notes.

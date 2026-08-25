@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T07:42:46.861Z",
+  "generatedAt": "2026-08-25T08:22:50.668Z",
   "locale": "zh-CN",
   "uiCoverageTarget": ">=95%",
   "checks": [
@@ -41,7 +41,7 @@
     {
       "name": "English-only UI denylist",
       "passed": true,
-      "detail": "12 forbidden phrases scanned across 17 core pages"
+      "detail": "12 forbidden phrases scanned across 18 core pages"
     },
     {
       "name": "Chinese system font stack",

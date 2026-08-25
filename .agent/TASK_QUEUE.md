@@ -16,7 +16,7 @@
 | M013-11 | P0 | Final diff/demo-scientific/release gate; keep external corpus quarantined | Codex | M013-09/10R findings resolved; four pending demo cards reviewed; 166 external cards remain unclassified and unimported | Yes |
 | M013-11R | P0 | Close sequential node validation and temporal-validation wording/evidence | OpenCode Pro | Fake/reordered/mismatched nodes rejected; completion requires unique ordered path coverage; random split vs temporal validation wording consistent; temporal claim mapped; focused/full gates pass | Temporal text Yes |
 | M013-11R2 | P0 | Correct Altman validation PMID and pin DOI↔PMID pair | OpenCode Flash | COMPLETED/ACCEPTED: PMID 19477892 synchronized; deterministic DOI↔PMID audit and all gates pass | Metadata sign-off complete |
-| M014-01 | P1 | Add a five-minute Chinese first-run tutorial | OpenCode Pro | Skippable/restartable Today→Atlas→status→lock-feedback→Review flow; existing pending demo only; zero real learning-state mutation; persistence/keyboard/accessibility tests | No (copy gate only) |
+| M014-01 | P1 | Add a five-minute Chinese first-run tutorial | OpenCode Pro | COMPLETED/ACCEPTED: skippable/restartable Today→Atlas→status→lock-feedback→Review flow; existing pending demo only; zero real learning-state mutation; persistence/keyboard/accessibility tests | No (copy gate complete) |
 | M014-02 | P0 | Release regression, versioning and packaging | OpenCode Pro | All gates pass; tutorial smoke passes; installers/hashes/release notes generated; stop for Codex sign-off | Release sign-off Yes |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.

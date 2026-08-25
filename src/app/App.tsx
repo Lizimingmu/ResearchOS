@@ -3,6 +3,7 @@ import { AppShell } from "../components/AppShell";
 import { CommandPalette } from "../components/CommandPalette";
 import { Toast } from "../components/Toast";
 import { Onboarding } from "../components/Onboarding";
+import { Tutorial } from "../components/Tutorial";
 import { useAppStore } from "../state/store";
 import { resolveTheme } from "./theme";
 
@@ -94,6 +95,7 @@ export function App() {
       <AppShell><Suspense fallback={<div className="boot-screen"><span>正在加载工作区模块…</span></div>}><View /></Suspense></AppShell>
       <CommandPalette />
       <Toast />
+      <Tutorial />
     </>
   );
 }

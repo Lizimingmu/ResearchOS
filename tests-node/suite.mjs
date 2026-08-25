@@ -12,10 +12,11 @@ import { demoSourcePack, diagnosticPaths, problemCards, problemTrainingCases } f
 import { TodayView } from "../.build/features/today/TodayView.js";
 import { ProblemAtlasView } from "../.build/features/problem-atlas/ProblemAtlasView.js";
 import { LibraryView, paperFromPath } from "../.build/features/library/LibraryView.js";
+import { Tutorial, TUTORIAL_STEPS, tutorialStepFromKey } from "../.build/components/Tutorial.js";
 import { calculatePriority, generateTodayTasks } from "../.build/learning/scheduler.js";
 import { createReviewItem, scheduleReview } from "../.build/learning/review.js";
 import { summarizeSkills } from "../.build/learning/scoring.js";
-import { createInitialState, useAppStore } from "../.build/state/store.js";
+import { createInitialState, shouldAutoOpenTutorial, useAppStore } from "../.build/state/store.js";
 import { migratePersistedState } from "../.build/state/migrations.js";
 import { buildAiReviewPrompt, parseAiReview } from "../.build/ai/reviewArchitecture.js";
 import { serializeLearningData } from "../.build/services/learningExport.js";
@@ -725,4 +726,82 @@ test("unit: error-localization rejects duplicate and incomplete layer ranks", ()
   assert.ok(incomplete.error);
   const valid = lockSessionStep(session, { stepId: "localization-order", kind: "layer", mode: "error-localization", payload: { order: ["statistics", "experiment", "quantification", "sample", "interpretation"] } }, new Date("2026-08-24T00:00:00Z"));
   assert.equal(valid.error, undefined);
+});
+
+test("unit: tutorial first-run auto-open decision is deterministic", () => {
+  const base = { completed: true, interests: [], familiarity: {}, baselineCompleted: true };
+  assert.equal(shouldAutoOpenTutorial(base), true);
+  assert.equal(shouldAutoOpenTutorial({ ...base, tutorialSkippedAt: "2026-08-25T00:00:00Z" }), false);
+  assert.equal(shouldAutoOpenTutorial({ ...base, tutorialCompletedAt: "2026-08-25T00:00:00Z" }), false);
+  assert.equal(shouldAutoOpenTutorial({ ...base, completed: false }), false);
+});
+
+test("unit: tutorial keyboard navigation is deterministic and bounded", () => {
+  assert.equal(TUTORIAL_STEPS.length, 5);
+  assert.equal(tutorialStepFromKey("ArrowRight", 0, 5), 1);
+  assert.equal(tutorialStepFromKey("Enter", 0, 5), 1);
+  assert.equal(tutorialStepFromKey("ArrowLeft", 0, 5), 0);
+  assert.equal(tutorialStepFromKey("ArrowLeft", 2, 5), 1);
+  assert.equal(tutorialStepFromKey("ArrowRight", 4, 5), 4);
+  assert.equal(tutorialStepFromKey("Backspace", 3, 5), 2);
+  assert.equal(tutorialStepFromKey("Escape", 0, 5), "close");
+  assert.equal(tutorialStepFromKey("x", 0, 5), "none");
+});
+
+test("integration: tutorial skip and completion persist without learning mutation", async () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true, tutorialOpen: false });
+  const learningKeys = ["responses", "reviewItems", "misconceptions", "reviewLogs", "skillEvidence", "diagnosticSessions", "sourcePackImports", "problemSearchLog", "assessmentHistory", "completedTaskIds", "snoozedTaskIds", "papers", "projects"];
+  const snapshot = () => JSON.stringify(Object.fromEntries(learningKeys.map((key) => [key, useAppStore.getState()[key]])));
+  const before = snapshot();
+  useAppStore.getState().openTutorial();
+  assert.equal(useAppStore.getState().tutorialOpen, true);
+  useAppStore.getState().skipTutorial();
+  assert.equal(useAppStore.getState().tutorialOpen, false);
+  assert.ok(useAppStore.getState().onboarding.tutorialSkippedAt);
+  useAppStore.getState().openTutorial();
+  assert.equal(useAppStore.getState().tutorialOpen, true);
+  useAppStore.getState().completeTutorial();
+  assert.equal(useAppStore.getState().tutorialOpen, false);
+  assert.ok(useAppStore.getState().onboarding.tutorialCompletedAt);
+  assert.equal(snapshot(), before);
+  await useAppStore.getState().persistNow();
+  const raw = JSON.parse(globalThis.localStorage.getItem("researchos-browser-state-v1"));
+  assert.ok(raw.onboarding.tutorialCompletedAt);
+  assert.ok(raw.onboarding.tutorialSkippedAt);
+});
+
+test("integration: tutorial first-run visibility, skip persistence and restart", async () => {
+  const seed = { ...createInitialState(), schemaVersion: 3, onboarding: { ...createInitialState().onboarding, completed: true } };
+  globalThis.localStorage.setItem("researchos-browser-state-v1", JSON.stringify(seed));
+  useAppStore.setState({ ...createInitialState(), hydrated: false, tutorialOpen: false });
+  await useAppStore.getState().hydrate();
+  assert.equal(useAppStore.getState().tutorialOpen, true);
+  useAppStore.getState().skipTutorial();
+  await useAppStore.getState().persistNow();
+  useAppStore.setState({ hydrated: false, tutorialOpen: false });
+  await useAppStore.getState().hydrate();
+  assert.equal(useAppStore.getState().tutorialOpen, false);
+  useAppStore.getState().openTutorial();
+  assert.equal(useAppStore.getState().tutorialOpen, true);
+  useAppStore.getState().completeTutorial();
+  useAppStore.getState().openTutorial();
+  assert.equal(useAppStore.getState().tutorialOpen, true);
+});
+
+test("integration: tutorial panel renders Chinese-first with controls and no chat affordance", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true, tutorialOpen: false });
+  const html = renderToStaticMarkup(createElement(Tutorial, { forceOpen: true }));
+  assert.match(html, /新手教程/);
+  assert.match(html, /今日学习/);
+  assert.match(html, /待核验/);
+  assert.match(html, /先锁定再反馈/);
+  assert.match(html, /跳过教程/);
+  assert.match(html, /上一步/);
+  assert.match(html, /下一步/);
+  assert.match(html, /约 5 分钟/);
+  assert.match(html, /隔离预览状态/);
+  assert.doesNotMatch(html, /Ask ResearchOS anything/i);
+  const finalHtml = renderToStaticMarkup(createElement(Tutorial, { forceOpen: true, initialStep: 4 }));
+  assert.match(finalHtml, /完成/);
+  assert.match(finalHtml, /复习与迁移/);
 });

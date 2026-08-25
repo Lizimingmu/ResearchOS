@@ -28,6 +28,7 @@ check("terminology Chinese names unique", duplicateChinese.length === 0, duplica
 
 const uiFiles = [
   "src/components/AppShell.tsx", "src/components/AttemptFlow.tsx", "src/components/CommandPalette.tsx", "src/components/Onboarding.tsx",
+  "src/components/Tutorial.tsx",
   "src/features/today/TodayView.tsx", "src/features/library/LibraryView.tsx", "src/features/paper-lab/PaperLabView.tsx",
   "src/features/methods/MethodLabView.tsx", "src/features/review/ReviewView.tsx", "src/features/ai-audit/AuditView.tsx",
   "src/features/frontier/FrontierView.tsx", "src/features/projects/ProjectsView.tsx", "src/features/skills/SkillMapView.tsx",

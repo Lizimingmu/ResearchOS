@@ -6,27 +6,27 @@
 
 ## 📦 Bundle outcome
 
-The initial JavaScript is 830,599 bytes (162,243 bytes gzip), down 71.6% from the audited v0.9 baseline of 2,925,687 bytes. Paper Lab and PDF.js remain lazy feature payloads rather than startup work.
+The initial JavaScript is 868,012 bytes (171,662 bytes gzip), down 70.3% from the audited v0.9 baseline of 2,925,687 bytes. Paper Lab and PDF.js remain lazy feature payloads rather than startup work.
 
 | Status | Metric | Observed | Budget |
 |---|---|---:|---:|
-| PASS | Initial JavaScript | 830,599 bytes | < 1,900,000 bytes |
-| PASS | Initial CSS | 62,691 bytes | < 70,000 bytes |
+| PASS | Initial JavaScript | 868,012 bytes | < 1,900,000 bytes |
+| PASS | Initial CSS | 65,119 bytes | < 70,000 bytes |
 | PASS | Training content chunk | 81,995 bytes | < 150,000 bytes |
-| PASS | Scheduler mean | 0.0707 ms | < 2 ms |
+| PASS | Scheduler mean | 0.0769 ms | < 2 ms |
 
 ## 🧩 Lazy boundaries
 
 | Chunk | Bytes | Why isolated |
 |---|---:|---|
-| Paper Lab | 860,751 | PDF renderer loads only when the user opens Paper Lab. |
+| Paper Lab | 860,722 | PDF renderer loads only when the user opens Paper Lab. |
 | PDF worker | 1,232,303 | Worker remains separate from the UI thread. |
 | Expanded training content | 81,995 | Deep content loads through practice/search feature routes, not onboarding startup. |
-| CSS | 62,691 | One theme-aware stylesheet with responsive rules. |
+| CSS | 65,119 | One theme-aware stylesheet with responsive rules. |
 
 ## ⚙️ Runtime checks
 
-- Today scheduling averaged 0.0707 ms over 2,000 deterministic runs.
+- Today scheduling averaged 0.0769 ms over 2,000 deterministic runs.
 - Zustand selectors avoid subscribing Today to transient UI state; global search and command-palette content are demand-loaded.
 - Source maps are emitted for debugging but are not referenced as startup assets.
 - SQLite writes use WAL, a five-second busy timeout, atomic transactions, and five bounded pre-save recovery snapshots.
