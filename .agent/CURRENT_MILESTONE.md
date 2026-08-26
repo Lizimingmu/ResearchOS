@@ -1,18 +1,26 @@
-# Current Milestone — M015 Personal Content Studio
+# Current Milestone — M016 v0.12.0 Release
 
-Execution status: **COMPLETE — CODEX ACCEPTED**.
+Execution status: **ACTIVE — SPECIFIED FOR OPENCODE**.
 
-## Accepted outcome
+## Objective
 
-ResearchOS now supports versioned personal additions and revisions of built-in content, deterministic review packs, patch/history/rollback, and explicit curated Obsidian publish/review batches while remaining the canonical content store.
+Build a reproducible v0.12.0 Windows release candidate containing the accepted M015 Personal Content Studio, with complete background regression evidence and truthful release metadata.
 
-## Accepted gate
+## Authorized now
 
-- State schema 4 / SQLite user version 2.
-- Frontend unit suite 88/88 PASS; M015 deterministic audit 31/31 PASS; OpenCode Rust suite 27/27 PASS; handoff validator PASS.
-- No M015 scientific content change or verification promotion.
-- Real Vault access, foreground UI verification and packaging were outside this milestone and were not run.
+- Background source/version/documentation edits.
+- Deterministic frontend/Rust/audit/headless checks.
+- Non-interactive production compilation, packaging, copying and SHA256 calculation.
+- Project-local or temporary fixtures only.
 
-## Next decision
+## Not authorized in this phase
 
-No implementation task is active. Before distributing a new installer, perform a separately authorized release milestone for foreground smoke testing, version/build artifacts and hashes. M012 remains paused until explicitly selected.
+- Launching ResearchOS or an installer.
+- Foreground UI automation, screenshots, focus/input/window/display control.
+- Real Obsidian Vault or production ResearchOS data access.
+- Scientific content changes or status promotion.
+- Git operations by OpenCode.
+
+## Gate sequence
+
+OpenCode M016-01…04 → Codex diff/artifact review → explicit user permission request for any packaged-app foreground smoke → final release decision.

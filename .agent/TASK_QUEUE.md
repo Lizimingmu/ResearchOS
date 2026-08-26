@@ -26,5 +26,10 @@
 | M015-05 | P1 | Optional Obsidian review round trip | OpenCode Pro | Explicit finite review batches; read-back produces pending patch candidates; no watcher or automatic merge/cleanup | Imported science Yes |
 | M015-06 | P0 | Content/Obsidian deterministic QA and recovery | OpenCode Pro | Migration, backup, conflicts, rollback, path escape, interrupted write and no-write invariants pass under testing policy | Changeset Yes |
 | M015-07 | P0 | Product/scientific/anti-dumping gate | Codex | COMPLETED/ACCEPTED: revision safety, pending-only imported changes, deterministic recovery and Obsidian anti-dumping boundaries passed final review | Yes — signed off |
+| M016-01 | P0 | Prepare consistent v0.12.0 version and release documentation | OpenCode Pro | All product/version declarations agree; Chinese changelog/release draft accurately describes M015; no scientific/status change | No |
+| M016-02 | P0 | Run complete background regression and migration/persistence gates | OpenCode Pro | All specified suites pass serially; schema 3→4 and schema 4 preservation covered; exact failures reported | No |
+| M016-03 | P0 | Build and package v0.12.0 release candidate | OpenCode Pro | Portable exe + NSIS installer copied without overwriting old releases; sizes/SHA256/metadata exact; no launch | No |
+| M016-04 | P0 | Produce implementation/release handoff and stop | OpenCode Pro | Reports truthful across four testing classes; run state awaits Codex; no Git/foreground/real Vault | Changeset audit only |
+| M016-05 | P0 | Diff, artifact and release gate | Codex | Accepted-tag diff reviewed; hashes independently checked; foreground status explicitly retained as NOT RUN unless newly permitted | Release sign-off Yes |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.
