@@ -1,30 +1,25 @@
-# ResearchOS v0.10.2
+# ResearchOS v0.11.0
 
 *A local-first Windows desktop system for deliberate practice in medical-research methods, scientific judgment, paper reading, project transfer, and human oversight of AI.*
 
 ---
 
-## 🧭 What changed in v0.10.2
+## 🧭 What changed in v0.11.0
 
-- Simplified Chinese interface across navigation, onboarding, training, review, evidence, project, settings, diagnostics, and startup recovery.
-- Chinese presentation mappings for verification, difficulty, task, persistence, and other stored enum values without changing database-compatible values.
-- Scientific source titles, DOI/PMID identifiers, and verified source text remain in their original language to preserve meaning and provenance.
+- Added the Research Problem Atlas (科研常见问题库): structured diagnostic learning (快速定位 / 鉴别诊断 / 序贯排查 / 缺失信息 / 错误定位 / 结论边界 / 审稿诊断 / AI 解释审核) with deterministic search, source registry, evidence-claim mapping, knowledge versioning, and transactional source-pack import with dry-run gating.
+- Added a Chinese-first five-minute first-run tutorial covering Today, the Problem Atlas, pending-evidence status, lock-before-feedback, and review/transfer. It is skippable, restartable from Settings, keyboard-navigable, and runs its practice steps in an isolated preview state that never writes learning records.
+- Two independent import gates (structural validation vs scientific completeness), exception-safe validators, and an auditable legacy→v3 staging converter keep the external 166-card corpus quarantined as `unclassified` and import-ineligible.
+- All M013 demo ProblemCards, claims, paths and rubrics remain `pending`; source tiers follow the Codex-reviewed S/A/C mapping, and pending claims display proposed support (拟直接支持 · 待核验).
 
-- A complete answer → confidence → locked feedback → transfer → delayed variant-review loop.
-- Explicit high-confidence misconceptions that cannot clear until a correct unfamiliar variant.
-- First-run research orientation and a blind three-case baseline assessment.
-- A five-task Today queue balancing foundations, current weaknesses, project relevance, due reviews, and occasional frontier work.
-- 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, and 40 AI-audit cases.
-- Versioned state/SQLite migrations, atomic persistence, five recovery snapshots, health diagnostics, and JSON/CSV/Markdown exports.
-- Production-safe React bundling, startup recovery UI, and demand-loaded search/content/PDF workspaces; initial JavaScript is 77.3% smaller than the audited v0.9 baseline.
+Earlier v0.10.2 improvements remain: Simplified Chinese interface, complete answer → confidence → locked feedback → transfer → delayed variant-review loop, high-confidence misconceptions, 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, 40 AI-audit cases, versioned state/SQLite migrations, atomic persistence, five recovery snapshots, and JSON/CSV/Markdown exports.
 
 ResearchOS is an educational research tool, not clinical decision support. Its mechanisms align with established learning principles, but the product has not been shown in a trial to improve research competence or patient outcomes.
 
 ## 📦 Install
 
-Verify `release/ResearchOS_0.10.2_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.10.2_x64.exe` is also provided.
+Verify `release/ResearchOS_0.11.0_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.11.0_x64.exe` is also provided.
 
-Earlier artifacts remain in `release/` for rollback and audit. v0.10.0 must not be distributed because its browser bundle could open as a blank window. Exact v0.10.2 sizes, schema versions, and digests are in `release/BUILD_METADATA_v0.10.2.json`.
+Earlier artifacts remain in `release/` for rollback and audit. v0.10.0 must not be distributed because its browser bundle could open as a blank window. Exact v0.11.0 sizes, schema versions, and digests are in `release/BUILD_METADATA_v0.11.0.json`; the Chinese release notes are in `release/RELEASE_NOTES_v0.11.0.md`.
 
 ## 🛠️ Develop and verify
 

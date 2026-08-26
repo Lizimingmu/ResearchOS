@@ -4,7 +4,7 @@
   "sourcePackId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
   "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
   "originalFileSha256": "1ef32f1ae4cef6af30ae8c7991f7b7a59897d219952251e551f327a8fcfd0b10",
-  "convertedAt": "2026-08-25T08:23:17.278Z",
+  "convertedAt": "2026-08-25T15:19:30.667Z",
   "convertedBy": "ResearchOS M013-10 legacy→v3 staging converter",
   "provenance": "Source-first external scientific pre-review based on Bioconductor spatial-analysis guidance, peer-reviewed spatial/proteomics/multi-omics benchmarks, HUPO-PSI MIAPE standards, current January 2026 ICMJE recommendations, WHO health-AI guidance and scientific visualization/integrity resources. All claims remain pending until Codex/formal ResearchOS source-pack gate.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
   "packSchemaVersion": 1,

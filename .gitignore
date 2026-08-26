@@ -7,6 +7,11 @@ dist/
 .test-build/
 .runtime-data/
 .smoke-*/
+.tmp/
+.agent/m015-run-logs/
+.agent/m015-run.lock
+.agent/m015-watchdog-state.json
+.agent/m015-watchdog.pid
 src-tauri/target/
 src-tauri/gen/
 *.log

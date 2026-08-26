@@ -44,7 +44,8 @@ const defaultSettings: AppSettings = {
   activeProviderId: "openai",
 };
 
-const emptyAtlasCollections = () => ({  problemAtlasSources: [],
+const emptyAtlasCollections = () => ({
+  problemAtlasSources: [],
   problemAtlasClaims: [],
   problemCards: [],
   diagnosticCauses: [],
@@ -67,7 +68,8 @@ const seededAtlasCollections = () => {
   };
 };
 
-export const createInitialState = (): AppStateData => {  const atlas = seededAtlasCollections();
+export const createInitialState = (): AppStateData => {
+  const atlas = seededAtlasCollections();
   return {
     schemaVersion: CURRENT_STATE_SCHEMA,
     papers: examplePapers.map((paper) => ({ ...paper, tags: [...paper.tags] })),
@@ -189,7 +191,8 @@ function stateData(state: AppStore): AppStateData {
   };
 }
 
-let persistTimer: ReturnType<typeof setTimeout> | undefined;const schedulePersist = (get: () => AppStore, report: (status: AppStore["persistenceStatus"], error?: unknown) => void) => {
+let persistTimer: ReturnType<typeof setTimeout> | undefined;
+const schedulePersist = (get: () => AppStore, report: (status: AppStore["persistenceStatus"], error?: unknown) => void) => {
   if (persistTimer) clearTimeout(persistTimer);
   report("saving");
   persistTimer = setTimeout(() => {

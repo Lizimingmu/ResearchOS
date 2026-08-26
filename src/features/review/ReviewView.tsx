@@ -31,7 +31,8 @@ function referenceFor(item: ReviewItem) {
 }
 
 function DueReview({ item }: { item: ReviewItem }) {
-  const logs = useAppStore((state) => state.reviewLogs.filter((log) => log.reviewItemId === item.id));
+  const allReviewLogs = useAppStore((state) => state.reviewLogs);
+  const logs = useMemo(() => allReviewLogs.filter((log) => log.reviewItemId === item.id), [allReviewLogs, item.id]);
   const submitResponse = useAppStore((state) => state.submitResponse);
   const rateReview = useAppStore((state) => state.rateReview);
   const addSkillEvidence = useAppStore((state) => state.addSkillEvidence);

@@ -115,8 +115,8 @@ export function Tutorial({ forceOpen, initialStep = 0 }: { forceOpen?: boolean; 
         return (
           <div className="tutorial-step">
             <span className="eyebrow">1 · 有界每日队列</span>
-            <p>今日学习是一个有界的每日队列：提取练习始终排在首位，到期的复习不会被任何新任务挤掉。</p>
-            <p>队列最多加入一个新问题任务，控制在约 30–50 分钟：提取 → 论文 → 方法 → AI 审查 → 问题 → 迁移。</p>
+            <p>今日学习是一个有界的每日队列：一条最高优先级的到期/高风险提取复习槽位排在首位并受到保护，不会被任何新任务挤掉；其余到期项按权重进入后续调度，而不是各自占一张卡片。</p>
+            <p>队列控制在约 30–50 分钟：提取 → 论文 → 方法 → AI 审查 → 问题 → 迁移，问题任务每天最多一个新。</p>
             <p className="tutorial-note">ResearchOS 不是聊天框；训练的是科研判断，而不是提示词。</p>
           </div>
         );

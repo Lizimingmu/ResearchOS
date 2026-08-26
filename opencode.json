@@ -3,6 +3,7 @@
   "model": "opencode-go/deepseek-v4-pro",
   "snapshot": false,
   "permission": {
+    "external_directory": "deny",
     "bash": {
       "*": "allow",
       "git *": "deny"

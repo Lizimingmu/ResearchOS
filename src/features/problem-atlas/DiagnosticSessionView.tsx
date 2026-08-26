@@ -96,7 +96,8 @@ function CalibrationPanel({ grade, onFinish }: { grade: { score: number }; onFin
 }
 
 export function DiagnosticSessionView({ card, mode }: SessionViewProps) {
-  const causes = useAppStore((state) => state.diagnosticCauses.filter((cause) => cause.problemId === card.id));
+  const allCauses = useAppStore((state) => state.diagnosticCauses);
+  const causes = useMemo(() => allCauses.filter((cause) => cause.problemId === card.id), [allCauses, card.id]);
   const diagnosticChecks = useAppStore((state) => state.diagnosticChecks);
   const path = useAppStore((state) => state.diagnosticPaths.find((entry) => entry.id === card.diagnosticPathId));
   const evidence = useAppStore((state) => state.diagnosticEvidence);

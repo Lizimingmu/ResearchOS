@@ -1,7 +1,7 @@
 # Implementation Report
 
 Status: COMPLETE — awaiting Codex review
-Task IDs: M013-01 through M013-07; M013-10; M013-09 + M013-10R (final patch); M013-11R (micro-patch); M013-11R2 (metadata patch); M014-01 (tutorial)
+Task IDs: M013-01 through M013-07; M013-10; M013-09 + M013-10R (final patch); M013-11R (micro-patch); M013-11R2 (metadata patch); M014-01 (tutorial); M014-02 (release candidate — background work complete, interactive smoke paused per `.agent/TESTING_POLICY.md`)
 Agent/model: OpenCode / DeepSeek V4 Pro
 Approved product baseline: 441ece1
 
@@ -97,6 +97,43 @@ Modified:
 - `scripts/localization-audit.mjs` — `src/components/Tutorial.tsx` added to the UI denylist scan.
 - `tests-node/suite.mjs` — 50 tests (5 new: auto-open decision, keyboard navigation bounds, skip/complete persistence with zero learning-state mutation, first-run visibility + skip persistence + restart via hydrate, panel render incl. final-step Finish control and no chat affordance).
 
+## M014-02 changed files (release candidate)
+
+Modified:
+
+- `src/state/store.ts` — restored the three accidental line-join formatting changes (`emptyAtlasCollections`, `createInitialState`, `schedulePersist`) with no behavioral change.
+- `src/components/Tutorial.tsx` — Today wording calibrated to scheduler behavior: one highest-priority due/high-risk retrieval slot is protected; remaining due items stay in weighted scheduling rather than each becoming a Today card.
+- Version declarations `0.10.2` → `0.11.0`: `package.json`, `package-lock.json` (root + package), `src-tauri/Cargo.toml`, `src-tauri/tauri.conf.json`, `src-tauri/Cargo.lock` (`researchos` entry only), `src-tauri/src/lib.rs` (HTTP user-agent), `src/components/AppShell.tsx` (sidebar), `src/features/settings/SettingsView.tsx` (backup default filename + system note).
+- `CHANGELOG.md` (0.11.0 entry), `README.md` (v0.11.0 sections + artifact names).
+
+### M014-02 release-regression defect fix (found in packaged-app smoke)
+
+- **React #185 maximum-update-depth crash on Problem Atlas navigation** (reproduced twice in the packaged app; diagnostic captured in `.smoke-v0110/shots/32-sessionB-recovery-details.png`): two zustand selectors returned a fresh array on every read — `DiagnosticSessionView.tsx` (`state.diagnosticCauses.filter(...)`, crashed on every Problem Atlas navigation) and `ReviewView.tsx` (`state.reviewLogs.filter(...)`, same defect class). Both replaced with stable raw-array selection + `useMemo` filtering; `rg` confirms no remaining unstable selectors of this shape. The latent bug was invisible to SSR tests (single render) and only manifests in live reactive rendering — exactly what the packaged regression exists to catch.
+- Artifacts rebuilt and re-hashed after the fix (see artifact list below); frontend suite re-run 50/50.
+- The packaged startup-recovery gate worked as designed during reproduction: bounded failure message, database not reset, one-click restart recovered the workspace.
+
+New release artifacts (rebuilt after the regression fix; unsigned):
+
+- `release/ResearchOS_0.11.0_x64.exe` — 15,425,024 bytes — SHA256 `A6EA2C32E655D9C01C5B9F1BAA99D8580E80CCDB49524561AA032ACF8A731C4B`
+- `release/ResearchOS_0.11.0_x64-setup.exe` — 5,174,334 bytes — SHA256 `566BF756B3D96C4E555F1EC40F0FD8D2879A79D30893062E78F5AE9C25D7D417`
+- `release/SHA256SUMS.txt` (v0.11.0 lines replaced with post-fix digests), `release/BUILD_METADATA_v0.11.0.json`, `release/RELEASE_NOTES_v0.11.0.md` (Chinese, includes the regression-fix note), `release/README.md` (current-release pointer).
+
+Build commands (recorded): frontend `npm run build`; Rust `cargo test --manifest-path src-tauri/Cargo.toml` with `CARGO_HOME=<repo>\.cargo-home`, `CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse`, `CARGO_REGISTRIES_CRATES_IO_INDEX=http://127.0.0.1:18765/index/` while `node scripts/cargo-proxy.mjs` served the crates index; packaging `npm run tauri:build` (release profile 2m27s; NSIS `makensis`).
+
+### M014-02 test reporting (per `.agent/TESTING_POLICY.md`)
+
+- `BACKGROUND AUTOMATED — PASS`: 50/50 frontend tests (`npm test`), source-pack audit 0/0, Problem Atlas audit 0/0, staging gate 63/63, content audit 0 errors/1 pre-existing warning, localization audit 11 checks, performance audit 868,251 bytes initial JS (budget 1.9 MB), startup smoke, seed export, agent-handoff validator, `cargo test` 7/7, NSIS packaging.
+- `HEADLESS/OFF-SCREEN — PASS`: isolated-copy database verification of the packaged-app smoke data (`.smoke-v0110/verify/`): `PRAGMA user_version = 2`, `integrity_check ok`, payload `schemaVersion: 3`, `onboarding.completed: true`, tutorial timestamps absent (consistent with the interrupted session state), and zero tutorial-written learning records (responses/misconceptions/reviewLogs/skillEvidence/diagnosticSessions all 0; reviewItems=1 is the built-in seed; sourcePackImports=1 is the demo seed). v0.10.2 fixture created at `.smoke-v0110/data-b/researchos.sqlite3` (schemaVersion 2 payload, representative project/response/reviewItem, no tutorial fields, `user_version = 2`, integrity ok). File-level backup/export → restore/import round trip on isolated copies (`.smoke-v0110/backup-roundtrip.py`, mirroring `export_backup_inner`/`import_backup_inner`): payload byte-identical, record counts identical, integrity ok, `user_version = 2`.
+- `FOREGROUND UI — PARTIAL (user-approved session, screenshots 20–32 in .smoke-v0110/shots/)`: VERIFIED — v0.10.2 fixture (schemaVersion 2, user_version 2) loads with frontend migration to schema 3 and seeded atlas (problem task in Today queue); tutorial auto-opens on the migrated state; keyboard →×4 reaches step 5; 完成 click closes the panel and persists `tutorialCompletedAt = 2026-08-25T13:44:40Z` (verified read-only in a DB copy; fixture project/response preserved; schema 3; user_version 2); Settings → 重新打开新手教程 reopens the panel; Esc closes it and focus is restored visibly to the launch button; compact window 1080×700 (2160×1400 physical) renders without blank/overlap; startup-recovery gate works (bounded message, DB not reset, one-click restart). FOUND+FIXED — React #185 crash on Problem Atlas navigation (see defect section); post-fix atlas navigation in the packaged app NOT VISUALLY VERIFIED (instance closed for the rebuild; next approval needed). NOT RUN — Today-nav capture post-recovery, in-app backup/restore UI leg (session C), restart-persistence visual confirmation after restore.
+- `USER-MANUAL — NOT RUN`: checklist offered to the user (first launch, tutorial skip/finish/reopen, keyboard/focus restoration, normal + compact window, navigation, restart persistence, backup/restore in the packaged app).
+
+Isolation record (approved session): instance 1 PID 23448 on `.smoke-v0110\data-b` — closed by exact PID after a fixture defect was identified (the fixture had set `user_version = 2` without applying the 0002 migration, so `state_snapshots` was missing and saves failed; the fixture was corrected to match a real v0.10.2 database — test-fixture bug, not an app bug). Instance 2 PID 14188 on the corrected fixture — completed the checks above, then reproduced the React #185 crash twice, was used to capture the diagnostic, and was closed by exact PID before the rebuild. No production data directory, credentials, or personal files were touched; no Git operations were performed.
+
+## M014-02R (validation-only closeout)
+
+- Documentation patch applied: `release/RELEASE_NOTES_v0.11.0.md` wording corrected from “重新签名哈希” to “重新计算哈希”（二进制文件未签名；哈希为重新计算）。No other wording, code, or artifact bytes changed.
+- Foreground packaged-app check (Atlas card/mode → Review without crash; restart retains tutorial completion) — `NOT RUN`: permission was requested with the exact scope (rebuilt portable `ResearchOS_0.11.0_x64.exe`, isolated `.smoke-v0110\data-b`, ~5 minutes, clicks + PrintWindow captures + exact-PID close/reopen, no DPI changes, no forced focus) and declined by the user on 2026-08-25. Remains `NOT RUN`; no launch attempted. In-app backup/restore UI remains explicitly `NOT RUN` per handoff.
+
 ## Implemented
 
 - M013-01: Source Registry, EvidenceClaim, knowledge-version models (current/superseded/deprecated/emerging + non-destructive supersession links), v2→v3 application-state migration with preservation tests; no automatic claim verification (claims/cards/rubrics stay pending; sources stay metadata_verified with tier inherited from existing verified seeds).
@@ -111,6 +148,7 @@ Modified:
 - M013-11R (this cycle): strict path-node/evidence order validation in the sequential engine (next-node reveal, node-owned evidence, reveal/ranking node matching, unique-node-coverage completion) with direct regressions; temporal-validation demo fully de-contradicted (internal-only wording removed, red flags corrected, bounded answer rewritten) and directly backed by a new pending EvidenceClaim on a new pending A-level BMJ methods source; 166 external cards untouched; no tutorial, no Git, no packaging.
 - M013-11R2 (this cycle, metadata-only): corrected `pa-src-altman-validation.pmid` `19401593` → `19477892` (PubMed record for DOI `10.1136/bmj.b605`); regenerated the seed export; corrected SC-DEMO-01; added a deterministic DOI↔PMID pair assertion to the source-pack audit so the mismatch cannot pass again. Source and claim remain pending; no wording/engine/UI/other metadata changed.
 - M014-01 (this cycle): optional Chinese-first five-minute tutorial (Today → Problem Atlas → pending-evidence status → lock-before-feedback → Review) with Skip/Back/Next/Finish, keyboard navigation, focus restoration, Escape close, reduced motion, restart from Settings, persisted skip/completion timestamps on the existing onboarding state, and isolated preview exercises that write nothing to learning records; reuses existing pending demo content only — no new scientific claims, sources, cards or generated answers.
+- M014-02 (this cycle): release candidate v0.11.0 — version declarations unified, store formatting restored, tutorial Today wording calibrated, full frontend/Rust regression, production Tauri build (NSIS + standalone), SHA256 + build metadata + Chinese release notes; file-level backup round trip and packaged-app DB verification on isolated copies; interactive packaged-app smoke partially completed in the pre-policy session segment and paused per `.agent/TESTING_POLICY.md` (resumable checkpoint recorded; foreground session requires new explicit approval).
 
 ## Tests
 
@@ -144,10 +182,11 @@ None remaining. (Fixed during the session: extensionless `.build` imports for di
 
 ## Remaining issues
 
+- M014-02 foreground verification is PARTIAL by design (policy-compliant): the approved session completed migration/tutorial/reopen/Esc/compact/recovery checks and surfaced the React #185 crash, which is fixed and repackaged; still NOT VISUALLY VERIFIED in the packaged app — post-fix Problem Atlas navigation, Today-nav capture, in-app backup/restore leg (data-c prepared), restart-persistence confirmation after restore. These need one more short approved foreground session (resumable checkpoint: fixture `.smoke-v0110\data-b` now carries `tutorialCompletedAt`; restore leg dir `.smoke-v0110\data-c` reserved).
 - M011 localization work remains unapproved and dirty; the localization audit script key mismatch was fixed mechanically (scripts only) so the gate is green again.
-- M012 Protocol Lab implementation remains paused behind M013 ACCEPT, as specified. Tutorial functionality was added in M014-01 only; M014-02 release regression/packaging remains for after Codex tutorial review.
-- All M013 demo ProblemCards/paths/rubrics/claims remain pending (HIGH risk) and require Codex scientific review per `.agent/SCIENTIFIC_GATES.md`; the correction groups are recorded in `SCIENTIFIC_CHANGESET.md` (SC-DEMO-01…04). The new temporal source `pa-src-altman-validation` and claim `pa-claim-temporal-validation` are pending and unverified. M014-01 added no scientific content.
+- M012 Protocol Lab implementation remains paused behind M013 ACCEPT, as specified.
+- All M013 demo ProblemCards/paths/rubrics/claims remain pending (HIGH risk) and require Codex scientific review per `.agent/SCIENTIFIC_GATES.md`; the correction groups are recorded in `SCIENTIFIC_CHANGESET.md` (SC-DEMO-01…04). The new temporal source `pa-src-altman-validation` and claim `pa-claim-temporal-validation` are pending and unverified. M014-01/M014-02 added no scientific content.
 - All 166 staged legacy cards remain `unclassified` (import-ineligible) until M013-11 classifies them; claim-level scientific patches listed in `SCIENTIFIC_CHANGESET.md` (CLM-QPCR-006, CLM-SP-008, CLM-AI-004, CLM-REV-003 and scope/qualification fills) remain open because no exact patch text exists.
 - The source-pack import UI is a minimal explicit flow (file picker → dry-run → gated confirm); it uses `allowUpdates: false`, so content changes to existing rows are never silently forced.
 - The tutorial auto-opens once for users whose onboarding is complete and who have neither completed nor skipped it (including existing users upgrading to this build); it is always skippable and restartable from Settings.
-- Packaging/release is prohibited; no version bump, no Git operations performed.
+- Version is 0.11.0; no Git operations were performed; release signing/installer behavior is not part of this milestone.

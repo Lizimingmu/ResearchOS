@@ -4,6 +4,23 @@
 
 ---
 
+## 🇨🇳 0.11.0 — 2026-08-25
+
+### Changed
+
+- Added the Research Problem Atlas (科研常见问题库): eight diagnostic training modes, deterministic search, source registry, evidence-claim mapping, knowledge versioning and transactional source-pack import with dry-run gating.
+- Added a Chinese-first five-minute first-run tutorial (Today → Problem Atlas → pending-evidence status → lock-before-feedback → Review), skippable and restartable from Settings, keyboard-navigable, with isolated preview exercises that never write learning records.
+- Hardened the source-pack importer: exception-safe structured validation, two independent gates (structural vs scientific completeness), CSV/Markdown oversize rejection, identical-import gate fix, and an auditable legacy→v3 staging converter. The 166 external legacy cards remain `unclassified` and import-ineligible.
+- Sequential diagnostic engine now validates path-node identity/order and evidence ownership against the actual diagnostic path, with baseline-before-reveal history.
+- Corrected pending demo content (temporal validation, leakage learn-and-lock, single-cell units, Codex-reviewed authority tiers) and pending-claim support display (拟…· 待核验).
+
+### Validation
+
+- 50/50 frontend tests; source-pack, Problem Atlas, staging (63/63), content, localization, performance and startup gates pass.
+- Rust tests pass; state schema 3 / SQLite user_version 2 unchanged.
+- Packaged-app regression (user-approved session): v0.10.2 fixture migrates to schema 3; tutorial auto-open, keyboard navigation, 完成 completion persisted (`tutorialCompletedAt`), Settings reopen, Esc close with focus restoration, compact 1080×700 layout and the startup-recovery gate verified visually; found and fixed a React #185 crash on Problem Atlas navigation (unstable zustand selectors), artifacts rebuilt and re-hashed; post-fix atlas navigation and the in-app restore leg remain pending the next approved session per `.agent/TESTING_POLICY.md`.
+- Backup/export → restore/import round trip verified byte-identical on isolated database copies; command-level behavior covered by Rust tests.
+
 ## 🇨🇳 0.10.2 — 2026-08-24
 
 ### Changed

@@ -1,14 +1,14 @@
 # Review Result
 
-ACCEPT
+PATCH REQUIRED
 
-M014-01 Chinese first-run tutorial is accepted for release-candidate integration.
+M014-02 is technically near-complete, but v0.11.0 is not yet release-signed.
 
-- Diff review confirms a five-step Chinese-first tutorial covering Today, Problem Atlas, pending evidence status, lock-before-feedback, and review/transfer.
-- Tutorial state is transient except for `tutorialCompletedAt` / `tutorialSkippedAt`; the preview uses local React state and pure diagnostic-engine functions. No response, review, misconception, calibration, scheduler, import, or search record is written.
-- First-run launch, skip/completion persistence, Settings restart, bounded keyboard navigation, focus restoration, reduced-motion CSS, and constrained viewport layout are implemented.
-- Independent regression passed: 50/50 tests, localization, startup, source-pack, Problem Atlas, staging 63/63, content, performance, seed export, and agent-handoff validation.
-- No scientific claims, sources, cards, answers, or verification statuses changed. Existing pending demo content remains explicitly pending.
-- Browser visual smoke could not be performed because the saved in-app-browser permission blocks localhost access. M014-02 must run the packaged-app visual smoke on an ordinary and compact Windows window before release packaging is signed.
+- ACCEPTED evidence: version declarations are consistent; React #185 root cause and stable-selector/`useMemo` fix are correct by diff review; Codex independently reran 50/50 frontend tests plus localization, startup, source-pack, Problem Atlas, staging 63/63, content, performance, handoff, and artifact SHA256 checks successfully.
+- Existing OpenCode evidence reports Rust 7/7 and successful NSIS/standalone builds. Codex's own Rust retry was NOT RUN to completion because Cargo network credentials/index access failed; an offline retry lacked cached `urlencoding`.
+- Release blocker: the packaged app crashed on Problem Atlas navigation before the selector fix, and the rebuilt artifact has not yet repeated that exact live navigation successfully. This defect class is not covered by the SSR test.
+- Required minimal foreground verification, only after explicit current user approval: launch the rebuilt portable artifact with isolated data; open Problem Atlas, enter one card/mode, then open Review; confirm no crash/blank screen; close and reopen once to confirm tutorial completion persists. No DPI/system-setting changes, focus forcing, or global input automation.
+- Documentation patch: replace “重新签名哈希” with “重新计算哈希” in `release/RELEASE_NOTES_v0.11.0.md`; the binaries are unsigned.
+- In-app backup/restore UI may remain `NOT RUN` if the file-level round trip and Rust command tests remain clearly disclosed; it is not the blocker.
 
-No release package has yet been produced. M014-02 owns final regression, versioning, Rust/Tauri verification, packaging, SHA256, and release notes.
+After the minimal check and wording patch, update the implementation report and stop for Codex final sign-off. Do not rebuild unless code or packaged assets change.

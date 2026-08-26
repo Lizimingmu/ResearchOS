@@ -1,0 +1,33 @@
+{
+  "product": "ResearchOS",
+  "version": "0.11.0",
+  "releasedAt": "2026-08-25",
+  "locale": "zh-CN",
+  "stateSchema": 3,
+  "sqliteUserVersion": 2,
+  "validation": {
+    "frontendTests": "50 passed, 0 failed",
+    "rustTests": "7 passed, 0 failed",
+    "startupSmoke": "passed without process or matchMedia globals",
+    "contentAudit": "passed with 0 errors, 1 warning",
+    "performanceAudit": "passed; initial JS 868251 bytes; scheduler 0.0769 ms",
+    "sourcePackAudit": "passed with 0 errors, 0 warnings",
+    "problemAtlasAudit": "passed with 0 errors, 0 warnings",
+    "stagingGate": "passed; 63/63 checks",
+    "agentHandoff": "passed",
+    "backupRoundTrip": "file-level restore verified byte-identical on isolated copies; command-level covered by Rust tests",
+    "releaseRegressionNote": "Packaged-app regression found and fixed a React #185 maximum-update-depth crash on Problem Atlas navigation (unstable zustand selectors in DiagnosticSessionView/ReviewView); artifacts rebuilt and re-hashed. Atlas navigation in the packaged app awaits the next user-approved foreground session for visual confirmation."
+  },
+  "artifacts": [
+    {
+      "file": "ResearchOS_0.11.0_x64.exe",
+      "bytes": 15425024,
+      "sha256": "A6EA2C32E655D9C01C5B9F1BAA99D8580E80CCDB49524561AA032ACF8A731C4B"
+    },
+    {
+      "file": "ResearchOS_0.11.0_x64-setup.exe",
+      "bytes": 5174334,
+      "sha256": "566BF756B3D96C4E555F1EC40F0FD8D2879A79D30893062E78F5AE9C25D7D417"
+    }
+  ]
+}

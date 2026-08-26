@@ -18,6 +18,7 @@ ResearchOS is a local-first desktop learning and research-reasoning workspace. I
 8. Preserve user work across migrations. Destructive reset, import, or replacement must be explicit and recoverable where practical.
 9. Desktop quality matters: no blank screen, bounded startup failure, keyboard accessibility, readable Chinese typography, high-DPI layouts, and light/dark themes.
 10. Releases require deterministic QA, a scientific gate when relevant, reproducible artifacts, and SHA256 checksums.
+11. ResearchOS is the canonical personal-content store. External knowledge tools such as Obsidian are curated, explicit publishing/review surfaces only: no continuous sync, no automatic event export, no write outside a user-selected dedicated folder, and no silent overwrite of user-authored notes.
 
 ## Agent operating model
 
