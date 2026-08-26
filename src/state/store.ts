@@ -19,10 +19,12 @@ import type {
   ViewId,
 } from "../domain/types";
 import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
+import type { ContentLifecycle, ContentPatchPack, PersonalContentEntry } from "../domain/contentStudio";
 import { createReviewItem, scheduleReview } from "../learning/review";
 import { makeId } from "../lib/ids";
 import { loadPersistedState, savePersistedState } from "../services/desktop";
 import { applySourcePackImport, dryRunSourcePack, type SourcePackDryRun } from "../services/sourcePack";
+import { applyPatchTransaction, createDraft, rollbackRevision, sha256 } from "../services/contentStudio";
 import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
 
 const providers: AIProvider[] = [
@@ -87,6 +89,11 @@ export const createInitialState = (): AppStateData => {
     draftResponses: {},
     misconceptions: [],
     onboarding: { completed: false, interests: [], familiarity: {}, baselineCompleted: false },
+    personalContent: [],
+    contentRevisionHistory: [],
+    contentConflicts: [],
+    obsidianConnection: undefined,
+    obsidianPublishBatches: [],
     ...atlas,
   };
 };
@@ -157,6 +164,11 @@ interface AppStore extends AppStateData {
   recordProblemSearch: (query: string, matched: boolean, matchedCount: number) => void;
   dryRunSourcePack: (doc: SourcePackDocument) => SourcePackDryRun;
   confirmSourcePackImport: (doc: SourcePackDocument) => { applied: boolean; dryRun: SourcePackDryRun };
+  createPersonalDraft: (input: Parameters<typeof createDraft>[0]) => PersonalContentEntry;
+  updatePersonalDraft: (id: string, patch: { title?: string; payload?: Record<string, unknown>; dependencyKeys?: string[]; risk?: PersonalContentEntry["risk"] }) => void;
+  setPersonalLifecycle: (id: string, lifecycle: ContentLifecycle, activateForPrivateStudy?: boolean) => void;
+  applyContentPatch: (patch: ContentPatchPack) => PersonalContentEntry;
+  rollbackContent: (id: string, revision: number, reason: string) => PersonalContentEntry;
 }
 
 function stateData(state: AppStore): AppStateData {
@@ -188,6 +200,11 @@ function stateData(state: AppStore): AppStateData {
     diagnosticSessions: state.diagnosticSessions,
     sourcePackImports: state.sourcePackImports,
     problemSearchLog: state.problemSearchLog,
+    personalContent: state.personalContent,
+    contentRevisionHistory: state.contentRevisionHistory,
+    contentConflicts: state.contentConflicts,
+    obsidianConnection: state.obsidianConnection,
+    obsidianPublishBatches: state.obsidianPublishBatches,
   };
 }
 
@@ -533,6 +550,41 @@ export const useAppStore = create<AppStore>((set, get) => {
       }));
       queuePersist();
       return { applied: result.importRecord.result === "applied", dryRun: result.dryRun };
+    },
+    createPersonalDraft: (input) => {
+      if (get().personalContent.some((entry) => entry.id === input.id && entry.kind === input.kind)) throw new Error("内容 ID 已存在");
+      const draft = createDraft(input);
+      set((state) => ({ personalContent: [draft, ...state.personalContent] }));
+      queuePersist();
+      return draft;
+    },
+    updatePersonalDraft: (id, patch) => {
+      const target = get().personalContent.find((entry) => entry.id === id);
+      if (!target) throw new Error("内容不存在");
+      if (target.lifecycle !== "draft" && target.lifecycle !== "pending_review") throw new Error("只有草稿或待审核内容可以直接编辑");
+      const payload = patch.payload ? structuredClone(patch.payload) : target.payload;
+      set((state) => ({ personalContent: state.personalContent.map((entry) => entry.id === id ? { ...entry, ...patch, payload, hash: sha256(payload), verificationStatus: "pending", activeForLearning: false, updatedAt: new Date().toISOString() } : entry) }));
+      queuePersist();
+    },
+    setPersonalLifecycle: (id, lifecycle, activateForPrivateStudy = false) => {
+      const target = get().personalContent.find((entry) => entry.id === id);
+      if (!target) throw new Error("内容不存在");
+      if (lifecycle === "active" && target.verificationStatus !== "verified" && !activateForPrivateStudy) throw new Error("待核验内容需要明确选择私人启用，且状态仍保持待核验");
+      const activeForLearning = lifecycle === "active";
+      set((state) => ({ personalContent: state.personalContent.map((entry) => entry.id === id ? { ...entry, lifecycle, activeForLearning, updatedAt: new Date().toISOString() } : entry) }));
+      queuePersist();
+    },
+    applyContentPatch: (patch) => {
+      const result = applyPatchTransaction(get().personalContent, get().contentRevisionHistory, get().contentConflicts, patch);
+      set({ personalContent: result.entries, contentRevisionHistory: result.history, contentConflicts: result.conflicts });
+      queuePersist();
+      return result.applied;
+    },
+    rollbackContent: (id, revision, reason) => {
+      const result = rollbackRevision(get().personalContent, get().contentRevisionHistory, id, revision, reason);
+      set({ personalContent: result.entries, contentRevisionHistory: result.history });
+      queuePersist();
+      return result.restored;
     },
   };
 });

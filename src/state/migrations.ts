@@ -1,6 +1,6 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
 
-export const CURRENT_STATE_SCHEMA = 3;
+export const CURRENT_STATE_SCHEMA = 4;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -79,5 +79,12 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     diagnosticSessions: migratedSessions,
     sourcePackImports: arrayOr(raw.sourcePackImports, defaults.sourcePackImports),
     problemSearchLog: arrayOr(raw.problemSearchLog, defaults.problemSearchLog),
+    personalContent: arrayOr(raw.personalContent, defaults.personalContent),
+    contentRevisionHistory: arrayOr(raw.contentRevisionHistory, defaults.contentRevisionHistory),
+    contentConflicts: arrayOr(raw.contentConflicts, defaults.contentConflicts),
+    obsidianConnection: isRecord(raw.obsidianConnection)
+      ? raw.obsidianConnection as unknown as AppStateData["obsidianConnection"]
+      : defaults.obsidianConnection,
+    obsidianPublishBatches: arrayOr(raw.obsidianPublishBatches, defaults.obsidianPublishBatches),
   };
 }

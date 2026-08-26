@@ -17,7 +17,9 @@ export function TodayView() {
     diagnosticChecks: store.diagnosticChecks, diagnosticPaths: store.diagnosticPaths,
     diagnosticEvidence: store.diagnosticEvidence, problemTrainingCases: store.problemTrainingCases,
     diagnosticSessions: store.diagnosticSessions, sourcePackImports: store.sourcePackImports,
-    problemSearchLog: store.problemSearchLog,
+    problemSearchLog: store.problemSearchLog, personalContent: store.personalContent,
+    contentRevisionHistory: store.contentRevisionHistory, contentConflicts: store.contentConflicts,
+    obsidianConnection: store.obsidianConnection, obsidianPublishBatches: store.obsidianPublishBatches,
   })));
   const tasks = generateTodayTasks(state);
   const setView = useAppStore((store) => store.setView);

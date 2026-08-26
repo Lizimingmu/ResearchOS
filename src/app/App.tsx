@@ -18,6 +18,7 @@ const views = {
   projects: lazy(() => import("../features/projects/ProjectsView").then((module) => ({ default: module.ProjectsView }))),
   skills: lazy(() => import("../features/skills/SkillMapView").then((module) => ({ default: module.SkillMapView }))),
   "problem-atlas": lazy(() => import("../features/problem-atlas/ProblemAtlasView").then((module) => ({ default: module.ProblemAtlasView }))),
+  "content-studio": lazy(() => import("../features/content-studio/ContentStudioView").then((module) => ({ default: module.ContentStudioView }))),
   assessment: lazy(() => import("../features/assessment/AssessmentView").then((module) => ({ default: module.AssessmentView }))),
   settings: lazy(() => import("../features/settings/SettingsView").then((module) => ({ default: module.SettingsView }))),
 };

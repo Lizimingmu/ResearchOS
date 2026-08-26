@@ -11,6 +11,13 @@ import type {
   ProblemTrainingCase,
   SourcePackImportRecord,
 } from "./problemAtlas";
+import type {
+  ContentConflict,
+  ContentRevisionRecord,
+  ObsidianConnectionSettings,
+  ObsidianPublishBatch,
+  PersonalContentEntry,
+} from "./contentStudio";
 
 export type ContentOrigin = "verified_seed" | "verified_external" | "user" | "ai_generated" | "external_source_pack";
 export type VerificationStatus = "verified" | "pending" | "rejected" | "not_required";
@@ -329,6 +336,11 @@ export interface AppStateData {
   diagnosticSessions: DiagnosticSession[];
   sourcePackImports: SourcePackImportRecord[];
   problemSearchLog: ProblemSearchLogEntry[];
+  personalContent: PersonalContentEntry[];
+  contentRevisionHistory: ContentRevisionRecord[];
+  contentConflicts: ContentConflict[];
+  obsidianConnection?: ObsidianConnectionSettings;
+  obsidianPublishBatches: ObsidianPublishBatch[];
 }
 
 export interface AssessmentResult {
@@ -343,7 +355,7 @@ export interface AssessmentResult {
   domainScores?: Record<string, number>;
 }
 
-export type ViewId = "today" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "assessment" | "settings";
+export type ViewId = "today" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
 
 export interface DailyTask {
   id: string;

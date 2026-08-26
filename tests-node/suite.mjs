@@ -13,6 +13,7 @@ import { TodayView } from "../.build/features/today/TodayView.js";
 import { ProblemAtlasView } from "../.build/features/problem-atlas/ProblemAtlasView.js";
 import { LibraryView, paperFromPath } from "../.build/features/library/LibraryView.js";
 import { Tutorial, TUTORIAL_STEPS, tutorialStepFromKey } from "../.build/components/Tutorial.js";
+import { ContentStudioView } from "../.build/features/content-studio/ContentStudioView.js";
 import { calculatePriority, generateTodayTasks } from "../.build/learning/scheduler.js";
 import { createReviewItem, scheduleReview } from "../.build/learning/review.js";
 import { summarizeSkills } from "../.build/learning/scoring.js";
@@ -33,6 +34,8 @@ import {
   validateSourcePackUnknown,
 } from "../.build/services/sourcePack.js";
 import { convertLegacyCorpus, dryRunStagingPack, validateStagingPack } from "../.build/services/legacyStaging.js";
+import { buildBaseContentInventory } from "../.build/services/contentInventory.js";
+import { applyPatchTransaction, buildReviewPack, createDraft, resolveEffectiveContent, rollbackRevision, sha256 } from "../.build/services/contentStudio.js";
 import { createDiagnosticSession, gradeSession, lockSessionStep } from "../.build/problem-atlas/diagnosticEngine.js";
 import { searchProblemCards } from "../.build/problem-atlas/search.js";
 import { resolveTheme } from "../.build/app/theme.js";
@@ -103,7 +106,7 @@ test("unit: scheduler implements the specified weighted priority", () => {
 test("unit: v1 state migrates without losing user projects or responses", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 1, projects: [{ id: "keep-me" }], responses: [{ id: "response-keep" }], draftResponses: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 3);
+  assert.equal(migrated.schemaVersion, 4);
   assert.equal(migrated.projects[0].id, "keep-me");
   assert.equal(migrated.responses[0].id, "response-keep");
   assert.deepEqual(migrated.draftResponses, {});
@@ -113,7 +116,7 @@ test("unit: v1 state migrates without losing user projects or responses", () => 
 test("unit: v2 state migrates to v3 preserving user data and seeding the atlas", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 2, projects: [{ id: "v2-project" }], problemCards: undefined, diagnosticSessions: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 3);
+  assert.equal(migrated.schemaVersion, 4);
   assert.equal(migrated.projects[0].id, "v2-project");
   assert.equal(migrated.problemCards.length, 4);
   assert.deepEqual(migrated.diagnosticSessions, []);
@@ -122,6 +125,78 @@ test("unit: v2 state migrates to v3 preserving user data and seeding the atlas",
 
 test("unit: future state is rejected without downgrade", () => {
   assert.throws(() => migratePersistedState({ schemaVersion: 99 }, createInitialState()), /数据库未被修改/);
+});
+
+test("unit: M015 migration adds empty personal content collections without losing v3 data", () => {
+  const defaults = createInitialState();
+  const migrated = migratePersistedState({ ...defaults, schemaVersion: 3, projects: [{ id: "keep-v3-project" }], personalContent: undefined, contentRevisionHistory: undefined, contentConflicts: undefined, obsidianPublishBatches: undefined }, defaults);
+  assert.equal(migrated.schemaVersion, 4);
+  assert.equal(migrated.projects[0].id, "keep-v3-project");
+  assert.deepEqual(migrated.personalContent, []);
+  assert.deepEqual(migrated.contentRevisionHistory, []);
+  assert.deepEqual(migrated.contentConflicts, []);
+  assert.deepEqual(migrated.obsidianPublishBatches, []);
+});
+
+test("unit: M015 canonical hashing and inventory are deterministic", () => {
+  assert.equal(sha256("abc"), "sha256:ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad");
+  assert.equal(sha256({ b: 2, a: 1 }), sha256({ a: 1, b: 2 }));
+  const first = buildBaseContentInventory();
+  const second = buildBaseContentInventory();
+  assert.ok(first.length > 200);
+  assert.equal(JSON.stringify(first), JSON.stringify(second));
+  assert.equal(new Set(first.map((item) => item.key)).size, first.length);
+});
+
+test("unit: M015 drafts stay outside effective content until explicit activation", () => {
+  const base = buildBaseContentInventory();
+  const draft = createDraft({ id: "personal-test-method", kind: "method", title: "测试草稿", risk: "HIGH", payload: { id: "personal-test-method", title: "测试草稿" } }, new Date("2026-08-26T00:00:00Z"));
+  assert.equal(resolveEffectiveContent(base, [draft]).some((item) => item.id === draft.id), false);
+  const active = { ...draft, lifecycle: "active", activeForLearning: true };
+  assert.equal(resolveEffectiveContent(base, [active]).some((item) => item.id === draft.id), true);
+  assert.equal(active.verificationStatus, "pending");
+});
+
+test("unit: M015 review packs disclose deterministic dependency closure", () => {
+  const inventory = buildBaseContentInventory();
+  const selected = inventory.find((item) => item.kind === "method" && item.dependencyKeys.length > 0);
+  assert.ok(selected);
+  const first = buildReviewPack([selected.key], inventory, "review-batch", new Date("2026-08-26T00:00:00Z"));
+  const second = buildReviewPack([selected.key], inventory, "review-batch", new Date("2026-08-26T00:00:00Z"));
+  assert.equal(JSON.stringify(first), JSON.stringify(second));
+  assert.ok(first.manifest.includedKeys.length > 1);
+  assert.ok(selected.dependencyKeys.every((key) => first.manifest.includedKeys.includes(key)));
+  assert.throws(() => buildReviewPack(["method:missing"], inventory, "bad"), /缺少内容或依赖/);
+});
+
+test("unit: M015 patch apply is optimistic, atomic and rollback preserves history", () => {
+  const draft = createDraft({ id: "personal-patch-target", kind: "method", title: "旧标题", risk: "HIGH", payload: { id: "personal-patch-target", title: "旧标题", explanation: "旧内容" } }, new Date("2026-08-26T00:00:00Z"));
+  const patch = { patchSchemaVersion: 1, patchId: "patch-1", targetId: draft.id, targetKind: draft.kind, baseRevision: draft.revision, baseHash: draft.hash, changes: { title: "新标题", explanation: "新内容" }, reason: "用户审核修订", reviewer: "user", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:01:00Z" };
+  const before = JSON.stringify([draft]);
+  const applied = applyPatchTransaction([draft], [], [], patch, new Date("2026-08-26T00:02:00Z"));
+  assert.equal(applied.applied.revision, 2);
+  assert.equal(applied.applied.payload.explanation, "新内容");
+  assert.equal(applied.history[0].payload.explanation, "旧内容");
+  assert.equal(JSON.stringify([draft]), before);
+  assert.throws(() => applyPatchTransaction(applied.entries, applied.history, [], patch), /基线已过期/);
+  const rolled = rollbackRevision(applied.entries, applied.history, draft.id, 1, "恢复旧版", new Date("2026-08-26T00:03:00Z"));
+  assert.equal(rolled.restored.revision, 3);
+  assert.equal(rolled.restored.payload.explanation, "旧内容");
+  assert.equal(rolled.restored.lifecycle, "pending_review");
+});
+
+test("integration: Chinese content workbench renders lifecycle views without chat or automatic publish", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const html = renderToStaticMarkup(createElement(ContentStudioView));
+  assert.match(html, /内容工作台/);
+  assert.match(html, /内容库/);
+  assert.match(html, /草稿/);
+  assert.match(html, /待审核/);
+  assert.match(html, /发布箱/);
+  assert.match(html, /版本历史/);
+  assert.match(html, /冲突/);
+  assert.match(html, /明确确认的批次/);
+  assert.doesNotMatch(html, /自动同步/);
 });
 
 test("unit: AI review architecture delimits attempts and validates structured output", () => {

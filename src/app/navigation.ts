@@ -11,6 +11,7 @@ import {
   Library,
   SearchCheck,
   Settings,
+  NotebookTabs,
 } from "lucide-react";
 import type { ViewId } from "../domain/types";
 import { DEFAULT_LOCALE, t, type Locale } from "../i18n";
@@ -21,6 +22,7 @@ export const getNavigation = (locale: Locale = DEFAULT_LOCALE): Array<{ id: View
   { id: "paper-lab", label: t(locale, "nav.paperLab"), icon: FileSearch, key: "3" },
   { id: "methods", label: t(locale, "nav.methodLab"), icon: Beaker, key: "4" },
   { id: "problem-atlas", label: t(locale, "nav.problemAtlas"), icon: SearchCheck, key: "0" },
+  { id: "content-studio", label: "内容工作台", icon: NotebookTabs },
   { id: "review", label: t(locale, "nav.review"), icon: BookOpen, key: "5" },
   { id: "ai-audit", label: t(locale, "nav.aiAudit"), icon: BrainCircuit, key: "6" },
   { id: "frontier", label: t(locale, "nav.frontier"), icon: Compass, key: "7" },
