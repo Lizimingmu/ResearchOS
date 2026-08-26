@@ -30,6 +30,7 @@
 | M016-02 | P0 | Run complete background regression and migration/persistence gates | OpenCode Pro | All specified suites pass serially; schema 3→4 and schema 4 preservation covered; exact failures reported | No |
 | M016-03 | P0 | Build and package v0.12.0 release candidate | OpenCode Pro | Portable exe + NSIS installer copied without overwriting old releases; sizes/SHA256/metadata exact; no launch | No |
 | M016-04 | P0 | Produce implementation/release handoff and stop | OpenCode Pro | Reports truthful across four testing classes; run state awaits Codex; no Git/foreground/real Vault | Changeset audit only |
-| M016-05 | P0 | Diff, artifact and release gate | Codex | Accepted-tag diff reviewed; hashes independently checked; foreground status explicitly retained as NOT RUN unless newly permitted | Release sign-off Yes |
+| M016-05 | P0 | Diff, artifact and release gate | Codex | COMPLETED/ACCEPTED: diff and version declarations reviewed; new and old artifact hashes independently checked; background RC tagged | Release sign-off Yes |
+| M016-06 | P1 | Minimal permission-gated packaged-app smoke | OpenCode Pro + Codex | Only after current explicit permission: isolated-data portable app opens, Atlas and Content Studio paths render, restart persists state; exact PID closed; foreground status reported truthfully | Release sign-off Yes |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.

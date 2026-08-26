@@ -2,10 +2,11 @@
 
 ACCEPT
 
-M015-01 至 M015-07 及四轮 Codex 修补项全部通过最终 diff、产品边界和科学状态门审查。
+M016-01 至 M016-05 的后台发布候选门禁通过。
 
-- 个人内容、内置 overlay、版本历史、冲突与 rollback 保持 ResearchOS 为 canonical store。
-- 修订包和 Obsidian 回读只能产生 `draft | pending_review` + `pending`，不存在自提升为 verified/active 的路径。
-- Obsidian 仅执行显式有限批次；无 watcher、自动同步或真实 Vault 探测。路径 containment、junction/symlink、重复身份、字节前置条件及跨文件失败恢复已覆盖。
-- M015 未新增、修改或提升科研内容；166 张外部卡继续隔离。
-- Codex 最终后台复验：`npm run test:unit` 88/88、`npm run audit:m015` 31/31、handoff validator PASS。OpenCode 报告 Rust 27/27；前台 UI、用户手工验收和本轮打包按范围未运行。
+- v0.12.0 九处产品版本声明一致；状态 schema 4、SQLite `user_version` 2 未改变。
+- M015 Personal Content Studio、版本化 overlay、patch/history/rollback 与显式有限 Obsidian 批次被纳入候选版；未修改或提升科研内容，166 张外部卡继续隔离。
+- Codex 独立复验：前端 89/89、M015 审计 31/31、handoff validator PASS；OpenCode Rust 27/27。Codex 的离线 Rust 复跑因本地缓存缺少 `urlencoding` 而未进入编译，未进行联网重试。
+- 两份 v0.12.0 工件的实际字节数与 SHA256 均匹配元数据及 `SHA256SUMS.txt`；所有旧版 exe/installer 的实际 SHA256 也与原清单一致。
+- 候选源码实现提交为 `e2c10c2`，验收标签为 `v0.12.0-rc1`。
+- 本结论只接受后台 release candidate。打包应用前台、安装器行为、真实 Vault 与用户手工检查仍为 `NOT RUN`，不得描述为已验证。

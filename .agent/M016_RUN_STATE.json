@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "milestone": "M016",
   "runId": "m016-v0120-release-20260826",
-  "runStatus": "awaiting_codex_review",
-  "lastUpdated": "2026-08-26T21:05:00+08:00",
+  "runStatus": "release_candidate_accepted",
+  "lastUpdated": "2026-08-26T21:35:00+08:00",
   "canonicalPlan": ".agent/M016_RELEASE_PLAN.md",
   "constraints": {
     "backgroundOnly": true,
@@ -33,7 +33,8 @@
     { "id": "M016-02", "status": "completed", "attempts": 1 },
     { "id": "M016-03", "status": "completed", "attempts": 1 },
     { "id": "M016-04", "status": "completed", "attempts": 1 },
-    { "id": "M016-05", "status": "pending", "attempts": 0 }
+    { "id": "M016-05", "status": "completed", "attempts": 1 },
+    { "id": "M016-06", "status": "permission_pending", "attempts": 0 }
   ],
   "failure": null
 }

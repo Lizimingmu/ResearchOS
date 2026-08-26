@@ -1,6 +1,6 @@
 # Current Milestone — M016 v0.12.0 Release
 
-Execution status: **ACTIVE — SPECIFIED FOR OPENCODE**.
+Execution status: **BACKGROUND COMPLETE — CODEX ACCEPTED; FOREGROUND PERMISSION PENDING**.
 
 ## Objective
 
@@ -21,6 +21,10 @@ Build a reproducible v0.12.0 Windows release candidate containing the accepted M
 - Scientific content changes or status promotion.
 - Git operations by OpenCode.
 
-## Gate sequence
+## Accepted background gate
 
-OpenCode M016-01…04 → Codex diff/artifact review → explicit user permission request for any packaged-app foreground smoke → final release decision.
+OpenCode completed M016-01…04. Codex accepted the diff, version declarations, reports and artifact hashes in M016-05. Candidate source tag: `v0.12.0-rc1`.
+
+## Remaining optional release check
+
+Before any packaged-app foreground smoke, request current user permission with the executable, duration, input/focus actions and isolated data directory. Without permission, retain `FOREGROUND UI — NOT RUN` and do not launch anything.
