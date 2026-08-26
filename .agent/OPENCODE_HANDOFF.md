@@ -1,4 +1,12 @@
-# OpenCode Handoff — M015 Personal Content Studio
+# OpenCode Handoff — No Active Implementation Task
+
+M015 Personal Content Studio is complete and Codex accepted. Stop; do not continue implementation, packaging, Git operations, foreground testing or real Obsidian access without a new milestone handoff.
+
+The canonical accepted state is recorded in `.agent/PROJECT_STATE.md`, `.agent/CURRENT_MILESTONE.md` and `.agent/REVIEW_RESULT.md`.
+
+---
+
+# Archived M015 Execution Handoff
 
 ## Start here
 

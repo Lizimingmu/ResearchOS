@@ -25,6 +25,6 @@
 | M015-04 | P0 | Curated Obsidian publisher | OpenCode Pro | Dedicated-folder containment; preview-before-confirm; managed blocks; idempotency; zero automatic writes; manual text preserved | No |
 | M015-05 | P1 | Optional Obsidian review round trip | OpenCode Pro | Explicit finite review batches; read-back produces pending patch candidates; no watcher or automatic merge/cleanup | Imported science Yes |
 | M015-06 | P0 | Content/Obsidian deterministic QA and recovery | OpenCode Pro | Migration, backup, conflicts, rollback, path escape, interrupted write and no-write invariants pass under testing policy | Changeset Yes |
-| M015-07 | P0 | Product/scientific/anti-dumping gate | Codex | Diff/report review proves revision safety, evidence statuses, representative packs and Obsidian zero-write boundaries | Yes |
+| M015-07 | P0 | Product/scientific/anti-dumping gate | Codex | COMPLETED/ACCEPTED: revision safety, pending-only imported changes, deterministic recovery and Obsidian anti-dumping boundaries passed final review | Yes — signed off |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.

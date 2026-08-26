@@ -16,6 +16,7 @@
     "audit:source-pack": "npm run build && node scripts/source-pack-audit.mjs",
     "audit:problem-atlas": "npm run build && node scripts/problem-atlas-audit.mjs",
     "staging:audit": "npm run build && node scripts/m013-staging.mjs",
+    "audit:m015": "npm run build && node scripts/run-m015-audit.mjs",
     "seed:export": "npm run build && node scripts/export-seed.mjs",
     "content:audit": "npm run build && node scripts/content-audit.mjs",
     "localization:audit": "npm run build && node scripts/localization-audit.mjs",

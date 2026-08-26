@@ -19,12 +19,14 @@ import type {
   ViewId,
 } from "../domain/types";
 import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
-import type { ContentLifecycle, ContentPatchPack, PersonalContentEntry } from "../domain/contentStudio";
+import type { ContentConflict, ContentLifecycle, ContentPatchPack, ContentPatchPreview, ObsidianPublishBatch, PersonalContentEntry, PortableContentRecord } from "../domain/contentStudio";
 import { createReviewItem, scheduleReview } from "../learning/review";
 import { makeId } from "../lib/ids";
-import { loadPersistedState, savePersistedState } from "../services/desktop";
+import { listMarkdownFiles, loadPersistedState, readTextFiles, savePersistedState, validateObsidianTarget, writeConfirmedFiles } from "../services/desktop";
 import { applySourcePackImport, dryRunSourcePack, type SourcePackDryRun } from "../services/sourcePack";
-import { applyPatchTransaction, createDraft, rollbackRevision, sha256 } from "../services/contentStudio";
+import { applyPatchTransaction, createDraft, createOverlayFromBuiltin, duplicatePersonalEntry, previewPatch, rollbackRevision, sha256 } from "../services/contentStudio";
+import { applyPlannedBatch, fingerprintWrites, planFromPersistedBatch, planPublishBatch, buildReviewRoundTrip, parseReviewFeedback, toReviewPatchCandidates, type ReviewPatchCandidate } from "../services/obsidianPublish";
+import { resolveEffectiveContent } from "../services/contentStudio";
 import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
 
 const providers: AIProvider[] = [
@@ -166,9 +168,20 @@ interface AppStore extends AppStateData {
   confirmSourcePackImport: (doc: SourcePackDocument) => { applied: boolean; dryRun: SourcePackDryRun };
   createPersonalDraft: (input: Parameters<typeof createDraft>[0]) => PersonalContentEntry;
   updatePersonalDraft: (id: string, patch: { title?: string; payload?: Record<string, unknown>; dependencyKeys?: string[]; risk?: PersonalContentEntry["risk"] }) => void;
+  duplicatePersonalDraft: (id: string) => PersonalContentEntry;
+  ensurePersonalOverlay: (record: PortableContentRecord, overlayId?: string) => PersonalContentEntry;
+  applyOverlayPatch: (patch: ContentPatchPack, builtinRecord?: PortableContentRecord) => PersonalContentEntry;
   setPersonalLifecycle: (id: string, lifecycle: ContentLifecycle, activateForPrivateStudy?: boolean) => void;
+  previewPersonalPatch: (patch: ContentPatchPack) => { found: boolean; stale: boolean; preview?: ContentPatchPreview };
   applyContentPatch: (patch: ContentPatchPack) => PersonalContentEntry;
   rollbackContent: (id: string, revision: number, reason: string) => PersonalContentEntry;
+  saveObsidianConnection: (vaultRoot: string, dedicatedSubfolder: string) => Promise<void>;
+  createPublishBatch: (selectedKeys: string[]) => string;
+  previewPublishBatch: (batchId: string) => Promise<void>;
+  confirmAndApplyPublishBatch: (batchId: string, secondConfirmed: boolean) => Promise<string[]>;
+  cancelPublishBatch: (batchId: string) => void;
+  exportReviewRoundTrip: (selectedKeys: string[], batchId?: string) => Promise<string>;
+  checkReviewRoundTrip: (batchId: string) => Promise<{ feedback: ReturnType<typeof parseReviewFeedback>; candidates: ReviewPatchCandidate[] }>;
 }
 
 function stateData(state: AppStore): AppStateData {
@@ -566,13 +579,139 @@ export const useAppStore = create<AppStore>((set, get) => {
       set((state) => ({ personalContent: state.personalContent.map((entry) => entry.id === id ? { ...entry, ...patch, payload, hash: sha256(payload), verificationStatus: "pending", activeForLearning: false, updatedAt: new Date().toISOString() } : entry) }));
       queuePersist();
     },
+    duplicatePersonalDraft: (id) => {
+      const source = get().personalContent.find((entry) => entry.id === id);
+      if (!source) throw new Error("内容不存在");
+      const copy = duplicatePersonalEntry(source, `${source.id}-copy-${Date.now().toString(36)}`);
+      set((state) => ({ personalContent: [copy, ...state.personalContent] }));
+      queuePersist();
+      return copy;
+    },
+    ensurePersonalOverlay: (record, overlayId) => {
+      const id = overlayId ?? `overlay-${record.id}`;
+      const existing = get().personalContent.find((entry) => entry.id === id);
+      if (existing) {
+        // Identity guard: never silently reuse an object that does not match
+        // the expected built-in snapshot for this overlay.
+        const matches = existing.kind === record.kind
+          && existing.baseKey === record.key
+          && existing.baseRevision === record.revision
+          && existing.baseHash === record.hash;
+        if (!matches) {
+          const conflict: ContentConflict = {
+            id: makeId("conflict"),
+            contentId: existing.id,
+            kind: "stale_patch",
+            expectedHash: record.hash,
+            actualHash: existing.hash,
+            detail: `建立个人修订被拒绝：已存在同 ID 的${existing.kind === record.kind ? "但基线不匹配的" : "不同类型的"}个人对象（r${existing.revision}）；请先人工处理该冲突。`,
+            status: "open",
+            createdAt: new Date().toISOString(),
+          };
+          set((state) => ({ contentConflicts: [conflict, ...state.contentConflicts] }));
+          queuePersist();
+          throw new Error(`个人修订 ID 冲突：同 ID 对象与内置快照不匹配；已记录冲突`);
+        }
+        return existing;
+      }
+      const created = createOverlayFromBuiltin(record, id);
+      set((state) => ({ personalContent: [created, ...state.personalContent] }));
+      queuePersist();
+      return created;
+    },
+    applyOverlayPatch: (patch, builtinRecord) => {
+      const existing = get().personalContent.find((candidate) => candidate.id === patch.targetId && candidate.kind === patch.targetKind);
+      if (existing) {
+        // Identity guard: when the caller declares the built-in source, the
+        // existing object must genuinely BE that object's overlay. A same-hash
+        // placeholder without the base linkage is a conflict, never a target.
+        if (builtinRecord) {
+          const isGenuineOverlay = existing.baseKey === builtinRecord.key
+            && existing.baseRevision === builtinRecord.revision
+            && existing.baseHash === builtinRecord.hash;
+          if (!isGenuineOverlay) {
+            const conflict: ContentConflict = {
+              id: makeId("conflict"),
+              contentId: existing.id,
+              kind: "stale_patch",
+              expectedHash: builtinRecord.hash,
+              actualHash: existing.hash,
+              detail: `个人修订应用被拒绝：同 ID 对象存在但不是“${builtinRecord.key}”的 overlay（缺少正确的 baseKey/baseRevision/baseHash 关联）；未写入。`,
+              status: "open",
+              createdAt: new Date().toISOString(),
+            };
+            set((state) => ({ contentConflicts: [conflict, ...state.contentConflicts] }));
+            queuePersist();
+            throw new Error("个人修订身份冲突：目标对象不是该内置内容的 overlay；已记录冲突且未写入");
+          }
+        }
+        // Strict optimistic lock: an existing overlay is NEVER rebased. The
+        // candidate must match the overlay's exact revision/hash or it fails
+        // as stale with an explainable conflict record and zero mutation.
+        try {
+          return get().applyContentPatch(patch);
+        } catch (error) {
+          const conflict: ContentConflict = {
+            id: makeId("conflict"),
+            contentId: existing.id,
+            kind: "stale_patch",
+            expectedHash: patch.baseHash,
+            actualHash: existing.hash,
+            detail: `修订候选 ${patch.patchId} 应用失败且未写入（当前 r${existing.revision}，候选基线 r${patch.baseRevision}）：${String(error)}`,
+            status: "open",
+            createdAt: new Date().toISOString(),
+          };
+          set((state) => ({ contentConflicts: [conflict, ...state.contentConflicts] }));
+          queuePersist();
+          throw error;
+        }
+      }
+      if (!builtinRecord || builtinRecord.kind !== patch.targetKind) throw new Error("修订目标不存在");
+      // First staging is the ONLY baseline translation, and it must be provable:
+      // the candidate has to match the current built-in snapshot exactly.
+      if (patch.baseRevision !== builtinRecord.revision || patch.baseHash !== builtinRecord.hash) {
+        const conflict: ContentConflict = {
+          id: makeId("conflict"),
+          contentId: patch.targetId,
+          kind: "stale_patch",
+          expectedHash: builtinRecord.hash,
+          actualHash: patch.baseHash,
+          detail: `审核候选 ${patch.patchId} 与当前内置基线 r${builtinRecord.revision} 不一致（候选基线 r${patch.baseRevision}）；未建立 overlay，未写入。`,
+          status: "open",
+          createdAt: new Date().toISOString(),
+        };
+        set((state) => ({ contentConflicts: [conflict, ...state.contentConflicts] }));
+        queuePersist();
+        throw new Error("审核候选与当前内置基线不一致（已过期）；已记录冲突且未写入");
+      }
+      // The freshly staged overlay carries exactly the snapshot's revision/hash,
+      // so the candidate applies through the normal optimistic lock untouched.
+      get().ensurePersonalOverlay(builtinRecord, patch.targetId);
+      return get().applyContentPatch(patch);
+    },
     setPersonalLifecycle: (id, lifecycle, activateForPrivateStudy = false) => {
       const target = get().personalContent.find((entry) => entry.id === id);
       if (!target) throw new Error("内容不存在");
       if (lifecycle === "active" && target.verificationStatus !== "verified" && !activateForPrivateStudy) throw new Error("待核验内容需要明确选择私人启用，且状态仍保持待核验");
       const activeForLearning = lifecycle === "active";
-      set((state) => ({ personalContent: state.personalContent.map((entry) => entry.id === id ? { ...entry, lifecycle, activeForLearning, updatedAt: new Date().toISOString() } : entry) }));
+      set((state) => ({ personalContent: state.personalContent.map((entry) => entry.id === id ? { ...entry, lifecycle, activeForLearning, verificationStatus: lifecycle === "active" && activateForPrivateStudy ? "pending" : entry.verificationStatus, updatedAt: new Date().toISOString() } : entry) }));
       queuePersist();
+    },
+    previewPersonalPatch: (patch) => {
+      const target = get().personalContent.find((entry) => entry.id === patch.targetId && entry.kind === patch.targetKind);
+      if (!target) return { found: false, stale: false };
+      const preview = previewPatch(patch, target);
+      if (preview.stale) {
+        const conflict: ContentConflict = {
+          id: makeId("conflict"), contentId: target.id, kind: "stale_patch",
+          expectedHash: patch.baseHash, actualHash: target.hash,
+          detail: `修订包 ${patch.patchId} 基线已过期：期望 r${patch.baseRevision}/${patch.baseHash.slice(0, 16)}…，实际 r${target.revision}/${target.hash.slice(0, 16)}…`,
+          status: "open", createdAt: new Date().toISOString(),
+        };
+        set((state) => ({ contentConflicts: [conflict, ...state.contentConflicts] }));
+        queuePersist();
+      }
+      return { found: true, stale: preview.stale, preview };
     },
     applyContentPatch: (patch) => {
       const result = applyPatchTransaction(get().personalContent, get().contentRevisionHistory, get().contentConflicts, patch);
@@ -585,6 +724,135 @@ export const useAppStore = create<AppStore>((set, get) => {
       set({ personalContent: result.entries, contentRevisionHistory: result.history });
       queuePersist();
       return result.restored;
+    },
+    saveObsidianConnection: async (vaultRoot, dedicatedSubfolder) => {
+      const cleanRoot = vaultRoot.trim();
+      const cleanSubfolder = dedicatedSubfolder.trim() || "ResearchOS";
+      const report = await validateObsidianTarget(cleanRoot, cleanSubfolder);
+      set({ obsidianConnection: { vaultRoot: cleanRoot, dedicatedSubfolder: cleanSubfolder, validatedAt: new Date().toISOString(), validatedResolvedDir: report.resolvedDir } });
+      queuePersist();
+    },
+    createPublishBatch: (selectedKeys) => {
+      if (selectedKeys.length === 0) throw new Error("请先选择要发布的内容");
+      const batch: ObsidianPublishBatch = { id: `publish-${Date.now().toString(36)}`, status: "draft", items: [], createdAt: new Date().toISOString(), batchType: "publish", selectedKeys: [...new Set(selectedKeys)].sort() };
+      set((state) => ({ obsidianPublishBatches: [batch, ...state.obsidianPublishBatches] }));
+      return batch.id;
+    },
+    previewPublishBatch: async (batchId) => {
+      const state = get();
+      const batch = state.obsidianPublishBatches.find((entry) => entry.id === batchId);
+      if (!batch) throw new Error("发布批次不存在");
+      const connection = state.obsidianConnection;
+      if (!connection) throw new Error("请先以只读方式连接 Obsidian 专用文件夹");
+      const selectedKeySet = new Set(batch.selectedKeys ?? []);
+      if (selectedKeySet.size === 0) throw new Error("发布批次没有选择任何内容");
+      // Loaded lazily: the base inventory pulls the large built-in datasets.
+      const { buildBaseContentInventory } = await import("../services/contentInventory");
+      const base = buildBaseContentInventory();
+      const effective = resolveEffectiveContent(base, state.personalContent);
+      const selected = effective.filter((record) => selectedKeySet.has(record.key));
+      if (selected.length === 0) throw new Error("所选内容不存在或不在有效内容中");
+      const listed = await listMarkdownFiles(connection.vaultRoot, connection.dedicatedSubfolder);
+      const reads = listed.length ? await readTextFiles(connection.vaultRoot, connection.dedicatedSubfolder, listed) : [];
+      const existingFiles = new Map(reads.map((entry) => [entry.relativePath, entry.contents ?? ""]));
+      const appliedHistory = state.obsidianPublishBatches
+        .filter((entry) => entry.status === "applied")
+        .flatMap((entry) => entry.appliedFingerprints ?? [])
+        .sort((a, b) => b.appliedAt.localeCompare(a.appliedAt));
+      const plan = planPublishBatch({ batchId, records: selected, existingFiles, appliedHistory, now: new Date() });
+      set((current) => ({
+        obsidianPublishBatches: current.obsidianPublishBatches.map((entry) => entry.id === batchId ? {
+          ...entry,
+          status: plan.conflictCount > 0 ? "conflict" : "previewed",
+          items: plan.items,
+          confirmationToken: plan.confirmationToken,
+          requiresSecondConfirmation: plan.requiresSecondConfirmation,
+          previewedAt: plan.createdAt,
+        } : entry),
+      }));
+      queuePersist();
+    },
+    confirmAndApplyPublishBatch: async (batchId, secondConfirmed) => {
+      const state = get();
+      const batch = state.obsidianPublishBatches.find((entry) => entry.id === batchId);
+      if (!batch || (batch.status !== "previewed" && batch.status !== "confirmed")) throw new Error("批次尚未预览或已被取消/冲突");
+      if (!state.obsidianConnection) throw new Error("未连接 Obsidian 专用文件夹");
+      const plan = planFromPersistedBatch(batch);
+      const writes = applyPlannedBatch(plan, { confirmationToken: batch.confirmationToken ?? "", secondConfirmed });
+      const writtenPaths = await writeConfirmedFiles(
+        state.obsidianConnection.vaultRoot,
+        state.obsidianConnection.dedicatedSubfolder,
+        writes.map((write) => ({ relativePath: write.relativePath, contents: write.contents, expectedExisting: write.expectedExisting })),
+      );
+      set((current) => ({
+        obsidianPublishBatches: current.obsidianPublishBatches.map((entry) => entry.id === batchId ? {
+          ...entry,
+          status: "applied",
+          appliedAt: new Date().toISOString(),
+          appliedFingerprints: fingerprintWrites(plan),
+        } : entry),
+      }));
+      queuePersist();
+      return writtenPaths;
+    },
+    cancelPublishBatch: (batchId) => {
+      set((state) => ({
+        obsidianPublishBatches: state.obsidianPublishBatches.map((entry) => entry.id === batchId && entry.status !== "applied" ? { ...entry, status: "cancelled" } : entry),
+      }));
+      queuePersist();
+    },
+    exportReviewRoundTrip: async (selectedKeys, batchId) => {
+      const state = get();
+      const connection = state.obsidianConnection;
+      if (!connection) throw new Error("请先以只读方式连接 Obsidian 专用文件夹");
+      const uniqueKeys = [...new Set(selectedKeys)].sort();
+      if (uniqueKeys.length === 0) throw new Error("请先选择要送去审核的内容");
+      const { buildBaseContentInventory } = await import("../services/contentInventory");
+      const base = buildBaseContentInventory();
+      const effective = resolveEffectiveContent(base, state.personalContent);
+      const selected = effective.filter((record) => uniqueKeys.includes(record.key));
+      if (selected.length === 0) throw new Error("所选内容不存在或不在有效内容中");
+      const id = batchId ?? `review-${Date.now().toString(36)}`;
+      const roundTrip = buildReviewRoundTrip(id, selected, new Date());
+      await writeConfirmedFiles(
+        connection.vaultRoot,
+        connection.dedicatedSubfolder,
+        [{ relativePath: roundTrip.manifestPath, contents: roundTrip.manifestJson, expectedExisting: null },
+         ...roundTrip.files.map((file) => ({ relativePath: file.relativePath, contents: file.contents, expectedExisting: null }))],
+      );
+      const batch: ObsidianPublishBatch = {
+        id, status: "applied", items: [], createdAt: roundTrip.manifest.createdAt, appliedAt: new Date().toISOString(),
+        batchType: "review_round_trip", selectedKeys: uniqueKeys, reviewManifest: roundTrip.manifest,
+      };
+      set((current) => ({ obsidianPublishBatches: [batch, ...current.obsidianPublishBatches] }));
+      queuePersist();
+      return id;
+    },
+    checkReviewRoundTrip: async (batchId) => {
+      const state = get();
+      const connection = state.obsidianConnection;
+      if (!connection) throw new Error("请先以只读方式连接 Obsidian 专用文件夹");
+      const batch = state.obsidianPublishBatches.find((entry) => entry.id === batchId && entry.batchType === "review_round_trip");
+      if (!batch?.reviewManifest) throw new Error("审核批次不存在或没有已导出的清单");
+      const manifestEntries = await readTextFiles(connection.vaultRoot, connection.dedicatedSubfolder, [`_Review/${batchId}/manifest.json`]);
+      const manifestContents = manifestEntries[0]?.contents;
+      if (!manifestContents) throw new Error("审核清单不存在；未读取任何笔记。");
+      let exportedManifest;
+      try { exportedManifest = JSON.parse(manifestContents); } catch { throw new Error("审核清单不是有效 JSON。"); }
+      // Only the exact exported manifest is authoritative for read-back.
+      const manifest = batch.reviewManifest;
+      if (JSON.stringify(exportedManifest) !== JSON.stringify(manifest)) throw new Error("审核清单与导出记录不一致；拒绝读取任何笔记。");
+      const entries = await readTextFiles(connection.vaultRoot, connection.dedicatedSubfolder, manifest.notes.map((note) => note.relativePath));
+      const feedback = parseReviewFeedback(entries, manifest);
+      const { buildBaseContentInventory } = await import("../services/contentInventory");
+      const base = buildBaseContentInventory();
+      const effective = resolveEffectiveContent(base, state.personalContent);
+      const candidates = toReviewPatchCandidates(feedback, effective, new Date());
+      set((current) => ({
+        obsidianPublishBatches: current.obsidianPublishBatches.map((entry) => entry.id === batchId ? { ...entry, reviewCheckedAt: new Date().toISOString() } : entry),
+      }));
+      queuePersist();
+      return { feedback, candidates };
     },
   };
 });

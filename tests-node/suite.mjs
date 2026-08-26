@@ -34,8 +34,26 @@ import {
   validateSourcePackUnknown,
 } from "../.build/services/sourcePack.js";
 import { convertLegacyCorpus, dryRunStagingPack, validateStagingPack } from "../.build/services/legacyStaging.js";
-import { buildBaseContentInventory } from "../.build/services/contentInventory.js";
-import { applyPatchTransaction, buildReviewPack, createDraft, resolveEffectiveContent, rollbackRevision, sha256 } from "../.build/services/contentStudio.js";
+import { buildBaseContentInventory } from "../.build/services/contentInventory.js";import { applyPatchTransaction, auditContentInventory, buildReviewPack, createDraft, createOverlayFromBuiltin, detectBaseUpdateConflicts, diffPayloads, duplicatePersonalEntry, KIND_TEMPLATES, parsePatchPackJson, resolveEffectiveContent, reviewPackFileEntries, rollbackRevision, sha256, validatePersonalContentDetailed, REVIEW_PACK_FILE_NAMES } from "../.build/services/contentStudio.js";
+import { isInsideRoot, UnsafePathError, validateExportDestination, validateSafeRelativePath } from "../.build/services/safePaths.js";
+import {
+  MANAGED_END,
+  MANAGED_START,
+  REVIEW_ANNOTATION_HEADING,
+  REVIEW_FOLDER,
+  USER_SECTION_HEADING,
+  applyPlannedBatch,
+  buildReviewRoundTrip,
+  extractPayloadFromManaged,
+  fingerprintWrites,
+  parseObsidianNote,
+  parseReviewFeedback,
+  planPublishBatch,
+  renderFullNote,
+  renderManagedBody,
+  safeNoteFileName,
+  toReviewPatchCandidates,
+} from "../.build/services/obsidianPublish.js";
 import { createDiagnosticSession, gradeSession, lockSessionStep } from "../.build/problem-atlas/diagnosticEngine.js";
 import { searchProblemCards } from "../.build/problem-atlas/search.js";
 import { resolveTheme } from "../.build/app/theme.js";
@@ -157,6 +175,74 @@ test("unit: M015 drafts stay outside effective content until explicit activation
   assert.equal(active.verificationStatus, "pending");
 });
 
+test("unit: M015 non-active lifecycles never leak into effective content", () => {
+  const base = buildBaseContentInventory();
+  const entry = createDraft({ id: "personal-leak-probe", kind: "method", title: "泄漏探针", risk: "HIGH", payload: { id: "personal-leak-probe", title: "泄漏探针" } }, new Date("2026-08-26T00:00:00Z"));
+  for (const lifecycle of ["draft", "pending_review", "archived", "deprecated", "superseded"]) {
+    const candidate = { ...entry, lifecycle };
+    if (lifecycle !== "draft") candidate.activeForLearning = lifecycle === "active";
+    assert.equal(resolveEffectiveContent(base, [candidate]).some((item) => item.id === entry.id), false, lifecycle);
+  }
+  // An inactive-but-active-labeled record is also excluded (defense in depth).
+  const misconfigured = { ...entry, lifecycle: "active", activeForLearning: false };
+  assert.equal(resolveEffectiveContent(base, [misconfigured]).some((item) => item.id === entry.id), false);
+});
+
+test("unit: M015 detailed validation reports evidence gaps and dependency impact deterministically", () => {
+  const base = buildBaseContentInventory();
+  const target = createDraft({ id: "personal-val-target", kind: "method", title: "校验目标", risk: "HIGH", payload: { id: "personal-val-target", title: "校验目标" }, dependencyKeys: ["evidence-source:not-there"] }, new Date("2026-08-26T00:00:00Z"));
+  const dependent = createDraft({ id: "personal-val-dependent", kind: "pattern", title: "依赖方", risk: "MEDIUM", payload: { id: "personal-val-dependent", title: "依赖方" }, dependencyKeys: ["method:personal-val-target"] }, new Date("2026-08-26T00:00:00Z"));
+  const wrongPayloadId = { ...target, payload: { ...target.payload, id: "mismatch" } };
+  const report = validatePersonalContentDetailed(target, { inventory: base, personal: [target, dependent] });
+  assert.ok(report.evidenceGaps.some((gap) => gap.dependencyKey === "evidence-source:not-there"));
+  assert.ok(report.dependencyImpact.some((impact) => impact.key === "pattern:personal-val-dependent" && impact.relation === "个人依赖"));
+  assert.equal(report.entersLearning, false);
+  assert.equal(JSON.stringify(validatePersonalContentDetailed(target, { inventory: base, personal: [target, dependent] })), JSON.stringify(report));
+  const mismatchReport = validatePersonalContentDetailed(wrongPayloadId, { inventory: base, personal: [wrongPayloadId] });
+  assert.ok(mismatchReport.errors.some((error) => error.includes("id 与内容 ID 不一致")));
+  const aiSelfVerify = { ...target, contentOrigin: "ai_generated", verificationStatus: "verified" };
+  assert.ok(validatePersonalContentDetailed(aiSelfVerify, { inventory: base, personal: [aiSelfVerify] }).errors.some((error) => error.includes("不能自行标记为已核验")));
+});
+
+test("unit: M015 duplication creates an independent pending draft without touching the source", () => {
+  const source = createDraft({ id: "personal-src", kind: "judgment-card", title: "源内容", risk: "MEDIUM", payload: { id: "personal-src", title: "源内容", claim: "" } }, new Date("2026-08-26T00:00:00Z"));
+  const copy = duplicatePersonalEntry(source, "personal-src-copy-1", new Date("2026-08-26T01:00:00Z"));
+  assert.equal(copy.id, "personal-src-copy-1");
+  assert.equal(copy.title, "源内容（副本）");
+  assert.equal(copy.lifecycle, "draft");
+  assert.equal(copy.activeForLearning, false);
+  assert.equal(copy.verificationStatus, "pending");
+  assert.notEqual(copy.hash, source.hash);
+  copy.payload.claim = "changed-after-copy";
+  assert.equal(source.payload.claim, "");
+  assert.throws(() => duplicatePersonalEntry(source, "bad id!"), /副本 ID/);
+  assert.equal(Object.keys(KIND_TEMPLATES).length >= 7, true);
+  for (const template of Object.values(KIND_TEMPLATES)) {
+    const serialized = JSON.stringify(template);
+    assert.doesNotMatch(serialized, /(机制|原理|表明|证明|显著)/u, "templates must stay structural placeholders");
+  }
+});
+
+test("unit: M015 patch JSON parsing is total and structured", () => {
+  for (const bad of ["", "not json", "42", JSON.stringify({ patchSchemaVersion: 2 }), JSON.stringify({ patchSchemaVersion: 1, patchId: "p", targetId: "t", targetKind: "method", reason: "r", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:00:00Z", baseRevision: 1, baseHash: "bad", changes: {} })]) {
+    const parsed = parsePatchPackJson(bad);
+    assert.equal(parsed.ok, false);
+    assert.ok(parsed.errors.length > 0);
+  }
+  const valid = parsePatchPackJson(JSON.stringify({ patchSchemaVersion: 1, patchId: "p1-valid", targetId: "personal-x", targetKind: "method", reason: "审核修订", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:00:00Z", baseRevision: 1, baseHash: `sha256:${"a".repeat(64)}`, changes: { explanation: "新解释" }, reviewer: "user" }));
+  assert.equal(valid.ok, true);
+  assert.equal(valid.patch.changes.explanation, "新解释");
+  assert.equal(parsePatchPackJson("x".repeat(200_001)).ok, false);
+});
+
+test("unit: M015 field diffs are deterministic across key order", () => {
+  const before = { a: 1, b: { x: 1, y: 2 }, c: "keep" };
+  const after = { c: "keep", b: { y: 2, x: 9 }, a: 1 };
+  const first = diffPayloads(before, after);
+  assert.deepEqual(first.map((diff) => diff.field), ["b"]);
+  assert.equal(JSON.stringify(diffPayloads(after, before)), JSON.stringify([{ field: "b", before: after.b, after: before.b }]));
+});
+
 test("unit: M015 review packs disclose deterministic dependency closure", () => {
   const inventory = buildBaseContentInventory();
   const selected = inventory.find((item) => item.kind === "method" && item.dependencyKeys.length > 0);
@@ -185,6 +271,556 @@ test("unit: M015 patch apply is optimistic, atomic and rollback preserves histor
   assert.equal(rolled.restored.lifecycle, "pending_review");
 });
 
+test("unit: M015 inventory audit is deterministic and catches duplicates, cycles, hash and provenance defects", () => {
+  const base = buildBaseContentInventory();
+  assert.equal(auditContentInventory(base).ok, true);
+  const record = (key, payload, dependencyKeys = []) => {
+    const [kind, id] = [key.slice(0, key.indexOf(":")), key.slice(key.indexOf(":") + 1)];
+    return { key, id, kind, title: `标题 ${id}`, owner: "builtin", revision: 1, hash: sha256(payload), contentOrigin: "verified_seed", verificationStatus: "pending", risk: "LOW", dependencyKeys, payload };
+  };
+  const clean = [record("method:a", { id: "a" }), record("evidence-source:s1", { id: "s1" })];
+  const withDependencies = [record("method:a", { id: "a" }, ["evidence-source:s1"]), record("evidence-source:s1", { id: "s1" })];
+  assert.equal(JSON.stringify(auditContentInventory(withDependencies)), JSON.stringify(auditContentInventory([...withDependencies].reverse())));
+  const duplicated = [...clean, record("method:a", { id: "a" })];
+  const duplicateAudit = auditContentInventory(duplicated);
+  assert.equal(duplicateAudit.ok, false);
+  assert.deepEqual(duplicateAudit.duplicates.map((entry) => entry.key), ["method:a"]);
+  assert.deepEqual(duplicateAudit.duplicates.map((entry) => entry.count), [2]);
+  const brokenHash = [{ ...record("method:b", { id: "b" }), hash: "sha256:" + "0".repeat(64) }];
+  assert.ok(auditContentInventory(brokenHash).hashMismatches.length === 1);
+  const missingDep = [record("method:c", { id: "c" }, ["evidence-source:missing"])];
+  assert.deepEqual(auditContentInventory(missingDep).missingDependencies, [{ key: "method:c", dependencyKey: "evidence-source:missing" }]);
+  const cycle = [record("method:x", { id: "x" }, ["method:y"]), record("method:y", { id: "y" }, ["method:x"])];
+  const cycleAudit = auditContentInventory(cycle);
+  assert.equal(cycleAudit.ok, false);
+  assert.equal(cycleAudit.dependencyCycles.length, 1);
+  assert.deepEqual([...cycleAudit.dependencyCycles[0]].sort(), ["method:x", "method:y"]);
+  const badProvenance = [{ ...record("method:d", { id: "d" }), title: "", risk: "EXTREME", revision: 0, hash: "not-a-hash" }];
+  const gapFields = auditContentInventory(badProvenance).provenanceGaps.map((gap) => gap.field);
+  for (const field of ["title", "risk", "revision", "hash"]) assert.ok(gapFields.includes(field), field);
+});
+
+test("unit: M015 review-pack export materializes exactly five deterministic files", () => {
+  const inventory = buildBaseContentInventory();
+  const selected = inventory.find((item) => item.kind === "pattern" && item.dependencyKeys.length > 0);
+  const pack = buildReviewPack([selected.key], inventory, "batch-files", new Date("2026-08-26T00:00:00Z"));
+  const first = reviewPackFileEntries(pack);
+  const second = reviewPackFileEntries(buildReviewPack([selected.key], inventory, "batch-files", new Date("2026-08-26T00:00:00Z")));
+  assert.deepEqual(first.map((entry) => entry.path), [...REVIEW_PACK_FILE_NAMES]);
+  assert.equal(first.length, 5);
+  assert.equal(JSON.stringify(first), JSON.stringify(second));
+  assert.match(first[0].content, /"batchId": "batch-files"/);
+  assert.match(first[2].content, /# 审核副本 · batch-files/);
+  assert.match(first[3].content, /科学变更清单/);
+  assert.throws(() => buildReviewPack(["problem-card:missing-id"], inventory, "bad"), /缺少内容或依赖/);
+});
+
+test("unit: unsafe paths and vault-inside export destinations are rejected deterministically", () => {
+  for (const bad of ["../escape.txt", "a/../..\\evil", "/abs.txt", "C:\\temp\\x.json", "//server/x", ".obsidian/app.json", "dir/.obsidian/y.md", "seg /space.txt", "", "a/b/c/d/e/f/g/h/i.txt"]) {
+    assert.throws(() => validateSafeRelativePath(bad), UnsafePathError, bad);
+  }
+  assert.equal(validateSafeRelativePath("_Review/batch-1/note.md"), "_Review/batch-1/note.md");
+  assert.equal(isInsideRoot("D:\\vault\\.obsidian", "D:\\vault"), true);
+  assert.equal(isInsideRoot("D:\\vault-researchos\\n.md", "D:\\vault"), false);
+  assert.equal(isInsideRoot("d:/VAULT/ResearchOS/a.md", "D:\\vault\\"), true);
+  assert.throws(() => validateExportDestination("D:\\vault\\exports", "D:\\vault"), UnsafePathError);
+  assert.throws(() => validateExportDestination("D:\\vault", "D:\\vault"), UnsafePathError);
+  assert.doesNotThrow(() => validateExportDestination("D:\\exports\\review", "D:\\vault"));
+});
+
+test("integration: stale M015 patches record a conflict with zero mutation and valid patches stay atomic", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const draft = useAppStore.getState().createPersonalDraft({ id: "patch-flow-target", kind: "method", title: "修订目标", risk: "HIGH", payload: { id: "patch-flow-target", title: "修订目标", explanation: "旧解释" } });
+  const staleBase = { patchSchemaVersion: 1, patchId: "stale-1", targetId: draft.id, targetKind: draft.kind, baseRevision: draft.revision, baseHash: draft.hash, changes: { explanation: "过期修订" }, reason: "过期基线", reviewer: "user", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:00:00Z" };
+  useAppStore.getState().updatePersonalDraft(draft.id, { title: "已直接编辑", payload: { id: draft.id, title: "已直接编辑", explanation: "旧解释" } });
+  const conflictsBefore = useAppStore.getState().contentConflicts.length;
+  const entriesBefore = JSON.stringify(useAppStore.getState().personalContent);
+  const staleResult = useAppStore.getState().previewPersonalPatch(staleBase);
+  assert.equal(staleResult.found, true);
+  assert.equal(staleResult.stale, true);
+  assert.equal(useAppStore.getState().contentConflicts.length, conflictsBefore + 1);
+  assert.equal(useAppStore.getState().contentConflicts[0].kind, "stale_patch");
+  assert.equal(JSON.stringify(useAppStore.getState().personalContent), entriesBefore, "stale preview must not mutate content");
+  assert.throws(() => useAppStore.getState().applyContentPatch(staleBase));
+  const current = useAppStore.getState().personalContent.find((entry) => entry.id === draft.id);
+  const freshPatch = { ...staleBase, patchId: "fresh-1", baseRevision: current.revision, baseHash: current.hash, changes: { explanation: "新解释" } };
+  const preview = useAppStore.getState().previewPersonalPatch(freshPatch);
+  assert.equal(preview.found, true);
+  assert.equal(preview.stale, false);
+  assert.equal(preview.preview.valid, true);
+  assert.ok(preview.preview.fieldDiffs.some((diff) => diff.field === "explanation"));
+  const applied = useAppStore.getState().applyContentPatch(freshPatch);
+  assert.equal(applied.revision, current.revision + 1);
+  assert.equal(applied.payload.explanation, "新解释");
+  assert.equal(applied.verificationStatus, "pending");
+  assert.equal(applied.activeForLearning, false);
+  assert.ok(useAppStore.getState().contentRevisionHistory.some((snapshot) => snapshot.contentId === draft.id && snapshot.payload.explanation === "旧解释"));
+});
+
+test("unit: M015 Obsidian notes use stable identity, deterministic managed blocks and honest pending status", () => {
+  const record = { key: "method:pa-x", id: "pa-x", kind: "method", title: "概念 A", owner: "personal", revision: 2, hash: "sha256:" + "1".repeat(64), contentOrigin: "user", verificationStatus: "pending", risk: "HIGH", dependencyKeys: [], payload: { id: "pa-x", title: "概念 A" } };
+  const first = renderFullNote(record, "2026-08-26T12:00:00Z");
+  const second = renderFullNote(record, "2026-08-27T08:00:00Z");
+  assert.notEqual(first, second, "frontmatter timestamp may change");
+  assert.equal(first.split(MANAGED_START)[1], second.split(MANAGED_START)[1], "managed body must be timestamp-free and revision-deterministic");
+  assert.match(first, /researchos_id: pa-x/);
+  assert.match(first, /researchos_kind: method/);
+  assert.match(first, /researchos_revision: 2/);
+  assert.match(first, /researchos_status: user_pending/);
+  assert.match(first, /researchos_hash: sha256:1{64}/);
+  assert.equal((first.match(/researchos_published_at/g) ?? []).length, 1);
+  assert.ok(first.indexOf("researchos_published_at") < first.indexOf(MANAGED_START));
+  assert.match(first.split(MANAGED_START)[1], /待核验（ResearchOS 不将未核验内容标记为已核验）/);
+  const builtinNote = renderFullNote({ ...record, owner: "builtin", verificationStatus: "verified" }, "2026-08-26T12:00:00Z");
+  assert.match(builtinNote, /researchos_status: builtin/);
+  assert.doesNotMatch(builtinNote, /待核验/);
+  const parsed = parseObsidianNote(first);
+  assert.equal(parsed.frontmatter.researchos_id, "pa-x");
+  assert.ok(parsed.managedInner.includes("# 概念 A"));
+  assert.ok(parsed.userTail.startsWith("\n" + USER_SECTION_HEADING), "raw unmanaged suffix starts with the exact bytes after the managed block");
+  assert.equal(renderManagedBody(record), renderManagedBody({ ...record }));
+  assert.equal(safeNoteFileName("a/b:c*?<>|", "fallback-id"), "a b c.md");
+  assert.equal(safeNoteFileName("trailing dots...", "fallback"), "trailing dots.md");
+  assert.equal(safeNoteFileName("", "id-1"), "id-1.md");
+});
+
+test("unit: M015 publish planning is create/update/conflict/unchanged exact and rename follows the stable ID", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const later = new Date("2026-08-26T18:00:00Z");
+  const mk = (revision) => ({ key: `method:pa-y`, id: "pa-y", kind: "method", title: revision === 1 ? "旧标题" : "新标题 B", owner: "personal", revision, hash: `sha256:${String(revision).padStart(64, "0")}`, contentOrigin: "user", verificationStatus: "pending", risk: "HIGH", dependencyKeys: [], payload: { id: "pa-y", revision } });
+  // Create.
+  const plan1 = planPublishBatch({ batchId: "b1", records: [mk(1)], existingFiles: new Map(), appliedHistory: [], now });
+  assert.deepEqual(plan1.items.map((item) => item.action), ["create"]);
+  assert.equal(plan1.writeCount, 1);
+  const write1 = applyPlannedBatch(plan1, { confirmationToken: plan1.confirmationToken, secondConfirmed: false })[0];
+  const history1 = fingerprintWrites(plan1);
+  assert.equal(history1.length, 1);
+  // Republish unchanged at a later hour → zero writes.
+  const planSame = planPublishBatch({ batchId: "b2", records: [mk(1)], existingFiles: new Map([[write1.relativePath, write1.contents]]), appliedHistory: history1, now: later });
+  assert.deepEqual(planSame.items.map((item) => item.action), ["unchanged"]);
+  assert.equal(applyPlannedBatch(planSame, { confirmationToken: planSame.confirmationToken, secondConfirmed: false }).length, 0);
+  // New revision with a changed title still updates the SAME file (rename follows stable ID).
+  const userTail = parseObsidianNote(write1.contents).userTail + "\n我的手写补充，必须逐字节保留。\n";
+  const editedFile = write1.contents.slice(0, write1.contents.length - parseObsidianNote(write1.contents).userTail.length) + userTail;
+  const plan2 = planPublishBatch({ batchId: "b3", records: [mk(2)], existingFiles: new Map([["旧标题.md", editedFile]]), appliedHistory: history1, now });
+  assert.deepEqual(plan2.items.map((item) => item.action), ["update"]);
+  assert.equal(plan2.items[0].relativePath, "旧标题.md");
+  const write2 = applyPlannedBatch(plan2, { confirmationToken: plan2.confirmationToken, secondConfirmed: false })[0];
+  assert.ok(write2.contents.endsWith("我的手写补充，必须逐字节保留。\n"), "user bytes outside the managed block must be byte-preserved");
+  assert.match(write2.contents, /researchos_revision: 2/);
+  assert.match(write2.contents, /# 新标题 B/);
+  // External edit of the managed block → conflict and zero writes.
+  const tampered = write2.contents.replace("- 版本：r2", "- 版本：r2（外部改动）");
+  const plan3 = planPublishBatch({ batchId: "b4", records: [mk(3)], existingFiles: new Map([["旧标题.md", tampered]]), appliedHistory: fingerprintWrites(plan2), now });
+  assert.deepEqual(plan3.items.map((item) => item.action), ["conflict"]);
+  assert.throws(() => applyPlannedBatch(plan3, { confirmationToken: plan3.confirmationToken, secondConfirmed: true }), /冲突/);
+  // Unknown external note carrying our ID without applied provenance → conflict.
+  const foreign = "---\nresearchos_id: pa-y\n---\n" + MANAGED_START + "\n未知受管内容\n" + MANAGED_END + "\n";
+  const plan4 = planPublishBatch({ batchId: "b5", records: [mk(1)], existingFiles: new Map([["旧标题.md", foreign]]), appliedHistory: [], now });
+  assert.deepEqual(plan4.items.map((item) => item.action), ["conflict"]);
+});
+
+test("unit: M015 publish batches enforce the 20-note limit, confirmation token and all-or-nothing conflicts", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const records = Array.from({ length: 25 }, (_, index) => ({ key: `method:bulk-${index}`, id: `bulk-${index}`, kind: "method", title: `批量 ${index}`, owner: "personal", revision: 1, hash: `sha256:${String(index).padStart(64, "0")}`, contentOrigin: "user", verificationStatus: "pending", risk: "LOW", dependencyKeys: [], payload: { id: index } }));
+  const plan = planPublishBatch({ batchId: "bulk", records, existingFiles: new Map(), appliedHistory: [], now });
+  assert.equal(plan.writeCount, 25);
+  assert.equal(plan.requiresSecondConfirmation, true);
+  assert.throws(() => applyPlannedBatch(plan, { confirmationToken: plan.confirmationToken, secondConfirmed: false }), /第二次明确确认/);
+  assert.throws(() => applyPlannedBatch(plan, { confirmationToken: "wrong", secondConfirmed: true }), /确认令牌不匹配/);
+  assert.equal(applyPlannedBatch(plan, { confirmationToken: plan.confirmationToken, secondConfirmed: true }).length, 25);
+  const small = planPublishBatch({ batchId: "small", records: records.slice(0, 5), existingFiles: new Map(), appliedHistory: [], now });
+  assert.equal(small.requiresSecondConfirmation, false);
+});
+
+test("unit: M015 review round trip builds a finite deterministic batch under _Review/<batch-id>", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const record = { key: "pattern:rev-1", id: "rev-1", kind: "pattern", title: "审核样例", owner: "personal", revision: 1, hash: "sha256:" + "2".repeat(64), contentOrigin: "user", verificationStatus: "pending", risk: "MEDIUM", dependencyKeys: [], payload: { id: "rev-1", title: "审核样例" } };
+  const first = buildReviewRoundTrip("review-batch-9", [record], now);
+  const second = buildReviewRoundTrip("review-batch-9", [record], now);
+  assert.equal(JSON.stringify(first), JSON.stringify(second));
+  assert.equal(first.manifestPath, "_Review/review-batch-9/manifest.json");
+  assert.ok(first.manifest.notes[0].relativePath.startsWith("_Review/review-batch-9/"));
+  assert.equal(first.manifest.notes[0].contentId, "rev-1");
+  assert.ok(first.manifest.notes[0].managedHash.startsWith("sha256:"));
+  assert.equal(first.files.length, 1);
+  assert.match(first.files[0].contents, new RegExp(`researchos_id: rev-1`));
+  assert.match(first.files[0].contents, new RegExp(REVIEW_ANNOTATION_HEADING));
+  const parsedManifest = JSON.parse(first.manifestJson);
+  assert.equal(parsedManifest.schemaVersion, 1);
+  assert.throws(() => buildReviewRoundTrip("../bad id!", [record], now));
+});
+
+test("unit: M015 review read-back is manifest-gated and detects annotations plus managed edits", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const record = { key: "pattern:rev-2", id: "rev-2", kind: "pattern", title: "审核目标二", owner: "personal", revision: 1, hash: "sha256:" + "3".repeat(64), contentOrigin: "user", verificationStatus: "pending", risk: "MEDIUM", dependencyKeys: [], payload: { id: "rev-2", title: "审核目标二" } };
+  const roundTrip = buildReviewRoundTrip("batch-check", [record], now);
+  const annotated = `${roundTrip.files[0].contents}第一条意见：补充边界说明。\n第二条意见：核对统计单位。\n`;
+  const asEntries = (contents) => roundTrip.files.map((file) => ({ relativePath: file.relativePath, contents }));
+  // Extra path outside the exact manifest is rejected.
+  assert.throws(() => parseReviewFeedback([...asEntries(roundTrip.files[0].contents), { relativePath: "_Review/batch-check/extra.md", contents: "x" }], roundTrip.manifest), /清单之外/);
+  const noFeedback = parseReviewFeedback(asEntries(roundTrip.files[0].contents), roundTrip.manifest);
+  assert.deepEqual(noFeedback[0].annotations, []);
+  assert.equal(noFeedback[0].managedEdited, false);
+  const withAnnotations = parseReviewFeedback(asEntries(annotated), roundTrip.manifest);
+  assert.deepEqual(withAnnotations[0].annotations, ["第一条意见：补充边界说明。", "第二条意见：核对统计单位。"]);
+  assert.equal(withAnnotations[0].managedEdited, false);
+  assert.throws(() => parseReviewFeedback([], roundTrip.manifest), /未被读取/);
+  // Managed payload edit detection.
+  const original = roundTrip.files[0].contents;
+  const payload = extractPayloadFromManaged(original);
+  assert.equal(payload.title, "审核目标二");
+  payload.title = "审核者修改后的标题";
+  const startFence = original.indexOf("```json");
+  const start = original.indexOf("\n", startFence) + 1;
+  const end = original.indexOf("```", start);
+  const edited = `${original.slice(0, start)}${JSON.stringify(payload, null, 2)}\n${original.slice(end)}`;
+  const feedback = parseReviewFeedback([{ relativePath: roundTrip.files[0].relativePath, contents: edited }], roundTrip.manifest);
+  assert.equal(feedback[0].managedEdited, true);
+});
+
+test("unit: M015 review candidates stay pending, import reviewer words verbatim and apply atomically", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const record = { key: "method:rev-3", id: "rev-3", kind: "method", title: "候选目标", owner: "personal", revision: 4, hash: sha256({ id: "rev-3", title: "候选目标" }), contentOrigin: "user", verificationStatus: "pending", risk: "HIGH", dependencyKeys: [], payload: { id: "rev-3", title: "候选目标" } };
+  const annotationOnly = [{ relativePath: "_Review/b/候选目标.md", contentId: "rev-3", annotations: ["请明确统计单位。"], managedEdited: false }];
+  let candidates = toReviewPatchCandidates(annotationOnly, [record], now);
+  assert.equal(candidates.length, 1);
+  assert.equal(candidates[0].source, "annotation");
+  assert.equal(candidates[0].patch.proposedVerificationStatus, "pending");
+  assert.equal(candidates[0].patch.proposedLifecycle, "pending_review");
+  assert.equal(candidates[0].patch.changes["审核意见"], "请明确统计单位。");
+  assert.ok(candidates[0].preview.fieldDiffs.some((diff) => diff.field === "审核意见"));
+  // Managed edit candidate imports the reviewer's payload verbatim.
+  const roundTrip = buildReviewRoundTrip("batch-cand", [record], now);
+  const original = roundTrip.files[0].contents;
+  const basePayload = extractPayloadFromManaged(original);
+  const editedPayload = { ...basePayload, title: "受管块新标题" };
+  const startFence = original.indexOf("```json");
+  const start = original.indexOf("\n", startFence) + 1;
+  const end = original.indexOf("```", start);
+  const editedContents = `${original.slice(0, start)}${JSON.stringify(editedPayload, null, 2)}\n${original.slice(end)}`;
+  const managedFeedback = parseReviewFeedback([{ relativePath: roundTrip.files[0].relativePath, contents: editedContents }], roundTrip.manifest);
+  assert.equal(managedFeedback[0].managedEdited, true);
+  candidates = toReviewPatchCandidates(managedFeedback, [record], now);
+  assert.equal(candidates.length >= 1, true);
+  assert.equal(candidates[0].source, "managed_edit");
+  // Built-in targets are never modified in place; they get overlay candidates instead (M015-R1).
+  const builtinCandidates = toReviewPatchCandidates(annotationOnly, [{ ...record, owner: "builtin" }], new Date("2026-08-26T13:00:00Z"));
+  assert.equal(builtinCandidates.length, 1);
+  assert.equal(builtinCandidates[0].patch.targetId, `overlay-${record.id}`);
+  assert.deepEqual(builtinCandidates[0].overlayBase, { key: record.key, id: record.id, kind: record.kind });
+  // Applying the annotation candidate keeps everything pending and preserves history.
+  const annotationPatch = candidates[0].patch;
+  const applied = applyPatchTransaction(
+    [{ ...structuredClone(record), lifecycle: "active", activeForLearning: true }],
+    [], [], annotationPatch, now,
+  );
+  assert.equal(applied.applied.revision, 5);
+  assert.equal(applied.applied.verificationStatus, "pending");
+  assert.equal(applied.applied.lifecycle, "pending_review");
+  assert.equal(applied.applied.activeForLearning, false);
+  assert.equal(applied.history[0].revision, 4);
+});
+
+test("unit: M015-R2 patch parsing rejects unknown enums and non-pending proposals", () => {
+  const validBase = { patchSchemaVersion: 1, patchId: "p-ok", targetId: "personal-x", targetKind: "method", reason: "审核修订", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:00:00Z", baseRevision: 1, baseHash: `sha256:${"a".repeat(64)}`, changes: { explanation: "新解释" } };
+  assert.equal(parsePatchPackJson(JSON.stringify(validBase)).ok, true);
+  const expectFail = (label, mutate) => {
+    const candidate = structuredClone(validBase);
+    mutate(candidate);
+    const parsed = parsePatchPackJson(JSON.stringify(candidate));
+    assert.equal(parsed.ok, false, `${label} must be rejected`);
+  };
+  expectFail("unknown targetKind", (patch) => { patch.targetKind = "mystery-kind"; });
+  expectFail("active lifecycle proposal", (patch) => { patch.proposedLifecycle = "active"; });
+  expectFail("verified status proposal", (patch) => { patch.proposedVerificationStatus = "verified"; });
+  expectFail("archived lifecycle proposal", (patch) => { patch.proposedLifecycle = "archived"; });
+  expectFail("invalid createdAt", (patch) => { patch.createdAt = "not-a-date"; });
+  expectFail("invalid patchId", (patch) => { patch.patchId = "bad id!"; });
+  expectFail("non-integer baseRevision", (patch) => { patch.baseRevision = 1.5; });
+});
+
+test("unit: M015-R2 patch apply can never produce active or verified content regardless of pack fields", () => {
+  const target = createDraft({ id: "self-promo-target", kind: "method", title: "自提升探针", risk: "HIGH", payload: { id: "self-promo-target", title: "自提升探针" } }, new Date("2026-08-26T00:00:00Z"));
+  const malicious = { patchSchemaVersion: 1, patchId: "p-evil", targetId: target.id, targetKind: target.kind, reason: "直接宣布核验", reviewer: "self", proposedLifecycle: "active", proposedVerificationStatus: "verified", createdAt: "2026-08-26T00:00:00Z", baseRevision: target.revision, baseHash: target.hash, changes: { explanation: "新内容" } };
+  // Direct service-level call (bypassing the parser entirely) must still fail closed.
+  let applied = null;
+  try {
+    applied = applyPatchTransaction([structuredClone(target)], [], [], malicious, new Date("2026-08-26T00:01:00Z"));
+  } catch {
+    // throwing is acceptable fail-closed behavior
+  }
+  if (applied) {
+    assert.notEqual(applied.applied.verificationStatus, "verified");
+    assert.notEqual(applied.applied.lifecycle, "active");
+    assert.equal(applied.applied.activeForLearning, false);
+  } else {
+    assert.ok(true, "apply threw on promotion attempt");
+  }
+  // AI-origin self-promotion is blocked as well.
+  const aiTarget = { ...structuredClone(target), id: "ai-self-promo", contentOrigin: "ai_generated" };
+  assert.throws(() => applyPatchTransaction([aiTarget], [], [], { ...malicious, targetId: "ai-self-promo" }), /.*/);
+});
+
+test("unit: M015-R2 failed malicious patches leave entries, history and conflicts byte-identical", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const draft = useAppStore.getState().createPersonalDraft({ id: "r2-zero-write", kind: "method", title: "零写入探针", risk: "HIGH", payload: { id: "r2-zero-write", title: "零写入探针" } });
+  const snapshot = () => JSON.stringify({ e: useAppStore.getState().personalContent, h: useAppStore.getState().contentRevisionHistory, c: useAppStore.getState().contentConflicts });
+  const before = snapshot();
+  for (const malformed of [
+    { patchSchemaVersion: 1, patchId: "m1", targetId: draft.id, targetKind: draft.kind, reason: "x", proposedLifecycle: "active", proposedVerificationStatus: "verified", createdAt: "2026-08-26T00:00:00Z", baseRevision: draft.revision, baseHash: draft.hash, changes: { a: 1 } },
+    { patchSchemaVersion: 1, patchId: "m2", targetId: draft.id, targetKind: "pattern", reason: "x", proposedLifecycle: "draft", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:00:00Z", baseRevision: draft.revision, baseHash: draft.hash, changes: { a: 1 } },
+    { patchSchemaVersion: 1, patchId: "m3", targetId: draft.id, targetKind: draft.kind, reason: "x", proposedLifecycle: "superseded", proposedVerificationStatus: "pending", createdAt: "zzz", baseRevision: -3, baseHash: "nope", changes: { a: 1 } },
+  ]) {
+    const parsed = parsePatchPackJson(JSON.stringify(malformed));
+    if (parsed.ok && parsed.patch) assert.throws(() => useAppStore.getState().applyContentPatch(parsed.patch));
+    else assert.throws(() => useAppStore.getState().applyContentPatch(malformed));
+    assert.equal(snapshot(), before, `${malformed.patchId} must not mutate state`);
+  }
+});
+
+test("unit: M015-R1 built-in objects gain a versioned overlay revision path without touching base text", () => {
+  const inventory = buildBaseContentInventory();
+  const record = structuredClone(inventory.find((item) => item.kind === "method" && item.dependencyKeys.length > 0));
+  const recordSnapshot = JSON.stringify(record);
+  const overlay = createOverlayFromBuiltin(record, `overlay-${record.id}`, new Date("2026-08-26T00:00:00Z"));
+  assert.equal(JSON.stringify(record), recordSnapshot, "built-in record must stay untouched");
+  assert.equal(overlay.baseKey, record.key);
+  assert.equal(overlay.baseRevision, record.revision);
+  assert.equal(overlay.baseHash, record.hash);
+  assert.equal(overlay.lifecycle, "draft");
+  assert.equal(overlay.verificationStatus, "pending");
+  assert.equal(overlay.activeForLearning, false);
+  assert.deepEqual(overlay.payload, record.payload);
+  // Draft overlays do not replace the base until explicit activation.
+  assert.ok(!resolveEffectiveContent(inventory, [overlay]).some((item) => item.id === overlay.id));
+  const activated = { ...overlay, lifecycle: "active", activeForLearning: true };
+  const effective = resolveEffectiveContent(inventory, [activated]);
+  const replaced = effective.find((item) => item.key === record.key);
+  assert.equal(replaced.owner, "overlay");
+  assert.equal(replaced.verificationStatus, "pending");
+  assert.equal(replaced.revision, overlay.revision);
+  // Versioned patch on the overlay keeps the base linkage; rollback appends history.
+  const firstKey = Object.keys(record.payload)[0];
+  const patch = { patchSchemaVersion: 1, patchId: "ov-patch-1", targetId: overlay.id, targetKind: overlay.kind, reason: "个人修订", reviewer: "user", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T01:00:00Z", baseRevision: overlay.revision, baseHash: overlay.hash, changes: { [firstKey]: "个人修订后的取值" } };
+  const applied = applyPatchTransaction([structuredClone(activated)], [], [], patch, new Date("2026-08-26T02:00:00Z"));
+  assert.equal(applied.applied.revision, 2);
+  assert.equal(applied.applied.baseKey, record.key);
+  assert.equal(applied.applied.activeForLearning, false);
+  const rolled = rollbackRevision(applied.entries, applied.history, overlay.id, 1, "恢复基线内容", new Date("2026-08-26T03:00:00Z"));
+  assert.equal(rolled.restored.revision, 3);
+  assert.deepEqual(rolled.restored.payload[firstKey], record.payload[firstKey]);
+});
+
+test("unit: M015-R1 application upgrades surface base-update conflicts for overlays", () => {
+  const inventory = buildBaseContentInventory();
+  const record = structuredClone(inventory.find((item) => item.kind === "pattern"));
+  const overlay = { ...createOverlayFromBuiltin(record, `overlay-${record.id}`, new Date("2026-08-26T00:00:00Z")), lifecycle: "active", activeForLearning: true };
+  // No conflict while the base is unchanged.
+  assert.deepEqual(detectBaseUpdateConflicts([overlay], inventory, new Date("2026-08-26T04:00:00Z")), []);
+  const upgraded = inventory.map((item) => item.key === record.key ? { ...item, revision: 2, hash: "sha256:" + "f".repeat(64) } : item);
+  const conflicts = detectBaseUpdateConflicts([overlay], upgraded, new Date("2026-08-26T05:00:00Z"));
+  assert.equal(conflicts.length, 1);
+  assert.equal(conflicts[0].kind, "base_update");
+  assert.equal(conflicts[0].contentId, overlay.id);
+  assert.equal(conflicts[0].status, "open");
+  assert.match(conflicts[0].detail, /应用升级后基础内容已变化/);
+});
+
+test("integration: M015-R1 review round trip produces overlay candidates and rebased applies for built-in objects", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const inventory = buildBaseContentInventory();
+  const builtin = inventory.find((item) => item.owner === "builtin" && item.kind === "pattern");
+  const feedback = [{ relativePath: "_Review/b/note.md", contentId: builtin.id, annotations: ["请补充边界。"], managedEdited: false, contents: "" }];
+  let candidates = toReviewPatchCandidates(feedback, [builtin], new Date("2026-08-26T06:00:00Z"));
+  assert.equal(candidates.length, 1);
+  assert.equal(candidates[0].patch.targetId, `overlay-${builtin.id}`);
+  assert.deepEqual(candidates[0].overlayBase, { key: builtin.key, id: builtin.id, kind: builtin.kind });
+  assert.ok(candidates[0].preview.fieldDiffs.some((diff) => diff.field === "审核意见"));
+  // Applying stages the overlay from the built-in object and lands as pending_review r2.
+  const applied = useAppStore.getState().applyOverlayPatch(candidates[0].patch, builtin);
+  assert.equal(applied.id, `overlay-${builtin.id}`);
+  assert.equal(applied.revision, 2);
+  assert.equal(applied.lifecycle, "pending_review");
+  assert.equal(applied.verificationStatus, "pending");
+  assert.equal(applied.baseKey, builtin.key);
+  const stored = useAppStore.getState().personalContent.find((entry) => entry.id === applied.id);
+  assert.ok(stored && stored.payload["审核意见"] === "请补充边界。");
+  // Re-applying the same candidate is stale (base moved on) and must not double-apply.
+  const before = JSON.stringify(useAppStore.getState().personalContent);
+  assert.throws(() => useAppStore.getState().applyOverlayPatch(candidates[0].patch, builtin));
+  assert.equal(JSON.stringify(useAppStore.getState().personalContent), before);
+});
+
+test("unit: M015-R4 duplicate stable IDs in existing notes produce a conflict instead of a silent winner", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const record = { key: "method:dup-id", id: "dup-id", kind: "method", title: "重复 ID", owner: "personal", revision: 1, hash: "sha256:" + "4".repeat(64), contentOrigin: "user", verificationStatus: "pending", risk: "LOW", dependencyKeys: [], payload: { id: "dup-id" } };
+  const noteA = renderFullNote(record, "2026-08-26T08:00:00Z");
+  const noteB = renderFullNote({ ...record, title: "另一篇同名笔记" }, "2026-08-26T09:00:00Z");
+  const plan = planPublishBatch({
+    batchId: "dup-plan",
+    records: [record],
+    existingFiles: new Map([["甲.md", noteA], ["乙.md", noteB]]),
+    appliedHistory: [],
+    now,
+  });
+  assert.deepEqual(plan.items.map((item) => item.action), ["conflict"]);
+  assert.match(plan.items[0].detail, /同一稳定 ID/);
+  assert.throws(() => applyPlannedBatch(plan, { confirmationToken: plan.confirmationToken, secondConfirmed: true }), /冲突/);
+});
+
+test("unit: M015-R5 Windows CRLF notes keep their stable identity and never churn", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const record = { key: "method:crlf-note", id: "crlf-note", kind: "method", title: "换行兼容", owner: "personal", revision: 2, hash: "sha256:" + "5".repeat(64), contentOrigin: "user", verificationStatus: "pending", risk: "HIGH", dependencyKeys: [], payload: { id: "crlf-note", title: "换行兼容" } };
+  const lfNote = renderFullNote(record, "2026-08-26T08:00:00Z");
+  const crlfNote = `${lfNote.replace(/\n/g, "\r\n")}\r\n手写：CRLF 行。\r\n`;
+  const parsed = parseObsidianNote(crlfNote);
+  assert.equal(parsed.frontmatter?.researchos_id, "crlf-note");
+  assert.equal(parsed.frontmatter?.researchos_hash, record.hash);
+  assert.ok(parsed.managedInner.includes("# 换行兼容"));
+  // An externally rewritten CRLF copy of the SAME revision plans zero writes
+  // and keeps the file untouched (no line-ending churn).
+  const planSameRevision = planPublishBatch({ batchId: "crlf-same", records: [record], existingFiles: new Map([["换行兼容.md", crlfNote]]), appliedHistory: [], now });
+  assert.deepEqual(planSameRevision.items.map((item) => item.action), ["unchanged"]);
+  // A genuine revision update preserves the ENTIRE unmanaged suffix byte-for-byte.
+  const revised = { ...record, revision: 3, hash: "sha256:" + "6".repeat(64), payload: { id: "crlf-note", title: "换行兼容", rev: 3 } };
+  const history = fingerprintWrites(planPublishBatch({ batchId: "crlf-hist", records: [record], existingFiles: new Map(), appliedHistory: [], now }));
+  const planUpdate = planPublishBatch({ batchId: "crlf-update", records: [revised], existingFiles: new Map([["换行兼容.md", crlfNote]]), appliedHistory: history, now });
+  assert.equal(planUpdate.items[0].action, "update");
+  const write = applyPlannedBatch(planUpdate, { confirmationToken: planUpdate.confirmationToken, secondConfirmed: false })[0];
+  const suffixAfter = (text) => text.slice(text.indexOf(MANAGED_END) + MANAGED_END.length);
+  const inputSuffix = suffixAfter(crlfNote);
+  const outputSuffix = suffixAfter(write.contents);
+  assert.equal(outputSuffix, inputSuffix, "everything after MANAGED_END must be byte-identical");
+});
+
+test("integration: M015-R1R overlay optimistic lock refuses silently rebased stale candidates", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const builtin = buildBaseContentInventory().find((item) => item.owner === "builtin" && item.kind === "pattern");
+  // Candidate A is generated against the built-in snapshot (base r1).
+  const candidateA = toReviewPatchCandidates([{ relativePath: "_Review/b/n.md", contentId: builtin.id, annotations: ["意见A"], managedEdited: false, contents: "" }], [builtin], new Date("2026-08-26T06:00:00Z"))[0];
+  const applied = useAppStore.getState().applyOverlayPatch(candidateA.patch, builtin);
+  assert.equal(applied.revision, 2);
+  // A different patch B matches the overlay's CURRENT state and advances it to r3.
+  const overlayNow = useAppStore.getState().personalContent.find((entry) => entry.id === `overlay-${builtin.id}`);
+  const patchB = { ...candidateA.patch, patchId: "patch-b-real", baseRevision: overlayNow.revision, baseHash: overlayNow.hash, changes: { 另一个字段: "B 的修改" }, reason: "后续修订 B" };
+  const afterB = useAppStore.getState().applyOverlayPatch(patchB);
+  assert.equal(afterB.revision, 3);
+  // Now a NEW stale candidate A2 still carries real field diffs against r3,
+  // but its base points at r1. It must be rejected as STALE — not rebased.
+  const candidateA2 = { ...candidateA.patch, patchId: "candidate-a2-stale", changes: { 全新字段A2: "A2 的实际差异" }, reason: "过期候选 A2" };
+  const snapshot = () => JSON.stringify({ e: useAppStore.getState().personalContent, h: useAppStore.getState().contentRevisionHistory });
+  const before = snapshot();
+  const conflictsBefore = useAppStore.getState().contentConflicts.length;
+  assert.throws(() => useAppStore.getState().applyOverlayPatch(candidateA2), /基线已过期/);
+  assert.equal(snapshot(), before, "stale candidate must not mutate content or history");
+  assert.equal(useAppStore.getState().contentConflicts.length, conflictsBefore + 1);
+  const recorded = useAppStore.getState().contentConflicts[0];
+  assert.equal(recorded.kind, "stale_patch");
+  assert.equal(recorded.contentId, `overlay-${builtin.id}`);
+  assert.match(recorded.detail, /candidate-a2-stale/);
+});
+
+test("unit: M015-R1R ensurePersonalOverlay records a conflict on identity mismatch instead of reusing", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const builtin = buildBaseContentInventory().find((item) => item.owner === "builtin" && item.kind === "judgment-card");
+  // A personal object already occupies the requested overlay ID with a different kind/base.
+  useAppStore.getState().createPersonalDraft({ id: `overlay-${builtin.id}`, kind: "method", title: "占用同名 ID 的个人内容", risk: "LOW", payload: { id: `overlay-${builtin.id}`, title: "占用同名 ID 的个人内容" } });
+  const conflictsBefore = useAppStore.getState().contentConflicts.length;
+  assert.throws(() => useAppStore.getState().ensurePersonalOverlay(builtin), /冲突|不匹配/);
+  assert.equal(useAppStore.getState().contentConflicts.length, conflictsBefore + 1);
+  const stored = useAppStore.getState().personalContent.find((entry) => entry.id === `overlay-${builtin.id}`);
+  assert.equal(stored.kind, "method", "the occupying object must stay untouched");
+});
+
+test("unit: M015-R2R patch parser enforces strict ISO-8601 and checks every changes key", () => {
+  const base = { patchSchemaVersion: 1, patchId: "iso-probe", targetId: "personal-x", targetKind: "method", reason: "r", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:00:00Z", baseRevision: 1, baseHash: `sha256:${"a".repeat(64)}`, changes: { explanation: "ok" } };
+  assert.equal(parsePatchPackJson(JSON.stringify(base)).ok, true);
+  assert.equal(parsePatchPackJson(JSON.stringify({ ...base, createdAt: "2026-08-26T08:00:00+08:00" })).ok, true, "explicit offset must stay valid");
+  for (const badDate of ["2026-08-26 00:00:00", "2026/08/26", "Aug 26 2026", "2026-08-26T00:00Z"]) {
+    assert.equal(parsePatchPackJson(JSON.stringify({ ...base, createdAt: badDate })).ok, false, badDate);
+  }
+  assert.equal(parsePatchPackJson(JSON.stringify({ ...base, changes: { "": 1 } })).ok, false, "empty key");
+  // Regression for the early-break bug: a later empty key must also be caught.
+  const parsed = parsePatchPackJson(JSON.stringify({ ...base, changes: { explanation: "ok", "": 2 } }));
+  assert.equal(parsed.ok, false, "second empty key must be rejected");
+});
+
+test("unit: M015-R4R same-title contents surface a planning conflict instead of colliding at write time", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const mk = (id) => ({ key: `method:${id}`, id, kind: "method", title: "同名标题", owner: "personal", revision: 1, hash: `sha256:${id.length.toString(16).padStart(2, "0")}${"0".repeat(62)}`, contentOrigin: "user", verificationStatus: "pending", risk: "LOW", dependencyKeys: [], payload: { id } });
+  const plan = planPublishBatch({ batchId: "same-title", records: [mk("alpha"), mk("beta")], existingFiles: new Map(), appliedHistory: [], now });
+  const writeItems = plan.items.filter((item) => item.action === "create" || item.action === "update");
+  assert.equal(writeItems.length, 0, "no two items may target the same output path");
+  assert.equal(plan.conflictCount, 2);
+  assert.ok(plan.items.every((item) => /输出路径/.test(item.detail ?? "")), JSON.stringify(plan.items.map((item) => item.detail)));
+});
+
+test("unit: M015-R4R review round trip disambiguates same-title notes deterministically", () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const mk = (id) => ({ key: `pattern:${id}`, id, kind: "pattern", title: "重复标题笔记", owner: "personal", revision: 1, hash: "sha256:" + "7".repeat(64), contentOrigin: "user", verificationStatus: "pending", risk: "MEDIUM", dependencyKeys: [], payload: { id } });
+  const roundTrip = buildReviewRoundTrip("same-title-review", [mk("one"), mk("two")], now);
+  const paths = roundTrip.files.map((file) => file.relativePath);
+  assert.equal(new Set(paths).size, 2, JSON.stringify(paths));
+  assert.equal(roundTrip.manifest.notes.length, 2);
+  const again = buildReviewRoundTrip("same-title-review", [mk("one"), mk("two")], now);
+  assert.deepEqual(paths, again.files.map((file) => file.relativePath), "naming must be deterministic");
+});
+
+test("integration: M015-R1R2 a same-hash placeholder object is never modified by overlay candidates", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const builtin = buildBaseContentInventory().find((item) => item.owner === "builtin" && item.kind === "pattern");
+  // A personal object occupies the overlay ID with the SAME kind and an
+  // identical payload/hash, but it is NOT an overlay of the built-in object
+  // (no baseKey/baseRevision/baseHash linkage).
+  useAppStore.getState().createPersonalDraft({
+    id: `overlay-${builtin.id}`, kind: builtin.kind, title: builtin.title, risk: "LOW",
+    payload: structuredClone(builtin.payload),
+  });
+  const placeholderBefore = JSON.stringify(useAppStore.getState().personalContent.find((entry) => entry.id === `overlay-${builtin.id}`));
+  const candidate = toReviewPatchCandidates(
+    [{ relativePath: "_Review/b/n.md", contentId: builtin.id, annotations: ["占位探针"], managedEdited: false, contents: "" }],
+    [builtin], new Date("2026-08-26T06:00:00Z"),
+  )[0];
+  const conflictsBefore = useAppStore.getState().contentConflicts.length;
+  assert.throws(() => useAppStore.getState().applyOverlayPatch(candidate.patch, builtin), /冲突|不匹配/);
+  assert.equal(useAppStore.getState().contentConflicts.length, conflictsBefore + 1);
+  assert.equal(JSON.stringify(useAppStore.getState().personalContent.find((entry) => entry.id === `overlay-${builtin.id}`)), placeholderBefore, "placeholder must stay untouched");
+});
+
+test("unit: M015-R2R2 nonexistent calendar dates are rejected, not normalized", () => {
+  const base = { patchSchemaVersion: 1, patchId: "cal-probe-1", targetId: "personal-x", targetKind: "method", reason: "r", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-02-29T00:00:00Z", baseRevision: 1, baseHash: `sha256:${"a".repeat(64)}`, changes: { explanation: "ok" } };
+  assert.equal(parsePatchPackJson(JSON.stringify(base)).ok, false, "2026 is not a leap year");
+  const april31 = parsePatchPackJson(JSON.stringify({ ...base, patchId: "cal-probe-2", createdAt: "2026-04-31T00:00:00Z" }));
+  assert.equal(april31.ok, false, "April has 30 days");
+  const valid = parsePatchPackJson(JSON.stringify({ ...base, patchId: "cal-probe-3", createdAt: "2024-02-29T23:59:59+08:00" }));
+  assert.equal(valid.ok, true, "2024 IS a leap year with an explicit offset");
+});
+
+test("unit: M015-R4R3 two identical >60-char titles terminate deterministically with unique paths", { timeout: 3000 }, () => {
+  const now = new Date("2026-08-26T12:00:00Z");
+  const longTitle = "超长重复标题用于验证截断边界行为的一致性保障机制研究".repeat(4); // far beyond 60 chars, identical for both
+  assert.ok(longTitle.length > 60);
+  const mk = (id) => ({ key: `pattern:${id}`, id, kind: "pattern", title: longTitle, owner: "personal", revision: 1, hash: "sha256:" + "8".repeat(64), contentOrigin: "user", verificationStatus: "pending", risk: "MEDIUM", dependencyKeys: [], payload: { id } });
+  const first = buildReviewRoundTrip("long-title-review", [mk("alpha-one"), mk("beta-two")], now);
+  const paths = first.files.map((file) => file.relativePath);
+  assert.equal(new Set(paths).size, 2, JSON.stringify(paths));
+  const second = buildReviewRoundTrip("long-title-review", [mk("alpha-one"), mk("beta-two")], now);
+  assert.deepEqual(paths, second.files.map((file) => file.relativePath), "naming must be deterministic across rebuilds");
+});
+
+test("unit: M015-R2R3 timezone offsets must stay within RFC3339 mechanical bounds", () => {
+  const base = { patchSchemaVersion: 1, patchId: "tz-probe-1", targetId: "personal-x", targetKind: "method", reason: "r", proposedLifecycle: "pending_review", proposedVerificationStatus: "pending", createdAt: "2026-08-26T00:00:00Z", baseRevision: 1, baseHash: `sha256:${"a".repeat(64)}`, changes: { explanation: "ok" } };
+  for (const bad of ["2026-08-26T00:00:00+24:00", "2026-08-26T00:00:00+99:99", "2026-08-26T00:00:00+08:60", "2026-08-26T00:00:00-24:30"]) {
+    const candidate = { ...base, patchId: `tz-bad-${bad.slice(-5).replace(/[:+]/g, "")}`, createdAt: bad };
+    assert.equal(parsePatchPackJson(JSON.stringify(candidate)).ok, false, bad);
+  }
+  for (const good of ["2026-08-26T00:00:00+00:00", "2026-08-26T00:00:00-05:30", "2026-08-26T00:00:00+23:59"]) {
+    const candidate = { ...base, patchId: `tz-good-${good.slice(-5).replace(/[:-]/g, "")}`, createdAt: good };
+    assert.equal(parsePatchPackJson(JSON.stringify(candidate)).ok, true, good);
+  }
+});
+
 test("integration: Chinese content workbench renders lifecycle views without chat or automatic publish", () => {
   useAppStore.setState({ ...createInitialState(), hydrated: true });
   const html = renderToStaticMarkup(createElement(ContentStudioView));
@@ -196,6 +832,9 @@ test("integration: Chinese content workbench renders lifecycle views without cha
   assert.match(html, /版本历史/);
   assert.match(html, /冲突/);
   assert.match(html, /明确确认的批次/);
+  assert.match(html, /导出审核包/);
+  assert.match(html, /零写入/);
+  assert.match(html, /建立个人修订/);
   assert.doesNotMatch(html, /自动同步/);
 });
 

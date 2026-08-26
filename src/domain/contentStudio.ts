@@ -95,6 +95,23 @@ export interface ContentFieldDiff {
   after: unknown;
 }
 
+export interface PersonalContentValidationReport {
+  contentId: string;
+  kind: ContentKind;
+  lifecycle: ContentLifecycle;
+  errors: string[];
+  warnings: string[];
+  evidenceGaps: Array<{ dependencyKey: string; reason: string }>;
+  dependencyImpact: Array<{ key: string; title: string; relation: string }>;
+  entersLearning: boolean;
+}
+
+export interface ParsedPatchPack {
+  ok: boolean;
+  errors: string[];
+  patch?: ContentPatchPack;
+}
+
 export interface ContentPatchPreview {
   valid: boolean;
   stale: boolean;
@@ -125,16 +142,24 @@ export interface ObsidianConnectionSettings {
   vaultRoot: string;
   dedicatedSubfolder: string;
   validatedAt?: string;
+  validatedResolvedDir?: string;
 }
+
+export type ObsidianPublishAction = "create" | "update" | "unchanged" | "conflict";
 
 export interface ObsidianPublishItem {
   contentId: string;
+  contentKey: string;
   contentKind: ContentKind;
   revision: number;
   hash: string;
   title: string;
   relativePath: string;
   markdown: string;
+  action?: ObsidianPublishAction;
+  detail?: string;
+  /** Exact previous file bytes observed at preview time; guards the apply window. */
+  previousContents?: string | null;
 }
 
 export interface ObsidianPublishBatch {
@@ -145,4 +170,27 @@ export interface ObsidianPublishBatch {
   createdAt: string;
   previewedAt?: string;
   appliedAt?: string;
+  batchType?: "publish" | "review_round_trip";
+  requiresSecondConfirmation?: boolean;
+  /** Effective-content keys selected by the user for this explicit batch. */
+  selectedKeys?: string[];
+  /** Recorded after a successful apply; proves the last-known managed content per note. */
+  appliedFingerprints?: AppliedPublishFingerprint[];
+  /** Finite review round trip: the exact manifest that was exported. */
+  reviewManifest?: ReviewBatchManifest;
+  reviewCheckedAt?: string;
+}
+
+export interface AppliedPublishFingerprint {
+  contentId: string;
+  revision: number;
+  managedHash: string;
+  appliedAt: string;
+}
+
+export interface ReviewBatchManifest {
+  schemaVersion: 1;
+  batchId: string;
+  createdAt: string;
+  notes: Array<{ relativePath: string; contentId: string; kind: ContentKind; revision: number; hash: string; managedHash: string }>;
 }

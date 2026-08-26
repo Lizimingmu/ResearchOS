@@ -93,3 +93,54 @@ export async function importBackup(source: string): Promise<void> {
   if (!isTauri()) throw new Error("导入 SQLite 备份需要桌面版。");
   return invoke("import_backup", { source });
 }
+
+export interface ExportFileRequest {
+  relativePath: string;
+  contents: string;
+}
+
+/** Writes an explicit export batch atomically; returns the paths that actually changed. */
+export async function exportFiles(destinationDir: string, files: ExportFileRequest[]): Promise<string[]> {
+  if (!isTauri()) throw new Error("导出文件需要桌面版；浏览器预览不会写入磁盘。");
+  return invoke<string[]>("export_review_pack", { destinationDir, files });
+}
+
+// --- Curated Obsidian gateway (M015-04). Validation/listing/read are read-only. ---
+
+export interface ObsidianTargetReport {
+  resolvedDir: string;
+  existed: boolean;
+  readOnly: boolean;
+}
+
+export async function validateObsidianTarget(vaultRoot: string, subfolder: string): Promise<ObsidianTargetReport> {
+  if (!isTauri()) throw new Error("Obsidian 连接验证需要在桌面版中运行；浏览器预览不会访问任何文件。");
+  return invoke<ObsidianTargetReport>("validate_obsidian_target", { vaultRoot, subfolder });
+}
+
+export async function listMarkdownFiles(vaultRoot: string, subfolder: string): Promise<string[]> {
+  if (!isTauri()) throw new Error("读取 Obsidian 目录需要在桌面版中运行。");
+  return invoke<string[]>("list_markdown_files", { vaultRoot, subfolder });
+}
+
+export interface ObsidianFileEntry {
+  relativePath: string;
+  contents: string | null;
+}
+
+export async function readTextFiles(vaultRoot: string, subfolder: string, paths: string[]): Promise<ObsidianFileEntry[]> {
+  if (!isTauri()) throw new Error("读取 Obsidian 文件需要在桌面版中运行。");
+  return invoke<ObsidianFileEntry[]>("read_text_files", { vaultRoot, subfolder, paths });
+}
+
+export interface ConfirmedFileWrite {
+  relativePath: string;
+  contents: string;
+  expectedExisting: string | null;
+}
+
+/** Applies one confirmed publish transaction atomically with preview-time preconditions. */
+export async function writeConfirmedFiles(vaultRoot: string, subfolder: string, files: ConfirmedFileWrite[]): Promise<string[]> {
+  if (!isTauri()) throw new Error("确认后的发布写入需要桌面版；浏览器预览不会写入任何文件。");
+  return invoke<string[]>("write_confirmed_files", { vaultRoot, subfolder, files });
+}

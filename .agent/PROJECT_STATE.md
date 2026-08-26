@@ -1,21 +1,15 @@
 # Project State
 
-Last updated: 2026-08-25
+Last updated: 2026-08-26
 
-- Product version: 0.11.0 release candidate; latest approved public build remains 0.10.2
-- Approved state schema / SQLite user version: 3 / 2
-- Approved baseline: commit `441ece1` (`feat: ship Simplified Chinese interface v0.10.2`; approved product/release baseline)
-- M013 accepted checkpoint: tag `m013-accepted`
-- M014 tutorial accepted checkpoint: tag `m014-tutorial-accepted` (created by the Codex ACCEPT gate)
-- Next review command: `git diff m014-tutorial-accepted..HEAD` plus uncommitted M014-02 files/reports
-- Latest approved build: `release/ResearchOS_0.10.2_x64.exe` and `release/ResearchOS_0.10.2_x64-setup.exe`
-- Approved hashes: portable `D93E87E47C48EDA844D6A1D07E51D4A8DC46EE74403042413EC769AB0FE40302`; setup `67F6228F9D4B9325F006FBB6A379B243ADBE9B2AB52C3EA0B17C79C18C5C0834`
-- Approved working state: M013-01…11R2 and M014-01 accepted; frontend tests 50/50 and source-pack/Problem Atlas/staging/content/localization/performance/startup/seed/handoff gates pass; M014-01 changed no Rust and did not package
-- External pack gate: 8/8 attached legacy packs safely return structured rejection without crash; archive integrity 41/41 PASS; converted staging remains import-ineligible; production mutation NO
-- M013-10 contract: ProblemCards use `diagnostic | judgment | audit`, with staging-only `unclassified`; structural validity and type-specific scientific completeness are separate gates, and there is no global three-candidate-cause requirement
-- Current gate: M014-02 `PATCH REQUIRED`; see `.agent/REVIEW_RESULT.md`
-- Current implementation milestone: M015 Personal Content Studio; OpenCode continues from Codex checkpoint `7c65c9d` under `.agent/OPENCODE_HANDOFF.md`
-- Planned next milestone after v0.11.0 sign-off: M015 Personal Content Studio with versioned old-content review/revision and explicit curated Obsidian publishing; specification in `.agent/M015_PERSONAL_CONTENT_STUDIO_PLAN.md`
-- M015 state schema is 4 while SQLite user version remains 2; current core tests pass 56/56. Execution is background-only and Obsidian work uses only the project-local fake vault
-- Preserved dependencies: M011 localization remains unapproved; M012 Protocol Lab specification is preserved and implementation remains paused
-- Do not import the attached external source packs or promote pending demo/source/claim content. M013 architecture and schema 3 are accepted; scientific statuses remain item-specific.
+- Product version: 0.11.0 working release candidate; latest approved distributed build remains 0.10.2.
+- State schema / SQLite user version: 4 / 2.
+- Approved baseline: commit `0ee5181` (M015 execution handoff baseline); the accepted result is identified by tag `m015-accepted`.
+- Accepted milestones: M013 Problem Atlas, M014-01 Chinese tutorial, M015 Personal Content Studio.
+- M015 accepted checkpoint: tag `m015-accepted`; final gate in `.agent/REVIEW_RESULT.md`.
+- Working features: Chinese-first learning workspace, Problem Atlas, first-run tutorial, versioned personal-content overlays, review-pack export, patch/history/rollback, and explicit finite Obsidian publish/review workflow.
+- Current deterministic evidence: frontend unit 88/88 PASS; M015 audit 31/31 PASS; OpenCode Rust 27/27 PASS; handoff validator PASS; initial JS 944,655 bytes under the 1.9 MB budget.
+- Scientific state: M015 changed no scientific content. Pending demo/source/claim content remains pending; 166 external cards remain `unclassified` and import-ineligible.
+- Latest approved distributed artifacts remain `release/ResearchOS_0.10.2_x64.exe` and `release/ResearchOS_0.10.2_x64-setup.exe`. The existing v0.11.0 artifacts are not newly signed by this M015 gate.
+- Blockers: no M015 code blocker. Foreground packaged-app smoke testing and fresh release packaging require a separate explicit user-authorized release milestone.
+- M012 Protocol Lab remains paused until explicitly selected.

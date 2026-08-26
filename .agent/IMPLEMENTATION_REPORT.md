@@ -216,3 +216,338 @@ None remaining. (Fixed during the session: extensionless `.build` imports for di
 - Finish review-pack file export and audit, full editor/patch UI, curated Obsidian publisher, optional finite review round trip and complete regression. See `.agent/OPENCODE_HANDOFF.md`.
 
 ---
+
+# M015 OpenCode Continuation — resumed from checkpoint `7c65c9d` (2026-08-26)
+
+Agent/model: OpenCode / DeepSeek V4 Pro. Boundaries honored: background-only, fake vault only, no Git, no packaging, no scientific content generation/promotion, no real-vault or personal-file access.
+
+## Stage A — M015-01 inventory audit + review-pack file export (COMPLETE)
+
+### Changed files
+
+- New: `src/services/safePaths.ts`.
+- Modified: `src/services/contentStudio.ts`, `src/services/desktop.ts`, `src/features/content-studio/ContentStudioView.tsx`, `src/styles/app.css`, `src-tauri/src/lib.rs`, `tests-node/suite.mjs`.
+
+### Implemented
+
+- `auditContentInventory`: deterministic duplicates / SHA-256 mismatch / provenance-gap / missing-dependency / dependency-cycle audit over any inventory; base inventory audits clean.
+- `reviewPackFileEntries`: exactly five deterministic files (`manifest.json`, `content.json`, `REVIEW_COPY.md`, `SCIENTIFIC_CHANGESET.md`, `dependencies.json`).
+- Rust safe filesystem gateway + `export_review_pack` command: pure path validation first (traversal, absolute/UNC/drive, `.obsidian`, control characters, reserved device names, trailing dot/space, depth ≤ 8, length ≤ 200), then resolved-containment proof via canonicalization (rejects symlink/junction escape), then atomic temp→backup→rename writes with restore-on-failure and byte-identical skip. Any invalid path fails the whole batch with zero file writes.
+- 内容工作台 内容库: multi-select + explicit 导出审核包 action; destination picker warns to stay outside the Obsidian vault and the destination is validated against the configured vault root before invoking the write command.
+
+### Verification
+
+- BACKGROUND AUTOMATED — PASS: `npm run test:unit` 59/59 (3 new tests); `cargo test --manifest-path src-tauri/Cargo.toml` 12/12 offline single attempt (5 new tests).
+- HEADLESS/OFF-SCREEN — PASS: SSR workbench assertions extended (导出审核包 / 零写入 present; no 自动同步).
+- FOREGROUND UI — NOT RUN.
+- USER-MANUAL — NOT RUN.
+
+### Failures
+
+Two Rust test-code compile fixes plus one invalid test fixture (`\u{7}` escape, count type annotation, non-trailing-space fixture); no product logic changed during fixes.
+
+---
+
+## Stage B — M015-02/M015-03 personal maintenance (COMPLETE)
+
+### Changed files
+
+- Modified: `src/domain/contentStudio.ts`, `src/services/contentStudio.ts`, `src/state/store.ts`, `src/features/content-studio/ContentStudioView.tsx`, `src/styles/app.css`, `tests-node/suite.mjs`.
+
+### Implemented
+
+- Leakage guard hardened: `resolveEffectiveContent` resolves only `active && activeForLearning`; draft/pending/archived/deprecated/superseded (and misconfigured active-but-inactive records) never reach learning, search or publishing surfaces.
+- Create-from-template (`KIND_TEMPLATES`, structural empty placeholders only), duplicate-as-independent-draft, full detail editor (title/risk/payload JSON/dependency keys), kind filter and search.
+- Deterministic per-item validation: errors, warnings, evidence gaps, dependency impact, entersLearning flag; deterministic field diffs shared by patch preview and version comparison.
+- Patch import: total JSON parsing with bounds; dry-run preview (target, revision bump, field-level diffs, affected dependencies); expired base records an open `stale_patch` conflict with zero mutation; apply is all-or-nothing and appends a history snapshot; rollback generates a new revision and returns content to 待审核 while keeping every old revision resolvable.
+- Built-in objects immutable via patches; private activation keeps 待核验 status everywhere (store invariant + validation + UI labels).
+
+### Verification
+
+- BACKGROUND AUTOMATED — PASS: `npm run test:unit` 65/65 (6 new tests).
+- HEADLESS/OFF-SCREEN — PASS: store-level lifecycle/patch/conflict flows exercised headlessly in the node suite.
+- FOREGROUND UI — NOT RUN.
+- USER-MANUAL — NOT RUN.
+
+### Failures
+
+One test fixture defect (direct-edit step did not change payload hash); fixed in the fixture only.
+
+---
+
+## Stage C — M015-04 curated Obsidian publisher (COMPLETE)
+
+### Changed files
+
+- New: `src/services/obsidianPublish.ts`.
+- Modified: `src/domain/contentStudio.ts`, `src/services/desktop.ts`, `src/state/store.ts`, `src/features/content-studio/ContentStudioView.tsx`, `src-tauri/src/lib.rs`, `tests-node/suite.mjs`.
+
+### Implemented
+
+- Dedicated-subfolder connection with strictly read-only validation (no directory/file creation; rejects `.obsidian`, traversal, symlink/junction components, >2-level depth).
+- Internal outbox: explicit selection → batch → exact create/update/conflict/unchanged preview listing every precise relative path → confirmation token → atomic apply; default 20-note limit with a required second explicit confirmation.
+- Permanent-note contract: stable `researchos_id` frontmatter identity, revision/status/hash/published-at, one managed block, deterministic timestamp-free managed body; pending content stays honestly labeled 待核验 (`user_pending`); builtin notes marked `builtin`.
+- Idempotency and safety: unchanged republish writes nothing; rename follows stable ID (no title-derived duplicates); externally edited managed blocks produce conflicts with zero writes; user bytes after the managed block are preserved byte-for-byte on updates; per-directory case-insensitive + decomposed-Unicode collision rejection; preview-time byte preconditions verified for the entire batch before any write; atomic temp→backup→rename writes.
+
+### Verification
+
+- BACKGROUND AUTOMATED — PASS: `npm run test:unit` 68/68 (3 new tests); `cargo test --manifest-path src-tauri/Cargo.toml` 15/15 offline single attempt (3 new tests).
+- HEADLESS/OFF-SCREEN — PASS: pure planner/applier flows cover conflict/idempotency/user-byte preservation headlessly.
+- FOREGROUND UI — NOT RUN.
+- USER-MANUAL — NOT RUN.
+
+### Failures
+
+Two test-only issues fixed (Windows case-insensitive existence assertion replaced by directory-entry count; filename-sanitizer expectation). One intermediate Rust structural slip was caught by `cargo check` before testing. No product behavior changed during fixes.
+
+---
+
+## Stage D — M015-05 optional finite review round trip (COMPLETE)
+
+### Changed files
+
+- Modified: `src/domain/contentStudio.ts`, `src/services/obsidianPublish.ts`, `src/state/store.ts`, `src/features/content-studio/ContentStudioView.tsx`, `tests-node/suite.mjs`.
+
+### Implemented
+
+- Explicit confirmed export of a finite `_Review/<batch-id>/` set: exactly one manifest (with per-note export-time managed hashes) plus the notes it lists; batch ID validated; manifest persisted on the internal batch record.
+- Explicit check action: reads the stored manifest back first, refuses to read anything on any mismatch, then reads only the listed note paths; feedback parsing rejects extra paths, missing paths and identity/hash mismatches (fail closed).
+- 审核意见 annotations and managed-block payload edits convert into pending patch candidates with dry-run field diffs; reviewer words are imported verbatim; every candidate is `pending_review`/`pending`; applying creates a new revision while old revisions stay resolvable and no status is ever promoted.
+- No watcher, automatic pull, merge, publish, delete or cleanup exists in this path.
+
+### Verification
+
+- BACKGROUND AUTOMATED — PASS: `npm run test:unit` 71/71 (3 new tests).
+- HEADLESS/OFF-SCREEN — PASS: manifest-gating, annotation extraction, managed-edit detection and candidate application exercised headlessly.
+- FOREGROUND UI — NOT RUN.
+- USER-MANUAL — NOT RUN.
+
+### Failures
+
+Two test fixtures initially included the manifest file in the gated read-back entries; corrected to match the designed contract (manifest verified separately by the store). One real service defect found by the tests (`toReviewPatchCandidates` missing contents lookup) was fixed before green.
+
+---
+
+## Stage E — M015-06/M015-07 regression and handoff (COMPLETE)
+
+### Changed files
+
+- New: `scripts/m015-content-audit.mjs`, `scripts/run-m015-audit.mjs` (bundling launcher).
+- Modified: `package.json` (`audit:m015` script), `src/state/store.ts` (one lazy-import fix, see Failures), `artifacts/m015/final-gate.json` (generated).
+
+### Deterministic audits implemented
+
+31-check final gate: schema-4 / SQLite-user-version-2 invariants; SHA-256 vectors; inventory duplicate/hash/provenance/dependency-cycle audit; five-lifecycle leakage probes; patch stale/atomic/rollback probes; fake-vault publish simulation at the exact run-state root (TS-level simulation of the designed gateway — NOT real Rust filesystem verification; OS-level containment/atomicity is proven separately by `cargo test`: preview zero-write proof via byte-level tree snapshots, exact create, unchanged republish writes nothing, byte-preserving updates, managed-edit conflict with zero writes; namespaced per run); review manifest gates; static scans (no watchers, no auto-publish near hydration, no verified-status literals in store, no hardcoded vault locations); 166-card quarantine disclosure check.
+
+### Verification (final battery)
+
+- BACKGROUND AUTOMATED — PASS: `npm test` 71/71 + localization 11 checks + startup smoke; source-pack 0/0; Problem Atlas 0/0; staging 63/63; content 0 errors/1 pre-existing warning; performance initial JS 927,427 bytes (budget 1.9 MB); seed export 9 artifacts; `audit:m015` 31 checks (run twice); `cargo test` 15/15 offline single attempt; handoff validator PASSED.
+- HEADLESS/OFF-SCREEN — PASS: all M015 behavior exercised headlessly; fake-vault simulation uses only `.tmp/m015-fake-vault/m015-personal-content-studio-20260826`.
+- FOREGROUND UI — NOT RUN.
+- USER-MANUAL — NOT RUN.
+
+### Failures
+
+One real regression caught by the performance gate and fixed: a static `contentInventory` import added to `store.ts` during Stage C inlined all built-in training datasets into the startup chunk (initial JS 1,157,774 bytes, `expandedTraining` lazy chunk lost). Converted to dynamic import inside the three publish/review actions; startup payload returned to 927,427 bytes and every gate was re-run green afterwards. The audit script also initially assumed an empty vault on re-runs; runs are now namespaced so the persistent fake-vault stays valid across repeated audits.
+
+### Scientific changeset
+
+None. M015 generated, modified or promoted no scientific content; `SCIENTIFIC_CHANGESET.md` intentionally left untouched (its existing entries are pre-M015 pending items still awaiting Codex).
+
+---
+
+## M015 OpenCode continuation — FINAL STATUS
+
+All stages A–E complete from checkpoint `7c65c9d`. Segment reports S1–S7 under `.agent/m015-segments/`. Run state set to `awaiting_codex_review`. Stopping for Codex diff/scientific review per `.agent/OPENCODE_HANDOFF.md`.
+
+# M015 Codex Review Response — PATCH REQUIRED → resolved for re-review (2026-08-26)
+
+Agent/model: OpenCode / DeepSeek V4 Pro. All work background-only on the project-local fake vault; no Git, no packaging, no real vault, no scientific content changes. Each fix was preceded by a failing regression (red→green).
+
+## M015-R2 — patch-pack promotion bypass closed (P0 / scientific gate)
+
+- `parsePatchPackJson`: strict schema — `targetKind` enum check, `proposedLifecycle` restricted to `draft | pending_review`, `proposedVerificationStatus` must be exactly `pending`, ISO `createdAt`, id-format checks for `patchId`/`targetId`, integer `baseRevision ≥ 1`, sha256 `baseHash`, `changes` bounds (non-empty, ≤50 keys, ≤100 KB), typed optional `reviewer`/`evidenceChanges`.
+- `previewPatch` and `applyPatchTransaction` independently enforce the same gate (defense in depth); apply now hard-throws on any promotion attempt and writes `lifecycle ∈ {draft, pending_review}`, `activeForLearning = false`, `verificationStatus = "pending"` unconditionally.
+- Tests added (3): unknown enums/non-pending proposals rejected; direct service-level active+verified pack (bypassing the parser) fails closed for user and AI origins; malicious patches leave entries/history/conflicts byte-identical.
+
+## M015-R1 — versioned revision entry for built-in objects (P0)
+
+- New `createOverlayFromBuiltin`: stages a pending draft overlay carrying `baseKey/baseRevision/baseHash`; the built-in record is cloned verbatim and never mutated; built-ins remain read-only.
+- New `detectBaseUpdateConflicts`: deterministic `base_update` conflicts when an app upgrade changes an overlay's base hash/revision; surfaced in the 冲突 tab alongside stored conflicts.
+- Store: `ensurePersonalOverlay(record)` and `applyOverlayPatch(patch, builtinRecord)` (stages the overlay on demand, then rebases the patch onto the overlay's optimistic-lock state).
+- Review round trip: built-in targets now produce overlay patch candidates (`targetId = overlay-<id>`, `overlayBase` metadata) instead of being skipped; the workbench applies them via the rebased path. 内容库 rows expose 建立个人修订.
+- Tests added (3): builtin → overlay → revision → rollback with untouched base text; upgrade conflict detection determinism; review-candidate staging/rebased apply incl. stale re-apply protection.
+
+## M015-R3 — Rust containment hardened (P0)
+
+- `collect_markdown_files`: per-entry no-follow file types; symlinks/junctions are never traversed; exceeding 500 notes is now a structured overflow error (`listing overflow … refusing a partial scan`) instead of a silent truncation.
+- `read_text_files`: new `safe_existing_target` walks every component with no-follow metadata, refuses any link below the dedicated root, proves parent containment via canonicalization, and rejects directory targets.
+- Write path: new `prepared_write_target` creates missing parents inside the confirmed transaction, rejects every link component, proves containment, and refuses directory targets.
+- Tests added (3): directory symlink/junction inside the vault (junction created via `mklink /J` where permitted) is neither listed nor read through, outside bytes untouched; file symlinks fail both read and expected-matching write; 501-note overflow returns the structured error.
+
+## M015-R4 — confirmed-write transaction fixed (P0)
+
+- First-export bug fixed: nested parents (e.g. `_Review/<batch-id>/`) are now created and containment-proven inside the transaction; blank-vault export works (regression test).
+- Duplicate exact paths AND case/Unicode-equivalent paths within one batch are rejected up front (structured error, zero writes).
+- Cross-file all-or-nothing implemented: all temp files are staged first; commit rotates previous bytes through backups and renames into place per batch; any mid-commit failure rolls back every already-committed file (restores backups or removes creations) and removes staged temps, returning a structured "rolled back; no partial batch remains" error.
+- Planner: multiple existing notes sharing one stable `researchos_id` now produce a conflict item instead of silently using `candidates[0]`.
+- Tests added (4 Rust + 1 node): blank fake-vault first review export; duplicate/equivalent paths zero-write rejection; second-file failure leaves no partial output or temp/backup leftovers; duplicate-stable-ID planning conflict.
+
+## M015-R5 — Windows compatibility & handoff cleanup (P1)
+
+- `parseObsidianNote` is CRLF-tolerant (frontmatter detection/splitting, managed markers); managed-block hashing normalizes CRLF so external line-ending rewrites no longer lose identity or create false conflicts; user tails remain byte-exact (CRLF preserved through updates). Test added covering identity, zero-churn republish of a CRLF-rewritten copy, and byte-preserving CRLF tail across updates.
+- `.audit-build/` added to `.gitignore`.
+- `S0.md` reconstructed as an explicitly labeled factual record (original was absent from disk) so the run-state reference resolves without claiming unrun checks.
+- Report wording corrected: the `audit:m015` fake-vault publish checks are a TS-level simulation of the designed gateway; OS-level containment/atomicity/idempotency evidence is the Rust test suite.
+
+## Re-verification (exact commands)
+
+- `npm run test:unit` → PASS 79/79 (+8 review-response tests; all previously failing regressions green)
+- `npm run audit:m015` → PASS 31 checks
+- `cargo test --manifest-path src-tauri/Cargo.toml` (offline single attempt) → PASS 21/21 (+6)
+- `node scripts/validate-agent-handoff.mjs` → PASSED
+- Full battery unchanged-green: `npm test` 79/79 + localization 11 + startup smoke; source-pack 0/0; Problem Atlas 0/0; staging 63/63; content 0 errors/1 pre-existing warning; performance initial JS 935,771 bytes (budget 1.9 MB); seed export 9 artifacts
+
+### Test reporting
+
+- BACKGROUND AUTOMATED — PASS (commands above)
+- HEADLESS/OFF-SCREEN — PASS (all M015 behavior exercised headlessly; filesystem tests use isolated tempdirs plus the exact project-local fake vault)
+- FOREGROUND UI — NOT RUN
+- USER-MANUAL — NOT RUN
+
+Stopping for Codex diff review; OpenCode ran no Git commands.
+
+# M015 Codex Review Response 2 — R1R–R5R resolved for re-review (2026-08-26)
+
+Agent/model: OpenCode / DeepSeek V4 Pro. Background-only, project fake vault only, no Git, no packaging, no scientific changes. Each fix was preceded by a failing regression where mechanically possible (R1R/R2R/R4R-planner/R5R red runs captured; the two Rust fault-injection tests were written together with the new injection seam because no deterministic mid-commit failure was reachable through the previous API).
+
+## M015-R1R — overlay optimistic lock restored (P0)
+
+- `applyOverlayPatch` never rebases an existing overlay: the candidate must match the overlay's exact revision/hash or it fails as stale with zero mutation.
+- First staging is the only baseline translation, and it is provable: the candidate must exactly match the current built-in snapshot (revision+hash); otherwise an open `stale_patch` conflict is recorded and nothing is created/applied.
+- `ensurePersonalOverlay` now looks up by ID alone and records a conflict + throws when the occupying object differs in kind/baseKey/baseRevision/baseHash instead of silently reusing it.
+- Every failed overlay apply records an explainable open conflict (candidate ID, current revision vs candidate base) before rethrowing.
+- Tests added (2): candidate A → apply B (real r3 advance) → re-apply A2 with genuine field diffs → stale error, byte-identical state, conflict recorded with candidate ID; same-ID different-kind personal object blocks ensurePersonalOverlay via recorded conflict.
+
+## M015-R2R — untrusted schema corners completed (P1)
+
+- Strict ISO-8601 validation (`YYYY-MM-DDTHH:MM:SS[.fff](Z|±HH:MM)` plus parseability) replaces bare `Date.parse`; space-separated/loose formats are rejected, explicit offsets accepted.
+- The `changes` key loop's early `break` removed: every key is checked; empty field names anywhere reject the pack.
+- Parser regression added covering both corners.
+
+## M015-R3R — no directory creation through links (P0)
+
+- `prepared_write_target` reordered: existing components are verified top-down with no-follow metadata first (`NotFound` is the ONLY tolerated "missing" signal; any other metadata error fails closed), then missing parent levels are created ONE level at a time under proven parents, each newly created directory immediately re-verified (no reparse point, real directory, canonical containment), then parent containment proof and final-component link/directory refusal.
+- `resolve_dedicated_dir` and the read path likewise treat only `NotFound` as missing; all other metadata errors fail closed.
+- Regression added: junction inside the dedicated folder pointing outside; writing `linked/new/note.md` is rejected AND the external `new` directory does not exist; the complete external tree snapshot stays path/byte identical. This test reproduced the defect on the pre-fix code (red) before the reorder.
+
+## M015-R4R — real cross-file transaction with fault injection (P0)
+
+- New `write_confirmed_files_inner(..., fault_commit_index)` seam (production wrapper passes `None`) enables deterministic mid-commit failure AFTER a real commit.
+- Rollback hardened for Windows: restoring an updated file removes the NEW target first, then renames the backup back; restore failures are never ignored — backups are kept as recoverable evidence and the returned error states `ROLLBACK INCOMPLETE` with the leftover paths. Only after a fully successful rollback are backups/temp files deleted and the error claims "whole batch rolled back".
+- Staging failure cleans up every temp created so far and returns "staging failed before any commit".
+- Temp/backup names are batch-unique and verified-nonexistent siblings (`.researchos-{tmp|bak}-{pid}-{nanos}-{n}`, name truncated to 80 chars), so fixed names can never truncate or clobber existing hidden files.
+- Tests added (2): fault at commit #1 for [update-existing + create-new] and [create-new + update-existing]; both assert full-tree byte/path equality with the pre-call state, original bytes intact, new file absent, zero tmp/bak leftovers. The earlier directory-target rejection test remains as a separate case.
+
+## Planner / review-builder same-title handling
+
+- `planPublishBatch`: duplicate output paths from different contents are detected post-planning and ALL members of a colliding group become conflicts ("相同输出路径"), so collisions surface in preview rather than at write time.
+- `buildReviewRoundTrip`: deterministic disambiguation appends the stable content ID (then numeric suffix if still colliding) so finite review batches always produce unique manifest paths; determinism asserted across rebuilds.
+
+## M015-R5R — CRLF unmanaged suffix preserved byte-for-byte (P1)
+
+- `parseObsidianNote.userTail` is now the ENTIRE raw suffix after `MANAGED_END` (exact leading newline characters included); the update splice concatenates frontmatter+managed block+suffix without inserting anything, so `\r\n` can no longer degrade to `\n\r\n`.
+- Test strengthened to compare the complete suffix after `MANAGED_END` byte-for-byte between input and output (previously only an endsWith check).
+
+## Re-verification (exact results)
+
+- `npm run test:unit` → PASS 84/84 (+5 review-response tests)
+- `npm run audit:m015` → PASS 31 checks
+- `cargo test --manifest-path src-tauri/Cargo.toml` (offline single attempt) → PASS 24/24 (+3)
+- `node scripts/validate-agent-handoff.mjs` → PASSED
+- Full battery green: `npm test` 84/84 + localization 11 + startup smoke; source-pack 0/0; Problem Atlas 0/0; staging 63/63; content 0 errors/1 pre-existing warning; performance initial JS 941,388 bytes (budget 1.9 MB); seed export 9 artifacts
+
+### Test reporting
+
+- BACKGROUND AUTOMATED — PASS (commands above)
+- HEADLESS/OFF-SCREEN — PASS
+- FOREGROUND UI — NOT RUN
+- USER-MANUAL — NOT RUN
+
+Stopping for Codex re-review; OpenCode ran no Git commands.
+
+# M015 Codex Review Response 3 — R1R2/R2R2/R4R2/R4R3 resolved for final re-review (2026-08-26)
+
+Agent/model: OpenCode / DeepSeek V4 Pro. Background-only, project fake vault only, no Git, no packaging, no scientific changes. Failing regressions preceded every fix where the defect was reachable through the existing API (R1R2/R2R2/R4R3 red runs captured; R4R2's rotated-state and dir-purge tests were written together with the new state-machine seam because those states were unreachable through the previous fault API).
+
+## M015-R1R2 — overlay identity guard (P1)
+
+- When `applyOverlayPatch` receives `builtinRecord`, an existing same-ID/same-kind object must genuinely be that object's overlay (`baseKey`/`baseRevision`/`baseHash` all match) before any patch logic runs. A same-hash placeholder WITHOUT the base linkage is rejected with a recorded open conflict and zero mutation — hash coincidence is explicitly not trusted.
+- Regression added: placeholder cloned from the builtin payload (identical hash, no base linkage); candidate apply throws, records a conflict, and leaves the placeholder byte-identical.
+
+## M015-R2R2 — real calendar validation (P1)
+
+- `isValidIsoInstant`: strict ISO-8601 regex plus UTC round-trip comparison of year/month/day/hour/minute/second against the parsed fields. Nonexistent dates roll over and stop matching.
+- Regressions added: `2026-02-29T00:00:00Z` and `2026-04-31T00:00:00Z` rejected; `2024-02-29T23:59:59+08:00` (real leap day, explicit offset) accepted.
+
+## M015-R4R3 — long-title review pack loop fixed (P0)
+
+- `buildReviewRoundTrip` disambiguation now operates suffix-aware: the stable-ID marker is appended to an ALREADY-truncated stem whose length reserves room for the marker (plus numeric escalation), so identical over-long titles can never truncate the marker away. Termination is structural (strictly growing counter, marker always present).
+- Regression added with a >60-char identical title pair AND a 3s test timeout: completes in ~0.5 ms, unique paths, deterministic across rebuilds. (Red phase demonstrated as a synchronous hang — node:test timeouts cannot interrupt a busy loop, so the pre-fix suite had to be killed externally.)
+
+## M015-R4R2 — transaction state machine + full failure hygiene (P0)
+
+- Explicit per-item states `Staged → BackupRotated → Installed`; rollback walks ALL items beyond `Staged` IN REVERSE, including the current never-installed item: a `BackupRotated` item's old content lives only in its backup and is restored by a plain rename.
+- New fault seam `CommitFaultStage::InstallFailure(index)` fires AFTER that item's backup rotation (previous seam fired before rotation). Existing two-seam tests migrated to it and thereby now exercise exactly the required [Installed, BackupRotated] rollback shape.
+- New regression for the flagged data-loss path: single-item batch, backup rotated, install fails, committed list empty → original bytes restored from the backup, backup deleted only after successful restore, zero leftovers. On the previous code this path deleted the sole backup while claiming full recovery.
+- Staging is register-before-write: each item enters the staged list before its bytes are written, so write/fsync failures clean up the current temp together with earlier ones.
+- Temp sidecars are claimed atomically via `OpenOptions::create_new(true)` (no check-then-create TOCTOU window, retry on AlreadyExists); backup names remain transaction-private unique siblings and are additionally protected by rename-fails-if-exists semantics.
+- Every directory created by this transaction (dedicated root when absent + nested parents) is tracked; precondition mismatches, staging failures, and FULLY successful rollbacks purge them in reverse order via remove-dir-if-empty, satisfying "failure = zero writes". On ROLLBACK INCOMPLETE nothing is purged (evidence preserved).
+- Tests added (2): rotated-backup restoration with empty commit list; precondition failure on a fresh vault purges the entire ResearchOS tree created seconds earlier.
+
+## Re-verification (exact results)
+
+- `npm run test:unit` → PASS 87/87 (+3)
+- `npm run audit:m015` → PASS 31 checks
+- `cargo test --manifest-path src-tauri/Cargo.toml` (offline single attempt) → PASS 26/26 (+2)
+- `node scripts/validate-agent-handoff.mjs` → PASSED
+- Full battery green: `npm test` 87/87 + localization 11 + startup smoke; source-pack 0/0; Problem Atlas 0/0; staging 63/63; content 0 errors/1 pre-existing warning; performance initial JS 944,655 bytes (budget 1.9 MB); seed export 9 artifacts
+
+### Test reporting
+
+- BACKGROUND AUTOMATED — PASS (commands above)
+- HEADLESS/OFF-SCREEN — PASS
+- FOREGROUND UI — NOT RUN
+- USER-MANUAL — NOT RUN
+
+Stopping for Codex final re-review; OpenCode ran no Git commands.
+
+# M015 Codex Review Response 4 — R2R3/R4R4 resolved for final sign-off (2026-08-26)
+
+Agent/model: OpenCode / DeepSeek V4 Pro. Scope strictly limited to the two remaining mechanical patches; background-only, project fake vault only, no Git, no packaging, no scientific changes. Both fixes were preceded by failing regressions.
+
+## M015-R2R3 — timezone offset bounds (P1)
+
+- `isValidIsoInstant` now validates the offset it parses: hour `00..23`, minute `00..59` (the RFC3339 mechanical bound; the contract comment states that narrower real-world zone limits are deliberately NOT adopted). `Z` unaffected; calendar round-trip retained.
+- Regression added: `+24:00`, `+99:99`, `+08:60`, `-24:30` rejected; `+00:00`, `-05:30`, `+23:59` accepted (red phase confirmed against the previous code).
+
+## M015-R4R4 — full two-level dedicated reclamation (P1)
+
+- Dedicated creation replaced `create_dir_all` with level-by-level creation over the validated subfolder components, registering EVERY missing level in `created_dirs`; non-directory/link components fail closed. The existing reverse-order remove-dir-if-empty purge now reclaims the whole created tree on precondition/staging/rollback failure.
+- Regression added: brand-new vault + two-level subfolder (`ResearchOS/Notes`) + precondition failure → error, and NEITHER level exists afterwards (`ResearchOS/` itself removed). The single-level purge test from the previous round is retained unchanged.
+
+## Re-verification (exact results)
+
+- `npm run test:unit` → PASS 88/88 (+1)
+- `npm run audit:m015` → PASS 31 checks
+- `cargo test --manifest-path src-tauri/Cargo.toml` (offline single attempt) → PASS 27/27 (+1)
+- `node scripts/validate-agent-handoff.mjs` → PASSED
+
+### Test reporting
+
+- BACKGROUND AUTOMATED — PASS (commands above)
+- HEADLESS/OFF-SCREEN — PASS
+- FOREGROUND UI — NOT RUN
+- USER-MANUAL — NOT RUN
+
+Stopping for Codex final sign-off; OpenCode ran no Git commands.

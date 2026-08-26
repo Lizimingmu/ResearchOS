@@ -1,14 +1,11 @@
 # Review Result
 
-PATCH REQUIRED
+ACCEPT
 
-M014-02 is technically near-complete, but v0.11.0 is not yet release-signed.
+M015-01 至 M015-07 及四轮 Codex 修补项全部通过最终 diff、产品边界和科学状态门审查。
 
-- ACCEPTED evidence: version declarations are consistent; React #185 root cause and stable-selector/`useMemo` fix are correct by diff review; Codex independently reran 50/50 frontend tests plus localization, startup, source-pack, Problem Atlas, staging 63/63, content, performance, handoff, and artifact SHA256 checks successfully.
-- Existing OpenCode evidence reports Rust 7/7 and successful NSIS/standalone builds. Codex's own Rust retry was NOT RUN to completion because Cargo network credentials/index access failed; an offline retry lacked cached `urlencoding`.
-- Release blocker: the packaged app crashed on Problem Atlas navigation before the selector fix, and the rebuilt artifact has not yet repeated that exact live navigation successfully. This defect class is not covered by the SSR test.
-- Required minimal foreground verification, only after explicit current user approval: launch the rebuilt portable artifact with isolated data; open Problem Atlas, enter one card/mode, then open Review; confirm no crash/blank screen; close and reopen once to confirm tutorial completion persists. No DPI/system-setting changes, focus forcing, or global input automation.
-- Documentation patch: replace “重新签名哈希” with “重新计算哈希” in `release/RELEASE_NOTES_v0.11.0.md`; the binaries are unsigned.
-- In-app backup/restore UI may remain `NOT RUN` if the file-level round trip and Rust command tests remain clearly disclosed; it is not the blocker.
-
-After the minimal check and wording patch, update the implementation report and stop for Codex final sign-off. Do not rebuild unless code or packaged assets change.
+- 个人内容、内置 overlay、版本历史、冲突与 rollback 保持 ResearchOS 为 canonical store。
+- 修订包和 Obsidian 回读只能产生 `draft | pending_review` + `pending`，不存在自提升为 verified/active 的路径。
+- Obsidian 仅执行显式有限批次；无 watcher、自动同步或真实 Vault 探测。路径 containment、junction/symlink、重复身份、字节前置条件及跨文件失败恢复已覆盖。
+- M015 未新增、修改或提升科研内容；166 张外部卡继续隔离。
+- Codex 最终后台复验：`npm run test:unit` 88/88、`npm run audit:m015` 31/31、handoff validator PASS。OpenCode 报告 Rust 27/27；前台 UI、用户手工验收和本轮打包按范围未运行。
