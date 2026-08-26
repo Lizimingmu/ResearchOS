@@ -11,6 +11,6 @@ Last updated: 2026-08-26
 - Current deterministic evidence: frontend unit 89/89 PASS; M015 audit 31/31 PASS; OpenCode Rust 27/27 PASS; handoff validator PASS; initial JS 945,116 bytes under the 1.9 MB budget.
 - Scientific state: M015 changed no scientific content. Pending demo/source/claim content remains pending; 166 external cards remain `unclassified` and import-ineligible.
 - Current candidate artifacts: `release/ResearchOS_0.12.0_x64.exe` and `release/ResearchOS_0.12.0_x64-setup.exe`; both are unsigned and independently hash-verified. Older artifacts remain byte-preserved.
-- Current milestone: M016 background release gate accepted. Foreground packaged-app smoke remains permission-gated and has not been run.
-- Blockers: no background release blocker. Final user-verified release status awaits an explicitly approved foreground session; real Vault interaction is not required for release acceptance.
+- Current milestone: M016 Learning Kernel specification complete; implementation is ready for OpenCode under task IDs `M016-LK-01…07`.
+- Blockers: no specification blocker. Foreground packaged-app smoke remains permission-gated and is not part of Learning Kernel implementation.
 - M012 Protocol Lab remains paused until explicitly selected.

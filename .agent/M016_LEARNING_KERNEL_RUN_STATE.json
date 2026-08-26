@@ -1,0 +1,21 @@
+{
+  "milestone": "M016 — Learning Kernel",
+  "taskPrefix": "M016-LK",
+  "baselineTag": "v0.12.0-rc1",
+  "runStatus": "ready_for_opencode",
+  "currentSegment": "S1",
+  "segments": [
+    { "id": "S1", "tasks": ["M016-LK-01", "M016-LK-02"], "status": "pending" },
+    { "id": "S2", "tasks": ["M016-LK-03", "M016-LK-04"], "status": "pending" },
+    { "id": "S3", "tasks": ["M016-LK-05"], "status": "pending" },
+    { "id": "S4", "tasks": ["M016-LK-06"], "status": "pending" },
+    { "id": "S5", "tasks": ["M016-LK-07"], "status": "pending" }
+  ],
+  "constraints": {
+    "gitByOpenCode": false,
+    "foregroundAppLaunch": false,
+    "realVaultAccess": false,
+    "packaging": false,
+    "scientificPromotion": false
+  }
+}

@@ -1,30 +1,35 @@
-# Current Milestone — M016 v0.12.0 Release
+# Current Milestone — M016 Learning Kernel
 
-Execution status: **BACKGROUND COMPLETE — CODEX ACCEPTED; FOREGROUND PERMISSION PENDING**.
+Execution status: **SPECIFICATION COMPLETE — READY FOR OPENCODE**.
 
-## Objective
+## 🎯 Objective
 
-Build a reproducible v0.12.0 Windows release candidate containing the accepted M015 Personal Content Studio, with complete background regression evidence and truthful release metadata.
+Correct the product's “test first, learn later” bias by introducing a state-driven Learning Kernel on top of the accepted `v0.12.0-rc1` baseline.
 
-## Authorized now
+## 📌 Frozen product decisions
 
-- Background source/version/documentation edits.
-- Deterministic frontend/Rust/audit/headless checks.
-- Non-interactive production compilation, packaging, copying and SHA256 calculation.
-- Project-local or temporary fixtures only.
+- Learning Unit duration: 8–12 minutes.
+- Curriculum: medical-research general skeleton plus project-relevance ranking.
+- Learning Mode is default; Challenge Mode is an optional fast path.
+- Maximum two active learning threads.
+- Chinese pedagogy: intuition first, then definition/English term, mechanism, boundary and reviewer nuance.
 
-## Not authorized in this phase
+## 🧩 Phase-one scope
 
-- Launching ResearchOS or an installer.
-- Foreground UI automation, screenshots, focus/input/window/display control.
-- Real Obsidian Vault or production ResearchOS data access.
-- Scientific content changes or status promotion.
-- Git operations by OpenCode.
+- LearningUnit/LearnerUnitState/Event/Prerequisite/PracticeAsset contracts.
+- State-gated Today scheduler and two-axis Skill Map.
+- Statistical Unit → Biological vs Technical Replicate → Pseudoreplication prototypes.
+- Five-minute onboarding that actually teaches n/statistical unit.
+- Backward-compatible frontend state schema 4→5 migration.
 
-## Accepted background gate
+## 🚫 Out of scope
 
-OpenCode completed M016-01…04. Codex accepted the diff, version declarations, reports and artifact hashes in M016-05. Candidate source tag: `v0.12.0-rc1`.
+- New Problem Cards, AI Audit, Frontier or unrelated features.
+- Bulk rewrite of existing content.
+- Packaging, version bump, release artifact changes or Git by OpenCode.
+- Foreground automation, real Vault access or production user data.
+- Scientific verification/status promotion by the implementing agent.
 
-## Remaining optional release check
+## ▶️ Execution
 
-Before any packaged-app foreground smoke, request current user permission with the executable, duration, input/focus actions and isolated data directory. Without permission, retain `FOREGROUND UI — NOT RUN` and do not launch anything.
+OpenCode must use `.agent/OPENCODE_HANDOFF.md` and resumable segments in `.agent/M016_LEARNING_KERNEL_RUN_STATE.json`. On completion it must stop at `awaiting_codex_review` for diff and scientific review.

@@ -32,5 +32,13 @@
 | M016-04 | P0 | Produce implementation/release handoff and stop | OpenCode Pro | Reports truthful across four testing classes; run state awaits Codex; no Git/foreground/real Vault | Changeset audit only |
 | M016-05 | P0 | Diff, artifact and release gate | Codex | COMPLETED/ACCEPTED: diff and version declarations reviewed; new and old artifact hashes independently checked; background RC tagged | Release sign-off Yes |
 | M016-06 | P1 | Minimal permission-gated packaged-app smoke | OpenCode Pro + Codex | Only after current explicit permission: isolated-data portable app opens, Atlas and Content Studio paths render, restart persists state; exact PID closed; foreground status reported truthfully | Release sign-off Yes |
+| M016-LK-01 | P0 | Implement Learning Kernel domain/schema and two-axis skill projection | OpenCode Pro | Versioned units/states/events/prerequisites/bindings; instruction and competence remain separate | Architecture Yes |
+| M016-LK-02 | P0 | Add backward-compatible state schema 4→5 migration | OpenCode Pro | Old data preserved; new state empty; no inferred mastery; reopen/backup/future-schema gates pass | No |
+| M016-LK-03 | P0 | Implement pure state transitions, Challenge fast path and prerequisite/thread gates | OpenCode Pro | Only legal transitions; Challenge pass never sets instruction complete; max two active threads | Learning behavior Yes |
+| M016-LK-04 | P0 | Replace fixed Today mix with state-gate → legal activity → priority scheduler | OpenCode Pro | State/activity table enforced; deterministic ranking; project relevance never bypasses gates | Learning behavior Yes |
+| M016-LK-05 | P0 | Implement three pending prototype Learning Units and versioned asset bindings | OpenCode Pro | 11-part structure; 8–12 min; explicit chain; provenance and rubrics complete; no bulk rewrite | Yes — HIGH |
+| M016-LK-06 | P0 | Implement progressive-disclosure Learning UI, dual mode, Skill Map and n onboarding | OpenCode Pro | Default learn-first flow; tiered hints; locked independent work; 5-minute teaching onboarding | Pedagogy Yes |
+| M016-LK-07 | P0 | Add deterministic audit, full background regression and handoff report | OpenCode Pro | Learning-kernel audit plus all applicable gates pass; reports truthful; stop for Codex review | Changeset Yes |
+| M016-LK-08 | P0 | Diff-based product, pedagogy and scientific gate | Codex | Review implementation/report/changeset; accept or request bounded patch; no broad rescan absent risk | Yes |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.
