@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "milestone": "M015",
   "runId": "m015-personal-content-studio-20260826",
-  "runStatus": "running_codex",
-  "lastUpdated": "2026-08-26T08:55:00+08:00",
+  "runStatus": "handoff_to_opencode",
+  "lastUpdated": "2026-08-26T09:10:00+08:00",
   "canonicalPlan": ".agent/M015_PERSONAL_CONTENT_STUDIO_PLAN.md",
   "runbook": ".agent/M015_EXECUTION_RUNBOOK.md",
   "constraints": {
@@ -18,8 +18,8 @@
   },
   "git": {
     "branch": "codex/m015-personal-content-studio",
-    "baselineCommit": null,
-    "commitPolicy": "one_local_commit_after_each_passing_segment",
+    "baselineCommit": "62fab14",
+    "commitPolicy": "outer_codex_only",
     "allowPush": false,
     "allowResetOrClean": false
   },
@@ -31,8 +31,8 @@
   },
   "fakeVaultRoot": "D:\\Agents\\ResearchOS\\.tmp\\m015-fake-vault\\m015-personal-content-studio-20260826\\ResearchOS",
   "segments": [
-    { "id": "S0", "status": "pending", "attempts": 0, "commitHash": null, "report": ".agent/m015-segments/S0.md" },
-    { "id": "S1", "status": "pending", "attempts": 0, "commitHash": null, "report": ".agent/m015-segments/S1.md" },
+    { "id": "S0", "status": "completed", "attempts": 1, "commitHash": "62fab14", "report": ".agent/m015-segments/S0.md" },
+    { "id": "S1", "status": "in_progress", "attempts": 1, "commitHash": "7c65c9d", "report": ".agent/m015-segments/S1.md" },
     { "id": "S2", "status": "pending", "attempts": 0, "commitHash": null, "report": ".agent/m015-segments/S2.md" },
     { "id": "S3", "status": "pending", "attempts": 0, "commitHash": null, "report": ".agent/m015-segments/S3.md" },
     { "id": "S4", "status": "pending", "attempts": 0, "commitHash": null, "report": ".agent/m015-segments/S4.md" },

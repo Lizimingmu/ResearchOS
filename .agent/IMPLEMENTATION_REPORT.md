@@ -190,3 +190,29 @@ None remaining. (Fixed during the session: extensionless `.build` imports for di
 - The source-pack import UI is a minimal explicit flow (file picker → dry-run → gated confirm); it uses `allowUpdates: false`, so content changes to existing rows are never silently forced.
 - The tutorial auto-opens once for users whose onboarding is complete and who have neither completed nor skipped it (including existing users upgrading to this build); it is always skippable and restartable from Settings.
 - Version is 0.11.0; no Git operations were performed; release signing/installer behavior is not part of this milestone.
+# M015 Codex Core Checkpoint — 2026-08-26
+
+## Changed files
+
+- Added `src/domain/contentStudio.ts`, `src/services/contentStudio.ts`, `src/services/contentInventory.ts` and `src/features/content-studio/ContentStudioView.tsx`.
+- Updated app navigation, state schema/migration/store, Today state projection and node test suite.
+
+## Implemented
+
+- Portable content records, stable keys, revisions, SHA-256 and dependency-aware review-pack construction.
+- Personal draft/pending/active/archive overlay state, explicit private activation without verification promotion, optimistic patch apply, history and rollback.
+- Chinese-first content workbench shell with 内容库、草稿、待审核、发布箱、版本历史、冲突.
+- v1/v2/v3 state migration to schema 4 with existing user data preserved.
+
+## Verification
+
+- BACKGROUND AUTOMATED — PASS: `npm run test:unit`, 56/56.
+- HEADLESS/OFF-SCREEN — PASS: server-rendered content workbench assertions in node suite.
+- FOREGROUND UI — NOT RUN.
+- USER-MANUAL — NOT RUN.
+
+## Remaining
+
+- Finish review-pack file export and audit, full editor/patch UI, curated Obsidian publisher, optional finite review round trip and complete regression. See `.agent/OPENCODE_HANDOFF.md`.
+
+---

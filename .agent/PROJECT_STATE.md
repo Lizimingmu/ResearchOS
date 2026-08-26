@@ -14,8 +14,8 @@ Last updated: 2026-08-25
 - External pack gate: 8/8 attached legacy packs safely return structured rejection without crash; archive integrity 41/41 PASS; converted staging remains import-ineligible; production mutation NO
 - M013-10 contract: ProblemCards use `diagnostic | judgment | audit`, with staging-only `unclassified`; structural validity and type-specific scientific completeness are separate gates, and there is no global three-candidate-cause requirement
 - Current gate: M014-02 `PATCH REQUIRED`; see `.agent/REVIEW_RESULT.md`
-- Current milestone: M014-02R minimal post-fix packaged-app verification and final release sign-off; execution remains paused until the user explicitly resumes it
+- Current implementation milestone: M015 Personal Content Studio; OpenCode continues from Codex checkpoint `7c65c9d` under `.agent/OPENCODE_HANDOFF.md`
 - Planned next milestone after v0.11.0 sign-off: M015 Personal Content Studio with versioned old-content review/revision and explicit curated Obsidian publishing; specification in `.agent/M015_PERSONAL_CONTENT_STUDIO_PLAN.md`
-- M015 resumable execution uses `.agent/M015_EXECUTION_RUNBOOK.md`, `.agent/M015_RUN_STATE.json`, and `.agent/OPENCODE_M015_MASTER_PROMPT.md`; overnight execution is background-only and uses a project-local fake vault
+- M015 state schema is 4 while SQLite user version remains 2; current core tests pass 56/56. Execution is background-only and Obsidian work uses only the project-local fake vault
 - Preserved dependencies: M011 localization remains unapproved; M012 Protocol Lab specification is preserved and implementation remains paused
 - Do not import the attached external source packs or promote pending demo/source/claim content. M013 architecture and schema 3 are accepted; scientific statuses remain item-specific.

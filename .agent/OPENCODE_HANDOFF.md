@@ -1,52 +1,96 @@
-# OpenCode Handoff — M014-02 Release Candidate
+# OpenCode Handoff — M015 Personal Content Studio
 
-## Codex gate
+## Start here
 
-`PATCH REQUIRED` — M014-02R validation-only closeout. Do not resume until the user explicitly asks. Do not rebuild or change product code unless the minimal check finds a defect.
+Project: `D:\Agents\ResearchOS`
 
-Use **DeepSeek V4 Pro**. Read `AGENTS.md`, `.agent/CURRENT_MILESTONE.md`, `.agent/TESTING_POLICY.md`, `.agent/PRODUCT_CONSTITUTION.md`, `.agent/SCIENTIFIC_GATES.md`, `.agent/REVIEW_RESULT.md`, and the M014-01 section of `.agent/IMPLEMENTATION_REPORT.md`.
+Use the currently configured `opencode-go/deepseek-v4-pro`. Read only:
 
-## Execution status
+1. `AGENTS.md`
+2. `.agent/OPENCODE_HANDOFF.md`
+3. `.agent/TESTING_POLICY.md`
+4. `.agent/PRODUCT_CONSTITUTION.md`
+5. `.agent/SCIENTIFIC_GATES.md`
+6. `.agent/M015_PERSONAL_CONTENT_STUDIO_PLAN.md`
+7. `.agent/M015_RUN_STATE.json`
 
-**PAUSED BY USER. Do not resume any command, build, application launch, UI automation, packaging, or test until the user explicitly asks to resume M014-02.**
+Do not reread historical master prompts or rescan unrelated repository areas. Continue from Codex checkpoint `7c65c9d` on branch `codex/m015-personal-content-studio`. Do not run Git; Codex owns commits and review.
 
-When resumed, default to background-only checks under `.agent/TESTING_POLICY.md`. A request to resume M014-02 does not itself authorize foreground UI automation. Ask again immediately before any packaged-app/installer window, mouse/keyboard automation, focus change, resize, restart, or screenshot session.
+## Current verified state
 
-### Only remaining release blocker
+- Baseline checkpoint: `62fab14` (`v0.11.0 before M015`).
+- Current implementation checkpoint: `7c65c9d` (`personal content studio core`).
+- State schema is now 4; SQLite user version remains 2 because canonical JSON state stays in the existing transactional database.
+- Added portable content kinds, stable keys, revisions, SHA-256, dependency closure, review-pack construction, personal overlay entities, lifecycle, optimistic patch application, history and rollback.
+- Added Chinese `内容工作台` navigation and initial `内容库 / 草稿 / 待审核 / 发布箱 / 版本历史 / 冲突` UI.
+- Draft and pending content remain outside effective learning content. Explicit private activation does not promote `verificationStatus`.
+- Current background test result: `npm run test:unit` PASS, 56/56.
+- No scientific seed text was added or promoted. The 166-card external corpus remains untouched and quarantined.
 
-After receiving explicit current foreground permission, use the rebuilt portable v0.11.0 artifact and isolated test data to:
+Directly related files: `src/domain/contentStudio.ts`, `src/services/contentStudio.ts`, `src/services/contentInventory.ts`, `src/state/migrations.ts`, `src/state/store.ts`, `src/features/content-studio/ContentStudioView.tsx`, `src/services/desktop.ts`, `src-tauri/src/lib.rs`, and `tests-node/suite.mjs`.
 
-1. open 科研常见问题库;
-2. enter one ProblemCard and one diagnostic mode;
-3. open 复习;
-4. confirm no React #185 crash, blank screen, or navigation failure;
-5. close the exact test PID, reopen once, and confirm completed tutorial state remains persisted.
+## Execute in bounded stages
 
-Do not change DPI/display settings, force focus, or control global input outside the isolated ResearchOS window. If permission is not granted, leave these checks `NOT RUN`.
+Complete one stage, run focused tests, update `.agent/M015_RUN_STATE.json` and `.agent/IMPLEMENTATION_REPORT.md`, then continue. If interrupted, resume the first incomplete stage from those reports. Do not ask the sleeping user routine implementation questions; stop only for a real safety, scientific, or product ambiguity.
 
-Independently of foreground permission, correct `release/RELEASE_NOTES_v0.11.0.md`: “重新签名哈希” → “重新计算哈希”. Update `.agent/IMPLEMENTATION_REPORT.md` with the exact result and stop for Codex sign-off. In-app backup/restore UI may remain explicitly `NOT RUN`; do not expand the session.
+### Stage A — Finish M015-01 inventory and review-pack export
 
-## Release work
+- Harden inventory duplicate/dependency/provenance validation and deterministic audit output.
+- Export selected objects plus dependency closure as exactly `manifest.json`, `content.json`, `REVIEW_COPY.md`, `SCIENTIFIC_CHANGESET.md`, `dependencies.json`.
+- Add explicit user-triggered export from 内容工作台; default destination is outside any Obsidian vault.
+- Unknown IDs, dependency cycles, duplicates, missing evidence and unsafe paths fail with zero writes.
+- Do not change scientific text or verification status.
 
-1. Bump all product/release version declarations consistently from `0.10.2` to `0.11.0`.
-2. Preserve the accepted M013 architecture and M014-01 tutorial behavior. Do not add features or scientific content.
-3. Clean the three accidental line-join formatting changes in `src/state/store.ts` (`emptyAtlasCollections`, `createInitialState`, and `schedulePersist`) without behavioral changes.
-4. Make the tutorial Today wording precisely match scheduler behavior: one highest-priority due/high-risk retrieval slot is protected; do not imply that every due item becomes a separate Today card.
-5. Run the full frontend suite and all source-pack, Problem Atlas, staging, content, localization, performance, startup, seed, and handoff gates.
-6. Run Rust tests/checks and the production Tauri build. Verify schema 3 / SQLite user version 2 migration and restart persistence from a v0.10.2 fixture.
-7. Treat packaged Windows visual smoke as a separate foreground session. Do not start it without specific current user permission. Prefer a user-manual checklist or headless/off-screen proof. If permission is not granted, report `FOREGROUND UI — NOT RUN` and preserve the exact checkpoint.
-8. Verify backup/export and restore/import round trip with representative learning data and no record loss.
-9. Produce release deliverables using the existing workflow, SHA256 checksums, and concise Chinese release notes. Record exact paths, sizes, hashes, commands, and failures.
+### Stage B — Finish M015-02/M015-03 personal maintenance
 
-## Hard boundaries
+- Complete create-from-template, duplicate, edit, filter and detail editor for supported content kinds.
+- Add deterministic validation results, evidence gaps and dependency impact.
+- Add patch JSON selection, dry-run field diff, stale-base conflict, all-or-nothing apply, version comparison and rollback UI.
+- Built-in objects remain immutable; revisions use overlay records. Old revisions remain resolvable.
+- Draft/archive/deprecated/superseded items never leak into Today, Review, search or publishing.
+- High-risk or AI-generated scientific changes remain pending. Private activation may make pending material available locally but must display pending and never claim verification.
 
-- Do not import, classify, rewrite, or promote the 166 external staging cards.
-- Do not promote any pending source, claim, ProblemCard, rubric, or answer.
-- Do not resume M012 Protocol Lab.
-- Do not change state schema or SQLite user version unless a real compatibility defect requires it; if so, stop and report instead of improvising.
-- Do not run Git. Stop after updating `.agent/IMPLEMENTATION_REPORT.md` and the release artifacts for Codex sign-off.
-- Follow `.agent/TESTING_POLICY.md` without exception. Never change DPI/display settings, force foreground focus, control global input, or interfere with the user's active applications.
+### Stage C — M015-04 curated Obsidian publisher
 
-```text
-仅在用户明确要求恢复后：读取 AGENTS.md、.agent/OPENCODE_HANDOFF.md 与 .agent/TESTING_POLICY.md，使用 DeepSeek V4 Pro 继续 M014-02。默认只运行不打开窗口、不控制鼠标键盘、不抢占焦点的后台测试。任何桌面应用/安装器启动、前台 UI 自动化、窗口缩放、重启或截图都必须在动作前再次取得用户明确同意；禁止修改 DPI、分辨率或系统设置。无法无干扰验证的 UI 项标记为 NOT RUN，不得伪报通过。不得新增科研内容、触碰 166 张外部卡、恢复 M012 或执行 Git。
-```
+- Add dedicated-subfolder configuration. Connection validation is read-only and creates or modifies no file.
+- Implement internal outbox, exact create/update/conflict/unchanged preview, default 20-note limit and confirmation token.
+- Permanent notes use stable `researchos_id`, revision/status/hash frontmatter and one managed block. Preserve all bytes outside the managed block.
+- Repeated unchanged publish writes nothing; title rename follows stable ID; edited managed blocks produce conflicts and zero writes.
+- Rust filesystem commands must prove resolved containment inside the configured subfolder, reject traversal, symlink/junction escape, `.obsidian`, Unicode/case collision and unexpected targets, then use atomic temporary-file replacement.
+- Tests use only the exact fake-vault root from `M015_RUN_STATE.json`. Never discover or access a real vault.
+
+### Stage D — M015-05 optional finite review round trip
+
+- Export only an explicitly confirmed `_Review/<batch-id>` manifest and selected notes.
+- Read back only paths listed in that exact manifest after an explicit check action.
+- Convert managed edits or `审核意见` annotations into pending patch candidates and dry-run diffs.
+- No watcher, automatic pull, merge, publish, delete, cleanup or status promotion.
+
+### Stage E — Regression and handoff
+
+- Add deterministic M015 audits for schema, SHA-256, duplicates, provenance, dependency closure, lifecycle leakage, patch atomicity/rollback and Obsidian zero-write/containment/idempotency.
+- Run typecheck, full frontend suite, source-pack, Problem Atlas, staging, content, localization, performance, startup, seed and handoff gates.
+- If Rust changes, run configured `cargo test`; no network retry loop. Do not package.
+- Update `.agent/IMPLEMENTATION_REPORT.md`; update `.agent/SCIENTIFIC_CHANGESET.md` only if actual scientific content changed (expected: none).
+- Stop with `M015_RUN_STATE.runStatus = awaiting_codex_review`.
+
+## Non-negotiable boundaries
+
+- Background-only. Do not launch ResearchOS, Tauri dev, installer, Obsidian, browser, or any visible window.
+- Do not control mouse, keyboard, focus, DPI, displays, clipboard, user processes or operating-system settings.
+- Do not inspect, discover, read or write a real Obsidian vault or personal file. Use only the project-local fake vault.
+- Do not run Git, package, push, resume M012, or alter v0.11.0 release binaries.
+- Do not touch, classify or import the quarantined 166 external cards.
+- Do not generate scientific teaching content, fabricate citations or promote pending content.
+- Never weaken a gate, silently overwrite, truncate, auto-merge, reset data or claim an unrun check passed.
+
+## Required report format
+
+Record changed files, implemented behavior, focused/full commands and exact failures. Separate:
+
+- `BACKGROUND AUTOMATED — PASS/FAIL`
+- `HEADLESS/OFF-SCREEN — PASS/FAIL/NOT RUN`
+- `FOREGROUND UI — NOT RUN`
+- `USER-MANUAL — NOT RUN`
+
+Stop after reports and wait for Codex diff/scientific review.

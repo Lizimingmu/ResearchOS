@@ -1,25 +1,22 @@
-# Current Milestone — M014-02 Release Candidate
+# Current Milestone — M015 Personal Content Studio
 
-Execution status: **PAUSED BY USER**. Do not resume until explicitly requested. All testing must follow `.agent/TESTING_POLICY.md`.
-
-## Decision
-
-M013 and M014-01 are ACCEPTED. M014-02 turns the accepted Problem Atlas plus Chinese tutorial into a fully verified Windows release candidate. M012 Protocol Lab and the 166-card external corpus remain deferred.
+Execution status: **IN PROGRESS — handed to OpenCode from Codex checkpoint `7c65c9d`**.
 
 ## Outcome
 
-Produce a versioned ResearchOS Windows release candidate whose frontend, Rust/Tauri persistence, migrations, tutorial, backup/restore, installers, hashes, and release notes are reproducibly verified.
+Make ResearchOS easy to extend and revise for one private user while keeping its database canonical. Obsidian is an explicit curated publish/review surface, never an automatic event sink or second database.
 
-## Release scope
+## Current checkpoint
 
-- Bump the product consistently to `0.11.0` in package, Tauri, UI/release metadata, and generated release notes.
-- Run frontend tests and every deterministic audit from the accepted M014-01 gate.
-- Run Rust tests/checks and a Tauri production build; verify schema 3 / SQLite user version 2 compatibility and preservation of existing v0.10.2 user data.
-- Perform packaged-app smoke tests only in a separately approved foreground session, or use a user-manual checklist/headless evidence. Never allow the test to steal focus or interfere with normal computer use.
-- Verify backup/export and restore/import round trip without learning-state loss.
-- Generate portable/setup deliverables as supported by the existing release workflow, SHA256 files, and concise Chinese release notes.
-- Keep all pending demo scientific content pending. Keep all 166 external staging cards unclassified, quarantined, and production-import-ineligible.
+- Baseline `62fab14`; core implementation `7c65c9d`.
+- State schema 4 / SQLite user version 2.
+- Portable inventory, SHA-256, personal lifecycle, patch/history/rollback core and initial Chinese content workbench implemented.
+- `npm run test:unit`: 56/56 PASS.
 
-## Acceptance
+## Remaining
 
-All background automated gates, Rust/Tauri checks, migration/backup round trips, hashes, and handoff validation pass. Foreground packaged-app and installer checks are reported separately under the categories required by `.agent/TESTING_POLICY.md`; they run only with explicit current permission. Reports list exact commands, artifacts, sizes, SHA256 values, and any `NOT RUN` checks. OpenCode performs no Git operation and stops for Codex final release sign-off.
+Finish review-pack file export, full editor and patch UI, curated Obsidian publish, optional finite review round trip, deterministic audits and full background regression. Exact execution instructions are in `.agent/OPENCODE_HANDOFF.md`.
+
+## Boundaries
+
+Background-only; fake vault only; no Git by OpenCode; no packaging; no new/promoted scientific content; no M012; no change to the quarantined 166-card corpus.
