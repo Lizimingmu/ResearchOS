@@ -221,7 +221,7 @@ fn secure_delete_api_key(provider_id: String) -> AppResult<()> {
 fn client() -> AppResult<Client> {
     Client::builder()
         .timeout(Duration::from_secs(20))
-        .user_agent("ResearchOS/0.11.0 (local desktop research training application)")
+        .user_agent("ResearchOS/0.12.0 (local desktop research training application)")
         .build()
         .map_err(Into::into)
 }

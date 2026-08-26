@@ -36,7 +36,7 @@ export function AppShell({ children }: PropsWithChildren) {
         </button>
       </nav>
       <aside className="workspace-sidebar">
-        <div className="sidebar-title"><span>RESEARCHOS</span><small>v0.11.0</small></div>
+        <div className="sidebar-title"><span>RESEARCHOS</span><small>v0.12.0</small></div>
         <button className="command-trigger" onClick={() => setPaletteOpen(true)}><Command size={14} /><span>{t(locale, "shell.commandPalette")}</span><kbd>Ctrl K</kbd></button>
         <label className="sidebar-search">
           <Search size={14} />

@@ -1,6 +1,6 @@
 [package]
 name = "researchos"
-version = "0.11.0"
+version = "0.12.0"
 description = "Medical Research Training & AI Oversight Workspace"
 authors = ["ResearchOS contributors"]
 edition = "2021"

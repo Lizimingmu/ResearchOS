@@ -551,3 +551,69 @@ Agent/model: OpenCode / DeepSeek V4 Pro. Scope strictly limited to the two remai
 - USER-MANUAL — NOT RUN
 
 Stopping for Codex final sign-off; OpenCode ran no Git commands.
+
+# M016 — v0.12.0 Background Release (M016-01…04 complete, 2026-08-26)
+
+Agent/model: OpenCode / DeepSeek V4 Pro. Segmented per `.agent/M016_RUN_STATE.json` from the `m015-accepted` baseline; background-only; no Git, no app/installer launch, no real Vault, no scientific content changes.
+
+## Changed files
+
+- Version declarations 0.11.0 → 0.12.0: `package.json`, `package-lock.json` (root + self-package), `src-tauri/Cargo.toml`, `src-tauri/Cargo.lock` (`researchos` entry), `src-tauri/tauri.conf.json`, `src-tauri/src/lib.rs` (HTTP user-agent), `src/components/AppShell.tsx` (sidebar label), `src/features/settings/SettingsView.tsx` (backup default filename + system note).
+- Documentation: `CHANGELOG.md` (new Chinese 0.12.0 entry focused on Personal Content Studio, review packs, overlays/patches/history/rollback, explicit Obsidian batches; activation vs verification distinction preserved), `README.md` (v0.12.0 sections + artifact/metadata pointers).
+- Deterministic coverage: `tests-node/suite.mjs` + new "M016 every product version declaration is 0.12.0 and consistent" test scanning all nine declaration points (including no-stale-0.11.0 assertions).
+- Release artifacts/files: copied `release/ResearchOS_0.12.0_x64.exe`, `release/ResearchOS_0.12.0_x64-setup.exe`; appended two v0.12.0 lines to `release/SHA256SUMS.txt`; new `release/BUILD_METADATA_v0.12.0.json`, `release/RELEASE_NOTES_v0.12.0.md`; updated `release/README.md` current-release pointer.
+
+## Segment log
+
+- M016-01 Release preparation — COMPLETE (attempt 1): all declarations bumped; changelog/README rewritten for v0.12.0; version-consistency test added. Focused gate: `npm run test:unit` 89/89.
+- M016-02 Background regression — COMPLETE (attempt 1): full battery serially green (counts below).
+- M016-03 Build & packaging — COMPLETE (attempt 1): production Tauri build offline (release profile 1m03s) producing portable exe + NSIS installer; artifacts copied to `release/` after verifying targets did not exist.
+- M016-04 Handoff — this report; run state set to awaiting_codex_review with M016-05 left pending.
+
+## Exact commands and results
+
+| Command | Result |
+|---|---|
+| `npm test` | PASS — 89/89 tests + bundle test + localization audit 11 checks + startup smoke |
+| `npm run audit:source-pack` | PASS — 0 errors / 0 warnings |
+| `npm run audit:problem-atlas` | PASS — 0 errors / 0 warnings |
+| `npm run staging:audit` | PASS — 63/63 |
+| `npm run content:audit` | PASS — 0 errors / 1 pre-existing warning |
+| `npm run localization:audit` | PASS — 11 checks |
+| `npm run performance:audit` | PASS — initial JS 945,116 bytes (< 1.9 MB); scheduler 0.0789 ms |
+| `npm run startup:smoke` | PASS |
+| `npm run seed:export` | PASS — 9 artifacts |
+| `npm run audit:m015` | PASS — 31 checks |
+| `cargo test --manifest-path src-tauri/Cargo.toml` (offline, single attempt) | PASS — 27/27 |
+| `node scripts/validate-agent-handoff.mjs` | PASSED |
+| `npm run tauri:build` (offline cargo cache) | SUCCESS — release profile 1m03s; NSIS bundle produced |
+
+Regression coverage required by the plan is present in the suite: schema 3→4 migration preservation and schema-4 reopening (`migratePersistedState` tests), personal overlay/history/conflict retention and stale-conflict zero mutation, pending/draft exclusion from effective content, Obsidian zero-write/containment/idempotency invariants (Rust fault-injection + fake-vault audit), and the Problem Atlas view render path headless (the React #185 class is covered by stable selectors asserted in the component SSR test).
+
+## Failures, fixes and attempts
+
+- Cargo.lock corruption during the version bump: a PowerShell regex replacement mangled the `researchos` package block (`$10` group mis-parse). Detected immediately by post-edit inspection, repaired by literal line replacement, and validated by the subsequent `cargo test`/build lockfile parse. Counted within M016-01's single attempt (fix applied before any gate ran).
+- First version-consistency assertion accidentally matched dependency versions in package-lock.json; narrowed to the two top-level entries before the segment gate went green. No product code affected.
+- No other failures; every segment completed on its first attempt.
+
+## Artifacts
+
+| File | Bytes | SHA256 |
+|---|---:|---|
+| `release/ResearchOS_0.12.0_x64.exe` | 15,625,728 | `C4036E1043A7FC06F93B0C40FA1F9944C470941B93C46050D402F8306FA2B79C` |
+| `release/ResearchOS_0.12.0_x64-setup.exe` | 5,288,601 | `DE6D1F0AB70F659AC11C8EA08A8E177F7293CAD4FD330C1F95C398C9E7085509` |
+
+Hashes were computed FROM THE COPIED FILES in `release/`. Older artifacts preserved: all 17 pre-existing files in `release/` (v0.9.0–v0.11.0, SHA256SUMS.txt etc.) were hashed before and re-hashed after copying — byte-identical, nothing overwritten or deleted.
+
+Build metadata: `release/BUILD_METADATA_v0.12.0.json` records the accepted source tag `m015-accepted`, branch, state schema 4 / SQLite 2, exact test counts, toolchain (rustc/cargo 1.97.1, node 24.14.0, npm 11.9.0), unsigned status, and all NOT-RUN checks. The build is unsigned; wording uses 重新计算哈希, never 签名.
+
+### Test reporting
+
+- BACKGROUND AUTOMATED — PASS (full battery above)
+- HEADLESS/OFF-SCREEN — PASS (component SSR + node/Rust suites; fake-vault only)
+- FOREGROUND UI — NOT RUN
+- USER-MANUAL — NOT RUN
+
+## Remaining checks
+
+Foreground packaged-app smoke, installer behavior, real-Vault interaction and the user-manual checklist remain NOT RUN and require Codex's separate permission-gated session (M016-05 release gate). Scientific changeset intentionally unchanged (no scientific content modified).

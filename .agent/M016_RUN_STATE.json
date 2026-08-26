@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "milestone": "M016",
   "runId": "m016-v0120-release-20260826",
-  "runStatus": "specified",
-  "lastUpdated": "2026-08-26T19:20:00+08:00",
+  "runStatus": "awaiting_codex_review",
+  "lastUpdated": "2026-08-26T21:05:00+08:00",
   "canonicalPlan": ".agent/M016_RELEASE_PLAN.md",
   "constraints": {
     "backgroundOnly": true,
@@ -29,10 +29,10 @@
   },
   "targetVersion": "0.12.0",
   "segments": [
-    { "id": "M016-01", "status": "pending", "attempts": 0 },
-    { "id": "M016-02", "status": "pending", "attempts": 0 },
-    { "id": "M016-03", "status": "pending", "attempts": 0 },
-    { "id": "M016-04", "status": "pending", "attempts": 0 },
+    { "id": "M016-01", "status": "completed", "attempts": 1 },
+    { "id": "M016-02", "status": "completed", "attempts": 1 },
+    { "id": "M016-03", "status": "completed", "attempts": 1 },
+    { "id": "M016-04", "status": "completed", "attempts": 1 },
     { "id": "M016-05", "status": "pending", "attempts": 0 }
   ],
   "failure": null

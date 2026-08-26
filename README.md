@@ -1,25 +1,28 @@
-# ResearchOS v0.11.0
+# ResearchOS v0.12.0
 
 *A local-first Windows desktop system for deliberate practice in medical-research methods, scientific judgment, paper reading, project transfer, and human oversight of AI.*
 
+Release status: **v0.12.0 release candidate (`v0.12.0-rc1`)**. Background gates passed; packaged-app foreground, installer and user-manual checks remain NOT RUN.
+
 ---
 
-## 🧭 What changed in v0.11.0
+## 🧭 What changed in v0.12.0
 
-- Added the Research Problem Atlas (科研常见问题库): structured diagnostic learning (快速定位 / 鉴别诊断 / 序贯排查 / 缺失信息 / 错误定位 / 结论边界 / 审稿诊断 / AI 解释审核) with deterministic search, source registry, evidence-claim mapping, knowledge versioning, and transactional source-pack import with dry-run gating.
-- Added a Chinese-first five-minute first-run tutorial covering Today, the Problem Atlas, pending-evidence status, lock-before-feedback, and review/transfer. It is skippable, restartable from Settings, keyboard-navigable, and runs its practice steps in an isolated preview state that never writes learning records.
-- Two independent import gates (structural validation vs scientific completeness), exception-safe validators, and an auditable legacy→v3 staging converter keep the external 166-card corpus quarantined as `unclassified` and import-ineligible.
-- All M013 demo ProblemCards, claims, paths and rubrics remain `pending`; source tiers follow the Codex-reviewed S/A/C mapping, and pending claims display proposed support (拟直接支持 · 待核验).
+- Added the Personal Content Studio (内容工作台): 内容库 / 草稿 / 待审核 / 发布箱 / 版本历史 / 冲突 views for maintaining your own additions with stable IDs, revisions, SHA-256 hashing and dependency closure.
+- Built-in content is revisable through versioned overlays: duplicate or template a draft, edit with deterministic validation (evidence gaps, dependency impact), import patch packs with dry-run field diffs, stale-base conflicts, all-or-nothing atomic apply, version comparison and rollback. Built-in baselines stay read-only, and application upgrades surface conflicts instead of overwriting.
+- Explicit curated Obsidian publishing: read-only connection validation for one dedicated subfolder, exact create/update/conflict/unchanged preview before confirmation, default 20-note limit with second confirmation, managed note blocks that preserve your own writing byte-for-byte, idempotent republish (unchanged revisions write nothing), rename tracking by stable ID, and optional finite `_Review/<batch-id>` feedback round trips that stay pending. Connecting, previewing or cancelling never writes files; no watcher or automatic sync exists.
+- Draft/pending/archived/deprecated/superseded items never enter Today, Review, search or publishing. Local activation keeps the 待核验 status — using material privately is separate from scientific verification.
+- Review-pack export bundles selected content plus its dependency closure as exactly five deterministic files for Codex/OpenScience review without repository-wide scanning.
 
-Earlier v0.10.2 improvements remain: Simplified Chinese interface, complete answer → confidence → locked feedback → transfer → delayed variant-review loop, high-confidence misconceptions, 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, 40 AI-audit cases, versioned state/SQLite migrations, atomic persistence, five recovery snapshots, and JSON/CSV/Markdown exports.
+All v0.11.0 improvements remain: the Research Problem Atlas (科研常见问题库) with eight diagnostic modes, the Chinese-first five-minute tutorial, two independent import gates keeping the external 166-card corpus quarantined as `unclassified`, pending demo content displayed as 拟直接支持 · 待核验, Simplified Chinese interface, 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, 40 AI-audit cases, versioned state migrations (now schema 4), atomic persistence with five recovery snapshots, and JSON/CSV/Markdown exports.
 
 ResearchOS is an educational research tool, not clinical decision support. Its mechanisms align with established learning principles, but the product has not been shown in a trial to improve research competence or patient outcomes.
 
 ## 📦 Install
 
-Verify `release/ResearchOS_0.11.0_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.11.0_x64.exe` is also provided.
+Verify `release/ResearchOS_0.12.0_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.12.0_x64.exe` is also provided.
 
-Earlier artifacts remain in `release/` for rollback and audit. v0.10.0 must not be distributed because its browser bundle could open as a blank window. Exact v0.11.0 sizes, schema versions, and digests are in `release/BUILD_METADATA_v0.11.0.json`; the Chinese release notes are in `release/RELEASE_NOTES_v0.11.0.md`.
+Earlier artifacts remain in `release/` for rollback and audit. v0.10.0 must not be distributed because its browser bundle could open as a blank window. Exact v0.12.0 sizes, schema versions, and digests are in `release/BUILD_METADATA_v0.12.0.json`; the Chinese release notes are in `release/RELEASE_NOTES_v0.12.0.md`.
 
 ## 🛠️ Develop and verify
 

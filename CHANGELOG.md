@@ -4,6 +4,23 @@
 
 ---
 
+## 🇨🇳 0.12.0 — 2026-08-26
+
+### Changed
+
+- Added the Personal Content Studio (内容工作台): 内容库 / 草稿 / 待审核 / 发布箱 / 版本历史 / 冲突 views with Chinese-first lifecycle management for personal additions.
+- Versioned personal content: stable IDs, revisions, SHA-256 hashing, dependency closure, deterministic review-pack export (manifest / content / REVIEW_COPY / SCIENTIFIC_CHANGESET / dependencies), and a hardened safe-path + atomic-write filesystem gateway (Rust) that refuses traversal, symlink/junction escape, `.obsidian`, Unicode/case collisions, and writes only inside explicitly confirmed batches.
+- Built-in content is now revisable through tracked overlays: create-from-template, duplicate, edit, filter, detail editor with deterministic validation (evidence gaps, dependency impact), patch-pack import with dry-run field diffs, stale-base conflicts, all-or-nothing atomic apply, version comparison and rollback. Built-in baselines stay read-only; app upgrades surface `base_update` conflicts instead of picking winners.
+- Explicit curated Obsidian publishing: read-only connection validation for one dedicated subfolder, exact create/update/conflict/unchanged preview, default 20-note limit with second confirmation, confirmation tokens, managed blocks that preserve user text byte-for-byte, idempotent republish (unchanged revisions write nothing), rename tracking by stable ID, and finite `_Review/<batch-id>` round trips that convert annotations into pending patch candidates. No watcher, no automatic pull/merge/publish; connecting or previewing never writes files.
+- Draft/pending/archived/deprecated/superseded personal items never leak into Today, Review, search or publishing. Local private activation keeps the 待核验 status — activation and scientific verification remain two independent actions, and patches can only ever produce draft/pending_review + pending material.
+- State schema advances to v4 (personal overlay collections); SQLite `user_version` stays 2. Migrations preserve existing user data.
+
+### Validation
+
+- Frontend unit suite 88/88 including M015 regression coverage (lifecycle leakage guards, optimistic locking, stale-conflict zero mutation, CRLF byte preservation, timezone-offset bounds, calendar-date rejection).
+- Rust tests 27/27 covering vault containment (traversal/symlink/junction), overflow-as-error, case/Unicode collision refusal, fault-injected cross-file rollback, and review round-trip gates on isolated temp fixtures plus the project-local fake vault.
+- Deterministic M015 audit gate (31 checks) and all prior QA gates pass in background mode.
+
 ## 🇨🇳 0.11.0 — 2026-08-25
 
 ### Changed

@@ -61,6 +61,7 @@ import { getNavigation } from "../.build/app/navigation.js";
 import { bilingualMethodTitle, researchTerms } from "../.build/i18n/researchTerms.js";
 import { supportedLocales, t } from "../.build/i18n/index.js";
 import { readFileSync } from "node:fs";
+import path from "node:path";
 
 class MemoryStorage {
   #values = new Map();
@@ -1518,4 +1519,27 @@ test("integration: tutorial panel renders Chinese-first with controls and no cha
   const finalHtml = renderToStaticMarkup(createElement(Tutorial, { forceOpen: true, initialStep: 4 }));
   assert.match(finalHtml, /完成/);
   assert.match(finalHtml, /复习与迁移/);
+});
+
+test("unit: M016 every product version declaration is 0.12.0 and consistent", () => {
+  const root = path.resolve(import.meta.dirname, "..");
+  const read = (...parts) => readFileSync(path.join(root, ...parts), "utf8");
+  assert.equal(JSON.parse(read("package.json")).version, "0.12.0", "package.json");
+  const npmLock = JSON.parse(read("package-lock.json"));
+  assert.equal(npmLock.version, "0.12.0", "package-lock.json root version");
+  assert.equal(npmLock.packages?.[""]?.version, "0.12.0", "package-lock.json self-package version");
+  assert.match(read("src-tauri/Cargo.toml"), /version = "0\.12\.0"/, "Cargo.toml");
+  const cargoLock = read("src-tauri/Cargo.lock");
+  const researchosBlock = cargoLock.match(/\[\[package\]\]\r?\nname = "researchos"\r?\nversion = "([^"]+)"/);
+  assert.equal(researchosBlock?.[1], "0.12.0", "Cargo.lock researchos entry");
+  assert.equal(JSON.parse(read("src-tauri/tauri.conf.json")).version, "0.12.0", "tauri.conf.json");
+  assert.match(read("src-tauri/src/lib.rs"), /user_agent\("ResearchOS\/0\.12\.0 /, "HTTP user agent");
+  assert.match(read("src/components/AppShell.tsx"), /v0\.12\.0/, "sidebar version label");
+  const settings = read("src/features/settings/SettingsView.tsx");
+  assert.match(settings, /ResearchOS-v0\.12\.0-backup-/, "backup default filename");
+  assert.match(settings, /ResearchOS v0\.12\.0 ·/, "settings system note");
+  // No stale product-version declarations may remain in shipped source/config.
+  for (const file of ["package.json", "src-tauri/Cargo.toml", "src-tauri/tauri.conf.json", "src/components/AppShell.tsx"]) {
+    assert.doesNotMatch(read(file), /0\.11\.0/, `${file} must not contain the old version`);
+  }
 });
