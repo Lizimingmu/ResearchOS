@@ -662,3 +662,27 @@ S1 (`M016-LK-01`, `M016-LK-02`) is complete. Run state is `paused_after_s1_rescu
 - Removed v0.9.0–v0.11.0 executable/installer copies and their obsolete release metadata from the working copy. Git and `CHANGELOG.md` remain the historical record.
 - Retained both v0.12.0 candidate artifacts, current metadata/release notes, source code, scientific/audit records, dependency caches, and `node_modules`.
 - No source behavior, state/database, scientific content, packaging, foreground UI, or real Vault was touched.
+
+# M016 Learning Kernel + External AI Content Exchange (2026-08-28)
+
+Agent: Codex, directly implementing at the user's request. Scope: background-only; no app/installer launch, packaging, real Vault, production user data, or Rust change.
+
+## Implemented
+
+- Replaced the default fixed Method/Paper/AI/Problem/Transfer Today bundle with state gate → legal activity → priority ranking. Initial users receive one explanation task, not an exam bundle.
+- Added the pure Learning Kernel transition engine, prerequisite and two-active-thread gates, Challenge fast path, delayed review timing, immutable revision/hash events, and separate instruction/competence projections.
+- Added three complete, prerequisite-linked Chinese prototypes: Statistical Unit → Biological vs Technical Replicate → Pseudoreplication. Each is 8–12 minutes, progressive-disclosure, evidence-linked, and has guided/independent/review/far-transfer bindings.
+- Added a hidden Learning workspace reached from Today: “先懂 → 弄明白 → 会判断”, expandable short blocks, tiered hints, locked independent answer + confidence, explicit claim boundary, and separate learning/competence cards.
+- Replaced the old first-run feature/baseline flow with a five-minute lesson that teaches n/statistical unit using patient/cell and mouse/field hierarchies.
+- Added Content Studio → 外部 AI 协作: deterministic generation prompt, bounded Learning Content Pack parser/dry-run, forced `ai_generated + pending_review + pending` normalization, draft import, internal-content audit prompt, personal overlay creation, and standard patch/diff return path.
+- Added `learning-unit` to the versioned content inventory so built-in units can be exported, audited, overlaid, patched and rolled back without changing the built-in baseline.
+- Made M013 staging self-contained by moving its legacy input fixture from deleted `.tmp` state to `test-fixtures/m013-legacy`.
+
+## Verification
+
+- `npm test` — PASS 103/103 + localization 11 + startup smoke.
+- `npm run audit:learning-kernel` — PASS 12/12.
+- source-pack / Problem Atlas — PASS 0/0; staging — PASS 63/63; content — PASS 0 errors / 1 pre-existing warning; M015 — PASS 32/32; handoff validator — PASS.
+- performance — PASS after startup-content isolation: initial JS 983,945 bytes < 1.9 MB; scheduler 0.0103 ms; CSS 74,038 bytes < updated 85 KB Learning UI budget.
+- `cargo test --offline` — NOT RUN past dependency resolution: local cache lacks `urlencoding`; no Rust files changed. Accepted RC evidence remains 27/27.
+- FOREGROUND UI / INSTALLER / REAL VAULT / USER MANUAL / PACKAGING — NOT RUN.

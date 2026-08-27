@@ -14,7 +14,12 @@ import { ProblemAtlasView } from "../.build/features/problem-atlas/ProblemAtlasV
 import { LibraryView, paperFromPath } from "../.build/features/library/LibraryView.js";
 import { Tutorial, TUTORIAL_STEPS, tutorialStepFromKey } from "../.build/components/Tutorial.js";
 import { ContentStudioView } from "../.build/features/content-studio/ContentStudioView.js";
-import { calculatePriority, generateTodayTasks } from "../.build/learning/scheduler.js";
+import { LearningView } from "../.build/features/learning/LearningView.js";
+import { Onboarding } from "../.build/components/Onboarding.js";
+import { learningUnits, prerequisiteEdges } from "../.build/data/learningUnits.js";
+import { applyLearningTransition, canStartUnit, createLearnerUnitState } from "../.build/learning/learningKernelEngine.js";
+import { calculatePriority, generateLearningTodayTasks, generateTodayTasks } from "../.build/learning/scheduler.js";
+import { buildLearningAuditPrompt, buildLearningGenerationPrompt, parseLearningContentPackJson } from "../.build/services/learningContentExchange.js";
 import { createReviewItem, scheduleReview } from "../.build/learning/review.js";
 import { summarizeSkills } from "../.build/learning/scoring.js";
 import { createInitialState, shouldAutoOpenTutorial, useAppStore } from "../.build/state/store.js";
@@ -888,15 +893,16 @@ test("unit: skill score is withheld when evidence is insufficient", () => {
   assert.equal(methods.band, "insufficient evidence");
 });
 
-test("integration: Today schedules one new problem task without displacing due review", () => {
+test("integration: Today starts with one legal explanation instead of a fixed exam bundle", () => {
   const state = createInitialState();
   const tasks = generateTodayTasks(state, new Date("2026-08-24T08:00:00Z"));
-  assert.equal(tasks.length, 6);
-  assert.deepEqual(tasks.map((task) => task.type), ["retrieval", "paper", "method", "audit", "problem", "transfer"]);
-  assert.equal(tasks.filter((task) => task.type === "problem").length, 1);
-  assert.equal(tasks[0].type, "retrieval");
-  const minutes = tasks.reduce((sum, task) => sum + task.minutes, 0);
-  assert.ok(minutes >= 30 && minutes <= 50, `queue was ${minutes} minutes`);
+  assert.equal(tasks.length, 1);
+  assert.equal(tasks[0].type, "learning");
+  assert.equal(tasks[0].targetId, "lu-statistical-unit-v1");
+  assert.equal(tasks[0].learningActivityType, "explanation");
+  assert.equal(tasks[0].stageAtScheduling, "unseen");
+  assert.ok(tasks[0].minutes >= 8 && tasks[0].minutes <= 12);
+  assert.equal(tasks.some((task) => ["problem", "audit", "retrieval"].includes(task.type)), false);
 });
 
 test("integration: submitted responses are immutable snapshots and create review items", () => {
@@ -953,11 +959,13 @@ test("integration: project creation and settings survive browser persistence gat
   assert.equal(raw.settings.dailyMinutes, 35);
 });
 
-test("integration: Today component is a desktop queue and contains no chat-first prompt", () => {
+test("integration: Today component leads with learning and contains no test-first or chat-first prompt", () => {
   useAppStore.setState({ ...createInitialState(), hydrated: true });
   const html = renderToStaticMarkup(createElement(TodayView));
-  assert.match(html, /今日科研训练/);
-  assert.match(html, /提取练习/);
+  assert.match(html, /今天真正学会一件事/);
+  assert.match(html, /先理解，再跟着示范练习/);
+  assert.match(html, /学习单元/);
+  assert.doesNotMatch(html, /先独立判断/);
   assert.doesNotMatch(html, /Ask ResearchOS anything/i);
   assert.doesNotMatch(html, /welcome back/i);
 });
@@ -1710,6 +1718,114 @@ test("unit: M016-LK-01 skill map keeps learning progress separate from demonstra
   assert.equal(challengePass.learningProgress.exposure, "none");
   assert.equal(challengePass.demonstratedCompetence.level, "independent_once");
   assert.match(challengePass.labelCn, /尚未开始学习 · 已独立证明一次/);
+});
+
+test("unit: M016-LK-03 Challenge pass records competence without inventing instruction", () => {
+  const unit = learningUnits[0];
+  const started = createLearnerUnitState(unit, "2026-08-28T00:00:00Z", "challenge");
+  const passed = applyLearningTransition(unit, started, {
+    id: "event-challenge-pass", type: "challenge_attempt", mode: "challenge", occurredAt: "2026-08-28T00:01:00Z",
+    outcome: "pass", score: 1, confidence: 3, hintsUsed: [],
+  });
+  assert.equal(passed.state.stage, "review_eligible");
+  assert.equal(passed.state.instruction.exposure, "none");
+  assert.equal(passed.state.instruction.instructionCompletedAt, undefined);
+  assert.equal(passed.state.competence.level, "independent_once");
+  assert.equal(passed.event.competenceEligible, true);
+  const failed = applyLearningTransition(unit, started, {
+    id: "event-challenge-fail", type: "challenge_attempt", mode: "challenge", occurredAt: "2026-08-28T00:01:00Z",
+    outcome: "fail", score: 0, confidence: 4, hintsUsed: [],
+  });
+  assert.equal(failed.state.stage, "learning");
+  assert.equal(failed.state.competence.level, "unassessed");
+});
+
+test("unit: M016-LK-03 instruction, guided and independent transitions stay ordered", () => {
+  const unit = learningUnits[0];
+  let state = createLearnerUnitState(unit, "2026-08-28T00:00:00Z", "learning");
+  for (const [index, block] of unit.blocks.filter((item) => item.required).entries()) {
+    state = applyLearningTransition(unit, state, { id: `block-${index}`, type: "instruction_block_completed", mode: "learning", occurredAt: `2026-08-28T00:${String(index + 1).padStart(2,"0")}:00Z`, blockId: block.id, hintsUsed: [] }).state;
+  }
+  assert.equal(state.instruction.exposure, "complete");
+  assert.equal(state.stage, "learning");
+  state = applyLearningTransition(unit, state, { id: "self-check", type: "self_check_attempt", mode: "learning", occurredAt: "2026-08-28T00:20:00Z", outcome: "pass", score: 1, hintsUsed: [] }).state;
+  assert.equal(state.stage, "guided");
+  state = applyLearningTransition(unit, state, { id: "guided", type: "guided_attempt", mode: "learning", occurredAt: "2026-08-28T00:21:00Z", outcome: "fail", score: 0, hintsUsed: ["hint-1"] }).state;
+  assert.equal(state.stage, "independent_ready");
+  assert.equal(state.competence.level, "guided_only");
+  state = applyLearningTransition(unit, state, { id: "independent", type: "independent_attempt", mode: "learning", occurredAt: "2026-08-28T00:22:00Z", outcome: "pass", score: 1, confidence: 3, hintsUsed: [] }).state;
+  assert.equal(state.stage, "review_eligible");
+  assert.equal(state.competence.level, "independent_once");
+  assert.ok(state.dueAt);
+});
+
+test("unit: M016-LK-04 prerequisites and the two-thread gate cannot be bypassed by relevance", () => {
+  const first = learningUnits[0];
+  const second = learningUnits[1];
+  const third = learningUnits[2];
+  const firstState = { ...createLearnerUnitState(first, "2026-08-28T00:00:00Z"), instruction: { exposure: "complete", completedBlockIds: first.blocks.filter((item) => item.required).map((item) => item.id), instructionCompletedAt: "2026-08-28T00:10:00Z" } };
+  assert.equal(canStartUnit({ unitId: second.id, states: [firstState], edges: prerequisiteEdges, pausedUnitIds: new Set() }).allowed, true);
+  const secondState = createLearnerUnitState(second, "2026-08-28T00:11:00Z");
+  const blocked = canStartUnit({ unitId: third.id, states: [firstState, secondState], edges: prerequisiteEdges, pausedUnitIds: new Set() });
+  assert.equal(blocked.allowed, false);
+  assert.match(blocked.reasonCn, /前置/);
+  const twoActive = canStartUnit({ unitId: "unrelated-unit", states: [firstState, secondState], edges: [], pausedUnitIds: new Set() });
+  assert.equal(twoActive.allowed, false);
+  assert.match(twoActive.reasonCn, /最多/);
+});
+
+test("unit: M016-LK-04 scheduler emits only the activity legal for current learner state", () => {
+  const base = createInitialState();
+  const unit = learningUnits[0];
+  const guided = { ...createLearnerUnitState(unit, "2026-08-28T00:00:00Z"), stage: "guided", instruction: { exposure: "complete", completedBlockIds: unit.blocks.filter((item) => item.required).map((item) => item.id), instructionCompletedAt: "2026-08-28T00:10:00Z" } };
+  const tasks = generateLearningTodayTasks({ ...base, learnerUnitStates: [guided] }, new Date("2026-08-28T08:00:00Z"));
+  assert.equal(tasks[0].unitId, unit.id);
+  assert.equal(tasks[0].activityType, "guided_practice");
+  assert.equal(tasks.some((task) => ["independent_case", "delayed_retrieval", "far_transfer"].includes(task.activityType)), false);
+  const waiting = { ...guided, stage: "review_eligible", dueAt: "2026-08-30T00:00:00Z" };
+  assert.equal(generateLearningTodayTasks({ ...base, learnerUnitStates: [waiting] }, new Date("2026-08-28T08:00:00Z")).some((task) => task.unitId === unit.id), false);
+});
+
+test("unit: external AI learning packs are bounded, validated and forced pending", () => {
+  const source = learningUnits[0];
+  const text = JSON.stringify({ schemaVersion: 1, packageId: "lcp-test-unit", generatedAt: "2026-08-28T00:00:00Z", generator: "external-model", unit: { ...source, id: "lu-ai-test-v1", contentOrigin: "verified_seed", verificationStatus: "verified", lifecycle: "active", practiceBindingIds: [] }, evidenceNotes: [{ claim: "n follows the independent inferential layer", sourceId: "src-pseudorep", qualification: "depends on question and design" }], authorNotes: [] });
+  const report = parseLearningContentPackJson(text);
+  assert.equal(report.ok, true, report.errors.join("; "));
+  assert.equal(report.normalizedPack.unit.contentOrigin, "ai_generated");
+  assert.equal(report.normalizedPack.unit.verificationStatus, "pending");
+  assert.equal(report.normalizedPack.unit.lifecycle, "pending_review");
+  assert.ok(report.warnings.some((item) => item.includes("导入不等于批准")));
+  assert.equal(parseLearningContentPackJson("{").ok, false);
+  assert.equal(parseLearningContentPackJson("x".repeat(300_001)).ok, false);
+  const hostile = JSON.parse(text);
+  hostile.unit.blocks[0].terms = ["not-an-object"];
+  assert.doesNotThrow(() => parseLearningContentPackJson(JSON.stringify(hostile)));
+  assert.equal(parseLearningContentPackJson(JSON.stringify(hostile)).ok, false);
+});
+
+test("unit: external AI prompts demand exact schemas and prohibit self-approval", () => {
+  const generation = buildLearningGenerationPrompt({ topic: "伪重复" });
+  assert.match(generation, /只输出一个 JSON 对象/);
+  assert.match(generation, /verificationStatus=pending/);
+  assert.match(generation, /禁止编造 DOI\/PMID/);
+  const record = buildBaseContentInventory().find((item) => item.kind === "learning-unit");
+  assert.ok(record);
+  const audit = buildLearningAuditPrompt(record);
+  assert.match(audit, /ContentPatchPack/);
+  assert.match(audit, /proposedVerificationStatus 必须是 pending/);
+  assert.match(audit, new RegExp(record.hash.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+});
+
+test("integration: learning and onboarding views teach before testing", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true, selectedLearningUnitId: learningUnits[0].id });
+  const learningHtml = renderToStaticMarkup(createElement(LearningView));
+  assert.match(learningHtml, /默认从讲解开始，不先考试/);
+  assert.match(learningHtml, /先用真实问题建立直觉/);
+  assert.match(learningHtml, /我已熟悉，直接挑战/);
+  const onboardingHtml = renderToStaticMarkup(createElement(Onboarding));
+  assert.match(onboardingHtml, /3 位患者/);
+  assert.match(onboardingHtml, /先建立直觉/);
+  assert.doesNotMatch(onboardingHtml, /基线盲测/);
 });
 
 test("unit: M016-LK-02 v4→v5 migration appends empty kernel collections and preserves every legacy collection", () => {

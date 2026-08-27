@@ -7,7 +7,8 @@ export type ContentKind =
   | "pattern"
   | "judgment-card"
   | "audit-case"
-  | "problem-card";
+  | "problem-card"
+  | "learning-unit";
 
 export type ContentLifecycle = "draft" | "pending_review" | "active" | "archived" | "deprecated" | "superseded";
 export type ScientificRisk = "LOW" | "MEDIUM" | "HIGH";

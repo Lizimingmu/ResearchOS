@@ -1,25 +1,39 @@
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, Layers3, Lightbulb } from "lucide-react";
 import { useState } from "react";
-import type { OnboardingState } from "../domain/types";
 import { useAppStore } from "../state/store";
-
-const focusAreas = ["临床推断", "统计学", "预测模型", "批量组学", "单细胞", "空间组学", "AI 监督"];
-const familiarityAreas = ["methods", "omics", "prediction", "causal-inference"];
 
 export function Onboarding() {
   const completeOnboarding = useAppStore((state) => state.completeOnboarding);
   const [step, setStep] = useState(0);
-  const [interests, setInterests] = useState<string[]>([]);
-  const [familiarity, setFamiliarity] = useState<OnboardingState["familiarity"]>({});
-  const toggle = (value: string) => setInterests((items) => items.includes(value) ? items.filter((item) => item !== value) : [...items, value]);
-  return (
-    <div className="onboarding-overlay">
-      <section className="onboarding-card">
-        <div className="onboarding-progress"><i style={{ width: `${(step + 1) * 33.33}%` }} /></div>
-        {step === 0 && <><span className="eyebrow">RESEARCHOS · 使用引导</span><h1>训练科研判断，而不是练习聊天提示词。</h1><p>你需要先独立作出研究决策，再查看精选参考答案，校准自己的判断，随后通过延迟复习和真实项目迁移来巩固原则。</p><div className="onboarding-principles"><span><CheckCircle2 /> 首次作答锁定</span><span><ShieldCheck /> 证据与来源可追溯</span><span><ArrowRight /> 陌生情境迁移</span></div><button className="primary" onClick={() => setStep(1)}>选择关注方向 <ArrowRight size={14} /></button></>}
-        {step === 1 && <><span className="eyebrow">关注方向</span><h1>你希望训练队列关注哪些研究工作？</h1><p>可选择一个或多个方向。之后系统会结合项目相关性和薄弱项证据进一步调整队列。</p><div className="choice-grid">{focusAreas.map((area) => <button key={area} className={interests.includes(area) ? "selected" : ""} onClick={() => toggle(area)}>{area}</button>)}</div><button className="primary" disabled={!interests.length} onClick={() => setStep(2)}>设置熟悉程度 <ArrowRight size={14} /></button></>}
-        {step === 2 && <><span className="eyebrow">基线</span><h1>校准你的起点。</h1><p>熟悉程度只用于调整初始难度，不代表已经掌握。下一步将进入锁定答案的陌生情境基线盲测。</p><div className="familiarity-grid">{familiarityAreas.map((area) => <label key={area}><span>{{ methods: "研究方法", omics: "组学", prediction: "预测模型", "causal-inference": "因果推断" }[area]}</span><select value={familiarity[area] ?? "new"} onChange={(event) => setFamiliarity((value) => ({ ...value, [area]: event.target.value as OnboardingState["familiarity"][string] }))}><option value="new">初学</option><option value="working">具备工作知识</option><option value="experienced">经验丰富</option></select></label>)}</div><button className="primary" onClick={() => completeOnboarding(interests, familiarity)}>开始基线盲测 <ArrowRight size={14} /></button></>}
-      </section>
-    </div>
-  );
+  const [choice, setChoice] = useState<number | null>(null);
+  const correct = choice === 1;
+  return <div className="onboarding-overlay">
+    <section className="onboarding-card learning-onboarding">
+      <div className="onboarding-progress"><i style={{ width: `${(step + 1) * 33.33}%` }} /></div>
+      {step === 0 && <>
+        <span className="eyebrow">5 分钟入门 · 不是功能导览</span>
+        <h1>3 位患者，每人测了 2,000 个细胞：n 是 6,000 吗？</h1>
+        <p>先别急着答。这个问题决定了单细胞、病理视野、类器官孔和重复测量研究中的不确定性应该怎样计算。</p>
+        <div className="onboarding-principles"><span><Lightbulb/> 先建立直觉</span><span><Layers3/> 再看数据层级</span><span><CheckCircle2/> 最后才做低压力自检</span></div>
+        <button className="primary" onClick={() => setStep(1)}>先理解这个问题 <ArrowRight size={14}/></button>
+      </>}
+      {step === 1 && <>
+        <span className="eyebrow">一句话直觉</span>
+        <h1>n 不是表里有多少行。</h1>
+        <p>n 要和你想推断的对象、独立采样或分配的层级对应。若目标是比较患者组，许多细胞可以让每位患者的测量更稳定，却不会把 3 位患者变成 6,000 位患者。</p>
+        <div className="onboarding-levels"><div><strong>患者</strong><small>独立生物来源</small></div><span>→</span><div><strong>样本</strong><small>属于患者</small></div><span>→</span><div><strong>细胞</strong><small>嵌套测量</small></div></div>
+        <button className="primary" onClick={() => setStep(2)}>用一个例子确认理解 <ArrowRight size={14}/></button>
+      </>}
+      {step === 2 && <>
+        <span className="eyebrow">低压力自检</span>
+        <h1>4 只小鼠/组，每只取 10 个视野。</h1>
+        <p>若处理分配给小鼠，目标也是比较小鼠层效应，主要独立单位是什么？</p>
+        <div className="choice-grid onboarding-quiz">
+          {["80 个视野", "8 只小鼠", "视野中的所有细胞"].map((option, index) => <button key={option} className={choice === index ? "selected" : ""} onClick={() => setChoice(index)}>{option}</button>)}
+        </div>
+        {choice !== null && <div className={correct ? "onboarding-answer correct" : "onboarding-answer"}><strong>{correct ? "对：独立信息主要来自 8 只小鼠" : "再看一眼层级：处理是分配给小鼠的"}</strong><p>视野增加小鼠内测量精度，但共享同一只小鼠的视野不能无条件当成独立小鼠。</p></div>}
+        <button className="primary" disabled={!correct} onClick={() => completeOnboarding([], {})}>进入学习路径 <ArrowRight size={14}/></button>
+      </>}
+    </section>
+  </div>;
 }

@@ -1,0 +1,21 @@
+{
+  "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+  "generatedAt": "2026-08-24T21:16:00+08:00",
+  "files": [
+    {
+      "name": "ResearchOS_M013_Batch01_SourcePack.json",
+      "sha256": "12fa265cef02c238084ddaf2214fc20c8677a9b8478baa2cb88764a3b490b295",
+      "bytes": 113403
+    },
+    {
+      "name": "ResearchOS_M013_Batch01_Scientific_PreReview.md",
+      "sha256": "774668af409e4b8c70d8bbf9c8823e78f7ccca46259b0f90f93f5ad221a8e78b",
+      "bytes": 2910
+    },
+    {
+      "name": "ResearchOS_M013_Batch01_Qualification_Register.md",
+      "sha256": "164913fdceeac8bbcb8947c25c2e63c29eff79e08b22f2c5a1046a10ceff1ca6",
+      "bytes": 2042
+    }
+  ]
+}

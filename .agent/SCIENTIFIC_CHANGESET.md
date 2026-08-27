@@ -179,3 +179,45 @@ Input: `ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip` (8 packs, 120 source 
 - Evidence sources: retain as candidate metadata after correction/canonicalization; formal metadata verification must be reissued by the gate, not inherited from the producing model.
 - Evidence claims: retain as candidate text; none is approved for `claim_verified` until scope, qualification, location and support type are corrected and re-reviewed.
 - ProblemCards/paths/rubrics: BLOCK as importable Problem Atlas content. Preserve as `unclassified` staging records for M013-11 classification and type-specific review. Diagnostic cases require genuine competing explanations and evidence updating; judgment/audit cases must not be forced into a differential-diagnosis shape.
+
+## M016 Learning Kernel scientific review — 2026-08-28
+
+### SC-M016-01 — Statistical Unit
+
+- Concept: Observation/measurement unit, experimental unit, statistical/inference unit and nested measurements.
+- Claim: Row count is not automatically independent n; the inferential unit must follow the research question, assignment/sampling structure and estimand. Within-unit measurements may improve precision without creating independent upper-level replication.
+- Answer/rubric: ACCEPT — independent answers must identify the relevant levels, align n with the target inference, acknowledge within-unit dependence, and state a bounded conclusion. “The unit is always the patient” is explicitly rejected as a universal rule.
+- Evidence: `src-pseudorep`, `src-pseudobulk`.
+- PMID/DOI: PMID `33464305`, DOI `10.1085/jgp.202012826`; PMID `34584091`, DOI `10.1038/s41467-021-25960-2`.
+- Risk level: HIGH.
+- Verification status: verified by Codex for the scoped teaching text in `lu-statistical-unit-v1`, revision 1.
+
+### SC-M016-02 — Biological vs Technical Replicate
+
+- Concept: Independent biological sources versus repeated processing/measurement of the same source.
+- Claim: Technical replication can diagnose or reduce measurement error but cannot by itself estimate between-biological-unit variation or replace independent biological replication for that target population.
+- Answer/rubric: ACCEPT — classification must use biological source, assignment and target inference rather than physical container/file count. Technical repeats are not described as useless.
+- Evidence: `src-pseudorep`.
+- PMID/DOI: PMID `33464305`, DOI `10.1085/jgp.202012826`.
+- Risk level: HIGH.
+- Verification status: verified by Codex for the scoped teaching text in `lu-biological-technical-replicate-v1`, revision 1.
+
+### SC-M016-03 — Pseudoreplication
+
+- Concept: Treating dependent/nested observations as independent replicates.
+- Claim: Ignoring upper-level dependence can underestimate uncertainty and overstate significance; repair requires an analysis aligned with the real design. Aggregation/pseudobulk or a justified hierarchical model are possible approaches, not universal automatic fixes.
+- Answer/rubric: ACCEPT — identify the assignment/sampling layer, preserve lower-level membership, express uncertainty at the target inferential layer, and retain a bounded descriptive role for lower-level measurements. A random effect is not taught as repairing confounding, too few independent units or a wrong estimand automatically.
+- Evidence: `src-pseudorep`, `src-pseudobulk`.
+- PMID/DOI: PMID `33464305`, DOI `10.1085/jgp.202012826`; PMID `34584091`, DOI `10.1038/s41467-021-25960-2`.
+- Risk level: HIGH.
+- Verification status: verified by Codex for the scoped teaching text in `lu-pseudoreplication-v1`, revision 1.
+
+### SC-M016-AI — External AI content boundary
+
+- Concept: AI-generated Learning Content Packs and audit patches.
+- Claim: Schema validity and identifier presence do not establish scientific truth or evidence–claim support.
+- Answer/rubric: ACCEPT — every external AI unit is forcibly normalized to `ai_generated`, `pending_review`, `pending`; it cannot enter the verified curriculum until a separate scientific gate. Audit prompts can propose pending patches only and cannot self-approve.
+- Evidence: ResearchOS `PRODUCT_CONSTITUTION.md` and `SCIENTIFIC_GATES.md`; no new external scientific claim.
+- PMID/DOI: not applicable.
+- Risk level: HIGH process gate.
+- Verification status: not_required for the engineering mechanism; generated scientific payloads remain pending.

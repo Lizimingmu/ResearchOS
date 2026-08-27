@@ -31,6 +31,7 @@ export const domainLabel = (value: string) => ({
 }[value] ?? value);
 
 export const taskTypeLabel = (value: string) => ({
+  learning: "学习单元",
   retrieval: "提取练习",
   paper: "论文",
   method: "方法",

@@ -15,7 +15,7 @@ export function AppShell({ children }: PropsWithChildren) {
   const persistenceStatus = useAppStore((state) => state.persistenceStatus);
   const locale = useAppStore((state) => state.settings.language);
   const navigation = getNavigation(locale);
-  const active = navigation.find((item) => item.id === view)!;
+  const active = navigation.find((item) => item.id === view) ?? { label: view === "learning" ? "学习单元" : "工作区" };
 
   return (
     <div className="desktop-shell">

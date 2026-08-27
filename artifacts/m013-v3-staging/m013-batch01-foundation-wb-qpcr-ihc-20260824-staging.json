@@ -4,7 +4,7 @@
   "sourcePackId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
   "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
   "originalFileSha256": "12fa265cef02c238084ddaf2214fc20c8677a9b8478baa2cb88764a3b490b295",
-  "convertedAt": "2026-08-25T15:19:30.667Z",
+  "convertedAt": "2026-08-27T16:30:19.605Z",
   "convertedBy": "ResearchOS M013-10 legacy→v3 staging converter",
   "provenance": "Official NIH/CAP/NCBI sources, PubMed-indexed methodological literature, MIQE 2.0 (2025), and explicitly tiered vendor troubleshooting resources were manually checked for source identity, scope and claim support. Final ResearchOS claim_verified promotion is intentionally reserved for Codex/formal source-pack gate per M013.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
   "packSchemaVersion": 1,

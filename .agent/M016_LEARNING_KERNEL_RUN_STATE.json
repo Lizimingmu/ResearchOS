@@ -2,14 +2,14 @@
   "milestone": "M016 — Learning Kernel",
   "taskPrefix": "M016-LK",
   "baselineTag": "v0.12.0-rc1",
-  "runStatus": "paused_after_s1_rescue",
-  "currentSegment": "S2",
+  "runStatus": "awaiting_foreground_user_validation",
+  "currentSegment": "COMPLETE",
   "segments": [
     { "id": "S1", "tasks": ["M016-LK-01", "M016-LK-02"], "status": "completed" },
-    { "id": "S2", "tasks": ["M016-LK-03", "M016-LK-04"], "status": "pending" },
-    { "id": "S3", "tasks": ["M016-LK-05"], "status": "pending" },
-    { "id": "S4", "tasks": ["M016-LK-06"], "status": "pending" },
-    { "id": "S5", "tasks": ["M016-LK-07"], "status": "pending" }
+    { "id": "S2", "tasks": ["M016-LK-03", "M016-LK-04"], "status": "completed" },
+    { "id": "S3", "tasks": ["M016-LK-05"], "status": "completed" },
+    { "id": "S4", "tasks": ["M016-LK-06"], "status": "completed" },
+    { "id": "S5", "tasks": ["M016-LK-07"], "status": "completed" }
   ],
   "constraints": {
     "gitByOpenCode": false,

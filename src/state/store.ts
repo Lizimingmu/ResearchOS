@@ -19,6 +19,7 @@ import type {
   ViewId,
 } from "../domain/types";
 import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
+import type { LearningMode } from "../domain/learningKernel";
 import type { ContentConflict, ContentLifecycle, ContentPatchPack, ContentPatchPreview, ObsidianPublishBatch, PersonalContentEntry, PortableContentRecord } from "../domain/contentStudio";
 import { createReviewItem, scheduleReview } from "../learning/review";
 import { makeId } from "../lib/ids";
@@ -28,6 +29,8 @@ import { applyPatchTransaction, createDraft, createOverlayFromBuiltin, duplicate
 import { applyPlannedBatch, fingerprintWrites, planFromPersistedBatch, planPublishBatch, buildReviewRoundTrip, parseReviewFeedback, toReviewPatchCandidates, type ReviewPatchCandidate } from "../services/obsidianPublish";
 import { resolveEffectiveContent } from "../services/contentStudio";
 import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
+import { learningUnitById, prerequisiteEdges } from "../data/learningUnits";
+import { applyLearningTransition, canStartUnit, createLearnerUnitState, type LearningTransitionInput } from "../learning/learningKernelEngine";
 
 const providers: AIProvider[] = [
   { id: "openai", name: "OpenAI-compatible", template: "openai", baseUrl: "https://api.openai.com/v1", model: "gpt-5-mini", temperature: 0.2, maxTokens: 1200, hasApiKey: false },
@@ -123,6 +126,7 @@ interface AppStore extends AppStateData {
   selectedAuditId: string;
   selectedJudgmentId: string;
   selectedProblemId: string;
+  selectedLearningUnitId: string;
   paletteOpen: boolean;
   globalSearch: string;
   toast?: ToastMessage;
@@ -134,6 +138,10 @@ interface AppStore extends AppStateData {
   selectAudit: (id: string) => void;
   selectJudgment: (id: string) => void;
   selectProblem: (id: string) => void;
+  selectLearningUnit: (id: string) => void;
+  startLearningUnit: (id: string, mode: LearningMode) => void;
+  recordLearningTransition: (unitId: string, input: Omit<LearningTransitionInput, "id" | "occurredAt">) => void;
+  toggleLearningUnitPaused: (unitId: string) => void;
   setPaletteOpen: (open: boolean) => void;
   setGlobalSearch: (value: string) => void;
   notify: (text: string, tone?: ToastMessage["tone"]) => void;
@@ -263,6 +271,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectedAuditId: "audit-01",
     selectedJudgmentId: "jc-01",
     selectedProblemId: initial.problemCards[0]?.id ?? "",
+    selectedLearningUnitId: "lu-statistical-unit-v1",
     paletteOpen: false,
     globalSearch: "",
 
@@ -293,6 +302,39 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectAudit: (selectedAuditId) => set({ selectedAuditId, view: "ai-audit" }),
     selectJudgment: (selectedJudgmentId) => set({ selectedJudgmentId }),
     selectProblem: (selectedProblemId) => set({ selectedProblemId, view: "problem-atlas" }),
+    selectLearningUnit: (selectedLearningUnitId) => set({ selectedLearningUnitId, view: "learning" }),
+    startLearningUnit: (id, mode) => {
+      const unit = learningUnitById.get(id);
+      if (!unit) throw new Error("学习单元不存在");
+      const existing = get().learnerUnitStates.find((item) => item.unitId === id);
+      if (!existing) {
+        const gate = canStartUnit({ unitId: id, states: get().learnerUnitStates, edges: prerequisiteEdges, pausedUnitIds: new Set(get().pausedLearningUnitIds) });
+        if (!gate.allowed) throw new Error(gate.reasonCn ?? "当前不能开始这个单元");
+        const now = new Date().toISOString();
+        const learner = createLearnerUnitState(unit, now, mode);
+        set((state) => ({ learnerUnitStates: [learner, ...state.learnerUnitStates], selectedLearningUnitId: id, view: "learning" }));
+      } else {
+        set({ selectedLearningUnitId: id, view: "learning" });
+      }
+      queuePersist();
+    },
+    recordLearningTransition: (unitId, input) => {
+      const unit = learningUnitById.get(unitId);
+      if (!unit) throw new Error("学习单元不存在");
+      const current = get().learnerUnitStates.find((item) => item.unitId === unitId);
+      const result = applyLearningTransition(unit, current, { ...input, id: makeId("learning-event"), occurredAt: new Date().toISOString() });
+      set((state) => ({
+        learnerUnitStates: [result.state, ...state.learnerUnitStates.filter((item) => item.unitId !== unitId)],
+        learningEvents: [result.event, ...state.learningEvents],
+      }));
+      queuePersist();
+    },
+    toggleLearningUnitPaused: (unitId) => {
+      set((state) => ({ pausedLearningUnitIds: state.pausedLearningUnitIds.includes(unitId)
+        ? state.pausedLearningUnitIds.filter((id) => id !== unitId)
+        : [...state.pausedLearningUnitIds, unitId] }));
+      queuePersist();
+    },
     setPaletteOpen: (paletteOpen) => set({ paletteOpen }),
     setGlobalSearch: (globalSearch) => set({ globalSearch }),
     notify: (text, tone = "info") => set({ toast: { id: makeId("toast"), tone, text } }),
@@ -464,10 +506,12 @@ export const useAppStore = create<AppStore>((set, get) => {
       queuePersist();
     },
     completeOnboarding: (interests, familiarity) => {
+      const now = new Date().toISOString();
       set((state) => ({
-        onboarding: { ...state.onboarding, completed: true, interests, familiarity, completedAt: new Date().toISOString() },
-        tutorialOpen: shouldAutoOpenTutorial({ ...state.onboarding, completed: true, interests, familiarity }),
-        view: "assessment",
+        onboarding: { ...state.onboarding, completed: true, interests, familiarity, completedAt: now, learningKernelOnboardingCompletedAt: now },
+        tutorialOpen: false,
+        selectedLearningUnitId: "lu-statistical-unit-v1",
+        view: "today",
       }));
       queuePersist();
     },

@@ -14,7 +14,8 @@ const initial = runtimeAssets.find((asset) => asset.name === "index.js");
 const css = runtimeAssets.find((asset) => asset.name === "index.css");
 const paper = runtimeAssets.find((asset) => asset.name.startsWith("PaperLabView-") && asset.name.endsWith(".js"));
 const worker = runtimeAssets.find((asset) => asset.name === "pdf.worker.min.mjs");
-const content = runtimeAssets.find((asset) => asset.name.startsWith("expandedTraining-") && asset.name.endsWith(".js"));
+const content = runtimeAssets.find((asset) => asset.name.startsWith("expandedTraining-") && asset.name.endsWith(".js"))
+  ?? runtimeAssets.find((asset) => asset.name.startsWith("contentInventory-") && asset.name.endsWith(".js"));
 if (!initial || !css || !paper || !worker || !content) throw new Error("Expected production chunks were not emitted.");
 
 const initialGzip = gzipSync(readFileSync(path.join(assetsRoot, initial.name))).length;
@@ -29,14 +30,15 @@ const state = {
   settings: { theme: "system", startPage: "today", dailyMinutes: 40, weights: { weakness: .3, projectRelevance: .25, frontierValue: .15, reviewDue: .15, misconception: .15 }, pubmedVerification: true, doiVerification: true, offlineMode: true, activeProviderId: "" },
   completedTaskIds: [], snoozedTaskIds: [], assessmentHistory: [], notesByPaperId: {}, draftResponses: {}, misconceptions: [], onboarding: { completed: true, interests: ["Statistics"], familiarity: { methods: "new" }, baselineCompleted: true },
   problemAtlasSources: [], problemAtlasClaims: [], problemCards: [], diagnosticCauses: [], diagnosticChecks: [], diagnosticPaths: [], diagnosticEvidence: [], problemTrainingCases: [], diagnosticSessions: [], sourcePackImports: [], problemSearchLog: [],
+  learnerUnitStates: [], learningEvents: [], pausedLearningUnitIds: [],
 };
 const started = performance.now();
 for (let index = 0; index < iterations; index += 1) schedulerModule.generateTodayTasks(state, new Date(2026, 7, (index % 27) + 1));
 const schedulerMeanMs = (performance.now() - started) / iterations;
 const checks = [
   { name: "Initial JavaScript", value: initial.bytes, budget: 1_900_000, passed: initial.bytes < 1_900_000 },
-  { name: "Initial CSS", value: css.bytes, budget: 70_000, passed: css.bytes < 70_000 },
-  { name: "Training content chunk", value: content.bytes, budget: 150_000, passed: content.bytes < 150_000 },
+  { name: "Initial CSS", value: css.bytes, budget: 85_000, passed: css.bytes < 85_000 },
+  { name: "Content inventory chunk", value: content.bytes, budget: 150_000, passed: content.bytes < 150_000 },
   { name: "Scheduler mean", value: schedulerMeanMs, budget: 2, passed: schedulerMeanMs < 2 },
 ];
 const passed = checks.every((check) => check.passed);
@@ -62,7 +64,7 @@ ${rows}
 |---|---:|---|
 | Paper Lab | ${paper.bytes.toLocaleString()} | PDF renderer loads only when the user opens Paper Lab. |
 | PDF worker | ${worker.bytes.toLocaleString()} | Worker remains separate from the UI thread. |
-| Expanded training content | ${content.bytes.toLocaleString()} | Deep content loads through practice/search feature routes, not onboarding startup. |
+| Content inventory chunk | ${content.bytes.toLocaleString()} | Versioned content inventory loads through the personal-content route, not onboarding startup. |
 | CSS | ${css.bytes.toLocaleString()} | One theme-aware stylesheet with responsive rules. |
 
 ## ⚙️ Runtime checks

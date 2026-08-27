@@ -1,0 +1,21 @@
+{
+  "packId": "m013-batch06-causal-reporting-20260824",
+  "generatedAt": "2026-08-24T22:05:00+08:00",
+  "files": [
+    {
+      "name": "ResearchOS_M013_Batch06_SourcePack.json",
+      "sha256": "6a1b6594b5db595196b364e95776be0bdf97dcb3380bb9aae44026500c6afeec",
+      "bytes": 82137
+    },
+    {
+      "name": "ResearchOS_M013_Batch06_Scientific_PreReview.md",
+      "sha256": "769cff105cff13753d83a2ba0f65ab0397ce4e3dcef8048a492534974cef5d41",
+      "bytes": 1160
+    },
+    {
+      "name": "ResearchOS_M013_Batch06_Qualification_Register.md",
+      "sha256": "4cf7fbec8044f7af0192bbfbdb18a317adf111ca206e58216eb1bc45398f8082",
+      "bytes": 794
+    }
+  ]
+}

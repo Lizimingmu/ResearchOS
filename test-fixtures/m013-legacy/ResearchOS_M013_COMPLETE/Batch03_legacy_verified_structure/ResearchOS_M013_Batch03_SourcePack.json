@@ -1,0 +1,4164 @@
+{
+  "packSchemaVersion": 1,
+  "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+  "title": "M013 Batch 03 — Spatial Omics, Proteomics/Multi-omics, Figures & AI Research Oversight",
+  "createdAt": "2026-08-24T21:46:00+08:00",
+  "createdBy": "OpenAI GPT-5.6 Sol external scientific source review",
+  "provenance": "Source-first external scientific pre-review based on Bioconductor spatial-analysis guidance, peer-reviewed spatial/proteomics/multi-omics benchmarks, HUPO-PSI MIAPE standards, current January 2026 ICMJE recommendations, WHO health-AI guidance and scientific visualization/integrity resources. All claims remain pending until Codex/formal ResearchOS source-pack gate.",
+  "sources": [
+    {
+      "id": "SRC-OSTA-DESIGN-2026",
+      "schemaVersion": 1,
+      "sourceType": "educational",
+      "title": "Orchestrating Spatial Transcriptomics Analysis with Bioconductor — Experimental design",
+      "authors": [],
+      "year": 2026,
+      "authorityTier": "A",
+      "domain": [
+        "spatial_omics",
+        "experimental_design",
+        "pseudoreplication"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Explicitly distinguishes biological, experimental and observational units; discusses pseudoreplication and slide/batch randomization.",
+      "organization": "Bioconductor",
+      "url": "https://bioconductor.org/books/release/OSTA/pages/bkg-exp-design.html",
+      "version": "Bioconductor release book, retrieved 2026-08-24",
+      "contentHash": "ba32cd3c67aa4011b64e507aa391f3553f2bfd6e3bb5b0c904130638927ee168"
+    },
+    {
+      "id": "SRC-YOU-SST-BENCH-2024",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Systematic comparison of sequencing-based spatial transcriptomic methods",
+      "authors": [
+        "You Y",
+        "Fu Y",
+        "Li L",
+        "et al."
+      ],
+      "year": 2024,
+      "authorityTier": "A",
+      "domain": [
+        "spatial_omics",
+        "platform_benchmark",
+        "resolution"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Cross-platform benchmark of 11 sST methods; supports resolution, sensitivity, molecular diffusion and platform-dependent downstream performance.",
+      "journal": "Nature Methods",
+      "doi": "10.1038/s41592-024-02325-3",
+      "url": "https://www.nature.com/articles/s41592-024-02325-3",
+      "contentHash": "1474af0b8fbd02ab4b5951acbfb732c5016d98b3a4f3dbf4137fed313842b12c"
+    },
+    {
+      "id": "SRC-LI-ST-DECONV-2022",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Benchmarking spatial and single-cell transcriptomics integration methods for transcript distribution prediction and cell type deconvolution",
+      "authors": [
+        "Li B",
+        "Zhang W",
+        "Guo C",
+        "et al."
+      ],
+      "year": 2022,
+      "authorityTier": "A",
+      "domain": [
+        "spatial_omics",
+        "deconvolution",
+        "integration"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Benchmark of 16 spatial/scRNA integration methods; method performance differs by task.",
+      "journal": "Nature Methods",
+      "doi": "10.1038/s41592-022-01480-9",
+      "url": "https://www.nature.com/articles/s41592-022-01480-9",
+      "contentHash": "5ad877a99b7108cc96ecee8235393a17b4e6b9201678e5fbc0e21fc76975a8fd"
+    },
+    {
+      "id": "SRC-CHARITAKIS-SVG-2023",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Disparities in spatially variable gene calling highlight the need for benchmarking spatial transcriptomics methods",
+      "authors": [],
+      "year": 2023,
+      "authorityTier": "A",
+      "domain": [
+        "spatial_omics",
+        "svg"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Shows substantial discrepancies across purpose-built SVG methods.",
+      "journal": "Genome Biology",
+      "doi": "10.1186/s13059-023-03045-1",
+      "pmid": "37723583",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37723583/",
+      "contentHash": "b8a271ec39b01108446afec5cd6f38fa04794ea69527c643bd4e19a6f4ceae23"
+    },
+    {
+      "id": "SRC-LI-SVG-BENCH-2025",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Systematic benchmarking of computational methods to identify spatially variable genes",
+      "authors": [],
+      "year": 2025,
+      "authorityTier": "A",
+      "domain": [
+        "spatial_omics",
+        "svg",
+        "statistical_calibration"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Benchmarks 14 SVG methods; includes statistical calibration and reports poor calibration for many methods.",
+      "journal": "Genome Biology",
+      "doi": "10.1186/s13059-025-03731-2",
+      "pmid": "40968359",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40968359/",
+      "contentHash": "10a1afe993a01b08b0c1fce3370ebafe602510225eb5119f5aa3dadd049eb8fe"
+    },
+    {
+      "id": "SRC-DESPACE-2024",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "DESpace: spatially variable gene detection via differential expression testing of spatial clusters",
+      "authors": [],
+      "year": 2024,
+      "authorityTier": "A",
+      "domain": [
+        "spatial_omics",
+        "biological_replicates",
+        "svg"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Method paper explicitly motivates joint modeling of multiple biological replicates for consistent spatial patterns.",
+      "journal": "Bioinformatics Advances",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/PMC10868334",
+      "contentHash": "9dcdf600fcfb4f924c5303c5e059cf8e6b2e6a647b20c569d7038136ed0fb237"
+    },
+    {
+      "id": "SRC-MA-CARD-2022",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Spatially informed cell-type deconvolution for spatial transcriptomics",
+      "authors": [
+        "Ma Y",
+        "Zhou X"
+      ],
+      "year": 2022,
+      "authorityTier": "A",
+      "domain": [
+        "spatial_omics",
+        "deconvolution"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Explicitly notes that many spatial spots measure mixtures of heterogeneous cell types rather than single cells.",
+      "journal": "Nature Biotechnology",
+      "doi": "10.1038/s41587-022-01273-7",
+      "url": "https://www.nature.com/articles/s41587-022-01273-7",
+      "contentHash": "8ae8b68ff83de96a4b6174c962442fe218feea8e4b8557570171975527dd131f"
+    },
+    {
+      "id": "SRC-MIAPE-2007",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "The minimum information about a proteomics experiment (MIAPE)",
+      "authors": [
+        "Taylor CF",
+        "Paton NW",
+        "Lilley KS",
+        "et al."
+      ],
+      "year": 2007,
+      "authorityTier": "S",
+      "domain": [
+        "proteomics",
+        "reporting",
+        "reproducibility"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "HUPO-PSI minimum information framework for proteomics reporting.",
+      "journal": "Nature Biotechnology",
+      "doi": "10.1038/nbt1329",
+      "pmid": "17687369",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17687369/",
+      "contentHash": "150bd904ee29e97565547019d09d230c3b21600db97ec1047082be81afd1e44e"
+    },
+    {
+      "id": "SRC-MIAPE-QUANT-2013",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "Guidelines for reporting quantitative mass spectrometry based experiments in proteomics",
+      "authors": [],
+      "year": 2013,
+      "authorityTier": "S",
+      "domain": [
+        "proteomics",
+        "quantitative_ms",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "MIAPE Quant consensus reporting guidance for quantitative MS proteomics.",
+      "pmid": "23500130",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23500130/",
+      "contentHash": "e287ce3e9eb12559de9e179d49ab7bc480754980279ef0f82e791f8e93fd6243"
+    },
+    {
+      "id": "SRC-LIU-PROT-MISSING-2021",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Proper imputation of missing values in proteomics datasets for differential expression analysis",
+      "authors": [
+        "Liu M",
+        "Dongre A"
+      ],
+      "year": 2021,
+      "authorityTier": "A",
+      "domain": [
+        "proteomics",
+        "missing_data",
+        "imputation"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Evaluates missingness composition and imputation effects on differential-expression analysis.",
+      "journal": "Briefings in Bioinformatics",
+      "doi": "10.1093/bib/bbaa112",
+      "pmid": "32520347",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32520347/",
+      "contentHash": "accbf7d5d3126557ab1e1a76f206f19e5cb6ac9dae04c8a374f95246998e71d6"
+    },
+    {
+      "id": "SRC-HARRIS-PROT-IMPUTE-2023",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Evaluating Proteomics Imputation Methods with Improved Criteria",
+      "authors": [
+        "Harris L",
+        "Fondrie WE",
+        "Oh S",
+        "Noble WS"
+      ],
+      "year": 2023,
+      "authorityTier": "A",
+      "domain": [
+        "proteomics",
+        "missing_data",
+        "imputation"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Shows imputation does not necessarily improve differential-expression detection and method performance depends on downstream criterion.",
+      "journal": "Journal of Proteome Research",
+      "doi": "10.1021/acs.jproteome.3c00205",
+      "pmid": "37861703",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37861703/",
+      "contentHash": "a82f9732a3cdbad778768a956bc8e4908e0fbf0355a410e63a44f5ac9944bcee"
+    },
+    {
+      "id": "SRC-PROT-MISSING-REVIEW-2022",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Dealing with missing values in proteomics data",
+      "authors": [],
+      "year": 2022,
+      "authorityTier": "C",
+      "domain": [
+        "proteomics",
+        "missing_data"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Review emphasizing heterogeneous missingness assumptions and method dependence.",
+      "journal": "Proteomics",
+      "doi": "10.1002/pmic.202200092",
+      "pmid": "36349819",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36349819/",
+      "contentHash": "e2c0b9daf177325363b84ec0f4ae69fac1459fe32d86b8588a8582dbff8bf577"
+    },
+    {
+      "id": "SRC-CPTAC-CRC-2014",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Proteogenomic characterization of human colon and rectal cancer",
+      "authors": [],
+      "year": 2014,
+      "authorityTier": "A",
+      "domain": [
+        "proteomics",
+        "proteogenomics",
+        "rna_protein"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Classic proteogenomics study showing mRNA abundance does not reliably predict inter-tumor protein abundance differences.",
+      "journal": "Nature",
+      "doi": "10.1038/nature13438",
+      "url": "https://www.nature.com/articles/nature13438",
+      "contentHash": "8c7a2a2bbfc1cf64c350c6a1c0525ae6dfd5158f5cde057b0e79a0adb764691e"
+    },
+    {
+      "id": "SRC-UPADHYA-RYAN-2022",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Experimental reproducibility limits the correlation between mRNA and protein abundances in tumor proteomic profiles",
+      "authors": [
+        "Upadhya SR",
+        "Ryan CJ"
+      ],
+      "year": 2022,
+      "authorityTier": "A",
+      "domain": [
+        "proteomics",
+        "proteogenomics",
+        "reproducibility"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Shows measurement reproducibility explains part of apparent mRNA–protein discordance.",
+      "journal": "Cell Reports Methods",
+      "doi": "10.1016/j.crmeth.2022.100288",
+      "pmid": "36160043",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36160043/",
+      "contentHash": "76b8849baf50b47e88f654c214ea116ff4c89251d0acde8347136512668da383"
+    },
+    {
+      "id": "SRC-VANDEREYKEN-MULTIOMICS-2023",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Methods and applications for single-cell and spatial multi-omics",
+      "authors": [
+        "Vandereyken K",
+        "Sifrim A",
+        "Thienpont B",
+        "Voet T"
+      ],
+      "year": 2023,
+      "authorityTier": "A",
+      "domain": [
+        "multiomics",
+        "single_cell",
+        "spatial_omics"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Review of measurement principles, integration strategies and challenges across single-cell/spatial multimodal omics.",
+      "journal": "Nature Reviews Genetics",
+      "doi": "10.1038/s41576-023-00580-2",
+      "url": "https://www.nature.com/articles/s41576-023-00580-2",
+      "contentHash": "f8e84db168379769f93720835cd6f8c10c356b91e1eabfbb987a4e70f2c4723a"
+    },
+    {
+      "id": "SRC-HU-MULTIOMICS-BENCH-2024",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Benchmarking algorithms for single-cell multi-omics prediction and integration",
+      "authors": [],
+      "year": 2024,
+      "authorityTier": "A",
+      "domain": [
+        "multiomics",
+        "integration",
+        "benchmark"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Benchmark demonstrating integration/prediction method performance is task- and modality-dependent.",
+      "journal": "Nature Methods",
+      "doi": "10.1038/s41592-024-02429-w",
+      "url": "https://www.nature.com/articles/s41592-024-02429-w",
+      "contentHash": "f4cd84a0253e09e592ddcbe55f75707d7f1fe34db334ad9c0acd9ee37505b44e"
+    },
+    {
+      "id": "SRC-BROOKS-OMICS-BENCH-2024",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Challenges and best practices in omics benchmarking",
+      "authors": [],
+      "year": 2024,
+      "authorityTier": "A",
+      "domain": [
+        "omics",
+        "benchmarking",
+        "reproducibility"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Best-practice review on objective and reproducible benchmarking of omics methods.",
+      "journal": "Nature Reviews Genetics",
+      "doi": "10.1038/s41576-023-00679-6",
+      "url": "https://www.nature.com/articles/s41576-023-00679-6",
+      "contentHash": "096f4daae2452c657ee9ab3dca4cd30e15146eb127d99bec78d9732dcd85f7b2"
+    },
+    {
+      "id": "SRC-ICMJE-AI-2026",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "ICMJE Recommendations — Use of Artificial Intelligence in Publishing",
+      "authors": [],
+      "year": 2026,
+      "authorityTier": "S",
+      "domain": [
+        "ai_oversight",
+        "publishing",
+        "research_integrity"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Current ICMJE AI guidance: human responsibility, transparency, attribution, confidentiality.",
+      "organization": "International Committee of Medical Journal Editors",
+      "url": "https://www.icmje.org/recommendations/browse/artificial-intelligence/",
+      "version": "Updated January 2026",
+      "contentHash": "859e7e6d87837c50e1e01894a791bf9a12a5e99a4f074bd0642af2fe23199788"
+    },
+    {
+      "id": "SRC-ICMJE-MANUSCRIPT-2026",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "ICMJE Recommendations — Preparing a Manuscript for Submission to a Medical Journal",
+      "authors": [],
+      "year": 2026,
+      "authorityTier": "S",
+      "domain": [
+        "paper_writing",
+        "references",
+        "methods",
+        "ai_oversight"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Current guidance on reproducible methods, direct references, reference accuracy and AI use in conducting research.",
+      "organization": "International Committee of Medical Journal Editors",
+      "url": "https://icmje.org/recommendations/browse/manuscript-preparation/preparing-for-submission.html",
+      "version": "Updated January 2026",
+      "contentHash": "705efca834e0a38257c32fcb8977a087e6085e9555181ef194886f558161e4cf"
+    },
+    {
+      "id": "SRC-BERNETT-LEAKAGE-2024",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Guiding questions to avoid data leakage in biological machine learning applications",
+      "authors": [],
+      "year": 2024,
+      "authorityTier": "A",
+      "domain": [
+        "ai_oversight",
+        "machine_learning",
+        "data_leakage"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Biology-focused framework for detecting information leakage across ML lifecycle.",
+      "journal": "Nature Methods",
+      "doi": "10.1038/s41592-024-02362-y",
+      "url": "https://www.nature.com/articles/s41592-024-02362-y",
+      "contentHash": "5a02fff57304d01ef87bdb2286d6d4b938ace424ea61fb32ee697077708b6285"
+    },
+    {
+      "id": "SRC-WHO-LMM-2024",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "Ethics and governance of artificial intelligence for health: Guidance on large multi-modal models",
+      "authors": [],
+      "year": 2024,
+      "authorityTier": "S",
+      "domain": [
+        "ai_oversight",
+        "health_ai"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "WHO guidance highlighting false/incomplete statements, bias and automation-bias risks of LMMs in health.",
+      "organization": "World Health Organization",
+      "url": "https://www.who.int/publications/i/item/9789240084759",
+      "contentHash": "a04db458d6a7076f65e9e370a4dcbb0b55ec49b89a3d91d2aaec478fda1fc2ae"
+    },
+    {
+      "id": "SRC-ROUGIER-FIGURES-2014",
+      "schemaVersion": 1,
+      "sourceType": "educational",
+      "title": "Ten Simple Rules for Better Figures",
+      "authors": [
+        "Rougier NP",
+        "Droettboom M",
+        "Bourne PE"
+      ],
+      "year": 2014,
+      "authorityTier": "C",
+      "domain": [
+        "figure_design",
+        "scientific_communication"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Practical figure-design framework emphasizing audience and message.",
+      "journal": "PLOS Computational Biology",
+      "doi": "10.1371/journal.pcbi.1003833",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833",
+      "contentHash": "ad447f1d9dc5d2d18dd384fe1357955109a59cd17f9dfd140804c828c2622f2a"
+    },
+    {
+      "id": "SRC-WEISSGERBER-DATAVIZ-2015",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "title": "Beyond bar and line graphs: time for a new data presentation paradigm",
+      "authors": [],
+      "year": 2015,
+      "authorityTier": "A",
+      "domain": [
+        "figure_design",
+        "data_visualization"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Systematic review and methodological argument that summary-only bar/line graphs can conceal distributions in small-n continuous data.",
+      "journal": "PLOS Biology",
+      "doi": "10.1371/journal.pbio.1002128",
+      "pmid": "25901488",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25901488/",
+      "contentHash": "696eed8556eadf33801c6f2379aa77f80c67b00df2148ff1a22b73828d1701f0"
+    },
+    {
+      "id": "SRC-NATURE-FORMAT-2026",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "Nature formatting guide — Figures",
+      "authors": [],
+      "year": 2026,
+      "authorityTier": "B",
+      "domain": [
+        "figure_design",
+        "publishing"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Journal-specific figure guidance; useful for clarity/logical connection, not universal scientific law.",
+      "organization": "Nature",
+      "url": "https://www.nature.com/nature/for-authors/formatting-guide",
+      "contentHash": "fa7381fc8ad9864b413070962446eebb20efdd4510af759813aba173e36dbd5d"
+    },
+    {
+      "id": "SRC-NATURE-IMAGE-INTEGRITY-2026",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "Nature Research Figure Guide — Image Integrity",
+      "authors": [],
+      "year": 2026,
+      "authorityTier": "B",
+      "domain": [
+        "figure_integrity",
+        "western_blot",
+        "microscopy"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Publisher policy on faithful image representation, global adjustments, panel demarcation and raw gel/blot integrity.",
+      "organization": "Nature Portfolio",
+      "url": "https://research-figure-guide.nature.com/figures/image-integrity/",
+      "contentHash": "951a0031b450bb1ab4b5443fd357c9c6d2b258cd325f111a5310159365464c20"
+    },
+    {
+      "id": "SRC-SAMPL-2013",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "Basic Statistical Reporting for Articles Published in Biomedical Journals: SAMPL Guidelines",
+      "authors": [],
+      "year": 2013,
+      "authorityTier": "C",
+      "domain": [
+        "statistics",
+        "reporting",
+        "paper_writing"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T21:46:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:46:00+08:00",
+      "provenanceNote": "Reporting guide for common statistical methods; dated but useful for basic reporting principles.",
+      "organization": "EQUATOR Network / European Association of Science Editors",
+      "url": "https://www.equator-network.org/wp-content/uploads/2013/07/SAMPL-Guidelines-6-27-13.pdf",
+      "contentHash": "d789fd4a17613295a5d40591d45bc170b50abbaeb843390e2aa121f3997f0f84"
+    }
+  ],
+  "evidenceClaims": [
+    {
+      "id": "CLM-SP-001",
+      "claim": "Spatial spots, pixels or segmented cells are observational units and do not automatically become independent biological replicates; the biological/generalization unit must be defined from the study design.",
+      "scope": "Multi-sample spatial transcriptomics.",
+      "qualification": "The exact biological/experimental unit depends on sampling and randomization.",
+      "sourceId": "SRC-OSTA-DESIGN-2026",
+      "supportType": "direct",
+      "supportingLocation": "Units of analysis & pseudo-replication",
+      "domain": [
+        "spatial_omics",
+        "experimental_design"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SP-002",
+      "claim": "Randomizing or balancing biological samples across slides/batches is important because slide/batch effects can otherwise be confounded with biological groups.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-OSTA-DESIGN-2026",
+      "supportType": "direct",
+      "supportingLocation": "Experimental design / batch randomization",
+      "domain": [
+        "spatial_omics",
+        "experimental_design"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SP-003",
+      "claim": "Many sequencing-based spatial transcriptomics platforms measure mixtures of cells within a spot rather than a single-cell expression profile.",
+      "scope": "",
+      "qualification": "Newer platforms can approach cellular/subcellular resolution; this claim is platform-dependent.",
+      "sourceId": "SRC-MA-CARD-2022",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "spatial_omics",
+        "deconvolution"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SP-004",
+      "claim": "Nominal spot size is not equivalent to effective biological resolution: molecular diffusion, capture sensitivity, sequencing depth and tissue/platform properties can materially affect spatial resolution and detected patterns.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-YOU-SST-BENCH-2024",
+      "supportType": "direct",
+      "supportingLocation": "Abstract and molecule lateral diffusion results",
+      "domain": [
+        "spatial_omics",
+        "platform_benchmark"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SP-005",
+      "claim": "Cell-type deconvolution and transcript-imputation methods for spatial data differ in performance by task and dataset; inferred composition is model-based rather than directly measured ground truth.",
+      "scope": "",
+      "qualification": "Benchmark rankings should not be treated as permanent universal rankings across future datasets/platforms.",
+      "sourceId": "SRC-LI-ST-DECONV-2022",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "spatial_omics",
+        "deconvolution"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SP-006",
+      "claim": "Different spatially variable gene methods can return substantially different SVG sets, so a single method's significance list should not be treated as method-independent truth.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CHARITAKIS-SVG-2023",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "spatial_omics",
+        "svg"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SP-007",
+      "claim": "Recent SVG benchmarks show method-specific differences in accuracy and statistical calibration; some methods can have poorly calibrated significance values.",
+      "scope": "",
+      "qualification": "Performance depends on dataset and SVG definition.",
+      "sourceId": "SRC-LI-SVG-BENCH-2025",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "spatial_omics",
+        "svg",
+        "statistics"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SP-008",
+      "claim": "Joint modeling across biological spatial replicates targets spatial patterns that are consistent across samples and avoids treating within-section locations as substitute biological replication.",
+      "scope": "",
+      "qualification": "DESpace is one implementation; the general principle is replicate-aware spatial inference.",
+      "sourceId": "SRC-DESPACE-2024",
+      "supportType": "qualified",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "spatial_omics",
+        "biological_replicates"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PROT-001",
+      "claim": "Proteomics studies should report enough experimental and data-processing detail to allow critical evaluation and, where possible, reproduction; MIAPE formalizes minimum-information requirements.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-MIAPE-2007",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "proteomics",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PROT-002",
+      "claim": "Quantitative mass-spectrometry proteomics requires reporting of quantitative experimental and analysis metadata; missing reporting can make a quantitative pipeline difficult to critically evaluate or reproduce.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-MIAPE-QUANT-2013",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "proteomics",
+        "quantitative_ms"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PROT-003",
+      "claim": "Missing values in proteomics can arise through different mechanisms; imputation strategy should match plausible missingness and downstream analysis rather than using one universal imputation rule.",
+      "scope": "",
+      "qualification": "MAR/MNAR labels are simplifications; real data may mix mechanisms.",
+      "sourceId": "SRC-LIU-PROT-MISSING-2021",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "proteomics",
+        "missing_data"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PROT-004",
+      "claim": "Imputation does not necessarily improve differential-expression detection in proteomics and can alter variance; its value should be assessed against the downstream objective.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-HARRIS-PROT-IMPUTE-2023",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "proteomics",
+        "imputation"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PROT-005",
+      "claim": "There is no single imputation method that is reliably best across all proteomics datasets and missingness regimes.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PROT-MISSING-REVIEW-2022",
+      "supportType": "qualified",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "proteomics",
+        "imputation"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PROT-006",
+      "claim": "mRNA abundance does not reliably predict protein abundance across tumors; transcript and protein measurements can contain distinct biological information.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CPTAC-CRC-2014",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "proteomics",
+        "proteogenomics"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PROT-007",
+      "claim": "Observed mRNA–protein discordance should not automatically be attributed to post-transcriptional regulation because measurement reproducibility can explain a substantial portion of variation in observed correlations.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-UPADHYA-RYAN-2022",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "proteomics",
+        "proteogenomics",
+        "reproducibility"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-MO-001",
+      "claim": "Multi-omics integration aligns information across modalities under explicit or implicit linking assumptions; integrated latent factors or correlations do not by themselves establish molecular causality.",
+      "scope": "",
+      "qualification": "Causal claims require design/perturbational evidence beyond integration.",
+      "sourceId": "SRC-VANDEREYKEN-MULTIOMICS-2023",
+      "supportType": "qualified",
+      "supportingLocation": "Integration strategies / challenges",
+      "domain": [
+        "multiomics",
+        "integration"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-MO-002",
+      "claim": "Performance of multimodal integration/prediction methods is task- and modality-dependent; no single integration method should be assumed optimal for all objectives.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-HU-MULTIOMICS-BENCH-2024",
+      "supportType": "direct",
+      "supportingLocation": "Benchmark overview",
+      "domain": [
+        "multiomics",
+        "integration"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-MO-003",
+      "claim": "Omics benchmarks themselves require careful dataset, metric, baseline and ground-truth design; leaderboard rank is not automatically transferable to a different biological task.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-BROOKS-OMICS-BENCH-2024",
+      "supportType": "direct",
+      "supportingLocation": "Abstract / benchmarking challenges",
+      "domain": [
+        "omics",
+        "benchmarking"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-AI-001",
+      "claim": "AI-assisted output can be incorrect, incomplete or biased; humans remain responsible for reviewing and ensuring the accuracy of scientific content.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-AI-2026",
+      "supportType": "direct",
+      "supportingLocation": "Section V: Use of Artificial Intelligence in Publishing",
+      "domain": [
+        "ai_oversight",
+        "publishing"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-AI-002",
+      "claim": "AI-generated material should not be used as the primary scientific source, and authors remain responsible for checking that cited references accurately support associated statements.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-MANUSCRIPT-2026",
+      "supportType": "direct",
+      "supportingLocation": "References / AI use",
+      "domain": [
+        "ai_oversight",
+        "references"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-AI-003",
+      "claim": "Use of AI in manuscript preparation or research should be transparently disclosed according to journal policy; when AI is used to conduct the study, methods should document the tool/version and relevant details sufficiently for reproducibility.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-MANUSCRIPT-2026",
+      "supportType": "direct",
+      "supportingLocation": "Methods and AI recommendations",
+      "domain": [
+        "ai_oversight",
+        "methods"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-AI-004",
+      "claim": "Confidential submitted manuscripts should not be uploaded to AI systems where confidentiality cannot be assured without appropriate permission.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-AI-2026",
+      "supportType": "direct",
+      "supportingLocation": "Use of AI in Publishing / reviewer-editor confidentiality",
+      "domain": [
+        "ai_oversight",
+        "confidentiality"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-AI-005",
+      "claim": "Data leakage can make biological machine-learning performance estimates substantially better than performance in the intended application; leakage can arise from complex dependencies, not only obvious train-test duplication.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-BERNETT-LEAKAGE-2024",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "ai_oversight",
+        "machine_learning",
+        "data_leakage"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-AI-006",
+      "claim": "Large multimodal models in health can generate false or incomplete statements and can induce automation bias; outputs require independent human validation for consequential use.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-WHO-LMM-2024",
+      "supportType": "direct",
+      "supportingLocation": "Risks and governance recommendations",
+      "domain": [
+        "ai_oversight",
+        "health_ai"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-FIG-001",
+      "claim": "A scientific figure should be designed around a clear message for its intended audience; visual complexity that does not serve the message should be reduced.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ROUGIER-FIGURES-2014",
+      "supportType": "direct",
+      "supportingLocation": "Rules 1–2",
+      "domain": [
+        "figure_design"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-FIG-002",
+      "claim": "Summary-only bar or line graphs can conceal the underlying distribution of small-sample continuous data; showing individual observations or informative distribution summaries improves evaluability.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-WEISSGERBER-DATAVIZ-2015",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "figure_design",
+        "data_visualization"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-FIG-003",
+      "claim": "Multipart figure panels should be logically connected and unnecessary panels/detail should be avoided when they do not improve clarity.",
+      "scope": "",
+      "qualification": "Nature-specific editorial guidance used as a high-quality exemplar, not a universal mandatory rule.",
+      "sourceId": "SRC-NATURE-FORMAT-2026",
+      "supportType": "direct",
+      "supportingLocation": "Figures section",
+      "domain": [
+        "figure_design",
+        "publishing"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-FIG-004",
+      "claim": "Scientific images must faithfully represent original data; selective local editing, hidden splicing or combining images from different samples without clear demarcation can misrepresent evidence.",
+      "scope": "",
+      "qualification": "Nature Portfolio policy; broad integrity principle is general but exact submission requirements are journal-specific.",
+      "sourceId": "SRC-NATURE-IMAGE-INTEGRITY-2026",
+      "supportType": "direct",
+      "supportingLocation": "Preparing images / gels",
+      "domain": [
+        "figure_integrity"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PAPER-001",
+      "claim": "Methods should explain how and why a study was conducted in sufficient detail to enable reproducibility by others with access to the data/resources.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-MANUSCRIPT-2026",
+      "supportType": "direct",
+      "supportingLocation": "Methods",
+      "domain": [
+        "paper_writing",
+        "methods"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PAPER-002",
+      "claim": "References should be verified against bibliographic/original sources, and a real citation is not sufficient unless it actually supports the statement to which it is attached.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-MANUSCRIPT-2026",
+      "supportType": "direct",
+      "supportingLocation": "References",
+      "domain": [
+        "paper_writing",
+        "references"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PAPER-003",
+      "claim": "Statistical reporting should include the methods and information needed to understand the analysis and its uncertainty; polished reporting cannot rescue an inappropriate design or analysis.",
+      "scope": "",
+      "qualification": "The second clause is an inferential teaching qualification; SAMPL is a reporting guideline, not a risk-of-bias instrument.",
+      "sourceId": "SRC-SAMPL-2013",
+      "supportType": "qualified",
+      "supportingLocation": "SAMPL introduction and reporting recommendations",
+      "domain": [
+        "paper_writing",
+        "statistics"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final claim_verified promotion reserved for Codex/formal source-pack gate."
+    }
+  ],
+  "problemCards": [
+    {
+      "id": "PRB-SP-001",
+      "domain": "spatial_omics",
+      "subdomain": "statistical_unit",
+      "title_cn": "6名患者有12万spots，n 是12万吗？",
+      "title_en": "Are 120,000 spatial spots n=120,000?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "6名患者的空间转录组包含约12万个spots，组间DE/富集把spot视为独立样本。",
+      "context": "",
+      "why_it_matters": "spots是同一组织/患者内相关的观测单位；把它们当独立生物复制会造成伪重复。",
+      "candidate_causes": [
+        "CAUSE-SP-PSEUDO"
+      ],
+      "discriminating_checks": [
+        "CHK-PRB-SP-001-01",
+        "CHK-PRB-SP-001-02",
+        "CHK-PRB-SP-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SP-001"
+      ],
+      "common_wrong_actions": [
+        "把spot数量直接当生物学n"
+      ],
+      "recommended_reasoning": [
+        "先画清BU/EU/OU层级，再决定统计模型。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "患者层条件效应不能仅凭海量spots获得海量独立生物学信息。",
+      "reviewer_implication": "属于高风险statistical-unit问题。",
+      "transfer_cases": [
+        "TRF-SP-001"
+      ],
+      "misconception_tags": [
+        "spots_are_independent_replicates"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SP-002",
+      "domain": "spatial_omics",
+      "subdomain": "experimental_design",
+      "title_cn": "病例都在一张slide、对照都在另一张，能靠batch correction解决吗？",
+      "title_en": "Can batch correction rescue slide–condition confounding?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "所有病例切片在slide A，对照切片在slide B。",
+      "context": "",
+      "why_it_matters": "slide效应与condition完全混杂时，算法无法可靠区分二者。",
+      "candidate_causes": [
+        "CAUSE-SP-CONFOUND"
+      ],
+      "discriminating_checks": [
+        "CHK-PRB-SP-002-01",
+        "CHK-PRB-SP-002-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SP-002"
+      ],
+      "common_wrong_actions": [
+        "事后校正后宣称完全消除confounding"
+      ],
+      "recommended_reasoning": [
+        "设计阶段随机化/平衡优先于事后统计补救。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "可能是结构性不可识别问题。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "batch_correction_fixes_design"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SP-002",
+        "CLM-SP-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SP-003",
+      "domain": "spatial_omics",
+      "subdomain": "resolution",
+      "title_cn": "Visium 一个spot显示CAF和肿瘤marker都高，说明存在双阳性细胞吗？",
+      "title_en": "Does a mixed Visium spot prove a double-positive cell state?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "低/中分辨率spot同时有stromal和tumor markers。",
+      "context": "",
+      "why_it_matters": "一个spot可能包含多个细胞，bulk-like混合表达不能自动推断同一细胞共表达。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SP-003-01",
+        "CHK-PRB-SP-003-02",
+        "CHK-PRB-SP-003-03",
+        "CHK-PRB-SP-003-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SP-003"
+      ],
+      "common_wrong_actions": [
+        "spot co-expression = single-cell co-expression"
+      ],
+      "recommended_reasoning": [
+        "先区分spot-level mixture与cell-level state。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "spot共表达最多支持空间共现/混合信号，不直接证明单细胞双阳性。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "spot_equals_cell"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SP-003",
+        "CLM-SP-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SP-004",
+      "domain": "spatial_omics",
+      "subdomain": "resolution",
+      "title_cn": "标称 2 μm bin 就等于真正 2 μm 生物学分辨率吗？",
+      "title_en": "Does a 2-µm bin imply 2-µm effective resolution?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "平台宣传极小bin/spot，研究直接据此声称单细胞甚至亚细胞解析。",
+      "context": "",
+      "why_it_matters": "molecular diffusion、capture efficiency、sequencing depth和tissue properties会影响有效分辨率。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SP-004-01",
+        "CHK-PRB-SP-004-02",
+        "CHK-PRB-SP-004-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SP-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "区分physical pitch/bin size与effective molecular resolution。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "名义尺寸不能单独证明真实单细胞/亚细胞解析。",
+      "reviewer_implication": null,
+      "transfer_cases": [
+        "TRF-SP-002"
+      ],
+      "misconception_tags": [
+        "nominal_resolution_equals_effective"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SP-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SP-005",
+      "domain": "spatial_omics",
+      "subdomain": "deconvolution",
+      "title_cn": "cell2location 给出 70% CAF，就等于实际有70% CAF吗？",
+      "title_en": "Is a deconvolution proportion a direct cell count?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "空间spot的模型输出被当成真实测量的细胞比例。",
+      "context": "",
+      "why_it_matters": "deconvolution依赖reference、模型、marker可辨识度和空间数据质量；输出是模型估计。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SP-005-01",
+        "CHK-PRB-SP-005-02",
+        "CHK-PRB-SP-005-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SP-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "将deconvolution解释为estimated composition，并用orthogonal evidence校验。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "模型比例不等于直接观察到的细胞计数。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "deconvolution_is_ground_truth"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SP-005",
+        "CLM-SP-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SP-006",
+      "domain": "spatial_omics",
+      "subdomain": "svg",
+      "title_cn": "一个SVG工具说显著，另一个完全不显著，哪个一定错了？",
+      "title_en": "Why do SVG methods disagree?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "相同数据不同SVG算法返回几乎不重叠的基因列表。",
+      "context": "",
+      "why_it_matters": "SVG定义、统计模型、空间pattern假设和calibration不同会产生显著方法依赖。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SP-006-01",
+        "CHK-PRB-SP-006-02",
+        "CHK-PRB-SP-006-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SP-006"
+      ],
+      "common_wrong_actions": [
+        "选给出最多显著基因的方法"
+      ],
+      "recommended_reasoning": [
+        "理解method estimand/pattern class，做敏感性分析并优先使用有benchmark支持的方法。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "svg_list_is_method_independent"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SP-006",
+        "CLM-SP-007"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SP-007",
+      "domain": "spatial_omics",
+      "subdomain": "inference",
+      "title_cn": "同一张切片两个区域有1000个spots，Wilcoxon P<1e-50 就很强吗？",
+      "title_en": "Is an ultra-small P value across spots strong evidence?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "同一section的两个region用spot-level普通Wilcoxon，P极小。",
+      "context": "",
+      "why_it_matters": "空间位置存在相关结构，同一section spots也不是独立生物学复制；极小P可能反映观测数量而非跨样本可重复性。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SP-007-01",
+        "CHK-PRB-SP-007-02",
+        "CHK-PRB-SP-007-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SP-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "把within-section pattern与between-sample inference分开。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "只有单section时强总体外推通常越界。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "many_spots_equal_strong_replication"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PROT-001",
+      "domain": "proteomics",
+      "subdomain": "missing_data",
+      "title_cn": "蛋白组缺失值统一填成最小值，可以吗？",
+      "title_en": "Can all proteomics missing values be imputed with a minimum value?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "无论缺失模式，所有missing values都被同一low-value策略填补。",
+      "context": "",
+      "why_it_matters": "蛋白组缺失可能混合不同机制，不同imputation假设会影响差异分析和方差。",
+      "candidate_causes": [
+        "CAUSE-PROT-MIXEDMISS"
+      ],
+      "discriminating_checks": [
+        "CHK-PRB-PROT-001-01",
+        "CHK-PRB-PROT-001-02",
+        "CHK-PRB-PROT-001-03",
+        "CHK-PRB-PROT-001-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PROT-001"
+      ],
+      "common_wrong_actions": [
+        "默认所有missing=below detection limit"
+      ],
+      "recommended_reasoning": [
+        "先探索missingness，再根据分析目标比较合理策略/不插补方案。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "imputation驱动主要发现且无敏感性分析时风险高。",
+      "transfer_cases": [
+        "TRF-PROT-001"
+      ],
+      "misconception_tags": [
+        "all_missing_is_mnar"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PROT-003",
+        "CLM-PROT-004",
+        "CLM-PROT-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PROT-002",
+      "domain": "proteomics",
+      "subdomain": "imputation",
+      "title_cn": "缺失值补全后显著蛋白更多，说明方法更好吗？",
+      "title_en": "Does more significant proteins after imputation mean better analysis?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "imputation后DEP数量翻倍，作者把‘更多发现’当作方法优越证据。",
+      "context": "",
+      "why_it_matters": "imputation可能增加可量化features，但不必然提高真实DE识别，且可能扭曲variance。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PROT-002-01",
+        "CHK-PRB-PROT-002-02",
+        "CHK-PRB-PROT-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PROT-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "以真实下游性能和稳健性评估，而不是显著数越多越好。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "more_significant_after_imputation_is_better"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PROT-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PROT-003",
+      "domain": "proteomics",
+      "subdomain": "reporting",
+      "title_cn": "蛋白组只给最终矩阵和热图，为什么复现不了？",
+      "title_en": "Why is a final proteomics matrix insufficient for reproducibility?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "Methods缺少sample preparation、MS acquisition、identification/quantification和processing细节。",
+      "context": "",
+      "why_it_matters": "proteomics结果依赖完整实验与处理链；MIAPE/MIAPE Quant要求关键metadata以支持批判评价和复现。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PROT-003-01",
+        "CHK-PRB-PROT-003-02",
+        "CHK-PRB-PROT-003-03",
+        "CHK-PRB-PROT-003-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PROT-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "沿sample→acquisition→identification→quantification→statistics完整记录。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "关键方法metadata缺失可成为严重reproducibility问题。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "final_matrix_is_enough"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PROT-001",
+        "CLM-PROT-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PROT-004",
+      "domain": "proteomics",
+      "subdomain": "proteogenomics",
+      "title_cn": "RNA低、蛋白高，就证明存在翻译后调控吗？",
+      "title_en": "Does RNA–protein discordance prove post-transcriptional regulation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "某蛋白RNA与protein方向不一致，论文直接声称存在post-transcriptional regulation。",
+      "context": "",
+      "why_it_matters": "RNA和protein本就不是等价层，measurement reproducibility也会影响correlation；discordance本身不是机制证明。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PROT-004-01",
+        "CHK-PRB-PROT-004-02",
+        "CHK-PRB-PROT-004-03",
+        "CHK-PRB-PROT-004-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PROT-004"
+      ],
+      "common_wrong_actions": [
+        "discordance = mechanism"
+      ],
+      "recommended_reasoning": [
+        "先确认测量和样本匹配，再把discordance作为机制假设而非最终解释。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "RNA–protein discordance支持层级差异，但不能单独定位调控机制。",
+      "reviewer_implication": null,
+      "transfer_cases": [
+        "TRF-PROT-002"
+      ],
+      "misconception_tags": [
+        "discordance_equals_regulation"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PROT-006",
+        "CLM-PROT-007"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-MO-001",
+      "domain": "multiomics",
+      "subdomain": "integration",
+      "title_cn": "两个组学在同一latent factor上相关，就证明A调控B吗？",
+      "title_en": "Does multi-omics co-loading imply regulation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "MOFA/其他integration factor上RNA和protein共同高载荷，作者写成direct regulatory axis。",
+      "context": "",
+      "why_it_matters": "integration揭示共同variation/association，不能单独识别因果方向。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-MO-001-01",
+        "CHK-PRB-MO-001-02",
+        "CHK-PRB-MO-001-03",
+        "CHK-PRB-MO-001-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-MO-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "把latent factor作为shared program/hypothesis，机制需要额外识别证据。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "integration association ≠ causal regulation。",
+      "reviewer_implication": null,
+      "transfer_cases": [
+        "TRF-MO-001"
+      ],
+      "misconception_tags": [
+        "integrated_factor_equals_causality"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-MO-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-MO-002",
+      "domain": "multiomics",
+      "subdomain": "integration",
+      "title_cn": "benchmark 排名第一的方法就是任何数据都该用的吗？",
+      "title_en": "Should the top-ranked multi-omics method always be used?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "依据单一benchmark总排名选择integration工具，不看实际任务和modalities。",
+      "context": "",
+      "why_it_matters": "方法表现取决于任务、modalities、batch structure和metric。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-MO-002-01",
+        "CHK-PRB-MO-002-02",
+        "CHK-PRB-MO-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-MO-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "按task/data structure选择benchmark证据，而不是迷信总排名。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "benchmark_winner_is_universal"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-MO-002",
+        "CLM-MO-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FIG-001",
+      "domain": "figure",
+      "subdomain": "data_visualization",
+      "title_cn": "n=4 每组只画 mean±SEM 柱状图，问题在哪里？",
+      "title_en": "Why is a mean±SEM bar chart weak for n=4?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "小样本连续数据只显示bar+error bar，不展示individual observations。",
+      "context": "",
+      "why_it_matters": "多种完全不同的数据分布可以产生相同summary bar；小样本尤其容易隐藏离群、偏态和配对结构。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FIG-001-01",
+        "CHK-PRB-FIG-001-02",
+        "CHK-PRB-FIG-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FIG-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "优先显示raw points/适合的distribution summary并定义uncertainty。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [
+        "TRF-FIG-001"
+      ],
+      "misconception_tags": [
+        "bar_summary_shows_data"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FIG-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FIG-002",
+      "domain": "figure",
+      "subdomain": "storytelling",
+      "title_cn": "一张主图塞了18个panel，越全面越好吗？",
+      "title_en": "Is more panels always a stronger figure?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "一个Figure包含大量彼此科学功能弱相关的panel，读者难以识别核心message。",
+      "context": "",
+      "why_it_matters": "Figure的功能是传递清晰scientific message；不必要且逻辑不相连的panel会稀释证据链。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FIG-002-01",
+        "CHK-PRB-FIG-002-02",
+        "CHK-PRB-FIG-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FIG-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "按scientific function而不是结果数量组织panel。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "more_panels_equals_stronger"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FIG-001",
+        "CLM-FIG-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FIG-003",
+      "domain": "figure",
+      "subdomain": "image_integrity",
+      "title_cn": "把WB不需要的泳道裁掉并无缝拼起来，可以吗？",
+      "title_en": "Can separated gel lanes be invisibly spliced?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "来自不同区域/样本的图像被无标记拼成连续图像。",
+      "context": "",
+      "why_it_matters": "隐藏拼接会让读者误判样本在同一原始图像/条件中的关系；应清晰标记并保留raw data。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FIG-003-01",
+        "CHK-PRB-FIG-003-02",
+        "CHK-PRB-FIG-003-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FIG-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "图像处理必须保持原始数据含义并透明记录。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "可能升级为image-integrity问题，而非单纯美观问题。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "invisible_splicing_is_cosmetic"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FIG-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PAPER-001",
+      "domain": "paper",
+      "subdomain": "methods",
+      "title_cn": "代码能跑，Methods 就算可复现了吗？",
+      "title_en": "Does runnable code make the study reproducible?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "提供代码但Methods没有数据版本、关键参数、预处理逻辑、随机种子或软件版本。",
+      "context": "",
+      "why_it_matters": "可复现需要足够说明如何和为什么做分析，代码只是其中一个载体。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PAPER-001-01",
+        "CHK-PRB-PAPER-001-02",
+        "CHK-PRB-PAPER-001-03",
+        "CHK-PRB-PAPER-001-04",
+        "CHK-PRB-PAPER-001-05"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PAPER-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "Methods + code + data provenance共同构成reproducibility。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "code_exists_equals_reproducible"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PAPER-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PAPER-002",
+      "domain": "paper",
+      "subdomain": "references",
+      "title_cn": "PMID是真的，就说明这篇文献支持你的句子吗？",
+      "title_en": "Does a real PMID prove citation support?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "AI提供真实存在的PMID，但论文内容只与主题相关，并没有支持所引用的具体claim。",
+      "context": "",
+      "why_it_matters": "identifier真实性仅解决citation existence；还必须检查claim-support scope。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PAPER-002-01",
+        "CHK-PRB-PAPER-002-02",
+        "CHK-PRB-PAPER-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PAPER-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "做claim→source→supporting location核查，而不是只验证PMID。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "属于citation mismatch；严重时会影响整段论证可信度。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "real_pmid_equals_supported_claim"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PAPER-002",
+        "CLM-AI-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-AI-001",
+      "domain": "ai_oversight",
+      "subdomain": "scientific_content",
+      "title_cn": "AI 说得很像专家，就可以直接写进论文吗？",
+      "title_en": "Can authoritative-sounding AI output be trusted directly?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "AI给出流畅、专业、确定的科学解释，但没有独立证据核验。",
+      "context": "",
+      "why_it_matters": "LLM可以生成貌似权威但错误、不完整或有偏的内容；最终准确性责任仍在人。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-AI-001-01",
+        "CHK-PRB-AI-001-02",
+        "CHK-PRB-AI-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-AI-001"
+      ],
+      "common_wrong_actions": [
+        "以语言流畅度作为accuracy proxy"
+      ],
+      "recommended_reasoning": [
+        "AI输出默认是candidate reasoning，关键claim必须独立核验。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "eloquence_equals_accuracy"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-AI-001",
+        "CLM-AI-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-AI-002",
+      "domain": "ai_oversight",
+      "subdomain": "citations",
+      "title_cn": "AI 给10篇文献，要只检查 DOI/PMID 吗？",
+      "title_en": "Is identifier checking enough for AI citations?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "所有DOI/PMID均真实，但其中多篇并不支持AI附着的具体结论。",
+      "context": "",
+      "why_it_matters": "bibliographic existence与claim support是两个独立gate。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-AI-002-01",
+        "CHK-PRB-AI-002-02",
+        "CHK-PRB-AI-002-03",
+        "CHK-PRB-AI-002-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-AI-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "先metadata verification，再claim-level verification。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [
+        "TRF-AI-001"
+      ],
+      "misconception_tags": [
+        "metadata_verification_equals_claim_verification"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-AI-002",
+        "CLM-PAPER-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-AI-003",
+      "domain": "ai_oversight",
+      "subdomain": "confidentiality",
+      "title_cn": "把未发表合作稿直接上传公共AI做审稿，可以吗？",
+      "title_en": "Can a confidential manuscript be uploaded to a public AI reviewer?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "未发表稿件/审稿材料包含保密内容，准备上传到无法保证confidentiality的AI服务。",
+      "context": "",
+      "why_it_matters": "投稿稿件属于privileged/confidential communication，AI使用受期刊政策和保密要求约束。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-AI-003-01",
+        "CHK-PRB-AI-003-02",
+        "CHK-PRB-AI-003-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-AI-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "先满足confidentiality与policy，再谈AI便利性。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "ai_review_has_no_confidentiality_risk"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-AI-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-AI-004",
+      "domain": "ai_oversight",
+      "subdomain": "reproducibility",
+      "title_cn": "AI 帮忙跑分析但Methods没记录模型/版本/prompt，问题大吗？",
+      "title_en": "Must AI-assisted research steps be documented?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "AI参与数据处理/分析决策，但研究记录只写‘AI-assisted analysis’。",
+      "context": "",
+      "why_it_matters": "当AI用于conducting the study，可复现性要求记录足够的工具、版本和相关使用细节。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-AI-004-01",
+        "CHK-PRB-AI-004-02",
+        "CHK-PRB-AI-004-03",
+        "CHK-PRB-AI-004-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-AI-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "把AI当分析工具记录provenance，而不是神秘黑箱。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "ai_tool_does_not_need_methods"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-AI-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-AI-005",
+      "domain": "ai_oversight",
+      "subdomain": "machine_learning",
+      "title_cn": "训练集做完特征筛选后再随机CV，为什么仍可能泄漏？",
+      "title_en": "Why can feature selection before CV cause leakage?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "全数据先做feature selection/normalization/threshold tuning，再对处理后的数据做cross-validation。",
+      "context": "",
+      "why_it_matters": "test-fold信息已经进入训练流程，性能可被人为抬高。",
+      "candidate_causes": [
+        "CAUSE-AI-LEAK"
+      ],
+      "discriminating_checks": [
+        "CHK-PRB-AI-005-01",
+        "CHK-PRB-AI-005-02",
+        "CHK-PRB-AI-005-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-AI-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "所有从数据学习的步骤原则上应封装在training fold/pipeline内。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "典型data leakage可使模型性能结论失效。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "cross_validation_after_leakage_is_valid"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-AI-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-AI-006",
+      "domain": "ai_oversight",
+      "subdomain": "agent_management",
+      "title_cn": "Agent 报告‘tests passed’，就可以认为科研逻辑正确吗？",
+      "title_en": "Do passing software tests prove scientific correctness?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "AI Agent完成代码并报告unit tests全部通过，研究者不再核查estimand、statistical unit或analysis plan。",
+      "context": "",
+      "why_it_matters": "软件测试主要验证实现约定；它不能自动证明科学问题、设计、统计推断或claim boundary正确。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-AI-006-01",
+        "CHK-PRB-AI-006-02",
+        "CHK-PRB-AI-006-03",
+        "CHK-PRB-AI-006-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-AI-006"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "engineering gate与scientific gate必须分离。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "tests passed ≠ scientifically valid。",
+      "reviewer_implication": null,
+      "transfer_cases": [
+        "TRF-AI-002"
+      ],
+      "misconception_tags": [
+        "tests_passed_equals_science_correct"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-AI-001",
+        "CLM-AI-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    }
+  ],
+  "diagnosticCauses": [
+    {
+      "id": "CAUSE-SP-PSEUDO",
+      "problemId": "PRB-SP-001",
+      "cause": "将spots/locations作为独立biological replicates",
+      "priorPlausibility": "high",
+      "supportingFindings": [
+        "同一patient/section内大量spots被独立计数"
+      ],
+      "contradictingFindings": [
+        "replicate-aware hierarchical/sample-level inference"
+      ],
+      "discriminatingTests": [
+        "audit BU/EU/OU hierarchy"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-OSTA-DESIGN-2026"
+      ]
+    },
+    {
+      "id": "CAUSE-SP-CONFOUND",
+      "problemId": "PRB-SP-002",
+      "cause": "slide/batch与condition完全混杂",
+      "priorPlausibility": "high",
+      "supportingFindings": [
+        "condition与slide一一对应"
+      ],
+      "contradictingFindings": [
+        "crossed/balanced design"
+      ],
+      "discriminatingTests": [
+        "condition × slide table"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-OSTA-DESIGN-2026"
+      ]
+    },
+    {
+      "id": "CAUSE-PROT-MIXEDMISS",
+      "problemId": "PRB-PROT-001",
+      "cause": "混合missingness机制被单一imputation假设替代",
+      "priorPlausibility": "common",
+      "supportingFindings": [
+        "missingness依赖abundance或group且同时存在随机缺失"
+      ],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "missingness diagnostics + sensitivity analyses"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-LIU-PROT-MISSING-2021",
+        "SRC-PROT-MISSING-REVIEW-2022"
+      ]
+    },
+    {
+      "id": "CAUSE-AI-LEAK",
+      "problemId": "PRB-AI-005",
+      "cause": "preprocessing/feature selection在CV外使用全数据fit",
+      "priorPlausibility": "high",
+      "supportingFindings": [
+        "test folds影响了feature/scaler selection"
+      ],
+      "contradictingFindings": [
+        "所有learned preprocessing nested inside CV"
+      ],
+      "discriminatingTests": [
+        "audit full ML pipeline"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-BERNETT-LEAKAGE-2024"
+      ]
+    }
+  ],
+  "diagnosticChecks": [
+    {
+      "id": "CHK-PRB-SP-001-01",
+      "problemId": "PRB-SP-001",
+      "question": "真正想外推到哪一级总体？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-001-02",
+      "problemId": "PRB-SP-001",
+      "question": "每个spot来自哪个patient/block/section？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-001-03",
+      "problemId": "PRB-SP-001",
+      "question": "模型是否保留biological replicate层级？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-002-01",
+      "problemId": "PRB-SP-002",
+      "question": "是否有不同condition跨slide交叉/随机化？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-002",
+        "CLM-SP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-002-02",
+      "problemId": "PRB-SP-002",
+      "question": "是否有bridge/reference样本？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-002",
+        "CLM-SP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-003-01",
+      "problemId": "PRB-SP-003",
+      "question": "平台有效分辨率？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-003",
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-003-02",
+      "problemId": "PRB-SP-003",
+      "question": "spot内预计细胞数？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-003",
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-003-03",
+      "problemId": "PRB-SP-003",
+      "question": "单细胞/高分辨率/成像证据？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-003",
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-003-04",
+      "problemId": "PRB-SP-003",
+      "question": "deconvolution结果？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-003",
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-004-01",
+      "problemId": "PRB-SP-004",
+      "question": "molecular diffusion benchmark？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-004-02",
+      "problemId": "PRB-SP-004",
+      "question": "capture sensitivity？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-004-03",
+      "problemId": "PRB-SP-004",
+      "question": "是否有reference morphology/markers验证？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-005-01",
+      "problemId": "PRB-SP-005",
+      "question": "reference是否匹配？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-005",
+        "CLM-SP-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-005-02",
+      "problemId": "PRB-SP-005",
+      "question": "不同方法结果一致吗？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-005",
+        "CLM-SP-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-005-03",
+      "problemId": "PRB-SP-005",
+      "question": "有成像/病理ground truth吗？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-005",
+        "CLM-SP-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-006-01",
+      "problemId": "PRB-SP-006",
+      "question": "方法检测哪类spatial pattern？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-006",
+        "CLM-SP-007"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-006-02",
+      "problemId": "PRB-SP-006",
+      "question": "P值/FDR calibration如何？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-006",
+        "CLM-SP-007"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-006-03",
+      "problemId": "PRB-SP-006",
+      "question": "结果对方法选择是否稳健？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-006",
+        "CLM-SP-007"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-007-01",
+      "problemId": "PRB-SP-007",
+      "question": "有多少独立section/patient？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-007-02",
+      "problemId": "PRB-SP-007",
+      "question": "是否考虑空间相关/层级结构？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SP-007-03",
+      "problemId": "PRB-SP-007",
+      "question": "模式是否跨replicate复现？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SP-001",
+        "CLM-SP-008"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-001-01",
+      "problemId": "PRB-PROT-001",
+      "question": "缺失是否与abundance/group相关？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-003",
+        "CLM-PROT-004",
+        "CLM-PROT-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-001-02",
+      "problemId": "PRB-PROT-001",
+      "question": "DDA/DIA与quantification流程？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-003",
+        "CLM-PROT-004",
+        "CLM-PROT-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-001-03",
+      "problemId": "PRB-PROT-001",
+      "question": "无imputation结果如何？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-003",
+        "CLM-PROT-004",
+        "CLM-PROT-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-001-04",
+      "problemId": "PRB-PROT-001",
+      "question": "敏感性分析？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-003",
+        "CLM-PROT-004",
+        "CLM-PROT-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-002-01",
+      "problemId": "PRB-PROT-002",
+      "question": "ground truth/benchmark？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-002-02",
+      "problemId": "PRB-PROT-002",
+      "question": "precision-recall/false discoveries？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-002-03",
+      "problemId": "PRB-PROT-002",
+      "question": "unimputed sensitivity analysis？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-003-01",
+      "problemId": "PRB-PROT-003",
+      "question": "raw data repository？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-001",
+        "CLM-PROT-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-003-02",
+      "problemId": "PRB-PROT-003",
+      "question": "MS parameters？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-001",
+        "CLM-PROT-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-003-03",
+      "problemId": "PRB-PROT-003",
+      "question": "search/FDR？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-001",
+        "CLM-PROT-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-003-04",
+      "problemId": "PRB-PROT-003",
+      "question": "normalization/missing handling？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-001",
+        "CLM-PROT-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-004-01",
+      "problemId": "PRB-PROT-004",
+      "question": "RNA/protein测量reproducibility？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-006",
+        "CLM-PROT-007"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-004-02",
+      "problemId": "PRB-PROT-004",
+      "question": "同一样本匹配？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-006",
+        "CLM-PROT-007"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-004-03",
+      "problemId": "PRB-PROT-004",
+      "question": "protein degradation/translation evidence？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-006",
+        "CLM-PROT-007"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PROT-004-04",
+      "problemId": "PRB-PROT-004",
+      "question": "independent validation？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PROT-006",
+        "CLM-PROT-007"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MO-001-01",
+      "problemId": "PRB-MO-001",
+      "question": "时间顺序？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MO-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MO-001-02",
+      "problemId": "PRB-MO-001",
+      "question": "perturbation？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MO-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MO-001-03",
+      "problemId": "PRB-MO-001",
+      "question": "independent mechanism evidence？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MO-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MO-001-04",
+      "problemId": "PRB-MO-001",
+      "question": "measurement confounding？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MO-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MO-002-01",
+      "problemId": "PRB-MO-002",
+      "question": "当前任务是clustering/prediction/imputation/registration哪一种？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MO-002",
+        "CLM-MO-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MO-002-02",
+      "problemId": "PRB-MO-002",
+      "question": "benchmark数据与本数据相似吗？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MO-002",
+        "CLM-MO-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MO-002-03",
+      "problemId": "PRB-MO-002",
+      "question": "metric与科学目标一致吗？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MO-002",
+        "CLM-MO-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-001-01",
+      "problemId": "PRB-FIG-001",
+      "question": "能否显示每个独立观测？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-001-02",
+      "problemId": "PRB-FIG-001",
+      "question": "paired data是否连线？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-001-03",
+      "problemId": "PRB-FIG-001",
+      "question": "error bar定义？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-002-01",
+      "problemId": "PRB-FIG-002",
+      "question": "这张Figure唯一核心message是什么？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-001",
+        "CLM-FIG-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-002-02",
+      "problemId": "PRB-FIG-002",
+      "question": "每个panel是否对这个message提供不可替代证据？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-001",
+        "CLM-FIG-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-002-03",
+      "problemId": "PRB-FIG-002",
+      "question": "能否移到supplement而不伤主线？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-001",
+        "CLM-FIG-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-003-01",
+      "problemId": "PRB-FIG-003",
+      "question": "是否来自同一原始gel/blot？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-003-02",
+      "problemId": "PRB-FIG-003",
+      "question": "拼接边界是否标记？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FIG-003-03",
+      "problemId": "PRB-FIG-003",
+      "question": "raw uncropped data是否保存？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FIG-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-001-01",
+      "problemId": "PRB-PAPER-001",
+      "question": "数据版本？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-001-02",
+      "problemId": "PRB-PAPER-001",
+      "question": "软件/包版本？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-001-03",
+      "problemId": "PRB-PAPER-001",
+      "question": "参数/seed？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-001-04",
+      "problemId": "PRB-PAPER-001",
+      "question": "preprocessing与exclusion？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-001-05",
+      "problemId": "PRB-PAPER-001",
+      "question": "code与manuscript是否一致？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-002-01",
+      "problemId": "PRB-PAPER-002",
+      "question": "原文哪个section直接支持？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-002",
+        "CLM-AI-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-002-02",
+      "problemId": "PRB-PAPER-002",
+      "question": "是否只是contextual而非direct？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-002",
+        "CLM-AI-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PAPER-002-03",
+      "problemId": "PRB-PAPER-002",
+      "question": "claim范围是否比原文更强？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PAPER-002",
+        "CLM-AI-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-001-01",
+      "problemId": "PRB-AI-001",
+      "question": "事实可否由原始/权威来源核验？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-001",
+        "CLM-AI-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-001-02",
+      "problemId": "PRB-AI-001",
+      "question": "是否区分fact/inference？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-001",
+        "CLM-AI-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-001-03",
+      "problemId": "PRB-AI-001",
+      "question": "是否有遗漏的alternative explanation？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-001",
+        "CLM-AI-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-002-01",
+      "problemId": "PRB-AI-002",
+      "question": "title/metadata真实？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-002",
+        "CLM-PAPER-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-002-02",
+      "problemId": "PRB-AI-002",
+      "question": "supporting section？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-002",
+        "CLM-PAPER-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-002-03",
+      "problemId": "PRB-AI-002",
+      "question": "scope/qualification？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-002",
+        "CLM-PAPER-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-002-04",
+      "problemId": "PRB-AI-002",
+      "question": "是否引用retracted/preprint而未说明？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-002",
+        "CLM-PAPER-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-003-01",
+      "problemId": "PRB-AI-003",
+      "question": "服务是否保证confidentiality/data retention？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-003-02",
+      "problemId": "PRB-AI-003",
+      "question": "期刊/作者是否明确许可？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-003-03",
+      "problemId": "PRB-AI-003",
+      "question": "能否使用受控本地/企业环境？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-004-01",
+      "problemId": "PRB-AI-004",
+      "question": "tool/model/version？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-004-02",
+      "problemId": "PRB-AI-004",
+      "question": "prompt或decision context？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-004-03",
+      "problemId": "PRB-AI-004",
+      "question": "人工修改？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-004-04",
+      "problemId": "PRB-AI-004",
+      "question": "输出如何验证？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-005-01",
+      "problemId": "PRB-AI-005",
+      "question": "哪些步骤fit了全数据？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-005-02",
+      "problemId": "PRB-AI-005",
+      "question": "feature selection/imputation/scaling是否在fold内重做？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-005-03",
+      "problemId": "PRB-AI-005",
+      "question": "related samples是否跨fold？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-006-01",
+      "problemId": "PRB-AI-006",
+      "question": "测试覆盖了什么？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-001",
+        "CLM-AI-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-006-02",
+      "problemId": "PRB-AI-006",
+      "question": "reference answer来自哪里？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-001",
+        "CLM-AI-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-006-03",
+      "problemId": "PRB-AI-006",
+      "question": "科学假设/统计单位是否单独review？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-001",
+        "CLM-AI-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-AI-006-04",
+      "problemId": "PRB-AI-006",
+      "question": "有没有hold-out scientific cases？",
+      "informationRevealed": "获取该信息后应更新当前假设、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-AI-001",
+        "CLM-AI-005"
+      ]
+    }
+  ],
+  "diagnosticPaths": [
+    {
+      "id": "PATH-PRB-SP-001",
+      "problemId": "PRB-SP-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SP-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SP-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SP-001-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-SP-002",
+      "problemId": "PRB-SP-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SP-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SP-002-02"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-SP-003",
+      "problemId": "PRB-SP-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SP-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SP-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SP-003-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-SP-003-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-SP-004",
+      "problemId": "PRB-SP-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SP-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SP-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SP-004-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-SP-005",
+      "problemId": "PRB-SP-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SP-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SP-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SP-005-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-SP-006",
+      "problemId": "PRB-SP-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SP-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SP-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SP-006-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-SP-007",
+      "problemId": "PRB-SP-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SP-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SP-007-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SP-007-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-PROT-001",
+      "problemId": "PRB-PROT-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PROT-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PROT-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PROT-001-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-PROT-001-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-PROT-002",
+      "problemId": "PRB-PROT-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PROT-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PROT-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PROT-002-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-PROT-003",
+      "problemId": "PRB-PROT-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PROT-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PROT-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PROT-003-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-PROT-003-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-PROT-004",
+      "problemId": "PRB-PROT-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PROT-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PROT-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PROT-004-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-PROT-004-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-MO-001",
+      "problemId": "PRB-MO-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-MO-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-MO-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-MO-001-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-MO-001-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-MO-002",
+      "problemId": "PRB-MO-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-MO-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-MO-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-MO-002-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-FIG-001",
+      "problemId": "PRB-FIG-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FIG-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FIG-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FIG-001-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-FIG-002",
+      "problemId": "PRB-FIG-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FIG-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FIG-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FIG-002-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-FIG-003",
+      "problemId": "PRB-FIG-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FIG-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FIG-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FIG-003-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-PAPER-001",
+      "problemId": "PRB-PAPER-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PAPER-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PAPER-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PAPER-001-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-PAPER-001-04"
+        },
+        {
+          "step": 5,
+          "checkId": "CHK-PRB-PAPER-001-05"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-PAPER-002",
+      "problemId": "PRB-PAPER-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PAPER-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PAPER-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PAPER-002-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-AI-001",
+      "problemId": "PRB-AI-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-AI-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-AI-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-AI-001-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-AI-002",
+      "problemId": "PRB-AI-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-AI-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-AI-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-AI-002-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-AI-002-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-AI-003",
+      "problemId": "PRB-AI-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-AI-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-AI-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-AI-003-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-AI-004",
+      "problemId": "PRB-AI-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-AI-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-AI-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-AI-004-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-AI-004-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-AI-005",
+      "problemId": "PRB-AI-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-AI-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-AI-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-AI-005-03"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    },
+    {
+      "id": "PATH-PRB-AI-006",
+      "problemId": "PRB-AI-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-AI-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-AI-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-AI-006-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-AI-006-04"
+        }
+      ],
+      "terminalLogic": "根据新增信息更新候选解释；不得将模型输出、显著性、可视化或AI文字流畅度直接升级为强机制/因果证据。"
+    }
+  ],
+  "diagnosticEvidence": [
+    {
+      "id": "EVD-SP-001-1",
+      "problemId": "PRB-SP-001",
+      "stage": 1,
+      "label": "Hierarchy",
+      "reveal": "12万spots来自6名患者，每名患者2张相邻section。",
+      "reasoningPrompt": "增加spots是否增加同等数量的独立生物学复制？",
+      "expectedUpdate": "否；spots/sections属于嵌套observational/experimental levels，外推患者差异仍依赖patient replication。",
+      "evidenceReferences": [
+        "CLM-SP-001"
+      ]
+    },
+    {
+      "id": "EVD-SP-003-1",
+      "problemId": "PRB-SP-003",
+      "stage": 1,
+      "label": "Resolution",
+      "reveal": "该平台spot直径约55 μm，组织中一个spot通常覆盖多个细胞。",
+      "reasoningPrompt": "CAF+tumor marker共表达应如何降级？",
+      "expectedUpdate": "首先解释为spot mixture/colocalization，不能直接命名单细胞double-positive state。",
+      "evidenceReferences": [
+        "CLM-SP-003"
+      ]
+    },
+    {
+      "id": "EVD-PROT-001-1",
+      "problemId": "PRB-PROT-001",
+      "stage": 1,
+      "label": "Missingness pattern",
+      "reveal": "低丰度蛋白更常缺失，但部分高丰度蛋白也随机缺失。",
+      "reasoningPrompt": "统一minimum imputation是否有单一充分依据？",
+      "expectedUpdate": "没有；提示mixed mechanisms并需要sensitivity/downstream validation。",
+      "evidenceReferences": [
+        "CLM-PROT-003",
+        "CLM-PROT-004"
+      ]
+    },
+    {
+      "id": "EVD-PROT-004-1",
+      "problemId": "PRB-PROT-004",
+      "stage": 1,
+      "label": "Reproducibility",
+      "reveal": "该蛋白在technical/replicate proteomic measurements中的reproducibility很低。",
+      "reasoningPrompt": "RNA–protein discordance还能直接归因于post-transcriptional regulation吗？",
+      "expectedUpdate": "置信度下降；measurement error/reproducibility成为重要替代解释。",
+      "evidenceReferences": [
+        "CLM-PROT-007"
+      ]
+    },
+    {
+      "id": "EVD-AI-002-1",
+      "problemId": "PRB-AI-002",
+      "stage": 1,
+      "label": "Metadata",
+      "reveal": "PMID存在，题目与主题相关。",
+      "reasoningPrompt": "这是否完成citation verification？",
+      "expectedUpdate": "只完成metadata existence；仍需检查具体claim-support location与scope。",
+      "evidenceReferences": [
+        "CLM-AI-002",
+        "CLM-PAPER-002"
+      ]
+    },
+    {
+      "id": "EVD-AI-005-1",
+      "problemId": "PRB-AI-005",
+      "stage": 1,
+      "label": "Pipeline",
+      "reveal": "全数据先选择top 100 features，再进行5-fold CV。",
+      "reasoningPrompt": "为什么CV结果仍可能乐观？",
+      "expectedUpdate": "feature selection已泄露test-fold信息，应在每个training fold内重做。",
+      "evidenceReferences": [
+        "CLM-AI-005"
+      ]
+    },
+    {
+      "id": "EVD-FIG-003-1",
+      "problemId": "PRB-FIG-003",
+      "stage": 1,
+      "label": "Raw image",
+      "reveal": "最终Figure中泳道无缝相邻，但raw blot显示它们来自不相邻区域。",
+      "reasoningPrompt": "需要什么透明处理？",
+      "expectedUpdate": "清晰标记拼接边界并保留/提供raw uncropped data；不能制造连续原始图像假象。",
+      "evidenceReferences": [
+        "CLM-FIG-004"
+      ]
+    }
+  ],
+  "transferCases": [
+    {
+      "id": "TRF-SP-001",
+      "concept": "statistical_unit",
+      "scenario": "8名患者，每名患者做3个ROI，每ROI分割500个cells。",
+      "prompt": "若目标是外推患者组间差异，cells/ROI/patient各自是什么层级？",
+      "expectedPrinciples": [
+        "nested hierarchy",
+        "patient-level biological replication"
+      ],
+      "evidenceClaims": [
+        "CLM-SP-001"
+      ]
+    },
+    {
+      "id": "TRF-SP-002",
+      "concept": "effective_resolution",
+      "scenario": "两个平台spot pitch相同，但平台A存在更明显molecular diffusion。",
+      "prompt": "为什么不能仅按spot size宣称两者resolution相同？",
+      "expectedPrinciples": [
+        "effective resolution includes diffusion/sensitivity"
+      ],
+      "evidenceClaims": [
+        "CLM-SP-004"
+      ]
+    },
+    {
+      "id": "TRF-PROT-001",
+      "concept": "missingness",
+      "scenario": "蛋白X仅在病例组大量缺失，protein Y在两组随机少量缺失。",
+      "prompt": "为什么不应默认对X/Y使用完全相同的imputation假设？",
+      "expectedPrinciples": [
+        "missingness mechanism matters",
+        "sensitivity analysis"
+      ],
+      "evidenceClaims": [
+        "CLM-PROT-003",
+        "CLM-PROT-005"
+      ]
+    },
+    {
+      "id": "TRF-PROT-002",
+      "concept": "discordance",
+      "scenario": "RNA不变但protein显著升高，同时protein assay CV较高。",
+      "prompt": "列出至少两个与post-transcriptional regulation竞争的解释。",
+      "expectedPrinciples": [
+        "measurement reproducibility",
+        "sample matching/technical effects"
+      ],
+      "evidenceClaims": [
+        "CLM-PROT-007"
+      ]
+    },
+    {
+      "id": "TRF-MO-001",
+      "concept": "association_vs_causality",
+      "scenario": "ATAC accessibility和RNA expression在integrated factor中同步升高。",
+      "prompt": "最多支持到什么claim？还需要什么才能写direct regulation？",
+      "expectedPrinciples": [
+        "cross-modal association",
+        "perturbation/temporal/mechanistic evidence"
+      ],
+      "evidenceClaims": [
+        "CLM-MO-001"
+      ]
+    },
+    {
+      "id": "TRF-FIG-001",
+      "concept": "show_data",
+      "scenario": "每组5个患者，两个组mean相同但一个组由两个极端值驱动。",
+      "prompt": "为什么bar+SEM可能隐藏关键信息？",
+      "expectedPrinciples": [
+        "display individual observations/distribution"
+      ],
+      "evidenceClaims": [
+        "CLM-FIG-002"
+      ]
+    },
+    {
+      "id": "TRF-AI-001",
+      "concept": "claim_evidence_verification",
+      "scenario": "AI提供一篇真实Nature论文，但原文只支持association，AI写成mechanism。",
+      "prompt": "ResearchOS evidence gate应该在哪一步拒绝？",
+      "expectedPrinciples": [
+        "metadata_verified != claim_verified",
+        "scope/qualification"
+      ],
+      "evidenceClaims": [
+        "CLM-AI-002",
+        "CLM-PAPER-002"
+      ]
+    },
+    {
+      "id": "TRF-AI-002",
+      "concept": "scientific_vs_engineering_gate",
+      "scenario": "Agent代码测试100%通过，但把多个technical replicates当独立n。",
+      "prompt": "为什么release仍应被scientific gate阻止？",
+      "expectedPrinciples": [
+        "software correctness does not establish inferential validity"
+      ],
+      "evidenceClaims": [
+        "CLM-AI-001"
+      ]
+    }
+  ],
+  "verificationMetadata": {
+    "reviewStatus": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "externalPreReview": {
+      "status": "complete",
+      "reviewer": "OpenAI GPT-5.6 Sol",
+      "reviewedAt": "2026-08-24T21:46:00+08:00",
+      "scope": [
+        "source identity",
+        "metadata",
+        "claim-support pre-review",
+        "scope/qualification review",
+        "problem transformation",
+        "far-transfer design"
+      ]
+    }
+  }
+}

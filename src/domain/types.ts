@@ -19,6 +19,7 @@ import type {
   PersonalContentEntry,
 } from "./contentStudio";
 import type {
+  LearningActivityType,
   LearningEventV1,
   LearnerUnitStateV1,
 } from "./learningKernel";
@@ -364,11 +365,11 @@ export interface AssessmentResult {
   domainScores?: Record<string, number>;
 }
 
-export type ViewId = "today" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
+export type ViewId = "today" | "learning" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
 
 export interface DailyTask {
   id: string;
-  type: "retrieval" | "paper" | "method" | "audit" | "problem" | "transfer";
+  type: "learning" | "retrieval" | "paper" | "method" | "audit" | "problem" | "transfer";
   title: string;
   subtitle: string;
   minutes: number;
@@ -376,4 +377,6 @@ export interface DailyTask {
   targetId: string;
   destination: ViewId;
   rationale: string;
+  learningActivityType?: LearningActivityType;
+  stageAtScheduling?: LearnerUnitStateV1["stage"];
 }

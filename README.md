@@ -4,6 +4,8 @@
 
 Release status: **v0.12.0 release candidate (`v0.12.0-rc1`)**. Background gates passed; packaged-app foreground, installer and user-manual checks remain NOT RUN.
 
+Development branch status: the post-RC M016 Learning Kernel is implemented and background-validated but not yet packaged. The default loop now teaches before testing, and Content Studio can exchange structured pending learning packs and audit patches with an explicitly chosen external AI.
+
 ---
 
 ## 🧭 What changed in v0.12.0

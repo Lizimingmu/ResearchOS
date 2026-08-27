@@ -4,6 +4,14 @@
 
 ---
 
+## Unreleased — M016 Learning Kernel
+
+- Default Today is now state-driven learning rather than a fixed Method/Paper/AI/Problem/Transfer exam bundle.
+- Added three Chinese-first, prerequisite-linked 8–12 minute units for statistical unit, biological versus technical replication, and pseudoreplication.
+- Added Learning and optional Challenge paths while keeping instruction exposure separate from demonstrated competence.
+- First-run onboarding now teaches n/statistical unit in five minutes instead of requiring a baseline blind test.
+- Content Studio can generate copyable external-AI prompts, dry-run/import bounded Learning Content Packs as pending drafts, and export internal content for patch-based audit. External AI content cannot self-approve or enter the verified curriculum.
+
 ## 🇨🇳 0.12.0 — 2026-08-26
 
 ### Changed

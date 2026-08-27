@@ -1,0 +1,21 @@
+{
+  "packId": "m013-batch08-reviewer-systematic-20260824",
+  "generatedAt": "2026-08-24T22:05:00+08:00",
+  "files": [
+    {
+      "name": "ResearchOS_M013_Batch08_SourcePack.json",
+      "sha256": "a2ea7861ea0846f55824f5c857d6395b66ab6611c6e01f28b2ae993c24c5fb82",
+      "bytes": 79009
+    },
+    {
+      "name": "ResearchOS_M013_Batch08_Scientific_PreReview.md",
+      "sha256": "81231dd68b48238405db41b175a7933b26e2f9700763ee4d45b4aea3375d3f5f",
+      "bytes": 1137
+    },
+    {
+      "name": "ResearchOS_M013_Batch08_Qualification_Register.md",
+      "sha256": "6a36070f4c0442792e79a35538b6a11861a930cf4e41c01fcc0b2f3731a6659d",
+      "bytes": 891
+    }
+  ]
+}

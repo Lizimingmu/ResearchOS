@@ -9,7 +9,7 @@ import { demoSourcePack } from "../.build/data/problemAtlas.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const packDirEnv = process.env.M013_PACK_DIR;
-const packDir = packDirEnv ? path.resolve(packDirEnv) : path.join(root, ".tmp", "m013_sourcepack_review_20260825", "ResearchOS_M013_COMPLETE");
+const packDir = packDirEnv ? path.resolve(packDirEnv) : path.join(root, "test-fixtures", "m013-legacy", "ResearchOS_M013_COMPLETE");
 const archiveName = "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip";
 const failures = [];
 const checks = [];

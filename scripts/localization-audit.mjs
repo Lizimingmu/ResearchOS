@@ -34,6 +34,7 @@ const uiFiles = [
   "src/features/frontier/FrontierView.tsx", "src/features/projects/ProjectsView.tsx", "src/features/skills/SkillMapView.tsx",
   "src/features/assessment/AssessmentView.tsx", "src/features/settings/SettingsView.tsx",
   "src/features/problem-atlas/ProblemAtlasView.tsx", "src/features/problem-atlas/DiagnosticSessionView.tsx",
+  "src/features/learning/LearningView.tsx", "src/features/content-studio/ContentStudioView.tsx", "src/features/content-studio/AiContentExchangePanel.tsx",
 ];
 const forbidden = ["Start today", "Open paper", "Add project", "Go to review", "No command matches", "Lock answer", "Save transfer", "No PDF attached", "Retry startup", "Import PDF", "Test connection", "Reset local learning data"];
 for (const file of uiFiles) {

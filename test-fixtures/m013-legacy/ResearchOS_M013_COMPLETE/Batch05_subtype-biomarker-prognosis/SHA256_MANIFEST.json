@@ -1,0 +1,21 @@
+{
+  "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+  "generatedAt": "2026-08-24T22:05:00+08:00",
+  "files": [
+    {
+      "name": "ResearchOS_M013_Batch05_SourcePack.json",
+      "sha256": "3843ade8bb4eda6438ea5b1722ed5c8cac8e8cc58c4195cf3b8424cb8f2f43df",
+      "bytes": 78423
+    },
+    {
+      "name": "ResearchOS_M013_Batch05_Scientific_PreReview.md",
+      "sha256": "d23f7d2dde36ce7ca48d9bee89ad56b31221fa016fd9fca659b16d9f45a11e20",
+      "bytes": 1103
+    },
+    {
+      "name": "ResearchOS_M013_Batch05_Qualification_Register.md",
+      "sha256": "dcdbf33430fcf18fefd35fbe5499e5fb200523ecc91adfe97050405527398072",
+      "bytes": 877
+    }
+  ]
+}

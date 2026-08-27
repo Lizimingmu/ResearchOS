@@ -1,6 +1,6 @@
 # M013 V3 Staging Report — Legacy → v3 Auditable Conversion (M013-10)
 
-Generated: 2026-08-25T15:19:30.745Z
+Generated: 2026-08-27T16:30:19.706Z
 
 ## Result
 

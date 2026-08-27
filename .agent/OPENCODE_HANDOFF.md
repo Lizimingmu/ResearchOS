@@ -1,6 +1,6 @@
 # OpenCode Handoff — M016 Learning Kernel
 
-**PAUSED BY USER AFTER S1 RESCUE. Do not execute S2–S5 until Codex replaces this pause with a fresh bounded handoff.**
+**M016 S1–S5 已由 Codex 按用户要求完成。不要重复执行本文件中的历史任务；当前仅等待用户前台体验验证。**
 
 使用 **DeepSeek V4 Pro**，从项目 `D:\Agents\ResearchOS` 执行本交接。基线是 tag `v0.12.0-rc1`；当前工作树还含 Codex 规格提交。不要运行任何 Git 命令，Codex 负责 checkpoint、review 和 release gate。
 

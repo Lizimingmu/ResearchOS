@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "deterministic",
+  "checks": [
+    {
+      "name": "exactly three prototype units",
+      "passed": true,
+      "detail": "found 3"
+    },
+    {
+      "name": "prototype chain is a DAG with two edges",
+      "passed": true,
+      "detail": "found 2"
+    },
+    {
+      "name": "cross-object schema validation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "every unit is 8–12 minutes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "every unit has all disclosure layers",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "every unit has guided/independent/review/far-transfer bindings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "prototype provenance exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "initial Today contains one explanation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "generation prompt forces pending",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "malformed AI pack is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fixed Method+Paper+AI+Problem+Transfer bundle removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "onboarding teaches n and has no blind baseline",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "failures": []
+}

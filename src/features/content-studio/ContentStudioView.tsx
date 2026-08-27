@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Archive, BookOpenCheck, Copy, Download, FilePlus2, FileWarning, History, Inbox, Library, RotateCcw, ShieldAlert } from "lucide-react";
+import { Archive, BookOpenCheck, Copy, Download, FilePlus2, FileWarning, History, Inbox, Library, RotateCcw, ShieldAlert, Sparkles } from "lucide-react";
+import { AiContentExchangePanel } from "./AiContentExchangePanel";
 import type { ContentKind, ContentLifecycle, ContentPatchPreview, PersonalContentEntry, ScientificRisk } from "../../domain/contentStudio";
 import type { ContentRevisionRecord } from "../../domain/contentStudio";
 import { buildBaseContentInventory } from "../../services/contentInventory";
@@ -19,13 +20,13 @@ import { exportFiles } from "../../services/desktop";
 import { parseReviewFeedback, type ReviewPatchCandidate } from "../../services/obsidianPublish";
 import { useAppStore } from "../../state/store";
 
-type Tab = "library" | "drafts" | "review" | "outbox" | "history" | "conflicts";
+type Tab = "library" | "ai" | "drafts" | "review" | "outbox" | "history" | "conflicts";
 const tabs: Array<{ id: Tab; label: string; icon: typeof Library }> = [
-  { id: "library", label: "内容库", icon: Library }, { id: "drafts", label: "草稿", icon: FilePlus2 },
+  { id: "library", label: "内容库", icon: Library }, { id: "ai", label: "外部 AI 协作", icon: Sparkles }, { id: "drafts", label: "草稿", icon: FilePlus2 },
   { id: "review", label: "待审核", icon: BookOpenCheck }, { id: "outbox", label: "发布箱", icon: Inbox },
   { id: "history", label: "版本历史", icon: History }, { id: "conflicts", label: "冲突", icon: ShieldAlert },
 ];
-const kindLabels: Record<ContentKind,string> = { "evidence-source":"证据来源", "evidence-claim":"证据主张", method:"方法", pattern:"论文模式", "judgment-card":"判断卡", "audit-case":"审稿案例", "problem-card":"问题卡" };
+const kindLabels: Record<ContentKind,string> = { "evidence-source":"证据来源", "evidence-claim":"证据主张", method:"方法", pattern:"论文模式", "judgment-card":"判断卡", "audit-case":"审稿案例", "problem-card":"问题卡", "learning-unit":"学习单元" };
 const lifecycleLabels: Record<ContentLifecycle,string> = { draft:"草稿", pending_review:"待审核", active:"已启用", archived:"已归档", deprecated:"已弃用", superseded:"已取代" };
 
 const jsonText = (value: unknown): string => JSON.stringify(value, null, 2);
@@ -387,6 +388,7 @@ export function ContentStudioView() {
     <header className="page-header"><div><span className="eyebrow">个人内容维护</span><h1>内容工作台</h1><p>ResearchOS 保存主版本；只有明确确认的批次才会写入 Obsidian。</p></div><button className="primary" onClick={() => setCreating((value) => !value)}><FilePlus2 size={14}/> 新建草稿</button></header>
     <div className="studio-tabs" role="tablist" aria-label="内容工作台视图">{tabs.map((item) => { const Icon=item.icon; return <button key={item.id} role="tab" aria-selected={tab===item.id} className={tab===item.id?"active":""} onClick={() => setTab(item.id)}><Icon size={14}/>{item.label}</button>; })}</div>
     {creating && <section className="studio-editor"><h2>新建个人内容</h2><div className="form-grid three"><label>类型<select value={kind} onChange={(event) => setKind(event.target.value as ContentKind)}>{Object.entries(kindLabels).map(([value,label]) => <option key={value} value={value}>{label}</option>)}</select></label><label>科研风险<select value={risk} onChange={(event) => setRisk(event.target.value as ScientificRisk)}><option>HIGH</option><option>MEDIUM</option><option>LOW</option></select></label><label>标题<input value={title} onChange={(event) => setTitle(event.target.value)} placeholder="输入清晰、稳定的标题"/></label></div><div className="settings-actions"><button className="primary" disabled={!title.trim()} onClick={submit}>按类型模板保存为草稿</button><span>模板只提供结构占位；草稿默认待核验且不进入训练。</span></div></section>}
+    {tab === "ai" && <AiContentExchangePanel />}
     {(tab === "drafts" || tab === "review") && <section>
       <div className="section-title"><h2>{tab === "drafts"?"草稿":"待审核"}</h2><span>{visiblePersonal.length} 项</span></div>
       <div className="form-grid three studio-filters">

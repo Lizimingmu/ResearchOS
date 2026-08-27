@@ -13,7 +13,7 @@ import type {
 import { validateSafeRelativePath } from "./safePaths";
 
 const MAX_PATCH_JSON_BYTES = 200_000;
-const PATCH_TARGET_KINDS: ReadonlySet<string> = new Set(["evidence-source", "evidence-claim", "method", "pattern", "judgment-card", "audit-case", "problem-card"]);
+const PATCH_TARGET_KINDS: ReadonlySet<string> = new Set(["evidence-source", "evidence-claim", "method", "pattern", "judgment-card", "audit-case", "problem-card", "learning-unit"]);
 /** Patch packs may only ever produce draft or pending_review material. */
 const PATCH_ALLOWED_LIFECYCLES: ReadonlySet<string> = new Set(["draft", "pending_review"]);
 
@@ -109,6 +109,7 @@ export const KIND_TEMPLATES: Record<string, Record<string, unknown>> = {
   "judgment-card": { claim: "", domain: "", study: "" },
   "audit-case": { task: "", domain: "", context: "" },
   "problem-card": { observation: "", context: "", claimBoundary: "" },
+  "learning-unit": { schemaVersion: 1, titleCn: "", titleEn: "", estimatedMinutes: 10, learningObjectives: [], blocks: [], evidenceSourceIds: [] },
 };
 
 export function duplicatePersonalEntry(source: PersonalContentEntry, newId: string, now = new Date()): PersonalContentEntry {

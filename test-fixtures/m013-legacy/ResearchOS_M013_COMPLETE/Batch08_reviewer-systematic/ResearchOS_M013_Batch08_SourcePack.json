@@ -1,0 +1,2250 @@
+{
+  "packSchemaVersion": 1,
+  "packId": "m013-batch08-reviewer-systematic-20260824",
+  "title": "Systematic Review, Literature Search & Reviewer Academy",
+  "createdAt": "2026-08-24T22:05:00+08:00",
+  "createdBy": "OpenAI GPT-5.6 Sol external scientific source review",
+  "provenance": "Source-first external scientific pre-review. Source metadata and claim scope were manually pre-reviewed against authoritative guidelines, original methods, peer-reviewed benchmarks/reviews, or official technical resources. Final ResearchOS verification remains reserved for Codex/formal source-pack gate.",
+  "sources": [
+    {
+      "id": "SRC-PRISMA-2020",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews",
+      "authors": [],
+      "year": 2021,
+      "authorityTier": "S",
+      "domain": [
+        "systematic_review",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "BMJ",
+      "doi": "10.1136/bmj.n71",
+      "pmid": "33782057",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33782057/",
+      "contentHash": "ab05a9706c45672ed61878dd3cdfa49352580cbe048584c91a22e0e0768654cb"
+    },
+    {
+      "id": "SRC-PRISMAS-2021",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "PRISMA-S: an extension to the PRISMA Statement for Reporting Literature Searches in Systematic Reviews",
+      "authors": [],
+      "year": 2021,
+      "authorityTier": "S",
+      "domain": [
+        "systematic_review",
+        "literature_search"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "doi": "10.1186/s13643-020-01542-z",
+      "pmid": "33499930",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33499930/",
+      "contentHash": "710b32f8353a87a3ba5139ccb7998f0b3e9230d5afe7982927b7bf585fff13fd"
+    },
+    {
+      "id": "SRC-COCHRANE-2025",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "Cochrane Handbook for Systematic Reviews of Interventions, version 6.5.1",
+      "authors": [],
+      "year": 2025,
+      "authorityTier": "S",
+      "domain": [
+        "systematic_review",
+        "evidence_synthesis"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "Living handbook; chapter-level versioning should be preserved.",
+      "organization": "Cochrane",
+      "url": "https://training.cochrane.org/handbook/current",
+      "version": "6.5.1 / Chapter 4 update March 2025",
+      "contentHash": "9b6f6b110ddd3819da9aceadf1d2c88b8456993a6ddcab4ce511f2ab6c6d0f54"
+    },
+    {
+      "id": "SRC-REMARK-2005-B8",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "Reporting recommendations for tumor marker prognostic studies (REMARK)",
+      "authors": [],
+      "year": 2005,
+      "authorityTier": "S",
+      "domain": [
+        "reviewer",
+        "biomarker"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Journal of the National Cancer Institute",
+      "doi": "10.1093/jnci/dji237",
+      "pmid": "16106022",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16106022/",
+      "contentHash": "ef348d66f597f455c2206ae6e1f599a35e5280b46f1561085a58a147acadb468"
+    },
+    {
+      "id": "SRC-TRIPODAI-2024-B8",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models",
+      "authors": [],
+      "year": 2024,
+      "authorityTier": "S",
+      "domain": [
+        "reviewer",
+        "prediction_model"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "BMJ",
+      "doi": "10.1136/bmj-2023-078378",
+      "pmid": "38626948",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38626948/",
+      "contentHash": "3e51930d0c6aae44629306b9582295c96494e8c72947c95c14865d7a67512303"
+    },
+    {
+      "id": "SRC-PROBAST-2019-B8",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "PROBAST: A Tool to Assess the Risk of Bias and Applicability of Prediction Model Studies",
+      "authors": [],
+      "year": 2019,
+      "authorityTier": "S",
+      "domain": [
+        "reviewer",
+        "prediction_model",
+        "risk_of_bias"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Annals of Internal Medicine",
+      "doi": "10.7326/M18-1376",
+      "pmid": "30596875",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=10.7326%2FM18-1376",
+      "contentHash": "13e3fb25af66f11f2938f1df61f55e2dbd249632697ee177e30f4f053b641583"
+    },
+    {
+      "id": "SRC-CONSORT-2025-B8",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "CONSORT 2025 statement: updated guideline for reporting randomised trials",
+      "authors": [],
+      "year": 2025,
+      "authorityTier": "S",
+      "domain": [
+        "reviewer",
+        "randomized_trial"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "The Lancet",
+      "doi": "10.1016/S0140-6736(25)00672-5",
+      "pmid": "40245901",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40245901/",
+      "contentHash": "6d94b2583039cef5683d84c7fa8c6cebccaa7a285674b117c957c0df7205a136"
+    },
+    {
+      "id": "SRC-STARD-2015-B8",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "STARD 2015: An Updated List of Essential Items for Reporting Diagnostic Accuracy Studies",
+      "authors": [],
+      "year": 2015,
+      "authorityTier": "S",
+      "domain": [
+        "reviewer",
+        "diagnostic_accuracy"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "BMJ",
+      "doi": "10.1136/bmj.h5527",
+      "pmid": "26511519",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26511519/",
+      "contentHash": "1af9a2a5475bda01684facb075850cf8b57cdfa2bbcf0d9ed94dac780c7d8b82"
+    },
+    {
+      "id": "SRC-STROBE-2007-B8",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "The STROBE statement",
+      "authors": [],
+      "year": 2007,
+      "authorityTier": "S",
+      "domain": [
+        "reviewer",
+        "observational"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PLOS Medicine",
+      "doi": "10.1371/journal.pmed.0040296",
+      "pmid": "17941714",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17941714/",
+      "contentHash": "a769784965a2cc3c5cc5dc9d1430bd12ffbec5c5fde610a471f163e7a130e8c8"
+    },
+    {
+      "id": "SRC-ICMJE-2026-B8",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "ICMJE Recommendations — Preparing a Manuscript / AI / References",
+      "authors": [],
+      "year": 2026,
+      "authorityTier": "S",
+      "domain": [
+        "reviewer",
+        "publication_integrity"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "organization": "ICMJE",
+      "url": "https://www.icmje.org/recommendations/",
+      "version": "Updated January 2026",
+      "contentHash": "ae5626563b4a9f2e1054155ef8e3560dc6fc2bd56ccf99159aa339e80c1bfddc"
+    }
+  ],
+  "evidenceClaims": [
+    {
+      "id": "CLM-SR-001",
+      "claim": "Systematic-review searches should be reproducible and sufficiently sensitive for the review question; searching a single database or using an opaque query can miss eligible evidence.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-COCHRANE-2025",
+      "supportType": "qualified",
+      "supportingLocation": "Searching for and selecting studies",
+      "domain": [
+        "systematic_review",
+        "literature_search"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SR-002",
+      "claim": "A study can have multiple reports; systematic reviewers should distinguish the underlying study from its publications to avoid double-counting participants/results.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-COCHRANE-2025",
+      "supportType": "direct",
+      "supportingLocation": "Study versus report distinction",
+      "domain": [
+        "systematic_review",
+        "study_identification"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SR-003",
+      "claim": "PRISMA 2020 improves transparent reporting of systematic reviews but does not by itself guarantee a comprehensive search, unbiased included studies or correct meta-analysis.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PRISMA-2020",
+      "supportType": "qualified",
+      "supportingLocation": "Statement scope",
+      "domain": [
+        "systematic_review",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SR-004",
+      "claim": "PRISMA-S specifies reporting elements for literature searches, including database/platform, full strategies, limits and search-update information, to make searches reproducible.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PRISMAS-2021",
+      "supportType": "direct",
+      "supportingLocation": "Checklist scope",
+      "domain": [
+        "systematic_review",
+        "literature_search"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-REV-001",
+      "claim": "Reporting guidelines and risk-of-bias tools answer different questions: complete reporting is not equivalent to low risk of bias.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PROBAST-2019-B8",
+      "supportType": "qualified",
+      "supportingLocation": "Tool purpose",
+      "domain": [
+        "reviewer",
+        "risk_of_bias"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-REV-002",
+      "claim": "Prediction-model review should examine participant selection, predictors, outcomes and analysis risk of bias, not only discrimination metrics.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PROBAST-2019-B8",
+      "supportType": "direct",
+      "supportingLocation": "PROBAST domains",
+      "domain": [
+        "reviewer",
+        "prediction_model"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-REV-003",
+      "claim": "A reviewer should judge whether the study design can support the manuscript claim; reporting checklists cannot repair evidence–claim mismatch.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-2026-B8",
+      "supportType": "qualified",
+      "supportingLocation": "General manuscript responsibility",
+      "domain": [
+        "reviewer",
+        "scientific_writing"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-REV-004",
+      "claim": "For randomized trials, observational studies, diagnostic studies, prediction models and prognostic biomarkers, design-specific reporting frameworks are distinct and should not be treated as interchangeable.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CONSORT-2025-B8",
+      "supportType": "contextual",
+      "supportingLocation": "Design-specific reporting",
+      "domain": [
+        "reviewer",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-REV-005",
+      "claim": "A scientific citation should be checked for whether it supports the specific statement, not only whether the citation exists.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ICMJE-2026-B8",
+      "supportType": "direct",
+      "supportingLocation": "References",
+      "domain": [
+        "reviewer",
+        "references"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    }
+  ],
+  "problemCards": [
+    {
+      "id": "PRB-SR-001",
+      "domain": "systematic_review",
+      "subdomain": "search",
+      "title_cn": "只搜 PubMed 就能叫“系统综述检索”吗？",
+      "title_en": "Is PubMed alone always enough for a systematic review?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "review只搜索一个数据库且无补充策略。",
+      "context": "",
+      "why_it_matters": "单库coverage有限，完整性取决于领域/问题；Cochrane建议多来源、可复现的高敏感检索。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-001-01",
+        "CHK-PRB-SR-001-02",
+        "CHK-PRB-SR-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "单库并非逻辑上永远错误，但需要针对review question证明coverage足够。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "pubmed_alone_is_systematic"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SR-002",
+      "domain": "systematic_review",
+      "subdomain": "search",
+      "title_cn": "检索式只写“cancer AND biomarker”，别人能复现吗？",
+      "title_en": "Is a vague keyword description reproducible?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "Methods只描述关键词主题，不报告完整query、platform、date/limits。",
+      "context": "",
+      "why_it_matters": "search strategy不可复现，无法评估遗漏与选择。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-002-01",
+        "CHK-PRB-SR-002-02",
+        "CHK-PRB-SR-002-03",
+        "CHK-PRB-SR-002-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "属于核心reporting缺陷。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SR-003",
+      "domain": "systematic_review",
+      "subdomain": "deduplication",
+      "title_cn": "同一RCT有3篇论文，meta-analysis算3个study可以吗？",
+      "title_en": "Can three reports of one trial count as three studies?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "同一participant cohort的primary/secondary/follow-up publications被当独立研究。",
+      "context": "",
+      "why_it_matters": "study与report不是同一单位，重复计数会人为加权。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-003-01",
+        "CHK-PRB-SR-003-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "report_equals_study"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SR-004",
+      "domain": "systematic_review",
+      "subdomain": "screening",
+      "title_cn": "先看结果方向再决定纳不纳入，会怎样？",
+      "title_en": "What happens if inclusion depends on results?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "选择研究时知道effect direction并据此纳入。",
+      "context": "",
+      "why_it_matters": "结果依赖的study selection会产生selection bias并破坏预设eligibility。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-004-01",
+        "CHK-PRB-SR-004-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-001",
+        "CLM-SR-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SR-005",
+      "domain": "systematic_review",
+      "subdomain": "reporting",
+      "title_cn": "PRISMA 流程图完整，就说明系统综述没偏倚吗？",
+      "title_en": "Does a complete PRISMA flow diagram prove review validity?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "PRISMA item全部填写，但search窄、included studies高偏倚。",
+      "context": "",
+      "why_it_matters": "PRISMA是reporting guideline，不替代search quality、risk-of-bias和analysis validity。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-005-01",
+        "CHK-PRB-SR-005-02",
+        "CHK-PRB-SR-005-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "prisma_equals_quality"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SR-006",
+      "domain": "systematic_review",
+      "subdomain": "meta_analysis",
+      "title_cn": "I²=0% 就说明所有研究完全一致吗？",
+      "title_en": "Does I²=0% prove homogeneity?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "少量小研究的I²为0，作者称不存在heterogeneity。",
+      "context": "",
+      "why_it_matters": "heterogeneity estimates本身有不确定性，低power时I²可低；临床/方法异质性仍需判断。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-006-01",
+        "CHK-PRB-SR-006-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-006"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SR-007",
+      "domain": "systematic_review",
+      "subdomain": "search",
+      "title_cn": "用了 MeSH 就不需要自由词了吗？",
+      "title_en": "Can controlled vocabulary replace text words?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "只用MeSH/subject headings，遗漏未索引/新术语。",
+      "context": "",
+      "why_it_matters": "高敏感search通常结合controlled vocabulary与text words。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-007-01",
+        "CHK-PRB-SR-007-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "mesh_alone_is_complete"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-001",
+        "CLM-SR-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SR-008",
+      "domain": "systematic_review",
+      "subdomain": "search",
+      "title_cn": "为了少筛文献，检索式加很多 NOT 排除词好吗？",
+      "title_en": "Is aggressive NOT filtering safe?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "使用复杂NOT以降低screening burden。",
+      "context": "",
+      "why_it_matters": "过度限制可能不可逆地排除相关研究；systematic search优先sensitivity与透明性。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SR-008-01",
+        "CHK-PRB-SR-008-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SR-008"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "需用benchmark known studies验证检索敏感度。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SR-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-001",
+      "domain": "reviewer_academy",
+      "subdomain": "severity",
+      "title_cn": "Figure legend 写不清和 statistical unit 错误，是同一级问题吗？",
+      "title_en": "Are a poor legend and wrong statistical unit equally severe?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "review comments不区分写作、可修方法问题和结构性缺陷。",
+      "context": "",
+      "why_it_matters": "审稿价值在于区分evidence-threatening flaws与reporting/presentation issues。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-001-01",
+        "CHK-PRB-REV-001-02",
+        "CHK-PRB-REV-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "按fatal/major-fixable/minor分层。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "all_review_comments_equal"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-002",
+      "domain": "reviewer_academy",
+      "subdomain": "evidence_claim",
+      "title_cn": "作者说“X驱动肿瘤进展”，但只有相关性和IHC，Major吗？",
+      "title_en": "Is a mechanistic claim from association-only evidence a major concern?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "强因果mechanism language对应observational association。",
+      "context": "",
+      "why_it_matters": "claim强度超过design/evidence会构成核心证据—结论不匹配。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-002-01",
+        "CHK-PRB-REV-002-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "若mechanism是主结论，通常Major甚至结构性。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "association_can_support_drive"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-003",
+      "domain": "reviewer_academy",
+      "subdomain": "statistics",
+      "title_cn": "作者漏报一个次要P值和主模型过拟合，优先攻击哪个？",
+      "title_en": "Which reviewer concern should be prioritized?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "多个潜在问题同时存在。",
+      "context": "",
+      "why_it_matters": "应优先影响主estimand、bias、validity和claim的结构性问题。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-003-01",
+        "CHK-PRB-REV-003-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "review按scientific consequence排序，而不是按容易发现程度。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-003",
+        "CLM-REV-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-004",
+      "domain": "reviewer_academy",
+      "subdomain": "reporting",
+      "title_cn": "Methods 写得完整，就可以忽略研究设计本身弱吗？",
+      "title_en": "Can excellent reporting rescue a weak design?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "checklist优秀但design无法识别目标效应。",
+      "context": "",
+      "why_it_matters": "transparency让缺陷可见，但不会改变design的识别能力。",
+      "candidate_causes": [],
+      "discriminating_checks": [],
+      "red_flags": [],
+      "diagnostic_path": [],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "well-reported weak evidence仍然是weak evidence。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "good_reporting_rescues_design"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-001",
+        "CLM-REV-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-005",
+      "domain": "reviewer_academy",
+      "subdomain": "prediction",
+      "title_cn": "prediction paper只报AUC=0.90，Reviewer首先还要问什么？",
+      "title_en": "What should a reviewer ask beyond AUC?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "无calibration、validation/RoB信息。",
+      "context": "",
+      "why_it_matters": "prediction quality需要多维评价且PROBAST分析域可能暴露overfitting/leakage。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-005-01",
+        "CHK-PRB-REV-005-02",
+        "CHK-PRB-REV-005-03",
+        "CHK-PRB-REV-005-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-006",
+      "domain": "reviewer_academy",
+      "subdomain": "biomarker",
+      "title_cn": "biomarker paper最容易被哪些“漂亮结果”迷惑？",
+      "title_en": "What visually strong biomarker results can be misleading?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "KM分离漂亮、P很小、IHC图明显，但cutoff/selection/validation不清。",
+      "context": "",
+      "why_it_matters": "visual separation不能替代pre-specification、assay validity和independent validation。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-006-01",
+        "CHK-PRB-REV-006-02",
+        "CHK-PRB-REV-006-03",
+        "CHK-PRB-REV-006-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-006"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-007",
+      "domain": "reviewer_academy",
+      "subdomain": "diagnostic",
+      "title_cn": "诊断研究AUC=0.98，Reviewer为什么仍可能拒？",
+      "title_en": "Why can AUC=0.98 still be weak diagnostic evidence?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "病例/对照选择极端、reference standard不独立。",
+      "context": "",
+      "why_it_matters": "spectrum/selection/incorporation bias可产生非常漂亮但不可临床泛化的accuracy。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-007-01",
+        "CHK-PRB-REV-007-02",
+        "CHK-PRB-REV-007-03",
+        "CHK-PRB-REV-007-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-008",
+      "domain": "reviewer_academy",
+      "subdomain": "randomized_trial",
+      "title_cn": "RCT随机化了，就没有偏倚了吗？",
+      "title_en": "Does randomization eliminate all trial bias?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "随机分配后大量失访、outcome assessment不盲、选择性报告。",
+      "context": "",
+      "why_it_matters": "randomization主要平衡baseline confounding；attrition、measurement、deviation和reporting bias仍可能存在。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-008-01",
+        "CHK-PRB-REV-008-02",
+        "CHK-PRB-REV-008-03",
+        "CHK-PRB-REV-008-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-008"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "randomization_eliminates_all_bias"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-009",
+      "domain": "reviewer_academy",
+      "subdomain": "references",
+      "title_cn": "Reference是真的、期刊也很顶，就不用看原文了吗？",
+      "title_en": "Can a prestigious real citation be accepted without checking support?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "citation metadata完全真实，statement却比source结论更强。",
+      "context": "",
+      "why_it_matters": "authority与existence都不能替代claim-specific support。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-009-01",
+        "CHK-PRB-REV-009-02",
+        "CHK-PRB-REV-009-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-009"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "prestige_equals_claim_support"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-010",
+      "domain": "reviewer_academy",
+      "subdomain": "novelty",
+      "title_cn": "“以前没人做过这个癌种”足够构成顶刊novelty吗？",
+      "title_en": "Is “never studied in this cancer” enough novelty?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "研究只把成熟方法迁移到新病种，没有新问题/机制/临床决策增量。",
+      "context": "",
+      "why_it_matters": "novel setting与conceptual/scientific advance不同；Reviewer会问改变了什么理解或决策。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-010-01",
+        "CHK-PRB-REV-010-02",
+        "CHK-PRB-REV-010-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-010"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "“first in disease X”只能说明literature gap，不自动说明importance。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-011",
+      "domain": "reviewer_academy",
+      "subdomain": "figure",
+      "title_cn": "主图每个panel都显著，但删掉一半story不变，说明什么？",
+      "title_en": "What if half the panels can be removed without changing the story?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "大量redundant analyses重复同一message。",
+      "context": "",
+      "why_it_matters": "结果数量不是evidence depth；Reviewer更关心每一层是否解决新的uncertainty。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-011-01",
+        "CHK-PRB-REV-011-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-011"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "按evidence chain而非analysis count评价Figure。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-REV-012",
+      "domain": "reviewer_academy",
+      "subdomain": "fixability",
+      "title_cn": "什么问题能靠补分析修，什么需要推翻叙事？",
+      "title_en": "Which reviewer concerns are fixable?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "作者试图用更多supplement analysis修复没有独立replicate/设计混杂。",
+      "context": "",
+      "why_it_matters": "补分析只能利用现有可识别信息；缺失的独立设计信息通常不能统计创造。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-REV-012-01",
+        "CHK-PRB-REV-012-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-REV-012"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "应明确区分fixable major concern与structural flaw。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-REV-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    }
+  ],
+  "diagnosticCauses": [],
+  "diagnosticChecks": [
+    {
+      "id": "CHK-PRB-SR-001-01",
+      "problemId": "PRB-SR-001",
+      "question": "还有哪些核心数据库/registry？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-001-02",
+      "problemId": "PRB-SR-001",
+      "question": "灰色文献/引用追踪？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-001-03",
+      "problemId": "PRB-SR-001",
+      "question": "search sensitivity？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-002-01",
+      "problemId": "PRB-SR-002",
+      "question": "完整search string？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-002-02",
+      "problemId": "PRB-SR-002",
+      "question": "database+platform？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-002-03",
+      "problemId": "PRB-SR-002",
+      "question": "date/limits？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-002-04",
+      "problemId": "PRB-SR-002",
+      "question": "last search/update？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-003-01",
+      "problemId": "PRB-SR-003",
+      "question": "trial registration/author/site/sample dates？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-003-02",
+      "problemId": "PRB-SR-003",
+      "question": "participant overlap？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-004-01",
+      "problemId": "PRB-SR-004",
+      "question": "eligibility是否预设？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001",
+        "CLM-SR-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-004-02",
+      "problemId": "PRB-SR-004",
+      "question": "screeners是否按PICOs判断？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001",
+        "CLM-SR-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-005-01",
+      "problemId": "PRB-SR-005",
+      "question": "search completeness？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-005-02",
+      "problemId": "PRB-SR-005",
+      "question": "RoB？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-005-03",
+      "problemId": "PRB-SR-005",
+      "question": "heterogeneity/publication bias？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-006-01",
+      "problemId": "PRB-SR-006",
+      "question": "study count/sample size？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-006-02",
+      "problemId": "PRB-SR-006",
+      "question": "clinical/methodological heterogeneity？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-007-01",
+      "problemId": "PRB-SR-007",
+      "question": "新记录是否已index？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001",
+        "CLM-SR-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-007-02",
+      "problemId": "PRB-SR-007",
+      "question": "synonyms/acronyms/spelling？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001",
+        "CLM-SR-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-008-01",
+      "problemId": "PRB-SR-008",
+      "question": "NOT terms是否可能出现在eligible records？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SR-008-02",
+      "problemId": "PRB-SR-008",
+      "question": "是否验证lost known studies？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SR-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-001-01",
+      "problemId": "PRB-REV-001",
+      "question": "问题改变主结论吗？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-001-02",
+      "problemId": "PRB-REV-001",
+      "question": "能靠文字/补分析修复吗？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-001-03",
+      "problemId": "PRB-REV-001",
+      "question": "需要新独立数据吗？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-002-01",
+      "problemId": "PRB-REV-002",
+      "question": "有没有perturbation/rescue/in vivo？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-002-02",
+      "problemId": "PRB-REV-002",
+      "question": "是否排除alternative explanations？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-003-01",
+      "problemId": "PRB-REV-003",
+      "question": "哪个问题会改变主结论？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003",
+        "CLM-REV-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-003-02",
+      "problemId": "PRB-REV-003",
+      "question": "哪个问题只影响reporting？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003",
+        "CLM-REV-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-005-01",
+      "problemId": "PRB-REV-005",
+      "question": "calibration？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-005-02",
+      "problemId": "PRB-REV-005",
+      "question": "internal/external validation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-005-03",
+      "problemId": "PRB-REV-005",
+      "question": "sample size/events？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-005-04",
+      "problemId": "PRB-REV-005",
+      "question": "missing data/feature selection leakage？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-006-01",
+      "problemId": "PRB-REV-006",
+      "question": "cutoff怎么来的？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-006-02",
+      "problemId": "PRB-REV-006",
+      "question": "assay reproducibility？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-006-03",
+      "problemId": "PRB-REV-006",
+      "question": "multivariable/incremental value？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-006-04",
+      "problemId": "PRB-REV-006",
+      "question": "external validation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-007-01",
+      "problemId": "PRB-REV-007",
+      "question": "intended population？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-007-02",
+      "problemId": "PRB-REV-007",
+      "question": "prospective/consecutive sampling？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-007-03",
+      "problemId": "PRB-REV-007",
+      "question": "reference standard？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-007-04",
+      "problemId": "PRB-REV-007",
+      "question": "blinding？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-008-01",
+      "problemId": "PRB-REV-008",
+      "question": "allocation concealment？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-008-02",
+      "problemId": "PRB-REV-008",
+      "question": "missing outcomes？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-008-03",
+      "problemId": "PRB-REV-008",
+      "question": "blinding？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-008-04",
+      "problemId": "PRB-REV-008",
+      "question": "protocol vs report outcomes？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-009-01",
+      "problemId": "PRB-REV-009",
+      "question": "supporting section？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-009-02",
+      "problemId": "PRB-REV-009",
+      "question": "population/design是否匹配？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-009-03",
+      "problemId": "PRB-REV-009",
+      "question": "association被改成causality了吗？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-010-01",
+      "problemId": "PRB-REV-010",
+      "question": "new scientific question？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-010-02",
+      "problemId": "PRB-REV-010",
+      "question": "new mechanism/causal insight？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-010-03",
+      "problemId": "PRB-REV-010",
+      "question": "validation/translation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-011-01",
+      "problemId": "PRB-REV-011",
+      "question": "每panel scientific function？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-011-02",
+      "problemId": "PRB-REV-011",
+      "question": "是否增加validation/mechanism/generalizability？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-012-01",
+      "problemId": "PRB-REV-012",
+      "question": "问题是reporting/robustness还是identifiability？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-REV-012-02",
+      "problemId": "PRB-REV-012",
+      "question": "是否需要新data/experiment？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-REV-003"
+      ]
+    }
+  ],
+  "diagnosticPaths": [
+    {
+      "id": "PATH-PRB-SR-001",
+      "problemId": "PRB-SR-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SR-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SR-002",
+      "problemId": "PRB-SR-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SR-002-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-SR-002-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SR-003",
+      "problemId": "PRB-SR-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-003-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SR-004",
+      "problemId": "PRB-SR-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-004-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SR-005",
+      "problemId": "PRB-SR-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SR-005-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SR-006",
+      "problemId": "PRB-SR-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-006-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SR-007",
+      "problemId": "PRB-SR-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-007-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SR-008",
+      "problemId": "PRB-SR-008",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SR-008-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SR-008-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-001",
+      "problemId": "PRB-REV-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-REV-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-002",
+      "problemId": "PRB-REV-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-002-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-003",
+      "problemId": "PRB-REV-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-003-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-005",
+      "problemId": "PRB-REV-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-REV-005-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-REV-005-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-006",
+      "problemId": "PRB-REV-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-REV-006-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-REV-006-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-007",
+      "problemId": "PRB-REV-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-007-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-REV-007-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-REV-007-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-008",
+      "problemId": "PRB-REV-008",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-008-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-008-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-REV-008-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-REV-008-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-009",
+      "problemId": "PRB-REV-009",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-009-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-009-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-REV-009-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-010",
+      "problemId": "PRB-REV-010",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-010-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-010-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-REV-010-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-011",
+      "problemId": "PRB-REV-011",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-011-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-011-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-REV-012",
+      "problemId": "PRB-REV-012",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-REV-012-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-REV-012-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    }
+  ],
+  "diagnosticEvidence": [],
+  "transferCases": [],
+  "verificationMetadata": {
+    "reviewStatus": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "externalPreReview": {
+      "status": "complete",
+      "reviewer": "OpenAI GPT-5.6 Sol",
+      "reviewedAt": "2026-08-24T22:05:00+08:00",
+      "scope": [
+        "source identity",
+        "metadata",
+        "claim-support pre-review",
+        "scope/qualification review",
+        "problem transformation",
+        "far-transfer design"
+      ]
+    }
+  }
+}

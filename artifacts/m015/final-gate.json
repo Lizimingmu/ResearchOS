@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T07:07:38.082Z",
+  "generatedAt": "2026-08-27T16:40:19.530Z",
   "fakeVaultRoot": "D:\\Agents\\ResearchOS\\.tmp\\m015-fake-vault\\m015-personal-content-studio-20260826\\ResearchOS",
   "dedicatedRelative": "ResearchOS",
   "passed": true,
@@ -10,9 +10,14 @@
       "detail": "D:\\Agents\\ResearchOS\\.tmp\\m015-fake-vault\\m015-personal-content-studio-20260826\\ResearchOS"
     },
     {
-      "name": "frontend state schema stays at 4",
+      "name": "frontend state schema advances compatibly to 5",
       "passed": true,
-      "detail": "CURRENT_STATE_SCHEMA = 4"
+      "detail": "CURRENT_STATE_SCHEMA = 5"
+    },
+    {
+      "name": "schema 5 migration preserves every M015 collection",
+      "passed": true,
+      "detail": "personalContent, contentRevisionHistory, contentConflicts, obsidianPublishBatches"
     },
     {
       "name": "SQLite user_version stays at 2",
@@ -37,7 +42,7 @@
     {
       "name": "base inventory is substantial",
       "passed": true,
-      "detail": "311 records"
+      "detail": "314 records"
     },
     {
       "name": "lifecycle draft never leaks into effective content",
@@ -87,7 +92,7 @@
     {
       "name": "first plan is a single exact create",
       "passed": true,
-      "detail": "[[\"模拟发布笔记 mt9r4ltj-nmg.md\",\"create\"]]"
+      "detail": "[[\"模拟发布笔记 mtbr0xyw-l3k.md\",\"create\"]]"
     },
     {
       "name": "unchanged republish plans zero writes",
@@ -122,7 +127,7 @@
     {
       "name": "review manifest lists exactly its own notes",
       "passed": true,
-      "detail": "_Review/audit-review-batch/模拟发布笔记 mt9r4ltj-nmg.md"
+      "detail": "_Review/audit-review-batch/模拟发布笔记 mtbr0xyw-l3k.md"
     },
     {
       "name": "extra path rejected by manifest gate",

@@ -2,11 +2,11 @@
 
 ACCEPT
 
-M016-01 至 M016-05 的后台发布候选门禁通过。
+M016 Learning Kernel 与 external-AI content exchange 后台实现通过。
 
-- v0.12.0 九处产品版本声明一致；状态 schema 4、SQLite `user_version` 2 未改变。
-- M015 Personal Content Studio、版本化 overlay、patch/history/rollback 与显式有限 Obsidian 批次被纳入候选版；未修改或提升科研内容，166 张外部卡继续隔离。
-- Codex 独立复验：前端 89/89、M015 审计 31/31、handoff validator PASS；OpenCode Rust 27/27。Codex 的离线 Rust 复跑因本地缓存缺少 `urlencoding` 而未进入编译，未进行联网重试。
-- 两份 v0.12.0 工件的实际字节数与 SHA256 均匹配元数据及 `SHA256SUMS.txt`；所有旧版 exe/installer 的实际 SHA256 也与原清单一致。
-- 候选源码实现提交为 `e2c10c2`，验收标签为 `v0.12.0-rc1`。
-- 本结论只接受后台 release candidate。打包应用前台、安装器行为、真实 Vault 与用户手工检查仍为 `NOT RUN`，不得描述为已验证。
+- 默认 Today 已从固定考试拼盘改为 `learner state gate → legal activity → priority ranking`。
+- Challenge pass 只形成能力证据，不伪造 instruction completion；学习进度与已证明能力保持双轴。
+- Statistical Unit → Biological vs Technical Replicate → Pseudoreplication 三个原型满足 8–12 分钟、progressive disclosure、先修链和 Reviewer/claim boundary 合同。
+- 外部 AI 只通过显式复制提示词与结构化 JSON 往返；任何导入内容强制 `pending_review` + `pending`，内置内容先建立个人 overlay，再通过标准 patch/diff 审核。
+- 后台门禁：frontend 103/103、Learning Kernel 12/12、staging 63/63、M015 32/32、其他适用审计全绿。Rust offline 因缺少 `urlencoding` 未进入编译；未改 Rust。
+- 前台应用、安装器、真实 Vault、打包及用户手工体验均为 NOT RUN，不属于本次接受范围。
