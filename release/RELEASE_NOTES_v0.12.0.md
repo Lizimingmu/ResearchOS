@@ -26,7 +26,7 @@
 | `ResearchOS_0.12.0_x64-setup.exe` | 5,288,601 | `DE6D1F0AB70F659AC11C8EA08A8E177F7293CAD4FD330C1F95C398C9E7085509` |
 | `ResearchOS_0.12.0_x64.exe` | 15,625,728 | `C4036E1043A7FC06F93B0C40FA1F9944C470941B93C46050D402F8306FA2B79C` |
 
-安装前请对照 `release/SHA256SUMS.txt` 校验哈希。安装包未签名，Windows 可能显示 SmartScreen/未知发布者提示。绿色版 `ResearchOS_0.12.0_x64.exe` 可直接运行；数据默认保存在系统应用数据目录，可用 `RESEARCHOS_DATA_DIR` 显式指定。更早版本的工件保留在 `release/` 供回滚与审计。
+安装前请对照 `release/SHA256SUMS.txt` 校验哈希。安装包未签名，Windows 可能显示 SmartScreen/未知发布者提示。绿色版 `ResearchOS_0.12.0_x64.exe` 可直接运行；数据默认保存在系统应用数据目录，可用 `RESEARCHOS_DATA_DIR` 显式指定。工作副本只保留当前候选工件；更早版本通过 Git、`CHANGELOG.md` 与历史发布记录追溯。
 
 ## 后台验证摘要
 

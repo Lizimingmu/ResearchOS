@@ -655,3 +655,10 @@ Agent: Codex. Scope was limited to preserving and repairing the interrupted Open
 ## State
 
 S1 (`M016-LK-01`, `M016-LK-02`) is complete. Run state is `paused_after_s1_rescue`; S2–S5 remain pending for user/Codex product discussion. Scientific changeset unchanged.
+
+# Workspace cleanup (2026-08-27)
+
+- Removed reproducible build, bundle, audit, temporary runtime and smoke-test directories, including `src-tauri/target`, `dist`, `.build`, `.test-build`, `.audit-build`, `.runtime-data`, `.tmp`, and historical `.smoke-*` directories.
+- Removed v0.9.0–v0.11.0 executable/installer copies and their obsolete release metadata from the working copy. Git and `CHANGELOG.md` remain the historical record.
+- Retained both v0.12.0 candidate artifacts, current metadata/release notes, source code, scientific/audit records, dependency caches, and `node_modules`.
+- No source behavior, state/database, scientific content, packaging, foreground UI, or real Vault was touched.

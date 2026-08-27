@@ -22,7 +22,7 @@ ResearchOS is an educational research tool, not clinical decision support. Its m
 
 Verify `release/ResearchOS_0.12.0_x64-setup.exe` against `release/SHA256SUMS.txt`, then run the current-user installer. It is unsigned, so Windows may show an unknown-publisher/SmartScreen warning. The standalone `release/ResearchOS_0.12.0_x64.exe` is also provided.
 
-Earlier artifacts remain in `release/` for rollback and audit. v0.10.0 must not be distributed because its browser bundle could open as a blank window. Exact v0.12.0 sizes, schema versions, and digests are in `release/BUILD_METADATA_v0.12.0.json`; the Chinese release notes are in `release/RELEASE_NOTES_v0.12.0.md`.
+`release/` only keeps the current v0.12.0 candidate artifacts. Earlier binaries were removed to keep the working copy compact; their history remains traceable through Git and `CHANGELOG.md`. Exact v0.12.0 sizes, schema versions, and digests are in `release/BUILD_METADATA_v0.12.0.json`; the Chinese release notes are in `release/RELEASE_NOTES_v0.12.0.md`.
 
 ## 🛠️ Develop and verify
 
@@ -60,4 +60,4 @@ Provider use is optional and occurs only after a human answer is locked. API key
 - `docs/TEST_REPORT.md` — final release gates
 - `docs/FINAL_HANDOFF.md` — artifacts, risks, and future work
 
-The controlling specifications are `ResearchOS_v0.9_Codex_Master_Prompt.md` and the v0.10 autonomous-depth directive supplied for this release.
+Current product and milestone control lives in `.agent/PRODUCT_CONSTITUTION.md`, `.agent/CURRENT_MILESTONE.md`, and `.agent/OPENCODE_HANDOFF.md`. Historical decisions remain available through Git and `CHANGELOG.md`.
