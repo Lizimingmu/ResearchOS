@@ -1,6 +1,6 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
 
-export const CURRENT_STATE_SCHEMA = 4;
+export const CURRENT_STATE_SCHEMA = 5;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -82,6 +82,25 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     personalContent: arrayOr(raw.personalContent, defaults.personalContent),
     contentRevisionHistory: arrayOr(raw.contentRevisionHistory, defaults.contentRevisionHistory),
     contentConflicts: arrayOr(raw.contentConflicts, defaults.contentConflicts),
+    // M016 Learning Kernel (schema 5): empty-by-default collections. Migration
+    // must NEVER infer instruction exposure or competence from legacy fields
+    // (completedTaskIds, tutorials, old skillEvidence, …) — see
+    // .agent/M016_LEARNING_KERNEL_MIGRATION.md.
+    learnerUnitStates: arrayOr(raw.learnerUnitStates, defaults.learnerUnitStates),
+    learningEvents: arrayOr(raw.learningEvents, defaults.learningEvents),
+    pausedLearningUnitIds: arrayOr(raw.pausedLearningUnitIds, defaults.pausedLearningUnitIds),
+    onboarding: isRecord(raw.onboarding)
+      ? {
+          ...defaults.onboarding,
+          ...raw.onboarding,
+          learningKernelOnboardingCompletedAt: typeof raw.onboarding.learningKernelOnboardingCompletedAt === "string"
+            ? raw.onboarding.learningKernelOnboardingCompletedAt
+            : undefined,
+          learningKernelOnboardingSkippedAt: typeof raw.onboarding.learningKernelOnboardingSkippedAt === "string"
+            ? raw.onboarding.learningKernelOnboardingSkippedAt
+            : undefined,
+        } as AppStateData["onboarding"]
+      : defaults.onboarding,
     obsidianConnection: isRecord(raw.obsidianConnection)
       ? raw.obsidianConnection as unknown as AppStateData["obsidianConnection"]
       : defaults.obsidianConnection,

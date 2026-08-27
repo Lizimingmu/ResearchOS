@@ -125,7 +125,7 @@ test("unit: scheduler implements the specified weighted priority", () => {
 test("unit: v1 state migrates without losing user projects or responses", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 1, projects: [{ id: "keep-me" }], responses: [{ id: "response-keep" }], draftResponses: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 4);
+  assert.equal(migrated.schemaVersion, 5);
   assert.equal(migrated.projects[0].id, "keep-me");
   assert.equal(migrated.responses[0].id, "response-keep");
   assert.deepEqual(migrated.draftResponses, {});
@@ -135,7 +135,7 @@ test("unit: v1 state migrates without losing user projects or responses", () => 
 test("unit: v2 state migrates to v3 preserving user data and seeding the atlas", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 2, projects: [{ id: "v2-project" }], problemCards: undefined, diagnosticSessions: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 4);
+  assert.equal(migrated.schemaVersion, 5);
   assert.equal(migrated.projects[0].id, "v2-project");
   assert.equal(migrated.problemCards.length, 4);
   assert.deepEqual(migrated.diagnosticSessions, []);
@@ -149,7 +149,7 @@ test("unit: future state is rejected without downgrade", () => {
 test("unit: M015 migration adds empty personal content collections without losing v3 data", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 3, projects: [{ id: "keep-v3-project" }], personalContent: undefined, contentRevisionHistory: undefined, contentConflicts: undefined, obsidianPublishBatches: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 4);
+  assert.equal(migrated.schemaVersion, 5);
   assert.equal(migrated.projects[0].id, "keep-v3-project");
   assert.deepEqual(migrated.personalContent, []);
   assert.deepEqual(migrated.contentRevisionHistory, []);
@@ -1542,4 +1542,154 @@ test("unit: M016 every product version declaration is 0.12.0 and consistent", ()
   for (const file of ["package.json", "src-tauri/Cargo.toml", "src-tauri/tauri.conf.json", "src/components/AppShell.tsx"]) {
     assert.doesNotMatch(read(file), /0\.11\.0/, `${file} must not contain the old version`);
   }
+});
+
+// ---------------------------------------------------------------------------
+// M016 Learning Kernel — S1: domain validators + schema 4→5 migration
+// ---------------------------------------------------------------------------
+
+import { validateBinding, validateLearningUnit, validatePrerequisiteGraph, type LearningUnitV1, type PracticeAssetBindingV1, type PrerequisiteEdgeV1 } from "../.build/domain/learningKernel.js";
+
+function kernelUnit(overrides: Partial<LearningUnitV1> = {}, blockOverrides: Array<Partial<LearningUnitV1["blocks"][number]>> = []): LearningUnitV1 {
+  const mkBlock = (id: string, kind: LearningUnitV1["blocks"][number]["kind"], layer: LearningUnitV1["blocks"][number]["layer"]) => ({
+    id, kind, layer, titleCn: `标题 ${id}`, bodyCn: `正文 ${id}，用于结构校验的最小内容。`, required: true, evidenceClaimIds: ["pa-claim-pseudorep-def"],
+  });
+  const blocks = [
+    mkBlock("b-why", "why_important", "understand"),
+    mkBlock("b-intuition", "intuition", "understand"),
+    mkBlock("b-def", "precise_definition", "explain"),
+    mkBlock("b-mech", "mechanism", "explain"),
+    mkBlock("b-worked", "worked_example", "explain"),
+    mkBlock("b-misconception", "misconception", "judge"),
+    mkBlock("b-selfcheck", "self_check", "judge"),
+    mkBlock("b-claim", "claim_boundary", "judge"),
+    mkBlock("b-reviewer", "reviewer_view", "judge"),
+    ...blockOverrides,
+  ];
+  const unit: LearningUnitV1 = {
+    schemaVersion: 1,
+    id: "lu-test-v1",
+    revision: 1,
+    contentHash: "sha256:" + "0".repeat(64),
+    titleCn: "测试单元",
+    titleEn: "Test Unit",
+    domain: "statistics",
+    estimatedMinutes: 10,
+    curriculumOrder: 99,
+    projectRelevanceTerms: [],
+    learningObjectives: ["目标一", "目标二"],
+    blocks,
+    prerequisiteEdgeIds: [],
+    practiceBindingIds: [],
+    delayedReviewPlan: [{ afterDays: 2, role: "review" }],
+    evidenceSourceIds: ["pa-src-pseudorep"],
+    contentOrigin: "ai_generated",
+    verificationStatus: "pending",
+    scientificRisk: "HIGH",
+    lifecycle: "pending_review",
+    ...overrides,
+  };
+  return { ...unit, contentHash: unit.contentHash };
+}
+
+const kernelCtx = () => ({
+  claims: new Set(["pa-claim-pseudorep-def"]),
+  sources: new Set(["pa-src-pseudorep"]),
+  edges: new Set<string>(),
+});
+
+test("unit: M016-LK-01 learning unit validator enforces the teaching contract structurally", () => {
+  assert.deepEqual(validateLearningUnit(kernelUnit(), kernelCtx()), []);
+  const probe = (mutate: (unit: LearningUnitV1) => void) => {
+    const unit = kernelUnit();
+    mutate(unit);
+    return validateLearningUnit(unit, kernelCtx());
+  };
+  assert.ok(probe((u) => { u.estimatedMinutes = 7; }).some((e) => e.includes("8..12")));
+  assert.ok(probe((u) => { u.estimatedMinutes = 12.5; }).some((e) => e.includes("8..12")));
+  assert.ok(probe((u) => { u.blocks[1].id = u.blocks[0].id; }).some((e) => e.includes("重复 block ID")));
+  assert.ok(probe((u) => { u.blocks = u.blocks.filter((b) => b.kind !== "misconception"); }).some((e) => e.includes("misconception")));
+  assert.ok(probe((u) => { u.blocks = u.blocks.filter((b) => b.layer !== "understand"); }).some((e) => e.includes("understand")));
+  assert.ok(probe((u) => { u.blocks = u.blocks.filter((b) => b.layer !== "explain"); }).some((e) => e.includes("layer explain")));
+  assert.ok(probe((u) => { u.blocks[0].evidenceClaimIds = ["missing-claim"]; }).some((e) => e.includes("missing-claim")));
+  assert.ok(probe((u) => { u.evidenceSourceIds = ["ghost-source"]; }).some((e) => e.includes("ghost-source")));
+  assert.ok(probe((u) => { u.prerequisiteEdgeIds = ["ghost-edge"]; }).some((e) => e.includes("ghost-edge")));
+  // Long-single-body substitute: understand layer reduced to one chunk.
+  assert.ok(probe((u) => { u.blocks = u.blocks.filter((b) => b.layer !== "understand" || b.id === "b-why"); }).some((e) => e.includes("至少需要 2 个内容块")));
+});
+
+test("unit: M016-LK-01 prerequisite graph validator rejects unknown nodes, self loops, duplicates and cycles", () => {
+  const units = [{ id: "a" }, { id: "b" }, { id: "c" }];
+  const edge = (id: string, fromUnitId: string, toUnitId: string): PrerequisiteEdgeV1 => ({ schemaVersion: 1, id, fromUnitId, toUnitId, required: true, startGate: "instruction_complete_or_independent_evidence", independentGate: "independent_once", rationaleCn: "r" });
+  assert.equal(validatePrerequisiteGraph(units, [edge("e1", "a", "b")]).ok, true);
+  const bad = validatePrerequisiteGraph(units, [
+    edge("e1", "a", "b"),
+    edge("e2", "a", "b"),            // duplicate edge
+    edge("e3", "a", "a"),            // self loop
+    edge("e4", "ghost", "a"),        // unknown node
+    edge("e5", "b", "c"),
+    edge("e6", "c", "b"),            // cycle b<->c
+  ]);
+  assert.equal(bad.ok, false);
+  for (const fragment of ["重复先修边", "自环", "起点未知", "依赖环"]) {
+    assert.ok(bad.errors.some((error) => error.includes(fragment)), fragment);
+  }
+});
+
+test("unit: M016-LK-01 binding validator enforces per-role hint/lock/competence constraints", () => {
+  const ctx = { units: new Set(["lu-test-v1"]), assets: new Map([["judgment_card:jc-01", { revision: 1, hash: "sha256:" + "1".repeat(64) }]]) };
+  const bind = (overrides: Partial<PracticeAssetBindingV1>): PracticeAssetBindingV1 => ({
+    schemaVersion: 1, id: "bind-1", unitId: "lu-test-v1", assetKind: "judgment_card", assetId: "jc-01",
+    assetRevision: 1, assetHash: "sha256:" + "1".repeat(64), role: "independent", order: 1,
+    hintPolicy: "none", feedbackPolicy: "after_lock", lockRequired: true, confidenceRequired: true,
+    competenceEligible: true, minStage: "independent_ready", ...overrides,
+  });
+  assert.deepEqual(validateBinding(bind(), ctx), []);
+  assert.ok(validateBinding(bind({ role: "worked", hintPolicy: "solution_visible", lockRequired: false, confidenceRequired: false, competenceEligible: true }), ctx).some((e) => e.includes("不得计入能力")));
+  assert.ok(validateBinding(bind({ role: "guided", hintPolicy: "tiered", competenceEligible: false, lockRequired: false, confidenceRequired: false }), ctx).every((e) => !e.includes("必须 tiered")));
+  assert.ok(validateBinding(bind({ role: "guided", hintPolicy: "none" }), ctx).some((e) => e.includes("tiered")));
+  assert.ok(validateBinding(bind({ lockRequired: false }), ctx).some((e) => e.includes("必须 lock")));
+  assert.ok(validateBinding(bind({ confidenceRequired: false }), ctx).some((e) => e.includes("必须 confidence")));
+  assert.ok(validateBinding(bind({ hintPolicy: "tiered" }), ctx).some((e) => e.includes("不得提供 hint")));
+  assert.ok(validateBinding(bind({ competenceEligible: false }), ctx).some((e) => e.includes("必须可计能力")));
+  assert.ok(validateBinding(bind({ assetRevision: 2 }), ctx).some((e) => e.includes("revision/hash")));
+  assert.ok(validateBinding(bind({ assetId: "jc-999" }), ctx).some((e) => e.includes("未知资产")));
+});
+
+test("unit: M016-LK-02 v4→v5 migration appends empty kernel collections and preserves every legacy collection", () => {
+  const defaults = createInitialState();
+  const v4Fixture = { ...defaults, schemaVersion: 4 };
+  delete (v4Fixture as Record<string, unknown>).learnerUnitStates;
+  delete (v4Fixture as Record<string, unknown>).learningEvents;
+  delete (v4Fixture as Record<string, unknown>).pausedLearningUnitIds;
+  const migrated = migratePersistedState(v4Fixture, defaults);
+  assert.equal(migrated.schemaVersion, 5);
+  assert.deepEqual(migrated.learnerUnitStates, []);
+  assert.deepEqual(migrated.learningEvents, []);
+  assert.deepEqual(migrated.pausedLearningUnitIds, []);
+  assert.equal(migrated.onboarding.learningKernelOnboardingCompletedAt, undefined);
+  assert.equal(migrated.onboarding.learningKernelOnboardingSkippedAt, undefined);
+  // Every pre-existing collection is preserved verbatim.
+  for (const key of ["papers", "projects", "responses", "reviewItems", "reviewLogs", "skillEvidence", "providers", "completedTaskIds", "snoozedTaskIds", "assessmentHistory", "misconceptions", "problemAtlasSources", "problemAtlasClaims", "problemCards", "diagnosticCauses", "diagnosticChecks", "diagnosticPaths", "diagnosticEvidence", "problemTrainingCases", "diagnosticSessions", "sourcePackImports", "problemSearchLog", "personalContent", "contentRevisionHistory", "contentConflicts", "obsidianPublishBatches"]) {
+    assert.deepEqual((migrated as Record<string, unknown>)[key], (defaults as Record<string, unknown>)[key], key);
+  }
+  // Reopen is byte-semantically idempotent and never re-seeds events.
+  const reopened = migratePersistedState(JSON.parse(JSON.stringify(migrated)), defaults);
+  assert.equal(JSON.stringify(reopened), JSON.stringify(migrated));
+});
+
+test("unit: M016-LK-02 migration keeps kernel timestamps and rejects future schemas fail-closed", () => {
+  const defaults = createInitialState();
+  const stamped = migratePersistedState({
+    ...defaults, schemaVersion: 4,
+    onboarding: { ...defaults.onboarding, learningKernelOnboardingSkippedAt: "2026-08-27T00:00:00Z" },
+  }, defaults);
+  assert.equal(stamped.onboarding.learningKernelOnboardingSkippedAt, "2026-08-27T00:00:00Z");
+  // Non-string junk is dropped, not carried over.
+  const junk = migratePersistedState({
+    ...defaults, schemaVersion: 4,
+    onboarding: { ...defaults.onboarding, learningKernelOnboardingCompletedAt: 42 },
+  }, defaults);
+  assert.equal(junk.onboarding.learningKernelOnboardingCompletedAt, undefined);
+  assert.throws(() => migratePersistedState({ ...defaults, schemaVersion: 6 }, defaults), /数据库未被修改/);
 });

@@ -18,6 +18,10 @@ import type {
   ObsidianPublishBatch,
   PersonalContentEntry,
 } from "./contentStudio";
+import type {
+  LearningEventV1,
+  LearnerUnitStateV1,
+} from "./learningKernel";
 
 export type ContentOrigin = "verified_seed" | "verified_external" | "user" | "ai_generated" | "external_source_pack";
 export type VerificationStatus = "verified" | "pending" | "rejected" | "not_required";
@@ -277,6 +281,8 @@ export interface OnboardingState {
   completedAt?: string;
   tutorialCompletedAt?: string;
   tutorialSkippedAt?: string;
+  learningKernelOnboardingCompletedAt?: string;
+  learningKernelOnboardingSkippedAt?: string;
 }
 
 export interface AIProvider {
@@ -339,6 +345,9 @@ export interface AppStateData {
   personalContent: PersonalContentEntry[];
   contentRevisionHistory: ContentRevisionRecord[];
   contentConflicts: ContentConflict[];
+  learnerUnitStates: LearnerUnitStateV1[];
+  learningEvents: LearningEventV1[];
+  pausedLearningUnitIds: string[];
   obsidianConnection?: ObsidianConnectionSettings;
   obsidianPublishBatches: ObsidianPublishBatch[];
 }
