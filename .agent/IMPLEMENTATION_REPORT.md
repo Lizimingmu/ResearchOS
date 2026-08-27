@@ -617,3 +617,41 @@ Build metadata: `release/BUILD_METADATA_v0.12.0.json` records the accepted sourc
 ## Remaining checks
 
 Foreground packaged-app smoke, installer behavior, real-Vault interaction and the user-manual checklist remain NOT RUN and require Codex's separate permission-gated session (M016-05 release gate). Scientific changeset intentionally unchanged (no scientific content modified).
+
+# M016 Learning Kernel — S1 rescue complete (2026-08-27)
+
+Agent: Codex. Scope was limited to preserving and repairing the interrupted OpenCode S1 worktree; S2–S5 were not started. No application/installer launch, foreground automation, real Vault, packaging, version bump or scientific content change.
+
+## Changed files
+
+- `src/domain/learningKernel.ts`: retained the interrupted v1 schemas; added content-hash, review-plan, binding-role/stage and prerequisite validation; added cross-object snapshot validation and the two-axis Skill Map projection.
+- `src/domain/types.ts`, `src/state/store.ts`: retained the interrupted state collections and persistence wiring.
+- `src/state/migrations.ts`: repaired the duplicate `onboarding` property; schema 4→5 remains additive, idempotent and zero-inference.
+- `src/features/today/TodayView.tsx`: added the three new AppState collections to the existing selector so the pre-S2 Today implementation remains type-safe.
+- `tests-node/suite.mjs`: converted invalid TypeScript syntax in the `.mjs` suite to JavaScript and expanded S1 regression coverage.
+- `scripts/m015-content-audit.mjs`: updated the old schema-4 assertion to verify schema 5 plus preservation of all M015 collections.
+
+## Failures repaired
+
+1. Node syntax failure from `type` imports/annotations inside `tests-node/suite.mjs`.
+2. TypeScript duplicate `onboarding` property in the migration return object.
+3. `TodayView` passing an incomplete `AppStateData` snapshot.
+4. A migration test incorrectly requiring byte identity where existing migrations normalize optional fields; it now checks record identity and semantic preservation.
+5. M015 audit hard-coded `CURRENT_STATE_SCHEMA = 4`; it now checks schema 5 and M015 collection retention.
+
+## Verification
+
+- `npm run typecheck` — PASS.
+- `npm test` — PASS 96/96 plus localization 11 and startup smoke.
+- Source-pack audit — PASS 0/0.
+- Problem Atlas audit — PASS 0/0.
+- M013 staging — PASS 63/63.
+- Content audit — PASS 0 errors / 1 pre-existing warning.
+- Performance audit — PASS, initial JS 946,430 bytes under 1.9 MB; scheduler 0.1631 ms.
+- M015 compatibility gate — PASS 32 checks.
+- Handoff validator — PASS.
+- Rust — NOT RUN: offline cache lacks `urlencoding`; one normal network retry failed before dependency resolution with Windows Schannel `SEC_E_NO_CREDENTIALS`. No Rust source changed in S1.
+
+## State
+
+S1 (`M016-LK-01`, `M016-LK-02`) is complete. Run state is `paused_after_s1_rescue`; S2–S5 remain pending for user/Codex product discussion. Scientific changeset unchanged.

@@ -245,6 +245,7 @@ const REQUIRED_BLOCK_KINDS: ReadonlySet<LearningBlockKind> = new Set([
 ]);
 
 const LAYERS: DisclosureLayer[] = ["understand", "explain", "judge"];
+const SHA256_PATTERN = /^sha256:[a-f0-9]{64}$/;
 
 export const ACTIVE_THREAD_STAGES: ReadonlySet<LearningStage> = new Set(["learning", "guided", "independent_ready"]);
 
@@ -264,6 +265,12 @@ export function validateLearningUnit(
   if (unit.schemaVersion !== 1) errors.push("不支持的单元 schemaVersion");
   if (!/^[a-z0-9][a-z0-9._-]{2,95}$/i.test(unit.id)) errors.push("单元 ID 格式无效");
   if (!Number.isInteger(unit.revision) || unit.revision < 1) errors.push("revision 必须是正整数");
+  if (!SHA256_PATTERN.test(unit.contentHash)) {
+    errors.push("contentHash 必须是标准 SHA256");
+  } else {
+    const { contentHash: _contentHash, ...semanticPayload } = unit;
+    if (learningUnitHash(semanticPayload) !== unit.contentHash) errors.push("Learning Unit contentHash 不匹配");
+  }
   if (!Number.isInteger(unit.estimatedMinutes) || unit.estimatedMinutes < 8 || unit.estimatedMinutes > 12) {
     errors.push(`estimatedMinutes 必须是 8..12 的整数（当前 ${unit.estimatedMinutes}）`);
   }
@@ -305,6 +312,22 @@ export function validateLearningUnit(
     if (!ctx.edges.has(edgeId)) errors.push(`引用未知先修边：${edgeId}`);
   }
   if (unit.learningObjectives.length < 2) errors.push("learningObjectives 至少 2 条");
+  if (unit.evidenceSourceIds.length === 0) errors.push("evidenceSourceIds 至少需要 1 项");
+  for (const [label, values] of [
+    ["learningObjectives", unit.learningObjectives],
+    ["evidenceSourceIds", unit.evidenceSourceIds],
+    ["prerequisiteEdgeIds", unit.prerequisiteEdgeIds],
+    ["practiceBindingIds", unit.practiceBindingIds],
+  ] as const) {
+    if (new Set(values).size !== values.length) errors.push(`${label} 不得重复`);
+  }
+  const reviewRoles = new Set(unit.delayedReviewPlan.map((entry) => entry.role));
+  if (!reviewRoles.has("review") || !reviewRoles.has("far_transfer")) {
+    errors.push("delayedReviewPlan 必须同时包含 review 与 far_transfer");
+  }
+  if (unit.delayedReviewPlan.some((entry) => !Number.isInteger(entry.afterDays) || entry.afterDays < 1)) {
+    errors.push("delayedReviewPlan.afterDays 必须是正整数");
+  }
   return [...new Set(errors)];
 }
 
@@ -315,6 +338,9 @@ export function validateBinding(binding: PracticeAssetBindingV1, ctx: {
 }): string[] {
   const errors: string[] = [];
   if (binding.schemaVersion !== 1) errors.push("不支持的 binding schemaVersion");
+  if (!/^[a-z0-9][a-z0-9._-]{2,95}$/i.test(binding.id)) errors.push("binding ID 格式无效");
+  if (!Number.isInteger(binding.order) || binding.order < 1) errors.push(`binding ${binding.id} order 必须是正整数`);
+  if (!SHA256_PATTERN.test(binding.assetHash)) errors.push(`binding ${binding.id} assetHash 格式无效`);
   if (!ctx.units.has(binding.unitId)) errors.push(`binding ${binding.id} 引用未知单元：${binding.unitId}`);
   const asset = ctx.assets.get(`${binding.assetKind}:${binding.assetId}`);
   if (!asset) {
@@ -326,10 +352,12 @@ export function validateBinding(binding: PracticeAssetBindingV1, ctx: {
     case "worked":
       if (binding.hintPolicy !== "solution_visible") errors.push(`worked binding ${binding.id} 必须 solution_visible`);
       if (binding.competenceEligible) errors.push(`worked binding ${binding.id} 不得计入能力`);
+      if (!(["unseen", "learning"] as LearningStage[]).includes(binding.minStage)) errors.push(`worked binding ${binding.id} minStage 非法`);
       break;
     case "guided":
       if (binding.hintPolicy !== "tiered") errors.push(`guided binding ${binding.id} 必须 tiered hints`);
       if (binding.competenceEligible) errors.push(`guided binding ${binding.id} 不得计入独立能力`);
+      if (binding.minStage !== "guided") errors.push(`guided binding ${binding.id} minStage 必须是 guided`);
       break;
     case "independent":
     case "review":
@@ -338,6 +366,9 @@ export function validateBinding(binding: PracticeAssetBindingV1, ctx: {
       if (!binding.confidenceRequired) errors.push(`${binding.role} binding ${binding.id} 必须 confidence`);
       if (binding.hintPolicy !== "none") errors.push(`${binding.role} binding ${binding.id} 不得提供 hint`);
       if (!binding.competenceEligible) errors.push(`${binding.role} binding ${binding.id} 必须可计能力`);
+      if (binding.role === "independent" && binding.minStage !== "independent_ready") errors.push(`independent binding ${binding.id} minStage 必须是 independent_ready`);
+      if (binding.role === "review" && binding.minStage !== "review_eligible") errors.push(`review binding ${binding.id} minStage 必须是 review_eligible`);
+      if (binding.role === "far_transfer" && binding.minStage !== "transferable") errors.push(`far_transfer binding ${binding.id} minStage 必须是 transferable`);
       break;
   }
   return errors;
@@ -350,9 +381,17 @@ export function validatePrerequisiteGraph(
 ): { ok: boolean; errors: string[] } {
   const errors: string[] = [];
   const unitIds = new Set(units.map((unit) => unit.id));
+  if (unitIds.size !== units.length) errors.push("存在重复 Learning Unit ID");
   const seenEdges = new Map<string, string>();
+  const edgeIds = new Set<string>();
   const adjacency = new Map<string, string[]>();
   for (const edge of edges) {
+    if (edge.schemaVersion !== 1) errors.push(`边 ${edge.id} schemaVersion 非法`);
+    if (!/^[a-z0-9][a-z0-9._-]{2,95}$/i.test(edge.id)) errors.push(`边 ID 格式无效：${edge.id}`);
+    if (edgeIds.has(edge.id)) errors.push(`重复先修边 ID：${edge.id}`);
+    edgeIds.add(edge.id);
+    if (edge.startGate !== "instruction_complete_or_independent_evidence" || edge.independentGate !== "independent_once") errors.push(`边 ${edge.id} gate 非法`);
+    if (!edge.rationaleCn.trim()) errors.push(`边 ${edge.id} 缺少 rationaleCn`);
     if (!edge.fromUnitId || !edge.toUnitId) { errors.push("边缺少端点"); continue; }
     if (!unitIds.has(edge.fromUnitId)) errors.push(`边的起点未知：${edge.fromUnitId}`);
     if (!unitIds.has(edge.toUnitId)) errors.push(`边的终点未知：${edge.toUnitId}`);
@@ -377,4 +416,74 @@ export function validatePrerequisiteGraph(
   };
   for (const unit of [...units].sort((a, b) => a.id.localeCompare(b.id))) visit(unit.id, []);
   return { ok: errors.length === 0, errors };
+}
+
+/** Cross-object validation for one immutable Learning Kernel content snapshot. */
+export function validateLearningKernelContent(input: {
+  units: LearningUnitV1[];
+  edges: PrerequisiteEdgeV1[];
+  bindings: PracticeAssetBindingV1[];
+  claims: ReadonlySet<string>;
+  sources: ReadonlySet<string>;
+  assets: ReadonlyMap<string, { revision: number; hash: string }>;
+}): string[] {
+  const errors = [...validatePrerequisiteGraph(input.units, input.edges).errors];
+  const unitIds = new Set(input.units.map((unit) => unit.id));
+  const edgeIds = new Set(input.edges.map((edge) => edge.id));
+  const bindingIds = new Set<string>();
+  const bindingById = new Map<string, PracticeAssetBindingV1>();
+  for (const binding of input.bindings) {
+    if (bindingIds.has(binding.id)) errors.push(`重复 binding ID：${binding.id}`);
+    bindingIds.add(binding.id);
+    bindingById.set(binding.id, binding);
+    errors.push(...validateBinding(binding, { units: unitIds, assets: input.assets }));
+  }
+  for (const unit of input.units) {
+    errors.push(...validateLearningUnit(unit, { claims: input.claims, sources: input.sources, edges: edgeIds }));
+    const attached = unit.practiceBindingIds.map((id) => bindingById.get(id));
+    for (const [index, binding] of attached.entries()) {
+      const id = unit.practiceBindingIds[index];
+      if (!binding) errors.push(`单元 ${unit.id} 引用未知 binding：${id}`);
+      else if (binding.unitId !== unit.id) errors.push(`binding ${id} 不属于单元 ${unit.id}`);
+    }
+    const roles = new Set(attached.filter((binding): binding is PracticeAssetBindingV1 => binding !== undefined).map((binding) => binding.role));
+    for (const role of ["guided", "independent", "review", "far_transfer"] as PracticeRole[]) {
+      if (!roles.has(role)) errors.push(`单元 ${unit.id} 缺少 ${role} practice binding`);
+    }
+  }
+  for (const binding of input.bindings) {
+    const owner = input.units.find((unit) => unit.id === binding.unitId);
+    if (owner && !owner.practiceBindingIds.includes(binding.id)) errors.push(`binding ${binding.id} 未登记在所属单元`);
+  }
+  return [...new Set(errors)];
+}
+
+/** Pure two-axis projection. Absence of a state means unassessed, never zero competence. */
+export function projectSkillMap(unit: LearningUnitV1, state?: LearnerUnitStateV1): SkillMapProjectionV1 {
+  const requiredIds = unit.blocks.filter((block) => block.required).map((block) => block.id);
+  const completed = new Set(state?.instruction.completedBlockIds ?? []);
+  const exposure = state?.instruction.exposure ?? "none";
+  const competence = state?.competence.level ?? "unassessed";
+  const progressLabel = exposure === "complete" ? "教学完成" : exposure === "partial" ? "学习进行中" : "尚未开始学习";
+  const competenceLabel: Record<CompetenceLevel, string> = {
+    unassessed: "能力尚未评估",
+    guided_only: "已完成引导练习",
+    independent_once: "已独立证明一次",
+    retained: "已通过延迟保持",
+    transferred: "已证明可迁移",
+  };
+  return {
+    unitId: unit.id,
+    learningProgress: {
+      exposure,
+      completedRequired: requiredIds.filter((id) => completed.has(id)).length,
+      totalRequired: requiredIds.length,
+    },
+    demonstratedCompetence: {
+      level: competence,
+      evidenceCount: state?.competence.evidenceEventIds.length ?? 0,
+      lastDemonstratedAt: state?.competence.lastDemonstratedAt,
+    },
+    labelCn: `${progressLabel} · ${competenceLabel[competence]}`,
+  };
 }

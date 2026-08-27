@@ -1,5 +1,7 @@
 # OpenCode Handoff — M016 Learning Kernel
 
+**PAUSED BY USER AFTER S1 RESCUE. Do not execute S2–S5 until Codex replaces this pause with a fresh bounded handoff.**
+
 使用 **DeepSeek V4 Pro**，从项目 `D:\Agents\ResearchOS` 执行本交接。基线是 tag `v0.12.0-rc1`；当前工作树还含 Codex 规格提交。不要运行任何 Git 命令，Codex 负责 checkpoint、review 和 release gate。
 
 ## 📖 必读且仅需优先读取
@@ -17,7 +19,7 @@
 
 ## 🧩 分段执行与自动恢复
 
-每次启动先读取 run state，选择第一个非 completed segment。每段：实现 → 定向测试 → 更新 run state 和 segment 报告 → 继续下一段。中断后从当前 segment 重跑其幂等步骤，禁止猜测已完成。
+当前不得自动续跑。未来解除暂停后，每次启动先读取 run state，选择第一个非 completed segment。每段：实现 → 定向测试 → 更新 run state 和 segment 报告 → 继续下一段。中断后从当前 segment 重跑其幂等步骤，禁止猜测已完成。
 
 ### S1 — Domain + migration
 

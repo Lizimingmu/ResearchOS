@@ -40,6 +40,18 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     ...session,
     steps: Array.isArray(session.steps) ? session.steps : [],
   }));
+  const migratedOnboarding = isRecord(raw.onboarding)
+    ? {
+        ...defaults.onboarding,
+        ...raw.onboarding,
+        learningKernelOnboardingCompletedAt: typeof raw.onboarding.learningKernelOnboardingCompletedAt === "string"
+          ? raw.onboarding.learningKernelOnboardingCompletedAt
+          : undefined,
+        learningKernelOnboardingSkippedAt: typeof raw.onboarding.learningKernelOnboardingSkippedAt === "string"
+          ? raw.onboarding.learningKernelOnboardingSkippedAt
+          : undefined,
+      } as AppStateData["onboarding"]
+    : defaults.onboarding;
 
   return {
     ...defaults,
@@ -65,9 +77,7 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     notesByPaperId: recordOr(raw.notesByPaperId, defaults.notesByPaperId),
     draftResponses: recordOr(raw.draftResponses, defaults.draftResponses),
     misconceptions: arrayOr(raw.misconceptions, defaults.misconceptions),
-    onboarding: isRecord(raw.onboarding)
-      ? { ...defaults.onboarding, ...raw.onboarding } as AppStateData["onboarding"]
-      : defaults.onboarding,
+    onboarding: migratedOnboarding,
     problemAtlasSources: arrayOr(raw.problemAtlasSources, defaults.problemAtlasSources),
     problemAtlasClaims: arrayOr(raw.problemAtlasClaims, defaults.problemAtlasClaims),
     problemCards: arrayOr(raw.problemCards, defaults.problemCards),
@@ -89,18 +99,6 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     learnerUnitStates: arrayOr(raw.learnerUnitStates, defaults.learnerUnitStates),
     learningEvents: arrayOr(raw.learningEvents, defaults.learningEvents),
     pausedLearningUnitIds: arrayOr(raw.pausedLearningUnitIds, defaults.pausedLearningUnitIds),
-    onboarding: isRecord(raw.onboarding)
-      ? {
-          ...defaults.onboarding,
-          ...raw.onboarding,
-          learningKernelOnboardingCompletedAt: typeof raw.onboarding.learningKernelOnboardingCompletedAt === "string"
-            ? raw.onboarding.learningKernelOnboardingCompletedAt
-            : undefined,
-          learningKernelOnboardingSkippedAt: typeof raw.onboarding.learningKernelOnboardingSkippedAt === "string"
-            ? raw.onboarding.learningKernelOnboardingSkippedAt
-            : undefined,
-        } as AppStateData["onboarding"]
-      : defaults.onboarding,
     obsidianConnection: isRecord(raw.obsidianConnection)
       ? raw.obsidianConnection as unknown as AppStateData["obsidianConnection"]
       : defaults.obsidianConnection,

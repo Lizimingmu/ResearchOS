@@ -1548,10 +1548,10 @@ test("unit: M016 every product version declaration is 0.12.0 and consistent", ()
 // M016 Learning Kernel — S1: domain validators + schema 4→5 migration
 // ---------------------------------------------------------------------------
 
-import { validateBinding, validateLearningUnit, validatePrerequisiteGraph, type LearningUnitV1, type PracticeAssetBindingV1, type PrerequisiteEdgeV1 } from "../.build/domain/learningKernel.js";
+import { learningUnitHash, projectSkillMap, validateBinding, validateLearningKernelContent, validateLearningUnit, validatePrerequisiteGraph } from "../.build/domain/learningKernel.js";
 
-function kernelUnit(overrides: Partial<LearningUnitV1> = {}, blockOverrides: Array<Partial<LearningUnitV1["blocks"][number]>> = []): LearningUnitV1 {
-  const mkBlock = (id: string, kind: LearningUnitV1["blocks"][number]["kind"], layer: LearningUnitV1["blocks"][number]["layer"]) => ({
+function kernelUnit(overrides = {}, blockOverrides = []) {
+  const mkBlock = (id, kind, layer) => ({
     id, kind, layer, titleCn: `标题 ${id}`, bodyCn: `正文 ${id}，用于结构校验的最小内容。`, required: true, evidenceClaimIds: ["pa-claim-pseudorep-def"],
   });
   const blocks = [
@@ -1566,7 +1566,7 @@ function kernelUnit(overrides: Partial<LearningUnitV1> = {}, blockOverrides: Arr
     mkBlock("b-reviewer", "reviewer_view", "judge"),
     ...blockOverrides,
   ];
-  const unit: LearningUnitV1 = {
+  const unit = {
     schemaVersion: 1,
     id: "lu-test-v1",
     revision: 1,
@@ -1580,8 +1580,8 @@ function kernelUnit(overrides: Partial<LearningUnitV1> = {}, blockOverrides: Arr
     learningObjectives: ["目标一", "目标二"],
     blocks,
     prerequisiteEdgeIds: [],
-    practiceBindingIds: [],
-    delayedReviewPlan: [{ afterDays: 2, role: "review" }],
+    practiceBindingIds: ["bind-guided", "bind-independent", "bind-review", "bind-transfer"],
+    delayedReviewPlan: [{ afterDays: 2, role: "review" }, { afterDays: 7, role: "far_transfer" }],
     evidenceSourceIds: ["pa-src-pseudorep"],
     contentOrigin: "ai_generated",
     verificationStatus: "pending",
@@ -1589,18 +1589,19 @@ function kernelUnit(overrides: Partial<LearningUnitV1> = {}, blockOverrides: Arr
     lifecycle: "pending_review",
     ...overrides,
   };
-  return { ...unit, contentHash: unit.contentHash };
+  const { contentHash: _contentHash, ...semanticPayload } = unit;
+  return { ...unit, contentHash: learningUnitHash(semanticPayload) };
 }
 
 const kernelCtx = () => ({
   claims: new Set(["pa-claim-pseudorep-def"]),
   sources: new Set(["pa-src-pseudorep"]),
-  edges: new Set<string>(),
+  edges: new Set(),
 });
 
 test("unit: M016-LK-01 learning unit validator enforces the teaching contract structurally", () => {
   assert.deepEqual(validateLearningUnit(kernelUnit(), kernelCtx()), []);
-  const probe = (mutate: (unit: LearningUnitV1) => void) => {
+  const probe = (mutate) => {
     const unit = kernelUnit();
     mutate(unit);
     return validateLearningUnit(unit, kernelCtx());
@@ -1614,21 +1615,24 @@ test("unit: M016-LK-01 learning unit validator enforces the teaching contract st
   assert.ok(probe((u) => { u.blocks[0].evidenceClaimIds = ["missing-claim"]; }).some((e) => e.includes("missing-claim")));
   assert.ok(probe((u) => { u.evidenceSourceIds = ["ghost-source"]; }).some((e) => e.includes("ghost-source")));
   assert.ok(probe((u) => { u.prerequisiteEdgeIds = ["ghost-edge"]; }).some((e) => e.includes("ghost-edge")));
+  const badHash = kernelUnit();
+  badHash.contentHash = "sha256:" + "0".repeat(64);
+  assert.ok(validateLearningUnit(badHash, kernelCtx()).some((e) => e.includes("contentHash 不匹配")));
   // Long-single-body substitute: understand layer reduced to one chunk.
   assert.ok(probe((u) => { u.blocks = u.blocks.filter((b) => b.layer !== "understand" || b.id === "b-why"); }).some((e) => e.includes("至少需要 2 个内容块")));
 });
 
 test("unit: M016-LK-01 prerequisite graph validator rejects unknown nodes, self loops, duplicates and cycles", () => {
   const units = [{ id: "a" }, { id: "b" }, { id: "c" }];
-  const edge = (id: string, fromUnitId: string, toUnitId: string): PrerequisiteEdgeV1 => ({ schemaVersion: 1, id, fromUnitId, toUnitId, required: true, startGate: "instruction_complete_or_independent_evidence", independentGate: "independent_once", rationaleCn: "r" });
-  assert.equal(validatePrerequisiteGraph(units, [edge("e1", "a", "b")]).ok, true);
+  const edge = (id, fromUnitId, toUnitId) => ({ schemaVersion: 1, id, fromUnitId, toUnitId, required: true, startGate: "instruction_complete_or_independent_evidence", independentGate: "independent_once", rationaleCn: "r" });
+  assert.equal(validatePrerequisiteGraph(units, [edge("edge-1", "a", "b")]).ok, true);
   const bad = validatePrerequisiteGraph(units, [
-    edge("e1", "a", "b"),
-    edge("e2", "a", "b"),            // duplicate edge
-    edge("e3", "a", "a"),            // self loop
-    edge("e4", "ghost", "a"),        // unknown node
-    edge("e5", "b", "c"),
-    edge("e6", "c", "b"),            // cycle b<->c
+    edge("edge-1", "a", "b"),
+    edge("edge-2", "a", "b"),            // duplicate edge
+    edge("edge-3", "a", "a"),            // self loop
+    edge("edge-4", "ghost", "a"),        // unknown node
+    edge("edge-5", "b", "c"),
+    edge("edge-6", "c", "b"),            // cycle b<->c
   ]);
   assert.equal(bad.ok, false);
   for (const fragment of ["重复先修边", "自环", "起点未知", "依赖环"]) {
@@ -1638,7 +1642,7 @@ test("unit: M016-LK-01 prerequisite graph validator rejects unknown nodes, self 
 
 test("unit: M016-LK-01 binding validator enforces per-role hint/lock/competence constraints", () => {
   const ctx = { units: new Set(["lu-test-v1"]), assets: new Map([["judgment_card:jc-01", { revision: 1, hash: "sha256:" + "1".repeat(64) }]]) };
-  const bind = (overrides: Partial<PracticeAssetBindingV1>): PracticeAssetBindingV1 => ({
+  const bind = (overrides = {}) => ({
     schemaVersion: 1, id: "bind-1", unitId: "lu-test-v1", assetKind: "judgment_card", assetId: "jc-01",
     assetRevision: 1, assetHash: "sha256:" + "1".repeat(64), role: "independent", order: 1,
     hintPolicy: "none", feedbackPolicy: "after_lock", lockRequired: true, confidenceRequired: true,
@@ -1656,12 +1660,64 @@ test("unit: M016-LK-01 binding validator enforces per-role hint/lock/competence 
   assert.ok(validateBinding(bind({ assetId: "jc-999" }), ctx).some((e) => e.includes("未知资产")));
 });
 
+test("unit: M016-LK-01 full content validation closes unit, binding, asset and review-plan references", () => {
+  const assetHash = "sha256:" + "1".repeat(64);
+  const assets = new Map([["judgment_card:jc-01", { revision: 1, hash: assetHash }]]);
+  const makeBinding = (id, role, minStage, overrides = {}) => ({
+    schemaVersion: 1, id, unitId: "lu-test-v1", assetKind: "judgment_card", assetId: "jc-01",
+    assetRevision: 1, assetHash, role, order: 1,
+    hintPolicy: role === "guided" ? "tiered" : "none",
+    feedbackPolicy: "after_lock", lockRequired: !["worked", "guided"].includes(role),
+    confidenceRequired: !["worked", "guided"].includes(role), competenceEligible: !["worked", "guided"].includes(role),
+    minStage, ...overrides,
+  });
+  const bindings = [
+    makeBinding("bind-guided", "guided", "guided"),
+    makeBinding("bind-independent", "independent", "independent_ready"),
+    makeBinding("bind-review", "review", "review_eligible"),
+    makeBinding("bind-transfer", "far_transfer", "transferable"),
+  ];
+  const unit = kernelUnit();
+  assert.deepEqual(validateLearningKernelContent({
+    units: [unit], edges: [], bindings,
+    claims: kernelCtx().claims, sources: kernelCtx().sources, assets,
+  }), []);
+  const missingReview = kernelUnit({ practiceBindingIds: ["bind-guided", "bind-independent", "bind-transfer"] });
+  const missingReviewErrors = validateLearningKernelContent({
+    units: [missingReview], edges: [], bindings: bindings.filter((binding) => binding.id !== "bind-review"),
+    claims: kernelCtx().claims, sources: kernelCtx().sources, assets,
+  });
+  assert.ok(missingReviewErrors.some((error) => error.includes("缺少 review practice binding")));
+  const orphan = makeBinding("bind-orphan", "review", "review_eligible");
+  assert.ok(validateLearningKernelContent({
+    units: [unit], edges: [], bindings: [...bindings, orphan],
+    claims: kernelCtx().claims, sources: kernelCtx().sources, assets,
+  }).some((error) => error.includes("未登记在所属单元")));
+});
+
+test("unit: M016-LK-01 skill map keeps learning progress separate from demonstrated competence", () => {
+  const unit = kernelUnit();
+  const unseen = projectSkillMap(unit);
+  assert.equal(unseen.learningProgress.exposure, "none");
+  assert.equal(unseen.demonstratedCompetence.level, "unassessed");
+  assert.match(unseen.labelCn, /尚未开始学习 · 能力尚未评估/);
+  const challengePass = projectSkillMap(unit, {
+    schemaVersion: 1, unitId: unit.id, unitRevision: unit.revision, stage: "review_eligible",
+    instruction: { exposure: "none", completedBlockIds: [] },
+    competence: { level: "independent_once", evidenceEventIds: ["event-challenge"], lastDemonstratedAt: "2026-08-27T00:00:00Z" },
+    selectedMode: "challenge", misconceptionIds: [], createdAt: "2026-08-27T00:00:00Z", updatedAt: "2026-08-27T00:00:00Z",
+  });
+  assert.equal(challengePass.learningProgress.exposure, "none");
+  assert.equal(challengePass.demonstratedCompetence.level, "independent_once");
+  assert.match(challengePass.labelCn, /尚未开始学习 · 已独立证明一次/);
+});
+
 test("unit: M016-LK-02 v4→v5 migration appends empty kernel collections and preserves every legacy collection", () => {
   const defaults = createInitialState();
   const v4Fixture = { ...defaults, schemaVersion: 4 };
-  delete (v4Fixture as Record<string, unknown>).learnerUnitStates;
-  delete (v4Fixture as Record<string, unknown>).learningEvents;
-  delete (v4Fixture as Record<string, unknown>).pausedLearningUnitIds;
+  delete v4Fixture.learnerUnitStates;
+  delete v4Fixture.learningEvents;
+  delete v4Fixture.pausedLearningUnitIds;
   const migrated = migratePersistedState(v4Fixture, defaults);
   assert.equal(migrated.schemaVersion, 5);
   assert.deepEqual(migrated.learnerUnitStates, []);
@@ -1670,9 +1726,14 @@ test("unit: M016-LK-02 v4→v5 migration appends empty kernel collections and pr
   assert.equal(migrated.onboarding.learningKernelOnboardingCompletedAt, undefined);
   assert.equal(migrated.onboarding.learningKernelOnboardingSkippedAt, undefined);
   // Every pre-existing collection is preserved verbatim.
-  for (const key of ["papers", "projects", "responses", "reviewItems", "reviewLogs", "skillEvidence", "providers", "completedTaskIds", "snoozedTaskIds", "assessmentHistory", "misconceptions", "problemAtlasSources", "problemAtlasClaims", "problemCards", "diagnosticCauses", "diagnosticChecks", "diagnosticPaths", "diagnosticEvidence", "problemTrainingCases", "diagnosticSessions", "sourcePackImports", "problemSearchLog", "personalContent", "contentRevisionHistory", "contentConflicts", "obsidianPublishBatches"]) {
-    assert.deepEqual((migrated as Record<string, unknown>)[key], (defaults as Record<string, unknown>)[key], key);
+  for (const key of ["papers", "projects", "responses", "reviewLogs", "providers", "completedTaskIds", "snoozedTaskIds", "assessmentHistory", "misconceptions", "problemAtlasSources", "problemAtlasClaims", "problemCards", "diagnosticCauses", "diagnosticChecks", "diagnosticPaths", "diagnosticEvidence", "problemTrainingCases", "sourcePackImports", "problemSearchLog", "personalContent", "contentRevisionHistory", "contentConflicts", "obsidianPublishBatches"]) {
+    assert.deepEqual(migrated[key], defaults[key], key);
   }
+  // Existing migrations normalize optional legacy fields without changing the
+  // represented records; verify identity/counts rather than byte equality.
+  assert.deepEqual(migrated.reviewItems.map((item) => item.id), defaults.reviewItems.map((item) => item.id));
+  assert.deepEqual(migrated.skillEvidence.map((item) => item.id), defaults.skillEvidence.map((item) => item.id));
+  assert.deepEqual(migrated.diagnosticSessions.map((item) => item.id), defaults.diagnosticSessions.map((item) => item.id));
   // Reopen is byte-semantically idempotent and never re-seeds events.
   const reopened = migratePersistedState(JSON.parse(JSON.stringify(migrated)), defaults);
   assert.equal(JSON.stringify(reopened), JSON.stringify(migrated));

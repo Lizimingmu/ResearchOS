@@ -19,6 +19,8 @@ export function TodayView() {
     diagnosticSessions: store.diagnosticSessions, sourcePackImports: store.sourcePackImports,
     problemSearchLog: store.problemSearchLog, personalContent: store.personalContent,
     contentRevisionHistory: store.contentRevisionHistory, contentConflicts: store.contentConflicts,
+    learnerUnitStates: store.learnerUnitStates, learningEvents: store.learningEvents,
+    pausedLearningUnitIds: store.pausedLearningUnitIds,
     obsidianConnection: store.obsidianConnection, obsidianPublishBatches: store.obsidianPublishBatches,
   })));
   const tasks = generateTodayTasks(state);

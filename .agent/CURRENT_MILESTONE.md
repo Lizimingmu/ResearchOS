@@ -1,6 +1,6 @@
 # Current Milestone — M016 Learning Kernel
 
-Execution status: **SPECIFICATION COMPLETE — READY FOR OPENCODE**.
+Execution status: **S1 RESCUED AND COMPLETE — PAUSED FOR PRODUCT DISCUSSION**.
 
 ## 🎯 Objective
 
@@ -32,4 +32,4 @@ Correct the product's “test first, learn later” bias by introducing a state-
 
 ## ▶️ Execution
 
-OpenCode must use `.agent/OPENCODE_HANDOFF.md` and resumable segments in `.agent/M016_LEARNING_KERNEL_RUN_STATE.json`. On completion it must stop at `awaiting_codex_review` for diff and scientific review.
+S1 domain/schema and schema 4→5 migration were recovered from an interrupted OpenCode worktree, repaired, validated and checkpointed by Codex. S2–S5 remain pending and must not start until the user and Codex agree the next product modification direction and issue a fresh handoff.
