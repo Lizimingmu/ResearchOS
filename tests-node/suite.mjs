@@ -17,6 +17,7 @@ import { ContentStudioView } from "../.build/features/content-studio/ContentStud
 import { LearningView } from "../.build/features/learning/LearningView.js";
 import { CaseLabView } from "../.build/features/case-lab/CaseLabView.js";
 import { CurriculumPreviewView } from "../.build/features/curriculum-preview/CurriculumPreviewView.js";
+import { getPaperFieldAccess, PaperCard } from "../.build/features/paper-lab/PaperCard.js";
 import { stagedCaseLabs, stagedConceptLessons, stagedMethodLessons, studioTemplates, curriculumClaims, curriculumContentHashes, curriculumManifest } from "../.build/data/curriculum/index.js";
 import { selfRescueGuideModules, selfRescueGuideSections } from "../.build/data/self-rescue-guide/index.js";
 import { Onboarding } from "../.build/components/Onboarding.js";
@@ -2334,7 +2335,7 @@ test("M018.1-22 remediation assets are distinct from primary Apply", () => {
 
 test("M018.1-23 Paper fields use specific capability gates", () => {
   const source = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "paper-lab", "PaperCard.tsx"), "utf8");
-  assert.match(source, /hasStandardizedEvidence\(states, "concept-confounding-v1"\)/);
+  assert.match(source, /hasStandardizedEvidence\(input\.states, "concept-confounding-v1"\)/);
   assert.match(source, /validation: false/);
   assert.match(source, /result_interpretation/);
   assert.match(source, /尚未学习该能力/);
@@ -2540,4 +2541,96 @@ test("M019-F Curriculum Preview is read-only and shows the exact pending banner"
   assert.match(html, /Curriculum Manifest/);
   assert.doesNotMatch(html, /提交答案|创建能力|标记掌握/);
   assert.ok(studioTemplates.every((template) => template.producesTransferArtifact && template.createsCompetence === false));
+});
+
+test("M019-G E2E Statistical Unit survives restart and reaches retained through exact due review", () => {
+  const entry = architectureEntry("concept-statistical-unit-v1");
+  const applied = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "e2e-stat-apply" });
+  assert.equal(applied.state.competence.level, "independent_once");
+  const defaults = createInitialState();
+  const restarted = migratePersistedState({ ...defaults, learnerUnitStates: [applied.state], learningEvents: [applied.event], learningContentProgress: { [entry.id]: applied.progress } }, defaults);
+  const reviewed = submitArchitecturePractice({ entry, progress: restarted.learningContentProgress[entry.id], currentState: restarted.learnerUnitStates[0], attemptKind: "review", response: architectureResponse(entry.reviewAssetId), confidence: 3, occurredAt: restarted.learnerUnitStates[0].dueAt, eventId: "e2e-stat-review" });
+  assert.equal(reviewed.state.competence.level, "retained");
+  assert.equal(reviewed.event.type, "retrieval_attempt");
+});
+
+test("M019-G E2E Confounding fails primary, passes fresh remediation, restarts and retains", () => {
+  const entry = architectureEntry("concept-confounding-v1");
+  const failed = submitArchitecturePractice({ entry, attemptKind: "apply", response: { selectedOptionIds: ["adjust-post"], shortReasoning: "机械调整治疗后变量的回答虽然字数足够，但没有按因果结构选择调整集。", claimBoundary: "当前观察关联不能解释为因果。" }, confidence: 4, occurredAt: "2026-09-01T00:00:00Z", eventId: "e2e-conf-fail" });
+  assert.equal(failed.progress.phase, "remediation");
+  const remediated = submitArchitecturePractice({ entry, progress: failed.progress, currentState: failed.state, attemptKind: "remediation", response: architectureResponse(entry.remediationAssetId), confidence: 3, occurredAt: "2026-09-01T00:10:00Z", eventId: "e2e-conf-remediation" });
+  assert.equal(remediated.state.competence.level, "independent_once");
+  assert.notEqual(remediated.event.asset.id, entry.applyAssetId);
+  const defaults = createInitialState();
+  const restarted = migratePersistedState({ ...defaults, learnerUnitStates: [remediated.state], learningEvents: [failed.event, remediated.event], learningContentProgress: { [entry.id]: remediated.progress } }, defaults);
+  const reviewed = submitArchitecturePractice({ entry, progress: restarted.learningContentProgress[entry.id], currentState: restarted.learnerUnitStates[0], attemptKind: "review", response: architectureResponse(entry.reviewAssetId), confidence: 3, occurredAt: restarted.learnerUnitStates[0].dueAt, eventId: "e2e-conf-review" });
+  assert.equal(reviewed.state.competence.level, "retained");
+});
+
+test("M019-G E2E Cox overlay discriminates, remediates on a new surface, reviews and projects Progress", () => {
+  const base = createInitialState();
+  const statistical = casePrerequisiteStates()[0];
+  const project = { id: "e2e-cox-project", name: "survival", disease: "tumor", studyType: "cohort", cohort: "fictional", omics: "proteomics", outcome: "survival", currentStage: "Analysis", scientificQuestion: "time-to-event", bottleneck: "model", activeMethods: "Cox", targetJournal: "", notes: "", createdAt: "2026-09-01T00:00:00Z" };
+  const task = generateM018CurriculumTasks({ ...base, projects: [project], onboarding: { ...base.onboarding, allowProjectRelevance: true }, learnerUnitStates: [statistical] }, new Date("2026-09-02T00:00:00Z")).find((item) => item.learningThread === "project_overlay");
+  assert.equal(task?.learningContentId, "method-cox-v1");
+  const entry = architectureEntry("method-cox-v1");
+  const failed = submitArchitecturePractice({ entry, attemptKind: "apply", response: { selectedOptionIds: ["absolute-effect"], shortReasoning: "把 HR 直接当作固定时点绝对风险变化，因此结构化选项判断错误。", claimBoundary: "当前不能给临床风险结论。" }, confidence: 3, occurredAt: "2026-09-02T00:00:00Z", eventId: "e2e-cox-fail" });
+  const remediated = submitArchitecturePractice({ entry, progress: failed.progress, currentState: failed.state, attemptKind: "remediation", response: architectureResponse(entry.remediationAssetId), confidence: 3, occurredAt: "2026-09-02T00:10:00Z", eventId: "e2e-cox-rem" });
+  const reviewed = submitArchitecturePractice({ entry, progress: remediated.progress, currentState: remediated.state, attemptKind: "review", response: architectureResponse(entry.reviewAssetId), confidence: 3, occurredAt: remediated.state.dueAt, eventId: "e2e-cox-review" });
+  assert.equal(reviewed.state.competence.level, "retained");
+  const projection = projectCapabilityEvidence({ states: [reviewed.state], events: [failed.event, remediated.event, reviewed.event], transferArtifacts: [], contentProgress: [reviewed.progress], contentRegistry: learningContentRegistry });
+  assert.equal(projection.find((item) => item.capabilityId === "statistical_reasoning").standardizedEvidence, "retained");
+});
+
+test("M019-G E2E Case restarts mid-calibration, completes and keeps one idempotent artifact", () => {
+  const defaults = createInitialState();
+  useAppStore.setState({ ...defaults, hydrated: true, learnerUnitStates: casePrerequisiteStates() });
+  const researchCase = researchCases[0];
+  const sessionId = useAppStore.getState().startCaseSession(researchCase.id);
+  useAppStore.getState().lockCaseStage(sessionId, { stageId: researchCase.stages[0].id, reasoning: "先冻结可回答问题，并保留细胞来源、组成和技术差异作为竞争解释。" });
+  useAppStore.getState().updateCaseStage(sessionId, "校准后收窄到队列内关联并等待下一层证据。");
+  const persisted = { ...defaults, learnerUnitStates: casePrerequisiteStates(), caseSessions: useAppStore.getState().caseSessions };
+  const restarted = migratePersistedState(JSON.parse(JSON.stringify(persisted)), defaults);
+  useAppStore.setState({ ...restarted, hydrated: true });
+  useAppStore.getState().continueCaseStage(sessionId);
+  for (const stage of researchCase.stages.slice(1)) {
+    useAppStore.getState().lockCaseStage(sessionId, { stageId: stage.id, reasoning: `根据 ${stage.id} 更新解释、比较替代模型并限制最大主张。` });
+    useAppStore.getState().updateCaseStage(sessionId, `看到 ${stage.id} 后记录新的证据权重与剩余不确定性。`);
+    useAppStore.getState().continueCaseStage(sessionId);
+  }
+  const finalResponse = Object.fromEntries(researchCase.finalTask.map((field) => [field, `${field}：保留证据边界后的最终判断。`]));
+  useAppStore.getState().completeCaseSession(sessionId, finalResponse);
+  const artifactInput = { sourceType: "case", sourceId: sessionId, conceptIds: ["evidence-claim"], capabilityIds: ["result_interpretation"], question: researchCase.titleCn, userReasoning: "完整 Decision Timeline", linkedLearningEventIds: [] };
+  const first = useAppStore.getState().createTransferArtifact(artifactInput);
+  const second = useAppStore.getState().createTransferArtifact({ ...artifactInput, userReasoning: "更新后的完整 Decision Timeline" });
+  assert.equal(first, second);
+  assert.equal(useAppStore.getState().transferArtifacts.length, 1);
+  assert.ok(useAppStore.getState().caseSessions[0].completedAt);
+});
+
+test("M019-G Paper capability gates unlock exact fields without double-counting", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const locked = renderToStaticMarkup(createElement(PaperCard, { paperId: "paper-1" }));
+  assert.match(locked, /Statistical Unit[\s\S]*尚未学习该能力/);
+  const access = getPaperFieldAccess({ states: casePrerequisiteStates(), events: [], artifacts: [], contentProgress: [] });
+  assert.equal(access.unlocked.statisticalUnit, true);
+  assert.equal(access.unlocked.confounding, true);
+  assert.equal(access.unlocked.validation, false);
+  assert.equal(access.level, "Intermediate");
+  useAppStore.setState({ ...createInitialState(), hydrated: true, learnerUnitStates: casePrerequisiteStates() });
+  useAppStore.getState().recordRoutine({ routineType: "paper_reading", status: "completed", paperId: "paper-1" });
+  useAppStore.getState().recordRoutine({ routineType: "paper_reading", status: "completed", paperId: "paper-1" });
+  assert.equal(useAppStore.getState().routineLogs.filter((item) => item.paperId === "paper-1").length, 1);
+});
+
+test("M019-G Project Studio records are append-only and transfer-safe", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const beforeStates = JSON.stringify(useAppStore.getState().learnerUnitStates);
+  const baseRecord = { projectId: "project-1", currentPhenomenon: "candidate signal", currentEvidence: "cohort association", mainUncertainty: "composition", researchQuestion: "what explains the signal", competingExplanations: "state or mixture", evidenceGap: "cell source", nextMinimalAnalysis: "donor-level check", expectedOutcomes: "direction changes", failureMode: "batch confounding", validation: "external cohort", maximumClaim: "bounded association" };
+  const first = useAppStore.getState().saveProjectStudioRecord(baseRecord);
+  const second = useAppStore.getState().saveProjectStudioRecord({ ...baseRecord, currentEvidence: "new orthogonal evidence" });
+  assert.notEqual(first, second);
+  assert.equal(useAppStore.getState().projectStudioRecords.length, 2);
+  useAppStore.getState().createTransferArtifact({ sourceType: "project", sourceId: first, conceptIds: ["research-question"], capabilityIds: ["next_step_design"], question: baseRecord.researchQuestion, userReasoning: baseRecord.nextMinimalAnalysis, linkedLearningEventIds: [] });
+  assert.equal(JSON.stringify(useAppStore.getState().learnerUnitStates), beforeStates);
 });

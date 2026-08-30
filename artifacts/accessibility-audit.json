@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-08-31",
+  "scope": "production onboarding plus global keyboard and motion contracts",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Document language",
+      "passed": true,
+      "detail": "The Chinese-first shell declares zh-CN."
+    },
+    {
+      "name": "Viewport scaling",
+      "passed": true,
+      "detail": "The viewport does not disable user zoom."
+    },
+    {
+      "name": "Visible keyboard focus",
+      "passed": true,
+      "detail": "The final focus-visible rule overrides component reset rules."
+    },
+    {
+      "name": "Reduced-motion support",
+      "passed": true,
+      "detail": "Motion-sensitive users receive the reduced-motion override."
+    },
+    {
+      "name": "Onboarding dialog semantics",
+      "passed": true,
+      "detail": "The blocking onboarding surface identifies itself as a modal dialog."
+    },
+    {
+      "name": "Dialog accessible name",
+      "passed": true,
+      "detail": "The modal heading is referenced by aria-labelledby."
+    },
+    {
+      "name": "Onboarding progress semantics",
+      "passed": true,
+      "detail": "The five-step progress indicator exposes its current value."
+    },
+    {
+      "name": "Single primary heading",
+      "passed": true,
+      "detail": "The current onboarding step has one h1."
+    },
+    {
+      "name": "Named buttons",
+      "passed": true,
+      "detail": "5 rendered buttons checked; 0 unnamed."
+    },
+    {
+      "name": "Choice state announced",
+      "passed": true,
+      "detail": "3 selectable choices expose aria-pressed."
+    },
+    {
+      "name": "ARIA references resolve",
+      "passed": true,
+      "detail": "0 unresolved aria-labelledby references."
+    }
+  ]
+}

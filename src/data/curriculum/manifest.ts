@@ -63,6 +63,7 @@ export const curriculumManifest: CurriculumManifestItemV1[] = selfRescueGuideSec
 
 const claim = (contentId: string, claimCn: string, sourceIds: string[], suffix: string): CurriculumClaimV1 => ({
   id: `claim-${contentId}-${suffix}`, contentId, claimCn, sourceIds,
+  supportMode: "curriculum_synthesis",
   supportStatus: "claim_level_review_pending",
   identifierVerified: sourceIds.every((id) => Boolean(evidenceById[id]?.doi || evidenceById[id]?.pmid || evidenceById[id]?.url)),
   metadataVerified: sourceIds.every((id) => evidenceById[id]?.verificationStatus === "verified"),

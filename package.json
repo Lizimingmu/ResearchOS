@@ -23,6 +23,7 @@
     "seed:export": "npm run build && node scripts/export-seed.mjs",
     "content:audit": "npm run build && node scripts/content-audit.mjs && node scripts/run-m018-registry-audit.mjs",
     "localization:audit": "npm run build && node scripts/localization-audit.mjs",
+    "accessibility:audit": "npm run build && node scripts/accessibility-audit.mjs",
     "performance:audit": "npm run build && node scripts/performance-audit.mjs",
     "startup:smoke": "npm run build && node scripts/startup-smoke.mjs",
     "tauri": "tauri",

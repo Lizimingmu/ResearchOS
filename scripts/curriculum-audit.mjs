@@ -41,6 +41,8 @@ for (const item of [...stagedConceptLessons, ...stagedMethodLessons, ...stagedCa
 }
 
 for (const lesson of stagedConceptLessons) {
+  if (!/[\u3400-\u9fff]/.test(lesson.titleCn)) errors.push(`${lesson.id} is not Chinese-first`);
+  if (lesson.workedExampleCn.length < 38 || !/\d|→|×|CI|DAG|表|图|时间|队列|样本|模型|流程|矩阵|曲线|变量|数据/.test(lesson.workedExampleCn)) errors.push(`${lesson.id} lacks a concrete worked example`);
   for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) {
     if (asset.hints.length || !asset.confidenceRequired || !asset.responseLocked) errors.push(`${asset.id} violates locked no-hint assessment policy`);
     if (asset.expectedOptionIds.length === 0 || asset.expectedOptionIds.length === asset.options.length) errors.push(`${asset.id} lacks discriminating distractors`);
@@ -48,17 +50,21 @@ for (const lesson of stagedConceptLessons) {
   const ids = [lesson.primaryApply.id, lesson.remediation.id, lesson.delayedReview.id];
   if (new Set(ids).size !== 3) errors.push(`${lesson.id} reuses assessment assets`);
   if (new Set([lesson.primaryApply.scenarioCn, lesson.remediation.scenarioCn, lesson.delayedReview.scenarioCn]).size !== 3) errors.push(`${lesson.id} reuses scenario wording`);
+  if ([lesson.primaryApply, lesson.remediation, lesson.delayedReview].some((asset) => asset.promptCn.includes(lesson.titleCn) || /本题聚焦/.test(asset.scenarioCn))) errors.push(`${lesson.id} assessment leaks the concept label`);
 }
 
 for (const lesson of stagedMethodLessons) {
   const dimensions = [lesson.scientificQuestionCn, lesson.inputsCn, lesson.coreLogicCn, lesson.outputsCn, lesson.assumptionsCn, lesson.appropriateWhenCn, lesson.inappropriateWhenCn, lesson.misusePatternsCn, lesson.reviewerChecksCn, lesson.paperAppearanceCn];
   if (dimensions.some((value) => Array.isArray(value) ? value.length === 0 : value.trim().length === 0)) errors.push(`${lesson.id} misses a required method dimension`);
   if (!lesson.guideSectionIds.length || lesson.guideSectionIds.some((id) => !guideIds.has(id))) errors.push(`${lesson.id} has invalid Guide mapping`);
+  if (lesson.intuitionCn.length < 24 || lesson.workedExampleCn.length < 40 || lesson.walkthroughStepsCn.length < 3) errors.push(`${lesson.id} lacks intuition or worked reasoning`);
   for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) {
     if (asset.hints.length || !asset.confidenceRequired || !asset.responseLocked) errors.push(`${asset.id} violates locked no-hint assessment policy`);
     if (asset.expectedOptionIds.length === asset.options.length) errors.push(`${asset.id} lacks distractors`);
   }
 }
+
+if (new Set(stagedCaseLabs.map((caseLab) => caseLab.stages.at(-1)?.calibrationCn)).size !== stagedCaseLabs.length) errors.push("Case labs reuse one generic final calibration claim");
 
 for (const caseLab of stagedCaseLabs) {
   if (caseLab.stages.length < 4 || caseLab.stages.length > 6) errors.push(`${caseLab.id} requires 4-6 stages`);
@@ -82,6 +88,7 @@ for (const claim of curriculumClaims) {
   if (!claim.sourceIds.length) errors.push(`${claim.id} has no claim-source mapping`);
   for (const sourceId of claim.sourceIds) if (!evidenceById[sourceId]) errors.push(`${claim.id} unknown source ${sourceId}`);
   if (!claim.identifierVerified || !claim.metadataVerified) warnings.push(`${claim.id} source metadata needs verification`);
+  if (claim.supportMode !== "curriculum_synthesis") errors.push(`${claim.id} generated prose is not visibly marked as synthesis`);
 }
 
 const publicPayload = JSON.stringify(frozenCurriculumSnapshot);

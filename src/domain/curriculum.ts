@@ -72,6 +72,9 @@ export interface StagedMethodLessonV1 {
   guideSectionIds: string[];
   capabilityIds: CapabilityId[];
   prerequisiteIds: string[];
+  intuitionCn: string;
+  workedExampleCn: string;
+  walkthroughStepsCn: string[];
   scientificQuestionCn: string;
   inputsCn: string[];
   coreLogicCn: string;
@@ -137,6 +140,7 @@ export interface CurriculumClaimV1 {
   contentId: string;
   claimCn: string;
   sourceIds: string[];
+  supportMode: "curriculum_synthesis" | "source_direct";
   supportStatus: "claim_level_review_pending" | "directly_supported" | "reasonable_synthesis" | "weakly_supported" | "unsupported" | "source_mismatch";
   identifierVerified: boolean;
   metadataVerified: boolean;

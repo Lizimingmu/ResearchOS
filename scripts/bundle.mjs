@@ -23,6 +23,12 @@ const distRoot = path.join(projectRoot, "dist");
 
 function cssBundle() {
   const styles = new Map();
+  const minifyCss = (source) => source
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s*([{}:;,>])\s*/g, "$1")
+    .replace(/;}/g, "}")
+    .trim();
   return {
     name: "researchos-css",
     resolveId(source, importer) {
@@ -40,7 +46,7 @@ function cssBundle() {
       return "export default undefined;";
     },
     generateBundle() {
-      this.emitFile({ type: "asset", fileName: "assets/index.css", source: [...styles.values()].join("\n") });
+      this.emitFile({ type: "asset", fileName: "assets/index.css", source: minifyCss([...styles.values()].join("\n")) });
     },
   };
 }

@@ -10,6 +10,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -22,6 +23,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -34,6 +36,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -46,6 +49,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -58,6 +62,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -70,6 +75,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -79,10 +85,12 @@
       "contentId": "guide-v1-m01-t07",
       "claimCn": "证据的层级、直接性和独立性共同限定主张；引用存在不等于主张被支持。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -95,6 +103,7 @@
         "src-dag",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -105,10 +114,11 @@
       "claimCn": "预测追求对新个体的表现，解释追问关系和机制；高预测性能不自动识别因果变量。",
       "sourceIds": [
         "src-tripod",
-        "src-pm-external",
+        "src-probaST",
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -121,6 +131,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -133,6 +144,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -145,6 +157,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -157,6 +170,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -166,10 +180,10 @@
       "contentId": "guide-v1-m01-t14",
       "claimCn": "同时列出能解释同一观察的多个机制，优先设计能使它们产生不同预测的证据。",
       "sourceIds": [
-        "src-competing",
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -182,6 +196,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -194,6 +209,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -206,6 +222,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -218,6 +235,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -231,6 +249,7 @@
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -244,6 +263,7 @@
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -257,6 +277,7 @@
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -270,6 +291,7 @@
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -283,6 +305,7 @@
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -296,6 +319,7 @@
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -309,6 +333,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -322,6 +347,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -335,6 +361,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -348,6 +375,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -361,6 +389,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -374,6 +403,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -387,6 +417,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -400,6 +431,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -413,6 +445,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -426,6 +459,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -439,6 +473,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -452,6 +487,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -465,6 +501,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -479,6 +516,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -486,12 +524,13 @@
     {
       "id": "claim-guide-v1-m02-t21-guide-summary",
       "contentId": "guide-v1-m02-t21",
-      "claimCn": "进入样本、留在随访或进入分析同时受相关变量影响时，条件化可能制造或扭曲关联。",
+      "claimCn": "进入研究、留在随访或进入分析的机制可使目标对照不再可识别；当选择是暴露与结局或其原因的共同结果时，条件化还会开启 collider 路径。",
       "sourceIds": [
         "src-strobe",
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -505,6 +544,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -518,6 +558,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -532,6 +573,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -545,6 +587,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -558,6 +601,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -571,6 +615,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -585,6 +630,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -592,13 +638,14 @@
     {
       "id": "claim-guide-v1-m02-t29-guide-summary",
       "contentId": "guide-v1-m02-t29",
-      "claimCn": "在开发过程之外的数据、地点或时间中按冻结模型评价表现和校准。",
+      "claimCn": "在开发及全部特征选择、调参均未接触的独立参与者或样本中，按冻结模型评价区分、校准和效用；同源随机 holdout 仍属内部验证。",
       "sourceIds": [
-        "src-tripod",
+        "src-tripod-ai",
+        "src-probaST",
         "src-pm-external",
-        "src-strobe",
-        "src-consort"
+        "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -612,6 +659,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -625,6 +673,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -634,11 +683,12 @@
       "contentId": "guide-v1-m02-t32",
       "claimCn": "同一受试者的另一模态可提供互补支持，却共享采样与队列，不能自动称为独立验证。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -652,6 +702,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -665,6 +716,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -678,6 +730,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -691,6 +744,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -704,6 +758,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -717,6 +772,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -730,6 +786,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -743,6 +800,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -756,6 +814,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -769,6 +828,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -782,6 +842,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -795,6 +856,7 @@
         "src-asa-pvalue",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -808,6 +870,7 @@
         "src-asa-pvalue",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -821,6 +884,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -834,6 +898,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -847,6 +912,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -860,6 +926,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -873,6 +940,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -886,6 +954,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -899,6 +968,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -912,6 +982,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -925,6 +996,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -934,10 +1006,12 @@
       "contentId": "guide-v1-m03-t23",
       "claimCn": "限制性立方样条用若干基函数表示平滑非线性，尾部受数据支持和结点选择约束。",
       "sourceIds": [
+        "src-rcs",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -951,6 +1025,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -964,6 +1039,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -978,6 +1054,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -987,10 +1064,12 @@
       "contentId": "guide-v1-m03-t27",
       "claimCn": "训练或选择过程使用了预测时不可获得的信息，使内部表现带入未来或测试信息。",
       "sourceIds": [
+        "src-leakage",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1004,6 +1083,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1018,6 +1098,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1032,6 +1113,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1046,6 +1128,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1055,11 +1138,12 @@
       "contentId": "guide-v1-m03-t32",
       "claimCn": "可比较个体对中风险排序与结局顺序一致的比例，受删失处理和时间框架影响。",
       "sourceIds": [
-        "src-multiomics",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-harrell-c",
+        "src-mofa-plus",
+        "src-diablo",
+        "src-asa-pvalue"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1074,6 +1158,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1084,10 +1169,11 @@
       "claimCn": "在指定预测时间和删失处理下评价动态病例/对照区分，定义必须与问题一致。",
       "sourceIds": [
         "src-roc",
+        "src-time-auc",
         "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-multiple-testing"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1102,6 +1188,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1109,13 +1196,14 @@
     {
       "id": "claim-guide-v1-m03-t36-guide-summary",
       "contentId": "guide-v1-m03-t36",
-      "claimCn": "只知道事件时间超过观察界限；有效推断要求删失机制在条件假设下可处理。",
+      "claimCn": "事件时间仅部分已知：可为右删失、左删失或区间删失；方法需匹配类型并说明条件独立删失假设，且与竞争事件、左截断区分。",
       "sourceIds": [
         "src-cox",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1130,6 +1218,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1144,6 +1233,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1158,6 +1248,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1172,6 +1263,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1179,13 +1271,14 @@
     {
       "id": "claim-guide-v1-m03-t41-guide-summary",
       "contentId": "guide-v1-m03-t41",
-      "claimCn": "关键协变量的 hazard ratio 随分析时间保持稳定；违反时单一 HR 可能掩盖时间变化。",
+      "claimCn": "每个以固定系数进入 Cox 模型的协变量，其 log-HR 假定不随分析时间变化；需检查变量特异与全局 PH，违反时建模时间变化或分层。",
       "sourceIds": [
         "src-cox",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1199,6 +1292,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1213,6 +1307,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1227,6 +1322,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1240,6 +1336,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1249,10 +1346,12 @@
       "contentId": "guide-v1-m03-t46",
       "claimCn": "事件提供主要信息，但简单固定阈值不能替代基于收缩、预期性能和参数数的样本量论证。",
       "sourceIds": [
+        "src-pmsampsize",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1267,6 +1366,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1279,6 +1379,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1291,6 +1392,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1303,6 +1405,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1316,6 +1419,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1328,6 +1432,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1340,6 +1445,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1352,6 +1458,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1364,6 +1471,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1376,6 +1484,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1388,6 +1497,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1400,6 +1510,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1412,6 +1523,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1424,6 +1536,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1436,6 +1549,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1448,6 +1562,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1460,6 +1575,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1472,6 +1588,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1481,10 +1598,12 @@
       "contentId": "guide-v1-m04-t18",
       "claimCn": "从数据契约、最小测试、边界案例、引用 API 和独立实现对照审查，而不是凭代码风格相信。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1497,6 +1616,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1509,6 +1629,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1521,6 +1642,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1533,6 +1655,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1545,6 +1668,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1559,6 +1683,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1573,6 +1698,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1587,6 +1713,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1601,6 +1728,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1615,6 +1743,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1629,6 +1758,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1638,11 +1768,12 @@
       "contentId": "guide-v1-m05-t07",
       "claimCn": "结果顺序应使前一项证据提出下一项必要问题，而非把所有分析并排堆放。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-prisma-2020"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1657,6 +1788,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1671,6 +1803,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1685,6 +1818,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1699,6 +1833,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1713,6 +1848,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1727,6 +1863,7 @@
         "src-consort",
         "src-prisma-2020"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1741,6 +1878,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1755,6 +1893,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1764,11 +1903,12 @@
       "contentId": "guide-v1-m05-t16",
       "claimCn": "比较主张动词与设计：关联数据不应写成导致，内部开发不应写成普适临床价值。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-prisma-2020"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1783,6 +1923,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1797,6 +1938,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1811,6 +1953,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1825,6 +1968,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1839,6 +1983,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1853,6 +1998,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1862,11 +2008,12 @@
       "contentId": "guide-v1-m05-t23",
       "claimCn": "比较问题重要性、设计强度、验证层级和证据链，而不是只比较分析数量或图的美观。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-prisma-2020",
-        "src-strobe",
-        "src-consort"
+        "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1877,9 +2024,9 @@
       "claimCn": "RNA、蛋白、修饰、代谢物和形态测量不同实体；跨层解释必须保留测量边界。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1890,9 +2037,9 @@
       "claimCn": "转录、翻译、降解和技术覆盖使 RNA 与蛋白不必一一对应，失配不自动代表错误。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1903,9 +2050,9 @@
       "claimCn": "bulk 信号是细胞组成与各细胞状态的加权组合，不能直接指派给某一细胞类型。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1916,9 +2063,9 @@
       "claimCn": "前者来自制备、仪器和批次，后者来自目标生物差异；设计需避免二者完全混杂。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1930,9 +2077,9 @@
       "sourceIds": [
         "src-batch",
         "src-scib",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1940,12 +2087,12 @@
     {
       "id": "claim-guide-v1-m06-t06-guide-summary",
       "contentId": "guide-v1-m06-t06",
-      "claimCn": "将技术尺度调整到可比较表征，依赖‘大多数特征如何变化’等假设，不是把数据变真实。",
+      "claimCn": "归一化目标与假设依模态和方法而异；必须说明技术因子、参考尺度及稳定特征、spike-in 或组成参考，不能把一套规则迁移到全部组学。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1957,9 +2104,9 @@
       "sourceIds": [
         "src-missing",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1970,9 +2117,9 @@
       "claimCn": "估计预定义组间特征差异并控制模型与多重性；结果是关联而非自动机制。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1983,9 +2130,9 @@
       "claimCn": "方向和幅度要结合基线丰度、变异、尺度与不确定性解释。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -1997,9 +2144,9 @@
       "sourceIds": [
         "src-multiple-testing",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2011,9 +2158,9 @@
       "sourceIds": [
         "src-pca",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2025,9 +2172,9 @@
       "sourceIds": [
         "src-umap",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2038,9 +2185,9 @@
       "claimCn": "按所选特征、尺度、距离和算法划分相似性；稳定性与外部意义需另行验证。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2052,9 +2199,9 @@
       "sourceIds": [
         "src-nmf",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2062,12 +2209,12 @@
     {
       "id": "claim-guide-v1-m06-t15-guide-summary",
       "contentId": "guide-v1-m06-t15",
-      "claimCn": "亚型是可重复的分子分类或连续结构描述，必须证明稳定、可分配和有增量意义。",
+      "claimCn": "先判断结构是离散类别还是连续轴；只有稳定、可冻结分配且能在独立数据复现的离散类别才称 subtype，连续结构应报告 program 或 axis。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2078,9 +2225,9 @@
       "claimCn": "对重采样、预处理和算法扰动保持一致才说明结构稳健；漂亮热图不能替代稳定性。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2091,9 +2238,9 @@
       "claimCn": "筛选特征改变估计空间，必须在训练流程内完成并在新数据评价。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2104,9 +2251,9 @@
       "claimCn": "基因集帮助压缩协同变化，但数据库注释、冗余和细胞组成限制机制解释。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2114,13 +2261,13 @@
     {
       "id": "claim-guide-v1-m06-t19-guide-summary",
       "contentId": "guide-v1-m06-t19",
-      "claimCn": "检验候选列表是否相对明确背景集富集；背景和选择过程决定零分布。",
+      "claimCn": "检验阈值化候选列表是否相对明确 universe 过度出现；列表阈值、背景集和超几何或 Fisher 型零模型必须预先说明，不与 ranked-list GSEA 混用。",
       "sourceIds": [
-        "src-gsea",
+        "src-ora",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2131,10 +2278,11 @@
       "claimCn": "GSEA 沿排序列表检查基因集成员是否集中在两端，置换单位需匹配实验设计。",
       "sourceIds": [
         "src-gsea",
-        "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-camera",
+        "src-ora",
+        "src-batch"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2145,10 +2293,11 @@
       "claimCn": "产生样本级相对基因集分数以描述表达模式；分数不是通路活性或因果机制的直接测量。",
       "sourceIds": [
         "src-gsea",
+        "src-camera",
         "src-gsva",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-ssgsea"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2159,9 +2308,9 @@
       "claimCn": "高度重叠的集合会产生相关结果，数量不能当作独立证据条数。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2172,9 +2321,9 @@
       "claimCn": "从程序中挑代表特征要说明选择规则、稳定性与是否只是高丰度代理。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2185,9 +2334,9 @@
       "claimCn": "冻结预处理和分配器，在独立数据中评价可分配性、稳定性、关联与增量价值。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2198,9 +2347,9 @@
       "claimCn": "聚类描述共变样本，机制需要干预或更具区分力的时空和功能证据。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2211,9 +2360,9 @@
       "claimCn": "肽段鉴定、蛋白推断、动态范围和缺失共同限制丰度估计。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2224,9 +2373,9 @@
       "claimCn": "组织蛋白丰度混合肿瘤、免疫、基质和血液来源，不能直接归属细胞。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2237,9 +2386,9 @@
       "claimCn": "总丰度不等于酶活性、定位或磷酸化状态，功能主张需要相应层的测量。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2250,9 +2399,9 @@
       "claimCn": "一组协同蛋白特征可描述样本状态，但其来源、稳定性与功能需分开验证。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2263,9 +2412,9 @@
       "claimCn": "ECM 蛋白增加可来自组成、沉积、降解或取样；不能单凭 bulk 丰度指定 CAF 机制。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2275,10 +2424,12 @@
       "contentId": "guide-v1-m06-t31",
       "claimCn": "跨层一致提供相容性，失配可能来自调控、半衰期、细胞组成或测量，需有竞争解释。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2289,9 +2440,9 @@
       "claimCn": "测量被捕获细胞中转录本的稀疏样本，不直接测蛋白、功能或组织总体比例。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2302,9 +2453,9 @@
       "claimCn": "细胞嵌套于样本和供体；患者级对比的独立复制通常在供体层。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2312,12 +2463,14 @@
     {
       "id": "claim-guide-v1-m06-t34-guide-summary",
       "contentId": "guide-v1-m06-t34",
-      "claimCn": "基于测序深度、线粒体比例、复杂度和异常模式识别低质量细胞，但阈值需与组织和协议一致。",
+      "claimCn": "同时审查样本级质量、cell calling、低质量细胞、doublet、ambient RNA、解离应激和异常样本；阈值按组织与协议设定并做敏感性分析。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-scrna-best",
+        "src-doubletfinder",
+        "src-soupx",
+        "src-batch"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2328,9 +2481,9 @@
       "claimCn": "结合参考、标志组合、上下文和不确定性赋予标签，避免凭单一 marker 强制命名。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2341,9 +2494,9 @@
       "claimCn": "marker 是在指定比较中区分群体的特征，不必是唯一、稳定或功能决定因子。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2354,9 +2507,9 @@
       "claimCn": "目标可能是细胞型内供体组间差异；推断必须保留供体复制和批次。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2368,9 +2521,9 @@
       "sourceIds": [
         "src-pseudorep",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2382,9 +2535,9 @@
       "sourceIds": [
         "src-pseudobulk",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2395,9 +2548,9 @@
       "claimCn": "总体表达差异可能来自细胞比例变化或同类细胞状态改变，两者需分别建模。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2409,9 +2562,9 @@
       "sourceIds": [
         "src-pseudobulk",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2422,9 +2575,9 @@
       "claimCn": "跨多个基因的协调表达描述可变状态，需确认跨供体稳定且不是 QC 或批次代理。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2435,9 +2588,9 @@
       "claimCn": "细胞类型指相对稳定身份，状态指可变功能程序；边界受组织和连续谱影响。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2449,9 +2602,9 @@
       "sourceIds": [
         "src-trajectory",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2463,9 +2616,9 @@
       "sourceIds": [
         "src-cellchat",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2477,9 +2630,9 @@
       "sourceIds": [
         "src-cellchat",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2491,9 +2644,9 @@
       "sourceIds": [
         "src-milo",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2505,9 +2658,9 @@
       "sourceIds": [
         "src-batch",
         "src-scib",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2519,9 +2672,9 @@
       "sourceIds": [
         "src-batch",
         "src-scib",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2531,10 +2684,12 @@
       "contentId": "guide-v1-m06-t50",
       "claimCn": "不同模态可支持同一构念，但测量层、样本独立性和方向必须明确。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2546,9 +2701,9 @@
       "sourceIds": [
         "src-fair",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2563,6 +2718,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2572,10 +2728,12 @@
       "contentId": "guide-v1-m06-t53",
       "claimCn": "跨层方向一致说明结果相容，但共享样本和共同偏倚限制独立证据强度。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2585,10 +2743,12 @@
       "contentId": "guide-v1-m06-t54",
       "claimCn": "不一致可暴露层特异调控、时间差或技术/组成问题，不应被简单删除。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2599,9 +2759,9 @@
       "claimCn": "使用偏倚结构不同的方法或数据回答同一问题，观察结论是否在不同弱点下保持。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2612,9 +2772,9 @@
       "claimCn": "每个模态只对其测量层负责，解释时明确 RNA、蛋白、细胞组成或空间位置。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2624,10 +2784,12 @@
       "contentId": "guide-v1-m06-t57",
       "claimCn": "匹配多模态共享受试者，能互补但不是独立队列验证。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2639,9 +2801,9 @@
       "sourceIds": [
         "src-batch",
         "src-scib",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2652,9 +2814,9 @@
       "claimCn": "观察是数据层事实，意义是基于模型和背景的解释；两者之间存在可质疑的推理链。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2665,9 +2827,9 @@
       "claimCn": "统计关系或模式只描述数据，机制还需过程、时间、干预和排除替代路径的证据。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2678,9 +2840,9 @@
       "claimCn": "可靠估计与生物合理性互相补充但不能替代；合理故事也可能来自有偏数据。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2691,9 +2853,9 @@
       "claimCn": "为同一结果建立能产生不同后续预测的竞争模型，推动区分性验证。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2704,9 +2866,9 @@
       "claimCn": "共同原因可产生暴露—结局关联，需通过设计、调整和敏感性而非显著性处理。",
       "sourceIds": [
         "src-dag",
-        "src-strobe",
-        "src-multiomics"
+        "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2717,9 +2879,9 @@
       "claimCn": "样本中细胞或组织比例变化可造成 bulk 信号变化，而单个细胞状态未必改变。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2730,9 +2892,9 @@
       "claimCn": "测量饱和、检测限、误分类或协议差异可形成表面生物模式。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2747,6 +2909,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2757,9 +2920,9 @@
       "claimCn": "总体效应可在亚群、中心或时间中变化；探索异质性需预定义、足够信息和交互证据。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2770,9 +2933,9 @@
       "claimCn": "异常点可能是错误、真实极端或新亚群；应查来源和影响而非自动删除。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2783,9 +2946,9 @@
       "claimCn": "未达阈值需结合效应区间、功效、测量和可辨识性，不能简单写成没有作用。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2796,9 +2959,9 @@
       "claimCn": "与零相容的数据可能同时容许重要正负效应；等效或非劣需要专门设计。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2809,9 +2972,9 @@
       "claimCn": "结论在合理预处理、模型、排除和假设变化下保持，而不是只重复同一分析。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2822,9 +2985,9 @@
       "claimCn": "量化不可验证假设或分析选择对结果的影响，并说明哪些改变会推翻结论。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2835,9 +2998,9 @@
       "claimCn": "亚组差异需要交互和预设，不能用一组显著另一组不显著声称效应不同。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2848,9 +3011,9 @@
       "claimCn": "灵活选择结局、模型、阈值和样本会增加选择性发现，需预先限定或完整披露。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2861,9 +3024,9 @@
       "claimCn": "偏倚方向不同的证据若收敛，比同一数据重复多种相似模型更有信息。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2874,9 +3037,9 @@
       "claimCn": "不同测量原理提供独立误差结构，能区分技术伪影与真实构念。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2886,11 +3049,12 @@
       "contentId": "guide-v1-m07-t19",
       "claimCn": "明确当前证据最多允许陈述的总体、尺度、关系类型和时间范围。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2901,9 +3065,9 @@
       "claimCn": "当主张动词、总体或机制强度超出设计与测量时，应降级措辞或增加证据。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2913,11 +3077,12 @@
       "contentId": "guide-v1-m07-t21",
       "claimCn": "直接回答主问题、跨合理分析稳健且有清楚边界的结果才应进入主结论。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2928,9 +3093,9 @@
       "claimCn": "次要、诊断和完整透明结果可放补充，但支撑主结论的关键方法不能隐藏。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2941,9 +3106,9 @@
       "claimCn": "新证据若改变偏倚结构或可区分解释才是 corroboration；同一数据换图常只是冗余。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2954,9 +3119,9 @@
       "claimCn": "先检查数据与流程，再比较竞争解释和预先预期，避免事后把偶然结果包装成目的。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2966,10 +3131,12 @@
       "contentId": "guide-v1-m07-t25",
       "claimCn": "层间或队列间不一致若可重复并对应不同机制预测，可成为新的研究问题。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2983,6 +3150,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -2996,6 +3164,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3009,6 +3178,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3022,6 +3192,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3035,6 +3206,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3044,11 +3216,11 @@
       "contentId": "guide-v1-m08-t06",
       "claimCn": "选择让不同假设产生可观察差异的分析或实验，而非分别寻找支持材料。",
       "sourceIds": [
-        "src-competing",
         "src-strobe",
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3062,6 +3234,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3075,6 +3248,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3088,6 +3262,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3101,6 +3276,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3114,6 +3290,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3127,6 +3304,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3136,11 +3314,12 @@
       "contentId": "guide-v1-m08-t13",
       "claimCn": "主图组合应完成一项完整证据工作并让读者看见必要对照和不确定性。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-tripod"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3150,11 +3329,12 @@
       "contentId": "guide-v1-m08-t14",
       "claimCn": "从问题到描述、主要检验、验证和边界形成递进链，后一图由前一图留下的缺口驱动。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-prisma-2020",
-        "src-strobe",
-        "src-tripod"
+        "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3168,6 +3348,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3181,6 +3362,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3194,6 +3376,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3203,11 +3386,12 @@
       "contentId": "guide-v1-m08-t18",
       "claimCn": "验证数据应匹配目标使用场景并与开发过程隔离，说明时间、地点、纳入和事件信息。",
       "sourceIds": [
-        "src-tripod",
+        "src-tripod-ai",
+        "src-probaST",
         "src-pm-external",
-        "src-strobe",
-        "src-internal-validation"
+        "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3221,6 +3405,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3234,6 +3419,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3247,6 +3433,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3260,6 +3447,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3269,11 +3457,12 @@
       "contentId": "guide-v1-m09-t01",
       "claimCn": "主张包含对象、关系、尺度和适用域；动词强度必须与证据类型一致。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3287,6 +3476,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3300,6 +3490,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3313,6 +3504,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3322,11 +3514,12 @@
       "contentId": "guide-v1-m09-t05",
       "claimCn": "主图选择必要证据链，结果仓库只按分析数量堆图且没有问题结构。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3336,11 +3529,12 @@
       "contentId": "guide-v1-m09-t06",
       "claimCn": "主文承载理解核心结论所需证据，补充承载透明细节与次要结果。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3354,6 +3548,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3367,6 +3562,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3380,6 +3576,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3394,6 +3591,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3407,6 +3605,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3420,6 +3619,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3433,6 +3633,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3442,11 +3643,12 @@
       "contentId": "guide-v1-m09-t14",
       "claimCn": "警惕 causes、proves、validates、clinically useful 等超过设计的动词。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3460,6 +3662,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3473,6 +3676,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3486,6 +3690,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3499,6 +3704,7 @@
         "src-consort",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3508,11 +3714,12 @@
       "contentId": "guide-v1-m09-t19",
       "claimCn": "连接证据缺口、目标 estimand、预期分支和对决策的影响。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3522,11 +3729,12 @@
       "contentId": "guide-v1-m09-t20",
       "claimCn": "指出它无法识别什么、会引入何种偏倚、与已有证据何处冗余及机会成本。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3534,11 +3742,13 @@
     {
       "id": "claim-guide-v1-m10-t01-guide-summary",
       "contentId": "guide-v1-m10-t01",
-      "claimCn": "把问题形成、证据判断和结论边界交给 AI 会削弱发现错误与承担科学责任的能力。",
+      "claimCn": "把问题形成、证据判断和结论边界整体交给 AI，会移除可审计的人类检查点并使错误归因与责任记录变得困难。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3548,9 +3758,11 @@
       "contentId": "guide-v1-m10-t02",
       "claimCn": "适合帮助列候选、改写、生成测试和整理公开信息，但输出需按风险验证。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3560,9 +3772,11 @@
       "contentId": "guide-v1-m10-t03",
       "claimCn": "问题、estimand、数据治理、证据权重、因果主张和最终署名责任不能外包。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3572,9 +3786,11 @@
       "contentId": "guide-v1-m10-t04",
       "claimCn": "先留下独立判断，再让 AI 寻找漏洞，最后由研究者基于证据记录决定。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3584,9 +3800,11 @@
       "contentId": "guide-v1-m10-t05",
       "claimCn": "检查问题对齐、单位、时间、偏倚、泄漏、假设、验证和不可识别目标。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3596,9 +3814,11 @@
       "contentId": "guide-v1-m10-t06",
       "claimCn": "用小型真值数据、边界测试、API 文档、数据契约和独立计算验证。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3608,10 +3828,12 @@
       "contentId": "guide-v1-m10-t07",
       "claimCn": "AI 可能生成不存在或错配的题名、DOI 和结论；每个标识符与主张都需回到原始来源。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-prisma-2020",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3621,9 +3843,11 @@
       "contentId": "guide-v1-m10-t08",
       "claimCn": "分开核验来源存在、元数据正确和具体主张被直接支持，不能只检查 DOI 可解析。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3633,9 +3857,11 @@
       "contentId": "guide-v1-m10-t09",
       "claimCn": "流畅叙事常把相关结果连接成未被检验的机制，需要证据图和替代解释拆解。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3646,9 +3872,11 @@
       "claimCn": "模型倾向使用 drives、leads to 等动词；必须按设计、时间和结构降级。",
       "sourceIds": [
         "src-dag",
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3658,9 +3886,11 @@
       "contentId": "guide-v1-m10-t11",
       "claimCn": "视觉质量不能补上问题、对照、单位、验证或结论边界。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3670,9 +3900,11 @@
       "contentId": "guide-v1-m10-t12",
       "claimCn": "在调用前记录当前问题、独立判断、未知、允许发送的数据和期望批评。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3682,9 +3914,11 @@
       "contentId": "guide-v1-m10-t13",
       "claimCn": "记录接受、拒绝或修改了什么、依据何在、仍需验证什么以及 AI 影响了哪些决定。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3694,9 +3928,11 @@
       "contentId": "guide-v1-m10-t14",
       "claimCn": "要求列失败模式、反例、替代解释和验证步骤，比要求生成最终故事更利于所有权。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3706,9 +3942,11 @@
       "contentId": "guide-v1-m10-t15",
       "claimCn": "把已知证据与边界结构化提供，要求每个解释给出可区分预测并标注不确定性。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3718,9 +3956,11 @@
       "contentId": "guide-v1-m10-t16",
       "claimCn": "使用独立上下文和明确 rubric 主动找错；AI 审查不能代替领域专家或自我批准。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3730,9 +3970,11 @@
       "contentId": "guide-v1-m10-t17",
       "claimCn": "限定接口、提供测试、最小化权限、审查 diff，并由人对结果负责。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3742,9 +3984,11 @@
       "contentId": "guide-v1-m10-t18",
       "claimCn": "保存提示、模型/版本、时间、输入范围、输出、验证与最终决定，避免只保留润色后的结果。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3752,11 +3996,13 @@
     {
       "id": "claim-guide-v1-m10-t19-guide-summary",
       "contentId": "guide-v1-m10-t19",
-      "claimCn": "无法在无 AI 时解释问题、检查代码或捍卫结论，说明辅助已变成认知依赖。",
+      "claimCn": "若研究者无法独立解释问题、复核代码或为结论给出证据依据，应暂停自动化升级并恢复人工检查点。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3764,11 +4010,13 @@
     {
       "id": "claim-guide-v1-m10-t20-guide-summary",
       "contentId": "guide-v1-m10-t20",
-      "claimCn": "以独立思考、可验证任务分解和责任记录逐步提高研究者自己的判断能力。",
+      "claimCn": "以独立判断记录、可验证任务分解和责任链，把 AI 限定为可审计的辅助而非最终决策者。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3776,11 +4024,12 @@
     {
       "id": "claim-staged-concept-research-question-concept-boundary",
       "contentId": "staged-concept-research-question",
-      "claimCn": "当前最多支持对「Research Question」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“补齐总体、比较、结局、时间和目标效应，并删除现有数据不能回答的部分”并核对“问题中的每个字段都能对应可观察数据和明确分析单位”后，才能作出与“明确总体、对象、比较、结局、时间与估计目标，使证据能够回答而不是只围绕主题堆积。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3788,11 +4037,12 @@
     {
       "id": "claim-staged-concept-hypothesis-concept-boundary",
       "contentId": "staged-concept-hypothesis",
-      "claimCn": "当前最多支持对「Hypothesis」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“把机制陈述、可观察预测和预先可接受的反证结果一一匹配”并核对“预测含对象、时间、方向与测量，反证条件不是事后追加”后，才能作出与“假设是对数据生成机制或可观察差异的可检验预期，不是希望结果成立的宣言。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3800,12 +4050,14 @@
     {
       "id": "claim-staged-concept-evidence-claim-concept-boundary",
       "contentId": "staged-concept-evidence-claim",
-      "claimCn": "当前最多支持对「Evidence vs Claim」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“为每条证据标出直接性、独立性和它实际支持的主张动词”并核对“来源于同一受试者或同一误差机制的结果没有被重复计作独立验证”后，才能作出与“证据的层级、直接性和独立性共同限定主张；引用存在不等于主张被支持。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3813,11 +4065,12 @@
     {
       "id": "claim-staged-concept-association-causation-concept-boundary",
       "contentId": "staged-concept-association-causation",
-      "claimCn": "当前最多支持对「Association vs Causation」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“指出阻止因果解释的具体路径，并选择能阻断或识别它的设计/分析”并核对“时间顺序、共同原因和目标 estimand 均被明确，而非仅写‘相关不等因果’”后，才能作出与“关联描述共同变化；因果主张还要求时间顺序、可比性、结构假设与对偏倚的处理。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-dag",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3825,11 +4078,12 @@
     {
       "id": "claim-staged-concept-exploratory-confirmatory-concept-boundary",
       "contentId": "staged-concept-exploratory-confirmatory",
-      "claimCn": "当前最多支持对「Exploratory vs Confirmatory Research」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“逐项标记特征、阈值、主要终点和分析集是事前还是事后决定，并据此改写结论”并核对“没有把同一数据上的发现和确证写成两个独立阶段”后，才能作出与“探索允许生成模式与假设；确证要求预先限定问题、分析与误差控制，二者的语言和证据门槛不同。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3837,12 +4091,13 @@
     {
       "id": "claim-staged-concept-statistical-unit-concept-boundary",
       "contentId": "staged-concept-statistical-unit",
-      "claimCn": "当前最多支持对「Statistical Unit」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“先由研究问题确定独立信息层级，再填写聚类层和有效 n”并核对“区分观测行数、测量精度与独立样本量”后，才能作出与“对目标推断贡献独立信息的层级，由问题与设计共同决定而不是由数据行数决定。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-pseudorep",
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3850,12 +4105,13 @@
     {
       "id": "claim-staged-concept-biological-technical-replicate-concept-boundary",
       "contentId": "staged-concept-biological-technical-replicate",
-      "claimCn": "当前最多支持对「Biological Replicate」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“给每个重复标明独立来源与它能估计的变异成分”并核对“增加技术重复没有被解释成增加目标总体的生物学 n”后，才能作出与“代表目标生物总体中独立来源的重复，用于估计来源之间的真实变异。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-pseudorep",
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3863,12 +4119,13 @@
     {
       "id": "claim-staged-concept-pseudoreplication-concept-boundary",
       "contentId": "staged-concept-pseudoreplication",
-      "claimCn": "当前最多支持对「Pseudoreplication」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“按独立单位重做估计或显式建模相关结构，并报告有效 n”并核对“标准误与自由度来自独立来源而不是下层观测数”后，才能作出与“把共享来源或处理的相关观测当作独立重复会夸大有效样本量并低估不确定性。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-pseudorep",
         "src-strobe",
         "src-consort"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3876,12 +4133,13 @@
     {
       "id": "claim-staged-concept-population-sample-concept-boundary",
       "contentId": "staged-concept-population-sample",
-      "claimCn": "当前最多支持对「Population / Sample / Target Population」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“明确目标总体、抽样框、入组与分析选择，并收窄可推广范围”并核对“每一个从总体到样本的选择机制及其与暴露/结局关系都被审查”后，才能作出与“样本来自可接触总体，目标总体是希望推广到的人群；三者不一致会限制外推。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3889,13 +4147,14 @@
     {
       "id": "claim-staged-concept-confounding-concept-boundary",
       "contentId": "staged-concept-confounding",
-      "claimCn": "当前最多支持对「Confounding」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“先定义总效应或直接效应，再依据时间化 DAG 选择调整集”并核对“共同原因、中介、碰撞点和治疗后变量被分别处理”后，才能作出与“暴露与结局共同原因造成目标关联混入非目标路径，处理依赖明确 estimand 和结构假设。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-dag",
         "src-strobe",
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3903,12 +4162,13 @@
     {
       "id": "claim-staged-concept-selection-bias-concept-boundary",
       "contentId": "staged-concept-selection-bias",
-      "claimCn": "当前最多支持对「Selection Bias」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“画出进入、留存和分析选择机制，并说明目标对照何处被破坏”并核对“区分抽样覆盖、差异参与、失访和 collider 条件化”后，才能作出与“进入研究、留在随访或进入分析的机制可使目标对照不再可识别；当选择是暴露与结局或其原因的共同结果时，条件化还会开启 collider 路径。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3916,12 +4176,13 @@
     {
       "id": "claim-staged-concept-internal-external-validity-concept-boundary",
       "contentId": "staged-concept-internal-external-validity",
-      "claimCn": "当前最多支持对「Internal Validity」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“分别审查样本内识别和向目标总体运输，而不是给单一‘有效’标签”并核对“目标总体、选择机制和测量/治疗环境差异均被显式比较”后，才能作出与“结果对实际研究样本与目标对照是否可信，首先取决于偏倚、测量和分析。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-consort",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3929,12 +4190,13 @@
     {
       "id": "claim-staged-concept-effect-size-concept-boundary",
       "contentId": "staged-concept-effect-size",
-      "claimCn": "当前最多支持对「Effect Size」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“计算并报告与问题匹配的绝对/相对效应及单位”并核对“效应与临床重要界值、基线风险和 CI 一起解释”后，才能作出与“效应量把差异或关联放在可解释尺度上；应与不确定性、基线风险和临床语境共同报告。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3942,12 +4204,13 @@
     {
       "id": "claim-staged-concept-standard-error-concept-boundary",
       "contentId": "staged-concept-standard-error",
-      "claimCn": "当前最多支持对「Standard Error」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“依据抽样单位和相关结构选择标准误计算”并核对“能清楚区分 SD、SE 和生物学变异层级”后，才能作出与“标准误描述估计量的抽样变异，依赖独立单位、模型和样本信息量，而非个体差异大小。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3955,12 +4218,13 @@
     {
       "id": "claim-staged-concept-confidence-interval-concept-boundary",
       "contentId": "staged-concept-confidence-interval",
-      "claimCn": "当前最多支持对「Confidence Interval」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“用区间端点与临床界值写出兼容范围和精度”并核对“没有把 95% CI 解释为参数有 95% 概率位于本区间”后，才能作出与“频率学区间的覆盖性质来自重复程序，不能解释为本次区间含真值的概率。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3968,12 +4232,13 @@
     {
       "id": "claim-staged-concept-p-value-concept-boundary",
       "contentId": "staged-concept-p-value",
-      "claimCn": "当前最多支持对「P value」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“只在明确 H0、检验统计量、模型和选择过程下解释 P 值”并核对“区分 P(data or more extreme | H0, model) 与 P(H0 | data)”后，才能作出与“在指定模型和零假设下，得到至少同样极端数据的概率；不是零假设为真的概率。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3981,12 +4246,13 @@
     {
       "id": "claim-staged-concept-multiple-testing-fdr-concept-boundary",
       "contentId": "staged-concept-multiple-testing-fdr",
-      "claimCn": "当前最多支持对「FDR」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“先定义检验族，再按预设 FDR 程序形成候选集合”并核对“单个发现的真假概率没有从 q 值直接推出”后，才能作出与“FDR 控制被拒绝假设中错误发现的期望比例，不保证每个具体发现为真。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-multiple-testing",
         "src-asa-pvalue",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -3994,12 +4260,13 @@
     {
       "id": "claim-staged-concept-power-concept-boundary",
       "contentId": "staged-concept-power",
-      "claimCn": "当前最多支持对「Power」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“用事前效应假设、alpha、设计、方差/事件率与分析规则规划样本量”并核对“结果解释阶段没有用观察效应计算事后功效背书”后，才能作出与“功效是在特定真实效应和设计下拒绝零假设的概率，不是已得显著结果为真的概率。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4007,12 +4274,13 @@
     {
       "id": "claim-staged-concept-interaction-concept-boundary",
       "contentId": "staged-concept-interaction",
-      "claimCn": "当前最多支持对「Interaction」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“在预先指定的尺度上计算亚组效应及正式 interaction contrast”并核对“没有用‘一个显著、一个不显著’冒充亚组间差异”后，才能作出与“交互表示一个变量的效应尺度随另一个变量改变；其含义依赖所选链接和尺度。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4020,13 +4288,14 @@
     {
       "id": "claim-staged-concept-overfitting-concept-boundary",
       "contentId": "staged-concept-overfitting",
-      "claimCn": "当前最多支持对「Overfitting」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“让全部选择步骤接受内部重采样并在独立样本上冻结评估”并核对“复杂度按事件/独立单位信息而非总行数约束”后，才能作出与“模型学习了开发数据中的偶然波动，在新数据上表现下降；复杂度与信息量失衡是核心风险。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-internal-validation",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4034,12 +4303,14 @@
     {
       "id": "claim-staged-concept-data-leakage-concept-boundary",
       "contentId": "staged-concept-data-leakage",
-      "claimCn": "当前最多支持对「Data Leakage」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“把预处理、特征选择和调参全部嵌套进训练数据角色”并核对“受试者、时间与样本层面的泄漏都被审查”后，才能作出与“训练或选择过程使用了预测时不可获得的信息，使内部表现带入未来或测试信息。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
+        "src-leakage",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4047,13 +4318,14 @@
     {
       "id": "claim-staged-concept-validation-concept-boundary",
       "contentId": "staged-concept-validation",
-      "claimCn": "当前最多支持对「External Validation」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“准确命名验证对象、独立性、冻结点、指标与成功/失败标准”并核对“同源 holdout 没有被称为外部验证，跨模态支持没有替代外部性能”后，才能作出与“在开发及全部特征选择、调参均未接触的独立参与者或样本中，按冻结模型评价区分、校准和效用；同源随机 holdout 仍属内部验证。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-tripod",
+        "src-tripod-ai",
+        "src-probaST",
         "src-pm-external",
-        "src-strobe",
-        "src-consort"
+        "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4061,13 +4333,14 @@
     {
       "id": "claim-staged-concept-censoring-concept-boundary",
       "contentId": "staged-concept-censoring",
-      "claimCn": "当前最多支持对「Censoring」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“识别删失类型并选择匹配方法，同时说明条件独立删失假设”并核对“删失、左截断和竞争事件没有混为同一状态”后，才能作出与“事件时间仅部分已知：可为右删失、左删失或区间删失；方法需匹配类型并说明条件独立删失假设，且与竞争事件、左截断区分。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-cox",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4075,13 +4348,14 @@
     {
       "id": "claim-staged-concept-hazard-ratio-concept-boundary",
       "contentId": "staged-concept-hazard-ratio",
-      "claimCn": "当前最多支持对「Hazard Ratio」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“明确 time zero、风险集、变量单位、PH 与时间点绝对风险语境”并核对“HR 没有被解释成任一时点风险降低固定百分比”后，才能作出与“HR 是条件瞬时事件率之比，不是固定时点风险比、概率比或寿命倍数。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-cox",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4089,12 +4363,13 @@
     {
       "id": "claim-staged-concept-time-origin-concept-boundary",
       "contentId": "staged-concept-time-origin",
-      "claimCn": "当前最多支持对「Time origin」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“让资格、策略分配和随访零点在同一临床时刻对齐”并核对“任何必须存活才能进入暴露组的时间都没有被计作暴露后风险时间”后，才能作出与“所有个体进入风险过程的零点必须与资格、暴露分配和随访一致。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4102,12 +4377,12 @@
     {
       "id": "claim-staged-concept-composition-state-concept-boundary",
       "contentId": "staged-concept-composition-state",
-      "claimCn": "当前最多支持对「Composition vs within-state expression」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“把总体信号拆成组成比例与类内状态两个可区分部分”并核对“每供体效应和 CI 足以支持状态变化，而非用未显著宣称没有变化”后，才能作出与“总体表达差异可能来自细胞比例变化或同类细胞状态改变，两者需分别建模。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4115,13 +4390,13 @@
     {
       "id": "claim-staged-concept-batch-effect-concept-boundary",
       "contentId": "staged-concept-batch-effect",
-      "claimCn": "当前最多支持对「Batch effect」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“先在设计阶段打破技术因素与生物组的完全重合，再做有依据的校正”并核对“完全混杂被认定为不可由算法唯一分离”后，才能作出与“技术处理与时间/平台造成系统差异；若与生物组重合，事后校正无法可靠分离。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-batch",
         "src-scib",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4129,12 +4404,12 @@
     {
       "id": "claim-staged-concept-bulk-mixture-concept-boundary",
       "contentId": "staged-concept-bulk-mixture",
-      "claimCn": "当前最多支持对「Bulk tissue is a mixture」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“把 bulk 结果表述为混合信号，并提出区分组成与类内变化的测量”并核对“没有从混合均值直接指定产生信号的细胞来源”后，才能作出与“bulk 信号是细胞组成与各细胞状态的加权组合，不能直接指派给某一细胞类型。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4142,12 +4417,12 @@
     {
       "id": "claim-staged-concept-rna-protein-concept-boundary",
       "contentId": "staged-concept-rna-protein",
-      "claimCn": "当前最多支持对「RNA ≠ Protein」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“分别审查两种模态的时间、测量对象和生成/降解机制”并核对“不一致没有被简化成‘其中一种模态一定错’”后，才能作出与“转录、翻译、降解和技术覆盖使 RNA 与蛋白不必一一对应，失配不自动代表错误。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4155,12 +4430,12 @@
     {
       "id": "claim-staged-concept-cluster-stability-concept-boundary",
       "contentId": "staged-concept-cluster-stability",
-      "claimCn": "当前最多支持对「Cluster stability」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“比较重采样、预处理和算法扰动下的分配，并验证冻结的新样本规则”并核对“稳定性、可分配性和离散-vs-连续结构都被检查”后，才能作出与“对重采样、预处理和算法扰动保持一致才说明结构稳健；漂亮热图不能替代稳定性。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4168,13 +4443,13 @@
     {
       "id": "claim-staged-concept-pseudobulk-concept-boundary",
       "contentId": "staged-concept-pseudobulk",
-      "claimCn": "当前最多支持对「Pseudobulk」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“保留最小生物样本/条件单元并在模型中处理 donor 配对”并核对“没有在聚合时抹去条件，也没有把多样本冒充多供体”后，才能作出与“在供体×细胞类型内汇总计数后使用样本级模型，保留生物重复并利用成熟 bulk 方法。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-pseudobulk",
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4182,12 +4457,14 @@
     {
       "id": "claim-staged-concept-cross-modal-validation-concept-boundary",
       "contentId": "staged-concept-cross-modal-validation",
-      "claimCn": "当前最多支持对「Cross-modal validation」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“准确命名跨模态证据支持的对象及共享偏倚，不自动使用 validation”并核对“同一样本的多模态一致没有被当作独立总体复现”后，才能作出与“不同模态可支持同一构念，但测量层、样本独立性和方向必须明确。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4195,11 +4472,12 @@
     {
       "id": "claim-staged-concept-alternative-explanation-concept-boundary",
       "contentId": "staged-concept-alternative-explanation",
-      "claimCn": "当前最多支持对「Alternative Explanation」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“为每个竞争解释写出不同预测，并用新证据更新相对支持”并核对“解释能覆盖全部现有证据且存在可使其升降级的观察”后，才能作出与“替代解释不是 Discussion 的礼貌性清单，而是决定还需何种区分性证据的工作模型。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4207,13 +4485,14 @@
     {
       "id": "claim-staged-concept-claim-boundary-concept-boundary",
       "contentId": "staged-concept-claim-boundary",
-      "claimCn": "当前最多支持对「Claim Boundary」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“逐词修订主张，使动词和适用域不超过设计、测量与验证”并核对“总体、时间、效应尺度、关系类型和不确定性均可在句中找到”后，才能作出与“明确当前证据最多允许陈述的总体、尺度、关系类型和时间范围。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4221,12 +4500,12 @@
     {
       "id": "claim-staged-concept-robustness-concept-boundary",
       "contentId": "staged-concept-robustness",
-      "claimCn": "当前最多支持对「Robustness」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“只运行有科学理由的敏感性分析，并按全部结果更新结论”并核对“没有从大量分析中挑选支持原故事的版本”后，才能作出与“结论在合理预处理、模型、排除和假设变化下保持，而不是只重复同一分析。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4234,12 +4513,12 @@
     {
       "id": "claim-staged-concept-triangulation-concept-boundary",
       "contentId": "staged-concept-triangulation",
-      "claimCn": "当前最多支持对「Triangulation」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“组合测量同一构念但主要偏倚不同的证据，并解释不一致如何更新”并核对“证据数量没有替代偏倚独立性和构念对齐”后，才能作出与“使用偏倚结构不同的方法或数据回答同一问题，观察结论是否在不同弱点下保持。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-batch",
-        "src-single-cell-2023",
-        "src-multiomics"
+        "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4247,12 +4526,13 @@
     {
       "id": "claim-staged-concept-minimal-sufficient-analysis-concept-boundary",
       "contentId": "staged-concept-minimal-sufficient-analysis",
-      "claimCn": "当前最多支持对「Minimal sufficient analysis」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“选择能以最低成本最大区分当前关键解释的下一步，并预写分支动作”并核对“下一步结果会实际改变主张或行动，而非只增加图表”后，才能作出与“用最少但足以改变判断的分析回答具体缺口，避免复杂度掩盖核心。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
         "src-tripod",
         "src-internal-validation"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4260,12 +4540,12 @@
     {
       "id": "claim-staged-concept-evidence-redundancy-concept-boundary",
       "contentId": "staged-concept-evidence-redundancy",
-      "claimCn": "当前最多支持对「Corroboration vs redundancy」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“按数据与误差独立性判断新增信息，而不是按结果数量”并核对“共享受试者、测量和模型假设均被显式标记”后，才能作出与“新证据若改变偏倚结构或可区分解释才是 corroboration；同一数据换图常只是冗余。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4273,12 +4553,12 @@
     {
       "id": "claim-staged-concept-negative-result-concept-boundary",
       "contentId": "staged-concept-negative-result",
-      "claimCn": "当前最多支持对「Negative Results」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“用效应、CI、最小重要/等效界值和偏倚解释阴性结果”并核对“未显著没有被解释成无效，post-hoc power 没有替代区间”后，才能作出与“未达阈值需结合效应区间、功效、测量和可辨识性，不能简单写成没有作用。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-strobe",
-        "src-dag",
-        "src-multiomics"
+        "src-dag"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4286,11 +4566,13 @@
     {
       "id": "claim-staged-concept-ai-cognitive-outsourcing-concept-boundary",
       "contentId": "staged-concept-ai-cognitive-outsourcing",
-      "claimCn": "当前最多支持对「Cognitive outsourcing」作有边界的队列内判断；在预定义验证或区分性证据出现前，不升级为机制、因果或普适性主张。",
+      "claimCn": "在本题材料下，只有完成“在调用 AI 前冻结自己的问题与判断，之后逐项验证并记录最终人类决定”并核对“研究者能独立解释问题、复核代码/引用并为结论承担证据责任”后，才能作出与“把问题形成、证据判断和结论边界整体交给 AI，会移除可审计的人类检查点并使错误归因与责任记录变得困难。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
+        "src-nist-genai-profile",
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4304,6 +4586,7 @@
         "src-edger",
         "src-multiple-testing"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4316,6 +4599,7 @@
         "src-strobe",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4328,6 +4612,7 @@
         "src-strobe",
         "src-tripod"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4340,6 +4625,7 @@
         "src-tripod",
         "src-probaST"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4352,6 +4638,7 @@
         "src-cox",
         "src-pmsampsize"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4364,6 +4651,7 @@
         "src-cox",
         "src-competing"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4373,9 +4661,10 @@
       "contentId": "staged-method-restricted-cubic-spline",
       "claimCn": "用分段立方基函数表示曲线，并在线性尾部约束以减少极端不稳定。",
       "sourceIds": [
-        "src-cox",
+        "src-rcs",
         "src-tripod"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4388,6 +4677,7 @@
         "src-internal-validation",
         "src-tripod"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4400,6 +4690,7 @@
         "src-leakage",
         "src-tripod"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4407,11 +4698,12 @@
     {
       "id": "claim-staged-method-roc-auc-method-core",
       "contentId": "staged-method-roc-auc",
-      "claimCn": "ROC 描述灵敏度—1特异度权衡，AUC 是随机病例得分高于随机非病例的概率解释。",
+      "claimCn": "ROC 描述灵敏度—1特异度权衡；AUC 等于随机病例得分高于随机非病例的概率，加上并列得分概率的一半（若实现采用该 convention）。",
       "sourceIds": [
         "src-roc",
         "src-tripod"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4419,12 +4711,13 @@
     {
       "id": "claim-staged-method-time-dependent-auc-method-core",
       "contentId": "staged-method-time-dependent-auc",
-      "claimCn": "在时间轴上用删失校正定义病例/对照并计算时点区分。",
+      "claimCn": "在时间轴上定义病例/对照，并用与目标一致的删失校正估计时点区分。",
       "sourceIds": [
-        "src-roc",
+        "src-time-auc",
         "src-cox",
         "src-tripod"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4437,6 +4730,7 @@
         "src-pca",
         "src-batch"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4449,6 +4743,7 @@
         "src-nmf",
         "src-clustering"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4461,6 +4756,7 @@
         "src-clustering",
         "src-batch"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4473,6 +4769,7 @@
         "src-gsea",
         "src-camera"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4480,11 +4777,13 @@
     {
       "id": "claim-staged-method-gsva-ssgsea-method-core",
       "contentId": "staged-method-gsva-ssgsea",
-      "claimCn": "在样本内或跨样本转换表达排名/分布，得到相对 gene-set score。",
+      "claimCn": "GSVA 通过跨样本表达分布与排名变换估计非参数分数；ssGSEA 在单样本内对排名积分。两者的归一化和队列依赖不同，输出不是默认同一量尺。",
       "sourceIds": [
         "src-gsva",
+        "src-ssgsea",
         "src-multiple-testing"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4497,6 +4796,7 @@
         "src-wgcna",
         "src-batch"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4504,11 +4804,14 @@
     {
       "id": "claim-staged-method-pseudobulk-method-core",
       "contentId": "staged-method-pseudobulk",
-      "claimCn": "在供体×细胞类型内汇总计数，再以供体为复制拟合计数模型。",
+      "claimCn": "先在最小生物样本×条件×细胞类型内汇总计数；独立复制层由设计决定，同一 donor 的多样本在模型中保留配对/重复结构。",
       "sourceIds": [
         "src-pseudobulk",
+        "src-deseq2",
+        "src-edger",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4521,6 +4824,7 @@
         "src-milo",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4533,6 +4837,7 @@
         "src-trajectory",
         "src-rna-velocity"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4545,6 +4850,7 @@
         "src-cellchat",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4552,11 +4858,12 @@
     {
       "id": "claim-staged-case-topic-to-question-case-calibration",
       "contentId": "staged-case-topic-to-question",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：资源只够完成一个主要问题和一个预定义敏感性分析；学习者必须删去无法由现有样本回答的 PICO/estimand 字段。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-strobe",
         "src-remark"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4564,11 +4871,13 @@
     {
       "id": "claim-staged-case-evidence-to-claim-case-calibration",
       "contentId": "staged-case-evidence-to-claim",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：空间染色在部分区域一致，但无法确认产生蛋白信号的细胞来源。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-diablo",
         "src-spatial"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4576,11 +4885,13 @@
     {
       "id": "claim-staged-case-confounding-observational-case-calibration",
       "contentId": "staged-case-confounding-observational",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：负对照结局提示仍可能存在未测量的就医行为差异。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-dag",
+        "src-target-trial",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4588,11 +4899,12 @@
     {
       "id": "claim-staged-case-statistical-unit-case-calibration",
       "contentId": "staged-case-statistical-unit",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：pseudobulk 后效应方向相似但区间很宽，FDR 不再显著。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-pseudobulk",
         "src-pseudorep"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4600,12 +4912,14 @@
     {
       "id": "claim-staged-case-overfitting-validation-case-calibration",
       "contentId": "staged-case-overfitting-validation",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：独立队列 168 人、39 个事件：两年 AUC=0.63（95% CI 0.51–0.74），calibration-in-the-large=0.34，校准斜率=0.58（95% CI 0.31–0.86）；结果不精确，且与乐观开发表现不一致。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
-        "src-tripod",
+        "src-tripod-ai",
         "src-probaST",
-        "src-calibration"
+        "src-calibration",
+        "src-pm-external"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4613,11 +4927,12 @@
     {
       "id": "claim-staged-case-negative-result-case-calibration",
       "contentId": "staged-case-negative-result",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：研究实际样本量低于方案，失访在两组不均衡。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-consort",
         "src-asa-pvalue"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4625,11 +4940,12 @@
     {
       "id": "claim-staged-case-omics-subtype-mechanism-case-calibration",
       "contentId": "staged-case-omics-subtype-mechanism",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：外部队列只能稳定重现一个连续 program，不能按原规则分成四类。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-nmf",
         "src-clustering"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4637,11 +4953,13 @@
     {
       "id": "claim-staged-case-bulk-single-cell-discordance-case-calibration",
       "contentId": "staged-case-bulk-single-cell-discordance",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：空间蛋白染色提示局部沉积增强，仍无法区分产生与积累。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
-        "src-multiomics",
+        "src-mofa-plus",
+        "src-single-cell-2023",
         "src-spatial"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4649,11 +4967,13 @@
     {
       "id": "claim-staged-case-composition-state-case-calibration",
       "contentId": "staged-case-composition-state",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：供体级 pseudobulk 对 within-state 改变的证据不足，不能据未显著结果声称等效；需报告效应、CI、覆盖与组成模型敏感性。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-pseudobulk",
+        "src-milo",
         "src-single-cell-2023"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4661,11 +4981,13 @@
     {
       "id": "claim-staged-case-main-figure-chain-case-calibration",
       "contentId": "staged-case-main-figure-chain",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：新到达一张独立队列校准图及 CI；学习者需决定它替换哪张图，并重新写出四个 panel 各自的证据任务。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-strobe",
-        "src-remark"
+        "src-remark",
+        "src-calibration"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4673,11 +4995,12 @@
     {
       "id": "claim-staged-case-alternative-next-step-case-calibration",
       "contentId": "staged-case-alternative-next-step",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：先由学习者按成本×区分力矩阵冻结选择；随后揭示中心分层后效应只存在于一个采用不同结局定义的中心，并要求更新下一步。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
         "src-dag",
         "src-strobe"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
@@ -4685,12 +5008,13 @@
     {
       "id": "claim-staged-case-ai-plan-audit-case-calibration",
       "contentId": "staged-case-ai-plan-audit",
-      "claimCn": "验证的独立性和测量层必须准确命名；下一步应最大化区分力而非分析数量。",
+      "claimCn": "本案最终证据是：按学习者冻结的计划重跑后，数据驱动 cut-point 不稳定且 PH 违反；任务是更新计划并说明拒绝哪些 AI 建议，而不是照抄一份标准答案。。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。",
       "sourceIds": [
-        "src-nist-ai-rmf",
+        "src-nist-genai-profile",
         "src-cox",
-        "src-tripod"
+        "src-tripod-ai"
       ],
+      "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
       "metadataVerified": true
