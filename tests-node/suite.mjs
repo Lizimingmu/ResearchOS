@@ -16,6 +16,9 @@ import { Tutorial, TUTORIAL_STEPS, tutorialStepFromKey } from "../.build/compone
 import { ContentStudioView } from "../.build/features/content-studio/ContentStudioView.js";
 import { LearningView } from "../.build/features/learning/LearningView.js";
 import { CaseLabView } from "../.build/features/case-lab/CaseLabView.js";
+import { CurriculumPreviewView } from "../.build/features/curriculum-preview/CurriculumPreviewView.js";
+import { stagedCaseLabs, stagedConceptLessons, stagedMethodLessons, studioTemplates, curriculumClaims, curriculumContentHashes, curriculumManifest } from "../.build/data/curriculum/index.js";
+import { selfRescueGuideModules, selfRescueGuideSections } from "../.build/data/self-rescue-guide/index.js";
 import { Onboarding } from "../.build/components/Onboarding.js";
 import { learningUnits, practiceAssetBindings, practiceAssets, prerequisiteEdges } from "../.build/data/learningUnits.js";
 import { applyLearningTransition, canStartUnit, createLearnerUnitState } from "../.build/learning/learningKernelEngine.js";
@@ -2478,4 +2481,63 @@ test("M019-A4 Cox failure routes to a fresh remediation asset", () => {
   const failed = submitArchitecturePractice({ entry, attemptKind: "apply", response: { selectedOptionIds: ["absolute-effect"], shortReasoning: "把相对 hazard 直接当绝对风险的回答虽然足够长，但科学结构判断错误。", claimBoundary: "当前不能形成可靠模型结论。" }, confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "cox-remediation-route" });
   assert.equal(failed.passed, false);
   assert.equal(failed.progress.phase, "remediation");
+});
+
+test("M019-B Guide v1 covers all ten required modules and 288 substantive sections", () => {
+  assert.deepEqual(selfRescueGuideModules.map((module) => module.topics.length), [18, 32, 47, 23, 23, 58, 25, 22, 20, 20]);
+  assert.equal(selfRescueGuideSections.length, 288);
+  assert.ok(selfRescueGuideSections.every((section) => section.bodyCn.join("").length >= 400));
+  assert.ok(selfRescueGuideSections.every((section) => section.contentOrigin === "ai_generated" && section.verificationStatus === "pending" && section.lifecycle === "pending_review"));
+  assert.equal(Object.keys(curriculumContentHashes.guide).length, 288);
+});
+
+test("M019-C curriculum manifest maps every item to Guide, capabilities and sources", () => {
+  const guideIds = new Set(selfRescueGuideSections.map((section) => section.id));
+  assert.equal(curriculumManifest.length, 288);
+  assert.ok(curriculumManifest.every((item) => guideIds.has(item.guideSectionId)));
+  assert.ok(curriculumManifest.every((item) => item.capabilityIds.length > 0 && item.sourceRequirements.length > 0));
+  assert.ok(curriculumManifest.every((item) => item.verificationStatus === "pending" && item.lifecycle === "pending_review"));
+});
+
+test("M019-D formal curriculum meets target sizes and assessment separation", () => {
+  assert.ok(stagedConceptLessons.length >= 35 && stagedConceptLessons.length <= 45);
+  assert.ok(stagedMethodLessons.length >= 18 && stagedMethodLessons.length <= 25);
+  assert.ok(stagedCaseLabs.length >= 10 && stagedCaseLabs.length <= 14);
+  assert.equal(studioTemplates.length, 13);
+  for (const lesson of [...stagedConceptLessons, ...stagedMethodLessons]) {
+    const assets = [lesson.primaryApply, lesson.remediation, lesson.delayedReview];
+    assert.equal(new Set(assets.map((asset) => asset.id)).size, 3);
+    assert.equal(new Set(assets.map((asset) => asset.scenarioCn)).size, 3);
+    assert.ok(assets.every((asset) => asset.hints.length === 0 && asset.confidenceRequired && asset.responseLocked));
+    assert.ok(assets.every((asset) => asset.expectedOptionIds.length > 0 && asset.expectedOptionIds.length < asset.options.length));
+  }
+});
+
+test("M019-D Method candidates implement all ten instructional dimensions", () => {
+  for (const lesson of stagedMethodLessons) {
+    assert.ok(lesson.scientificQuestionCn.length > 0);
+    assert.ok(lesson.inputsCn.length && lesson.coreLogicCn.length && lesson.outputsCn.length && lesson.assumptionsCn.length);
+    assert.ok(lesson.appropriateWhenCn.length && lesson.inappropriateWhenCn.length && lesson.misusePatternsCn.length && lesson.reviewerChecksCn.length);
+    assert.ok(lesson.paperAppearanceCn.length > 0 && lesson.guideSectionIds.length > 0 && lesson.sourceIds.length > 0);
+  }
+});
+
+test("M019-D Cases require staged reasoning, calibration, updating and a final task", () => {
+  assert.ok(stagedCaseLabs.every((caseLab) => caseLab.stages.length >= 4 && caseLab.stages.length <= 6));
+  assert.ok(stagedCaseLabs.every((caseLab) => caseLab.stages.every((stage) => stage.reasoningPromptCn && stage.calibrationCn && stage.updatePromptCn)));
+  assert.ok(stagedCaseLabs.every((caseLab) => caseLab.finalTaskCn.length >= 4));
+});
+
+test("M019-E claim-source map keeps generated prose at claim-level pending", () => {
+  assert.equal(curriculumClaims.length, 361);
+  assert.ok(curriculumClaims.every((claim) => claim.sourceIds.length > 0 && claim.metadataVerified));
+  assert.ok(curriculumClaims.every((claim) => claim.supportStatus === "claim_level_review_pending"));
+});
+
+test("M019-F Curriculum Preview is read-only and shows the exact pending banner", () => {
+  const html = renderToStaticMarkup(createElement(CurriculumPreviewView));
+  assert.match(html, /待科学审核 · 不进入正式 Today · 不计标准化能力/);
+  assert.match(html, /Curriculum Manifest/);
+  assert.doesNotMatch(html, /提交答案|创建能力|标记掌握/);
+  assert.ok(studioTemplates.every((template) => template.producesTransferArtifact && template.createsCompetence === false));
 });

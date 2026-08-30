@@ -12,6 +12,7 @@ const views = {
   guide: lazy(() => import("../features/guide/GuideView").then((module) => ({ default: module.GuideView }))),
   learning: lazy(() => import("../features/learning/LearningView").then((module) => ({ default: module.LearningView }))),
   practice: lazy(() => import("../features/practice/PracticeHubView").then((module) => ({ default: module.PracticeHubView }))),
+  "curriculum-preview": lazy(() => import("../features/curriculum-preview/CurriculumPreviewView").then((module) => ({ default: module.CurriculumPreviewView }))),
   "case-lab": lazy(() => import("../features/case-lab/CaseLabView").then((module) => ({ default: module.CaseLabView }))),
   library: lazy(() => import("../features/library/LibraryView").then((module) => ({ default: module.LibraryView }))),
   "paper-lab": lazy(() => import("../features/paper-lab/PaperLabView").then((module) => ({ default: module.PaperLabView }))),

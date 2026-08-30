@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "deterministic",
+  "status": "PASS",
+  "modules": [
+    {
+      "id": "scientific-reasoning",
+      "topics": 18
+    },
+    {
+      "id": "study-design",
+      "topics": 32
+    },
+    {
+      "id": "statistical-reasoning",
+      "topics": 47
+    },
+    {
+      "id": "computational-literacy",
+      "topics": 23
+    },
+    {
+      "id": "literature-reading",
+      "topics": 23
+    },
+    {
+      "id": "omics-bioinformatics",
+      "topics": 58
+    },
+    {
+      "id": "interpretation-judgment",
+      "topics": 25
+    },
+    {
+      "id": "research-strategy",
+      "topics": 22
+    },
+    {
+      "id": "scientific-communication",
+      "topics": 20
+    },
+    {
+      "id": "ai-assisted-research",
+      "topics": 20
+    }
+  ],
+  "mappedManifestItems": 288,
+  "formalContent": {
+    "concepts": 40,
+    "methods": 21,
+    "cases": 12,
+    "studios": 13
+  },
+  "errors": []
+}

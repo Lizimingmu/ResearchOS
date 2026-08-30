@@ -440,7 +440,7 @@ export interface AssessmentResult {
   domainScores?: Record<string, number>;
 }
 
-export type ViewId = "today" | "guide" | "learning" | "practice" | "case-lab" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
+export type ViewId = "today" | "guide" | "learning" | "practice" | "curriculum-preview" | "case-lab" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
 
 export interface DailyTask {
   id: string;

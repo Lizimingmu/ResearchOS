@@ -19,6 +19,7 @@
     "audit:m015": "npm run build && node scripts/run-m015-audit.mjs",
     "audit:learning-kernel": "npm run build && node scripts/run-learning-kernel-audit.mjs && node scripts/run-m018-registry-audit.mjs",
     "audit:m018-registry": "npm run build && node scripts/run-m018-registry-audit.mjs",
+    "audit:curriculum": "npm run build && node scripts/run-curriculum-audit.mjs",
     "seed:export": "npm run build && node scripts/export-seed.mjs",
     "content:audit": "npm run build && node scripts/content-audit.mjs && node scripts/run-m018-registry-audit.mjs",
     "localization:audit": "npm run build && node scripts/localization-audit.mjs",
