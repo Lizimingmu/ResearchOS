@@ -2,6 +2,30 @@
 
 Status: ACCEPTED
 
+## M018.1 end-to-end wiring review note
+
+### SC-M018.1-01 — Fresh standardized variants for existing prototypes
+
+- Concept: Statistical Unit and Confounding remediation; Confounding and Cox independent Apply and delayed retrieval.
+- Claim: Repeated measurements do not create independent upper-level units; covariate adjustment follows the target estimand and causal structure; Cox hazard-ratio interpretation requires a defined time origin, unit/reference, model stability and proportional-hazards assessment.
+- Answer/rubric: ACCEPT — every independent/review response is locked, no-hint and confidence-bearing; rubrics require the relevant structured findings, a reasoning boundary and a maximum defensible conclusion. Primary, remediation and review asset IDs are distinct.
+- Evidence source IDs: `src-pseudorep`; `src-dag`; `src-cox`; `src-pmsampsize`.
+- PMID/DOI: Existing verified identifiers in `src/data/evidence.ts`; no new external source introduced.
+- Risk level: HIGH.
+- Verification status: ACCEPTED for the bounded M018 prototypes; no new curriculum or broader scientific claim was added.
+- Changed files: `src/data/learningArchitecture.ts`; `src/domain/learningKernel.ts`; `src/features/learning/PracticeActivity.tsx`.
+
+### SC-M018.1-02 — Case calibration wording
+
+- Concept: Evidence-to-claim updating across fictionalized proteomics, scRNA and spatial/pathology evidence.
+- Claim: Cohort-level association does not establish cell source or mechanism; discordant evidence changes relative plausibility without eliminating all competing explanations.
+- Answer/rubric: ACCEPT — expert calibration is displayed only after original reasoning is locked; an optional learner update is stored separately and does not overwrite the original claim.
+- Evidence source IDs: `src-multiomics`; `src-spatial`.
+- PMID/DOI: Existing verified identifiers in `src/data/evidence.ts`; no new external source introduced.
+- Risk level: HIGH.
+- Verification status: ACCEPTED for the existing fictionalized case and its bounded association/mechanism language.
+- Changed files: `src/data/learningArchitecture.ts`; `src/features/case-lab/CaseLabView.tsx`; `src/state/store.ts`.
+
 ## M018 architecture prototype review note
 
 ### SC-M018-01 — Statistical Unit and Confounding Concept Lessons

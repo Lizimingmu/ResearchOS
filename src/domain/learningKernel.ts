@@ -176,6 +176,7 @@ export interface PracticeAssetV1 {
     expectedOrderIds?: string[];
     expectedClassifications?: Record<string, string>;
     minReasoningChars?: number;
+    minClaimBoundaryChars?: number;
     requiredReasoningTerms?: string[];
   };
   feedback: PracticeFeedbackV1;
@@ -566,7 +567,9 @@ export function scorePracticeAsset(asset: PracticeAssetV1, response: PracticeRes
   if (!reasoningPresent) missing.push("需要写出自己的理由");
   const reasoningTermsPresent = (asset.rubric.requiredReasoningTerms ?? []).every((term) => reasoning.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
   if (!reasoningTermsPresent) missing.push("理由中缺少 rubric 要求的关键关系");
-  const boundaryPresent = !["claim_boundary", "project_transfer"].includes(asset.interaction) || (response.claimBoundary?.trim().length ?? 0) >= 8;
+  const requiredBoundaryChars = asset.rubric.minClaimBoundaryChars
+    ?? (["claim_boundary", "project_transfer"].includes(asset.interaction) ? 8 : 0);
+  const boundaryPresent = (response.claimBoundary?.trim().length ?? 0) >= requiredBoundaryChars;
   if (!boundaryPresent) missing.push("需要写出结论边界");
   const projectLinked = asset.interaction !== "project_transfer" || Boolean(response.projectId?.trim());
   if (!projectLinked) missing.push("需要选择一个真实项目作为迁移目标");

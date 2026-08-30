@@ -1,6 +1,6 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
 
-export const CURRENT_STATE_SCHEMA = 7;
+export const CURRENT_STATE_SCHEMA = 8;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -110,6 +110,9 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     // collections. They are empty by default: no legacy field deterministically
     // proves reading, case reasoning, transfer, or studio history.
     guideReadSectionIds: arrayOr(raw.guideReadSectionIds, defaults.guideReadSectionIds),
+    // M018.1 schema 8 adds a zero-inference cursor for the distinct M018
+    // content surfaces. Old completions never imply a phase or competence.
+    learningContentProgress: recordOr(raw.learningContentProgress, defaults.learningContentProgress),
     caseSessions: arrayOr(raw.caseSessions, defaults.caseSessions),
     transferArtifacts: arrayOr(raw.transferArtifacts, defaults.transferArtifacts),
     projectStudioRecords: arrayOr(raw.projectStudioRecords, defaults.projectStudioRecords),

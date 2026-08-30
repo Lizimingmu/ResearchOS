@@ -1,35 +1,32 @@
-# ResearchOS v0.12.0 product specification — M018 source state
+# ResearchOS v0.12.0 product specification — M018.1 source state
 
 ResearchOS is a local-first Guided Research Apprenticeship System. It develops ownership across Phenomenon → Research Question → Hypothesis → Study Design → Analysis → Interpretation → Critique → Next Question. It is educational software, not clinical decision support or a psychometrically validated certification system.
 
 ## Four functions
 
-- **LEARN:** searchable Research Guide, Concept Lessons and Method Lessons.
-- **PRACTICE:** Apply cases, adaptive remediation, Case Lab, AI Audit, Problem Atlas and assessment.
-- **WORK:** Paper Studio, Project Studio, Think Before AI, Project Review and Transfer Artifacts.
-- **REVIEW:** delayed unfamiliar learning assets plus preserved legacy practice reviews.
+- **LEARN:** searchable Research Guide plus stateful Concept and Method Lessons.
+- **PRACTICE:** versioned Apply/remediation/review assets, Case Lab, AI Audit, Problem Atlas and assessment.
+- **WORK:** Paper Studio, Project Studio, Think Before AI, Project Review and de-duplicated Transfer Artifacts.
+- **REVIEW:** due Concept/Method and compatible Kernel reviews in one Learning Reviews section, plus preserved legacy practice reviews.
 
-Primary navigation is Today, Guide, Learn, Practice, Projects, Review, Progress and Library. Settings is auxiliary; advanced tools stay under Practice.
+Primary navigation remains Today, Guide, Learn, Practice, Projects, Review, Progress and Library. Settings is auxiliary; advanced tools stay under Practice.
 
 ## Learning contract
 
-Concept Lessons default to Learn → Explain → Apply. Learn is one coherent surface; Explain requires the learner's own words and a checklist but creates no fabricated score; Apply uses one new case; remediation appears only after failure. A passed versioned standard Apply creates `independent_once`; failed Apply does not.
+Concept Lessons use persisted Learn → Explain → Apply progress. Learn and Explain record exposure only. Apply is a locked, confidence-bearing, no-hint response to a versioned Practice Asset in the M018 renderer. A passed Apply creates `independent_once`; failure opens explanation and a different remediation scenario; a passed delayed unfamiliar review creates `retained`.
 
-Method Lessons use a method-specific contract: question, input, logic, output, assumptions, appropriate and inappropriate use, misuse, reviewer checks and paper appearance. Case Lab locks reasoning before revealing each new evidence layer and retains a Decision Timeline rather than one total score.
+Method Lessons use a reusable explanation/apply/review contract. The Cox prototype performs a structured Methods audit with checklist findings, short reasoning, maximum defensible conclusion and confidence. Its Apply and delayed review are distinct versioned surfaces.
 
-Research Guide reading is reference exposure only and never competence. Real work creates a Transfer Artifact; it does not automatically mean mastery. Progress separately presents exposure, standardized evidence and transfer artifacts across eight research capabilities.
+Case Lab locks reasoning before revealing expert calibration, accepts an optional update without overwriting the original response, and then reveals the next evidence stage. Research Guide reading is reference exposure only. Real work creates a Transfer Artifact and never automatically promotes standardized competence.
 
-## Bounded prototypes
+## Scheduling and progression
 
-1. Statistical Unit — Concept Lesson, Hierarchy Explorer, Apply and delayed review.
-2. Confounding — Concept Lesson, lightweight DAG and Apply.
-3. Research Question / Evidence → Claim — fictionalized oncology/omics Case Lab.
-4. Cox proportional hazards regression — Method Lesson and Methods audit prompt.
+Today selects a Foundation Spine item, an optional Project Overlay item, one actually due review and Routine work. Hard prerequisites cannot be bypassed by project relevance, at most two learning threads are active, and `allowProjectRelevance=false` prevents project content from being read for ranking. Rationale comes from each registry entry rather than a universal sentence.
 
-No full curriculum expansion is part of M018.
+Progress combines compatible Kernel evidence with M018 content exposure and standardized events, then displays Transfer Artifacts separately. Paper Studio fields unlock by their relevant capabilities; unavailable capabilities remain visibly locked.
 
-## Data and safety
+## Bounded prototypes and data safety
 
-Frontend schema 7 adds Guide reading, Case sessions, Transfer Artifacts and Project Studio history as empty, zero-inference collections. Existing M015–M017 collections remain available. SQLite `user_version=2`, WAL, atomic writes, bounded snapshots, credentials isolation, provenance, Content Studio and explicit Obsidian writes are unchanged. Future schemas fail closed.
+The only prototypes are Statistical Unit, Confounding, the fictionalized oncology/omics Evidence → Claim case and Cox proportional hazards regression. M018.1 adds only the missing Apply, remediation and review variants for those prototypes.
 
-Built-in content is Chinese-first, source-linked and fictionalized/de-identified. AI-generated scientific content remains pending until external review; no automatic AI call or evidence promotion occurs.
+Frontend schema 8 adds `learningContentProgress` as an empty, zero-inference collection. SQLite `user_version=2`, WAL, atomic writes, bounded snapshots, credentials isolation, provenance, Content Studio and explicit Obsidian writes are unchanged. Future schemas fail closed. AI-generated scientific content remains pending until external review.

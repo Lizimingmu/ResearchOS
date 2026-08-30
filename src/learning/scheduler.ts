@@ -1,7 +1,9 @@
 import type { AppStateData, DailyTask } from "../domain/types";
 import type { LearningActivityType, LearningStage, TodayLearningTaskV1 } from "../domain/learningKernel";
 import { learningUnits, practiceAssetBindings, prerequisiteEdges } from "../data/learningUnits";
+import { learningContentRegistry } from "../data/learningArchitecture";
 import { canStartUnit } from "./learningKernelEngine";
+import { contentPrerequisitesMet } from "./learningArchitectureEngine";
 
 export interface PrioritySignals {
   weakness: number;
@@ -85,35 +87,80 @@ export function generateLearningTodayTasks(state: AppStateData, now = new Date()
 }
 
 export function generateTodayTasks(state: AppStateData, now = new Date()): DailyTask[] {
+  return generateM018CurriculumTasks(state, now);
+}
+
+const architectureProjectRelevance = (terms: string[], state: AppStateData): number => {
+  // Consent is checked before project strings are read.
+  if (state.onboarding.allowProjectRelevance === false) return 0;
+  if (state.projects.length === 0) return 0;
+  const haystack = state.projects.map((project) => `${project.disease} ${project.studyType} ${project.omics} ${project.outcome} ${project.activeMethods} ${project.scientificQuestion}`).join(" ").toLowerCase();
+  const hits = terms.filter((term) => haystack.includes(term.toLowerCase())).length;
+  return Math.min(1, hits * 0.25);
+};
+
+export function generateM018CurriculumTasks(state: AppStateData, now = new Date()): DailyTask[] {
   const dateKey = now.toISOString().slice(0, 10);
-  let usedMinutes = 0;
   const result: DailyTask[] = [];
-  for (const task of generateLearningTodayTasks(state, now)) {
-    if (usedMinutes > 0 && usedMinutes + task.estimatedMinutes > state.settings.dailyMinutes) continue;
-    const unit = learningUnits.find((item) => item.id === task.unitId)!;
+  const contentProgressById = state.learningContentProgress ?? {};
+  const progress = Object.values(contentProgressById);
+  const candidates = learningContentRegistry.filter((entry) => entry.lifecycle === "active" && entry.verificationStatus === "verified" && ["concept_lesson", "method_lesson", "case_lab"].includes(entry.contentType));
+  const stateFor = (unitId?: string) => unitId ? state.learnerUnitStates.find((item) => item.unitId === unitId) : undefined;
+  const add = (entry: (typeof candidates)[number], activityType: DailyTask["learningActivityType"], thread: "foundation" | "project_overlay", priority: number, rationale: string) => {
+    const learner = stateFor(entry.unitId);
     const daily: DailyTask = {
-      id: task.id,
+      id: `${dateKey}-m018-${entry.id}-${activityType}`,
       type: "learning",
-      title: unit.titleCn,
-      subtitle: task.activityType === "explanation" ? "先建立直觉，再进入定义与案例"
-        : task.activityType === "guided_practice" ? "带着分层提示练习，不计作独立能力"
-          : task.activityType === "independent_case" ? "撤除提示后独立判断，并记录信心"
-            : task.activityType === "delayed_retrieval" ? "到期提取：先回忆，再看反馈"
-              : task.activityType === "far_transfer" ? "把原则迁移到陌生论文或项目" : "间隔变式复习",
-      minutes: task.estimatedMinutes,
-      priority: task.priority,
-      targetId: task.unitId,
-      destination: "learning",
-      rationale: task.rationaleCn,
-      learningActivityType: task.activityType,
-      stageAtScheduling: task.stageAtScheduling,
+      title: entry.titleCn,
+      subtitle: entry.contentType === "case_lab" ? "分阶段锁定判断，在专家校准后更新解释并继续揭示证据"
+        : activityType === "delayed_retrieval" ? "到期的陌生表面复习：无提示、锁定回答并记录信心"
+        : activityType === "independent_case" ? "进入版本化 Apply：先作答，锁定后看反馈"
+          : "先建立理解，再用自己的话解释",
+      minutes: activityType === "explanation" ? entry.estimatedMinutes : Math.min(8, entry.estimatedMinutes),
+      priority,
+      targetId: entry.id,
+      destination: entry.contentType === "case_lab" ? "case-lab" : "learning",
+      rationale,
+      learningActivityType: activityType,
+      stageAtScheduling: learner?.stage ?? "unseen",
+      learningContentId: entry.id,
+      learningThread: thread,
     };
-    if (!state.completedTaskIds.includes(daily.id)
-      && !state.completedTaskIds.includes(`target:${dateKey}:${daily.targetId}`)
-      && !state.snoozedTaskIds.includes(daily.id)) {
-      result.push(daily);
-      usedMinutes += daily.minutes;
-    }
-  }
+    if (!state.completedTaskIds.includes(daily.id) && !state.completedTaskIds.includes(`target:${dateKey}:${entry.id}`) && !state.snoozedTaskIds.includes(daily.id)) result.push(daily);
+  };
+
+  const dueEntries = candidates.filter((entry) => entry.contentType !== "case_lab").filter((entry) => {
+    const learner = stateFor(entry.unitId);
+    return learner?.stage === "review_eligible" && Boolean(learner.dueAt) && Date.parse(learner.dueAt!) <= now.getTime();
+  });
+  const due = dueEntries.sort((a, b) => Date.parse(stateFor(a.unitId)!.dueAt!) - Date.parse(stateFor(b.unitId)!.dueAt!))[0];
+  if (due) add(due, "delayed_retrieval", due.thread === "project_overlay" ? "project_overlay" : "foundation", 1, `${due.rationaleCn}；该内容的间隔复习现已到期。`);
+
+  const available = (entry: (typeof candidates)[number]) => contentPrerequisitesMet(entry, { registry: learningContentRegistry, progress, states: state.learnerUnitStates });
+  const unfinished = (entry: (typeof candidates)[number]) => {
+    if (entry.contentType === "case_lab") return !(state.caseSessions ?? []).some((session) => session.caseId === entry.id && session.completedAt);
+    const learner = stateFor(entry.unitId);
+    return !learner || !["independent_once", "retained", "transferred"].includes(learner.competence.level);
+  };
+  const activityFor = (entry: (typeof candidates)[number]): DailyTask["learningActivityType"] => {
+    if (entry.contentType === "case_lab") return "independent_case";
+    const contentProgress = contentProgressById[entry.id];
+    return contentProgress?.phase === "apply" || contentProgress?.phase === "remediation" ? "independent_case" : "explanation";
+  };
+
+  const foundation = candidates.filter((entry) => entry.thread === "foundation" && unfinished(entry) && available(entry))[0];
+  if (foundation && foundation.id !== due?.id) add(foundation, activityFor(foundation), "foundation", 0.8, foundation.rationaleCn);
+
+  const overlay = candidates
+    .filter((entry) => entry.thread === "project_overlay" && unfinished(entry) && available(entry))
+    .map((entry) => ({ entry, relevance: architectureProjectRelevance(entry.projectRelevanceTerms, state) }))
+    .filter((item) => item.relevance > 0)
+    .sort((a, b) => b.relevance - a.relevance || a.entry.id.localeCompare(b.entry.id))[0];
+  if (overlay && overlay.entry.id !== due?.id) add(overlay.entry, activityFor(overlay.entry), "project_overlay", Number((0.6 + overlay.relevance * 0.2).toFixed(3)), `${overlay.entry.rationaleCn}；与你已授权读取的项目方法/结局元数据相关。`);
+
+  // One Foundation thread plus one Project Overlay thread; a due review is a
+  // maintenance task, never a hidden third active learning thread.
+  const activeThreads = new Set(result.filter((task) => task.learningActivityType !== "delayed_retrieval").map((task) => task.learningThread));
+  if (activeThreads.size > 2) throw new Error("M018 curriculum scheduler exceeded the two-thread limit");
   return result;
 }

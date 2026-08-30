@@ -23,7 +23,7 @@ import type {
   LearningEventV1,
   LearnerUnitStateV1,
 } from "./learningKernel";
-import type { ProjectStudioRecordV1, ResearchCaseSessionV1, TransferArtifactV1 } from "./learningArchitecture";
+import type { LearningContentProgressV1, ProjectStudioRecordV1, ResearchCaseSessionV1, TransferArtifactV1 } from "./learningArchitecture";
 
 export type ContentOrigin = "verified_seed" | "verified_external" | "user" | "ai_generated" | "external_source_pack";
 export type VerificationStatus = "verified" | "pending" | "rejected" | "not_required";
@@ -420,6 +420,7 @@ export interface AppStateData {
   reasoningRecords: ResearchReasoningRecord[];
   paperCards: Record<string, PaperCardRecord>;
   guideReadSectionIds: string[];
+  learningContentProgress: Record<string, LearningContentProgressV1>;
   caseSessions: ResearchCaseSessionV1[];
   transferArtifacts: TransferArtifactV1[];
   projectStudioRecords: ProjectStudioRecordV1[];
@@ -453,4 +454,6 @@ export interface DailyTask {
   rationale: string;
   learningActivityType?: LearningActivityType;
   stageAtScheduling?: LearnerUnitStateV1["stage"];
+  learningContentId?: string;
+  learningThread?: "foundation" | "project_overlay";
 }

@@ -1,31 +1,38 @@
-# ResearchOS learning engine — M018
+# ResearchOS learning engine — M018.1
 
-## Content types
+## Canonical content and assets
 
-`LearningContentType` discriminates `guide`, `concept_lesson`, `method_lesson`, `case_lab` and `studio_task`. Each has an explicit schema and renderer; Guide, explanations, Case stages and Studio artifacts are not forced into `PracticeAssetV1`.
+`learningContentRegistry` provides stable content identity, type, capabilities, prerequisites, thread, project relevance, rationale, time estimate, lifecycle, verification, provenance and Apply/remediation/review references. Today, Learn, Guide links and Progress consume this registry. A deterministic audit rejects drift, unknown mappings, missing or reused role assets, unverified active content and prohibited public strings.
 
-## Concept transition
+Guide, Concept Lesson, Method Lesson, Case Lab and Studio keep explicit contracts. `PracticeAssetV1` remains the immutable standardized-practice boundary, not a universal prose or workflow schema.
+
+## Persisted transition
 
 ```text
 Learn → Explain → Apply
-                    ├─ pass → independent_once → delayed unfamiliar review
-                    └─ fail → targeted remediation → second fresh Apply
+                    ├─ pass → independent_once → due +3 days → unfamiliar review → retained
+                    └─ fail → targeted explanation → different remediation Apply
 ```
 
-Learn/Explain never create standardized competence. Standardized attempts retain versioned asset identity, locked response, confidence where required and role-distinct review surfaces. Guided failure remains `guided`; guided pass alone enters `independent_ready`. High-confidence conceptual failure records a misconception for explicit remediation.
+`LearningContentProgressV1` persists phase, Explain completion, Apply start, remediation need/attempt and timestamps. Learn/Explain change exposure only. `submitArchitecturePractice` validates the asset binding, hash, role, lock, confidence and no-hint policy, scores the response, emits a Kernel event and advances standardized competence. Review is illegal before its due time.
 
 ## Method and Case learning
 
-Method Lesson has its own question/input/logic/output/assumption/use/misuse/reviewer contract. `ResearchCaseV1` reveals evidence sequentially. `lockCaseStage` rejects overwrite and out-of-order submission, snapshots the case hash and persists `reasoningHistory`; completion renders a Decision Timeline.
+The reusable Method renderer consumes explanation sections, an interaction contract, Apply/review asset references, capability mapping, persisted progress and feedback. Cox uses a structured audit plus reasoning and maximum defensible conclusion.
+
+`ResearchCaseV1` reveals evidence sequentially. Each stage persists original reasoning and claim boundary, exposes expert calibration separately, optionally appends a learner update, then advances. The Decision Timeline never overwrites the original answer. A completed source/context resolves to one canonical Transfer Artifact.
 
 ## Evidence projection
 
-Capability Progress is projected from source Learning Kernel events through an explicit unit-to-capability map. Event IDs are de-duplicated and not copied into synthetic skill evidence. Exposure is `not_studied | learning | core_completed`; standardized evidence is `none | independent_once | retained | multiple_context_retained`.
-
-`TransferArtifactV1` stores a real paper/project/AI-audit/case application. It is displayed alongside standardized evidence but never mutates competence.
+Capability Progress projects from de-duplicated compatible Kernel events and learner states, then incorporates M018 content exposure from persisted progress. Apply/review events supply standardized evidence; Transfer Artifacts remain a separate axis and do not mutate competence. The corrected unit mapping uses `lu-biological-technical-replicate-v1`.
 
 ## Scheduling
 
-At most two active threads remain. Prerequisites cannot be bypassed by Project Overlay. When `allowProjectRelevance=false`, project relevance is exactly zero and project content is not inspected. Review, far transfer and post-transfer maintenance appear only when `dueAt` is reached; successful transfer is not re-scheduled daily.
+The M018 curriculum layer schedules verified active registry entries over the compatible Kernel scheduler:
 
-Top-level Review shows Learning Reviews from the same Kernel source used by Today, plus Other Practice Reviews from legacy workflows.
+- Foundation Spine: prerequisite-ordered Concept learning.
+- Project Overlay: at most one relevant Method/Case learning thread and only with consent.
+- Due Review: one truly due Concept/Method or compatible Kernel retrieval.
+- Routine: paper, Think Before AI and project-review work.
+
+Hard prerequisites apply to both threads. Project relevance cannot create a third active thread or bypass the Foundation Spine. Successful transfer and reviews are emitted only when due.

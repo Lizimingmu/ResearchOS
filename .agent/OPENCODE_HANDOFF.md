@@ -1,6 +1,6 @@
-# Implementation Handoff — M018 Learning Architecture Refactor
+# Implementation Handoff — M018.1 End-to-End Learning Wiring
 
-Use a diff-based review from M017 commit `2a598b1fefa5a8bc84277d489fe3eb0f08f15afb`. Do not rescan unrelated history.
+Use a diff-based review from M018 commit `401c0ed8469d791b0e214f0ed6811b08a5f0a4a3`. Do not rescan unrelated history.
 
 ## Read first
 
@@ -8,17 +8,17 @@ Use a diff-based review from M017 commit `2a598b1fefa5a8bc84277d489fe3eb0f08f15a
 2. `.agent/SCIENTIFIC_GATES.md`
 3. `.agent/PROJECT_STATE.md`
 4. `.agent/CURRENT_MILESTONE.md`
-5. `M018_LEARNING_ARCHITECTURE_HANDOFF.md`
+5. `M018_1_END_TO_END_WIRING_HANDOFF.md`
 
 ## Implementation boundaries
 
-- Distinct content contracts live in `src/domain/learningArchitecture.ts`; do not collapse them into a mega-schema or `PracticeAssetV1`.
-- Guide reading and Concept Learn/Explain are exposure only. Standardized competence comes from defensibly scored Kernel events.
-- Transfer Artifacts and Project Studio records are real-context evidence, not mastery.
-- Case answers are locked in sequence and retained as a Decision Timeline.
-- Schema 7 collections are additive and empty on migration; never infer them from old fields.
-- Preserve Content Studio, scientific provenance, SQLite/WAL/recovery, credentials, future-schema refusal and Obsidian explicit-write constraints.
+- Distinct Guide, Concept, Method and Case contracts remain in `src/domain/learningArchitecture.ts`; `PracticeAssetV1` is used only for standardized practice.
+- `learningContentRegistry` is the canonical metadata source for Today, Learn, Guide links and Progress. Add content there only after providing valid capability/prerequisite mappings, provenance and distinct bound assets where required.
+- Learn/Explain and Guide reading are exposure. Only locked, versioned, scored Apply/review events are standardized competence. Transfer Artifacts remain separate real-context evidence.
+- `learningContentProgress` migration is empty and zero-inference. Do not reconstruct progress or competence from old prose, Guide history or artifacts.
+- Case reasoning, calibration and updates are separate append-only facts. Artifact identity is canonicalized by source and capability/concept context.
+- Preserve Content Studio scientific review, local SQLite/WAL/recovery, credentials, future-schema refusal and explicit Obsidian-write constraints.
 
 ## Next permitted work
 
-Repair a concrete gate failure or perform the user-authorized foreground trial. Do not bulk-generate curriculum, package, merge to `main`, or promote generated scientific content automatically.
+Perform the user-authorized foreground trial and record observed defects. Do not bulk-generate curriculum, redesign the architecture, package, access a real Vault, merge to `main`, or promote generated scientific content automatically.

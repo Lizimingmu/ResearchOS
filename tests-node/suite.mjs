@@ -18,7 +18,8 @@ import { LearningView } from "../.build/features/learning/LearningView.js";
 import { Onboarding } from "../.build/components/Onboarding.js";
 import { learningUnits, practiceAssetBindings, practiceAssets, prerequisiteEdges } from "../.build/data/learningUnits.js";
 import { applyLearningTransition, canStartUnit, createLearnerUnitState } from "../.build/learning/learningKernelEngine.js";
-import { calculatePriority, generateLearningTodayTasks, generateTodayTasks } from "../.build/learning/scheduler.js";
+import { calculatePriority, generateLearningTodayTasks, generateM018CurriculumTasks, generateTodayTasks } from "../.build/learning/scheduler.js";
+import { createLearningContentProgress, contentPrerequisitesMet, submitArchitecturePractice } from "../.build/learning/learningArchitectureEngine.js";
 import { buildLearningAuditPrompt, buildLearningGenerationPrompt, parseLearningContentPackJson } from "../.build/services/learningContentExchange.js";
 import { createReviewItem, scheduleReview } from "../.build/learning/review.js";
 import { summarizeSkills } from "../.build/learning/scoring.js";
@@ -130,7 +131,7 @@ test("unit: scheduler implements the specified weighted priority", () => {
 test("unit: v1 state migrates without losing user projects or responses", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 1, projects: [{ id: "keep-me" }], responses: [{ id: "response-keep" }], draftResponses: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 7);
+  assert.equal(migrated.schemaVersion, 8);
   assert.equal(migrated.projects[0].id, "keep-me");
   assert.equal(migrated.responses[0].id, "response-keep");
   assert.deepEqual(migrated.draftResponses, {});
@@ -140,7 +141,7 @@ test("unit: v1 state migrates without losing user projects or responses", () => 
 test("unit: v2 state migrates to v3 preserving user data and seeding the atlas", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 2, projects: [{ id: "v2-project" }], problemCards: undefined, diagnosticSessions: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 7);
+  assert.equal(migrated.schemaVersion, 8);
   assert.equal(migrated.projects[0].id, "v2-project");
   assert.equal(migrated.problemCards.length, 4);
   assert.deepEqual(migrated.diagnosticSessions, []);
@@ -154,7 +155,7 @@ test("unit: future state is rejected without downgrade", () => {
 test("unit: M015 migration adds empty personal content collections without losing v3 data", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 3, projects: [{ id: "keep-v3-project" }], personalContent: undefined, contentRevisionHistory: undefined, contentConflicts: undefined, obsidianPublishBatches: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 7);
+  assert.equal(migrated.schemaVersion, 8);
   assert.equal(migrated.projects[0].id, "keep-v3-project");
   assert.deepEqual(migrated.personalContent, []);
   assert.deepEqual(migrated.contentRevisionHistory, []);
@@ -898,7 +899,7 @@ test("integration: Today starts with one legal explanation instead of a fixed ex
   const tasks = generateTodayTasks(state, new Date("2026-08-24T08:00:00Z"));
   assert.equal(tasks.length, 1);
   assert.equal(tasks[0].type, "learning");
-  assert.equal(tasks[0].targetId, "lu-statistical-unit-v1");
+  assert.equal(tasks[0].targetId, "concept-statistical-unit-v1");
   assert.equal(tasks[0].learningActivityType, "explanation");
   assert.equal(tasks[0].stageAtScheduling, "unseen");
   assert.ok(tasks[0].minutes >= 8 && tasks[0].minutes <= 12);
@@ -962,7 +963,8 @@ test("integration: project creation and settings survive browser persistence gat
 test("integration: Today exposes one core, due review, and routine without scoring internals", () => {
   useAppStore.setState({ ...createInitialState(), hydrated: true });
   const html = renderToStaticMarkup(createElement(TodayView));
-  assert.match(html, /Today&#x27;s Core/);
+  assert.match(html, /Foundation Thread/);
+  assert.match(html, /Project Overlay/);
   assert.match(html, /Due Review/);
   assert.match(html, /Research Routine/);
   assert.match(html, /为什么今天学这个/);
@@ -1558,8 +1560,8 @@ test("unit: M016 every product version declaration is 0.12.0 and consistent", ()
 // ---------------------------------------------------------------------------
 
 import { learningUnitHash, projectSkillMap, scorePracticeAsset, validateBinding, validateLearningKernelContent, validateLearningUnit, validatePracticeAsset, validatePrerequisiteGraph } from "../.build/domain/learningKernel.js";
-import { projectCapabilityEvidence, researchCaseHash } from "../.build/domain/learningArchitecture.js";
-import { conceptLessons, guideSections, methodLessons, researchCases } from "../.build/data/learningArchitecture.js";
+import { projectCapabilityEvidence, researchCaseHash, unitCapabilityMap, validateLearningContentRegistry } from "../.build/domain/learningArchitecture.js";
+import { conceptLessons, guideSections, learningArchitectureAssetById, learningArchitectureKernelUnits, learningArchitecturePracticeAssets, learningContentRegistry, methodLessons, researchCases } from "../.build/data/learningArchitecture.js";
 
 function kernelUnit(overrides = {}, blockOverrides = []) {
   const mkBlock = (id, kind, layer) => ({
@@ -1868,7 +1870,7 @@ test("unit: M016-LK-02 v4→v5 migration appends empty kernel collections and pr
   delete v4Fixture.learningEvents;
   delete v4Fixture.pausedLearningUnitIds;
   const migrated = migratePersistedState(v4Fixture, defaults);
-  assert.equal(migrated.schemaVersion, 7);
+  assert.equal(migrated.schemaVersion, 8);
   assert.deepEqual(migrated.learnerUnitStates, []);
   assert.deepEqual(migrated.learningEvents, []);
   assert.deepEqual(migrated.pausedLearningUnitIds, []);
@@ -1901,7 +1903,7 @@ test("unit: M016-LK-02 migration keeps kernel timestamps and rejects future sche
     onboarding: { ...defaults.onboarding, learningKernelOnboardingCompletedAt: 42 },
   }, defaults);
   assert.equal(junk.onboarding.learningKernelOnboardingCompletedAt, undefined);
-  assert.throws(() => migratePersistedState({ ...defaults, schemaVersion: 8 }, defaults), /数据库未被修改/);
+  assert.throws(() => migratePersistedState({ ...defaults, schemaVersion: 9 }, defaults), /数据库未被修改/);
 });
 
 // ---------------------------------------------------------------------------
@@ -1979,7 +1981,7 @@ test("unit: M017 v5→v6 migration is additive and makes no inferred learning cl
   delete fixture.reasoningRecords;
   delete fixture.paperCards;
   const migrated = migratePersistedState(fixture, defaults);
-  assert.equal(migrated.schemaVersion, 7);
+  assert.equal(migrated.schemaVersion, 8);
   assert.equal(migrated.projects[0].id, "preserved-project");
   assert.deepEqual(migrated.lessonProgressByUnitId, {});
   assert.deepEqual(migrated.routineLogs, []);
@@ -2068,9 +2070,16 @@ test("integration: M018 Case Lab locks stage history and migration preserves res
   useAppStore.getState().lockCaseStage(id, { stageId: "context", reasoning: "当前观察到分子状态，但来源与结局机制仍未知，应先界定可回答的关联问题。" });
   const session = useAppStore.getState().caseSessions.find((item) => item.id === id);
   assert.equal(session.reasoningHistory.length, 1);
-  assert.equal(session.currentStageIndex, 1);
+  assert.equal(session.currentStageIndex, 0);
+  assert.equal(session.pendingCalibrationStageId, "context");
+  useAppStore.getState().updateCaseStage(id, "校准后将问题收窄到可由后续证据改变的关联解释。");
+  useAppStore.getState().continueCaseStage(id);
+  assert.equal(useAppStore.getState().caseSessions.find((item) => item.id === id).currentStageIndex, 1);
   assert.throws(() => useAppStore.getState().lockCaseStage(id, { stageId: "context", reasoning: "重复覆盖旧答案是不允许的。" }), /顺序|锁定/);
-  for (const stage of researchCases[0].stages.slice(1)) useAppStore.getState().lockCaseStage(id, { stageId: stage.id, reasoning: `根据 ${stage.id} 更新竞争解释并限制主张边界。` });
+  for (const stage of researchCases[0].stages.slice(1)) {
+    useAppStore.getState().lockCaseStage(id, { stageId: stage.id, reasoning: `根据 ${stage.id} 更新竞争解释并限制主张边界。` });
+    useAppStore.getState().continueCaseStage(id);
+  }
   const finalResponse = Object.fromEntries(researchCases[0].finalTask.map((item) => [item, `${item} 的最终判断` ]));
   useAppStore.getState().completeCaseSession(id, finalResponse);
   const completed = useAppStore.getState().caseSessions.find((item) => item.id === id);
@@ -2089,16 +2098,17 @@ test("integration: M018 weekly Paper Studio routine deduplicates by paperId", ()
   assert.equal(useAppStore.getState().routineLogs.filter((item) => item.routineType === "paper_reading").length, 2);
 });
 
-test("integration: M018 onboarding CTA routes to Learn and schema 6→7 is additive", () => {
+test("integration: M018 onboarding CTA routes to Learn and schema 6→8 is additive", () => {
   useAppStore.setState({ ...createInitialState(), hydrated: true });
   useAppStore.getState().completeOnboarding([], {}, { allowProjectRelevance: false, targetLevel: "foundation", researchTypes: [], foundationGaps: [] });
   assert.equal(useAppStore.getState().view, "learning");
   const defaults = createInitialState();
   const fixture = { ...defaults, schemaVersion: 6 };
-  delete fixture.guideReadSectionIds; delete fixture.caseSessions; delete fixture.transferArtifacts; delete fixture.projectStudioRecords;
+  delete fixture.guideReadSectionIds; delete fixture.learningContentProgress; delete fixture.caseSessions; delete fixture.transferArtifacts; delete fixture.projectStudioRecords;
   const migrated = migratePersistedState(fixture, defaults);
-  assert.equal(migrated.schemaVersion, 7);
+  assert.equal(migrated.schemaVersion, 8);
   assert.deepEqual(migrated.guideReadSectionIds, []);
+  assert.deepEqual(migrated.learningContentProgress, {});
   assert.deepEqual(migrated.caseSessions, []);
   assert.deepEqual(migrated.transferArtifacts, []);
   assert.deepEqual(migrated.projectStudioRecords, []);
@@ -2111,4 +2121,287 @@ test("audit: M018 public prototype content is fictionalized and contains no priv
   assert.match(publicData, /fictionalized_oncology_omics/);
   assert.doesNotMatch(publicData, /(?:[A-Z]:\\Users\\|D:\\Agents\\|\.codex|patient[_ -]?id|medical record number|private chat)/i);
   assert.doesNotMatch(publicData, /\b(?:1[3-9]\d{9}|\d{17}[\dX])\b/);
+});
+
+// ---------------------------------------------------------------------------
+// M018.1 End-to-End Learning Wiring Patch
+// ---------------------------------------------------------------------------
+
+const architectureEntry = (id) => learningContentRegistry.find((entry) => entry.id === id);
+const architectureResponse = (assetId) => {
+  const asset = learningArchitectureAssetById.get(assetId);
+  assert.ok(asset, assetId);
+  return { selectedOptionIds: [...(asset.rubric.expectedOptionIds ?? [])], shortReasoning: "根据目标问题、数据生成结构和模型假设逐项审查，并保留未解决的不确定性。", claimBoundary: "当前最多支持对明确结构和模型假设敏感的有限关联结论。" };
+};
+
+test("M018.1-01 Confounding Apply pass creates independent_once", () => {
+  const entry = architectureEntry("concept-confounding-v1");
+  const result = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "conf-apply-pass" });
+  assert.equal(result.passed, true);
+  assert.equal(result.state.competence.level, "independent_once");
+  assert.equal(result.event.competenceEligible, true);
+});
+
+test("M018.1-02 Concept Learn and Explain progress create no competence event", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  useAppStore.getState().setLearningContentPhase("concept-confounding-v1", "explain");
+  useAppStore.getState().setLearningContentPhase("concept-confounding-v1", "apply", { explainCompleted: true });
+  assert.equal(useAppStore.getState().learningEvents.length, 0);
+  assert.equal(useAppStore.getState().learnerUnitStates.length, 0);
+});
+
+test("M018.1-03 Confounding due review pass creates retained", () => {
+  const entry = architectureEntry("concept-confounding-v1");
+  const applied = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "conf-a" });
+  const reviewed = submitArchitecturePractice({ entry, progress: applied.progress, currentState: applied.state, attemptKind: "review", response: architectureResponse(entry.reviewAssetId), confidence: 3, occurredAt: applied.state.dueAt, eventId: "conf-r" });
+  assert.equal(reviewed.state.competence.level, "retained");
+  assert.equal(reviewed.event.type, "retrieval_attempt");
+  const failed = submitArchitecturePractice({ entry, progress: applied.progress, currentState: applied.state, attemptKind: "review", response: { selectedOptionIds: ["pvalue"], shortReasoning: "这个回答满足长度但结构化判断错误，需要回到独立练习重新校准。", claimBoundary: "当前不能形成可靠结论。" }, confidence: 3, occurredAt: applied.state.dueAt, eventId: "conf-r-fail" });
+  assert.equal(failed.state.stage, "independent_ready");
+  assert.equal(failed.progress.phase, "apply");
+});
+
+test("M018.1-04 Cox response is cloned and locked into the event", () => {
+  const entry = architectureEntry("method-cox-v1");
+  const response = architectureResponse(entry.applyAssetId);
+  const result = submitArchitecturePractice({ entry, attemptKind: "apply", response, confidence: 4, occurredAt: "2026-09-01T00:00:00Z", eventId: "cox-lock" });
+  response.selectedOptionIds.length = 0;
+  assert.equal(result.event.response.selectedOptionIds.length, 6);
+  assert.equal(result.event.confidence, 4);
+});
+
+test("M018.1-05 Cox pass emits standardized competence evidence", () => {
+  const entry = architectureEntry("method-cox-v1");
+  const result = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "cox-pass" });
+  assert.equal(result.event.unitId, "method-cox-v1");
+  assert.equal(result.event.competenceEligible, true);
+  assert.equal(result.state.competence.level, "independent_once");
+});
+
+test("M018.1-06 Cox review uses a distinct versioned scenario", () => {
+  const entry = architectureEntry("method-cox-v1");
+  assert.notEqual(entry.applyAssetId, entry.reviewAssetId);
+  assert.notEqual(learningArchitectureAssetById.get(entry.applyAssetId).scenarioCn, learningArchitectureAssetById.get(entry.reviewAssetId).scenarioCn);
+  assert.equal(learningArchitectureAssetById.get(entry.reviewAssetId).hints.length, 0);
+});
+
+test("M018.1-07 LearningContentProgress survives migration restart", () => {
+  const defaults = createInitialState();
+  const progress = createLearningContentProgress(architectureEntry("concept-confounding-v1"), "2026-09-01T00:00:00Z");
+  progress.phase = "apply"; progress.explainCompleted = true;
+  const migrated = migratePersistedState({ ...defaults, schemaVersion: 8, learningContentProgress: { [progress.contentId]: progress } }, defaults);
+  assert.deepEqual(migrated.learningContentProgress[progress.contentId], progress);
+});
+
+test("M018.1-08 Concept phase is persisted in unified state", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  useAppStore.getState().setLearningContentPhase("concept-confounding-v1", "remediation", { explainCompleted: true, applyStarted: true, remediationNeeded: true });
+  assert.equal(useAppStore.getState().learningContentProgress["concept-confounding-v1"].phase, "remediation");
+});
+
+test("M018.1-09 Method phase is persisted in unified state", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  useAppStore.getState().setLearningContentPhase("method-cox-v1", "apply", { explainCompleted: true });
+  assert.equal(useAppStore.getState().learningContentProgress["method-cox-v1"].phase, "apply");
+});
+
+test("M018.1-10 Today advances Foundation to Confounding after Statistical Unit evidence", () => {
+  const base = createInitialState();
+  const unit = learningArchitectureKernelUnits.find((item) => item.id === "lu-statistical-unit-v1");
+  const state = { ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), stage: "review_eligible", competence: { level: "independent_once", evidenceEventIds: ["su"] }, dueAt: "2026-09-20T00:00:00Z" };
+  const tasks = generateM018CurriculumTasks({ ...base, learnerUnitStates: [state] }, new Date("2026-09-02T00:00:00Z"));
+  assert.equal(tasks.find((task) => task.learningThread === "foundation")?.learningContentId, "concept-confounding-v1");
+});
+
+test("M018.1-11 survival project adds Cox Project Overlay", () => {
+  const base = createInitialState();
+  const unit = learningArchitectureKernelUnits.find((item) => item.id === "lu-statistical-unit-v1");
+  const state = { ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), stage: "review_eligible", competence: { level: "independent_once", evidenceEventIds: ["su"] }, dueAt: "2026-09-20T00:00:00Z" };
+  const project = { id: "p-cox", name: "survival", disease: "tumor", studyType: "cohort", cohort: "n=100", omics: "proteomics", outcome: "survival", currentStage: "Analysis", scientificQuestion: "time-to-event outcome", bottleneck: "", activeMethods: "Cox", targetJournal: "", notes: "", createdAt: "2026-09-01T00:00:00Z" };
+  const tasks = generateM018CurriculumTasks({ ...base, projects: [project], onboarding: { ...base.onboarding, allowProjectRelevance: true }, learnerUnitStates: [state] }, new Date("2026-09-02T00:00:00Z"));
+  assert.equal(tasks.find((task) => task.learningThread === "project_overlay")?.learningContentId, "method-cox-v1");
+});
+
+test("M018.1-11b oncology project adds Case Lab Project Overlay after both prerequisites", () => {
+  const base = createInitialState();
+  const statistical = learningArchitectureKernelUnits.find((item) => item.id === "lu-statistical-unit-v1");
+  const confounding = learningArchitectureKernelUnits.find((item) => item.id === "concept-confounding-v1");
+  const demonstrated = (unit, id) => ({ ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), stage: "review_eligible", competence: { level: "independent_once", evidenceEventIds: [id] }, dueAt: "2026-09-20T00:00:00Z" });
+  const project = { id: "p-case", name: "ECM", disease: "肿瘤", studyType: "cohort", cohort: "", omics: "蛋白组", outcome: "", currentStage: "Analysis", scientificQuestion: "ECM evidence claim", bottleneck: "", activeMethods: "omics", targetJournal: "", notes: "", createdAt: "2026-09-01T00:00:00Z" };
+  const tasks = generateM018CurriculumTasks({ ...base, projects: [project], onboarding: { ...base.onboarding, allowProjectRelevance: true }, learnerUnitStates: [demonstrated(statistical, "su"), demonstrated(confounding, "conf")] }, new Date("2026-09-02T00:00:00Z"));
+  const overlay = tasks.find((task) => task.learningThread === "project_overlay");
+  assert.equal(overlay?.learningContentId, "case-evidence-claim-oncology-v1");
+  assert.equal(overlay?.destination, "case-lab");
+});
+
+test("M018.1-12 curriculum scheduler has at most two active threads", () => {
+  const base = createInitialState();
+  const unit = learningArchitectureKernelUnits.find((item) => item.id === "lu-statistical-unit-v1");
+  const state = { ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), competence: { level: "independent_once", evidenceEventIds: ["su"] }, stage: "review_eligible", dueAt: "2026-09-20T00:00:00Z" };
+  const project = { id: "p", name: "cox", disease: "", studyType: "cohort", cohort: "", omics: "", outcome: "survival", currentStage: "Planning", scientificQuestion: "Cox survival", bottleneck: "", activeMethods: "Cox", targetJournal: "", notes: "", createdAt: "2026-09-01T00:00:00Z" };
+  const tasks = generateM018CurriculumTasks({ ...base, projects: [project], onboarding: { ...base.onboarding, allowProjectRelevance: true }, learnerUnitStates: [state] }, new Date("2026-09-02T00:00:00Z"));
+  assert.ok(new Set(tasks.filter((task) => task.learningActivityType !== "delayed_retrieval").map((task) => task.learningThread)).size <= 2);
+});
+
+test("M018.1-13 M018 prerequisites cannot be bypassed", () => {
+  const cox = architectureEntry("method-cox-v1");
+  assert.equal(contentPrerequisitesMet(cox, { registry: learningContentRegistry, progress: [], states: [] }), false);
+  const unit = learningArchitectureKernelUnits.find((item) => item.id === "lu-statistical-unit-v1");
+  const state = { ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), competence: { level: "independent_once", evidenceEventIds: ["su"] } };
+  assert.equal(contentPrerequisitesMet(cox, { registry: learningContentRegistry, progress: [], states: [state] }), true);
+});
+
+test("M018.1-14 Progress consumes Confounding standardized evidence", () => {
+  const entry = architectureEntry("concept-confounding-v1");
+  const result = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "conf-progress" });
+  const projection = projectCapabilityEvidence({ states: [result.state], events: [result.event], transferArtifacts: [], contentProgress: [result.progress], contentRegistry: learningContentRegistry });
+  assert.equal(projection.find((item) => item.capabilityId === "result_interpretation").standardizedEvidence, "independent_once");
+});
+
+test("M018.1-15 Progress consumes Cox standardized evidence", () => {
+  const entry = architectureEntry("method-cox-v1");
+  const result = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "cox-progress" });
+  const projection = projectCapabilityEvidence({ states: [result.state], events: [result.event], transferArtifacts: [], contentProgress: [result.progress], contentRegistry: learningContentRegistry });
+  assert.equal(projection.find((item) => item.capabilityId === "statistical_reasoning").standardizedEvidence, "independent_once");
+});
+
+test("M018.1-16 biological replicate mapping uses the real singular unit ID", () => {
+  assert.ok(unitCapabilityMap["lu-biological-technical-replicate-v1"]);
+  assert.equal(unitCapabilityMap["lu-biological-technical-replicates-v1"], undefined);
+});
+
+test("M018.1-17 registry audit rejects an unknown unit mapping", () => {
+  const mapping = { ...unitCapabilityMap, "ghost-unit": ["study_design"] };
+  const errors = validateLearningContentRegistry({ registry: learningContentRegistry, assets: learningArchitecturePracticeAssets, guideSections, cases: researchCases, conceptLessons, knownUnitIds: new Set([...learningUnits, ...learningArchitectureKernelUnits].map((unit) => unit.id)), unitCapabilityMapping: mapping });
+  assert.ok(errors.some((error) => error.includes("ghost-unit")));
+});
+
+test("M018.1-18 Case lock stores expert reveal separately", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const id = useAppStore.getState().startCaseSession(researchCases.at(0).id);
+  useAppStore.getState().lockCaseStage(id, { stageId: "context", reasoning: "当前只有未解释的分子状态，需要形成可被后续证据改变的研究问题。" });
+  const entry = useAppStore.getState().caseSessions.find((session) => session.id === id).reasoningHistory[0];
+  assert.ok(entry.expertCalibration);
+  assert.notEqual(entry.reasoning, entry.expertCalibration);
+});
+
+test("M018.1-19 Case update reflection is stored without overwriting reasoning", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const id = useAppStore.getState().startCaseSession(researchCases.at(0).id);
+  const original = "当前只有未解释的分子状态，需要形成可被后续证据改变的研究问题。";
+  useAppStore.getState().lockCaseStage(id, { stageId: "context", reasoning: original });
+  useAppStore.getState().updateCaseStage(id, "我会收窄问题并保留来源不确定性。");
+  const entry = useAppStore.getState().caseSessions.find((session) => session.id === id).reasoningHistory[0];
+  assert.equal(entry.reasoning, original);
+  assert.match(entry.update, /收窄问题/);
+});
+
+test("M018.1-20 Case artifact creation is idempotent", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const input = { sourceType: "case", sourceId: "case-session-1", conceptIds: ["evidence-claim"], capabilityIds: ["result_interpretation"], question: "q", userReasoning: "first", linkedLearningEventIds: [] };
+  const first = useAppStore.getState().createTransferArtifact(input);
+  const second = useAppStore.getState().createTransferArtifact({ ...input, userReasoning: "updated" });
+  assert.equal(first, second);
+  assert.equal(useAppStore.getState().transferArtifacts.length, 1);
+  assert.equal(useAppStore.getState().transferArtifacts[0].userReasoning, "updated");
+});
+
+test("M018.1-21 same Project Studio record cannot duplicate its artifact", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const input = { sourceType: "project", sourceId: "project-record-1", conceptIds: ["research-question"], capabilityIds: ["scientific_question"], question: "q", userReasoning: "r", linkedLearningEventIds: [] };
+  useAppStore.getState().createTransferArtifact(input);
+  useAppStore.getState().createTransferArtifact(input);
+  assert.equal(useAppStore.getState().transferArtifacts.filter((artifact) => artifact.sourceId === "project-record-1").length, 1);
+});
+
+test("M018.1-22 remediation assets are distinct from primary Apply", () => {
+  for (const id of ["concept-statistical-unit-v1", "concept-confounding-v1"]) {
+    const entry = architectureEntry(id);
+    assert.ok(entry.remediationAssetId);
+    assert.notEqual(entry.remediationAssetId, entry.applyAssetId);
+    assert.notEqual(entry.remediationAssetId, entry.reviewAssetId);
+  }
+});
+
+test("M018.1-23 Paper fields use specific capability gates", () => {
+  const source = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "paper-lab", "PaperCard.tsx"), "utf8");
+  assert.match(source, /hasStandardizedEvidence\(states, "concept-confounding-v1"\)/);
+  assert.match(source, /validation: false/);
+  assert.match(source, /result_interpretation/);
+  assert.match(source, /尚未学习该能力/);
+});
+
+test("M018.1-24 Guide deep links select exact content and case IDs", () => {
+  const source = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "guide", "GuideView.tsx"), "utf8");
+  assert.match(source, /selectContent\(link\.targetId\)/);
+  assert.match(source, /selectCase\(link\.targetId\)/);
+  assert.equal(guideSections.find((section) => section.id === "guide-statistical-unit").links[0].targetId, "concept-statistical-unit-v1");
+});
+
+test("M018.1-25 CaseLab does not hardcode researchCases zero", () => {
+  const source = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "case-lab", "CaseLabView.tsx"), "utf8");
+  assert.doesNotMatch(source, /researchCases\s*\[\s*0\s*\]/);
+  assert.match(source, /selectedCaseId/);
+});
+
+test("M018.1-26 Today rationale comes from registry metadata", () => {
+  const state = createInitialState();
+  const task = generateM018CurriculumTasks(state, new Date("2026-09-01T00:00:00Z"))[0];
+  const entry = architectureEntry(task.learningContentId);
+  assert.match(task.rationale, new RegExp(entry.rationaleCn.slice(0, 8)));
+});
+
+test("M018.1-27 project opt-out suppresses Overlay", () => {
+  const base = createInitialState();
+  const unit = learningArchitectureKernelUnits.find((item) => item.id === "lu-statistical-unit-v1");
+  const state = { ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), competence: { level: "independent_once", evidenceEventIds: ["su"] }, stage: "review_eligible", dueAt: "2026-09-20T00:00:00Z" };
+  const project = { id: "secret", name: "cox", disease: "", studyType: "", cohort: "", omics: "", outcome: "survival", currentStage: "Planning", scientificQuestion: "Cox", bottleneck: "", activeMethods: "Cox", targetJournal: "", notes: "", createdAt: "2026-09-01T00:00:00Z" };
+  const tasks = generateM018CurriculumTasks({ ...base, projects: [project], onboarding: { ...base.onboarding, allowProjectRelevance: false }, learnerUnitStates: [state] }, new Date("2026-09-02T00:00:00Z"));
+  assert.equal(tasks.some((task) => task.learningThread === "project_overlay" && task.learningActivityType !== "delayed_retrieval"), false);
+});
+
+test("M018.1-28 transferable content is not scheduled before due", () => {
+  const base = createInitialState();
+  const unit = learningArchitectureKernelUnits.find((item) => item.id === "concept-confounding-v1");
+  const state = { ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), stage: "transferable", competence: { level: "transferred", evidenceEventIds: ["x"] }, dueAt: "2026-10-01T00:00:00Z" };
+  assert.equal(generateM018CurriculumTasks({ ...base, learnerUnitStates: [state] }, new Date("2026-09-02T00:00:00Z")).some((task) => task.learningContentId === "concept-confounding-v1"), false);
+  const reviewSource = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "review", "ReviewView.tsx"), "utf8");
+  assert.match(reviewSource, /architectureContent \? state\.stage === "review_eligible"/);
+});
+
+test("M018.1-29 schema 7→8 migration is lossless and zero-inference", () => {
+  const defaults = createInitialState();
+  const fixture = { ...defaults, schemaVersion: 7, projects: [{ id: "keep-project" }] };
+  delete fixture.learningContentProgress;
+  const migrated = migratePersistedState(fixture, defaults);
+  assert.equal(migrated.schemaVersion, 8);
+  assert.deepEqual(migrated.learningContentProgress, {});
+  assert.equal(migrated.projects[0].id, "keep-project");
+  assert.deepEqual(migrated.learningEvents, fixture.learningEvents);
+});
+
+test("M018.1-30 future schema fails closed", () => {
+  assert.throws(() => migratePersistedState({ ...createInitialState(), schemaVersion: 9 }, createInitialState()), /数据库未被修改/);
+});
+
+test("M018.1-31 public registry and assets contain no private path or identifier", () => {
+  const payload = JSON.stringify({ learningContentRegistry, learningArchitecturePracticeAssets });
+  assert.doesNotMatch(payload, /(?:[A-Z]:\\Users\\|D:\\Agents\\|\.codex|patient[_ -]?id|medical record number|private chat)/i);
+  assert.doesNotMatch(payload, /\b(?:1[3-9]\d{9}|\d{17}[\dX])\b/);
+});
+
+test("M018.1-32 learning progress does not mutate Content Studio collections", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  const before = JSON.stringify({ personalContent: useAppStore.getState().personalContent, history: useAppStore.getState().contentRevisionHistory, conflicts: useAppStore.getState().contentConflicts });
+  useAppStore.getState().setLearningContentPhase("concept-statistical-unit-v1", "explain");
+  const after = JSON.stringify({ personalContent: useAppStore.getState().personalContent, history: useAppStore.getState().contentRevisionHistory, conflicts: useAppStore.getState().contentConflicts });
+  assert.equal(after, before);
+});
+
+test("M018.1-33 legacy Learning Kernel remains available for compatibility", () => {
+  const tasks = generateLearningTodayTasks(createInitialState(), new Date("2026-09-01T00:00:00Z"));
+  assert.equal(tasks[0].unitId, "lu-statistical-unit-v1");
+  const source = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "learning", "LearningView.tsx"), "utf8");
+  assert.match(source, /onOpenLegacy/);
+  assert.match(source, /PracticeActivity/);
 });

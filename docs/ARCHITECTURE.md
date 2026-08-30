@@ -1,24 +1,26 @@
-# ResearchOS architecture — M018
+# ResearchOS architecture — M018.1
 
-React workspaces call pure learning/domain functions and the Zustand store; persistence continues through the existing desktop adapter to SQLite WAL. Credentials remain in Windows Credential Manager. M018 changes only the frontend learning architecture and canonical state payload, not the native persistence boundary.
+React workspaces call pure learning/domain functions and the Zustand store; persistence continues through the existing desktop adapter to SQLite WAL. Credentials remain in Windows Credential Manager. M018.1 connects frontend learning contracts and canonical state without changing the native persistence boundary.
 
 ## Learning boundaries
 
-- `src/domain/learningKernel.ts`: compatible standardized practice/event kernel.
-- `src/domain/learningArchitecture.ts`: Guide, Concept, Method, Case, Transfer, Project Studio and capability projection contracts.
-- `src/data/learningArchitecture.ts`: four bounded source-linked prototypes.
-- `src/features/guide`: searchable continuous reference reading.
-- `src/features/learning`: adaptive Concept/Method surfaces plus M017 compatibility path.
-- `src/features/case-lab`: staged evidence, locked reasoning and Decision Timeline.
-- `src/features/paper-lab` / `projects`: integrated work and real-context artifacts.
-- `src/features/review` / `skills`: unified review and projected evidence.
+- `src/domain/learningKernel.ts`: immutable standardized assets, bindings, events and competence rules.
+- `src/domain/learningArchitecture.ts`: Guide, Concept, Method, Case, content progress, registry validation, Transfer and capability projection contracts.
+- `src/data/learningArchitecture.ts`: the bounded prototypes, their Kernel adapters/assets and canonical content registry.
+- `src/learning/learningArchitectureEngine.ts`: pure M018 progress creation, prerequisite checks and Practice Asset → Kernel transition.
+- `src/learning/scheduler.ts`: compatible Kernel scheduling plus Foundation, Project Overlay and due-review selection.
+- `src/features/learning`: data-driven Concept/Method renderers; legacy M017 access is explicit compatibility only.
+- `src/features/case-lab`: selected case, staged evidence, calibration/update loop and Decision Timeline.
+- `src/features/today`, `guide`, `review`, `skills` and `paper-lab`: registry-backed entry, scheduling, evidence projection and capability-specific disclosure.
 
-Practice assets remain immutable practice infrastructure. They are not the universal container for Guide content, explanation prose, case stages or Studio records.
+Practice assets are not the universal container for Guide prose, explanatory writing, Case stages or Studio records. They are the auditable boundary for standardized Apply and retrieval.
 
-## State schema 7
+## State schema 8
 
-New collections are `guideReadSectionIds`, `caseSessions`, `transferArtifacts` and `projectStudioRecords`. Migration is additive, idempotent and zero-inference. A future schema is refused before persistence. SQLite user version remains 2, so atomic writes, WAL, integrity-checked restore and five bounded recovery snapshots are unchanged.
+Schema 8 adds `learningContentProgress: Record<string, LearningContentProgressV1>`. Migration from schema 7 inserts `{}` only, is idempotent and does not infer exposure or competence. Selected content and case are navigation state; case sessions and progress remain persisted canonical data. A future schema is refused before persistence. SQLite user version remains 2, preserving atomic writes, WAL, integrity-checked restore and five recovery snapshots.
 
-## Trust boundary
+## Identity and trust boundaries
 
-Guide reading and explanatory writing cannot generate competence. Case history is locked against overwrite and tied to `(caseId, revision, hash)`. Transfer Artifacts never promote mastery. Generated scientific content cannot self-verify. Public built-ins contain no local path, patient identifier or private project detail.
+Architecture assets retain `(id, revision, contentHash)` snapshots and role-distinct bindings. Registry validation rejects unknown content/capability/prerequisite/unit/Guide/Case references, missing provenance and invalid Apply/remediation/review relationships. Capability projection de-duplicates event IDs.
+
+Guide reading and Explain text cannot generate competence. Case history is version-bound and append-only. Transfer Artifact identity is based on `sourceType + sourceId + sorted concept/capability context`; a repeated source updates or returns the canonical record. Generated scientific content cannot self-verify, and public built-ins contain no local path, patient identifier or private project detail.

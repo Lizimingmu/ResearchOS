@@ -1,5 +1,49 @@
 import { useState } from "react";
+import { learningContentRegistry } from "../../data/learningArchitecture";
+import { hasStandardizedEvidence, projectCapabilityEvidence, type CapabilityId } from "../../domain/learningArchitecture";
 import { useAppStore } from "../../state/store";
-const empty={researchQuestion:"",whyImportant:"",studyDesign:"",figureEvidenceJobs:"",mainClaim:"",weakestEvidence:"",alternativeExplanation:"",transferableLesson:"",statisticalUnit:"",confounding:"",validation:"",majorConcern:"",evidenceConclusionMismatch:"",maximumDefensibleClaim:"",reviewerCritique:""};
-const rank={unassessed:0,guided_only:1,independent_once:2,retained:3,transferred:3} as const;
-export function PaperCard({paperId}:{paperId:string}){const existing=useAppStore((s)=>s.paperCards[paperId]),states=useAppStore((s)=>s.learnerUnitStates),save=useAppStore((s)=>s.savePaperCard),recordRoutine=useAppStore((s)=>s.recordRoutine);const[form,setForm]=useState(existing?{...empty,...existing}:empty);const level=Math.max(0,...states.map((state)=>rank[state.competence.level]));const change=(k:keyof typeof empty,v:string)=>setForm((x)=>({...x,[k]:v}));const fields=[...[ ["researchQuestion","Research Question"],["whyImportant","Why Important"],["studyDesign","Study Design"],["figureEvidenceJobs","Figure 1–N Evidence Jobs"],["mainClaim","Main Claim"],["weakestEvidence","Weakest Evidence"] ],...(level>=2?[["statisticalUnit","Statistical Unit"],["confounding","Confounding"],["validation","Validation"],["alternativeExplanation","Alternative Explanation"]]:[]),...(level>=3?[["majorConcern","Major Concern"],["evidenceConclusionMismatch","Evidence–Conclusion mismatch"],["maximumDefensibleClaim","Maximum defensible claim"],["reviewerCritique","Reviewer-style critique"]]:[]),["transferableLesson","What I Can Transfer"]] as Array<[keyof typeof empty,string]>;return <section className="paper-card"><span className="eyebrow">Paper Studio · {level>=3?"Advanced":level>=2?"Intermediate":"Beginner"}</span><h2>先重建论文的证据工作，进阶字段随独立证据逐步出现</h2>{fields.map(([k,l])=><label key={k}>{l}<textarea rows={2} value={form[k]} onChange={(e)=>change(k,e.target.value)}/></label>)}<button className="primary" onClick={()=>{save(paperId,form);recordRoutine({routineType:"paper_reading",status:"completed",paperId})}}>保存 Paper Card</button><small>同一 paperId 在同一周重复保存只计一次阅读。</small></section>}
+
+const empty = { researchQuestion: "", whyImportant: "", studyDesign: "", figureEvidenceJobs: "", mainClaim: "", weakestEvidence: "", alternativeExplanation: "", transferableLesson: "", statisticalUnit: "", confounding: "", validation: "", majorConcern: "", evidenceConclusionMismatch: "", maximumDefensibleClaim: "", reviewerCritique: "" };
+type FieldKey = keyof typeof empty;
+const baseFields: Array<[FieldKey, string]> = [["researchQuestion", "Research Question"], ["whyImportant", "Why Important"], ["studyDesign", "Study Design"], ["figureEvidenceJobs", "Figure 1–N Evidence Jobs"], ["mainClaim", "Main Claim"], ["weakestEvidence", "Weakest Evidence"]];
+const gatedFields: Array<[FieldKey, string, string]> = [
+  ["statisticalUnit", "Statistical Unit", "需要 Study Design 或 Statistical Reasoning 的独立标准化证据"],
+  ["confounding", "Confounding", "需要完成 Confounding 的独立标准化 Apply"],
+  ["validation", "Validation", "尚无经过验证的 Validation 教学原型"],
+  ["alternativeExplanation", "Alternative Explanation", "需要 Result Interpretation 的独立标准化证据"],
+  ["majorConcern", "Major Concern", "需要 Result Interpretation 的延迟保持证据"],
+  ["evidenceConclusionMismatch", "Evidence–Conclusion mismatch", "需要 Result Interpretation 的延迟保持证据"],
+  ["maximumDefensibleClaim", "Maximum defensible claim", "需要 Result Interpretation 的延迟保持证据"],
+  ["reviewerCritique", "Reviewer-style critique", "需要多个相关能力的 retained 证据"],
+];
+
+export function PaperCard({ paperId }: { paperId: string }) {
+  const existing = useAppStore((state) => state.paperCards[paperId]);
+  const states = useAppStore((state) => state.learnerUnitStates);
+  const events = useAppStore((state) => state.learningEvents);
+  const artifacts = useAppStore((state) => state.transferArtifacts);
+  const contentProgress = useAppStore((state) => Object.values(state.learningContentProgress));
+  const save = useAppStore((state) => state.savePaperCard);
+  const recordRoutine = useAppStore((state) => state.recordRoutine);
+  const [form, setForm] = useState(existing ? { ...empty, ...existing } : empty);
+  const projection = projectCapabilityEvidence({ states, events, transferArtifacts: artifacts, contentProgress, contentRegistry: learningContentRegistry });
+  const evidence = (capabilityId: CapabilityId, minimum: "independent_once" | "retained") => {
+    const level = projection.find((item) => item.capabilityId === capabilityId)?.standardizedEvidence ?? "none";
+    return minimum === "independent_once" ? level !== "none" : ["retained", "multiple_context_retained"].includes(level);
+  };
+  const retainedCount = projection.filter((item) => ["retained", "multiple_context_retained"].includes(item.standardizedEvidence)).length;
+  const unlocked: Record<FieldKey, boolean> = {
+    researchQuestion: true, whyImportant: true, studyDesign: true, figureEvidenceJobs: true, mainClaim: true, weakestEvidence: true, transferableLesson: true,
+    statisticalUnit: evidence("study_design", "independent_once") || evidence("statistical_reasoning", "independent_once"),
+    confounding: hasStandardizedEvidence(states, "concept-confounding-v1"),
+    validation: false,
+    alternativeExplanation: evidence("result_interpretation", "independent_once"),
+    majorConcern: evidence("result_interpretation", "retained"),
+    evidenceConclusionMismatch: evidence("result_interpretation", "retained"),
+    maximumDefensibleClaim: evidence("result_interpretation", "retained"),
+    reviewerCritique: retainedCount >= 2 || projection.some((item) => item.standardizedEvidence === "multiple_context_retained"),
+  };
+  const level = unlocked.reviewerCritique ? "Advanced" : gatedFields.some(([key]) => unlocked[key]) ? "Intermediate" : "Beginner";
+  const change = (key: FieldKey, value: string) => setForm((current) => ({ ...current, [key]: value }));
+  return <section className="paper-card"><span className="eyebrow">Paper Studio · {level}</span><h2>字段按具体能力证据开放，不使用全局最高等级</h2>{baseFields.map(([key, label]) => <label key={key}>{label}<textarea rows={2} value={form[key]} onChange={(event) => change(key, event.target.value)}/></label>)}{gatedFields.map(([key, label, requirement]) => unlocked[key] ? <label key={key}>{label}<textarea rows={2} value={form[key]} onChange={(event) => change(key, event.target.value)}/></label> : <div className="paper-field-locked" key={key}><strong>{label}</strong><span>尚未学习该能力 · {requirement}</span></div>)}<label>What I Can Transfer<textarea rows={2} value={form.transferableLesson} onChange={(event) => change("transferableLesson", event.target.value)}/></label><button className="primary" onClick={() => { save(paperId, form); recordRoutine({ routineType: "paper_reading", status: "completed", paperId }); }}>保存 Paper Card</button><small>同一 paperId 在同一周重复保存只计一次阅读。</small></section>;
+}

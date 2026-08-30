@@ -24,10 +24,10 @@ export function PracticeActivity({ asset, binding, projects = [], onSubmit, onCo
   const response: PracticeResponseV1 = { selectedOptionIds: selected, orderedItemIds: ordered, classifications, shortReasoning: reasoning, claimBoundary: boundary, projectId: projectId || undefined };
   const scored = scorePracticeAsset(asset, response);
   const needsReasoning = (asset.rubric.minReasoningChars ?? 0) > 0;
-  const needsBoundary = asset.interaction === "claim_boundary" || asset.interaction === "project_transfer";
+  const needsBoundary = (asset.rubric.minClaimBoundaryChars ?? 0) > 0 || asset.interaction === "claim_boundary" || asset.interaction === "project_transfer";
   const choose = (id: string) => setSelected((current) => asset.interaction === "multi_select" ? (current.includes(id) ? current.filter((value) => value !== id) : [...current, id]) : [id]);
   const hasStructuredAnswer = asset.interaction === "ordering" ? ordered.length > 0 : asset.interaction === "classification" ? Object.keys(classifications).length === (asset.classificationItems?.length ?? 0) : selected.length > 0;
-  const valid = hasStructuredAnswer && (!needsReasoning || reasoning.trim().length >= (asset.rubric.minReasoningChars ?? 0)) && (!needsBoundary || boundary.trim().length >= 8) && (asset.interaction !== "project_transfer" || Boolean(projectId));
+  const valid = hasStructuredAnswer && (!needsReasoning || reasoning.trim().length >= (asset.rubric.minReasoningChars ?? 0)) && (!needsBoundary || boundary.trim().length >= (asset.rubric.minClaimBoundaryChars ?? 8)) && (asset.interaction !== "project_transfer" || Boolean(projectId));
   const submit = () => {
     if (!valid) return;
     setLocked(true);

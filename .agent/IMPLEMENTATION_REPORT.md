@@ -759,3 +759,38 @@ The four prototypes use existing verified repository sources (`src-pseudorep`, `
 ## M018 final gate result
 
 Lint/typecheck PASS; frontend 121/121 plus localization 11 and startup smoke PASS; Learning Kernel 16/16; M015 32/32; source-pack and Problem Atlas 0/0; content 0 errors / 1 pre-existing warning; performance PASS at 1,009,936 initial JS and 0.0065 ms scheduler; privacy/diff/handoff checks PASS. Rust is BLOCKED before compilation by missing offline `urlencoding` and proxied Schannel `SEC_E_NO_CREDENTIALS`. Foreground/manual/installer/real-Vault/packaging remain NOT RUN.
+
+# M018.1 End-to-End Learning Wiring (2026-08-31)
+
+Agent: Codex. Diff-based implementation from approved M018 commit `401c0ed8469d791b0e214f0ed6811b08a5f0a4a3`; no history rescan, curriculum expansion, packaging, installer, real Vault or merge to `main`.
+
+## Changed files
+
+- Learning contracts/data/engine: `src/domain/learningArchitecture.ts`, `src/domain/learningKernel.ts`, `src/data/learningArchitecture.ts`, `src/learning/learningArchitectureEngine.ts`, `src/learning/scheduler.ts`.
+- State/UI: `src/domain/types.ts`, `src/state/migrations.ts`, `src/state/store.ts`, Learning, Case Lab, Today, Review, Progress, Guide, Paper and shared practice UI/styles.
+- Gates/tests/docs: M018 registry audit scripts/artifact, `tests-node/suite.mjs`, package scripts, M018.1 product/architecture/UX/agent documentation.
+
+## Implemented
+
+- Wired Confounding and Cox through distinct, versioned, bound Apply/review assets and the Learning Kernel. Added fresh Statistical Unit and Confounding remediation surfaces.
+- Added schema 8 persisted content progress; Learn/Explain remain exposure while Apply/review alone can produce standardized evidence.
+- Added the canonical registry, deterministic integrity audit, Foundation/Project Overlay scheduler, due M018 reviews and content-specific rationale.
+- Projected old Kernel and new M018 evidence together without double counting or promoting Transfer Artifacts.
+- Completed Case calibration/update progression, selected-case/content navigation and idempotent Case/Project artifacts.
+- Replaced global Paper unlocking with capability-specific gates and kept missing capabilities visibly locked.
+
+## Tests
+
+- Added 34 named M018.1 regression checks covering both standardized pipelines, persistence, scheduling/two-thread/prerequisites, registry integrity, Progress, Case scheduling/feedback/artifact identity, fresh remediation, Paper gates, deep links, migration/privacy/provenance and legacy compatibility.
+- `npm test` — PASS 155/155 plus localization 11 and startup smoke.
+- Learning Kernel 16/16; M018 registry audit PASS; M015 32/32; source-pack and Problem Atlas 0/0; content 0 errors / 1 pre-existing warning; performance PASS at 1,038,344 initial JS and 0.0040 ms scheduler.
+
+## Failures
+
+- Performance audit compatibility probes exposed old-state fixtures without `learningContentProgress` and `caseSessions`. The M018 scheduler now treats both absent collections as empty; the rerun passed.
+- `cargo test --offline --manifest-path src-tauri/Cargo.toml` is BLOCKED before compilation because the local crates cache lacks `urlencoding`. No Rust source changed.
+
+## Remaining issues
+
+- Foreground UI, keyboard/screen-reader behavior, high-DPI layout, real restart pacing, user-manual acceptance, installer, packaged restart and real Vault remain NOT RUN.
+- The next action is a real foreground user trial. No further architecture refactor or curriculum expansion is authorized before that evidence.

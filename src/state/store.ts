@@ -21,7 +21,7 @@ import type {
   UserResponse,
   ViewId,
 } from "../domain/types";
-import type { CaseReasoningEntryV1, ProjectStudioRecordV1, TransferArtifactV1 } from "../domain/learningArchitecture";
+import type { CaseReasoningEntryV1, LearningContentPhase, LearningContentProgressV1, ProjectStudioRecordV1, TransferArtifactV1 } from "../domain/learningArchitecture";
 import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
 import type { LearningMode } from "../domain/learningKernel";
 import type { ContentConflict, ContentLifecycle, ContentPatchPack, ContentPatchPreview, ObsidianPublishBatch, PersonalContentEntry, PortableContentRecord } from "../domain/contentStudio";
@@ -34,8 +34,10 @@ import { applyPlannedBatch, fingerprintWrites, planFromPersistedBatch, planPubli
 import { resolveEffectiveContent } from "../services/contentStudio";
 import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
 import { learningUnitById, prerequisiteEdges } from "../data/learningUnits";
-import { researchCases } from "../data/learningArchitecture";
+import { learningContentRegistry, researchCases } from "../data/learningArchitecture";
 import { applyLearningTransition, canStartUnit, createLearnerUnitState, type LearningTransitionInput } from "../learning/learningKernelEngine";
+import { createLearningContentProgress, submitArchitecturePractice, type ArchitectureAttemptKind } from "../learning/learningArchitectureEngine";
+import type { PracticeResponseV1 } from "../domain/learningKernel";
 
 const providers: AIProvider[] = [
   { id: "openai", name: "OpenAI-compatible", template: "openai", baseUrl: "https://api.openai.com/v1", model: "gpt-5-mini", temperature: 0.2, maxTokens: 1200, hasApiKey: false },
@@ -111,6 +113,7 @@ export const createInitialState = (): AppStateData => {
     reasoningRecords: [],
     paperCards: {},
     guideReadSectionIds: [],
+    learningContentProgress: {},
     caseSessions: [],
     transferArtifacts: [],
     projectStudioRecords: [],
@@ -141,6 +144,8 @@ interface AppStore extends AppStateData {
   selectedJudgmentId: string;
   selectedProblemId: string;
   selectedLearningUnitId: string;
+  selectedLearningContentId: string;
+  selectedCaseId: string;
   paletteOpen: boolean;
   globalSearch: string;
   toast?: ToastMessage;
@@ -153,6 +158,10 @@ interface AppStore extends AppStateData {
   selectJudgment: (id: string) => void;
   selectProblem: (id: string) => void;
   selectLearningUnit: (id: string) => void;
+  selectLearningContent: (id: string) => void;
+  selectCase: (id: string) => void;
+  setLearningContentPhase: (contentId: string, phase: LearningContentPhase, patch?: Partial<Pick<LearningContentProgressV1, "explainCompleted" | "applyStarted" | "remediationNeeded">>) => void;
+  recordLearningContentPractice: (contentId: string, attemptKind: ArchitectureAttemptKind, response: PracticeResponseV1, confidence: 1 | 2 | 3 | 4) => { passed: boolean; score: number };
   startLearningUnit: (id: string, mode: LearningMode) => void;
   recordLearningTransition: (unitId: string, input: Omit<LearningTransitionInput, "id" | "occurredAt">) => void;
   toggleLearningUnitPaused: (unitId: string) => void;
@@ -165,6 +174,8 @@ interface AppStore extends AppStateData {
   markGuideSectionRead: (sectionId: string) => void;
   startCaseSession: (caseId: string) => string;
   lockCaseStage: (sessionId: string, entry: Omit<CaseReasoningEntryV1, "lockedAt">) => void;
+  updateCaseStage: (sessionId: string, update: string) => void;
+  continueCaseStage: (sessionId: string) => void;
   completeCaseSession: (sessionId: string, finalResponse: Record<string, string>) => void;
   createTransferArtifact: (input: Omit<TransferArtifactV1, "schemaVersion" | "id" | "createdAt">) => string;
   saveProjectStudioRecord: (input: Omit<ProjectStudioRecordV1, "schemaVersion" | "id" | "createdAt">) => string;
@@ -262,6 +273,7 @@ function stateData(state: AppStore): AppStateData {
     reasoningRecords: state.reasoningRecords,
     paperCards: state.paperCards,
     guideReadSectionIds: state.guideReadSectionIds,
+    learningContentProgress: state.learningContentProgress,
     caseSessions: state.caseSessions,
     transferArtifacts: state.transferArtifacts,
     projectStudioRecords: state.projectStudioRecords,
@@ -307,6 +319,8 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectedJudgmentId: "jc-01",
     selectedProblemId: initial.problemCards[0]?.id ?? "",
     selectedLearningUnitId: "lu-statistical-unit-v1",
+    selectedLearningContentId: "concept-statistical-unit-v1",
+    selectedCaseId: researchCases.find((item) => item.lifecycle === "active")?.id ?? "",
     paletteOpen: false,
     globalSearch: "",
 
@@ -338,6 +352,32 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectJudgment: (selectedJudgmentId) => set({ selectedJudgmentId }),
     selectProblem: (selectedProblemId) => set({ selectedProblemId, view: "problem-atlas" }),
     selectLearningUnit: (selectedLearningUnitId) => set({ selectedLearningUnitId, view: "learning" }),
+    selectLearningContent: (selectedLearningContentId) => set({ selectedLearningContentId, view: "learning" }),
+    selectCase: (selectedCaseId) => set({ selectedCaseId, view: "case-lab" }),
+    setLearningContentPhase: (contentId, phase, patch) => {
+      const entry = learningContentRegistry.find((item) => item.id === contentId);
+      if (!entry) throw new Error("学习内容不存在");
+      const now = new Date().toISOString();
+      set((state) => {
+        const current = state.learningContentProgress[contentId] ?? createLearningContentProgress(entry, now);
+        const practiceStarted = ["apply", "remediation", "review"].includes(phase) ? { applyStarted: true } : {};
+        return { learningContentProgress: { ...state.learningContentProgress, [contentId]: { ...current, ...practiceStarted, ...patch, phase, updatedAt: now } } };
+      });
+      queuePersist();
+    },
+    recordLearningContentPractice: (contentId, attemptKind, response, confidence) => {
+      const entry = learningContentRegistry.find((item) => item.id === contentId);
+      if (!entry?.unitId) throw new Error("学习内容没有标准化 Kernel 单元");
+      const now = new Date().toISOString();
+      const result = submitArchitecturePractice({ entry, progress: get().learningContentProgress[contentId], currentState: get().learnerUnitStates.find((item) => item.unitId === entry.unitId), attemptKind, response, confidence, occurredAt: now, eventId: makeId("learning-event") });
+      set((state) => ({
+        learnerUnitStates: [result.state, ...state.learnerUnitStates.filter((item) => item.unitId !== entry.unitId)],
+        learningEvents: [result.event, ...state.learningEvents],
+        learningContentProgress: { ...state.learningContentProgress, [contentId]: result.progress },
+      }));
+      queuePersist();
+      return { passed: result.passed, score: result.score };
+    },
     startLearningUnit: (id, mode) => {
       const unit = learningUnitById.get(id);
       if (!unit) throw new Error("学习单元不存在");
@@ -425,9 +465,29 @@ export const useAppStore = create<AppStore>((set, get) => {
         if (session.reasoningHistory.some((item) => item.stageId === entry.stageId)) throw new Error("该阶段回答已经锁定");
         const expected = researchCase.stages[session.currentStageIndex];
         if (!expected || expected.id !== entry.stageId) throw new Error("必须按证据揭示顺序作答");
-        const history = [...session.reasoningHistory, { ...entry, lockedAt: now }];
-        const nextIndex = session.currentStageIndex + 1;
-        return { ...session, currentStageIndex: nextIndex, reasoningHistory: history, updatedAt: now };
+        if (session.pendingCalibrationStageId) throw new Error("请先完成当前阶段的专家校准再继续");
+        const history = [...session.reasoningHistory, { ...entry, expertCalibration: expected.revealExplanation, lockedAt: now }];
+        return { ...session, pendingCalibrationStageId: expected.id, reasoningHistory: history, updatedAt: now };
+      }) }));
+      queuePersist();
+    },
+    updateCaseStage: (sessionId, update) => {
+      const value = update.trim();
+      if (value.length < 4) throw new Error("更新反思至少需要 4 个字符");
+      const now = new Date().toISOString();
+      set((state) => ({ caseSessions: state.caseSessions.map((session) => {
+        if (session.id !== sessionId) return session;
+        if (!session.pendingCalibrationStageId) throw new Error("当前没有待更新的校准阶段");
+        return { ...session, reasoningHistory: session.reasoningHistory.map((entry) => entry.stageId === session.pendingCalibrationStageId ? { ...entry, update: value } : entry), updatedAt: now };
+      }) }));
+      queuePersist();
+    },
+    continueCaseStage: (sessionId) => {
+      const now = new Date().toISOString();
+      set((state) => ({ caseSessions: state.caseSessions.map((session) => {
+        if (session.id !== sessionId) return session;
+        if (!session.pendingCalibrationStageId) throw new Error("必须先锁定当前判断");
+        return { ...session, currentStageIndex: session.currentStageIndex + 1, pendingCalibrationStageId: undefined, updatedAt: now };
       }) }));
       queuePersist();
     },
@@ -438,15 +498,21 @@ export const useAppStore = create<AppStore>((set, get) => {
       set((state) => ({ caseSessions: state.caseSessions.map((session) => {
         if (session.id !== sessionId) return session;
         const researchCase = researchCases.find((item) => item.id === session.caseId);
-        if (!researchCase || session.currentStageIndex < researchCase.stages.length) throw new Error("证据阶段尚未完成");
+        if (!researchCase || session.currentStageIndex < researchCase.stages.length || session.pendingCalibrationStageId) throw new Error("证据阶段尚未完成");
         if (session.completedAt) throw new Error("Final Task 已经锁定");
         return { ...session, finalResponse: Object.fromEntries(Object.entries(finalResponse).map(([key, value]) => [key, value.trim()])), completedAt: now, updatedAt: now };
       }) }));
       queuePersist();
     },
     createTransferArtifact: (input) => {
-      const id = makeId("transfer-artifact");
-      set((state) => ({ transferArtifacts: [{ ...input, schemaVersion: 1, id, createdAt: new Date().toISOString(), conceptIds: [...new Set(input.conceptIds)], capabilityIds: [...new Set(input.capabilityIds)], linkedLearningEventIds: [...new Set(input.linkedLearningEventIds)] }, ...state.transferArtifacts] }));
+      const conceptIds = [...new Set(input.conceptIds)].sort();
+      const capabilityIds = [...new Set(input.capabilityIds)].sort();
+      const existing = input.sourceId ? get().transferArtifacts.find((artifact) => artifact.sourceType === input.sourceType && artifact.sourceId === input.sourceId && [...artifact.conceptIds].sort().join("|") === conceptIds.join("|") && [...artifact.capabilityIds].sort().join("|") === capabilityIds.join("|")) : undefined;
+      const id = existing?.id ?? makeId("transfer-artifact");
+      set((state) => {
+        const record = { ...input, schemaVersion: 1 as const, id, createdAt: existing?.createdAt ?? new Date().toISOString(), conceptIds, capabilityIds, linkedLearningEventIds: [...new Set(input.linkedLearningEventIds)] };
+        return { transferArtifacts: existing ? state.transferArtifacts.map((artifact) => artifact.id === id ? record : artifact) : [record, ...state.transferArtifacts] };
+      });
       queuePersist();
       return id;
     },
@@ -632,6 +698,7 @@ export const useAppStore = create<AppStore>((set, get) => {
         onboarding: { ...state.onboarding, ...profile, completed: true, interests, familiarity, completedAt: now, learningKernelOnboardingCompletedAt: now },
         tutorialOpen: false,
         selectedLearningUnitId: "lu-statistical-unit-v1",
+        selectedLearningContentId: "concept-statistical-unit-v1",
         view: "learning",
       }));
       queuePersist();
@@ -647,7 +714,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     },
     resetDemo: () => {
       const reset = createInitialState();
-      set({ ...reset, view: "today", tutorialOpen: false, selectedPaperId: reset.papers[0]?.id, selectedProblemId: reset.problemCards[0]?.id ?? "", toast: { id: makeId("toast"), tone: "info", text: "演示数据已重置，AI 凭据未更改。" } });
+      set({ ...reset, view: "today", tutorialOpen: false, selectedPaperId: reset.papers[0]?.id, selectedProblemId: reset.problemCards[0]?.id ?? "", selectedLearningContentId: "concept-statistical-unit-v1", selectedCaseId: researchCases.find((item) => item.lifecycle === "active")?.id ?? "", toast: { id: makeId("toast"), tone: "info", text: "演示数据已重置，AI 凭据未更改。" } });
       queuePersist();
     },
     openTutorial: () => {
