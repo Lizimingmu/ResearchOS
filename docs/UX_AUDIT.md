@@ -1,41 +1,21 @@
-# ResearchOS UX audit — M017
+# ResearchOS UX audit — M018
 
-*Background/source-level audit of the guided learning experience. Foreground visual acceptance is not claimed.*
+Status: source/headless acceptance complete; real foreground Windows trial not run.
 
-## Audited workflows
-
-| Workflow | Background result | Remaining manual evidence |
+| Workflow | Background result | Manual evidence still needed |
 |---|---|---|
-| Today → one core lesson | PASS | Visual hierarchy and click path |
-| Why → intuition → prediction → explanation | PASS | Readability and pacing |
-| Worked example → real self-check | PASS | Fading clarity and feedback comprehension |
-| Guided hints → independent no-hint case | PASS | Keyboard/focus behavior and perceived difficulty |
-| Due unfamiliar review → far transfer | PASS | Multi-day trial and project-transfer usefulness |
-| Think Before AI → saved reasoning record | PASS | Entry-point discoverability |
-| Paper Lab → beginner Paper Card | PASS | PDF/Paper Card layout at Windows scaling |
-| Pause → resume exact lesson step | PASS | Restart from packaged application |
+| Today → Foundation / Due Review / Routine | PASS | Visual hierarchy and route clarity |
+| Guide search → continuous reading → cross-link | PASS | Search feel and long-text readability |
+| Statistical Unit Learn → Explain → Apply | PASS | Pacing and self-comparison comprehension |
+| Hierarchy Explorer selection | PASS | Pointer, keyboard and grouping clarity |
+| Confounding Concept Lesson | PASS | DAG explanation usefulness |
+| Cox Method Lesson | PASS | Density and reviewer-check scanability |
+| Case staged reveal → Decision Timeline | PASS | Multi-stage cognitive load and restart |
+| Paper Studio progressive disclosure | PASS | Fields at Windows scaling |
+| Project Studio history → Transfer Artifact | PASS | Real-project usefulness |
+| Review source unification | PASS | Learner mental model |
+| Progress three-axis evidence | PASS | Labels and absence-of-evidence interpretation |
 
-## Cognitive UX
+The default Concept surface is no longer a nine-page card progression. Explanation is coherent, free text is not automatically scored, remediation is conditional, and the Hierarchy Explorer is a direct-manipulation hierarchy rather than a four-option question.
 
-- The lesson surface presents one current step, remaining time and state; the full map is optional.
-- Prediction is low pressure and not competence-eligible.
-- Self-check requires a response and cannot be passed by clicking Continue.
-- Guided hints are progressively revealed and recorded; independent cases show no hints and require confidence plus reasoning.
-- Feedback explains correct structure, omissions, overreach, a reasoning chain and a claim boundary.
-- Delayed review and far transfer never mechanically reuse the independent prompt.
-- Today shows why the item matters and avoids priority numbers, formulas and backend gate language.
-- Routine feedback has completed/partial/skipped states without streak punishment.
-
-## Information architecture
-
-Primary navigation is Today, Learn, Practice, Projects, Review, Progress and Library, with Settings as an auxiliary entry. Method Lab, Problem Atlas, AI Audit, Paper Lab, Assessment, Frontier and Content Studio remain intact under Practice rather than competing as first-level workspaces.
-
-Onboarding asks for target level, research types, foundation gaps, daily time and permission to use local project relevance. It does not force a blind baseline.
-
-## Accessibility and visual status
-
-Buttons, labels and semantic form controls remain source-visible and headless rendering is tested. Final focus order, screen-reader announcements, high contrast, Windows text scaling, native PDF rendering and visual density require a real foreground session.
-
-## Conclusion
-
-No known background-code blocker remains in the intended Today → lesson → practice loop. **FOREGROUND UI, USER-MANUAL, INSTALLER and real-Vault checks remain NOT RUN** and must be accepted separately before packaging.
+Foreground UI, screen-reader announcements, keyboard order, high-DPI layout, packaged restart, installer and real Vault remain **NOT RUN**.

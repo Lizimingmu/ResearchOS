@@ -733,3 +733,29 @@ Regression coverage now explicitly rejects response-less self-check passes, inst
 ## Validation boundary
 
 Final gate results are recorded in `M017_LEARNING_EXPERIENCE_HANDOFF.md`. Foreground UI, user-manual, installer, real Vault and packaging remain NOT RUN.
+
+# M018 Learning Architecture Refactor (2026-08-31)
+
+Agent: Codex. Dedicated branch from M017 commit `2a598b1`; diff-based implementation with no history rescan, packaging, installer, real Vault or private project data.
+
+## Implemented
+
+- Corrected guided-fail progression, high-confidence remediation, post-transfer maintenance scheduling, project-relevance opt-out, Paper routine de-duplication and onboarding CTA routing.
+- Added explicit Guide, Concept Lesson, Method Lesson, Research Case, Transfer Artifact, Project Studio and Capability Projection contracts.
+- Added searchable Research Guide; adaptive Learn → Explain → Apply Concept surfaces; Cox Method Lesson; staged oncology Case Lab with locked persistent Decision Timeline; Statistical Unit Hierarchy Explorer; Confounding DAG placeholder; progressive Paper Studio; append-only Project Studio; unified Review; and three-axis Progress.
+- Advanced frontend state 6→7 additively with empty Guide/Case/Transfer/Project Studio collections and no inferred competence.
+- Added M018 semantic regression tests and updated M017 expectations that had encoded the guided-fail defect.
+
+## Scientific boundary
+
+The four prototypes use existing verified repository sources (`src-pseudorep`, `src-dag`, `src-cox`, `src-pmsampsize`, `src-multiomics`, `src-spatial`, `src-strobe`). The oncology scenario is explicitly fictionalized and supports association/claim-boundary training only; no patient values, private project conclusion or unsupported causal claim is included.
+
+## Validation
+
+- `npm run typecheck` — PASS.
+- `npm test` — PASS 121/121 + localization 11 + startup smoke.
+- Remaining gates and manual NOT RUN items are recorded in `M018_LEARNING_ARCHITECTURE_HANDOFF.md`.
+
+## M018 final gate result
+
+Lint/typecheck PASS; frontend 121/121 plus localization 11 and startup smoke PASS; Learning Kernel 16/16; M015 32/32; source-pack and Problem Atlas 0/0; content 0 errors / 1 pre-existing warning; performance PASS at 1,009,936 initial JS and 0.0065 ms scheduler; privacy/diff/handoff checks PASS. Rust is BLOCKED before compilation by missing offline `urlencoding` and proxied Schannel `SEC_E_NO_CREDENTIALS`. Foreground/manual/installer/real-Vault/packaging remain NOT RUN.

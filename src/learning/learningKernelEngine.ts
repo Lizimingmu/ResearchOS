@@ -104,8 +104,8 @@ export function applyLearningTransition(
     if (input.outcome === "pass" && exposure === "complete") stage = "guided";
   } else if (input.type === "guided_attempt") {
     if (!["guided", "learning"].includes(stage)) throw new Error("当前阶段不能提交引导练习");
-    stage = input.outcome === "incomplete" ? "guided" : "independent_ready";
-    level = competenceRank[level] < competenceRank.guided_only ? "guided_only" : level;
+    stage = input.outcome === "pass" ? "independent_ready" : "guided";
+    if (input.outcome === "pass") level = competenceRank[level] < competenceRank.guided_only ? "guided_only" : level;
   } else if (input.type === "challenge_attempt") {
     if (hintsUsed.length > 0 || input.confidence == null) throw new Error("Challenge 必须无提示并记录信心");
     competenceEligible = input.outcome === "pass";
@@ -149,6 +149,10 @@ export function applyLearningTransition(
     }
   }
 
+  const misconceptionIds = input.highConfidenceConceptualError && input.outcome === "fail"
+    ? [...new Set([...base.misconceptionIds, input.asset?.id ?? input.id])]
+    : base.misconceptionIds;
+
   const evidenceEventIds = competenceEligible ? [...new Set([...base.competence.evidenceEventIds, input.id])] : base.competence.evidenceEventIds;
   const state: LearnerUnitStateV1 = {
     ...base,
@@ -156,6 +160,7 @@ export function applyLearningTransition(
     instruction: { exposure, completedBlockIds, instructionCompletedAt },
     competence: { level, evidenceEventIds, lastDemonstratedAt: competenceEligible ? input.occurredAt : base.competence.lastDemonstratedAt },
     selectedMode: input.mode,
+    misconceptionIds,
     activeThreadStartedAt: ["learning", "guided", "independent_ready"].includes(stage) ? (base.activeThreadStartedAt ?? input.occurredAt) : undefined,
     dueAt,
     lastActivityAt: input.occurredAt,

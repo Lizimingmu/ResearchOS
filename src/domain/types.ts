@@ -23,6 +23,7 @@ import type {
   LearningEventV1,
   LearnerUnitStateV1,
 } from "./learningKernel";
+import type { ProjectStudioRecordV1, ResearchCaseSessionV1, TransferArtifactV1 } from "./learningArchitecture";
 
 export type ContentOrigin = "verified_seed" | "verified_external" | "user" | "ai_generated" | "external_source_pack";
 export type VerificationStatus = "verified" | "pending" | "rejected" | "not_required";
@@ -340,6 +341,13 @@ export interface PaperCardRecord {
   weakestEvidence: string;
   alternativeExplanation: string;
   transferableLesson: string;
+  statisticalUnit?: string;
+  confounding?: string;
+  validation?: string;
+  majorConcern?: string;
+  evidenceConclusionMismatch?: string;
+  maximumDefensibleClaim?: string;
+  reviewerCritique?: string;
   updatedAt: string;
 }
 
@@ -411,6 +419,10 @@ export interface AppStateData {
   routineLogs: ResearchRoutineLog[];
   reasoningRecords: ResearchReasoningRecord[];
   paperCards: Record<string, PaperCardRecord>;
+  guideReadSectionIds: string[];
+  caseSessions: ResearchCaseSessionV1[];
+  transferArtifacts: TransferArtifactV1[];
+  projectStudioRecords: ProjectStudioRecordV1[];
   obsidianConnection?: ObsidianConnectionSettings;
   obsidianPublishBatches: ObsidianPublishBatch[];
 }
@@ -427,7 +439,7 @@ export interface AssessmentResult {
   domainScores?: Record<string, number>;
 }
 
-export type ViewId = "today" | "learning" | "practice" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
+export type ViewId = "today" | "guide" | "learning" | "practice" | "case-lab" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
 
 export interface DailyTask {
   id: string;

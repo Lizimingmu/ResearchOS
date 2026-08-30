@@ -21,6 +21,7 @@ import type {
   UserResponse,
   ViewId,
 } from "../domain/types";
+import type { CaseReasoningEntryV1, ProjectStudioRecordV1, TransferArtifactV1 } from "../domain/learningArchitecture";
 import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
 import type { LearningMode } from "../domain/learningKernel";
 import type { ContentConflict, ContentLifecycle, ContentPatchPack, ContentPatchPreview, ObsidianPublishBatch, PersonalContentEntry, PortableContentRecord } from "../domain/contentStudio";
@@ -33,6 +34,7 @@ import { applyPlannedBatch, fingerprintWrites, planFromPersistedBatch, planPubli
 import { resolveEffectiveContent } from "../services/contentStudio";
 import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
 import { learningUnitById, prerequisiteEdges } from "../data/learningUnits";
+import { researchCases } from "../data/learningArchitecture";
 import { applyLearningTransition, canStartUnit, createLearnerUnitState, type LearningTransitionInput } from "../learning/learningKernelEngine";
 
 const providers: AIProvider[] = [
@@ -108,6 +110,10 @@ export const createInitialState = (): AppStateData => {
     routineLogs: [],
     reasoningRecords: [],
     paperCards: {},
+    guideReadSectionIds: [],
+    caseSessions: [],
+    transferArtifacts: [],
+    projectStudioRecords: [],
     obsidianConnection: undefined,
     obsidianPublishBatches: [],
     ...atlas,
@@ -156,6 +162,12 @@ interface AppStore extends AppStateData {
   saveReasoningRecord: (input: Omit<ResearchReasoningRecord, "id" | "createdAt">) => string;
   updateReasoningRecord: (id: string, patch: Partial<ResearchReasoningRecord>) => void;
   savePaperCard: (paperId: string, patch: Omit<PaperCardRecord, "paperId" | "updatedAt">) => void;
+  markGuideSectionRead: (sectionId: string) => void;
+  startCaseSession: (caseId: string) => string;
+  lockCaseStage: (sessionId: string, entry: Omit<CaseReasoningEntryV1, "lockedAt">) => void;
+  completeCaseSession: (sessionId: string, finalResponse: Record<string, string>) => void;
+  createTransferArtifact: (input: Omit<TransferArtifactV1, "schemaVersion" | "id" | "createdAt">) => string;
+  saveProjectStudioRecord: (input: Omit<ProjectStudioRecordV1, "schemaVersion" | "id" | "createdAt">) => string;
   setPaletteOpen: (open: boolean) => void;
   setGlobalSearch: (value: string) => void;
   notify: (text: string, tone?: ToastMessage["tone"]) => void;
@@ -249,6 +261,10 @@ function stateData(state: AppStore): AppStateData {
     routineLogs: state.routineLogs,
     reasoningRecords: state.reasoningRecords,
     paperCards: state.paperCards,
+    guideReadSectionIds: state.guideReadSectionIds,
+    caseSessions: state.caseSessions,
+    transferArtifacts: state.transferArtifacts,
+    projectStudioRecords: state.projectStudioRecords,
     obsidianConnection: state.obsidianConnection,
     obsidianPublishBatches: state.obsidianPublishBatches,
   };
@@ -370,7 +386,17 @@ export const useAppStore = create<AppStore>((set, get) => {
       queuePersist();
     },
     updateRoutineSettings: (patch) => { set((state) => ({ routineSettings: { ...state.routineSettings, ...patch } })); queuePersist(); },
-    recordRoutine: (input) => { set((state) => ({ routineLogs: [{ ...input, id: makeId("routine"), occurredAt: new Date().toISOString() }, ...state.routineLogs] })); queuePersist(); },
+    recordRoutine: (input) => {
+      const now = new Date();
+      const weekStart = new Date(now);
+      weekStart.setUTCHours(0, 0, 0, 0);
+      weekStart.setUTCDate(weekStart.getUTCDate() - ((weekStart.getUTCDay() + 6) % 7));
+      set((state) => {
+        if (input.routineType === "paper_reading" && input.paperId && state.routineLogs.some((log) => log.routineType === "paper_reading" && log.paperId === input.paperId && log.status === "completed" && Date.parse(log.occurredAt) >= weekStart.getTime())) return state;
+        return { routineLogs: [{ ...input, id: makeId("routine"), occurredAt: now.toISOString() }, ...state.routineLogs] };
+      });
+      queuePersist();
+    },
     saveReasoningRecord: (input) => {
       const id = makeId("reasoning");
       set((state) => ({ reasoningRecords: [{ ...input, id, createdAt: new Date().toISOString() }, ...state.reasoningRecords] }));
@@ -379,6 +405,57 @@ export const useAppStore = create<AppStore>((set, get) => {
     },
     updateReasoningRecord: (id, patch) => { set((state) => ({ reasoningRecords: state.reasoningRecords.map((item) => item.id === id ? { ...item, ...patch } : item) })); queuePersist(); },
     savePaperCard: (paperId, patch) => { set((state) => ({ paperCards: { ...state.paperCards, [paperId]: { paperId, ...patch, updatedAt: new Date().toISOString() } } })); queuePersist(); },
+    markGuideSectionRead: (sectionId) => { set((state) => ({ guideReadSectionIds: [...new Set([...state.guideReadSectionIds, sectionId])] })); queuePersist(); },
+    startCaseSession: (caseId) => {
+      const researchCase = researchCases.find((item) => item.id === caseId);
+      if (!researchCase) throw new Error("Case Lab 案例不存在");
+      const existing = get().caseSessions.find((item) => item.caseId === caseId && !item.completedAt);
+      if (existing) return existing.id;
+      const id = makeId("case-session"), now = new Date().toISOString();
+      set((state) => ({ caseSessions: [{ schemaVersion: 1, id, caseId, caseRevision: researchCase.revision, caseHash: researchCase.contentHash, currentStageIndex: 0, reasoningHistory: [], createdAt: now, updatedAt: now }, ...state.caseSessions] }));
+      queuePersist();
+      return id;
+    },
+    lockCaseStage: (sessionId, entry) => {
+      const now = new Date().toISOString();
+      set((state) => ({ caseSessions: state.caseSessions.map((session) => {
+        if (session.id !== sessionId) return session;
+        const researchCase = researchCases.find((item) => item.id === session.caseId);
+        if (!researchCase || session.caseHash !== researchCase.contentHash) throw new Error("案例版本已变化，旧推理历史保持只读");
+        if (session.reasoningHistory.some((item) => item.stageId === entry.stageId)) throw new Error("该阶段回答已经锁定");
+        const expected = researchCase.stages[session.currentStageIndex];
+        if (!expected || expected.id !== entry.stageId) throw new Error("必须按证据揭示顺序作答");
+        const history = [...session.reasoningHistory, { ...entry, lockedAt: now }];
+        const nextIndex = session.currentStageIndex + 1;
+        return { ...session, currentStageIndex: nextIndex, reasoningHistory: history, updatedAt: now };
+      }) }));
+      queuePersist();
+    },
+    completeCaseSession: (sessionId, finalResponse) => {
+      const values = Object.values(finalResponse).map((value) => value.trim());
+      if (values.length < 7 || values.some((value) => value.length < 4)) throw new Error("请完成 Final Task 的全部判断后再锁定");
+      const now = new Date().toISOString();
+      set((state) => ({ caseSessions: state.caseSessions.map((session) => {
+        if (session.id !== sessionId) return session;
+        const researchCase = researchCases.find((item) => item.id === session.caseId);
+        if (!researchCase || session.currentStageIndex < researchCase.stages.length) throw new Error("证据阶段尚未完成");
+        if (session.completedAt) throw new Error("Final Task 已经锁定");
+        return { ...session, finalResponse: Object.fromEntries(Object.entries(finalResponse).map(([key, value]) => [key, value.trim()])), completedAt: now, updatedAt: now };
+      }) }));
+      queuePersist();
+    },
+    createTransferArtifact: (input) => {
+      const id = makeId("transfer-artifact");
+      set((state) => ({ transferArtifacts: [{ ...input, schemaVersion: 1, id, createdAt: new Date().toISOString(), conceptIds: [...new Set(input.conceptIds)], capabilityIds: [...new Set(input.capabilityIds)], linkedLearningEventIds: [...new Set(input.linkedLearningEventIds)] }, ...state.transferArtifacts] }));
+      queuePersist();
+      return id;
+    },
+    saveProjectStudioRecord: (input) => {
+      const id = makeId("project-studio"), record = { ...input, schemaVersion: 1 as const, id, createdAt: new Date().toISOString() };
+      set((state) => ({ projectStudioRecords: [record, ...state.projectStudioRecords] }));
+      queuePersist();
+      return id;
+    },
     setPaletteOpen: (paletteOpen) => set({ paletteOpen }),
     setGlobalSearch: (globalSearch) => set({ globalSearch }),
     notify: (text, tone = "info") => set({ toast: { id: makeId("toast"), tone, text } }),
@@ -555,7 +632,7 @@ export const useAppStore = create<AppStore>((set, get) => {
         onboarding: { ...state.onboarding, ...profile, completed: true, interests, familiarity, completedAt: now, learningKernelOnboardingCompletedAt: now },
         tutorialOpen: false,
         selectedLearningUnitId: "lu-statistical-unit-v1",
-        view: "today",
+        view: "learning",
       }));
       queuePersist();
     },

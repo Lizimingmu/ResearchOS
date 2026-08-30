@@ -1,66 +1,35 @@
-# ResearchOS v0.12.0 product specification
+# ResearchOS v0.12.0 product specification — M018 source state
 
-*Implemented contract for a local-first guided research apprenticeship system for medical-research beginners.*
+ResearchOS is a local-first Guided Research Apprenticeship System. It develops ownership across Phenomenon → Research Question → Hypothesis → Study Design → Analysis → Interpretation → Critique → Next Question. It is educational software, not clinical decision support or a psychometrically validated certification system.
 
-## Product thesis
+## Four functions
 
-ResearchOS helps a learner move from phenomenon to research question, hypothesis, study design, analysis, interpretation, critique and next question. Its primary evidence is how many research-cognition steps the learner can perform independently, not how many cards were opened or read.
+- **LEARN:** searchable Research Guide, Concept Lessons and Method Lessons.
+- **PRACTICE:** Apply cases, adaptive remediation, Case Lab, AI Audit, Problem Atlas and assessment.
+- **WORK:** Paper Studio, Project Studio, Think Before AI, Project Review and Transfer Artifacts.
+- **REVIEW:** delayed unfamiliar learning assets plus preserved legacy practice reviews.
 
-The product is educational, not clinical decision support, and makes no claim of validated improvement in competence or patient outcomes.
-
-## First-run and daily experience
-
-Onboarding captures target level, research context, unsystematic foundations, available daily time and whether local project state may affect relevance. It then routes the learner to Learning Mode; Challenge is optional. No forced blind baseline or feature tour is the default.
-
-Today presents at most three categories: one Today's Core lesson, genuinely Due Review and one Research Routine/project action. It explains why the core matters without exposing scheduling formulas. A learner enters a focused guided lesson, predicts before reveal, completes a real self-check, works through tiered guidance and then attempts a new no-hint independent case with confidence and reasoning.
-
-## Primary workspaces
-
-1. **Today** — the bounded daily training plan.
-2. **Learn** — progressive guided lessons and optional Challenge path.
-3. **Practice** — secondary hub for Method Lab, Problem Atlas, AI Audit, Paper Lab, Assessment, Frontier and Content Studio.
-4. **Projects** — real local project context, Think Before AI notes and linked transfer evidence.
-5. **Review** — due unfamiliar retrieval and misconception repair.
-6. **Progress** — eight research capabilities with separate learning and demonstrated-competence axes.
-7. **Library** — local PDFs, metadata, notes and verification state.
-
-Settings is an auxiliary entry and includes editable routine targets, learning controls, provider configuration, data/recovery and system health.
+Primary navigation is Today, Guide, Learn, Practice, Projects, Review, Progress and Library. Settings is auxiliary; advanced tools stay under Practice.
 
 ## Learning contract
 
-- Learning Mode default; Challenge optional.
-- Units are 8–12 minutes and no more than two unpaused learning threads are active.
-- Sequence: why → intuition → prediction → precise explanation → worked-example fading → misconception contrast → real self-check → guided → independent → delayed unfamiliar review → far transfer.
-- Instruction exposure never equals demonstrated competence.
-- Self-check and guided work cannot create independent evidence.
-- Independent/review/transfer use versioned, role-distinct assets; no hints; confidence is required.
-- Feedback explains correct structure, omissions, overreach, reasoning chain and maximal conclusion.
-- Formal curriculum requires verified content and valid provenance.
+Concept Lessons default to Learn → Explain → Apply. Learn is one coherent surface; Explain requires the learner's own words and a checklist but creates no fabricated score; Apply uses one new case; remediation appears only after failure. A passed versioned standard Apply creates `independent_once`; failed Apply does not.
 
-M017 intentionally retains only the three verified prototypes: Statistical Unit, Biological vs Technical Replicates and Pseudoreplication.
+Method Lessons use a method-specific contract: question, input, logic, output, assumptions, appropriate and inappropriate use, misuse, reviewer checks and paper appearance. Case Lab locks reasoning before revealing each new evidence layer and retains a Decision Timeline rather than one total score.
 
-## Research routines and AI
+Research Guide reading is reference exposure only and never competence. Real work creates a Transfer Artifact; it does not automatically mean mastery. Progress separately presents exposure, standardized evidence and transfer artifacts across eight research capabilities.
 
-Think Before AI stores six fields: question, known facts, largest unknown, proposed next step, reason and uncertainty. It never invokes AI automatically and may be saved as a local project reasoning record. Optional post-AI reflection fields are available in the record model.
+## Bounded prototypes
 
-Routine targets default to two original papers, one concept and one project reflection per week, plus one competence review per month. They are editable and logs accept completed, partially completed or skipped. There is no XP, coin, leaderboard or punitive streak.
+1. Statistical Unit — Concept Lesson, Hierarchy Explorer, Apply and delayed review.
+2. Confounding — Concept Lesson, lightweight DAG and Apply.
+3. Research Question / Evidence → Claim — fictionalized oncology/omics Case Lab.
+4. Cox proportional hazards regression — Method Lesson and Methods audit prompt.
 
-Paper Lab retains advanced analysis and adds a beginner Paper Card for research question, importance, study design, figure evidence jobs, main claim, weakest evidence, alternative explanation and transferable lesson.
+No full curriculum expansion is part of M018.
 
-## Data, safety and provenance
+## Data and safety
 
-- Frontend state schema 6 migrates additively from 5 without inferring progress, routine completion, reasoning or competence.
-- Future schemas are rejected rather than downgraded; existing arrays and records remain preserved.
-- SQLite writes remain atomic under WAL with five bounded recovery snapshots and integrity-checked backup restore.
-- Content Studio overlays, revisions, hashes, dependency closure, conflicts and finite Obsidian workflows remain intact.
-- API credentials remain in Windows Credential Manager and outside state, backups and exports.
-- Optional AI output is pending and cannot promote itself to verified content.
-- Public built-in content contains no personal project, patient identifier, private chat or local machine path.
+Frontend schema 7 adds Guide reading, Case sessions, Transfer Artifacts and Project Studio history as empty, zero-inference collections. Existing M015–M017 collections remain available. SQLite `user_version=2`, WAL, atomic writes, bounded snapshots, credentials isolation, provenance, Content Studio and explicit Obsidian writes are unchanged. Future schemas fail closed.
 
-## Explicit non-goals
-
-No curriculum expansion, autonomous tutor chat, AI free-response grading, psychometric certification, automatic evidence promotion, cloud sync, clinical advice, gamified economy, punitive streak or autonomous content publishing is part of M017.
-
-## Acceptance status
-
-Background lint, typecheck, frontend tests, deterministic audits, content/performance checks and production web build are release gates. Foreground application, packaged restart, installer, real Vault and user-manual trial remain separate, explicitly reported checks.
+Built-in content is Chinese-first, source-linked and fictionalized/de-identified. AI-generated scientific content remains pending until external review; no automatic AI call or evidence promotion occurs.

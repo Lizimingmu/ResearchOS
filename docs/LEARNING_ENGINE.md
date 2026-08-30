@@ -1,36 +1,31 @@
-# ResearchOS learning engine
+# ResearchOS learning engine — M018
 
-*Operational contract for the M017 guided research apprenticeship loop.*
+## Content types
 
-## Learning loop
+`LearningContentType` discriminates `guide`, `concept_lesson`, `method_lesson`, `case_lab` and `studio_task`. Each has an explicit schema and renderer; Guide, explanations, Case stages and Studio artifacts are not forced into `PracticeAssetV1`.
 
-The default path is Learning Mode. One 8–12 minute unit progresses through why, intuition, prediction, precise explanation, worked-example fading, misconception contrast, real self-check, guided practice and independent practice. Review and far transfer appear only when their due gates are satisfied. Challenge Mode is an explicit fast path and never fabricates instruction exposure.
+## Concept transition
 
-Opening a step or completing instruction is not competence. The engine stores two independent projections:
+```text
+Learn → Explain → Apply
+                    ├─ pass → independent_once → delayed unfamiliar review
+                    └─ fail → targeted remediation → second fresh Apply
+```
 
-- learning progress: exposure to required instruction;
-- demonstrated competence: guided-only, independent-once, retained or transferred evidence.
+Learn/Explain never create standardized competence. Standardized attempts retain versioned asset identity, locked response, confidence where required and role-distinct review surfaces. Guided failure remains `guided`; guided pass alone enters `independent_ready`. High-confidence conceptual failure records a misconception for explicit remediation.
 
-At most two unpaused learning threads may be active. Required prerequisite edges can be satisfied by complete instruction exposure or at least one independent demonstration; project relevance can rank eligible work but cannot bypass a gate.
+## Method and Case learning
 
-## Practice asset and event contract
+Method Lesson has its own question/input/logic/output/assumption/use/misuse/reviewer contract. `ResearchCaseV1` reveals evidence sequentially. `lockCaseStage` rejects overwrite and out-of-order submission, snapshots the case hash and persists `reasoningHistory`; completion renders a Decision Timeline.
 
-`PracticeAssetV1` has a stable ID, revision, deterministic content hash, role, concept target, difficulty, interaction, rubric, standardized feedback and provenance. Supported interactions are single choice, multi-select, ordering, classification, claim boundary, short reasoning, evidence chain, error detection and project transfer.
+## Evidence projection
 
-Every practice transition requires both a versioned asset reference and a locked response. Self-check cannot record a pass from navigation alone and is never competence-eligible. Guided practice may reveal tiered hints and records which were used. Independent, review and far-transfer bindings contain no hints, require confidence and use distinct assets. Free reasoning is required where configured but is not assigned a fabricated AI precision score.
+Capability Progress is projected from source Learning Kernel events through an explicit unit-to-capability map. Event IDs are de-duplicated and not copied into synthetic skill evidence. Exposure is `not_studied | learning | core_completed`; standardized evidence is `none | independent_once | retained | multiple_context_retained`.
 
-Feedback always distinguishes what was correct, what was missed, overreach, a reference reasoning chain and the maximal acceptable conclusion.
+`TransferArtifactV1` stores a real paper/project/AI-audit/case application. It is displayed alongside standardized evidence but never mutates competence.
 
-## Review and transfer
+## Scheduling
 
-An independent pass schedules a distinct unfamiliar review asset. A due review pass records retention and schedules far transfer. Far transfer uses a third asset and may be an unfamiliar-paper evidence chain, an AI-analysis critique, or a transfer bound to a user-selected local project. Only a successful far-transfer event advances competence to `transferred`.
+At most two active threads remain. Prerequisites cannot be bypassed by Project Overlay. When `allowProjectRelevance=false`, project relevance is exactly zero and project content is not inspected. Review, far transfer and post-transfer maintenance appear only when `dueAt` is reached; successful transfer is not re-scheduled daily.
 
-## Today and routines
-
-Today first determines legal state transitions, then selects at most one visible core learning item and one genuinely due review. A lightweight routine action is presented separately. Priority values and gate terminology are internal details.
-
-Routine targets default to two papers, one concept and one project reflection per week, plus one competence review per month. They are editable and logs accept completed, partially completed and skipped. No streak, XP or punitive backlog is computed.
-
-## Validation boundary
-
-Pure transition tests cover response locking, confidence, hint exclusion, instruction/competence separation, prerequisite/two-thread gates, due timing and migration. Deterministic content audit closes unit/binding/asset/source references and rejects role reuse. These tests establish implementation invariants, not validated improvement in research competence.
+Top-level Review shows Learning Reviews from the same Kernel source used by Today, plus Other Practice Reviews from legacy workflows.

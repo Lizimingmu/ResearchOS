@@ -22,6 +22,7 @@ export function calculatePriority(signals: PrioritySignals, weights = { weakness
 }
 
 const relevance = (text: string, state: AppStateData): number => {
+  if (state.onboarding.allowProjectRelevance === false) return 0;
   if (state.projects.length === 0 && state.onboarding.interests.length === 0) return 0.35;
   const haystack = `${state.projects.map((project) => `${project.disease} ${project.studyType} ${project.omics} ${project.activeMethods} ${project.scientificQuestion}`).join(" ")} ${state.onboarding.interests.join(" ")}`.toLowerCase();
   const terms = text.toLowerCase().split(/[\s,，、/]+/).filter((term) => term.length >= 2);
@@ -34,7 +35,8 @@ const legalActivity = (stage: LearningStage, dueAt: string | undefined, now: Dat
   if (stage === "independent_ready") return "independent_case";
   if (stage === "review_eligible") return dueAt && Date.parse(dueAt) <= now.getTime() ? "delayed_retrieval" : undefined;
   if (stage === "consolidating") return dueAt && Date.parse(dueAt) <= now.getTime() ? "far_transfer" : undefined;
-  return "far_transfer";
+  if (stage === "transferable") return dueAt && Date.parse(dueAt) <= now.getTime() ? "variant_retrieval" : undefined;
+  return undefined;
 };
 
 export function generateLearningTodayTasks(state: AppStateData, now = new Date()): TodayLearningTaskV1[] {
@@ -62,7 +64,7 @@ export function generateLearningTodayTasks(state: AppStateData, now = new Date()
       projectRelevance: relevance(`${unit.titleCn} ${unit.projectRelevanceTerms.join(" ")}`, state),
     };
     const priority = Number((signals.dueRisk * 0.30 + signals.activeThreadContinuity * 0.25 + signals.misconceptionRisk * 0.20 + signals.prerequisiteUnlockValue * 0.15 + signals.projectRelevance * 0.10).toFixed(4));
-    const bindingRole = activityType === "guided_practice" ? "guided" : activityType === "independent_case" ? "independent" : activityType === "delayed_retrieval" ? "review" : activityType === "far_transfer" ? "far_transfer" : "worked";
+    const bindingRole = activityType === "guided_practice" ? "guided" : activityType === "independent_case" ? "independent" : activityType === "delayed_retrieval" || activityType === "variant_retrieval" ? "review" : activityType === "far_transfer" ? "far_transfer" : "worked";
     const bindingId = practiceAssetBindings.find((binding) => binding.unitId === unit.id && binding.role === bindingRole)?.id;
     candidates.push({
       id: `${now.toISOString().slice(0, 10)}-learning-${unit.id}-${activityType}`,

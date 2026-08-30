@@ -1,6 +1,30 @@
 # Scientific Changeset — M013 Complete Source Packs
 
-Status: READY FOR REVIEW
+Status: ACCEPTED
+
+## M018 architecture prototype review note
+
+### SC-M018-01 — Statistical Unit and Confounding Concept Lessons
+
+- Concept: Statistical Unit and Confounding as threshold concepts using distinct mental-model interactions.
+- Claim: Patient-group inference must respect patient-level dependence; lower-level measurements improve measurement precision but do not create independent patients. Confounding is a common-cause structure and covariate adjustment must follow the target question and causal structure rather than include every measured variable.
+- Answer/rubric: Explain uses a completeness checklist without automatic mastery. Statistical Unit Apply requires the independent level, dependence rationale and measurement-precision distinction. Confounding Apply requires the target question, common cause and adjustment-structure boundary.
+- Evidence source IDs: `src-pseudorep`; `src-dag`.
+- PMID/DOI: `10.1085/jgp.202012826`; `10.1097/00001648-199901000-00008`.
+- Risk level: HIGH.
+- Verification status: ACCEPTED for the bounded M018 teaching text; no universal patient-unit or adjust-all claim is made.
+- Changed files: `src/data/learningArchitecture.ts`; `src/features/learning/LearningArchitectureView.tsx`.
+
+### SC-M018-02 — Cox Method Lesson and fictionalized Evidence → Claim Case
+
+- Concept: Cox proportional hazards regression; evidence-to-claim updating across proteomics, scRNA and spatial/pathology evidence.
+- Claim: Cox models relative hazard under stated time-origin, censoring, specification and proportional-hazards assumptions; HR is not absolute risk. Cross-modal discordance changes the ranking of biological explanations but does not by itself establish a cell source or mechanism.
+- Answer/rubric: The Cox audit asks for event-complexity, time origin, HR-unit, PH and validation issues plus a bounded conclusion. Case stages require updated interpretations, competing explanations, uncertainty, maximum claim and next minimal sufficient analysis; no total score is manufactured.
+- Evidence source IDs: `src-cox`; `src-pmsampsize`; `src-multiomics`; `src-spatial`.
+- PMID/DOI: `10.1002/sim.7992`; other identifiers remain those already verified in `src/data/evidence.ts`.
+- Risk level: HIGH.
+- Verification status: ACCEPTED for the scoped prototype; the oncology data are fictionalized and no causal/mechanistic conclusion is asserted.
+- Changed files: `src/data/learningArchitecture.ts`; `src/features/case-lab/CaseLabView.tsx`; `src/features/learning/LearningArchitectureView.tsx`.
 
 ## M017 practice-asset review note
 

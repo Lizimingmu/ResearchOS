@@ -1,6 +1,6 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
 
-export const CURRENT_STATE_SCHEMA = 6;
+export const CURRENT_STATE_SCHEMA = 7;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -106,6 +106,13 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     routineLogs: arrayOr(raw.routineLogs, defaults.routineLogs),
     reasoningRecords: arrayOr(raw.reasoningRecords, defaults.reasoningRecords),
     paperCards: recordOr(raw.paperCards, defaults.paperCards),
+    // M018 schema 7 adds distinct Guide, Case, Transfer and Project Studio
+    // collections. They are empty by default: no legacy field deterministically
+    // proves reading, case reasoning, transfer, or studio history.
+    guideReadSectionIds: arrayOr(raw.guideReadSectionIds, defaults.guideReadSectionIds),
+    caseSessions: arrayOr(raw.caseSessions, defaults.caseSessions),
+    transferArtifacts: arrayOr(raw.transferArtifacts, defaults.transferArtifacts),
+    projectStudioRecords: arrayOr(raw.projectStudioRecords, defaults.projectStudioRecords),
     obsidianConnection: isRecord(raw.obsidianConnection)
       ? raw.obsidianConnection as unknown as AppStateData["obsidianConnection"]
       : defaults.obsidianConnection,

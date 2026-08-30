@@ -1,41 +1,30 @@
-# Current Milestone — M017 Learning Experience Refactor
+# Current Milestone — M018 Learning Architecture Refactor
 
-Execution status: **BACKGROUND IMPLEMENTATION COMPLETE — FOREGROUND USER VALIDATION NOT RUN**.
+Execution status: **BACKGROUND IMPLEMENTATION AND DETERMINISTIC GATES COMPLETE — FOREGROUND USER TRIAL NOT RUN**.
 
 ## Objective
 
-Turn the M016 Learning Kernel into a guided research apprenticeship experience for medical-research beginners. The primary success signal is an independently demonstrated research step, not card completion.
+Turn ResearchOS from one universal lesson/question mechanism into a guided research apprenticeship organized by knowledge and competence type: Guide, Concept Lesson, Method Lesson, Case Lab, Studio, standardized review, and real-world Transfer Artifacts.
 
 ## Implemented scope
 
-- A focused progressive lesson surface: why → intuition → prediction → precise explanation → worked-example fading → misconception contrast → real self-check → guided practice → independent practice → delayed unfamiliar review → far transfer.
-- Versioned `PracticeAssetV1` records with stable IDs, revisions, deterministic hashes, role, interaction, rubric, feedback and provenance.
-- Genuine response locking for every practice event. Self-check cannot advance without a response and never creates independent competence.
-- Distinct prediction/worked/self-check/guided/independent/review/far-transfer assets for the existing three verified units only.
-- Three far-transfer modes: unfamiliar-paper evidence chain, AI-analysis error detection and transfer to a user-selected local project.
-- Today reduced to Today's Core, Due Review and Research Routine; scheduling internals are hidden from the normal surface.
-- Reusable Think Before AI notes, beginner Paper Cards, editable routine targets and completed/partially-completed/skipped routine logs.
-- Eight-capability Progress view with separate learning-progress and demonstrated-competence axes.
-- Primary navigation reduced to Today, Learn, Practice, Projects, Review, Progress and Library; advanced tools remain available through Practice.
-- Five-step goal/context/gap/time/project-relevance onboarding.
-- Additive frontend state schema 5→6 migration with no inferred progress or competence.
+- Dedicated Research Guide with chapters, anchors, search, glossary, provenance, lifecycle and links. Reading never creates competence.
+- Default Concept Lesson flow: Learn → Explain → Apply, with remediation only after need; no automatic free-text mastery scoring.
+- Method-specific Cox proportional hazards lesson covering question, inputs, logic, outputs, assumptions, appropriate/inappropriate use, misuse, reviewer checks and paper appearance.
+- `ResearchCaseV1`, locked stage reasoning, progressive evidence reveal, restart-safe history and Decision Timeline.
+- Fictionalized oncology/omics Evidence → Claim prototype with discordant proteomics, scRNA and spatial/pathology evidence.
+- Genuine non-card Statistical Unit Hierarchy Explorer and a lightweight Confounding DAG surface.
+- Paper Studio progressive disclosure and weekly `paperId` de-duplication.
+- Project Studio append-only reasoning records that create separate Transfer Artifacts.
+- Capability Evidence Projection for eight capabilities: exposure, standardized evidence and transfer artifacts remain separate.
+- Unified Review presentation for Learning Reviews versus Other Practice Reviews.
+- P0 corrections: guided failure stays in remediation/guided; high-confidence conceptual failure records misconception; project relevance opt-out is honored; successful transfer waits until maintenance due.
+- Additive frontend state schema 6→7 for Guide reading, Case sessions, Transfer Artifacts and Project Studio history.
 
-## Preserved invariants
+## Deliberately bounded
 
-Learning Mode remains default; Challenge remains optional; units stay 8–12 minutes; no more than two active learning threads; prerequisites, delayed retrieval, provenance/verification, Content Studio, future-schema refusal, atomic persistence, SQLite/WAL recovery and bounded snapshots remain intact.
-
-## Deliberately not done
-
-- No expansion beyond the three existing verified prototype units.
-- No AI free-response scorer or fabricated precision.
-- No XP, coins, leaderboard, streak punishment or overdue guilt language.
-- No automatic AI call, autonomous content promotion or personal project data in built-in content.
-- No version bump, packaging, installer mutation or release artifact replacement.
-
-## Validation boundary
-
-Background lint/typecheck/frontend tests, deterministic audits, content/performance checks and production web build are required for this milestone. Rust tests are attempted and reported honestly; no Rust source changed. Foreground application launch, visual interaction, installer, real Vault and user-manual acceptance require a separate permission-gated session and remain **NOT RUN**.
+Only four architecture prototypes exist: Statistical Unit, Confounding, Research Question / Evidence → Claim Case Lab and Cox regression. The full curriculum was not generated. M017 assets, legacy review mechanisms, Content Studio, SQLite/WAL, recovery, credentials and Obsidian boundaries remain intact.
 
 ## Next action
 
-Stop after the M017 handoff and wait for the user to perform or authorize a real foreground trial of Today → Guided Lesson → self-check → guided → independent, plus Projects/Think Before AI and Paper Card.
+After deterministic gates and push, run a real user trial of the six required surfaces. Do not expand curriculum or package until that trial is accepted.

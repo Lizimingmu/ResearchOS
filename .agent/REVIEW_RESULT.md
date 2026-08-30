@@ -2,15 +2,15 @@
 
 ACCEPT
 
-M017 Learning Experience Refactor passes background review.
+M018 Learning Architecture Refactor passes background review.
 
-- The fake response-less self-check pass is removed; all practice transitions require a bound versioned asset and locked response.
-- Instruction, prediction, self-check and guided work remain separate from independent competence evidence.
-- The three verified prototypes each have seven role-distinct assets with deterministic hashes, rubrics, standardized feedback and provenance. Independent, review and far transfer do not reuse one prompt.
-- Today, Learn, Routine, Think Before AI, Paper Card, Progress, navigation and onboarding implement the requested beginner-facing apprenticeship flow without expanding the curriculum.
-- Frontend schema 5→6 is additive, tested, zero-inference and future-schema fail-closed. M015 Content Studio compatibility remains 32/32; native persistence/recovery code was not changed.
-- Background gates: frontend 111/111, localization 11, startup smoke PASS, Learning Kernel 16/16, M015 32/32, source-pack and Problem Atlas 0/0, content 0 errors / 1 pre-existing warning, performance PASS, production web build PASS and handoff validator PASS.
-- Rust did not reach compilation: offline cache lacks `urlencoding`; normal dependency resolution was blocked by repeated Schannel `SEC_E_NO_CREDENTIALS`/timeouts. No Rust source changed.
-- Foreground application, user-manual, installer, real Vault and packaging are **NOT RUN** and are not accepted by this review.
+- M017 guided-failure, capability-projection, transfer scheduling, project opt-out, Paper de-duplication, onboarding and Review semantics are corrected with regression coverage.
+- Guide, Concept Lesson, Method Lesson, Case Lab, Studio and Transfer Artifact have explicit, non-mega-schema contracts; reading and real transfer do not fabricate standardized competence.
+- The bounded Statistical Unit, Confounding, Evidence → Claim and Cox prototypes respect the scientific gates and existing verified sources. The oncology case is fictionalized and maintains association/mechanism boundaries.
+- Case evidence is revealed sequentially; stage and Final Task reasoning are locked, version-bound, restart-safe and rendered as a Decision Timeline.
+- Frontend schema 6→7 is additive, idempotent, zero-inference and future-schema fail-closed. M015–M017 data, Content Studio, native persistence/recovery and security boundaries remain intact.
+- Background gates: tests 121/121, localization 11, startup smoke, Learning Kernel 16/16, M015 32/32, source-pack 0/0, Problem Atlas 0/0, content 0 errors / 1 pre-existing warning, performance, privacy, diff and handoff validation PASS.
+- Rust is BLOCKED before compilation by missing offline `urlencoding`; the proxied retry is blocked by Windows Schannel `SEC_E_NO_CREDENTIALS`. No Rust source changed.
+- Foreground UI, user-manual, installer, packaged restart, real Vault and packaging are **NOT RUN** and are not accepted by this review.
 
-Next action: stop and wait for a real foreground learning trial before choosing further UX changes or packaging.
+Next action: real-user trial of the six M018 surfaces before curriculum expansion or packaging.
