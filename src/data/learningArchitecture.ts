@@ -3,6 +3,7 @@ import { researchCaseHash } from "../domain/learningArchitecture";
 import type { LearningUnitV1, PracticeAssetBindingV1, PracticeAssetV1 } from "../domain/learningKernel";
 import { learningUnitHash, practiceAssetHash } from "../domain/learningKernel";
 import { learningUnitById, learningUnits, practiceAssetById } from "./learningUnits";
+import { selfRescueGuideSections } from "./self-rescue-guide";
 
 const activeMeta = {
   schemaVersion: 1 as const,
@@ -12,7 +13,7 @@ const activeMeta = {
   lifecycle: "active" as const,
 };
 
-export const guideSections: ResearchGuideSectionV1[] = [
+const verifiedGuideSections: ResearchGuideSectionV1[] = [
   {
     ...activeMeta, id: "guide-research-not-analysis", contentType: "guide", chapterId: "research-foundations", anchor: "research-not-analysis",
     titleCn: "科研不等于做分析", titleEn: "Research Is Not Running Analyses", classification: "reference_only",
@@ -54,6 +55,8 @@ export const guideSections: ResearchGuideSectionV1[] = [
     links: [], evidenceSourceIds: ["src-strobe"],
   },
 ];
+
+export const guideSections: ResearchGuideSectionV1[] = [...verifiedGuideSections, ...selfRescueGuideSections];
 
 export const conceptLessons: ConceptLessonV1[] = [
   {
