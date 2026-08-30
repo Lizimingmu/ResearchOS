@@ -1,0 +1,2631 @@
+{
+  "packSchemaVersion": 1,
+  "packId": "m013-batch07-wetlab-expanded-20260824",
+  "title": "Flow Cytometry, Viability, ELISA, Migration/Invasion & Drug Combination",
+  "createdAt": "2026-08-24T22:05:00+08:00",
+  "createdBy": "OpenAI GPT-5.6 Sol external scientific source review",
+  "provenance": "Source-first external scientific pre-review. Source metadata and claim scope were manually pre-reviewed against authoritative guidelines, original methods, peer-reviewed benchmarks/reviews, or official technical resources. Final ResearchOS verification remains reserved for Codex/formal source-pack gate.",
+  "sources": [
+    {
+      "id": "SRC-FLOW-GUIDE-2021",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "Guidelines for the use of flow cytometry and cell sorting in immunological studies (third edition)",
+      "authors": [],
+      "year": 2021,
+      "authorityTier": "A",
+      "domain": [
+        "flow_cytometry"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "European Journal of Immunology",
+      "doi": "10.1002/eji.202170126",
+      "pmid": "34910301",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34910301/",
+      "contentHash": "870f44fefc3b282859fedda3b95e81df82b7a6c418c7b5a5b3e734eec293a856"
+    },
+    {
+      "id": "SRC-MIFLOWCYT-2008",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "title": "MIFlowCyt: the minimum information about a Flow Cytometry Experiment",
+      "authors": [],
+      "year": 2008,
+      "authorityTier": "S",
+      "domain": [
+        "flow_cytometry",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Cytometry Part A",
+      "doi": "10.1002/cyto.a.20623",
+      "pmid": "18752282",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18752282/",
+      "contentHash": "e1cadddf5a3ff2ebb22fad4371d71ee8f37ad0dea63b55ea2606c8d74fc57b42"
+    },
+    {
+      "id": "SRC-ANNEXIN-2016",
+      "schemaVersion": 1,
+      "sourceType": "protocol",
+      "title": "Analyzing Cell Death by Annexin V Staining and Flow Cytometry",
+      "authors": [],
+      "year": 2016,
+      "authorityTier": "A",
+      "domain": [
+        "apoptosis",
+        "flow_cytometry"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Cold Spring Harbor Protocols",
+      "doi": "10.1101/pdb.prot087288",
+      "pmid": "27803250",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27803250/",
+      "contentHash": "421284bf86128c6e7ed66459e32fb8280091e4f6a76626f9cb17a303bd1ec49c"
+    },
+    {
+      "id": "SRC-AGM-VIABILITY",
+      "schemaVersion": 1,
+      "sourceType": "technical_resource",
+      "title": "Cell Viability Assays",
+      "authors": [],
+      "year": 2016,
+      "authorityTier": "A",
+      "domain": [
+        "cell_viability",
+        "assay_validation"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "Assay Guidance Manual chapter; supports ATP/metabolic viability assay interpretation and linear-range/assay-interference reasoning.",
+      "organization": "NCBI Bookshelf / Assay Guidance Manual",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK144065/",
+      "contentHash": "f53cc5f84878a8e30dc0d88cdb5456df8951bb4359cbebf14f9f6362d3fe0836"
+    },
+    {
+      "id": "SRC-AGM-IMMUNOASSAY",
+      "schemaVersion": 1,
+      "sourceType": "technical_resource",
+      "title": "Immunoassay Methods",
+      "authors": [],
+      "year": 2019,
+      "authorityTier": "A",
+      "domain": [
+        "elisa",
+        "immunoassay"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "organization": "NCBI Bookshelf / Assay Guidance Manual",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK92434/",
+      "contentHash": "d34db430aec8315237e79a1805f6a4351a16d2736b51dadbeb693f6c54f96d1f"
+    },
+    {
+      "id": "SRC-ELISA-INTERFERENCE-2023",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Interferences in Immunoassay",
+      "authors": [],
+      "year": 2023,
+      "authorityTier": "A",
+      "domain": [
+        "elisa",
+        "immunoassay",
+        "interference"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "doi": "10.1007/978-1-0716-2903-1_7",
+      "pmid": "36795361",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36795361/",
+      "contentHash": "36bf3a0e86b7dfa9424a7128c9d6f665d32ed8ef0c7f57fa9a8f1957cded96e2"
+    },
+    {
+      "id": "SRC-WOUND-2014",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Wound healing assay: an overview of literature methods",
+      "authors": [],
+      "year": 2014,
+      "authorityTier": "C",
+      "domain": [
+        "migration",
+        "wound_healing"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "pmid": "25482647",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25482647/",
+      "contentHash": "2e74edbad307e90ef6974ecf1ce048c3a9bbb16cf4957dae6fe5110152ad4b6b"
+    },
+    {
+      "id": "SRC-MIGRATION-GUIDE-2026",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "A practical guideline for the choice and use of cell migration assays",
+      "authors": [],
+      "year": 2026,
+      "authorityTier": "A",
+      "domain": [
+        "migration",
+        "invasion"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Nature Methods",
+      "doi": "10.1038/s41592-025-02890-1",
+      "pmid": "41413344",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41413344/",
+      "contentHash": "cccc7f54a2d067f44da12d151338b21e0ccba55d1b25212c4a1a6e3310300aef"
+    },
+    {
+      "id": "SRC-TRANSWELL-2011",
+      "schemaVersion": 1,
+      "sourceType": "protocol",
+      "title": "Transwell migration and invasion assays",
+      "authors": [],
+      "year": 2011,
+      "authorityTier": "C",
+      "domain": [
+        "migration",
+        "invasion"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "doi": "10.1007/978-1-61779-207-6_8",
+      "pmid": "21748672",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21748672/",
+      "contentHash": "a08371f17d9bde1f26959da57b80678ed436ecd6a10e83ccff2a4e2a7f700322"
+    },
+    {
+      "id": "SRC-SYNERGYFINDER-2017",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "SynergyFinder: a web application for analyzing drug combination dose-response matrix data",
+      "authors": [],
+      "year": 2017,
+      "authorityTier": "A",
+      "domain": [
+        "drug_combination",
+        "synergy"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Bioinformatics",
+      "doi": "10.1093/bioinformatics/btx162",
+      "pmid": "28379339",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28379339/",
+      "contentHash": "92f53b41d96eaac5a39d900b38d907e94cc0a7c1f929499bb49ee5da251ba01f"
+    },
+    {
+      "id": "SRC-ZIP-2016",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "A new drug-combination model to predict synergistic effects based on the zero interaction potency score",
+      "authors": [],
+      "year": 2016,
+      "authorityTier": "A",
+      "domain": [
+        "drug_combination",
+        "synergy"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "pmid": "26949479",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26949479/",
+      "contentHash": "4d5cf07fb235cea86464d3ce262e4cd27d05e9a86c3d65463f6634ec7ecf5351"
+    },
+    {
+      "id": "SRC-SYNERGY-WHAT-2015",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "What is synergy?",
+      "authors": [],
+      "year": 2015,
+      "authorityTier": "A",
+      "domain": [
+        "drug_combination",
+        "synergy"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "pmid": "26388771",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26388771/",
+      "contentHash": "3fa5c971a327b6ba4bbab5c36d47a33acd871e684cf3c6c29e39c0254f64dd97"
+    }
+  ],
+  "evidenceClaims": [
+    {
+      "id": "CLM-FLOW-001",
+      "claim": "Flow-cytometry interpretation depends on appropriate instrument setup, compensation/unmixing, controls, gating logic and reporting; attractive plots do not substitute for these QC steps.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-FLOW-GUIDE-2021",
+      "supportType": "qualified",
+      "supportingLocation": "Guideline overview",
+      "domain": [
+        "flow_cytometry"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-FLOW-002",
+      "claim": "Fluorescence-minus-one and other appropriate controls can help define gates in multicolor flow cytometry; isotype controls answer different questions and are not universal substitutes for FMO controls.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-FLOW-GUIDE-2021",
+      "supportType": "qualified",
+      "supportingLocation": "Controls/gating sections",
+      "domain": [
+        "flow_cytometry",
+        "controls"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-FLOW-003",
+      "claim": "MIFlowCyt defines minimum experimental/reporting information for flow cytometry so data generation and analysis can be evaluated and reproduced.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-MIFLOWCYT-2008",
+      "supportType": "direct",
+      "supportingLocation": "MIFlowCyt standard",
+      "domain": [
+        "flow_cytometry",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-APOP-001",
+      "claim": "Annexin V reports phosphatidylserine exposure and is commonly combined with a membrane-impermeant viability dye to distinguish viable/early-apoptotic/late-apoptotic-or-necrotic populations; interpretation is time- and context-dependent.",
+      "scope": "",
+      "qualification": "Annexin positivity is not a complete mechanistic proof of apoptosis by itself.",
+      "sourceId": "SRC-ANNEXIN-2016",
+      "supportType": "direct",
+      "supportingLocation": "Protocol principle",
+      "domain": [
+        "apoptosis",
+        "flow_cytometry"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-VIAB-001",
+      "claim": "Metabolic/ATP-based viability assays provide proxy readouts related to viable cell number but can be altered by treatment-induced metabolism and must be operated within an assay-specific linear range.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-AGM-VIABILITY",
+      "supportType": "qualified",
+      "supportingLocation": "Assay principles",
+      "domain": [
+        "cell_viability"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-VIAB-002",
+      "claim": "A higher colorimetric/luminescent viability signal should not be interpreted automatically as a proportional increase in cell number unless the assay has been validated for linearity in that cell system.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-AGM-VIABILITY",
+      "supportType": "qualified",
+      "supportingLocation": "Assay optimization/linearity",
+      "domain": [
+        "cell_viability"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-ELISA-001",
+      "claim": "Quantitative immunoassays require an appropriate standard curve, working range and sample dilution; values outside the validated range should not be extrapolated as if equally reliable.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-AGM-IMMUNOASSAY",
+      "supportType": "direct",
+      "supportingLocation": "Quantitative assay principles",
+      "domain": [
+        "elisa",
+        "immunoassay"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-ELISA-002",
+      "claim": "Matrix effects, heterophile antibodies and high-dose hook/prozone effects can distort immunoassay results; dilution/parallelism and controls can be diagnostic.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ELISA-INTERFERENCE-2023",
+      "supportType": "qualified",
+      "supportingLocation": "Interference mechanisms",
+      "domain": [
+        "elisa",
+        "immunoassay"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-MIG-001",
+      "claim": "Scratch/wound-closure assays conflate cell migration with proliferation unless proliferation is controlled or independently measured.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-WOUND-2014",
+      "supportType": "qualified",
+      "supportingLocation": "Method limitations",
+      "domain": [
+        "migration",
+        "wound_healing"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-MIG-002",
+      "claim": "Migration and invasion assays measure different biological properties and are highly sensitive to assay geometry, matrix, gradients, cell density and quantification choices; assay choice should match the biological question.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-MIGRATION-GUIDE-2026",
+      "supportType": "direct",
+      "supportingLocation": "Guideline scope",
+      "domain": [
+        "migration",
+        "invasion"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-MIG-003",
+      "claim": "Transwell invasion through matrix is not interchangeable with simple migration through an uncoated membrane; matrix composition and pore/gradient conditions affect interpretation.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-TRANSWELL-2011",
+      "supportType": "qualified",
+      "supportingLocation": "Protocol distinction",
+      "domain": [
+        "migration",
+        "invasion"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SYN-001",
+      "claim": "Drug-combination synergy depends on the chosen null model; Bliss, Loewe and ZIP encode different reference assumptions and can produce different synergy scores on the same matrix.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-SYNERGY-WHAT-2015",
+      "supportType": "qualified",
+      "supportingLocation": "Conceptual review",
+      "domain": [
+        "drug_combination",
+        "synergy"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SYN-002",
+      "claim": "SynergyFinder implements multiple reference models for dose-response matrices; a synergy score should be interpreted together with the full dose-response surface and experimental uncertainty.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-SYNERGYFINDER-2017",
+      "supportType": "qualified",
+      "supportingLocation": "Abstract/methods",
+      "domain": [
+        "drug_combination",
+        "synergy"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SYN-003",
+      "claim": "ZIP defines zero interaction potency as a specific reference model; it should not be presented as a universal biological definition of drug synergy.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ZIP-2016",
+      "supportType": "direct",
+      "supportingLocation": "Model definition",
+      "domain": [
+        "drug_combination",
+        "synergy"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    }
+  ],
+  "problemCards": [
+    {
+      "id": "PRB-FLOW-001",
+      "domain": "wet_lab",
+      "subdomain": "flow_cytometry",
+      "title_cn": "FSC/SSC圈出来的一团就能直接叫某类细胞吗？",
+      "title_en": "Can an FSC/SSC cloud define a cell type?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "仅根据scatter区域命名具体immune cell type。",
+      "context": "",
+      "why_it_matters": "scatter反映size/granularity等物理特征但通常缺乏足够lineage specificity。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-001-01",
+        "CHK-PRB-FLOW-001-02",
+        "CHK-PRB-FLOW-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "scatter_equals_identity"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FLOW-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FLOW-002",
+      "domain": "wet_lab",
+      "subdomain": "flow_cytometry",
+      "title_cn": "多色流式不用 compensation/unmixing，只看颜色分得开可以吗？",
+      "title_en": "Can multicolor flow skip compensation/unmixing?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "fluorophore spectra重叠但未做corrective workflow。",
+      "context": "",
+      "why_it_matters": "spectral spillover可制造假阳性/改变群体边界。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-002-01",
+        "CHK-PRB-FLOW-002-02",
+        "CHK-PRB-FLOW-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "visual_separation_means_no_spillover"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FLOW-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FLOW-003",
+      "domain": "wet_lab",
+      "subdomain": "flow_cytometry",
+      "title_cn": "isotype control 能代替 FMO control 吗？",
+      "title_en": "Can an isotype control replace an FMO control?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "复杂multicolor panel用isotype确定所有gate。",
+      "context": "",
+      "why_it_matters": "FMO与isotype回答不同控制问题；FMO更直接反映其余fluorophores造成的spread对gate的影响。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-003-01",
+        "CHK-PRB-FLOW-003-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "isotype_equals_fmo"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FLOW-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FLOW-004",
+      "domain": "wet_lab",
+      "subdomain": "flow_cytometry",
+      "title_cn": "gating 顺序改一下结果差很多，说明什么？",
+      "title_en": "Why does gating order change the result?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "不同analyst/gating sequence得到显著不同population frequency。",
+      "context": "",
+      "why_it_matters": "gating是分析模型的一部分，需要预设/可复现/控制双ts、dead cells和artifacts。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-004-01",
+        "CHK-PRB-FLOW-004-02",
+        "CHK-PRB-FLOW-004-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "关键endpoint高度依赖主观gating时需要robustness/standardization。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FLOW-001",
+        "CLM-FLOW-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FLOW-005",
+      "domain": "wet_lab",
+      "subdomain": "apoptosis",
+      "title_cn": "Annexin V 阳性就等于“已经证实 apoptosis”吗？",
+      "title_en": "Does Annexin V positivity prove apoptosis?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "单独Annexin V+被写成mechanistic apoptosis proof。",
+      "context": "",
+      "why_it_matters": "PS exposure是常用apoptotic marker，但时间、membrane integrity和其他过程会影响解释。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-005-01",
+        "CHK-PRB-FLOW-005-02",
+        "CHK-PRB-FLOW-005-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "可支持apoptosis-compatible phenotype；强机制结论需要补充证据。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "annexin_equals_mechanism"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-APOP-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FLOW-006",
+      "domain": "wet_lab",
+      "subdomain": "apoptosis",
+      "title_cn": "Annexin V+/PI+ 一定是“晚期凋亡”，完全不能是坏死吗？",
+      "title_en": "Is Annexin V+/PI+ uniquely late apoptosis?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "双阳性population被唯一命名为late apoptosis。",
+      "context": "",
+      "why_it_matters": "双阳性表示PS exposure与膜完整性丧失的组合，终末apoptosis/secondary necrosis和其他membrane-compromised states需结合上下文。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-006-01",
+        "CHK-PRB-FLOW-006-02",
+        "CHK-PRB-FLOW-006-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-006"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "不要把单一二维gate当唯一细胞死亡机制鉴定。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-APOP-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-VIAB-001",
+      "domain": "wet_lab",
+      "subdomain": "cell_viability",
+      "title_cn": "CCK-8/MTT 吸光值翻倍，就等于细胞数翻倍吗？",
+      "title_en": "Does a doubled metabolic assay signal mean doubled cell number?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "药物/处理改变metabolism，直接把OD按cell number解释。",
+      "context": "",
+      "why_it_matters": "metabolic proxy受每细胞代谢状态和assay linearity影响。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-VIAB-001-01",
+        "CHK-PRB-VIAB-001-02",
+        "CHK-PRB-VIAB-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-VIAB-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "metabolic_signal_equals_cell_number"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-VIAB-001",
+        "CLM-VIAB-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-VIAB-002",
+      "domain": "wet_lab",
+      "subdomain": "cell_viability",
+      "title_cn": "CCK-8 做到细胞铺满还继续读OD，结果可靠吗？",
+      "title_en": "Can viability assays be quantified after confluence/saturation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "高密度或长孵育使signal进入plateau。",
+      "context": "",
+      "why_it_matters": "超出线性区后signal不再按viable-cell amount比例变化。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-VIAB-002-01",
+        "CHK-PRB-VIAB-002-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-VIAB-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "先做cell-number×time linearity验证。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-VIAB-001",
+        "CLM-VIAB-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-VIAB-003",
+      "domain": "wet_lab",
+      "subdomain": "cell_viability",
+      "title_cn": "药物让细胞代谢下降但没有死亡，CCK-8 会怎么表现？",
+      "title_en": "Can metabolic inhibition mimic cytotoxicity?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "处理降低ATP/还原代谢，viability proxy下降。",
+      "context": "",
+      "why_it_matters": "proxy signal下降可能反映metabolic suppression而非细胞数/死亡的同等下降。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-VIAB-003-01",
+        "CHK-PRB-VIAB-003-02",
+        "CHK-PRB-VIAB-003-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-VIAB-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "单一metabolic assay不宜独立承担cell death mechanism结论。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-VIAB-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-ELISA-001",
+      "domain": "wet_lab",
+      "subdomain": "elisa",
+      "title_cn": "样本OD超过标准曲线最高点，直接外推浓度可以吗？",
+      "title_en": "Can ELISA values above the standard curve be extrapolated?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "sample signal高于validated calibration range。",
+      "context": "",
+      "why_it_matters": "曲线外extrapolation的不确定性和非线性风险显著增大。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-ELISA-001-01",
+        "CHK-PRB-ELISA-001-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-ELISA-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "standard_curve_extrapolation_is_safe"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-ELISA-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-ELISA-002",
+      "domain": "wet_lab",
+      "subdomain": "elisa",
+      "title_cn": "浓度越高反而信号越低，可能是什么？",
+      "title_en": "Why can very high analyte concentrations reduce immunoassay signal?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "极高浓度sample出现异常低signal。",
+      "context": "",
+      "why_it_matters": "某些sandwich immunoassays可出现high-dose hook/prozone effect。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-ELISA-002-01",
+        "CHK-PRB-ELISA-002-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-ELISA-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "用dilution series识别non-monotonic interference。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-ELISA-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-ELISA-003",
+      "domain": "wet_lab",
+      "subdomain": "elisa",
+      "title_cn": "同一浓度标准品在buffer里正常，在血清里偏低，为什么？",
+      "title_en": "Why does matrix change immunoassay recovery?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "spike在buffer与serum中表现不同。",
+      "context": "",
+      "why_it_matters": "matrix components可影响binding/signal，造成recovery/parallelism问题。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-ELISA-003-01",
+        "CHK-PRB-ELISA-003-02",
+        "CHK-PRB-ELISA-003-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-ELISA-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "standard_curve_matrix_is_irrelevant"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-ELISA-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-MIG-001",
+      "domain": "wet_lab",
+      "subdomain": "migration",
+      "title_cn": "scratch closure 变快，就证明迁移增强吗？",
+      "title_en": "Does faster scratch closure prove increased migration?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "24h wound closure更快但细胞增殖也增强。",
+      "context": "",
+      "why_it_matters": "closure由migration和proliferation共同贡献。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-MIG-001-01",
+        "CHK-PRB-MIG-001-02",
+        "CHK-PRB-MIG-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-MIG-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "scratch closure≠pure migration rate。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "wound_closure_equals_migration"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-MIG-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-MIG-002",
+      "domain": "wet_lab",
+      "subdomain": "migration",
+      "title_cn": "划痕宽度不一致还可以直接比较closure百分比吗？",
+      "title_en": "Can unequal initial scratch widths be compared naively?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "不同well初始wound geometry明显不同。",
+      "context": "",
+      "why_it_matters": "initial geometry和imaging/segmentation影响closure quantification。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-MIG-002-01",
+        "CHK-PRB-MIG-002-02",
+        "CHK-PRB-MIG-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-MIG-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "标准化初始伤口并用baseline-normalized quantification。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-MIG-001",
+        "CLM-MIG-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-MIG-003",
+      "domain": "wet_lab",
+      "subdomain": "invasion",
+      "title_cn": "Matrigel Transwell 细胞更多就等于“侵袭机制增强”吗？",
+      "title_en": "Does more Matrigel transwell passage prove invasion mechanism?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "穿膜细胞数增加被直接写成specific invasion pathway activation。",
+      "context": "",
+      "why_it_matters": "assay读出受migration、viability、chemotaxis、matrix properties和cell number影响。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-MIG-003-01",
+        "CHK-PRB-MIG-003-02",
+        "CHK-PRB-MIG-003-03",
+        "CHK-PRB-MIG-003-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-MIG-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "支持assay-defined invasive behavior，不单独证明具体机制。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-MIG-002",
+        "CLM-MIG-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-MIG-004",
+      "domain": "wet_lab",
+      "subdomain": "migration",
+      "title_cn": "Transwell 上层/下层培养基差别不清，结果还能解释chemotaxis吗？",
+      "title_en": "Can transwell migration be called chemotaxis without a defined gradient?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "上下室条件没有明确gradient或serum差异。",
+      "context": "",
+      "why_it_matters": "migration、chemokinesis与chemotaxis是不同现象，gradient design决定可解释性。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-MIG-004-01",
+        "CHK-PRB-MIG-004-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-MIG-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "any_transwell_migration_is_chemotaxis"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-MIG-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SYN-001",
+      "domain": "wet_lab",
+      "subdomain": "drug_synergy",
+      "title_cn": "Bliss=10、Loewe=-2，哪个才是真 synergy？",
+      "title_en": "What if Bliss and Loewe disagree?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "同一dose matrix不同null models给相反synergy判断。",
+      "context": "",
+      "why_it_matters": "不同synergy模型定义不同“无相互作用”参考。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SYN-001-01",
+        "CHK-PRB-SYN-001-02",
+        "CHK-PRB-SYN-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SYN-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "synergy不是单一模型无关的物理常数。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "one_synergy_score_is_truth"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SYN-002",
+      "domain": "wet_lab",
+      "subdomain": "drug_synergy",
+      "title_cn": "只测一个剂量组合得到效果特别好，可以叫 synergy 吗？",
+      "title_en": "Can one dose pair establish synergy?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "只比较一个A+B点和单药。",
+      "context": "",
+      "why_it_matters": "synergy inference需要相对于剂量反应的reference model；单点缺乏完整dose-response context。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SYN-002-01",
+        "CHK-PRB-SYN-002-02",
+        "CHK-PRB-SYN-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SYN-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "one_combo_point_proves_synergy"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SYN-003",
+      "domain": "wet_lab",
+      "subdomain": "drug_synergy",
+      "title_cn": "ZIP score高就说明临床联合一定更好？",
+      "title_en": "Does a high ZIP score imply clinical combination benefit?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "in vitro matrix synergy直接外推患者获益。",
+      "context": "",
+      "why_it_matters": "in vitro interaction score不包含PK、toxicity、tumor heterogeneity或therapeutic window。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SYN-003-01",
+        "CHK-PRB-SYN-003-02",
+        "CHK-PRB-SYN-003-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SYN-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "supports in-vitro interaction under assay conditions, not clinical efficacy. ",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "invitro_synergy_equals_clinical_benefit"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SYN-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SYN-004",
+      "domain": "wet_lab",
+      "subdomain": "drug_synergy",
+      "title_cn": "组合更杀细胞，但单药本身已接近100%杀伤，synergy score还可靠吗？",
+      "title_en": "What happens near assay saturation in drug synergy?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "高剂量单药/组合接近floor/ceiling。",
+      "context": "",
+      "why_it_matters": "dose-response dynamic range和measurement floor/ceiling会限制interaction估计。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SYN-004-01",
+        "CHK-PRB-SYN-004-02",
+        "CHK-PRB-SYN-004-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SYN-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "重点看完整response surface和可辨识浓度区。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SYN-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FLOW-007",
+      "domain": "wet_lab",
+      "subdomain": "flow_cytometry",
+      "title_cn": "死细胞不排除会影响marker阳性率吗？",
+      "title_en": "Can dead cells distort flow marker positivity?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "没有live/dead gate，dead cells非特异signal高。",
+      "context": "",
+      "why_it_matters": "dead/damaged cells可改变autofluorescence和nonspecific binding，影响population estimates。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-007-01",
+        "CHK-PRB-FLOW-007-02",
+        "CHK-PRB-FLOW-007-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FLOW-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-FLOW-008",
+      "domain": "wet_lab",
+      "subdomain": "flow_cytometry",
+      "title_cn": "doublets 不排除会制造“双阳性”亚群吗？",
+      "title_en": "Can doublets create apparent double-positive populations?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "two-cell aggregates被当single events。",
+      "context": "",
+      "why_it_matters": "doublets可把两个不同lineage信号合并成假double-positive event。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-FLOW-008-01",
+        "CHK-PRB-FLOW-008-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-FLOW-008"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "double_positive_always_single_cell"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-FLOW-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    }
+  ],
+  "diagnosticCauses": [],
+  "diagnosticChecks": [
+    {
+      "id": "CHK-PRB-FLOW-001-01",
+      "problemId": "PRB-FLOW-001",
+      "question": "marker panel？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-001-02",
+      "problemId": "PRB-FLOW-001",
+      "question": "singlet/live gate？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-001-03",
+      "problemId": "PRB-FLOW-001",
+      "question": "known positive/negative populations？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-002-01",
+      "problemId": "PRB-FLOW-002",
+      "question": "single-stain controls？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-002-02",
+      "problemId": "PRB-FLOW-002",
+      "question": "compensation/unmixing matrix？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-002-03",
+      "problemId": "PRB-FLOW-002",
+      "question": "spreading error？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-003-01",
+      "problemId": "PRB-FLOW-003",
+      "question": "目的在控制nonspecific antibody binding还是gate spread？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-003-02",
+      "problemId": "PRB-FLOW-003",
+      "question": "FMO是否可行？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-004-01",
+      "problemId": "PRB-FLOW-004",
+      "question": "gating tree是否记录？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001",
+        "CLM-FLOW-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-004-02",
+      "problemId": "PRB-FLOW-004",
+      "question": "analyst blinded？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001",
+        "CLM-FLOW-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-004-03",
+      "problemId": "PRB-FLOW-004",
+      "question": "inter-operator reproducibility？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001",
+        "CLM-FLOW-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-005-01",
+      "problemId": "PRB-FLOW-005",
+      "question": "PI/7-AAD等viability dye？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-APOP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-005-02",
+      "problemId": "PRB-FLOW-005",
+      "question": "时间course？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-APOP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-005-03",
+      "problemId": "PRB-FLOW-005",
+      "question": "caspase/形态/orthogonal evidence？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-APOP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-006-01",
+      "problemId": "PRB-FLOW-006",
+      "question": "时间course？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-APOP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-006-02",
+      "problemId": "PRB-FLOW-006",
+      "question": "刺激机制？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-APOP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-006-03",
+      "problemId": "PRB-FLOW-006",
+      "question": "caspase/形态？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-APOP-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-001-01",
+      "problemId": "PRB-VIAB-001",
+      "question": "cell-number standard curve？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001",
+        "CLM-VIAB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-001-02",
+      "problemId": "PRB-VIAB-001",
+      "question": "处理是否影响metabolism？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001",
+        "CLM-VIAB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-001-03",
+      "problemId": "PRB-VIAB-001",
+      "question": "orthogonal cell count/live-dead？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001",
+        "CLM-VIAB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-002-01",
+      "problemId": "PRB-VIAB-002",
+      "question": "density/time linearity？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001",
+        "CLM-VIAB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-002-02",
+      "problemId": "PRB-VIAB-002",
+      "question": "signal saturation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001",
+        "CLM-VIAB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-003-01",
+      "problemId": "PRB-VIAB-003",
+      "question": "direct cell count？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-003-02",
+      "problemId": "PRB-VIAB-003",
+      "question": "live/dead assay？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-VIAB-003-03",
+      "problemId": "PRB-VIAB-003",
+      "question": "recovery after washout？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-VIAB-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-ELISA-001-01",
+      "problemId": "PRB-ELISA-001",
+      "question": "是否稀释后落回working range？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-ELISA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-ELISA-001-02",
+      "problemId": "PRB-ELISA-001",
+      "question": "parallelism/recovery？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-ELISA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-ELISA-002-01",
+      "problemId": "PRB-ELISA-002",
+      "question": "serial dilution后signal是否恢复？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-ELISA-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-ELISA-002-02",
+      "problemId": "PRB-ELISA-002",
+      "question": "assay设计是否有hook risk？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-ELISA-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-ELISA-003-01",
+      "problemId": "PRB-ELISA-003",
+      "question": "spike recovery？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-ELISA-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-ELISA-003-02",
+      "problemId": "PRB-ELISA-003",
+      "question": "dilution parallelism？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-ELISA-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-ELISA-003-03",
+      "problemId": "PRB-ELISA-003",
+      "question": "matched matrix standards？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-ELISA-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-001-01",
+      "problemId": "PRB-MIG-001",
+      "question": "proliferation是否控制/测量？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-001-02",
+      "problemId": "PRB-MIG-001",
+      "question": "短时间窗口？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-001-03",
+      "problemId": "PRB-MIG-001",
+      "question": "orthogonal migration assay？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-002-01",
+      "problemId": "PRB-MIG-002",
+      "question": "baseline area/width？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-001",
+        "CLM-MIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-002-02",
+      "problemId": "PRB-MIG-002",
+      "question": "same field tracking？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-001",
+        "CLM-MIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-002-03",
+      "problemId": "PRB-MIG-002",
+      "question": "automated standardized scratching？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-001",
+        "CLM-MIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-003-01",
+      "problemId": "PRB-MIG-003",
+      "question": "viability/proliferation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-002",
+        "CLM-MIG-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-003-02",
+      "problemId": "PRB-MIG-003",
+      "question": "uncoated migration control？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-002",
+        "CLM-MIG-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-003-03",
+      "problemId": "PRB-MIG-003",
+      "question": "matrix batch/concentration？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-002",
+        "CLM-MIG-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-003-04",
+      "problemId": "PRB-MIG-003",
+      "question": "seeding density？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-002",
+        "CLM-MIG-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-004-01",
+      "problemId": "PRB-MIG-004",
+      "question": "gradient是否存在/稳定？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-MIG-004-02",
+      "problemId": "PRB-MIG-004",
+      "question": "negative/chemokinesis controls？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-MIG-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-001-01",
+      "problemId": "PRB-SYN-001",
+      "question": "药物是否相似机制/可互相替代？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-001-02",
+      "problemId": "PRB-SYN-001",
+      "question": "模型null assumption？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-001-03",
+      "problemId": "PRB-SYN-001",
+      "question": "surface-level consistency？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-002-01",
+      "problemId": "PRB-SYN-002",
+      "question": "单药dose-response？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-002-02",
+      "problemId": "PRB-SYN-002",
+      "question": "matrix coverage？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-002-03",
+      "problemId": "PRB-SYN-002",
+      "question": "replicates/uncertainty？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-001",
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-003-01",
+      "problemId": "PRB-SYN-003",
+      "question": "clinically achievable concentrations？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-003-02",
+      "problemId": "PRB-SYN-003",
+      "question": "toxicity/selectivity？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-003-03",
+      "problemId": "PRB-SYN-003",
+      "question": "independent models/in vivo?",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-004-01",
+      "problemId": "PRB-SYN-004",
+      "question": "assay dynamic range？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-004-02",
+      "problemId": "PRB-SYN-004",
+      "question": "non-saturated matrix region？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SYN-004-03",
+      "problemId": "PRB-SYN-004",
+      "question": "replicate noise？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SYN-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-007-01",
+      "problemId": "PRB-FLOW-007",
+      "question": "viability dye？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-007-02",
+      "problemId": "PRB-FLOW-007",
+      "question": "dead fraction？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-007-03",
+      "problemId": "PRB-FLOW-007",
+      "question": "marker positivity before/after live gate？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-008-01",
+      "problemId": "PRB-FLOW-008",
+      "question": "FSC-A/H/W singlet gate？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-FLOW-008-02",
+      "problemId": "PRB-FLOW-008",
+      "question": "event morphology？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-FLOW-001"
+      ]
+    }
+  ],
+  "diagnosticPaths": [
+    {
+      "id": "PATH-PRB-FLOW-001",
+      "problemId": "PRB-FLOW-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FLOW-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-FLOW-002",
+      "problemId": "PRB-FLOW-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FLOW-002-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-FLOW-003",
+      "problemId": "PRB-FLOW-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-003-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-FLOW-004",
+      "problemId": "PRB-FLOW-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FLOW-004-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-FLOW-005",
+      "problemId": "PRB-FLOW-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FLOW-005-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-FLOW-006",
+      "problemId": "PRB-FLOW-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FLOW-006-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-VIAB-001",
+      "problemId": "PRB-VIAB-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-VIAB-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-VIAB-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-VIAB-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-VIAB-002",
+      "problemId": "PRB-VIAB-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-VIAB-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-VIAB-002-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-VIAB-003",
+      "problemId": "PRB-VIAB-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-VIAB-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-VIAB-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-VIAB-003-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-ELISA-001",
+      "problemId": "PRB-ELISA-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-ELISA-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-ELISA-001-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-ELISA-002",
+      "problemId": "PRB-ELISA-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-ELISA-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-ELISA-002-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-ELISA-003",
+      "problemId": "PRB-ELISA-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-ELISA-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-ELISA-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-ELISA-003-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-MIG-001",
+      "problemId": "PRB-MIG-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-MIG-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-MIG-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-MIG-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-MIG-002",
+      "problemId": "PRB-MIG-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-MIG-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-MIG-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-MIG-002-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-MIG-003",
+      "problemId": "PRB-MIG-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-MIG-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-MIG-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-MIG-003-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-MIG-003-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-MIG-004",
+      "problemId": "PRB-MIG-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-MIG-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-MIG-004-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SYN-001",
+      "problemId": "PRB-SYN-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SYN-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SYN-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SYN-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SYN-002",
+      "problemId": "PRB-SYN-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SYN-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SYN-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SYN-002-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SYN-003",
+      "problemId": "PRB-SYN-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SYN-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SYN-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SYN-003-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SYN-004",
+      "problemId": "PRB-SYN-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SYN-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SYN-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SYN-004-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-FLOW-007",
+      "problemId": "PRB-FLOW-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-007-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-FLOW-007-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-FLOW-008",
+      "problemId": "PRB-FLOW-008",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-FLOW-008-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-FLOW-008-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    }
+  ],
+  "diagnosticEvidence": [],
+  "transferCases": [],
+  "verificationMetadata": {
+    "reviewStatus": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "externalPreReview": {
+      "status": "complete",
+      "reviewer": "OpenAI GPT-5.6 Sol",
+      "reviewedAt": "2026-08-24T22:05:00+08:00",
+      "scope": [
+        "source identity",
+        "metadata",
+        "claim-support pre-review",
+        "scope/qualification review",
+        "problem transformation",
+        "far-transfer design"
+      ]
+    }
+  }
+}

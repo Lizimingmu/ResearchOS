@@ -1,0 +1,21 @@
+{
+  "packId": "m013-batch07-wetlab-expanded-20260824",
+  "generatedAt": "2026-08-24T22:05:00+08:00",
+  "files": [
+    {
+      "name": "ResearchOS_M013_Batch07_SourcePack.json",
+      "sha256": "6e7446719cff11cb47dcab8861928fd8bf6c8d1cdffd592255a5e9f48ef1cafd",
+      "bytes": 92867
+    },
+    {
+      "name": "ResearchOS_M013_Batch07_Scientific_PreReview.md",
+      "sha256": "769299237980dee854685e3da77a963c5111dc976e2823b328c9542c36a0a82f",
+      "bytes": 1108
+    },
+    {
+      "name": "ResearchOS_M013_Batch07_Qualification_Register.md",
+      "sha256": "1f562abc7cb17209c1d542299fed089bc37c5d46e5366620856e767e3f45f3f5",
+      "bytes": 944
+    }
+  ]
+}

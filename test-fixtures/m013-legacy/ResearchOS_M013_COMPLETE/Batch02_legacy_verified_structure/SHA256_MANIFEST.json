@@ -1,0 +1,21 @@
+{
+  "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+  "generatedAt": "2026-08-24T21:31:00+08:00",
+  "files": [
+    {
+      "name": "ResearchOS_M013_Batch02_SourcePack.json",
+      "sha256": "648f32df64a321450f7eceb134f98de7f28d8f5219869d41f4f6e25cfb8b9e4a",
+      "bytes": 151546
+    },
+    {
+      "name": "ResearchOS_M013_Batch02_Scientific_PreReview.md",
+      "sha256": "b4d94a03a672c17b1da98947a0642730a35810dceab566e058e39b9d5c88ece1",
+      "bytes": 3938
+    },
+    {
+      "name": "ResearchOS_M013_Batch02_Qualification_Register.md",
+      "sha256": "85997365b62ec8d8957c5ddbbeb2cf4dfc0833a3b441f82dfd4e9b9a7b67907c",
+      "bytes": 4276
+    }
+  ]
+}

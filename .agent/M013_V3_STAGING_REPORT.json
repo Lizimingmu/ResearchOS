@@ -1,0 +1,1143 @@
+{
+  "generatedAt": "2026-08-27T16:30:19.706Z",
+  "archive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+  "contract": {
+    "passed": true,
+    "failures": []
+  },
+  "checks": [
+    {
+      "name": "original archive contains 8 legacy packs",
+      "passed": true,
+      "detail": "8 packs"
+    },
+    {
+      "name": "original pack SHA256 verified",
+      "passed": true,
+      "detail": "all verified"
+    },
+    {
+      "name": "original packs parse",
+      "passed": true,
+      "detail": "all parsed"
+    },
+    {
+      "name": "validator never throws on originals",
+      "passed": true,
+      "detail": "no crash"
+    },
+    {
+      "name": "all 8 originals return structured rejection",
+      "passed": true,
+      "detail": "Batch01_legacy_verified_structure:454, Batch02_legacy_verified_structure:640, Batch03_legacy_verified_structure:628, Batch04_bulk-rna-pathway:400, Batch05_subtype-biomarker-prognosis:387, Batch06_causal-reporting:394, Batch07_wetlab-expanded:463, Batch08_reviewer-systematic:407"
+    },
+    {
+      "name": "corpus conversion succeeds",
+      "passed": true,
+      "detail": "ok"
+    },
+    {
+      "name": "8 staging documents produced",
+      "passed": true,
+      "detail": "8 staging docs"
+    },
+    {
+      "name": "6 DOI collisions canonicalized",
+      "passed": true,
+      "detail": "[\"SRC-TRIPODAI-2024<=SRC-TRIPODAI-2024|SRC-TRIPODAI-2024-B8\",\"SRC-PROBAST-2019<=SRC-PROBAST-2019|SRC-PROBAST-2019-B8\",\"SRC-REMARK-2005<=SRC-REMARK-2005|SRC-REMARK-2005-B8\",\"SRC-STROBE-2007<=SRC-STROBE-2007|SRC-STROBE-2007-B8\",\"SRC-CONSORT-2025<=SRC-CONSORT-2025|SRC-CONSORT-2025-B8\",\"SRC-STARD-2015<=SRC-STARD-2015|SRC-STARD-2015-B8\"]"
+    },
+    {
+      "name": "6 PMID collisions canonicalized",
+      "passed": true,
+      "detail": "6 pmid merges"
+    },
+    {
+      "name": "4 normalized-title duplicates canonicalized",
+      "passed": true,
+      "detail": "4 title merges"
+    },
+    {
+      "name": "collision-free after canonicalization",
+      "passed": true,
+      "detail": "collision-free"
+    },
+    {
+      "name": "merged source registry size = 120 - 6",
+      "passed": true,
+      "detail": "unique sources=114"
+    },
+    {
+      "name": "claims total 138",
+      "passed": true,
+      "detail": "claims=138"
+    },
+    {
+      "name": "cards total 166",
+      "passed": true,
+      "detail": "cards=166"
+    },
+    {
+      "name": "foreign keys rewritten for merged sources",
+      "passed": true,
+      "detail": "3 rewrites"
+    },
+    {
+      "name": "DESpace URL corrected",
+      "passed": true,
+      "detail": "[{\"rowId\":\"SRC-DESPACE-2024\",\"field\":\"url\",\"from\":\"https://pubmed.ncbi.nlm.nih.gov/PMC10868334\",\"to\":\"https://pmc.ncbi.nlm.nih.gov/articles/PMC10868334/\",\"basis\":\"Codex 元数据审计（M013_SOURCE_METADATA_AUDIT.md）：原 PubMed/PMC 混合 URL 无效，改用官方 PMC 文章页。\"}]"
+    },
+    {
+      "name": "6 formal-title corrections applied",
+      "passed": true,
+      "detail": "[\"SRC-ANNEXIN-2016\",\"SRC-ELISA-INTERFERENCE-2023\",\"SRC-WOUND-2014\",\"SRC-MIGRATION-GUIDE-2026\",\"SRC-ZIP-2016\",\"SRC-SYNERGY-WHAT-2015\"]"
+    },
+    {
+      "name": "staging m013-batch01-foundation-wb-qpcr-ihc-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch01-foundation-wb-qpcr-ihc-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch01-foundation-wb-qpcr-ihc-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch01-foundation-wb-qpcr-ihc-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "staging m013-batch02-statistics-clinical-singlecell-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch02-statistics-clinical-singlecell-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch02-statistics-clinical-singlecell-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch02-statistics-clinical-singlecell-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "staging m013-batch03-spatial-proteomics-paper-ai-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch03-spatial-proteomics-paper-ai-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch03-spatial-proteomics-paper-ai-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch03-spatial-proteomics-paper-ai-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "staging m013-batch04-bulk-rna-pathway-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch04-bulk-rna-pathway-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch04-bulk-rna-pathway-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch04-bulk-rna-pathway-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "staging m013-batch05-subtype-biomarker-prognosis-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch05-subtype-biomarker-prognosis-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch05-subtype-biomarker-prognosis-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch05-subtype-biomarker-prognosis-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "staging m013-batch06-causal-reporting-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch06-causal-reporting-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch06-causal-reporting-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch06-causal-reporting-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "staging m013-batch07-wetlab-expanded-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch07-wetlab-expanded-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch07-wetlab-expanded-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch07-wetlab-expanded-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "staging m013-batch08-reviewer-systematic-20260824 structurally valid",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "staging m013-batch08-reviewer-systematic-20260824 internally collision-free",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "staging m013-batch08-reviewer-systematic-20260824 import-ineligible",
+      "passed": true,
+      "detail": "importEligible=false"
+    },
+    {
+      "name": "staging m013-batch08-reviewer-systematic-20260824 scientifically patch-required",
+      "passed": true,
+      "detail": "scientific_patch_required"
+    },
+    {
+      "name": "problemType rows: 166 unclassified, 0 classified",
+      "passed": true,
+      "detail": "{\"diagnostic\":0,\"judgment\":0,\"audit\":0,\"unclassified\":166}"
+    },
+    {
+      "name": "claims missing scope = 86",
+      "passed": true,
+      "detail": "86"
+    },
+    {
+      "name": "claims missing qualification = 88",
+      "passed": true,
+      "detail": "88"
+    },
+    {
+      "name": "claims missing reviewerNote = 18",
+      "passed": true,
+      "detail": "18"
+    },
+    {
+      "name": "sources missing provenanceNote before merge = 50",
+      "passed": true,
+      "detail": "50"
+    },
+    {
+      "name": "sources missing provenanceNote after canonicalization = 48",
+      "passed": true,
+      "detail": "48"
+    },
+    {
+      "name": "cards missing claim boundary = 111 (staged-missing/empty, type-required)",
+      "passed": true,
+      "detail": "111"
+    },
+    {
+      "name": "cards missing recommended reasoning = 79 (staged-missing/empty, type-required)",
+      "passed": true,
+      "detail": "79"
+    },
+    {
+      "name": "cards unclassified = 166",
+      "passed": true,
+      "detail": "166"
+    },
+    {
+      "name": "cards missing knowledge status = 166",
+      "passed": true,
+      "detail": "166"
+    },
+    {
+      "name": "all staged verification statuses remain pending",
+      "passed": true,
+      "detail": "{\"sources\":120,\"claims\":138,\"cards\":166,\"transferCases\":30}"
+    },
+    {
+      "name": "demo pack structurally valid",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "demo pack scientifically complete",
+      "passed": true,
+      "detail": "scientifically_complete"
+    },
+    {
+      "name": "demo pack import-eligible (two gates separated)",
+      "passed": true,
+      "detail": "importEligible=true"
+    }
+  ],
+  "originalPacks": [
+    {
+      "batchDir": "Batch01_legacy_verified_structure",
+      "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+      "fileName": "ResearchOS_M013_Batch01_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 454,
+      "errorCodes": {
+        "SOURCE_AUTHORS": 7,
+        "SOURCE_CONTENT_ORIGIN_ENUM": 17,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 22,
+        "CARD_SCHEMA_VERSION": 18,
+        "CARD_TITLE_CN": 18,
+        "CARD_TITLE_EN": 18,
+        "CARD_TYPE_ENUM": 18,
+        "CARD_KNOWLEDGE_ENUM": 18,
+        "CARD_VERIFICATION_ENUM": 18,
+        "CARD_CONTENT_ORIGIN_ENUM": 18,
+        "CARD_IMPORTANCE_TYPE": 18,
+        "CARD_FREQUENCY_TYPE": 18,
+        "CARD_PATH_FK": 18,
+        "CAUSE_LAYER_ENUM": 18,
+        "CAUSE_INITIAL_RANK_TYPE": 18,
+        "CHECK_COST_ENUM": 38,
+        "CHECK_AVAILABILITY_ENUM": 38,
+        "PATH_LAYER_ENUM": 18,
+        "PATH_EXPECTED_CHECK_FK": 38,
+        "EVIDENCE_CLAIM_FK": 8,
+        "CASE_PROBLEM_FK": 13,
+        "CASE_MODE_ENUM": 13,
+        "CASE_RUBRIC": 13,
+        "CASE_CONTENT_ORIGIN_ENUM": 13
+      }
+    },
+    {
+      "batchDir": "Batch02_legacy_verified_structure",
+      "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+      "fileName": "ResearchOS_M013_Batch02_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 640,
+      "errorCodes": {
+        "SOURCE_CONTENT_ORIGIN_ENUM": 25,
+        "SOURCE_AUTHORS": 6,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 29,
+        "CARD_SCHEMA_VERSION": 26,
+        "CARD_TITLE_CN": 26,
+        "CARD_TITLE_EN": 26,
+        "CARD_TYPE_ENUM": 26,
+        "CARD_KNOWLEDGE_ENUM": 26,
+        "CARD_VERIFICATION_ENUM": 26,
+        "CARD_CONTENT_ORIGIN_ENUM": 26,
+        "CARD_IMPORTANCE_TYPE": 26,
+        "CARD_FREQUENCY_TYPE": 26,
+        "CARD_PATH_FK": 26,
+        "CAUSE_LAYER_ENUM": 5,
+        "CAUSE_INITIAL_RANK_TYPE": 5,
+        "CHECK_COST_ENUM": 81,
+        "CHECK_AVAILABILITY_ENUM": 81,
+        "PATH_LAYER_ENUM": 25,
+        "PATH_EXPECTED_CHECK_FK": 81,
+        "EVIDENCE_CLAIM_FK": 6,
+        "CASE_PROBLEM_FK": 9,
+        "CASE_MODE_ENUM": 9,
+        "CASE_RUBRIC": 9,
+        "CASE_CONTENT_ORIGIN_ENUM": 9
+      }
+    },
+    {
+      "batchDir": "Batch03_legacy_verified_structure",
+      "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+      "fileName": "ResearchOS_M013_Batch03_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 628,
+      "errorCodes": {
+        "SOURCE_AUTHORS": 17,
+        "SOURCE_CONTENT_ORIGIN_ENUM": 26,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 31,
+        "CARD_SCHEMA_VERSION": 24,
+        "CARD_TITLE_CN": 24,
+        "CARD_TITLE_EN": 24,
+        "CARD_TYPE_ENUM": 24,
+        "CARD_KNOWLEDGE_ENUM": 24,
+        "CARD_VERIFICATION_ENUM": 24,
+        "CARD_CONTENT_ORIGIN_ENUM": 24,
+        "CARD_IMPORTANCE_TYPE": 24,
+        "CARD_FREQUENCY_TYPE": 24,
+        "CARD_PATH_FK": 24,
+        "CAUSE_LAYER_ENUM": 4,
+        "CAUSE_INITIAL_RANK_TYPE": 4,
+        "CHECK_COST_ENUM": 81,
+        "CHECK_AVAILABILITY_ENUM": 81,
+        "PATH_LAYER_ENUM": 24,
+        "PATH_EXPECTED_CHECK_FK": 81,
+        "EVIDENCE_CLAIM_FK": 7,
+        "CASE_PROBLEM_FK": 8,
+        "CASE_MODE_ENUM": 8,
+        "CASE_RUBRIC": 8,
+        "CASE_CONTENT_ORIGIN_ENUM": 8
+      }
+    },
+    {
+      "batchDir": "Batch04_bulk-rna-pathway",
+      "packId": "m013-batch04-bulk-rna-pathway-20260824",
+      "fileName": "ResearchOS_M013_Batch04_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 400,
+      "errorCodes": {
+        "SOURCE_CONTENT_ORIGIN_ENUM": 10,
+        "SOURCE_AUTHORS": 7,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 12,
+        "CARD_SCHEMA_VERSION": 19,
+        "CARD_TITLE_CN": 19,
+        "CARD_TITLE_EN": 19,
+        "CARD_TYPE_ENUM": 19,
+        "CARD_KNOWLEDGE_ENUM": 19,
+        "CARD_VERIFICATION_ENUM": 19,
+        "CARD_CONTENT_ORIGIN_ENUM": 19,
+        "CARD_IMPORTANCE_TYPE": 19,
+        "CARD_FREQUENCY_TYPE": 19,
+        "CARD_PATH_FK": 19,
+        "CHECK_COST_ENUM": 54,
+        "CHECK_AVAILABILITY_ENUM": 54,
+        "PATH_LAYER_ENUM": 19,
+        "PATH_EXPECTED_CHECK_FK": 54
+      }
+    },
+    {
+      "batchDir": "Batch05_subtype-biomarker-prognosis",
+      "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+      "fileName": "ResearchOS_M013_Batch05_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 387,
+      "errorCodes": {
+        "SOURCE_CONTENT_ORIGIN_ENUM": 9,
+        "SOURCE_AUTHORS": 6,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 9,
+        "CARD_SCHEMA_VERSION": 18,
+        "CARD_TITLE_CN": 18,
+        "CARD_TITLE_EN": 18,
+        "CARD_TYPE_ENUM": 18,
+        "CARD_KNOWLEDGE_ENUM": 18,
+        "CARD_VERIFICATION_ENUM": 18,
+        "CARD_CONTENT_ORIGIN_ENUM": 18,
+        "CARD_IMPORTANCE_TYPE": 18,
+        "CARD_FREQUENCY_TYPE": 18,
+        "CARD_PATH_FK": 18,
+        "CHECK_COST_ENUM": 55,
+        "CHECK_AVAILABILITY_ENUM": 55,
+        "PATH_LAYER_ENUM": 18,
+        "PATH_EXPECTED_CHECK_FK": 55
+      }
+    },
+    {
+      "batchDir": "Batch06_causal-reporting",
+      "packId": "m013-batch06-causal-reporting-20260824",
+      "fileName": "ResearchOS_M013_Batch06_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 394,
+      "errorCodes": {
+        "SOURCE_CONTENT_ORIGIN_ENUM": 11,
+        "SOURCE_AUTHORS": 6,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 12,
+        "CARD_SCHEMA_VERSION": 19,
+        "CARD_TITLE_CN": 19,
+        "CARD_TITLE_EN": 19,
+        "CARD_TYPE_ENUM": 19,
+        "CARD_KNOWLEDGE_ENUM": 19,
+        "CARD_VERIFICATION_ENUM": 19,
+        "CARD_CONTENT_ORIGIN_ENUM": 19,
+        "CARD_IMPORTANCE_TYPE": 19,
+        "CARD_FREQUENCY_TYPE": 19,
+        "CARD_PATH_FK": 19,
+        "CHECK_COST_ENUM": 52,
+        "CHECK_AVAILABILITY_ENUM": 52,
+        "PATH_LAYER_ENUM": 19,
+        "PATH_EXPECTED_CHECK_FK": 52
+      }
+    },
+    {
+      "batchDir": "Batch07_wetlab-expanded",
+      "packId": "m013-batch07-wetlab-expanded-20260824",
+      "fileName": "ResearchOS_M013_Batch07_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 463,
+      "errorCodes": {
+        "SOURCE_AUTHORS": 12,
+        "SOURCE_CONTENT_ORIGIN_ENUM": 12,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 14,
+        "CARD_SCHEMA_VERSION": 22,
+        "CARD_TITLE_CN": 22,
+        "CARD_TITLE_EN": 22,
+        "CARD_TYPE_ENUM": 22,
+        "CARD_KNOWLEDGE_ENUM": 22,
+        "CARD_VERIFICATION_ENUM": 22,
+        "CARD_CONTENT_ORIGIN_ENUM": 22,
+        "CARD_IMPORTANCE_TYPE": 22,
+        "CARD_FREQUENCY_TYPE": 22,
+        "CARD_PATH_FK": 22,
+        "CHECK_COST_ENUM": 61,
+        "CHECK_AVAILABILITY_ENUM": 61,
+        "PATH_LAYER_ENUM": 22,
+        "PATH_EXPECTED_CHECK_FK": 61
+      }
+    },
+    {
+      "batchDir": "Batch08_reviewer-systematic",
+      "packId": "m013-batch08-reviewer-systematic-20260824",
+      "fileName": "ResearchOS_M013_Batch08_SourcePack.json",
+      "sha256Verified": true,
+      "parsed": true,
+      "threw": false,
+      "structuralPass": false,
+      "failureCount": 407,
+      "errorCodes": {
+        "SOURCE_AUTHORS": 10,
+        "SOURCE_CONTENT_ORIGIN_ENUM": 10,
+        "CLAIM_CONTENT_ORIGIN_ENUM": 9,
+        "CARD_SCHEMA_VERSION": 20,
+        "CARD_TITLE_CN": 20,
+        "CARD_TITLE_EN": 20,
+        "CARD_TYPE_ENUM": 20,
+        "CARD_KNOWLEDGE_ENUM": 20,
+        "CARD_VERIFICATION_ENUM": 20,
+        "CARD_CONTENT_ORIGIN_ENUM": 20,
+        "CARD_IMPORTANCE_TYPE": 20,
+        "CARD_FREQUENCY_TYPE": 20,
+        "CARD_PATH_FK": 20,
+        "CHECK_COST_ENUM": 53,
+        "CHECK_AVAILABILITY_ENUM": 53,
+        "PATH_LAYER_ENUM": 19,
+        "PATH_EXPECTED_CHECK_FK": 53
+      }
+    }
+  ],
+  "conversion": {
+    "ok": true,
+    "packs": 8,
+    "totals": {
+      "sources": 120,
+      "evidenceClaims": 138,
+      "problemCards": 166,
+      "diagnosticCauses": 27,
+      "diagnosticChecks": 475,
+      "diagnosticPaths": 164,
+      "diagnosticEvidence": 21,
+      "transferCases": 30
+    },
+    "uniqueSourceCount": 114,
+    "cardBoundaryGaps": 111,
+    "cardReasoningGaps": 79,
+    "preMergeMissingProvenance": 50,
+    "metadataPatches": [
+      {
+        "rowId": "SRC-DESPACE-2024",
+        "field": "url",
+        "from": "https://pubmed.ncbi.nlm.nih.gov/PMC10868334",
+        "to": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10868334/",
+        "basis": "Codex 元数据审计（M013_SOURCE_METADATA_AUDIT.md）：原 PubMed/PMC 混合 URL 无效，改用官方 PMC 文章页。"
+      },
+      {
+        "rowId": "SRC-ANNEXIN-2016",
+        "field": "title",
+        "from": "Analyzing Cell Death by Annexin V Staining and Flow Cytometry",
+        "to": "Quantitation of Apoptosis and Necrosis by Annexin V Binding, Propidium Iodide Uptake, and Flow Cytometry",
+        "basis": "Codex 元数据审计：标题按来源记录（Crossref 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-ELISA-INTERFERENCE-2023",
+        "field": "title",
+        "from": "Interferences in Immunoassay",
+        "to": "Interference in ELISA",
+        "basis": "Codex 元数据审计：标题按来源记录（Crossref 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-WOUND-2014",
+        "field": "title",
+        "from": "Wound healing assay: an overview of literature methods",
+        "to": "An introduction to the wound healing assay using live-cell microscopy.",
+        "basis": "Codex 元数据审计：标题按来源记录（Europe PMC 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-MIGRATION-GUIDE-2026",
+        "field": "title",
+        "from": "A practical guideline for the choice and use of cell migration assays",
+        "to": "Selecting the optimal cell migration assay: fundamentals and practical guidelines",
+        "basis": "Codex 元数据审计：标题按来源记录（Crossref 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-ZIP-2016",
+        "field": "title",
+        "from": "A new drug-combination model to predict synergistic effects based on the zero interaction potency score",
+        "to": "Searching for Drug Synergy in Complex Dose-Response Landscapes Using an Interaction Potency Model.",
+        "basis": "Codex 元数据审计：标题按来源记录（Europe PMC 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-SYNERGY-WHAT-2015",
+        "field": "title",
+        "from": "What is synergy?",
+        "to": "What is synergy? The Saariselkä agreement revisited.",
+        "basis": "Codex 元数据审计：标题按来源记录（Europe PMC 返回标题）修正。"
+      }
+    ],
+    "canonicalization": {
+      "doiCollisions": [
+        {
+          "canonicalId": "SRC-TRIPODAI-2024",
+          "keyValue": "10.1136/bmj-2023-078378",
+          "originalIds": [
+            "SRC-TRIPODAI-2024",
+            "SRC-TRIPODAI-2024-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-PROBAST-2019",
+          "keyValue": "10.7326/m18-1376",
+          "originalIds": [
+            "SRC-PROBAST-2019",
+            "SRC-PROBAST-2019-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-REMARK-2005",
+          "keyValue": "10.1093/jnci/dji237",
+          "originalIds": [
+            "SRC-REMARK-2005",
+            "SRC-REMARK-2005-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-STROBE-2007",
+          "keyValue": "10.1371/journal.pmed.0040296",
+          "originalIds": [
+            "SRC-STROBE-2007",
+            "SRC-STROBE-2007-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-CONSORT-2025",
+          "keyValue": "10.1016/s0140-6736(25)00672-5",
+          "originalIds": [
+            "SRC-CONSORT-2025",
+            "SRC-CONSORT-2025-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-STARD-2015",
+          "keyValue": "10.1136/bmj.h5527",
+          "originalIds": [
+            "SRC-STARD-2015",
+            "SRC-STARD-2015-B8"
+          ]
+        }
+      ],
+      "pmidCollisions": [
+        {
+          "canonicalId": "SRC-TRIPODAI-2024",
+          "keyValue": "38626948",
+          "originalIds": [
+            "SRC-TRIPODAI-2024",
+            "SRC-TRIPODAI-2024-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-PROBAST-2019",
+          "keyValue": "30596875",
+          "originalIds": [
+            "SRC-PROBAST-2019",
+            "SRC-PROBAST-2019-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-REMARK-2005",
+          "keyValue": "16106022",
+          "originalIds": [
+            "SRC-REMARK-2005",
+            "SRC-REMARK-2005-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-STROBE-2007",
+          "keyValue": "17941714",
+          "originalIds": [
+            "SRC-STROBE-2007",
+            "SRC-STROBE-2007-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-CONSORT-2025",
+          "keyValue": "40245901",
+          "originalIds": [
+            "SRC-CONSORT-2025",
+            "SRC-CONSORT-2025-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-STARD-2015",
+          "keyValue": "26511519",
+          "originalIds": [
+            "SRC-STARD-2015",
+            "SRC-STARD-2015-B8"
+          ]
+        }
+      ],
+      "titleCollisions": [
+        {
+          "canonicalId": "SRC-PROBAST-2019",
+          "keyValue": "probast: a tool to assess the risk of bias and applicability of prediction model studies",
+          "originalIds": [
+            "SRC-PROBAST-2019",
+            "SRC-PROBAST-2019-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-REMARK-2005",
+          "keyValue": "reporting recommendations for tumor marker prognostic studies (remark)",
+          "originalIds": [
+            "SRC-REMARK-2005",
+            "SRC-REMARK-2005-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-CONSORT-2025",
+          "keyValue": "consort 2025 statement: updated guideline for reporting randomised trials",
+          "originalIds": [
+            "SRC-CONSORT-2025",
+            "SRC-CONSORT-2025-B8"
+          ]
+        },
+        {
+          "canonicalId": "SRC-STARD-2015",
+          "keyValue": "stard 2015: an updated list of essential items for reporting diagnostic accuracy studies",
+          "originalIds": [
+            "SRC-STARD-2015",
+            "SRC-STARD-2015-B8"
+          ]
+        }
+      ],
+      "collisionFreeAfterMerge": true
+    },
+    "foreignKeyRewrites": [
+      {
+        "entity": "evidenceClaim",
+        "rowId": "CLM-REV-001",
+        "field": "sourceId",
+        "from": "SRC-PROBAST-2019-B8",
+        "to": "SRC-PROBAST-2019"
+      },
+      {
+        "entity": "evidenceClaim",
+        "rowId": "CLM-REV-002",
+        "field": "sourceId",
+        "from": "SRC-PROBAST-2019-B8",
+        "to": "SRC-PROBAST-2019"
+      },
+      {
+        "entity": "evidenceClaim",
+        "rowId": "CLM-REV-004",
+        "field": "sourceId",
+        "from": "SRC-CONSORT-2025-B8",
+        "to": "SRC-CONSORT-2025"
+      }
+    ],
+    "discardedFieldCounts": {
+      "evidenceSources": 27,
+      "priorPlausibility": 27,
+      "severity": 27,
+      "terminalLogic": 164,
+      "label": 21,
+      "reasoningPrompt": 21,
+      "expectedUpdate": 21,
+      "concept": 30,
+      "expectedPrinciples": 30,
+      "evidenceClaims": 30,
+      "supportingFindings": 9,
+      "contradictingFindings": 8
+    },
+    "enumLookupTables": {
+      "importance": {
+        "critical": 5,
+        "high": 4,
+        "medium": 3,
+        "low": 2,
+        "minor": 1
+      },
+      "frequency": {
+        "very_common": 4,
+        "common": 3,
+        "occasional": 2,
+        "rare": 1
+      }
+    },
+    "converterPolicies": [
+      "仅机械确定性映射：snake_case→camelCase、稳定 ID、显式枚举/别名查找表、来源规范 ID 与外键重写。",
+      "科学文本逐字保留；除无规范字段可承载的 legacy 字段外，不删除、不改写、不补造。",
+      "不得推断 problemType：全部 legacy 卡片为 unclassified，永不导入合格。",
+      "不得推断 scope/qualification/候选原因/结论边界/推荐推理/严重性/可修复性/证据支持/层级/排序/成本。",
+      "永不提升 pending：metadata_verified/claim_verified 一律降为 pending，verifiedAt/verifiedBy 不继承。",
+      "不采用全局“候选原因≥3”规则；diagnostic 完整性允许两个有用原因、优先三个。",
+      "来源去重：同规范化 DOI/PMID/标题去重，规范 ID 取字典序最小 ID；每次合并与冲突均披露。"
+    ]
+  },
+  "staging": [
+    {
+      "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+      "stagingId": "m013-batch01-foundation-wb-qpcr-ihc-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [
+        "STAGING_SUPERSEDES_UNRESOLVED sources[4].supersedes: supersedes 引用包外来源 MIQE-2009（保留为待评审引用）。",
+        "STAGING_SUPERSEDES_UNRESOLVED sources[5].supersedes: supersedes 引用包外来源 CAP-IHC-2014（保留为待评审引用）。"
+      ],
+      "internalCollisions": [],
+      "registryConflicts": [],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 18,
+            "complete": 0,
+            "patchRequired": 18,
+            "unclassified": 18
+          },
+          "evidenceClaims": {
+            "total": 22,
+            "complete": 4,
+            "patchRequired": 18
+          },
+          "evidenceSources": {
+            "total": 17,
+            "complete": 17,
+            "patchRequired": 0
+          }
+        }
+      }
+    },
+    {
+      "packId": "m013-batch02-statistics-clinical-singlecell-20260824",
+      "stagingId": "m013-batch02-statistics-clinical-singlecell-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [
+        "STAGING_SUPERSEDES_UNRESOLVED sources[6].supersedes: supersedes 引用包外来源 TRIPOD-2015（保留为待评审引用）。"
+      ],
+      "internalCollisions": [],
+      "registryConflicts": [
+        "DOI 10.7326/M18-1376 已注册于 pa-src-probast（staging SRC-PROBAST-2019）。",
+        "PMID 30596875 已注册于 pa-src-probast（staging SRC-PROBAST-2019）。",
+        "DOI 10.1186/s12916-019-1466-7 已注册于 pa-src-calibration（staging SRC-CALIBRATION-2019）。",
+        "PMID 31842878 已注册于 pa-src-calibration（staging SRC-CALIBRATION-2019）。",
+        "DOI 10.1038/s41467-021-25960-2 已注册于 pa-src-pseudobulk（staging SRC-SQUAIR-2021）。",
+        "PMID 34584091 已注册于 pa-src-pseudobulk（staging SRC-SQUAIR-2021）。"
+      ],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 26,
+            "complete": 0,
+            "patchRequired": 26,
+            "unclassified": 26
+          },
+          "evidenceClaims": {
+            "total": 29,
+            "complete": 11,
+            "patchRequired": 18
+          },
+          "evidenceSources": {
+            "total": 25,
+            "complete": 25,
+            "patchRequired": 0
+          }
+        }
+      }
+    },
+    {
+      "packId": "m013-batch03-spatial-proteomics-paper-ai-20260824",
+      "stagingId": "m013-batch03-spatial-proteomics-paper-ai-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [],
+      "internalCollisions": [],
+      "registryConflicts": [],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 24,
+            "complete": 0,
+            "patchRequired": 24,
+            "unclassified": 24
+          },
+          "evidenceClaims": {
+            "total": 31,
+            "complete": 1,
+            "patchRequired": 30
+          },
+          "evidenceSources": {
+            "total": 26,
+            "complete": 26,
+            "patchRequired": 0
+          }
+        }
+      }
+    },
+    {
+      "packId": "m013-batch04-bulk-rna-pathway-20260824",
+      "stagingId": "m013-batch04-bulk-rna-pathway-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [],
+      "internalCollisions": [],
+      "registryConflicts": [],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 19,
+            "complete": 0,
+            "patchRequired": 19,
+            "unclassified": 19
+          },
+          "evidenceClaims": {
+            "total": 12,
+            "complete": 0,
+            "patchRequired": 12
+          },
+          "evidenceSources": {
+            "total": 10,
+            "complete": 0,
+            "patchRequired": 10
+          }
+        }
+      }
+    },
+    {
+      "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+      "stagingId": "m013-batch05-subtype-biomarker-prognosis-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [],
+      "internalCollisions": [],
+      "registryConflicts": [],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 18,
+            "complete": 0,
+            "patchRequired": 18,
+            "unclassified": 18
+          },
+          "evidenceClaims": {
+            "total": 9,
+            "complete": 0,
+            "patchRequired": 9
+          },
+          "evidenceSources": {
+            "total": 9,
+            "complete": 0,
+            "patchRequired": 9
+          }
+        }
+      }
+    },
+    {
+      "packId": "m013-batch06-causal-reporting-20260824",
+      "stagingId": "m013-batch06-causal-reporting-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [
+        "STAGING_SUPERSEDES_UNRESOLVED sources[7].supersedes: supersedes 引用包外来源 CONSORT-2010（保留为待评审引用）。",
+        "STAGING_SUPERSEDES_UNRESOLVED sources[8].supersedes: supersedes 引用包外来源 SPIRIT-2013（保留为待评审引用）。"
+      ],
+      "internalCollisions": [],
+      "registryConflicts": [],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 19,
+            "complete": 0,
+            "patchRequired": 19,
+            "unclassified": 19
+          },
+          "evidenceClaims": {
+            "total": 12,
+            "complete": 0,
+            "patchRequired": 12
+          },
+          "evidenceSources": {
+            "total": 11,
+            "complete": 0,
+            "patchRequired": 11
+          }
+        }
+      }
+    },
+    {
+      "packId": "m013-batch07-wetlab-expanded-20260824",
+      "stagingId": "m013-batch07-wetlab-expanded-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [],
+      "internalCollisions": [],
+      "registryConflicts": [],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 22,
+            "complete": 0,
+            "patchRequired": 22,
+            "unclassified": 22
+          },
+          "evidenceClaims": {
+            "total": 14,
+            "complete": 0,
+            "patchRequired": 14
+          },
+          "evidenceSources": {
+            "total": 12,
+            "complete": 1,
+            "patchRequired": 11
+          }
+        }
+      }
+    },
+    {
+      "packId": "m013-batch08-reviewer-systematic-20260824",
+      "stagingId": "m013-batch08-reviewer-systematic-20260824-staging",
+      "structuralValid": true,
+      "structuralFailures": [],
+      "structuralWarnings": [
+        "STAGING_SUPERSEDES_UNRESOLVED sources[4].supersedes: supersedes 引用包外来源 TRIPOD-2015（保留为待评审引用）。",
+        "STAGING_SUPERSEDES_UNRESOLVED sources[6].supersedes: supersedes 引用包外来源 CONSORT-2010（保留为待评审引用）。"
+      ],
+      "internalCollisions": [],
+      "registryConflicts": [
+        "DOI 10.7326/M18-1376 已注册于 pa-src-probast（staging SRC-PROBAST-2019）。",
+        "PMID 30596875 已注册于 pa-src-probast（staging SRC-PROBAST-2019）。"
+      ],
+      "importEligible": false,
+      "completeness": {
+        "status": "scientific_patch_required",
+        "counts": {
+          "problemCards": {
+            "total": 20,
+            "complete": 0,
+            "patchRequired": 20,
+            "unclassified": 20
+          },
+          "evidenceClaims": {
+            "total": 9,
+            "complete": 0,
+            "patchRequired": 9
+          },
+          "evidenceSources": {
+            "total": 10,
+            "complete": 3,
+            "patchRequired": 7
+          }
+        }
+      }
+    }
+  ],
+  "problemTypeCounts": {
+    "diagnostic": 0,
+    "judgment": 0,
+    "audit": 0,
+    "unclassified": 166
+  },
+  "scientificGapCounts": {
+    "CLAIM_MISSING_REVIEWER_NOTE": 18,
+    "CARD_UNCLASSIFIED": 166,
+    "CARD_MISSING_KNOWLEDGE_STATUS": 166,
+    "CLAIM_MISSING_QUALIFICATION": 88,
+    "CLAIM_MISSING_SCOPE": 86,
+    "SOURCE_MISSING_PROVENANCE": 48
+  },
+  "pendingCounts": {
+    "sources": 120,
+    "claims": 138,
+    "cards": 166,
+    "transferCases": 30
+  },
+  "demoPackGate": {
+    "structuralErrors": 0,
+    "completeness": "scientifically_complete",
+    "importEligible": true
+  }
+}

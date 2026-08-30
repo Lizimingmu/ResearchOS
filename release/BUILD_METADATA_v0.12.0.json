@@ -1,0 +1,59 @@
+{
+  "product": "ResearchOS",
+  "version": "0.12.0",
+  "releasedAt": "2026-08-26",
+  "locale": "zh-CN",
+  "sourceBaseline": {
+    "branch": "codex/m016-release",
+    "acceptedTag": "m015-accepted",
+    "releaseCandidateTag": "v0.12.0-rc1",
+    "note": "Release candidate built from the Codex-accepted M015 Personal Content Studio baseline plus the M016 version/release diff; Codex creates the release-candidate tag after review. OpenCode ran no Git commands."
+  },
+  "stateSchema": 4,
+  "sqliteUserVersion": 2,
+  "signing": {
+    "signed": false,
+    "note": "Build is unsigned; hashes are recomputed digests of the copied files, not a publisher signature."
+  },
+  "toolchain": {
+    "rustc": "1.97.1 (8bab26f4f 2026-07-14)",
+    "cargo": "1.97.1 (c980f4866 2026-06-30)",
+    "node": "v24.14.0",
+    "npm": "11.9.0",
+    "buildCommand": "npm run tauri:build (release profile, offline cargo cache)",
+    "bundleTargets": ["nsis"]
+  },
+  "validation": {
+    "frontendTests": "89 passed, 0 failed (npm test: bundle test + node suite + localization audit + startup smoke)",
+    "rustTests": "27 passed, 0 failed",
+    "m015AuditGate": "passed; 31 checks",
+    "sourcePackAudit": "passed with 0 errors, 0 warnings",
+    "problemAtlasAudit": "passed with 0 errors, 0 warnings",
+    "stagingGate": "passed; 63/63 checks",
+    "contentAudit": "passed with 0 errors, 1 pre-existing warning",
+    "localizationAudit": "passed; 11 checks",
+    "performanceAudit": "passed; initial JS 945116 bytes; scheduler 0.0789 ms",
+    "startupSmoke": "passed without process or matchMedia globals",
+    "seedExport": "passed; 9 machine-readable artifacts",
+    "agentHandoff": "passed"
+  },
+  "checksNotRun": [
+    "FOREGROUND UI: packaged-app smoke NOT RUN (requires separate explicit user permission)",
+    "Installer behavior NOT RUN",
+    "Real Obsidian vault interaction NOT RUN (all vault tests used the project-local fake vault)",
+    "USER-MANUAL checklist NOT RUN",
+    "In-app backup/restore UI leg NOT RUN (command-level covered by Rust tests)"
+  ],
+  "artifacts": [
+    {
+      "file": "ResearchOS_0.12.0_x64.exe",
+      "bytes": 15625728,
+      "sha256": "C4036E1043A7FC06F93B0C40FA1F9944C470941B93C46050D402F8306FA2B79C"
+    },
+    {
+      "file": "ResearchOS_0.12.0_x64-setup.exe",
+      "bytes": 5288601,
+      "sha256": "DE6D1F0AB70F659AC11C8EA08A8E177F7293CAD4FD330C1F95C398C9E7085509"
+    }
+  ]
+}

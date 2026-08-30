@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-08-27T16:30:19.706Z",
+  "archive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+  "packs": [
+    {
+      "stagingId": "m013-batch01-foundation-wb-qpcr-ihc-20260824-staging",
+      "sourcePackId": "m013-batch01-foundation-wb-qpcr-ihc-20260824"
+    },
+    {
+      "stagingId": "m013-batch02-statistics-clinical-singlecell-20260824-staging",
+      "sourcePackId": "m013-batch02-statistics-clinical-singlecell-20260824"
+    },
+    {
+      "stagingId": "m013-batch03-spatial-proteomics-paper-ai-20260824-staging",
+      "sourcePackId": "m013-batch03-spatial-proteomics-paper-ai-20260824"
+    },
+    {
+      "stagingId": "m013-batch04-bulk-rna-pathway-20260824-staging",
+      "sourcePackId": "m013-batch04-bulk-rna-pathway-20260824"
+    },
+    {
+      "stagingId": "m013-batch05-subtype-biomarker-prognosis-20260824-staging",
+      "sourcePackId": "m013-batch05-subtype-biomarker-prognosis-20260824"
+    },
+    {
+      "stagingId": "m013-batch06-causal-reporting-20260824-staging",
+      "sourcePackId": "m013-batch06-causal-reporting-20260824"
+    },
+    {
+      "stagingId": "m013-batch07-wetlab-expanded-20260824-staging",
+      "sourcePackId": "m013-batch07-wetlab-expanded-20260824"
+    },
+    {
+      "stagingId": "m013-batch08-reviewer-systematic-20260824-staging",
+      "sourcePackId": "m013-batch08-reviewer-systematic-20260824"
+    }
+  ]
+}

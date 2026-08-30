@@ -1,0 +1,1654 @@
+[
+  {
+    "id": "pattern-19",
+    "title": "Target-trial observational effectiveness",
+    "scientificQuestion": "What is the effect of initiating a defined intervention in an eligible real-world population?",
+    "evidenceChain": [
+      "Write target-trial protocol",
+      "Align eligibility, assignment, and time zero",
+      "Model treatment/confounding with diagnostics",
+      "Estimate absolute and relative effects",
+      "Stress-test identification assumptions"
+    ],
+    "figureOrder": [
+      "Protocol emulation diagram",
+      "Eligibility and treatment flow",
+      "Covariate balance/positivity",
+      "Outcome curves and contrasts",
+      "Sensitivity analyses"
+    ],
+    "mustHave": [
+      "Explicit estimand",
+      "Common time zero",
+      "Confounder rationale",
+      "Positivity diagnostics",
+      "Missing-data plan"
+    ],
+    "optionalEnhancements": [
+      "Negative controls",
+      "Quantitative bias analysis",
+      "Alternative strategy definitions"
+    ],
+    "failureModes": [
+      "Ever-treated classification",
+      "Post-baseline eligibility",
+      "Weight instability",
+      "Unmeasured confounding ignored"
+    ],
+    "reviewerAttacks": [
+      "Which trial element is not emulated?",
+      "Are treatment strategies well-defined?",
+      "Where does positivity fail?"
+    ],
+    "overclaims": [
+      "Observational emulation equals randomization",
+      "Weighting removes all confounding"
+    ],
+    "highLevelAdds": [
+      "Per-protocol and assignment-effect contrasts",
+      "Heterogeneity with interaction uncertainty",
+      "Transport to target population"
+    ],
+    "sourceIds": [
+      "src-target-trial",
+      "src-dag"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "target-trial-cures-confounding"
+    ]
+  },
+  {
+    "id": "pattern-20",
+    "title": "Diagnostic accuracy to clinical pathway",
+    "scientificQuestion": "Does an index test accurately and usefully classify the intended-use population?",
+    "evidenceChain": [
+      "Define intended use and threshold",
+      "Recruit representative spectrum",
+      "Apply blinded reference standard",
+      "Estimate threshold metrics with uncertainty",
+      "Connect errors to decisions"
+    ],
+    "figureOrder": [
+      "Participant flow",
+      "Index/reference timing",
+      "ROC and operating points",
+      "Calibration or risk strata",
+      "Decision consequences"
+    ],
+    "mustHave": [
+      "Prespecified threshold",
+      "Reference-standard audit",
+      "Indeterminate results",
+      "Sensitivity and specificity CIs",
+      "Prevalence/context"
+    ],
+    "optionalEnhancements": [
+      "Reader variability",
+      "Subgroup accuracy",
+      "Decision-curve analysis"
+    ],
+    "failureModes": [
+      "Case-control spectrum",
+      "Partial verification",
+      "Data-driven threshold",
+      "AUC-only claim"
+    ],
+    "reviewerAttacks": [
+      "Who was not verified?",
+      "Is threshold transportable?",
+      "What action follows a positive test?"
+    ],
+    "overclaims": [
+      "AUC equals accuracy",
+      "Association proves diagnostic utility"
+    ],
+    "highLevelAdds": [
+      "Prospective pathway evaluation",
+      "Paired test comparison",
+      "Cost/harm analysis"
+    ],
+    "sourceIds": [
+      "src-stard-2015",
+      "src-roc",
+      "src-dca"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-is-utility"
+    ]
+  },
+  {
+    "id": "pattern-21",
+    "title": "Single-cell perturbation with donor replication",
+    "scientificQuestion": "Which cell states and programs respond reproducibly to perturbation across biological donors?",
+    "evidenceChain": [
+      "QC per sample",
+      "Donor-aware state definition",
+      "Pseudobulk or mixed inference",
+      "Differential abundance and expression",
+      "Orthogonal functional validation"
+    ],
+    "figureOrder": [
+      "Design and QC",
+      "State atlas by donor",
+      "Sample-level abundance",
+      "Donor-aware DE/pathways",
+      "Validation"
+    ],
+    "mustHave": [
+      "Donor as replicate",
+      "Doublet/ambient audit",
+      "Batch–condition overlap",
+      "Multiplicity control",
+      "Effect sizes per donor"
+    ],
+    "optionalEnhancements": [
+      "Cell hashing",
+      "Dose/time series",
+      "Perturbation rescue"
+    ],
+    "failureModes": [
+      "Pooled-cell tests",
+      "Integrated-expression DE",
+      "One-marker labels",
+      "UMAP-only evidence"
+    ],
+    "reviewerAttacks": [
+      "How many donors support the contrast?",
+      "Were preprocessing choices outcome-blind?",
+      "Are rare states robust?"
+    ],
+    "overclaims": [
+      "Cell association equals mechanism",
+      "Velocity proves lineage"
+    ],
+    "highLevelAdds": [
+      "Independent cohort",
+      "CRISPR validation",
+      "Spatial confirmation"
+    ],
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-doubletfinder",
+      "src-soupx"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cells-are-replicates"
+    ]
+  },
+  {
+    "id": "pattern-22",
+    "title": "Spatial microenvironment study",
+    "scientificQuestion": "Which replicated tissue neighborhoods associate with phenotype at the platform's resolution?",
+    "evidenceChain": [
+      "Register tissue and QC",
+      "Define cell/spot labels with uncertainty",
+      "Model spatial neighborhoods per sample",
+      "Test phenotype association across samples",
+      "Validate candidate interactions"
+    ],
+    "figureOrder": [
+      "Tissue overview",
+      "Resolution and annotation",
+      "Neighborhood maps",
+      "Patient-level contrasts",
+      "Orthogonal validation"
+    ],
+    "mustHave": [
+      "Physical resolution",
+      "Multiple biological samples",
+      "Spatial null model",
+      "Composition control",
+      "Patient-level uncertainty"
+    ],
+    "optionalEnhancements": [
+      "Serial sections",
+      "Multiplex protein",
+      "Perturbation"
+    ],
+    "failureModes": [
+      "Spots as replicates",
+      "Co-spot equals signaling",
+      "Cherry-picked regions",
+      "No edge correction"
+    ],
+    "reviewerAttacks": [
+      "What is the independent unit?",
+      "Can the assay resolve the claimed interaction?",
+      "How stable are neighborhoods?"
+    ],
+    "overclaims": [
+      "Proximity proves communication",
+      "One section generalizes"
+    ],
+    "highLevelAdds": [
+      "External tissue cohort",
+      "Higher-resolution assay",
+      "Functional co-culture"
+    ],
+    "sourceIds": [
+      "src-spatial-original",
+      "src-spark",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "spots-are-replicates"
+    ]
+  },
+  {
+    "id": "pattern-23",
+    "title": "Multi-omics biomarker development",
+    "scientificQuestion": "Can a locked cross-omics signature predict an individual outcome beyond clinical information?",
+    "evidenceChain": [
+      "Prespecify target and baseline model",
+      "QC each modality",
+      "Nested feature integration",
+      "Optimism-corrected incremental performance",
+      "Locked external evaluation"
+    ],
+    "figureOrder": [
+      "Cohort and modality missingness",
+      "Pipeline schematic",
+      "Nested-resampling performance",
+      "Calibration and utility",
+      "External evaluation"
+    ],
+    "mustHave": [
+      "Patient-level splits",
+      "All preprocessing nested",
+      "Clinical comparator",
+      "Calibration",
+      "Missing-modality strategy"
+    ],
+    "optionalEnhancements": [
+      "Assay-cost reduction",
+      "Decision analysis",
+      "Fairness/subgroup precision"
+    ],
+    "failureModes": [
+      "Feature selection before CV",
+      "Modality-specific leakage",
+      "AUC-only",
+      "Test-set reuse"
+    ],
+    "reviewerAttacks": [
+      "Where could labels leak?",
+      "Does multi-omics add value?",
+      "Can the assay be implemented?"
+    ],
+    "overclaims": [
+      "Cross-validation equals validation",
+      "Latent factor is mechanism"
+    ],
+    "highLevelAdds": [
+      "Prospective silent evaluation",
+      "Preanalytic robustness",
+      "Clinical impact study"
+    ],
+    "sourceIds": [
+      "src-diablo",
+      "src-leakage",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "features-before-cv"
+    ]
+  },
+  {
+    "id": "pattern-24",
+    "title": "Systematic review with estimand alignment",
+    "scientificQuestion": "What does the totality of compatible evidence say about a prespecified intervention, population, outcome, and time horizon?",
+    "evidenceChain": [
+      "Register question and protocol",
+      "Search and screen reproducibly",
+      "Extract estimands and bias domains",
+      "Synthesize compatible effects",
+      "Grade certainty and applicability"
+    ],
+    "figureOrder": [
+      "PRISMA flow",
+      "Study/estimand map",
+      "Risk-of-bias domains",
+      "Effect synthesis",
+      "Certainty and gaps"
+    ],
+    "mustHave": [
+      "Protocol deviations",
+      "Complete search",
+      "Duplicate processes",
+      "Estimand compatibility",
+      "Publication-bias limitations"
+    ],
+    "optionalEnhancements": [
+      "Living updates",
+      "Individual participant data",
+      "Robustness to bias"
+    ],
+    "failureModes": [
+      "Mix effect measures",
+      "Checklist quality score",
+      "Outcome cherry-picking",
+      "Heterogeneity ignored"
+    ],
+    "reviewerAttacks": [
+      "Why are these effects poolable?",
+      "Which studies drive certainty?",
+      "How were deviations handled?"
+    ],
+    "overclaims": [
+      "Random effects solves heterogeneity",
+      "Meta-analysis removes primary-study bias"
+    ],
+    "highLevelAdds": [
+      "Decision thresholds",
+      "Equity/applicability",
+      "Value-of-information analysis"
+    ],
+    "sourceIds": [
+      "src-prisma-2020",
+      "src-strobe",
+      "src-consort"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "mathematical-poolability"
+    ]
+  },
+  {
+    "id": "pattern-25",
+    "title": "Reproducible radiomics transport study",
+    "scientificQuestion": "Does a standardized imaging signature retain calibration and utility across acquisition settings?",
+    "evidenceChain": [
+      "Lock intended use and feature standard",
+      "Audit acquisition/segmentation robustness",
+      "Develop with nested resampling",
+      "Evaluate unchanged across sites",
+      "Assess recalibration separately"
+    ],
+    "figureOrder": [
+      "Imaging and cohort flow",
+      "Feature robustness",
+      "Locked pipeline",
+      "Site-specific calibration/discrimination",
+      "Decision analysis"
+    ],
+    "mustHave": [
+      "IBSI-conformant definitions",
+      "Segmentation sensitivity",
+      "Site-held-out evaluation",
+      "Calibration",
+      "Full implementation details"
+    ],
+    "optionalEnhancements": [
+      "Phantom study",
+      "Prospective silent deployment",
+      "Reader comparison"
+    ],
+    "failureModes": [
+      "Same-name feature mismatch",
+      "Evaluation-site tuning",
+      "Scanner confounding",
+      "AUC-only"
+    ],
+    "reviewerAttacks": [
+      "Can another center reproduce values?",
+      "Was harmonization outcome-blind?",
+      "Which sites support transport?"
+    ],
+    "overclaims": [
+      "Standardization guarantees biology",
+      "One external site validates forever"
+    ],
+    "highLevelAdds": [
+      "Federated evaluation",
+      "Drift monitoring",
+      "Clinical workflow impact"
+    ],
+    "sourceIds": [
+      "src-ibsi",
+      "src-tripod-ai",
+      "src-calibration"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "same-feature-name-same-value"
+    ]
+  },
+  {
+    "id": "retrospective-cohort",
+    "title": "Retrospective clinical cohort",
+    "scientificQuestion": "Within an existing clinical population, how are an exposure and outcome associated?",
+    "evidenceChain": [
+      "Define source population/time zero",
+      "Assemble eligible cohort",
+      "Measure exposure/covariates",
+      "Describe missingness and follow-up",
+      "Estimate adjusted association",
+      "Sensitivity/negative-control analyses"
+    ],
+    "figureOrder": [
+      "Cohort flow and baseline balance",
+      "Exposure/outcome distributions",
+      "Primary adjusted association",
+      "Subgroup or sensitivity analyses",
+      "Absolute risk/clinical interpretation"
+    ],
+    "mustHave": [
+      "Explicit eligibility and time zero",
+      "Confounder rationale",
+      "Outcome ascertainment",
+      "Missing-data plan",
+      "Adjusted estimates with uncertainty"
+    ],
+    "optionalEnhancements": [
+      "Propensity methods",
+      "Quantitative bias analysis",
+      "External replication",
+      "Negative controls"
+    ],
+    "failureModes": [
+      "Immortal time",
+      "Selection on tissue availability",
+      "Univariable screening",
+      "Residual confounding",
+      "Complete-case distortion"
+    ],
+    "reviewerAttacks": [
+      "Can temporal order be established?",
+      "Were treatment groups comparable?",
+      "Could exclusions depend on prognosis?"
+    ],
+    "overclaims": [
+      "Treatment caused benefit",
+      "Marker drives progression",
+      "Association generalizes outside the source setting"
+    ],
+    "highLevelAdds": [
+      "Prospective replication",
+      "Target-trial emulation",
+      "Mechanistic validation",
+      "Decision-relevant absolute effects"
+    ],
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "immortal-time",
+      "selection-on-tissue-availability",
+      "univariable-screening"
+    ]
+  },
+  {
+    "id": "prospective-cohort",
+    "title": "Prospective cohort",
+    "scientificQuestion": "How do pre-specified baseline or longitudinal factors relate to subsequent outcomes?",
+    "evidenceChain": [
+      "Predefine population/exposure/outcome",
+      "Enroll before outcome",
+      "Standardize measurements",
+      "Maintain follow-up",
+      "Estimate incidence/association",
+      "Validate or update predictions"
+    ],
+    "figureOrder": [
+      "Protocol and participant flow",
+      "Measurement reliability",
+      "Follow-up and missingness",
+      "Primary outcome analysis",
+      "Temporal/secondary analyses"
+    ],
+    "mustHave": [
+      "Protocol-defined measurements",
+      "Loss-to-follow-up accounting",
+      "Adequate events",
+      "Temporal ordering",
+      "Pre-specified analysis"
+    ],
+    "optionalEnhancements": [
+      "Repeated biomarker trajectories",
+      "Nested validation",
+      "Biobanking",
+      "Transportability analysis"
+    ],
+    "failureModes": [
+      "Differential follow-up",
+      "Outcome-adaptive analysis",
+      "Measurement drift",
+      "Insufficient events"
+    ],
+    "reviewerAttacks": [
+      "How were deviations from protocol handled?",
+      "Is loss to follow-up informative?",
+      "Were analysis choices pre-specified?"
+    ],
+    "overclaims": [
+      "Prospective means causal",
+      "Enrollment alone eliminates confounding"
+    ],
+    "highLevelAdds": [
+      "High retention",
+      "Blinded adjudication",
+      "Multi-center enrollment",
+      "External temporal validation"
+    ],
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "differential-follow-up",
+      "outcome-adaptive-analysis",
+      "measurement-drift"
+    ]
+  },
+  {
+    "id": "prognostic-factor",
+    "title": "Prognostic factor study",
+    "scientificQuestion": "Does a factor add independent prognostic information about a future clinical outcome?",
+    "evidenceChain": [
+      "Define intended population/outcome",
+      "Specify factor measurement/cutpoint",
+      "Describe known prognostic factors",
+      "Estimate adjusted association",
+      "Assess assumptions/linearity",
+      "Replicate"
+    ],
+    "figureOrder": [
+      "Cohort and assay",
+      "Factor distribution/cutpoint",
+      "Unadjusted outcomes",
+      "Adjusted model",
+      "Validation and sensitivity"
+    ],
+    "mustHave": [
+      "Adequate events",
+      "Prespecified coding",
+      "Known factor adjustment",
+      "PH/functional-form checks",
+      "Effect with CI"
+    ],
+    "optionalEnhancements": [
+      "Incremental value",
+      "External cohort",
+      "Competing-risk analysis",
+      "Assay reproducibility"
+    ],
+    "failureModes": [
+      "Optimal cutpoint",
+      "Sparse events",
+      "Univariable screening",
+      "No external validation",
+      "Prognostic/predictive confusion"
+    ],
+    "reviewerAttacks": [
+      "Was the cutpoint selected on outcome?",
+      "Does the marker add beyond stage?",
+      "Is assay measurement reproducible?"
+    ],
+    "overclaims": [
+      "Marker predicts treatment benefit",
+      "Marker is causal",
+      "Significant adjusted HR makes a clinical test"
+    ],
+    "highLevelAdds": [
+      "Locked assay/cutpoint",
+      "External replication",
+      "Calibration and decision impact",
+      "Functional connection"
+    ],
+    "sourceIds": [
+      "src-remark",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "optimal-cutpoint",
+      "sparse-events",
+      "univariable-screening"
+    ]
+  },
+  {
+    "id": "prediction-model",
+    "title": "Prediction model",
+    "scientificQuestion": "Can a defined set of predictors estimate an individual's future outcome or current diagnosis?",
+    "evidenceChain": [
+      "Define use case/timepoint",
+      "Assemble representative data",
+      "Specify predictors/outcome",
+      "Develop with full pipeline",
+      "Internally validate/adjust optimism",
+      "Externally validate and assess utility"
+    ],
+    "figureOrder": [
+      "Intended use and cohort",
+      "Predictor/outcome definitions",
+      "Model development",
+      "Discrimination/calibration",
+      "External validation and decision curve"
+    ],
+    "mustHave": [
+      "Deployment time",
+      "Adequate information",
+      "Missing-data handling",
+      "Nested validation",
+      "Calibration",
+      "Locked formula"
+    ],
+    "optionalEnhancements": [
+      "External multi-center validation",
+      "Clinical utility",
+      "Fairness/transportability",
+      "Model updating"
+    ],
+    "failureModes": [
+      "Data leakage",
+      "Random split in small data",
+      "Feature selection before CV",
+      "C-index only",
+      "No comparator"
+    ],
+    "reviewerAttacks": [
+      "Were all adaptive steps validated?",
+      "Is the full model available?",
+      "Are predictions calibrated at useful horizons?"
+    ],
+    "overclaims": [
+      "High AUC proves clinical value",
+      "Association model is a prediction model",
+      "Internal holdout is external validation"
+    ],
+    "highLevelAdds": [
+      "Prospective silent evaluation",
+      "Impact study",
+      "Transparent implementation",
+      "Cross-setting calibration"
+    ],
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST",
+      "src-calibration"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "data-leakage",
+      "random-split-in-small-data",
+      "feature-selection-before-cv"
+    ]
+  },
+  {
+    "id": "staging-system",
+    "title": "Staging system development",
+    "scientificQuestion": "Can clinically observable features stratify prognosis more usefully than an existing staging system?",
+    "evidenceChain": [
+      "Define population/outcome",
+      "Benchmark current stage",
+      "Develop parsimonious rules",
+      "Assess discrimination and calibration",
+      "Compare/reclassify",
+      "External validation"
+    ],
+    "figureOrder": [
+      "Cohort/stage distribution",
+      "Candidate factors",
+      "Stage construction",
+      "Performance vs standard",
+      "External validation/clinical use"
+    ],
+    "mustHave": [
+      "Clinical interpretability",
+      "Adequate events per stage",
+      "Locked rules",
+      "Comparison with accepted system",
+      "External data"
+    ],
+    "optionalEnhancements": [
+      "Competing-risk estimates",
+      "Decision consequences",
+      "Geographic validation",
+      "Reproducibility study"
+    ],
+    "failureModes": [
+      "Outcome-derived cutpoints",
+      "Tiny terminal stage",
+      "No calibration",
+      "Same-cohort comparison",
+      "Complex unimplementable rules"
+    ],
+    "reviewerAttacks": [
+      "Does the new stage change management?",
+      "Is improvement beyond optimism?",
+      "Are stage groups clinically coherent?"
+    ],
+    "overclaims": [
+      "Better log-rank P means better staging",
+      "Retrospective improvement guarantees adoption"
+    ],
+    "highLevelAdds": [
+      "Independent consortium validation",
+      "Simple assignment tool",
+      "Prospective clinical impact"
+    ],
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "outcome-derived-cutpoints",
+      "tiny-terminal-stage",
+      "no-calibration"
+    ]
+  },
+  {
+    "id": "biomarker-discovery",
+    "title": "Biomarker discovery + validation",
+    "scientificQuestion": "Can a measurable biological feature reproducibly identify diagnosis, prognosis, or treatment response?",
+    "evidenceChain": [
+      "Discovery assay/cohort",
+      "Candidate selection",
+      "Analytical confirmation",
+      "Lock marker/cutoff",
+      "Independent clinical validation",
+      "Utility/mechanistic support"
+    ],
+    "figureOrder": [
+      "Discovery landscape",
+      "Candidate prioritization",
+      "Orthogonal assay",
+      "Independent cohort",
+      "Clinical increment/mechanism"
+    ],
+    "mustHave": [
+      "Assay QC",
+      "Multiple-testing control",
+      "Locked definition",
+      "Independent samples",
+      "Relevant baseline comparator"
+    ],
+    "optionalEnhancements": [
+      "Prospective validation",
+      "Clinical utility",
+      "Multi-center assay reproducibility",
+      "Perturbation mechanism"
+    ],
+    "failureModes": [
+      "Same-sample validation",
+      "Cutpoint optimization",
+      "Batch-confounded groups",
+      "No incremental value",
+      "Outcome leakage"
+    ],
+    "reviewerAttacks": [
+      "Was validation independent of discovery?",
+      "Can the assay be reproduced?",
+      "What clinical decision changes?"
+    ],
+    "overclaims": [
+      "Association establishes mechanism",
+      "Technical replication is clinical validation",
+      "AUC alone proves utility"
+    ],
+    "highLevelAdds": [
+      "Locked clinical-grade assay",
+      "External prospective cohort",
+      "Decision-impact evidence",
+      "Mechanistic triangulation"
+    ],
+    "sourceIds": [
+      "src-remark",
+      "src-tripod",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "same-sample-validation",
+      "cutpoint-optimization",
+      "batch-confounded-groups"
+    ]
+  },
+  {
+    "id": "molecular-subtype",
+    "title": "Molecular subtype study",
+    "scientificQuestion": "Are there reproducible molecular groups with distinct biology and clinical relevance?",
+    "evidenceChain": [
+      "Unbiased molecular profiling",
+      "Robust cluster discovery",
+      "Stability/sensitivity",
+      "Biological characterization",
+      "Clinical association",
+      "Independent classifier/validation"
+    ],
+    "figureOrder": [
+      "Data/QC landscape",
+      "Subtype discovery",
+      "Molecular programs",
+      "Clinical associations",
+      "External assignment/functional relevance"
+    ],
+    "mustHave": [
+      "Patient-level data",
+      "Batch handling",
+      "Stability",
+      "Subtype classifier",
+      "External reproducibility"
+    ],
+    "optionalEnhancements": [
+      "Multi-omics concordance",
+      "Spatial localization",
+      "Therapeutic vulnerability",
+      "Prospective assignment"
+    ],
+    "failureModes": [
+      "Choose k by outcome",
+      "Batch-defined clusters",
+      "No patient balance",
+      "Pathway-only validation",
+      "No locked classifier"
+    ],
+    "reviewerAttacks": [
+      "Would clusters persist under perturbation?",
+      "Can new samples be assigned?",
+      "Are outcomes tested after data-driven selection?"
+    ],
+    "overclaims": [
+      "Clusters are natural disease entities",
+      "Subtype association is causal",
+      "Different survival proves clinical utility"
+    ],
+    "highLevelAdds": [
+      "External cohort classifier",
+      "Functional dependency",
+      "Treatment interaction",
+      "Cross-platform reproducibility"
+    ],
+    "sourceIds": [
+      "src-clustering",
+      "src-batch",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "choose-k-by-outcome",
+      "batch-defined-clusters",
+      "no-patient-balance"
+    ]
+  },
+  {
+    "id": "bulk-transcriptomics",
+    "title": "Bulk transcriptomics study",
+    "scientificQuestion": "Which genes and programs differ across defined biological conditions in mixed tissue?",
+    "evidenceChain": [
+      "Design/replication",
+      "RNA/QC/quantification",
+      "Covariate-aware differential expression",
+      "Pathway interpretation",
+      "Cell-composition sensitivity",
+      "Independent/orthogonal validation"
+    ],
+    "figureOrder": [
+      "Cohort and QC",
+      "Global variation",
+      "DE effects",
+      "Pathways/networks",
+      "Validation and cell context"
+    ],
+    "mustHave": [
+      "Biological replicates",
+      "Batch-balanced design",
+      "FDR",
+      "Effect sizes",
+      "Valid gene universe"
+    ],
+    "optionalEnhancements": [
+      "Deconvolution",
+      "External cohort",
+      "Protein validation",
+      "Perturbation"
+    ],
+    "failureModes": [
+      "Batch confounding",
+      "Small n/large p",
+      "Raw P values",
+      "Overinterpreted pathways",
+      "Composition ignored"
+    ],
+    "reviewerAttacks": [
+      "Are differences due to cell mixture?",
+      "Was batch modeled?",
+      "Does validation use independent samples?"
+    ],
+    "overclaims": [
+      "Expression causes phenotype",
+      "Enrichment proves pathway activation",
+      "Bulk signal identifies producing cell"
+    ],
+    "highLevelAdds": [
+      "Cell-resolved localization",
+      "Orthogonal protein assay",
+      "Functional perturbation",
+      "External consistency"
+    ],
+    "sourceIds": [
+      "src-multiomics",
+      "src-batch",
+      "src-gsea"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "batch-confounding",
+      "small-n-large-p",
+      "raw-p-values"
+    ]
+  },
+  {
+    "id": "proteomics-subtype",
+    "title": "Proteomics subtype study",
+    "scientificQuestion": "Do protein-level profiles reveal reproducible disease states or vulnerabilities beyond transcriptomics?",
+    "evidenceChain": [
+      "Sample/assay QC",
+      "Normalization and missingness",
+      "Stable subtype discovery",
+      "Biological interpretation",
+      "Cross-platform validation",
+      "Functional or clinical relevance"
+    ],
+    "figureOrder": [
+      "Proteome coverage/QC",
+      "Subtype solution",
+      "Pathway/protein drivers",
+      "RNA–protein comparison",
+      "Validation/vulnerability"
+    ],
+    "mustHave": [
+      "Pre-analytical control",
+      "Missingness handling",
+      "Batch design",
+      "Stable clusters",
+      "Independent assay/cohort"
+    ],
+    "optionalEnhancements": [
+      "Phosphoproteomics",
+      "Drug perturbation",
+      "Spatial proteomics",
+      "Clinical-grade panel"
+    ],
+    "failureModes": [
+      "MNAR missingness ignored",
+      "Batch clusters",
+      "Outcome-selected k",
+      "RNA concordance called validation",
+      "No assay reproducibility"
+    ],
+    "reviewerAttacks": [
+      "Are low-abundance proteins missing systematically?",
+      "Do subtypes persist across platforms?",
+      "What is protein-specific novelty?"
+    ],
+    "overclaims": [
+      "Protein abundance equals activity",
+      "Cross-omic correlation proves regulation"
+    ],
+    "highLevelAdds": [
+      "Functional phosphosignaling",
+      "Independent targeted assay",
+      "Drug response link",
+      "Prospective classifier"
+    ],
+    "sourceIds": [
+      "src-batch",
+      "src-clustering",
+      "src-multiomics"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "mnar-missingness-ignored",
+      "batch-clusters",
+      "outcome-selected-k"
+    ]
+  },
+  {
+    "id": "scrna-atlas",
+    "title": "scRNA-seq atlas",
+    "scientificQuestion": "What cellular states and compositions characterize a tissue across patients and contexts?",
+    "evidenceChain": [
+      "Multi-patient sampling/QC",
+      "Cell-state representation",
+      "Robust annotation",
+      "Patient distribution",
+      "Spatial/reference validation",
+      "Accessible atlas/resource"
+    ],
+    "figureOrder": [
+      "Cohort/QC",
+      "Global cell landscape",
+      "Lineage substructure",
+      "Cross-patient/context variation",
+      "Spatial/orthogonal validation"
+    ],
+    "mustHave": [
+      "Multiple patients",
+      "Doublet/ambient RNA control",
+      "Annotation evidence",
+      "Batch sensitivity",
+      "Per-patient representation"
+    ],
+    "optionalEnhancements": [
+      "Spatial mapping",
+      "Reference comparison",
+      "Rare-state enrichment",
+      "Open browser/data"
+    ],
+    "failureModes": [
+      "Cell count as n",
+      "One-marker labels",
+      "Sample-specific clusters",
+      "Integration erases biology",
+      "Atlas claims from narrow cohort"
+    ],
+    "reviewerAttacks": [
+      "Which states recur across patients?",
+      "Are labels circular?",
+      "How sensitive is the atlas to integration/annotation?"
+    ],
+    "overclaims": [
+      "Atlas establishes mechanism",
+      "Captured proportions equal tissue abundance",
+      "New cluster equals new cell type"
+    ],
+    "highLevelAdds": [
+      "Broad diverse cohort",
+      "Orthogonal histology",
+      "Cross-platform mapping",
+      "Functional follow-up"
+    ],
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-batch",
+      "src-spatial"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "cell-count-as-n",
+      "one-marker-labels",
+      "sample-specific-clusters"
+    ]
+  },
+  {
+    "id": "scrna-mechanism",
+    "title": "scRNA-seq disease mechanism",
+    "scientificQuestion": "Which cell state or interaction is associated with disease and supported as functionally contributing?",
+    "evidenceChain": [
+      "Cellular discovery",
+      "Patient-level association",
+      "State/program localization",
+      "Candidate interaction/driver",
+      "Perturbation",
+      "Phenotype/rescue/in vivo"
+    ],
+    "figureOrder": [
+      "Cell landscape",
+      "Disease-associated state",
+      "Program/interaction",
+      "Spatial validation",
+      "Functional perturbation/rescue"
+    ],
+    "mustHave": [
+      "Patient-level inference",
+      "Non-circular state definition",
+      "Orthogonal localization",
+      "Functional intervention"
+    ],
+    "optionalEnhancements": [
+      "Lineage tracing",
+      "In vivo model",
+      "Rescue",
+      "Human clinical association"
+    ],
+    "failureModes": [
+      "Cell-level DEG",
+      "Communication treated as fact",
+      "Pseudotime called lineage",
+      "One-patient driver",
+      "No rescue"
+    ],
+    "reviewerAttacks": [
+      "What exceeds descriptive association?",
+      "Could state abundance drive expression?",
+      "Does perturbation target the proposed cell/context?"
+    ],
+    "overclaims": [
+      "Ligand–receptor inference proves signaling",
+      "Trajectory proves origin",
+      "Expression means functional necessity"
+    ],
+    "highLevelAdds": [
+      "Cell-specific perturbation",
+      "Rescue",
+      "In vivo phenotype",
+      "Independent human validation"
+    ],
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-cellchat",
+      "src-trajectory"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "cell-level-deg",
+      "communication-treated-as-fact",
+      "pseudotime-called-lineage"
+    ]
+  },
+  {
+    "id": "spatial-transcriptomics",
+    "title": "Spatial transcriptomics study",
+    "scientificQuestion": "How are molecular programs and cell states organized in tissue, and what does location add?",
+    "evidenceChain": [
+      "Histology/platform QC",
+      "Spatial domains",
+      "Cell-state mapping/deconvolution",
+      "Adjusted spatial association",
+      "Orthogonal imaging",
+      "Mechanistic perturbation"
+    ],
+    "figureOrder": [
+      "Tissue map/QC",
+      "Domains/programs",
+      "Cell neighborhoods",
+      "Clinical/biological association",
+      "Imaging/functional validation"
+    ],
+    "mustHave": [
+      "Resolution-aware claims",
+      "Multiple sections/patients",
+      "Tissue-compartment controls",
+      "Reference suitability",
+      "Orthogonal validation"
+    ],
+    "optionalEnhancements": [
+      "Multiplex imaging",
+      "Serial-section replication",
+      "3D mapping",
+      "Perturbation"
+    ],
+    "failureModes": [
+      "Spots treated as cells",
+      "Pixels/spots as patient n",
+      "Colocalization called signaling",
+      "No compartment adjustment",
+      "One section"
+    ],
+    "reviewerAttacks": [
+      "Is the pattern consistent across patients?",
+      "Could anatomy/density explain adjacency?",
+      "What is actually measured vs deconvolved?"
+    ],
+    "overclaims": [
+      "Proximity proves interaction",
+      "Co-expression is intracellular",
+      "Spatial association proves mechanism"
+    ],
+    "highLevelAdds": [
+      "Cell-resolved imaging",
+      "Adjusted spatial statistics",
+      "Functional intervention",
+      "Cross-center tissue replication"
+    ],
+    "sourceIds": [
+      "src-spatial",
+      "src-pseudorep",
+      "src-cellchat"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "spots-treated-as-cells",
+      "pixels-spots-as-patient-n",
+      "colocalization-called-signaling"
+    ]
+  },
+  {
+    "id": "multiomics",
+    "title": "Multi-omics integration",
+    "scientificQuestion": "Does integrating molecular layers reveal coherent biology, improve prediction, or identify mechanisms unavailable to one layer?",
+    "evidenceChain": [
+      "Matched design/QC",
+      "Modality-specific findings",
+      "Integration model",
+      "Robust factors/subtypes",
+      "Independent cross-layer validation",
+      "Functional/clinical validation"
+    ],
+    "figureOrder": [
+      "Cohort/modalities",
+      "Layer-specific landscape",
+      "Integrated factors",
+      "Mechanistic interpretation",
+      "Validation/use"
+    ],
+    "mustHave": [
+      "Matched sample identities",
+      "Modality-specific QC",
+      "Batch/confounder control",
+      "Clear integration objective",
+      "Robustness"
+    ],
+    "optionalEnhancements": [
+      "Held-out modality prediction",
+      "Perturbational validation",
+      "Spatial layer",
+      "Independent cohort"
+    ],
+    "failureModes": [
+      "Concatenation without scaling",
+      "Same-sample concordance called independent",
+      "Missing modality bias",
+      "Opaque latent factors",
+      "No incremental value"
+    ],
+    "reviewerAttacks": [
+      "What claim requires integration?",
+      "Are factors stable to method/weights?",
+      "What happens when one modality is removed?"
+    ],
+    "overclaims": [
+      "Concordance proves regulation",
+      "More modalities guarantee more truth",
+      "Latent factor is a mechanism"
+    ],
+    "highLevelAdds": [
+      "Independent functional test",
+      "External matched cohort",
+      "Clear modality-specific contribution",
+      "Deployable reduced assay"
+    ],
+    "sourceIds": [
+      "src-multiomics",
+      "src-batch",
+      "src-clustering"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "concatenation-without-scaling",
+      "same-sample-concordance-called-independent",
+      "missing-modality-bias"
+    ]
+  },
+  {
+    "id": "functional-validation",
+    "title": "Functional validation study",
+    "scientificQuestion": "Is a candidate factor necessary or sufficient for a biological phenotype, through a proposed mechanism?",
+    "evidenceChain": [
+      "Candidate rationale",
+      "Perturbation specificity",
+      "Molecular effect",
+      "Functional phenotype",
+      "Rescue/orthogonal perturbation",
+      "In vivo/human relevance"
+    ],
+    "figureOrder": [
+      "Candidate expression/context",
+      "Perturbation validation",
+      "Phenotype",
+      "Mechanistic intermediates",
+      "Rescue/in vivo"
+    ],
+    "mustHave": [
+      "Independent perturbations",
+      "On-target validation",
+      "Relevant controls",
+      "Biological replication",
+      "Effect size"
+    ],
+    "optionalEnhancements": [
+      "Rescue",
+      "Dose/time response",
+      "Cell-specific in vivo model",
+      "Human tissue triangulation"
+    ],
+    "failureModes": [
+      "Single siRNA",
+      "No rescue",
+      "Toxicity confounding",
+      "Technical wells as n",
+      "Unrelated model system"
+    ],
+    "reviewerAttacks": [
+      "Is the phenotype on-target?",
+      "Is the candidate necessary, sufficient, or merely correlated?",
+      "Are models biologically relevant?"
+    ],
+    "overclaims": [
+      "Knockdown association proves direct mechanism",
+      "One cell line generalizes to patients"
+    ],
+    "highLevelAdds": [
+      "Genetic/pharmacologic convergence",
+      "Rescue",
+      "In vivo effect",
+      "Clinical biomarker link"
+    ],
+    "sourceIds": [
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "single-sirna",
+      "no-rescue",
+      "toxicity-confounding"
+    ]
+  },
+  {
+    "id": "drug-organoid",
+    "title": "Drug response / organoid study",
+    "scientificQuestion": "Does a model-derived drug response recapitulate patient biology and predict a therapeutic vulnerability?",
+    "evidenceChain": [
+      "Model establishment/QC",
+      "Dose-response assay",
+      "Biological replication",
+      "Mechanism/biomarker",
+      "Independent models",
+      "In vivo or clinical concordance"
+    ],
+    "figureOrder": [
+      "Organoid cohort/QC",
+      "Drug screen",
+      "Response heterogeneity",
+      "Biomarker/mechanism",
+      "In vivo/clinical validation"
+    ],
+    "mustHave": [
+      "Multiple independent donors/lines",
+      "Vehicle/positive controls",
+      "Dose–response metrics",
+      "Assay reproducibility",
+      "Clinically plausible exposure"
+    ],
+    "optionalEnhancements": [
+      "Matched patient response",
+      "Combination synergy with valid null model",
+      "Resistance perturbation",
+      "PK/PD"
+    ],
+    "failureModes": [
+      "Wells as biological n",
+      "One organoid line",
+      "Selected doses",
+      "No toxicity/selectivity control",
+      "Unrealistic concentrations"
+    ],
+    "reviewerAttacks": [
+      "How many independent donors?",
+      "Is response assay-specific?",
+      "Are concentrations clinically achievable?"
+    ],
+    "overclaims": [
+      "In vitro sensitivity proves patient efficacy",
+      "Correlation marker predicts treatment benefit"
+    ],
+    "highLevelAdds": [
+      "Independent patient-derived models",
+      "Mechanism/rescue",
+      "In vivo exposure-response",
+      "Prospective co-clinical validation"
+    ],
+    "sourceIds": [
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "wells-as-biological-n",
+      "one-organoid-line",
+      "selected-doses"
+    ]
+  },
+  {
+    "id": "translational-therapeutic",
+    "title": "Translational therapeutic study",
+    "scientificQuestion": "Can a mechanistically supported target be converted into a therapeutic strategy with a defined responsive population?",
+    "evidenceChain": [
+      "Human disease dependency",
+      "Target perturbation",
+      "Therapeutic agent/engagement",
+      "Efficacy and selectivity",
+      "In vivo PK/PD",
+      "Biomarker and clinical translation"
+    ],
+    "figureOrder": [
+      "Human target evidence",
+      "Mechanistic dependency",
+      "Agent validation",
+      "Model efficacy",
+      "Biomarker/translation"
+    ],
+    "mustHave": [
+      "Target engagement",
+      "Appropriate controls",
+      "Multiple models",
+      "Toxicity/selectivity",
+      "In vivo exposure"
+    ],
+    "optionalEnhancements": [
+      "Resistance mechanism",
+      "Combination rationale",
+      "Patient-derived models",
+      "Clinical assay"
+    ],
+    "failureModes": [
+      "Tool compound off-target",
+      "No normal-cell control",
+      "Single model",
+      "Unachievable dose",
+      "Biomarker discovered and tested together"
+    ],
+    "reviewerAttacks": [
+      "Does the agent engage the proposed target?",
+      "What defines responders?",
+      "Is there a therapeutic window?"
+    ],
+    "overclaims": [
+      "Tumor shrinkage in one model proves clinical efficacy",
+      "Target expression predicts response"
+    ],
+    "highLevelAdds": [
+      "Genetic/pharmacologic convergence",
+      "PK/PD and safety",
+      "Prospective biomarker",
+      "Early clinical pharmacodynamic evidence"
+    ],
+    "sourceIds": [
+      "src-remark"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "tool-compound-off-target",
+      "no-normal-cell-control",
+      "single-model"
+    ]
+  },
+  {
+    "id": "diagnostic-model",
+    "title": "Diagnostic model",
+    "scientificQuestion": "Can measurements available at diagnosis distinguish a target condition in the intended clinical pathway?",
+    "evidenceChain": [
+      "Define intended use/spectrum",
+      "Reference standard",
+      "Predictor measurement blinded",
+      "Model development",
+      "Calibration/discrimination",
+      "External prospective evaluation"
+    ],
+    "figureOrder": [
+      "Clinical pathway/cohort",
+      "Reference standard",
+      "Model/features",
+      "Diagnostic performance",
+      "External and decision analysis"
+    ],
+    "mustHave": [
+      "Representative controls",
+      "Blinded reference standard",
+      "Patient-level split",
+      "Calibration",
+      "Threshold-specific sensitivity/specificity"
+    ],
+    "optionalEnhancements": [
+      "Prospective consecutive cohort",
+      "Comparison to clinicians/standard test",
+      "Net benefit",
+      "Operational feasibility"
+    ],
+    "failureModes": [
+      "Case-control spectrum bias",
+      "Leakage from post-diagnosis data",
+      "Sample-level split",
+      "AUC only",
+      "Threshold selected on test data"
+    ],
+    "reviewerAttacks": [
+      "Where in the pathway is the test used?",
+      "Was reference standard independent?",
+      "How does prevalence affect predictive values?"
+    ],
+    "overclaims": [
+      "High AUC means screening utility",
+      "Retrospective case-control performance transports to clinic"
+    ],
+    "highLevelAdds": [
+      "Prospective consecutive evaluation",
+      "Predefined threshold",
+      "Increment beyond standard workup",
+      "Impact study"
+    ],
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "case-control-spectrum-bias",
+      "leakage-from-post-diagnosis-data",
+      "sample-level-split"
+    ]
+  },
+  {
+    "id": "external-validation-study",
+    "title": "External validation study",
+    "scientificQuestion": "Does a locked model, marker, or rule retain performance in a meaningfully different target population?",
+    "evidenceChain": [
+      "Retrieve full locked specification",
+      "Define target cohort",
+      "Harmonize variables without outcome tuning",
+      "Apply unchanged",
+      "Assess calibration/discrimination",
+      "Explore heterogeneity/update separately"
+    ],
+    "figureOrder": [
+      "Original vs target setting",
+      "Cohort and missingness",
+      "Untouched performance",
+      "Calibration/clinical utility",
+      "Updating and transportability"
+    ],
+    "mustHave": [
+      "Locked implementation",
+      "Adequate events",
+      "No validation-set tuning",
+      "Calibration",
+      "Setting differences"
+    ],
+    "optionalEnhancements": [
+      "Multiple countries/centers",
+      "Prospective evaluation",
+      "Subgroup transport",
+      "Model updating validation"
+    ],
+    "failureModes": [
+      "Refit before validation",
+      "Random split called external",
+      "Only AUC/C-index",
+      "Missing original formula",
+      "Exclude hard cases"
+    ],
+    "reviewerAttacks": [
+      "Was anything tuned using outcomes?",
+      "Is the cohort truly external?",
+      "How were missing predictors handled?"
+    ],
+    "overclaims": [
+      "Poor calibration invalidates all ranking",
+      "Recalibrated performance is original external performance"
+    ],
+    "highLevelAdds": [
+      "Prospective silent deployment",
+      "Cross-setting heterogeneity",
+      "Validated update strategy",
+      "Decision-impact analysis"
+    ],
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST",
+      "src-calibration"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "refit-before-validation",
+      "random-split-called-external",
+      "only-auc-c-index"
+    ]
+  }
+]

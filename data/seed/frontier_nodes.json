@@ -1,0 +1,52 @@
+[
+  {
+    "id": "frontier-mtc",
+    "label": "Medullary thyroid carcinoma",
+    "status": "verified",
+    "familiarity": 1,
+    "children": [
+      {
+        "id": "frontier-ret",
+        "label": "RET biology",
+        "status": "verified",
+        "familiarity": 2
+      },
+      {
+        "id": "frontier-resistance",
+        "label": "Targeted-therapy resistance",
+        "status": "pending",
+        "familiarity": 1
+      },
+      {
+        "id": "frontier-tme",
+        "label": "Tumor microenvironment",
+        "status": "pending",
+        "familiarity": 1
+      },
+      {
+        "id": "frontier-sc",
+        "label": "Single-cell atlases",
+        "status": "pending",
+        "familiarity": 0
+      },
+      {
+        "id": "frontier-spatial",
+        "label": "Spatial organization",
+        "status": "pending",
+        "familiarity": 0
+      },
+      {
+        "id": "frontier-prognosis",
+        "label": "Prognostic stratification",
+        "status": "verified",
+        "familiarity": 2
+      },
+      {
+        "id": "frontier-therapy",
+        "label": "Targeted therapy",
+        "status": "pending",
+        "familiarity": 1
+      }
+    ]
+  }
+]

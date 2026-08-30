@@ -1,0 +1,319 @@
+{
+  "generatedAt": "2026-08-27T16:30:19.705Z",
+  "archive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+  "audit": {
+    "packIds": [
+      "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+      "m013-batch02-statistics-clinical-singlecell-20260824",
+      "m013-batch03-spatial-proteomics-paper-ai-20260824",
+      "m013-batch04-bulk-rna-pathway-20260824",
+      "m013-batch05-subtype-biomarker-prognosis-20260824",
+      "m013-batch06-causal-reporting-20260824",
+      "m013-batch07-wetlab-expanded-20260824",
+      "m013-batch08-reviewer-systematic-20260824"
+    ],
+    "total": {
+      "sources": 120,
+      "evidenceClaims": 138,
+      "problemCards": 166,
+      "diagnosticCauses": 27,
+      "diagnosticChecks": 475,
+      "diagnosticPaths": 164,
+      "diagnosticEvidence": 21,
+      "transferCases": 30
+    },
+    "sourceCanonicalization": {
+      "doiCollisions": [
+        {
+          "canonicalId": "SRC-TRIPODAI-2024",
+          "keyKind": "doi",
+          "keyValue": "10.1136/bmj-2023-078378",
+          "originalIds": [
+            "SRC-TRIPODAI-2024",
+            "SRC-TRIPODAI-2024-B8"
+          ],
+          "mergedFieldNotes": [
+            "merged SRC-TRIPODAI-2024-B8 into SRC-TRIPODAI-2024"
+          ]
+        },
+        {
+          "canonicalId": "SRC-PROBAST-2019",
+          "keyKind": "doi",
+          "keyValue": "10.7326/m18-1376",
+          "originalIds": [
+            "SRC-PROBAST-2019",
+            "SRC-PROBAST-2019-B8"
+          ],
+          "mergedFieldNotes": [
+            "merged SRC-PROBAST-2019-B8 into SRC-PROBAST-2019"
+          ]
+        },
+        {
+          "canonicalId": "SRC-REMARK-2005",
+          "keyKind": "doi",
+          "keyValue": "10.1093/jnci/dji237",
+          "originalIds": [
+            "SRC-REMARK-2005",
+            "SRC-REMARK-2005-B8"
+          ],
+          "mergedFieldNotes": [
+            "merged SRC-REMARK-2005-B8 into SRC-REMARK-2005"
+          ]
+        },
+        {
+          "canonicalId": "SRC-STROBE-2007",
+          "keyKind": "doi",
+          "keyValue": "10.1371/journal.pmed.0040296",
+          "originalIds": [
+            "SRC-STROBE-2007",
+            "SRC-STROBE-2007-B8"
+          ],
+          "mergedFieldNotes": [
+            "merged SRC-STROBE-2007-B8 into SRC-STROBE-2007"
+          ]
+        },
+        {
+          "canonicalId": "SRC-CONSORT-2025",
+          "keyKind": "doi",
+          "keyValue": "10.1016/s0140-6736(25)00672-5",
+          "originalIds": [
+            "SRC-CONSORT-2025",
+            "SRC-CONSORT-2025-B8"
+          ],
+          "mergedFieldNotes": [
+            "merged SRC-CONSORT-2025-B8 into SRC-CONSORT-2025"
+          ]
+        },
+        {
+          "canonicalId": "SRC-STARD-2015",
+          "keyKind": "doi",
+          "keyValue": "10.1136/bmj.h5527",
+          "originalIds": [
+            "SRC-STARD-2015",
+            "SRC-STARD-2015-B8"
+          ],
+          "mergedFieldNotes": [
+            "merged SRC-STARD-2015-B8 into SRC-STARD-2015"
+          ]
+        }
+      ],
+      "pmidCollisions": [
+        {
+          "canonicalId": "SRC-TRIPODAI-2024",
+          "keyKind": "pmid",
+          "keyValue": "38626948",
+          "originalIds": [
+            "SRC-TRIPODAI-2024",
+            "SRC-TRIPODAI-2024-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-PROBAST-2019",
+          "keyKind": "pmid",
+          "keyValue": "30596875",
+          "originalIds": [
+            "SRC-PROBAST-2019",
+            "SRC-PROBAST-2019-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-REMARK-2005",
+          "keyKind": "pmid",
+          "keyValue": "16106022",
+          "originalIds": [
+            "SRC-REMARK-2005",
+            "SRC-REMARK-2005-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-STROBE-2007",
+          "keyKind": "pmid",
+          "keyValue": "17941714",
+          "originalIds": [
+            "SRC-STROBE-2007",
+            "SRC-STROBE-2007-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-CONSORT-2025",
+          "keyKind": "pmid",
+          "keyValue": "40245901",
+          "originalIds": [
+            "SRC-CONSORT-2025",
+            "SRC-CONSORT-2025-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-STARD-2015",
+          "keyKind": "pmid",
+          "keyValue": "26511519",
+          "originalIds": [
+            "SRC-STARD-2015",
+            "SRC-STARD-2015-B8"
+          ],
+          "mergedFieldNotes": []
+        }
+      ],
+      "titleCollisions": [
+        {
+          "canonicalId": "SRC-PROBAST-2019",
+          "keyKind": "title",
+          "keyValue": "probast: a tool to assess the risk of bias and applicability of prediction model studies",
+          "originalIds": [
+            "SRC-PROBAST-2019",
+            "SRC-PROBAST-2019-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-REMARK-2005",
+          "keyKind": "title",
+          "keyValue": "reporting recommendations for tumor marker prognostic studies (remark)",
+          "originalIds": [
+            "SRC-REMARK-2005",
+            "SRC-REMARK-2005-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-CONSORT-2025",
+          "keyKind": "title",
+          "keyValue": "consort 2025 statement: updated guideline for reporting randomised trials",
+          "originalIds": [
+            "SRC-CONSORT-2025",
+            "SRC-CONSORT-2025-B8"
+          ],
+          "mergedFieldNotes": []
+        },
+        {
+          "canonicalId": "SRC-STARD-2015",
+          "keyKind": "title",
+          "keyValue": "stard 2015: an updated list of essential items for reporting diagnostic accuracy studies",
+          "originalIds": [
+            "SRC-STARD-2015",
+            "SRC-STARD-2015-B8"
+          ],
+          "mergedFieldNotes": []
+        }
+      ],
+      "collisionFreeAfterMerge": true
+    },
+    "foreignKeyRewrites": [
+      {
+        "entity": "evidenceClaim",
+        "rowId": "CLM-REV-001",
+        "field": "sourceId",
+        "from": "SRC-PROBAST-2019-B8",
+        "to": "SRC-PROBAST-2019"
+      },
+      {
+        "entity": "evidenceClaim",
+        "rowId": "CLM-REV-002",
+        "field": "sourceId",
+        "from": "SRC-PROBAST-2019-B8",
+        "to": "SRC-PROBAST-2019"
+      },
+      {
+        "entity": "evidenceClaim",
+        "rowId": "CLM-REV-004",
+        "field": "sourceId",
+        "from": "SRC-CONSORT-2025-B8",
+        "to": "SRC-CONSORT-2025"
+      }
+    ],
+    "metadataPatches": [
+      {
+        "rowId": "SRC-DESPACE-2024",
+        "field": "url",
+        "from": "https://pubmed.ncbi.nlm.nih.gov/PMC10868334",
+        "to": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10868334/",
+        "basis": "Codex 元数据审计（M013_SOURCE_METADATA_AUDIT.md）：原 PubMed/PMC 混合 URL 无效，改用官方 PMC 文章页。"
+      },
+      {
+        "rowId": "SRC-ANNEXIN-2016",
+        "field": "title",
+        "from": "Analyzing Cell Death by Annexin V Staining and Flow Cytometry",
+        "to": "Quantitation of Apoptosis and Necrosis by Annexin V Binding, Propidium Iodide Uptake, and Flow Cytometry",
+        "basis": "Codex 元数据审计：标题按来源记录（Crossref 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-ELISA-INTERFERENCE-2023",
+        "field": "title",
+        "from": "Interferences in Immunoassay",
+        "to": "Interference in ELISA",
+        "basis": "Codex 元数据审计：标题按来源记录（Crossref 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-WOUND-2014",
+        "field": "title",
+        "from": "Wound healing assay: an overview of literature methods",
+        "to": "An introduction to the wound healing assay using live-cell microscopy.",
+        "basis": "Codex 元数据审计：标题按来源记录（Europe PMC 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-MIGRATION-GUIDE-2026",
+        "field": "title",
+        "from": "A practical guideline for the choice and use of cell migration assays",
+        "to": "Selecting the optimal cell migration assay: fundamentals and practical guidelines",
+        "basis": "Codex 元数据审计：标题按来源记录（Crossref 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-ZIP-2016",
+        "field": "title",
+        "from": "A new drug-combination model to predict synergistic effects based on the zero interaction potency score",
+        "to": "Searching for Drug Synergy in Complex Dose-Response Landscapes Using an Interaction Potency Model.",
+        "basis": "Codex 元数据审计：标题按来源记录（Europe PMC 返回标题）修正。"
+      },
+      {
+        "rowId": "SRC-SYNERGY-WHAT-2015",
+        "field": "title",
+        "from": "What is synergy?",
+        "to": "What is synergy? The Saariselkä agreement revisited.",
+        "basis": "Codex 元数据审计：标题按来源记录（Europe PMC 返回标题）修正。"
+      }
+    ],
+    "discardedFieldCounts": {
+      "evidenceSources": 27,
+      "priorPlausibility": 27,
+      "severity": 27,
+      "terminalLogic": 164,
+      "label": 21,
+      "reasoningPrompt": 21,
+      "expectedUpdate": 21,
+      "concept": 30,
+      "expectedPrinciples": 30,
+      "evidenceClaims": 30,
+      "supportingFindings": 9,
+      "contradictingFindings": 8
+    },
+    "enumLookupTables": {
+      "importance": {
+        "critical": 5,
+        "high": 4,
+        "medium": 3,
+        "low": 2,
+        "minor": 1
+      },
+      "frequency": {
+        "very_common": 4,
+        "common": 3,
+        "occasional": 2,
+        "rare": 1
+      }
+    },
+    "converterPolicies": [
+      "仅机械确定性映射：snake_case→camelCase、稳定 ID、显式枚举/别名查找表、来源规范 ID 与外键重写。",
+      "科学文本逐字保留；除无规范字段可承载的 legacy 字段外，不删除、不改写、不补造。",
+      "不得推断 problemType：全部 legacy 卡片为 unclassified，永不导入合格。",
+      "不得推断 scope/qualification/候选原因/结论边界/推荐推理/严重性/可修复性/证据支持/层级/排序/成本。",
+      "永不提升 pending：metadata_verified/claim_verified 一律降为 pending，verifiedAt/verifiedBy 不继承。",
+      "不采用全局“候选原因≥3”规则；diagnostic 完整性允许两个有用原因、优先三个。",
+      "来源去重：同规范化 DOI/PMID/标题去重，规范 ID 取字典序最小 ID；每次合并与冲突均披露。"
+    ]
+  }
+}

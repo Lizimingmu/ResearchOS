@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "milestone": "M016",
+  "runId": "m016-v0120-release-20260826",
+  "runStatus": "release_candidate_accepted",
+  "lastUpdated": "2026-08-26T21:35:00+08:00",
+  "canonicalPlan": ".agent/M016_RELEASE_PLAN.md",
+  "constraints": {
+    "backgroundOnly": true,
+    "foregroundUi": false,
+    "realVaultAccess": false,
+    "git": false,
+    "gitPush": false,
+    "packaging": true,
+    "scientificContentGeneration": false,
+    "quarantinedCorpusMutation": false
+  },
+  "git": {
+    "branch": "codex/m016-release",
+    "baselineTag": "m015-accepted",
+    "commitPolicy": "outer_codex_only",
+    "allowPush": false,
+    "allowResetOrClean": false
+  },
+  "runner": {
+    "mode": "opencode_segmented",
+    "maxAttemptsPerSegment": 3,
+    "resumeRule": "resume_first_incomplete_segment"
+  },
+  "targetVersion": "0.12.0",
+  "segments": [
+    { "id": "M016-01", "status": "completed", "attempts": 1 },
+    { "id": "M016-02", "status": "completed", "attempts": 1 },
+    { "id": "M016-03", "status": "completed", "attempts": 1 },
+    { "id": "M016-04", "status": "completed", "attempts": 1 },
+    { "id": "M016-05", "status": "completed", "attempts": 1 },
+    { "id": "M016-06", "status": "permission_pending", "attempts": 0 }
+  ],
+  "failure": null
+}

@@ -1,0 +1,3291 @@
+{
+  "packSchemaVersion": 1,
+  "packId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+  "title": "M013 Batch 01 — Experimental Design + Western Blot + RT-qPCR + IHC Source Pack",
+  "createdAt": "2026-08-24T21:16:00+08:00",
+  "createdBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+  "provenance": "Official NIH/CAP/NCBI sources, PubMed-indexed methodological literature, MIQE 2.0 (2025), and explicitly tiered vendor troubleshooting resources were manually checked for source identity, scope and claim support. Final ResearchOS claim_verified promotion is intentionally reserved for Codex/formal source-pack gate per M013.",
+  "sources": [
+    {
+      "id": "SRC-NIH-PRECLINICAL",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "organization": "U.S. National Institutes of Health (NIH)",
+      "journal": null,
+      "title": "Principles and Guidelines for Reporting Preclinical Research",
+      "authors": [],
+      "year": 2024,
+      "doi": null,
+      "pmid": null,
+      "url": "https://www.grants.nih.gov/policy-and-compliance/policy-topics/reproducibility/principles-guidelines-reporting-preclinical-research",
+      "authorityTier": "S",
+      "domain": [
+        "experimental_design",
+        "research_rigor",
+        "reporting"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Official NIH reporting principles. Directly supports distinction between independent biological data points and technical replicates.",
+      "contentHash": "502de818ee7aac39c2885a0b0839064dffcfcb6bfd2ef789643d870c75a46c58"
+    },
+    {
+      "id": "SRC-NINDS-METER",
+      "schemaVersion": 1,
+      "sourceType": "standard",
+      "organization": "NIH / NINDS",
+      "journal": null,
+      "title": "High-Priority Principles of Rigorous Research for Materials to Enhance Training in Experimental Rigor",
+      "authors": [],
+      "year": 2022,
+      "doi": null,
+      "pmid": null,
+      "url": "https://grants.nih.gov/grants/guide/notice-files/NOT-NS-23-011.html",
+      "authorityTier": "S",
+      "domain": [
+        "experimental_design",
+        "statistics",
+        "research_rigor"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Official NIH/NINDS rigor principles; supports randomization, sample-size planning, unit-of-analysis thinking and appropriate inference.",
+      "contentHash": "cc48db30e58492d4e4cac0758800dcb8f4933e68ac26d1992d4e5fdcd6094409"
+    },
+    {
+      "id": "SRC-NIH-TRAINING",
+      "schemaVersion": 1,
+      "sourceType": "educational",
+      "organization": "U.S. National Institutes of Health (NIH)",
+      "journal": null,
+      "title": "Training and Other Resources for Rigor and Reproducibility",
+      "authors": [],
+      "year": 2024,
+      "doi": null,
+      "pmid": null,
+      "url": "https://grants.nih.gov/policy-and-compliance/policy-topics/reproducibility/training",
+      "authorityTier": "C",
+      "domain": [
+        "experimental_design",
+        "research_rigor"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Official educational hub; used as training support rather than as a standalone universal methods standard.",
+      "contentHash": "8d27bb0e3550b4e8642605c2955f3f3ff3a4fed3e563c59f900fc71788460633"
+    },
+    {
+      "id": "SRC-NCATS-AGM",
+      "schemaVersion": 1,
+      "sourceType": "consensus",
+      "organization": "NCBI Bookshelf / NIH NCATS and collaborators",
+      "journal": null,
+      "title": "Assay Guidance Manual",
+      "authors": [
+        "Markossian S",
+        "Grossman A",
+        "Baskir H",
+        "et al."
+      ],
+      "year": 2004,
+      "doi": null,
+      "pmid": null,
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK53196/",
+      "authorityTier": "A",
+      "domain": [
+        "assay_validation",
+        "controls",
+        "experimental_design"
+      ],
+      "version": "living manual",
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Authoritative assay-development manual; use chapter-specific attribution for specific claims.",
+      "contentHash": "d91d5911874f6d09cc78782eda860e273d6d8aa848c7bc7957014476d639543e"
+    },
+    {
+      "id": "SRC-MIQE2",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "organization": null,
+      "journal": "Clinical Chemistry",
+      "title": "MIQE 2.0: Revision of the Minimum Information for Publication of Quantitative Real-Time PCR Experiments Guidelines",
+      "authors": [
+        "Bustin SA",
+        "Ruijter JM",
+        "van den Hoff MJB",
+        "Kubista M",
+        "Pfaffl MW",
+        "Shipley GL",
+        "Tran N",
+        "Rödiger S",
+        "Untergasser A",
+        "Mueller R",
+        "Nolan T",
+        "Milavec M",
+        "Burns MJ",
+        "Huggett JF",
+        "Vandesompele J",
+        "Wittwer CT"
+      ],
+      "year": 2025,
+      "doi": "10.1093/clinchem/hvaf043",
+      "pmid": "40272429",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40272429/",
+      "authorityTier": "S",
+      "domain": [
+        "qpcr",
+        "rt_qpcr",
+        "experimental_design",
+        "statistics"
+      ],
+      "version": "2.0",
+      "knowledgeStatus": "current",
+      "supersedes": [
+        "MIQE-2009"
+      ],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Current qPCR/RT-qPCR guideline. Critical source for controls, efficiency-aware quantification, reference-gene validation and data analysis.",
+      "contentHash": "220b246ffcd18ebc15e77b0bbd2fb803911baeb353461e5c62cdfe95876719d5"
+    },
+    {
+      "id": "SRC-CAP-IHC-2024",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "organization": "College of American Pathologists (CAP)",
+      "journal": "Archives of Pathology & Laboratory Medicine",
+      "title": "Principles of Analytic Validation of Immunohistochemical Assays: Guideline Update",
+      "authors": [
+        "Goldsmith JD",
+        "Troxell ML",
+        "Roy-Chowdhuri S",
+        "et al."
+      ],
+      "year": 2024,
+      "doi": "10.5858/arpa.2023-0483-CP",
+      "pmid": "38391878",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38391878/",
+      "authorityTier": "S",
+      "domain": [
+        "ihc",
+        "assay_validation",
+        "clinical_pathology"
+      ],
+      "version": "2024 update",
+      "knowledgeStatus": "current",
+      "supersedes": [
+        "CAP-IHC-2014"
+      ],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Clinical IHC assay-validation guideline. Clinical scope must remain explicit.",
+      "contentHash": "06c8fc68e909fff63f46a236d4ff277df4a11a086970a9bba748cd116fa55870"
+    },
+    {
+      "id": "SRC-UHLEN-2016",
+      "schemaVersion": 1,
+      "sourceType": "consensus",
+      "organization": null,
+      "journal": "Nature Methods",
+      "title": "A proposal for validation of antibodies",
+      "authors": [
+        "Uhlen M",
+        "Bandrowski A",
+        "Carr S",
+        "Edwards A",
+        "Ellenberg J",
+        "Lundberg E",
+        "Rimm DL",
+        "Rodriguez H",
+        "Hiltke T",
+        "Snyder M",
+        "Yamamoto T"
+      ],
+      "year": 2016,
+      "doi": "10.1038/nmeth.3995",
+      "pmid": "27595404",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27595404/",
+      "authorityTier": "A",
+      "domain": [
+        "antibody_validation",
+        "western_blot",
+        "ihc",
+        "if"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Application-specific antibody-validation framework; supports multiple conceptual validation pillars.",
+      "contentHash": "8cf57c6440ffb54c058778dad9bd10c01109c3049b78706c1c4787992d21f7f0"
+    },
+    {
+      "id": "SRC-MACNEIL-2020",
+      "schemaVersion": 1,
+      "sourceType": "protocol",
+      "organization": null,
+      "journal": "BioTechniques",
+      "title": "Antibody validation for protein expression on tissue slides: a protocol for immunohistochemistry",
+      "authors": [
+        "MacNeil T",
+        "Vathiotis IA",
+        "Martinez-Morilla S",
+        "Yaghoobi V",
+        "Zugazagoitia J",
+        "Liu Y",
+        "Rimm DL"
+      ],
+      "year": 2020,
+      "doi": "10.2144/btn-2020-0095",
+      "pmid": "32852223",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32852223/",
+      "authorityTier": "A",
+      "domain": [
+        "ihc",
+        "if",
+        "antibody_validation"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Peer-reviewed IHC/IF antibody-validation protocol; supports orthogonal/independent evidence and reproducibility checks.",
+      "contentHash": "2c214b144295065cef83aba9cd248b84cb3243bd6146b595d5abb8dcba53eff8"
+    },
+    {
+      "id": "SRC-ENGEL-2011",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "organization": null,
+      "journal": "Archives of Pathology & Laboratory Medicine",
+      "title": "Effects of preanalytical variables on the detection of proteins by immunohistochemistry in formalin-fixed, paraffin-embedded tissue",
+      "authors": [
+        "Engel KB",
+        "Moore HM"
+      ],
+      "year": 2011,
+      "doi": "10.5858/2010-0702-RAIR.1",
+      "pmid": "21526952",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21526952/",
+      "authorityTier": "C",
+      "domain": [
+        "ihc",
+        "preanalytics",
+        "ffpe"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Review/meta-analytic synthesis supporting antigen-dependent preanalytic effects; not a universal fixed-time rule.",
+      "contentHash": "72fdac5ef01e7323065edfd47d8feb26f1b7dbad117df83f6a15cd29e47348cf"
+    },
+    {
+      "id": "SRC-GHOSH-2014",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "organization": null,
+      "journal": "Expert Review of Proteomics",
+      "title": "The necessity of and strategies for improving confidence in the accuracy of western blots",
+      "authors": [
+        "Ghosh R",
+        "Gilda JE",
+        "Gomes AV"
+      ],
+      "year": 2014,
+      "doi": "10.1586/14789450.2014.939635",
+      "pmid": "25059473",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25059473/",
+      "authorityTier": "C",
+      "domain": [
+        "western_blot",
+        "quantification",
+        "antibody_validation"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Methods review supporting linear-range, saturation, normalization and antibody-quality concerns.",
+      "contentHash": "7ec0610179e3f3fd69961e3a87ece3d254c98c0dcbbe13a184012b0f728b73a7"
+    },
+    {
+      "id": "SRC-DEGASPERI-2014",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "organization": null,
+      "journal": "PLOS ONE",
+      "title": "Evaluating strategies to normalise biological replicates of Western blot data",
+      "authors": [
+        "Degasperi A",
+        "Birtwistle MR",
+        "Volinsky N",
+        "Rauch J",
+        "Kolch W",
+        "Kholodenko BN"
+      ],
+      "year": 2014,
+      "doi": "10.1371/journal.pone.0087293",
+      "pmid": "24475266",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24475266/",
+      "authorityTier": "A",
+      "domain": [
+        "western_blot",
+        "normalization",
+        "statistics"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Benchmark of Western blot normalization strategies; emphasizes normalization-dependent statistical behavior.",
+      "contentHash": "398026ed0f1a095a130b3181576e89631e5a751fbe3489615a2c8795ddfa4860"
+    },
+    {
+      "id": "SRC-EATON-2013",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "organization": null,
+      "journal": "PLOS ONE",
+      "title": "Total protein analysis as a reliable loading control for quantitative fluorescent Western blotting",
+      "authors": [
+        "Eaton SL",
+        "Roche SL",
+        "Llavero Hurtado M",
+        "et al."
+      ],
+      "year": 2013,
+      "doi": "10.1371/journal.pone.0072457",
+      "pmid": "24023619",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24023619/",
+      "authorityTier": "A",
+      "domain": [
+        "western_blot",
+        "normalization",
+        "loading_control"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Supports limitations of assuming invariant housekeeping loading controls in studied tissues and use of total-protein alternatives.",
+      "contentHash": "06dce3459f040e03a35f8783c5c81eb521effead3ba645d43520e2cf4e78b59e"
+    },
+    {
+      "id": "SRC-OMONDI-2024",
+      "schemaVersion": 1,
+      "sourceType": "benchmark",
+      "organization": null,
+      "journal": "Scientific Reports",
+      "title": "Improving rigor and reproducibility in western blot experiments with the blotRig analysis software",
+      "authors": [
+        "Omondi C",
+        "Chou A",
+        "Fond KA",
+        "et al."
+      ],
+      "year": 2024,
+      "doi": "10.1038/s41598-024-70096-0",
+      "pmid": "39284854",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39284854/",
+      "authorityTier": "A",
+      "domain": [
+        "western_blot",
+        "technical_replicates",
+        "statistics"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Shows statistical consequences of treating technical replicates as independent; specific LMM implementation is not a universal default.",
+      "contentHash": "80df40d9250ded438ff488eb5274586283c7dae2623de1e104701c653f7163fb"
+    },
+    {
+      "id": "SRC-THERMO-WB",
+      "schemaVersion": 1,
+      "sourceType": "technical_resource",
+      "organization": "Thermo Fisher Scientific",
+      "journal": null,
+      "title": "Western Blot Troubleshooting",
+      "authors": [],
+      "year": 2026,
+      "doi": null,
+      "pmid": null,
+      "url": "https://www.thermofisher.com/jp/en/home/life-science/protein-biology/protein-biology-learning-center/protein-gel-electrophoresis-information/western-blot-troubleshooting.html",
+      "authorityTier": "B",
+      "domain": [
+        "western_blot",
+        "troubleshooting"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Vendor technical source. Appropriate for candidate failure causes/checks; product-specific concentrations/conditions are not universal truths.",
+      "contentHash": "4366bf85b03ad5fad1c14645c6055c7b2acdf0e999db5f2741b0a42933f6b3af"
+    },
+    {
+      "id": "SRC-CST-WB",
+      "schemaVersion": 1,
+      "sourceType": "technical_resource",
+      "organization": "Cell Signaling Technology",
+      "journal": null,
+      "title": "Western Blotting Troubleshooting Guide",
+      "authors": [],
+      "year": 2026,
+      "doi": null,
+      "pmid": null,
+      "url": "https://www.cellsignal.com/learn-and-support/troubleshooting/western-blot-troubleshooting-guide",
+      "authorityTier": "B",
+      "domain": [
+        "western_blot",
+        "troubleshooting",
+        "antibodies"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Vendor technical source for common troubleshooting; not a universal methodological authority.",
+      "contentHash": "120d43e32905a8f0499d4595bbbe1cd487582727903e0c9058bce7c60aa208a1"
+    },
+    {
+      "id": "SRC-CST-IHC",
+      "schemaVersion": 1,
+      "sourceType": "technical_resource",
+      "organization": "Cell Signaling Technology",
+      "journal": null,
+      "title": "Immunohistochemistry (IHC) Troubleshooting Guide & the Importance of Using Controls",
+      "authors": [],
+      "year": 2026,
+      "doi": null,
+      "pmid": null,
+      "url": "https://www.cellsignal.com/learn-and-support/troubleshooting/ihc-troubleshooting-guide",
+      "authorityTier": "B",
+      "domain": [
+        "ihc",
+        "troubleshooting",
+        "controls"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Vendor technical source for candidate causes such as positive-control failure, deparaffinization, endogenous background and secondary cross-reactivity.",
+      "contentHash": "9899d033fc2119af9079fa8e45a7c3d210dd9935b11d8abf805e0a6549bac339"
+    },
+    {
+      "id": "SRC-QPCR-MELT",
+      "schemaVersion": 1,
+      "sourceType": "educational",
+      "organization": null,
+      "journal": null,
+      "title": "Quantitative Real-Time PCR Expression Analysis of Peripheral Blood Mononuclear Cells in Pancreatic Cancer Patients",
+      "authors": [],
+      "year": 2013,
+      "doi": null,
+      "pmid": null,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3662298/",
+      "authorityTier": "C",
+      "domain": [
+        "qpcr",
+        "melt_curve",
+        "primer_specificity"
+      ],
+      "version": null,
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata",
+        "scope pre-review"
+      ],
+      "verifiedAt": "2026-08-24T21:16:00+08:00",
+      "verifiedBy": "OpenAI external scientific source pre-review",
+      "retrievedAt": "2026-08-24T21:16:00+08:00",
+      "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+      "provenanceNote": "Used only as explanatory support for multiple SYBR melt peaks; should preferably be upgraded with a stronger assay-validation source in a later batch.",
+      "contentHash": "a98f2f6a18025f9d4840778771d9fc42b4c401c3a772bcf629618acda010b244"
+    }
+  ],
+  "evidenceClaims": [
+    {
+      "id": "CLM-EXP-001",
+      "claim": "Independent biological data points must be distinguished from technical replicates when reporting and interpreting experiments.",
+      "scope": "Preclinical biomedical research and nested experimental measurements.",
+      "qualification": "The independent unit depends on intervention/assignment and sampling structure; patient is not automatically the unit in every design.",
+      "sourceId": "SRC-NIH-PRECLINICAL",
+      "supportType": "direct",
+      "supportingLocation": "Replicates section",
+      "domain": [
+        "experimental_design",
+        "statistics"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Direct NIH support."
+    },
+    {
+      "id": "CLM-EXP-002",
+      "claim": "Randomization and blinding/masking are rigor practices used, when appropriate, to reduce systematic or expectation-related bias.",
+      "scope": "Experimental biomedical research.",
+      "qualification": "Not every experiment can be fully randomized or blinded; limitations should be reported.",
+      "sourceId": "SRC-NINDS-METER",
+      "supportType": "direct",
+      "supportingLocation": "High-priority rigorous-research principles",
+      "domain": [
+        "experimental_design",
+        "bias"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Official NIH/NINDS principle."
+    },
+    {
+      "id": "CLM-EXP-003",
+      "claim": "Choosing the appropriate unit of analysis requires understanding technical versus biological replicates.",
+      "scope": "Biomedical experimental design and statistical inference.",
+      "qualification": "The statistical model should reflect the design and dependence structure.",
+      "sourceId": "SRC-NINDS-METER",
+      "supportType": "direct",
+      "supportingLocation": "High-priority principles: appropriate unit of analysis",
+      "domain": [
+        "experimental_design",
+        "statistics"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-EXP-004",
+      "claim": "Positive and negative controls can establish assay-performance reference points and help distinguish true biological findings from assay failure.",
+      "scope": "Biological assay development/validation.",
+      "qualification": "Control choice is assay- and endpoint-specific; not every assay has the same feasible controls.",
+      "sourceId": "SRC-NCATS-AGM",
+      "supportType": "direct",
+      "supportingLocation": "General concepts in assay development and validation; control samples",
+      "domain": [
+        "experimental_design",
+        "controls"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-WB-001",
+      "claim": "Weak or absent Western blot signal has multiple plausible technical causes, including inefficient transfer, low target abundance, antibody problems and detection/imaging conditions.",
+      "scope": "Western blot troubleshooting.",
+      "qualification": "These are candidate causes, not a diagnosis; reagent-specific settings remain system-specific.",
+      "sourceId": "SRC-THERMO-WB",
+      "supportType": "direct",
+      "supportingLocation": "General Western blot troubleshooting → Weak or no signal",
+      "domain": [
+        "western_blot",
+        "troubleshooting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-WB-002",
+      "claim": "Multiple or diffuse Western blot bands can arise from excessive antibody/protein load, detection conditions or poor antibody specificity; sample degradation can also contribute.",
+      "scope": "Western blot troubleshooting.",
+      "qualification": "Additional bands may also reflect genuine isoforms or PTMs, so extra bands must not be automatically labeled nonspecific.",
+      "sourceId": "SRC-THERMO-WB",
+      "supportType": "qualified",
+      "supportingLocation": "Nonspecific or diffuse bands; fluorescent troubleshooting",
+      "domain": [
+        "western_blot",
+        "troubleshooting",
+        "antibody_validation"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-WB-003",
+      "claim": "Quantitative Western blotting requires attention to linear range and signal saturation; visually strong bands are not automatically quantitatively reliable.",
+      "scope": "Quantitative Western blotting.",
+      "qualification": "Linear range depends on antibody, target, detector, exposure and sample amount.",
+      "sourceId": "SRC-GHOSH-2014",
+      "supportType": "direct",
+      "supportingLocation": "Abstract / strategies for improving Western blot accuracy",
+      "domain": [
+        "western_blot",
+        "quantification"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-WB-004",
+      "claim": "A housekeeping protein should not be assumed invariant across tissues or treatments without validation; total-protein normalization is a useful alternative in some settings.",
+      "scope": "Quantitative Western blot normalization.",
+      "qualification": "Do not teach that total-protein normalization is universally superior.",
+      "sourceId": "SRC-EATON-2013",
+      "supportType": "direct",
+      "supportingLocation": "Abstract: loading-control variability and total-protein alternative",
+      "domain": [
+        "western_blot",
+        "normalization"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Context-dependent claim."
+    },
+    {
+      "id": "CLM-WB-005",
+      "claim": "Treating technical Western blot replicates as independent biological samples can artificially inflate effective sample size and distort inference.",
+      "scope": "Repeated measurements of the same biological specimens.",
+      "qualification": "Appropriate aggregation or hierarchical modeling depends on design; the blotRig LMM is not a universal default.",
+      "sourceId": "SRC-OMONDI-2024",
+      "supportType": "direct",
+      "supportingLocation": "Replication strategy comparison / Figure 4",
+      "domain": [
+        "western_blot",
+        "statistics",
+        "experimental_design"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-WB-006",
+      "claim": "Antibody validation should be application-specific and can use complementary genetic, orthogonal, independent-antibody or tagged-protein strategies.",
+      "scope": "Antibody-based research including WB and IHC.",
+      "qualification": "No single pillar is universally sufficient for every target/application.",
+      "sourceId": "SRC-UHLEN-2016",
+      "supportType": "direct",
+      "supportingLocation": "Five conceptual pillars; Figure 1",
+      "domain": [
+        "antibody_validation",
+        "western_blot",
+        "ihc"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-QPCR-001",
+      "claim": "Cq values are intermediate qPCR data and should not be treated as fully efficiency-corrected and normalized expression measurements.",
+      "scope": "Quantitative qPCR/RT-qPCR analysis.",
+      "qualification": "Exact quantification depends on assay purpose; MIQE 2.0 recommends efficiency-aware target quantities.",
+      "sourceId": "SRC-MIQE2",
+      "supportType": "direct",
+      "supportingLocation": "Data Analysis → Target quantity per gene",
+      "domain": [
+        "qpcr",
+        "statistics"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-QPCR-002",
+      "claim": "Reference genes used for qPCR normalization require justification and stability assessment because expression may vary with tissue, condition or disease state.",
+      "scope": "Gene-expression qPCR/RT-qPCR.",
+      "qualification": "Number and choice of reference genes are context dependent.",
+      "sourceId": "SRC-MIQE2",
+      "supportType": "direct",
+      "supportingLocation": "Data Analysis → Normalized expression per sample",
+      "domain": [
+        "qpcr",
+        "normalization"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-QPCR-003",
+      "claim": "MIQE 2.0 discourages relying on conventional ΔΔCq quantitative analysis because efficiency assumptions, replicate/reference-gene handling and information loss can bias or obscure inference.",
+      "scope": "Quantitative gene-expression qPCR under MIQE 2.0 recommendations.",
+      "qualification": "This is a current guideline recommendation, not a claim that every historical ΔΔCq result is automatically invalid.",
+      "sourceId": "SRC-MIQE2",
+      "supportType": "direct",
+      "supportingLocation": "Data Analysis → Fold-difference between groups",
+      "domain": [
+        "qpcr",
+        "statistics",
+        "normalization"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-QPCR-004",
+      "claim": "qPCR control design should distinguish true target signal from technical artifacts; MIQE 2.0 discusses positive, negative, no-template and no-reverse-transcriptase controls.",
+      "scope": "qPCR/RT-qPCR assay design.",
+      "qualification": "The applicable control set depends on assay type; no-RT is specific to RT workflows.",
+      "sourceId": "SRC-MIQE2",
+      "supportType": "direct",
+      "supportingLocation": "Controls section and checklist",
+      "domain": [
+        "qpcr",
+        "controls"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-QPCR-005",
+      "claim": "Amplification in a no-template control can indicate reagent/environmental contamination or cross-contamination and requires investigation.",
+      "scope": "qPCR no-template controls.",
+      "qualification": "In intercalating-dye assays, nonspecific products/primer-dimers may also contribute.",
+      "sourceId": "SRC-MIQE2",
+      "supportType": "direct",
+      "supportingLocation": "Controls → No-template controls",
+      "domain": [
+        "qpcr",
+        "troubleshooting",
+        "controls"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-QPCR-006",
+      "claim": "In SYBR/intercalating-dye qPCR, multiple melt-curve peaks are a specificity warning for multiple products/off-target amplification or primer-dimer and should trigger product-specificity checks.",
+      "scope": "SYBR/intercalating-dye qPCR.",
+      "qualification": "Melt curves are supportive rather than definitive molecular identification.",
+      "sourceId": "SRC-QPCR-MELT",
+      "supportType": "qualified",
+      "supportingLocation": "Melt-curve figure and explanation",
+      "domain": [
+        "qpcr",
+        "melt_curve",
+        "troubleshooting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Tier C support; leave pending or replace with stronger source."
+    },
+    {
+      "id": "CLM-IHC-001",
+      "claim": "Clinical IHC assays should be analytically validated or verified before patient results are reported.",
+      "scope": "Clinical diagnostic/predictive IHC assays.",
+      "qualification": "CAP clinical-laboratory guidance must not be generalized as a regulatory rule for exploratory research IHC.",
+      "sourceId": "SRC-CAP-IHC-2024",
+      "supportType": "direct",
+      "supportingLocation": "Guideline Statement 1",
+      "domain": [
+        "ihc",
+        "assay_validation",
+        "clinical_pathology"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-IHC-002",
+      "claim": "For initial clinical IHC assay validation/verification, CAP 2024 recommends at least 90% overall concordance between the new assay and comparator/expected results.",
+      "scope": "Clinical IHC assay validation/verification.",
+      "qualification": "Do not apply the 90% threshold as a universal rule to exploratory research staining.",
+      "sourceId": "SRC-CAP-IHC-2024",
+      "supportType": "direct",
+      "supportingLocation": "Guideline Statement 2",
+      "domain": [
+        "ihc",
+        "assay_validation"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-IHC-003",
+      "claim": "IHC staining can be materially affected by preanalytical factors such as delay to fixation, fixative type, fixation duration and processing, with antigen-dependent effects.",
+      "scope": "FFPE IHC.",
+      "qualification": "Do not teach a single universal fixation threshold across all antigens and laboratories.",
+      "sourceId": "SRC-ENGEL-2011",
+      "supportType": "direct",
+      "supportingLocation": "Abstract conclusions on preanalytical variables",
+      "domain": [
+        "ihc",
+        "preanalytics",
+        "ffpe"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-IHC-004",
+      "claim": "Little or no IHC staining should be interpreted using controls and assay context because the specimen may be truly negative or the staining system may have failed.",
+      "scope": "IHC troubleshooting.",
+      "qualification": "Vendor-specific settings are not universal; a validated high-expressing control is one useful discriminator.",
+      "sourceId": "SRC-CST-IHC",
+      "supportType": "qualified",
+      "supportingLocation": "Potential Problem: Little to No Staining",
+      "domain": [
+        "ihc",
+        "troubleshooting",
+        "controls"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-IHC-005",
+      "claim": "High IHC background has multiple possible technical sources, including deparaffinization problems, endogenous detection chemistry, secondary cross-reactivity, inadequate blocking or washing.",
+      "scope": "IHC troubleshooting.",
+      "qualification": "Which causes apply depends on tissue and detection chemistry.",
+      "sourceId": "SRC-CST-IHC",
+      "supportType": "direct",
+      "supportingLocation": "Potential Problem: High Background",
+      "domain": [
+        "ihc",
+        "troubleshooting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    },
+    {
+      "id": "CLM-IHC-006",
+      "claim": "IHC antibody validation should be application-specific and can include expected localization, orthogonal assays, independent antibodies and reproducibility across runs/operators/lots.",
+      "scope": "Research/translational IHC/IF antibody validation.",
+      "qualification": "The exact validation strategy depends on target biology and intended use.",
+      "sourceId": "SRC-MACNEIL-2020",
+      "supportType": "direct",
+      "supportingLocation": "Protocol overview and Figures 1–4",
+      "domain": [
+        "ihc",
+        "antibody_validation",
+        "reproducibility"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": ""
+    }
+  ],
+  "problemCards": [
+    {
+      "id": "PRB-EXP-001",
+      "domain": "experimental_design",
+      "subdomain": "replication",
+      "title_cn": "同一个生物样本重复测三次，n 是 3 吗？",
+      "title_en": "Do three technical repeats make n = 3?",
+      "aliases": [
+        "技术重复算n吗",
+        "technical replicate n"
+      ],
+      "keywords": [
+        "biological replicate",
+        "technical replicate",
+        "experimental unit"
+      ],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "very_common",
+      "symptom": "同一个独立生物样本被重复测量3次，分析计划准备把3个值当作3个独立样本。",
+      "context": "replication",
+      "why_it_matters": "把技术重复当独立生物学重复会人为扩大有效样本量并形成伪重复。",
+      "candidate_causes": [
+        "CAUSE-EXP-001-A"
+      ],
+      "discriminating_checks": [
+        "CHK-EXP-001-UNIT",
+        "CHK-EXP-001-ASSIGN"
+      ],
+      "red_flags": [
+        "同一sample ID的多个测量直接分别计入n"
+      ],
+      "diagnostic_path": [
+        "PATH-EXP-001"
+      ],
+      "common_wrong_actions": [
+        "把孔/条带/图像数当生物学样本数"
+      ],
+      "recommended_reasoning": [
+        "先确定处理/采样在哪一级独立分配",
+        "区分独立生物来源与同一来源重复测量",
+        "技术重复用于测量变异，不自动增加独立生物学n"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "不能仅凭更多技术重复增强总体生物学外推。",
+      "reviewer_implication": "重大统计单位/伪重复风险。",
+      "transfer_cases": [
+        "TRF-001",
+        "TRF-002",
+        "TRF-003"
+      ],
+      "misconception_tags": [
+        "technical_replication_inflates_n",
+        "pseudoreplication"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-EXP-001",
+        "CLM-EXP-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-EXP-002",
+      "domain": "experimental_design",
+      "subdomain": "bias_control",
+      "title_cn": "所有处理组先做、对照组后做，为什么危险？",
+      "title_en": "Why is running all treated samples before all controls risky?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "symptom": "实验顺序/板位/批次与处理组高度一致。",
+      "context": "bias_control",
+      "why_it_matters": "时间或批次效应可能与真实处理效应不可区分。",
+      "candidate_causes": [
+        "CAUSE-EXP-002-A"
+      ],
+      "discriminating_checks": [
+        "CHK-EXP-002-BATCH"
+      ],
+      "red_flags": [
+        "group与batch一一对应"
+      ],
+      "diagnostic_path": [
+        "PATH-EXP-002"
+      ],
+      "common_wrong_actions": [
+        "完全混杂后仅靠统计校正宣称问题已解决"
+      ],
+      "recommended_reasoning": [
+        "优先在设计阶段随机化或平衡",
+        "可盲法的采集/判读尽量盲法"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "处理与批次不可分时组间归因需显著降级。",
+      "reviewer_implication": "严重时属于结构性设计缺陷。",
+      "transfer_cases": [
+        "TRF-004"
+      ],
+      "misconception_tags": [
+        "design_confounding"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-EXP-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-EXP-003",
+      "domain": "experimental_design",
+      "subdomain": "controls",
+      "title_cn": "没有阳性对照时，“阴性结果”可靠吗？",
+      "title_en": "Can a negative result be trusted without a positive control?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "symptom": "实验未检测到目标信号，同时没有能证明检测体系正常工作的阳性对照。",
+      "context": "controls",
+      "why_it_matters": "无法区分真实阴性与assay failure。",
+      "candidate_causes": [
+        "CAUSE-EXP-003-A"
+      ],
+      "discriminating_checks": [
+        "CHK-EXP-003-POS"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-EXP-003"
+      ],
+      "common_wrong_actions": [
+        "未检出直接写成目标不存在"
+      ],
+      "recommended_reasoning": [
+        "先证明assay能在合适阳性材料中产生预期信号",
+        "再解释未知样本阴性"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "无assay-performance证据时，未检出不等于生物学不存在。",
+      "reviewer_implication": "关键对照不足可使结论无法解释。",
+      "transfer_cases": [
+        "TRF-005"
+      ],
+      "misconception_tags": [
+        "absence_of_signal_equals_absence"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-EXP-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-WB-001",
+      "domain": "wet_lab",
+      "subdomain": "western_blot",
+      "title_cn": "Western blot 完全没有条带或条带很弱",
+      "title_en": "Western blot: weak or no signal",
+      "aliases": [
+        "WB没条带",
+        "WB信号弱"
+      ],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "very_common",
+      "symptom": "目标蛋白条带明显弱于预期或完全不可见。",
+      "context": "western_blot",
+      "why_it_matters": "同一表型可由转膜、样本、抗体、检测或真实低表达等多层问题造成。",
+      "candidate_causes": [
+        "CAUSE-WB-001-A"
+      ],
+      "discriminating_checks": [
+        "CHK-WB-001-TRANSFER",
+        "CHK-WB-001-POS",
+        "CHK-WB-001-AB",
+        "CHK-WB-001-DETECT"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-WB-001"
+      ],
+      "common_wrong_actions": [
+        "直接增加曝光直到出现背景",
+        "不检查转膜就更换抗体",
+        "未检出直接写成目标不存在"
+      ],
+      "recommended_reasoning": [
+        "先定位样本/转膜/抗体/检测层级",
+        "优先获取能区分层级的信息",
+        "阳性对照和转膜QC优先级高"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "assay performance未证实时，未检出不等于生物学阴性。",
+      "reviewer_implication": "关键阴性结论缺positive control或transfer QC时可信度低。",
+      "transfer_cases": [
+        "TRF-WB-001"
+      ],
+      "misconception_tags": [
+        "no_band_equals_no_protein"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-WB-001",
+        "CLM-EXP-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-WB-002",
+      "domain": "wet_lab",
+      "subdomain": "western_blot",
+      "title_cn": "Western blot 出现多个非预期条带",
+      "title_en": "Western blot: multiple unexpected bands",
+      "aliases": [
+        "WB多条带",
+        "非特异条带"
+      ],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "very_common",
+      "symptom": "预期约55 kDa，但出现55/70/90 kDa等多个条带。",
+      "context": "western_blot",
+      "why_it_matters": "额外条带既可能是技术非特异，也可能是真实isoform/PTM，不能靠分子量猜。",
+      "candidate_causes": [
+        "CAUSE-WB-002-A"
+      ],
+      "discriminating_checks": [
+        "CHK-WB-002-MW",
+        "CHK-WB-002-KO",
+        "CHK-WB-002-TITRATE",
+        "CHK-WB-002-ORTHO"
+      ],
+      "red_flags": [
+        "仅凭分子量接近认定特异",
+        "无验证宣称新isoform"
+      ],
+      "diagnostic_path": [
+        "PATH-WB-002"
+      ],
+      "common_wrong_actions": [
+        "把所有额外条带统一称非特异",
+        "只剪掉不想展示的条带"
+      ],
+      "recommended_reasoning": [
+        "明确预期分子量/isoform/PTM",
+        "查看application-specific抗体验证",
+        "用遗传或正交证据区分特异性",
+        "同时排查上样/抗体/曝光/降解"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "多条带本身不能证明新isoform或PTM。",
+      "reviewer_implication": "关键结论依赖未经验证的单条带身份时可构成Major Concern。",
+      "transfer_cases": [
+        "TRF-WB-002"
+      ],
+      "misconception_tags": [
+        "band_identity_by_molecular_weight_only"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-WB-002",
+        "CLM-WB-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-WB-003",
+      "domain": "wet_lab",
+      "subdomain": "western_blot",
+      "title_cn": "Western blot 背景很高",
+      "title_en": "Western blot: high background",
+      "aliases": [
+        "WB背景高"
+      ],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "very_common",
+      "symptom": "整张膜背景偏高，目标条带信噪比较差。",
+      "context": "western_blot",
+      "why_it_matters": "可能由抗体浓度、blocking/washing、过曝等多层技术因素导致。",
+      "candidate_causes": [
+        "CAUSE-WB-003-A"
+      ],
+      "discriminating_checks": [
+        "CHK-WB-003-EXPOSURE",
+        "CHK-WB-003-TITRATE",
+        "CHK-WB-003-BLOCK"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-WB-003"
+      ],
+      "common_wrong_actions": [
+        "只靠后期图像处理掩盖背景"
+      ],
+      "recommended_reasoning": [
+        "先评估抗体浓度、blocking/washing与曝光",
+        "一次改变少量关键变量定位原因"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "高背景中的弱差异不应被过度定量解释。",
+      "reviewer_implication": "核心定量来自接近背景/过度处理图像时可信度下降。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "postprocessing_fixes_bad_assay"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-WB-002",
+        "CLM-WB-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-WB-004",
+      "domain": "wet_lab",
+      "subdomain": "western_blot",
+      "title_cn": "内参蛋白变了，还能继续拿它归一化吗？",
+      "title_en": "Can an unstable housekeeping protein still be used for normalization?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "symptom": "处理组与对照组的GAPDH/β-actin等loading control本身存在系统差异。",
+      "context": "western_blot",
+      "why_it_matters": "变化的分母会扭曲目标蛋白相对变化。",
+      "candidate_causes": [
+        "CAUSE-WB-004-A"
+      ],
+      "discriminating_checks": [
+        "CHK-WB-004-STABILITY",
+        "CHK-WB-004-ALT"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-WB-004"
+      ],
+      "common_wrong_actions": [
+        "默认housekeeping protein恒定",
+        "把total-protein描述成任何情境都更优"
+      ],
+      "recommended_reasoning": [
+        "验证参照物在当前组织/条件中的稳定性",
+        "必要时考虑经验证的替代参照或total-protein方案"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "归一化方法必须基于当前实验验证，不能宣称单一方案普遍最优。",
+      "reviewer_implication": "loading control随处理变化且未处理时，定量结果可能不可信。",
+      "transfer_cases": [
+        "TRF-WB-004"
+      ],
+      "misconception_tags": [
+        "housekeeping_always_stable"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-WB-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-WB-005",
+      "domain": "wet_lab",
+      "subdomain": "western_blot",
+      "title_cn": "同一个样本跑三次 WB，可以把 n 扩大三倍吗？",
+      "title_en": "Can three Western blot technical replicates triple n?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "symptom": "每个生物样本在三个gel/blot上重复测量，分析时将三个值作为独立样本。",
+      "context": "western_blot",
+      "why_it_matters": "重复测量不是新增独立生物来源。",
+      "candidate_causes": [
+        "CAUSE-WB-005-A"
+      ],
+      "discriminating_checks": [
+        "CHK-WB-005-ID"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-WB-005"
+      ],
+      "common_wrong_actions": [
+        "3个技术重复直接计n=3"
+      ],
+      "recommended_reasoning": [
+        "保留subject/sample ID",
+        "将重复测量作为嵌套/重复结构处理"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "不能把技术重复数量当生物学复制数量。",
+      "reviewer_implication": "典型伪重复风险。",
+      "transfer_cases": [
+        "TRF-001",
+        "TRF-002"
+      ],
+      "misconception_tags": [
+        "technical_replication_inflates_n"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-WB-005",
+        "CLM-EXP-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-WB-006",
+      "domain": "wet_lab",
+      "subdomain": "western_blot",
+      "title_cn": "条带越亮，定量就越可靠吗？",
+      "title_en": "Does a brighter band mean better quantification?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "symptom": "目标条带非常强，接近或达到成像系统饱和。",
+      "context": "western_blot",
+      "why_it_matters": "饱和后信号强度与蛋白量不再保持可解释的定量关系。",
+      "candidate_causes": [
+        "CAUSE-WB-006-A"
+      ],
+      "discriminating_checks": [
+        "CHK-WB-006-LINEAR"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-WB-006"
+      ],
+      "common_wrong_actions": [
+        "使用过曝图做fold-change"
+      ],
+      "recommended_reasoning": [
+        "确认目标和检测系统处于可用线性范围",
+        "使用合适曝光与上样量"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "饱和信号不能用于精确比较倍数差异。",
+      "reviewer_implication": "关键定量超出线性范围时可能需重做。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "brighter_is_more_quantitative"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-WB-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-QPCR-001",
+      "domain": "wet_lab",
+      "subdomain": "rt_qpcr",
+      "title_cn": "NTC 也出现扩增，结果还能直接用吗？",
+      "title_en": "qPCR: amplification in the no-template control",
+      "aliases": [
+        "NTC阳性",
+        "qPCR空白扩增"
+      ],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "symptom": "No-template control出现可检测扩增信号。",
+      "context": "rt_qpcr",
+      "why_it_matters": "NTC本应帮助识别无模板条件下的污染或非目标扩增。",
+      "candidate_causes": [
+        "CAUSE-QPCR-001-A"
+      ],
+      "discriminating_checks": [
+        "CHK-QPCR-001-REPEAT",
+        "CHK-QPCR-001-MELT",
+        "CHK-QPCR-001-REAGENT"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-QPCR-001"
+      ],
+      "common_wrong_actions": [
+        "NTC阳性一律归因污染",
+        "完全忽略晚期NTC信号"
+      ],
+      "recommended_reasoning": [
+        "结合体系、melt curve/产物特异性和污染排查",
+        "评估NTC信号对未知样本解释的影响"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "存在未解释NTC扩增时，弱阳性/晚期信号应谨慎解释。",
+      "reviewer_implication": "关键结果缺乏阴性对照解释时属于显著QC问题。",
+      "transfer_cases": [
+        "TRF-QPCR-001"
+      ],
+      "misconception_tags": [
+        "ntc_positive_single_cause"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-QPCR-004",
+        "CLM-QPCR-005",
+        "CLM-QPCR-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-QPCR-002",
+      "domain": "wet_lab",
+      "subdomain": "rt_qpcr",
+      "title_cn": "GAPDH/ACTB 可以默认作为稳定内参吗？",
+      "title_en": "Can GAPDH or ACTB be assumed stable reference genes?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "very_common",
+      "symptom": "直接选择传统housekeeping gene作为reference，没有验证当前条件稳定性。",
+      "context": "rt_qpcr",
+      "why_it_matters": "不稳定reference gene会把技术/生物变化传播到归一化结果。",
+      "candidate_causes": [
+        "CAUSE-QPCR-002-A"
+      ],
+      "discriminating_checks": [
+        "CHK-QPCR-002-STABILITY"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-QPCR-002"
+      ],
+      "common_wrong_actions": [
+        "因为大家都用就默认稳定"
+      ],
+      "recommended_reasoning": [
+        "根据目标组织/状态验证reference gene稳定性",
+        "报告选择与验证依据"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "传统housekeeping gene并不保证在当前实验条件恒定。",
+      "reviewer_implication": "结论依赖不稳定内参时定量可信度受损。",
+      "transfer_cases": [
+        "TRF-QPCR-002"
+      ],
+      "misconception_tags": [
+        "housekeeping_gene_always_stable"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-QPCR-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-QPCR-003",
+      "domain": "statistics",
+      "subdomain": "rt_qpcr",
+      "title_cn": "直接对原始 Cq 值做 t 检验合适吗？",
+      "title_en": "Should raw qPCR Cq values be compared directly with a t-test?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "symptom": "分析计划将原始Cq当最终定量结果直接组间统计。",
+      "context": "rt_qpcr",
+      "why_it_matters": "Cq与target quantity呈指数关系，且受效率、阈值、归一化影响。",
+      "candidate_causes": [
+        "CAUSE-QPCR-003-A"
+      ],
+      "discriminating_checks": [
+        "CHK-QPCR-003-PIPELINE"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-QPCR-003"
+      ],
+      "common_wrong_actions": [
+        "直接对未校正未归一化Cq做最终推断"
+      ],
+      "recommended_reasoning": [
+        "根据实验目的转换为合适target quantity/normalized expression",
+        "在样本级归一化数据上进行适当统计"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "Cq差异不能直接当同等比例表达量差异。",
+      "reviewer_implication": "可构成主要分析方法问题。",
+      "transfer_cases": [
+        "TRF-QPCR-003"
+      ],
+      "misconception_tags": [
+        "raw_cq_is_expression"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-QPCR-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-QPCR-004",
+      "domain": "statistics",
+      "subdomain": "rt_qpcr",
+      "title_cn": "2^-ΔΔCq 是不是任何 RT-qPCR 都可以默认使用？",
+      "title_en": "Is 2^-ΔΔCq a universal default for RT-qPCR?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "advanced",
+      "importance": "high",
+      "frequency": "very_common",
+      "symptom": "未检查target/reference efficiency和reference gene稳定性，直接默认2^-ΔΔCq。",
+      "context": "rt_qpcr",
+      "why_it_matters": "MIQE 2.0对传统ΔΔCq的效率假设、信息损失和replicate/reference处理提出明确批评。",
+      "candidate_causes": [
+        "CAUSE-QPCR-004-A"
+      ],
+      "discriminating_checks": [
+        "CHK-QPCR-004-EFF",
+        "CHK-QPCR-004-REF"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-QPCR-004"
+      ],
+      "common_wrong_actions": [
+        "把MIQE建议误写成所有旧ΔΔCq研究都错误"
+      ],
+      "recommended_reasoning": [
+        "按MIQE 2.0审查效率校正、参照基因和sample-level normalization",
+        "明确方法及其假设"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "应表述为MIQE 2.0不建议依赖传统ΔΔCq，而不是无条件宣布所有ΔΔCq结果无效。",
+      "reviewer_implication": "需要根据领域规范与数据审查分析是否可辩护。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "ddcq_universal"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-QPCR-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-QPCR-005",
+      "domain": "wet_lab",
+      "subdomain": "rt_qpcr",
+      "title_cn": "SYBR qPCR 熔解曲线出现多个峰意味着什么？",
+      "title_en": "What do multiple melt-curve peaks mean in SYBR qPCR?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "medium",
+      "frequency": "common",
+      "symptom": "目标反应melt curve出现多个峰。",
+      "context": "rt_qpcr",
+      "why_it_matters": "可能存在多个扩增产物、off-target或primer-dimer，影响特异性。",
+      "candidate_causes": [
+        "CAUSE-QPCR-005-A"
+      ],
+      "discriminating_checks": [
+        "CHK-QPCR-005-NTC",
+        "CHK-QPCR-005-PRODUCT"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-QPCR-005"
+      ],
+      "common_wrong_actions": [
+        "仅凭峰数确定具体污染来源"
+      ],
+      "recommended_reasoning": [
+        "把melt curve视为specificity warning",
+        "结合NTC、产物大小/序列等进一步确认"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "多峰提示但不单独证明具体off-target身份。",
+      "reviewer_implication": "特异性未证明时expression定量结论需降级。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "melt_curve_is_definitive_identity"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-QPCR-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-IHC-001",
+      "domain": "wet_lab",
+      "subdomain": "ihc",
+      "title_cn": "IHC 完全不染，是样本真阴性还是实验失败？",
+      "title_en": "IHC: true negative or assay failure?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "symptom": "目标组织几乎无特异染色。",
+      "context": "ihc",
+      "why_it_matters": "真实低/阴性表达与技术失败可产生相同表型。",
+      "candidate_causes": [
+        "CAUSE-IHC-001-A"
+      ],
+      "discriminating_checks": [
+        "CHK-IHC-001-POS",
+        "CHK-IHC-001-AB",
+        "CHK-IHC-001-PRE"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-IHC-001"
+      ],
+      "common_wrong_actions": [
+        "无染色直接解释成蛋白不表达"
+      ],
+      "recommended_reasoning": [
+        "先验证检测体系在合适阳性材料中工作",
+        "再检查抗体验证与preanalytic/retrieval条件",
+        "最后解释生物学阴性"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "无有效positive control时，不表达结论不充分。",
+      "reviewer_implication": "关键阴性证据缺assay-performance control时可能需补实验。",
+      "transfer_cases": [
+        "TRF-IHC-001"
+      ],
+      "misconception_tags": [
+        "negative_stain_equals_no_expression"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-IHC-004",
+        "CLM-IHC-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-IHC-002",
+      "domain": "wet_lab",
+      "subdomain": "ihc",
+      "title_cn": "IHC 背景很高，应该先查哪里？",
+      "title_en": "IHC: high background",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "very_common",
+      "symptom": "组织广泛出现非目标背景染色，信噪比下降。",
+      "context": "ihc",
+      "why_it_matters": "背景可能来自切片处理、内源性酶/biotin、secondary cross-reactivity或blocking/wash等。",
+      "candidate_causes": [
+        "CAUSE-IHC-002-A"
+      ],
+      "discriminating_checks": [
+        "CHK-IHC-002-NOPRI",
+        "CHK-IHC-002-CHEM",
+        "CHK-IHC-002-PREP"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-IHC-002"
+      ],
+      "common_wrong_actions": [
+        "只靠图像阈值消除背景"
+      ],
+      "recommended_reasoning": [
+        "根据检测化学识别可能背景机制",
+        "用no-primary/适当control定位背景",
+        "检查脱蜡、blocking、wash和endogenous activity"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "高背景会降低定量和空间定位可信度。",
+      "reviewer_implication": "若定量主要由阈值决定且背景未控制，可重复性存在风险。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "thresholding_solves_bad_stain"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-IHC-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-IHC-003",
+      "domain": "wet_lab",
+      "subdomain": "ihc",
+      "title_cn": "同一个抗体不同组织批次染色差很多，可能只是生物学差异吗？",
+      "title_en": "IHC: large staining differences across tissue batches",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "advanced",
+      "importance": "critical",
+      "frequency": "common",
+      "symptom": "不同收集/处理批次组织显示系统性染色强度差异。",
+      "context": "ihc",
+      "why_it_matters": "fixation delay、fixative、duration和processing可改变部分抗原可检测性。",
+      "candidate_causes": [
+        "CAUSE-IHC-003-A"
+      ],
+      "discriminating_checks": [
+        "CHK-IHC-003-META",
+        "CHK-IHC-003-ORTHO"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-IHC-003"
+      ],
+      "common_wrong_actions": [
+        "所有强度差异直接解释成表达差异",
+        "套用单一固定时间阈值到所有抗原"
+      ],
+      "recommended_reasoning": [
+        "先检查preanalytic metadata是否与组别相关",
+        "考虑antigen-dependent processing影响",
+        "必要时用正交/匹配验证"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "技术与生物学批次不可分时不能直接归因于生物表达。",
+      "reviewer_implication": "可构成结构性混杂风险。",
+      "transfer_cases": [
+        "TRF-IHC-003"
+      ],
+      "misconception_tags": [
+        "staining_intensity_equals_expression_without_preanalytics"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-IHC-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-IHC-004",
+      "domain": "wet_lab",
+      "subdomain": "ihc",
+      "title_cn": "抗体说明书写着可用于 IHC，就算验证完成了吗？",
+      "title_en": "Is a vendor IHC label sufficient antibody validation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "symptom": "核心结论依赖单一商业抗体，只引用vendor的IHC适用标签。",
+      "context": "ihc",
+      "why_it_matters": "抗体特异性和性能具有application-specific属性。",
+      "candidate_causes": [
+        "CAUSE-IHC-004-A"
+      ],
+      "discriminating_checks": [
+        "CHK-IHC-004-VALID",
+        "CHK-IHC-004-LOC"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-IHC-004"
+      ],
+      "common_wrong_actions": [
+        "把商业标签当当前项目最终验证"
+      ],
+      "recommended_reasoning": [
+        "根据目标和应用选择独立验证策略",
+        "检查expected localization、orthogonal evidence与reproducibility"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "未经application-specific验证的单抗信号不宜承载强机制结论。",
+      "reviewer_implication": "核心结论依赖单一未充分验证抗体时可能是Major Concern。",
+      "transfer_cases": [
+        "TRF-WB-002"
+      ],
+      "misconception_tags": [
+        "vendor_label_equals_validation"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-WB-006",
+        "CLM-IHC-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    }
+  ],
+  "diagnosticCauses": [
+    {
+      "id": "CAUSE-EXP-001-A",
+      "problemId": "PRB-EXP-001",
+      "cause": "同一独立生物样本的重复测量被错误当成独立生物学重复",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-EXP-001-UNIT",
+        "CHK-EXP-001-ASSIGN"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-NINDS-METER",
+        "SRC-NIH-PRECLINICAL"
+      ]
+    },
+    {
+      "id": "CAUSE-EXP-002-A",
+      "problemId": "PRB-EXP-002",
+      "cause": "batch/order/plate effect 与 treatment group 系统性混杂",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-EXP-002-BATCH"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-NINDS-METER"
+      ]
+    },
+    {
+      "id": "CAUSE-EXP-003-A",
+      "problemId": "PRB-EXP-003",
+      "cause": "真实阴性与assay failure尚未被阳性对照区分",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-EXP-003-POS"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-NCATS-AGM"
+      ]
+    },
+    {
+      "id": "CAUSE-WB-001-A",
+      "problemId": "PRB-WB-001",
+      "cause": "需要区分transfer、antibody、sample abundance和detection层的问题",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-WB-001-TRANSFER",
+        "CHK-WB-001-POS",
+        "CHK-WB-001-AB",
+        "CHK-WB-001-DETECT"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-THERMO-WB",
+        "SRC-NCATS-AGM"
+      ]
+    },
+    {
+      "id": "CAUSE-WB-002-A",
+      "problemId": "PRB-WB-002",
+      "cause": "需区分非特异结合、过量/过曝、降解与真实isoform/PTM",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-WB-002-MW",
+        "CHK-WB-002-KO",
+        "CHK-WB-002-TITRATE",
+        "CHK-WB-002-ORTHO"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-THERMO-WB",
+        "SRC-UHLEN-2016"
+      ]
+    },
+    {
+      "id": "CAUSE-WB-003-A",
+      "problemId": "PRB-WB-003",
+      "cause": "抗体浓度、blocking/washing或曝光造成高背景",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-WB-003-EXPOSURE",
+        "CHK-WB-003-TITRATE",
+        "CHK-WB-003-BLOCK"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-THERMO-WB",
+        "SRC-GHOSH-2014"
+      ]
+    },
+    {
+      "id": "CAUSE-WB-004-A",
+      "problemId": "PRB-WB-004",
+      "cause": "loading control受当前组织/处理影响而不稳定",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-WB-004-STABILITY",
+        "CHK-WB-004-ALT"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-EATON-2013"
+      ]
+    },
+    {
+      "id": "CAUSE-WB-005-A",
+      "problemId": "PRB-WB-005",
+      "cause": "技术重复被错误当独立生物学样本",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-WB-005-ID"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-OMONDI-2024",
+        "SRC-NIH-PRECLINICAL"
+      ]
+    },
+    {
+      "id": "CAUSE-WB-006-A",
+      "problemId": "PRB-WB-006",
+      "cause": "signal saturation / 超出线性范围",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-WB-006-LINEAR"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-GHOSH-2014"
+      ]
+    },
+    {
+      "id": "CAUSE-QPCR-001-A",
+      "problemId": "PRB-QPCR-001",
+      "cause": "需区分污染与非特异/primer-dimer等NTC扩增来源",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-QPCR-001-REPEAT",
+        "CHK-QPCR-001-MELT",
+        "CHK-QPCR-001-REAGENT"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-QPCR-MELT",
+        "SRC-MIQE2"
+      ]
+    },
+    {
+      "id": "CAUSE-QPCR-002-A",
+      "problemId": "PRB-QPCR-002",
+      "cause": "reference gene在当前条件下不稳定",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-QPCR-002-STABILITY"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-MIQE2"
+      ]
+    },
+    {
+      "id": "CAUSE-QPCR-003-A",
+      "problemId": "PRB-QPCR-003",
+      "cause": "把intermediate Cq直接当最终normalized quantity",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-QPCR-003-PIPELINE"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-MIQE2"
+      ]
+    },
+    {
+      "id": "CAUSE-QPCR-004-A",
+      "problemId": "PRB-QPCR-004",
+      "cause": "默认ΔΔCq且未审查效率/normalization假设",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-QPCR-004-EFF",
+        "CHK-QPCR-004-REF"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-MIQE2"
+      ]
+    },
+    {
+      "id": "CAUSE-QPCR-005-A",
+      "problemId": "PRB-QPCR-005",
+      "cause": "需区分非特异扩增和primer-dimer等多产物来源",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-QPCR-005-NTC",
+        "CHK-QPCR-005-PRODUCT"
+      ],
+      "severity": "medium",
+      "evidenceSources": [
+        "SRC-QPCR-MELT"
+      ]
+    },
+    {
+      "id": "CAUSE-IHC-001-A",
+      "problemId": "PRB-IHC-001",
+      "cause": "需区分真实阴性、抗体/检测失败与preanalytic问题",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-IHC-001-POS",
+        "CHK-IHC-001-AB",
+        "CHK-IHC-001-PRE"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-MACNEIL-2020",
+        "SRC-CST-IHC"
+      ]
+    },
+    {
+      "id": "CAUSE-IHC-002-A",
+      "problemId": "PRB-IHC-002",
+      "cause": "需定位deparaffinization、endogenous chemistry、secondary或blocking/wash问题",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-IHC-002-NOPRI",
+        "CHK-IHC-002-CHEM",
+        "CHK-IHC-002-PREP"
+      ],
+      "severity": "high",
+      "evidenceSources": [
+        "SRC-CST-IHC"
+      ]
+    },
+    {
+      "id": "CAUSE-IHC-003-A",
+      "problemId": "PRB-IHC-003",
+      "cause": "preanalytic fixation/processing差异可能与group混杂",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-IHC-003-META",
+        "CHK-IHC-003-ORTHO"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-ENGEL-2011"
+      ]
+    },
+    {
+      "id": "CAUSE-IHC-004-A",
+      "problemId": "PRB-IHC-004",
+      "cause": "缺乏application-specific antibody validation",
+      "priorPlausibility": "contextual",
+      "supportingFindings": [],
+      "contradictingFindings": [],
+      "discriminatingTests": [
+        "CHK-IHC-004-VALID",
+        "CHK-IHC-004-LOC"
+      ],
+      "severity": "critical",
+      "evidenceSources": [
+        "SRC-MACNEIL-2020",
+        "SRC-UHLEN-2016"
+      ]
+    }
+  ],
+  "diagnosticChecks": [
+    {
+      "id": "CHK-EXP-001-UNIT",
+      "problemId": "PRB-EXP-001",
+      "question": "这些重复是否来自同一个biological source/subject/sample？",
+      "informationRevealed": "若是，则它们不是新增独立生物来源。",
+      "reasoningEffect": "提高伪重复可能性",
+      "evidenceReferences": [
+        "CLM-EXP-001"
+      ]
+    },
+    {
+      "id": "CHK-EXP-001-ASSIGN",
+      "problemId": "PRB-EXP-001",
+      "question": "处理/随机化是在patient/sample级还是well/image级？",
+      "informationRevealed": "experimental unit取决于assignment与独立性结构。",
+      "reasoningEffect": "定位真正experimental unit",
+      "evidenceReferences": [
+        "CLM-EXP-003"
+      ]
+    },
+    {
+      "id": "CHK-EXP-002-BATCH",
+      "problemId": "PRB-EXP-002",
+      "question": "group、batch、order、plate position能否彼此分离？",
+      "informationRevealed": "完全重合提示结构性混杂。",
+      "reasoningEffect": "提高设计缺陷严重度",
+      "evidenceReferences": [
+        "CLM-EXP-002"
+      ]
+    },
+    {
+      "id": "CHK-EXP-003-POS",
+      "problemId": "PRB-EXP-003",
+      "question": "合适positive control是否产生预期信号？",
+      "informationRevealed": "失败提示assay failure；正常则支持未知样本可能真阴性。",
+      "reasoningEffect": "高信息价值",
+      "evidenceReferences": [
+        "CLM-EXP-004"
+      ]
+    },
+    {
+      "id": "CHK-WB-001-TRANSFER",
+      "problemId": "PRB-WB-001",
+      "question": "膜上的total-protein/transfer QC是否正常？",
+      "informationRevealed": "异常优先排transfer；正常降低transfer failure。",
+      "reasoningEffect": "区分transfer vs downstream detection",
+      "evidenceReferences": [
+        "CLM-WB-001"
+      ]
+    },
+    {
+      "id": "CHK-WB-001-POS",
+      "problemId": "PRB-WB-001",
+      "question": "已知阳性样本是否有目标条带？",
+      "informationRevealed": "阳性也阴性时优先怀疑抗体/检测体系。",
+      "reasoningEffect": "高信息价值",
+      "evidenceReferences": [
+        "CLM-WB-001",
+        "CLM-EXP-004"
+      ]
+    },
+    {
+      "id": "CHK-WB-001-AB",
+      "problemId": "PRB-WB-001",
+      "question": "抗体是否经过WB应用验证并正确储存？",
+      "informationRevealed": "缺乏application-specific validation或失活增加抗体问题可能性。",
+      "reasoningEffect": "重新分配候选原因",
+      "evidenceReferences": [
+        "CLM-WB-006"
+      ]
+    },
+    {
+      "id": "CHK-WB-001-DETECT",
+      "problemId": "PRB-WB-001",
+      "question": "曝光/成像设置和目标丰度是否合理？",
+      "informationRevealed": "可区分低丰度/短曝光与真实阴性。",
+      "reasoningEffect": "减少单一原因判断",
+      "evidenceReferences": [
+        "CLM-WB-001"
+      ]
+    },
+    {
+      "id": "CHK-WB-002-MW",
+      "problemId": "PRB-WB-002",
+      "question": "目标已知分子量、isoform或PTM信息是什么？",
+      "informationRevealed": "建立生物学先验，但不能单独确认条带身份。",
+      "reasoningEffect": "形成候选解释",
+      "evidenceReferences": [
+        "CLM-WB-002"
+      ]
+    },
+    {
+      "id": "CHK-WB-002-KO",
+      "problemId": "PRB-WB-002",
+      "question": "KO/KD后哪些条带消失？",
+      "informationRevealed": "随目标遗传去除而消失的条带更支持target specificity。",
+      "reasoningEffect": "强判别信息",
+      "evidenceReferences": [
+        "CLM-WB-006"
+      ]
+    },
+    {
+      "id": "CHK-WB-002-TITRATE",
+      "problemId": "PRB-WB-002",
+      "question": "降低上样量/抗体浓度/曝光后额外条带如何变化？",
+      "informationRevealed": "若明显减少，技术性过量/曝光解释更可能。",
+      "reasoningEffect": "区分technical overload",
+      "evidenceReferences": [
+        "CLM-WB-002"
+      ]
+    },
+    {
+      "id": "CHK-WB-002-ORTHO",
+      "problemId": "PRB-WB-002",
+      "question": "独立抗体或正交方法是否复现？",
+      "informationRevealed": "提高或降低对特异性的信心。",
+      "reasoningEffect": "application-specific validation",
+      "evidenceReferences": [
+        "CLM-WB-006"
+      ]
+    },
+    {
+      "id": "CHK-WB-003-EXPOSURE",
+      "problemId": "PRB-WB-003",
+      "question": "缩短曝光后背景是否显著下降？",
+      "informationRevealed": "若下降，过曝/检测过强更可能。",
+      "reasoningEffect": "定位检测层",
+      "evidenceReferences": [
+        "CLM-WB-003"
+      ]
+    },
+    {
+      "id": "CHK-WB-003-TITRATE",
+      "problemId": "PRB-WB-003",
+      "question": "抗体titration是否降低背景且保留目标？",
+      "informationRevealed": "提示抗体浓度问题。",
+      "reasoningEffect": "定位抗体层",
+      "evidenceReferences": [
+        "CLM-WB-002"
+      ]
+    },
+    {
+      "id": "CHK-WB-003-BLOCK",
+      "problemId": "PRB-WB-003",
+      "question": "blocking/washing改变后是否改善？",
+      "informationRevealed": "提示非特异结合控制问题。",
+      "reasoningEffect": "定位protocol层",
+      "evidenceReferences": [
+        "CLM-WB-002"
+      ]
+    },
+    {
+      "id": "CHK-WB-004-STABILITY",
+      "problemId": "PRB-WB-004",
+      "question": "loading control是否与group/组织类型系统相关？",
+      "informationRevealed": "若相关，稳定分母假设受损。",
+      "reasoningEffect": "提高normalization风险",
+      "evidenceReferences": [
+        "CLM-WB-004"
+      ]
+    },
+    {
+      "id": "CHK-WB-004-ALT",
+      "problemId": "PRB-WB-004",
+      "question": "total-protein或替代参照在当前条件是否更稳定？",
+      "informationRevealed": "帮助选择更可辩护normalization。",
+      "reasoningEffect": "提供替代但不指定普遍最优",
+      "evidenceReferences": [
+        "CLM-WB-004"
+      ]
+    },
+    {
+      "id": "CHK-WB-005-ID",
+      "problemId": "PRB-WB-005",
+      "question": "三个WB值是否来自同一subject/sample ID？",
+      "informationRevealed": "若是，不能无条件作为三个独立生物学n。",
+      "reasoningEffect": "识别技术重复",
+      "evidenceReferences": [
+        "CLM-WB-005"
+      ]
+    },
+    {
+      "id": "CHK-WB-006-LINEAR",
+      "problemId": "PRB-WB-006",
+      "question": "serial dilution/exposure series中信号是否保持近似线性？",
+      "informationRevealed": "若不随输入量按比例变化，提示超出可定量范围。",
+      "reasoningEffect": "判断quantification validity",
+      "evidenceReferences": [
+        "CLM-WB-003"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-001-REPEAT",
+      "problemId": "PRB-QPCR-001",
+      "question": "多个独立NTC是否重复扩增？",
+      "informationRevealed": "重复出现提高系统性污染/非特异反应可能性。",
+      "reasoningEffect": "确认不是单孔偶发",
+      "evidenceReferences": [
+        "CLM-QPCR-005"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-001-MELT",
+      "problemId": "PRB-QPCR-001",
+      "question": "NTC的melt peak是否与样本主峰一致？",
+      "informationRevealed": "不同峰更支持primer-dimer/非特异；相似峰增加污染可能性。",
+      "reasoningEffect": "区分候选原因",
+      "evidenceReferences": [
+        "CLM-QPCR-006"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-001-REAGENT",
+      "problemId": "PRB-QPCR-001",
+      "question": "更换可疑试剂/重配体系后NTC信号是否消失？",
+      "informationRevealed": "可帮助定位污染来源。",
+      "reasoningEffect": "排查reagent contamination",
+      "evidenceReferences": [
+        "CLM-QPCR-005"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-002-STABILITY",
+      "problemId": "PRB-QPCR-002",
+      "question": "reference gene在当前样本/处理条件是否稳定？",
+      "informationRevealed": "随group变化则不能作为稳定归一化基准。",
+      "reasoningEffect": "决定normalization validity",
+      "evidenceReferences": [
+        "CLM-QPCR-002"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-003-PIPELINE",
+      "problemId": "PRB-QPCR-003",
+      "question": "Cq是否已转换为效率校正并按样本归一化的target quantity？",
+      "informationRevealed": "若没有，raw Cq仍是intermediate data。",
+      "reasoningEffect": "定位分析层错误",
+      "evidenceReferences": [
+        "CLM-QPCR-001"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-004-EFF",
+      "problemId": "PRB-QPCR-004",
+      "question": "target与reference amplification efficiency是否评估？",
+      "informationRevealed": "未评估则固定效率假设不可验证。",
+      "reasoningEffect": "增加ΔΔCq风险",
+      "evidenceReferences": [
+        "CLM-QPCR-003"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-004-REF",
+      "problemId": "PRB-QPCR-004",
+      "question": "reference gene是否验证稳定，replicates如何处理？",
+      "informationRevealed": "决定normalization与replicate handling是否可辩护。",
+      "reasoningEffect": "评估分析可信度",
+      "evidenceReferences": [
+        "CLM-QPCR-002",
+        "CLM-QPCR-003"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-005-NTC",
+      "problemId": "PRB-QPCR-005",
+      "question": "NTC是否出现相似低Tm峰？",
+      "informationRevealed": "相似峰支持primer-dimer/非模板产物。",
+      "reasoningEffect": "区分primer-dimer",
+      "evidenceReferences": [
+        "CLM-QPCR-006"
+      ]
+    },
+    {
+      "id": "CHK-QPCR-005-PRODUCT",
+      "problemId": "PRB-QPCR-005",
+      "question": "产物大小/序列是否符合预期？",
+      "informationRevealed": "进一步确认或否定目标产物身份。",
+      "reasoningEffect": "提升特异性证据",
+      "evidenceReferences": [
+        "CLM-QPCR-006"
+      ]
+    },
+    {
+      "id": "CHK-IHC-001-POS",
+      "problemId": "PRB-IHC-001",
+      "question": "已知高表达positive control是否正常染色？",
+      "informationRevealed": "正常支持样本可能真阴性；失败提示assay/antibody问题。",
+      "reasoningEffect": "高信息价值",
+      "evidenceReferences": [
+        "CLM-IHC-004"
+      ]
+    },
+    {
+      "id": "CHK-IHC-001-AB",
+      "problemId": "PRB-IHC-001",
+      "question": "抗体是否有application-specific validation证据？",
+      "informationRevealed": "没有则提高抗体/特异性问题可能性。",
+      "reasoningEffect": "评估核心reagent可信度",
+      "evidenceReferences": [
+        "CLM-IHC-006"
+      ]
+    },
+    {
+      "id": "CHK-IHC-001-PRE",
+      "problemId": "PRB-IHC-001",
+      "question": "fixation/retrieval/preanalytic条件是否与验证条件一致？",
+      "informationRevealed": "显著差异可解释信号下降。",
+      "reasoningEffect": "定位preanalytic/analytic层",
+      "evidenceReferences": [
+        "CLM-IHC-003"
+      ]
+    },
+    {
+      "id": "CHK-IHC-002-NOPRI",
+      "problemId": "PRB-IHC-002",
+      "question": "no-primary/secondary-only control是否仍有背景？",
+      "informationRevealed": "若有，提示二抗/检测系统或组织内源性背景。",
+      "reasoningEffect": "定位background来源",
+      "evidenceReferences": [
+        "CLM-IHC-005"
+      ]
+    },
+    {
+      "id": "CHK-IHC-002-CHEM",
+      "problemId": "PRB-IHC-002",
+      "question": "检测是否涉及HRP/biotin，且相应quenching/block是否适用？",
+      "informationRevealed": "判断endogenous peroxidase/biotin解释。",
+      "reasoningEffect": "chemistry-specific定位",
+      "evidenceReferences": [
+        "CLM-IHC-005"
+      ]
+    },
+    {
+      "id": "CHK-IHC-002-PREP",
+      "problemId": "PRB-IHC-002",
+      "question": "充分脱蜡、优化blocking/wash后背景是否改善？",
+      "informationRevealed": "帮助定位preparation与非特异binding。",
+      "reasoningEffect": "protocol-level定位",
+      "evidenceReferences": [
+        "CLM-IHC-005"
+      ]
+    },
+    {
+      "id": "CHK-IHC-003-META",
+      "problemId": "PRB-IHC-003",
+      "question": "不同组的delay-to-fixation、fixative、duration、processing是否匹配？",
+      "informationRevealed": "不匹配时preanalytic confounding高度可疑。",
+      "reasoningEffect": "区分biology vs processing",
+      "evidenceReferences": [
+        "CLM-IHC-003"
+      ]
+    },
+    {
+      "id": "CHK-IHC-003-ORTHO",
+      "problemId": "PRB-IHC-003",
+      "question": "正交方法是否支持同样组间差异？",
+      "informationRevealed": "一致的独立证据提高真实biology解释可信度。",
+      "reasoningEffect": "增加独立证据",
+      "evidenceReferences": [
+        "CLM-IHC-006"
+      ]
+    },
+    {
+      "id": "CHK-IHC-004-VALID",
+      "problemId": "PRB-IHC-004",
+      "question": "是否有遗传、正交、独立抗体或tagged-protein验证？",
+      "informationRevealed": "决定antibody identity证据强度。",
+      "reasoningEffect": "核心specificity判断",
+      "evidenceReferences": [
+        "CLM-WB-006"
+      ]
+    },
+    {
+      "id": "CHK-IHC-004-LOC",
+      "problemId": "PRB-IHC-004",
+      "question": "预期subcellular/tissue localization与observed staining是否一致？",
+      "informationRevealed": "可作supportive evidence，但不能单独证明特异性。",
+      "reasoningEffect": "增加/降低plausibility",
+      "evidenceReferences": [
+        "CLM-IHC-006"
+      ]
+    }
+  ],
+  "diagnosticPaths": [
+    {
+      "id": "PATH-EXP-001",
+      "problemId": "PRB-EXP-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-EXP-001-UNIT"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-EXP-001-ASSIGN"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-EXP-002",
+      "problemId": "PRB-EXP-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-EXP-002-BATCH"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-EXP-003",
+      "problemId": "PRB-EXP-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-EXP-003-POS"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-WB-001",
+      "problemId": "PRB-WB-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-WB-001-TRANSFER"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-WB-001-POS"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-WB-001-AB"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-WB-001-DETECT"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-WB-002",
+      "problemId": "PRB-WB-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-WB-002-MW"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-WB-002-KO"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-WB-002-TITRATE"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-WB-002-ORTHO"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-WB-003",
+      "problemId": "PRB-WB-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-WB-003-EXPOSURE"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-WB-003-TITRATE"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-WB-003-BLOCK"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-WB-004",
+      "problemId": "PRB-WB-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-WB-004-STABILITY"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-WB-004-ALT"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-WB-005",
+      "problemId": "PRB-WB-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-WB-005-ID"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-WB-006",
+      "problemId": "PRB-WB-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-WB-006-LINEAR"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-QPCR-001",
+      "problemId": "PRB-QPCR-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-QPCR-001-REPEAT"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-QPCR-001-MELT"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-QPCR-001-REAGENT"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-QPCR-002",
+      "problemId": "PRB-QPCR-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-QPCR-002-STABILITY"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-QPCR-003",
+      "problemId": "PRB-QPCR-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-QPCR-003-PIPELINE"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-QPCR-004",
+      "problemId": "PRB-QPCR-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-QPCR-004-EFF"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-QPCR-004-REF"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-QPCR-005",
+      "problemId": "PRB-QPCR-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-QPCR-005-NTC"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-QPCR-005-PRODUCT"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-IHC-001",
+      "problemId": "PRB-IHC-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-IHC-001-POS"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-IHC-001-AB"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-IHC-001-PRE"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-IHC-002",
+      "problemId": "PRB-IHC-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-IHC-002-NOPRI"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-IHC-002-CHEM"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-IHC-002-PREP"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-IHC-003",
+      "problemId": "PRB-IHC-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-IHC-003-META"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-IHC-003-ORTHO"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    },
+    {
+      "id": "PATH-IHC-004",
+      "problemId": "PRB-IHC-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-IHC-004-VALID"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-IHC-004-LOC"
+        }
+      ],
+      "terminalLogic": "Use the revealed checks to update plausibility; do not force a single cause while multiple explanations remain compatible."
+    }
+  ],
+  "diagnosticEvidence": [
+    {
+      "id": "EVD-WB-MULTI-01",
+      "problemId": "PRB-WB-002",
+      "stage": 1,
+      "label": "Target information",
+      "reveal": "Target biology suggests a principal band near 55 kDa, but isoform/PTM information is incomplete.",
+      "reasoningPrompt": "Is molecular weight alone enough to identify the specific band?",
+      "expectedUpdate": "No; it raises plausibility but does not establish specificity.",
+      "evidenceReferences": [
+        "CLM-WB-006"
+      ]
+    },
+    {
+      "id": "EVD-WB-MULTI-02",
+      "problemId": "PRB-WB-002",
+      "stage": 2,
+      "label": "Genetic control",
+      "reveal": "In a KO/KD sample the 55 kDa band disappears while the 70 kDa band remains.",
+      "reasoningPrompt": "How should the ranking of the two bands change?",
+      "expectedUpdate": "Specificity confidence rises for 55 kDa and falls for 70 kDa.",
+      "evidenceReferences": [
+        "CLM-WB-006"
+      ]
+    },
+    {
+      "id": "EVD-WB-NOSIG-01",
+      "problemId": "PRB-WB-001",
+      "stage": 1,
+      "label": "Transfer QC",
+      "reveal": "Total-protein staining shows adequate and even transfer.",
+      "reasoningPrompt": "Which hypothesis should now move down?",
+      "expectedUpdate": "Transfer failure becomes less likely.",
+      "evidenceReferences": [
+        "CLM-WB-001"
+      ]
+    },
+    {
+      "id": "EVD-WB-NOSIG-02",
+      "problemId": "PRB-WB-001",
+      "stage": 2,
+      "label": "Positive control",
+      "reveal": "A known high-expression positive control also has no target band.",
+      "reasoningPrompt": "What layer should be prioritized next?",
+      "expectedUpdate": "Antibody/detection conditions should rise above a true biological negative.",
+      "evidenceReferences": [
+        "CLM-WB-001",
+        "CLM-EXP-004"
+      ]
+    },
+    {
+      "id": "EVD-QPCR-NTC-01",
+      "problemId": "PRB-QPCR-001",
+      "stage": 1,
+      "label": "Repeat NTC",
+      "reveal": "Three NTC wells all show late amplification.",
+      "reasoningPrompt": "Does this look like a one-well accident?",
+      "expectedUpdate": "Systematic contamination or nonspecific amplification becomes more plausible.",
+      "evidenceReferences": [
+        "CLM-QPCR-005"
+      ]
+    },
+    {
+      "id": "EVD-QPCR-NTC-02",
+      "problemId": "PRB-QPCR-001",
+      "stage": 2,
+      "label": "Melt curve",
+      "reveal": "The NTC has a low-Tm peak different from the main sample peak.",
+      "reasoningPrompt": "Which hypothesis rises?",
+      "expectedUpdate": "Primer-dimer/nonspecific product becomes more plausible, without fully excluding contamination.",
+      "evidenceReferences": [
+        "CLM-QPCR-006"
+      ]
+    },
+    {
+      "id": "EVD-IHC-NEG-01",
+      "problemId": "PRB-IHC-001",
+      "stage": 1,
+      "label": "Positive control",
+      "reveal": "A known positive control stained in the same run is also negative.",
+      "reasoningPrompt": "Can the study specimen still be interpreted primarily as a true biological negative?",
+      "expectedUpdate": "No; assay/antibody/preanalytic failure should be prioritized.",
+      "evidenceReferences": [
+        "CLM-IHC-004"
+      ]
+    },
+    {
+      "id": "EVD-IHC-BG-01",
+      "problemId": "PRB-IHC-002",
+      "stage": 1,
+      "label": "No-primary control",
+      "reveal": "Substantial background remains when the primary antibody is omitted.",
+      "reasoningPrompt": "Which layer becomes more plausible?",
+      "expectedUpdate": "Secondary/detection chemistry or endogenous background rises.",
+      "evidenceReferences": [
+        "CLM-IHC-005"
+      ]
+    }
+  ],
+  "transferCases": [
+    {
+      "id": "TRF-001",
+      "concept": "technical_vs_biological_replication",
+      "scenario": "5名患者，每位患者的organoid每种药做3个wells。",
+      "prompt": "若目标是患者层面的药物效应，3个wells能否让每位患者n=3？",
+      "expectedPrinciples": [
+        "patient/source hierarchy",
+        "within-source repeats do not automatically increase biological n"
+      ],
+      "evidenceClaims": [
+        "CLM-EXP-001",
+        "CLM-EXP-003"
+      ]
+    },
+    {
+      "id": "TRF-002",
+      "concept": "technical_vs_biological_replication",
+      "scenario": "6名患者，每个空间切片有3000个spots。",
+      "prompt": "跨患者比较时，spots能否直接当作n=18000？",
+      "expectedPrinciples": [
+        "nested observations",
+        "independent biological unit"
+      ],
+      "evidenceClaims": [
+        "CLM-EXP-001",
+        "CLM-EXP-003"
+      ]
+    },
+    {
+      "id": "TRF-003",
+      "concept": "technical_vs_biological_replication",
+      "scenario": "4个独立细胞培养批次，每批拍20张图。",
+      "prompt": "20张图与4个独立培养批次分别代表什么层级信息？",
+      "expectedPrinciples": [
+        "measurement units vs biological replication"
+      ],
+      "evidenceClaims": [
+        "CLM-EXP-001"
+      ]
+    },
+    {
+      "id": "TRF-004",
+      "concept": "randomization_and_confounding",
+      "scenario": "所有control周一处理，所有treated周二处理。",
+      "prompt": "若周二试剂状态变化，能否从数据区分day effect与treatment effect？",
+      "expectedPrinciples": [
+        "design confounding",
+        "randomization/balancing"
+      ],
+      "evidenceClaims": [
+        "CLM-EXP-002"
+      ]
+    },
+    {
+      "id": "TRF-005",
+      "concept": "positive_control_logic",
+      "scenario": "一个稀有蛋白IHC所有病例阴性，且没有阳性组织对照。",
+      "prompt": "最强可接受结论是什么？",
+      "expectedPrinciples": [
+        "absence of signal is not proof of biological absence without assay-performance evidence"
+      ],
+      "evidenceClaims": [
+        "CLM-EXP-004",
+        "CLM-IHC-004"
+      ]
+    },
+    {
+      "id": "TRF-WB-001",
+      "concept": "layered_troubleshooting",
+      "scenario": "WB无条带，但transfer QC正常，positive control也无目标条带。",
+      "prompt": "下一步应优先排查哪个层级？",
+      "expectedPrinciples": [
+        "antibody/detection before biology"
+      ],
+      "evidenceClaims": [
+        "CLM-WB-001"
+      ]
+    },
+    {
+      "id": "TRF-WB-002",
+      "concept": "antibody_specificity",
+      "scenario": "IHC和WB均用同一商业抗体有信号，但KO样本WB目标条带不消失。",
+      "prompt": "这如何改变你对抗体特异性的判断？",
+      "expectedPrinciples": [
+        "application-specific validation",
+        "genetic evidence challenges specificity"
+      ],
+      "evidenceClaims": [
+        "CLM-WB-006",
+        "CLM-IHC-006"
+      ]
+    },
+    {
+      "id": "TRF-WB-004",
+      "concept": "normalization",
+      "scenario": "处理后GAPDH下降30%，target raw signal不变。",
+      "prompt": "直接target/GAPDH可能制造什么表面结果？",
+      "expectedPrinciples": [
+        "unstable denominator can create apparent fold changes"
+      ],
+      "evidenceClaims": [
+        "CLM-WB-004"
+      ]
+    },
+    {
+      "id": "TRF-QPCR-001",
+      "concept": "negative_control",
+      "scenario": "样本Cq=36，NTC Cq=37，且NTC与样本melt peak相近。",
+      "prompt": "能否直接判可靠低表达阳性？还需要什么信息？",
+      "expectedPrinciples": [
+        "NTC artefact/contamination risk",
+        "specificity and control interpretation"
+      ],
+      "evidenceClaims": [
+        "CLM-QPCR-005",
+        "CLM-QPCR-006"
+      ]
+    },
+    {
+      "id": "TRF-QPCR-002",
+      "concept": "reference_gene_validation",
+      "scenario": "炎症刺激后ACTB在raw data中系统性变化。",
+      "prompt": "继续用ACTB作为唯一reference gene有什么风险？",
+      "expectedPrinciples": [
+        "reference stability must be demonstrated"
+      ],
+      "evidenceClaims": [
+        "CLM-QPCR-002"
+      ]
+    },
+    {
+      "id": "TRF-QPCR-003",
+      "concept": "data_scale",
+      "scenario": "组A平均Cq 25，组B平均Cq 26，研究者直接说表达下降4%。",
+      "prompt": "哪里错了？",
+      "expectedPrinciples": [
+        "Cq is logarithmic/intermediate and requires quantification/normalization"
+      ],
+      "evidenceClaims": [
+        "CLM-QPCR-001"
+      ]
+    },
+    {
+      "id": "TRF-IHC-001",
+      "concept": "assay_failure_vs_true_negative",
+      "scenario": "目标样本无染色，但positive control同批次强阳性。",
+      "prompt": "与positive control也阴性相比，这条信息如何改变判断？",
+      "expectedPrinciples": [
+        "normal positive control raises plausibility of true low/negative sample but is not the only context"
+      ],
+      "evidenceClaims": [
+        "CLM-IHC-004"
+      ]
+    },
+    {
+      "id": "TRF-IHC-003",
+      "concept": "preanalytic_confounding",
+      "scenario": "高风险组来自旧队列并平均固定48小时，低风险组来自新队列并平均固定18小时。",
+      "prompt": "若IHC强度不同，最严重的替代解释是什么？",
+      "expectedPrinciples": [
+        "preanalytic fixation confounding"
+      ],
+      "evidenceClaims": [
+        "CLM-IHC-003"
+      ]
+    }
+  ],
+  "verificationMetadata": {
+    "reviewStatus": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "externalPreReview": {
+      "status": "complete",
+      "reviewer": "OpenAI GPT-5.6 Sol",
+      "reviewedAt": "2026-08-24T21:16:00+08:00",
+      "scope": [
+        "source identity",
+        "metadata",
+        "claim-support pre-review",
+        "scope qualification",
+        "tier proposal"
+      ]
+    }
+  }
+}

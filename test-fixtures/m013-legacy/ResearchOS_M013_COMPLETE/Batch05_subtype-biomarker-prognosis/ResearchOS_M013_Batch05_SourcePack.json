@@ -1,0 +1,2226 @@
+{
+  "packSchemaVersion": 1,
+  "packId": "m013-batch05-subtype-biomarker-prognosis-20260824",
+  "title": "Molecular Subtypes, Biomarkers & Prognosis",
+  "createdAt": "2026-08-24T22:05:00+08:00",
+  "createdBy": "OpenAI GPT-5.6 Sol external scientific source review",
+  "provenance": "Source-first external scientific pre-review. Source metadata and claim scope were manually pre-reviewed against authoritative guidelines, original methods, peer-reviewed benchmarks/reviews, or official technical resources. Final ResearchOS verification remains reserved for Codex/formal source-pack gate.",
+  "sources": [
+    {
+      "id": "SRC-CONSCLUST-2003",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Consensus Clustering: A Resampling-Based Method for Class Discovery and Visualization of Gene Expression Microarray Data",
+      "authors": [
+        "Monti S",
+        "Tamayo P",
+        "Mesirov J",
+        "Golub T"
+      ],
+      "year": 2003,
+      "authorityTier": "A",
+      "domain": [
+        "clustering",
+        "molecular_subtype"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Machine Learning",
+      "doi": "10.1023/A:1023949509487",
+      "url": "https://link.springer.com/article/10.1023/A:1023949509487",
+      "contentHash": "6692181e960be37af1f39ddca5bb7082ac7cb1b57b313ef2409351a7eeafd286"
+    },
+    {
+      "id": "SRC-CCPLUS-2010",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "ConsensusClusterPlus: a class discovery tool with confidence assessments and item tracking",
+      "authors": [
+        "Wilkerson MD",
+        "Hayes DN"
+      ],
+      "year": 2010,
+      "authorityTier": "A",
+      "domain": [
+        "clustering",
+        "molecular_subtype"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Bioinformatics",
+      "doi": "10.1093/bioinformatics/btq170",
+      "pmid": "20427518",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20427518/",
+      "contentHash": "3e4ee6d4765305db375effb678219b482e7f67df2589340b94bceb6dda42d005"
+    },
+    {
+      "id": "SRC-NMF-2004",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Metagenes and molecular pattern discovery using matrix factorization",
+      "authors": [
+        "Brunet JP",
+        "Tamayo P",
+        "Golub TR",
+        "Mesirov JP"
+      ],
+      "year": 2004,
+      "authorityTier": "A",
+      "domain": [
+        "clustering",
+        "nmf",
+        "molecular_subtype"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PNAS",
+      "doi": "10.1073/pnas.0308531101",
+      "pmid": "15016911",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15016911/",
+      "contentHash": "366f220c43bd9fca2e1b642afe6cf3205cd87231f59d75aa2f67fbbad2e8329e"
+    },
+    {
+      "id": "SRC-REMARK-2005",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "Reporting recommendations for tumor marker prognostic studies (REMARK)",
+      "authors": [],
+      "year": 2005,
+      "authorityTier": "S",
+      "domain": [
+        "biomarker",
+        "prognosis",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Journal of the National Cancer Institute",
+      "doi": "10.1093/jnci/dji237",
+      "pmid": "16106022",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16106022/",
+      "contentHash": "18386ef98b56e74d8484e1b6d437128b3591d01a17156dd29fc8426b4350b2e9"
+    },
+    {
+      "id": "SRC-REMARK-EXPLAIN-2012",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "title": "Reporting Recommendations for Tumor Marker Prognostic Studies (REMARK): Explanation and Elaboration",
+      "authors": [],
+      "year": 2012,
+      "authorityTier": "S",
+      "domain": [
+        "biomarker",
+        "prognosis",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PLOS Medicine",
+      "doi": "10.1371/journal.pmed.1001216",
+      "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001216",
+      "contentHash": "921131282605f718ed78fa9500bea108f4325ccca44486b4e03a7b6afcf14a42"
+    },
+    {
+      "id": "SRC-PROGRESS1-2013",
+      "schemaVersion": 1,
+      "sourceType": "consensus",
+      "title": "PROGRESS 1: A framework for researching clinical outcomes",
+      "authors": [],
+      "year": 2013,
+      "authorityTier": "A",
+      "domain": [
+        "prognosis",
+        "research_framework"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "BMJ",
+      "doi": "10.1136/bmj.e5595",
+      "pmid": "23386360",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23386360/",
+      "contentHash": "8654f524f5dcd16c765cfd5586bee7b2499708f7cbb0a3c1d33d70fd3382fbcc"
+    },
+    {
+      "id": "SRC-PROGRESS2-2013",
+      "schemaVersion": 1,
+      "sourceType": "consensus",
+      "title": "PROGRESS 2: Prognostic factor research",
+      "authors": [],
+      "year": 2013,
+      "authorityTier": "A",
+      "domain": [
+        "prognostic_factor",
+        "prognosis"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PLOS Medicine",
+      "doi": "10.1371/journal.pmed.1001380",
+      "pmid": "23393429",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23393429/",
+      "contentHash": "68544543bd899afc1518e362a0b0b4513d4fd44aa57feddcf3c79d47bce7408b"
+    },
+    {
+      "id": "SRC-PROGRESS3-2013",
+      "schemaVersion": 1,
+      "sourceType": "consensus",
+      "title": "PROGRESS 3: Prognostic model research",
+      "authors": [],
+      "year": 2013,
+      "authorityTier": "A",
+      "domain": [
+        "prediction_model",
+        "prognosis"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PLOS Medicine",
+      "doi": "10.1371/journal.pmed.1001381",
+      "pmid": "23393430",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23393430/",
+      "contentHash": "bbdccdd403153fa879ec1192626121c6ce6363207a431b5593e7944e0e67561f"
+    },
+    {
+      "id": "SRC-PROGRESS4-2013",
+      "schemaVersion": 1,
+      "sourceType": "consensus",
+      "title": "PROGRESS 4: Stratified medicine research",
+      "authors": [],
+      "year": 2013,
+      "authorityTier": "A",
+      "domain": [
+        "treatment_effect_modification",
+        "prognosis"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "BMJ",
+      "doi": "10.1136/bmj.e5793",
+      "pmid": "23386361",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23386361/",
+      "contentHash": "0d3e7fcafe8e2c1f6bba5e720c62aa7435f1ffbe051752e6db5ddbc5b71bbfe8"
+    }
+  ],
+  "evidenceClaims": [
+    {
+      "id": "CLM-SUB-001",
+      "claim": "Consensus clustering uses resampling-based stability information to help assess unsupervised class structure; a visually separated heatmap alone is not evidence of stable subtypes.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CONSCLUST-2003",
+      "supportType": "direct",
+      "supportingLocation": "Method concept",
+      "domain": [
+        "clustering",
+        "molecular_subtype"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SUB-002",
+      "claim": "ConsensusClusterPlus provides item- and cluster-level stability summaries, but stability evidence does not by itself establish biological meaning, clinical utility or external reproducibility.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CCPLUS-2010",
+      "supportType": "qualified",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "clustering",
+        "molecular_subtype"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-SUB-003",
+      "claim": "NMF can discover latent expression patterns/classes, but factorization/class solutions depend on data representation, rank/model selection and initialization/feature choices.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-NMF-2004",
+      "supportType": "qualified",
+      "supportingLocation": "Abstract and model selection",
+      "domain": [
+        "clustering",
+        "nmf"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-BIO-001",
+      "claim": "A prognostic factor is associated with future outcome; it is conceptually distinct from a multivariable prediction model and from a treatment-effect modifier.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PROGRESS2-2013",
+      "supportType": "qualified",
+      "supportingLocation": "Framework",
+      "domain": [
+        "prognostic_factor"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-BIO-002",
+      "claim": "A prediction model combines multiple predictors to estimate an individual outcome risk; model evaluation requires performance beyond isolated predictor P-values.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PROGRESS3-2013",
+      "supportType": "direct",
+      "supportingLocation": "Framework",
+      "domain": [
+        "prediction_model"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-BIO-003",
+      "claim": "A marker can be prognostic without being predictive of differential treatment benefit; treatment-effect modification requires interaction/stratified-medicine evidence.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PROGRESS4-2013",
+      "supportType": "direct",
+      "supportingLocation": "Framework",
+      "domain": [
+        "biomarker",
+        "treatment_effect_modification"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-BIO-004",
+      "claim": "REMARK emphasizes transparent reporting of patient/sample selection, assay methods, prespecified hypotheses, statistical methods and all relevant results in tumor-marker prognostic studies.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-REMARK-2005",
+      "supportType": "direct",
+      "supportingLocation": "REMARK checklist",
+      "domain": [
+        "biomarker",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-BIO-005",
+      "claim": "Tumor-marker studies are vulnerable to selection of cutpoints, multiple analyses and incomplete reporting; analysis choices should be prespecified where possible and exploratory choices clearly labeled.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-REMARK-EXPLAIN-2012",
+      "supportType": "qualified",
+      "supportingLocation": "Explanation and elaboration",
+      "domain": [
+        "biomarker",
+        "prognosis"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-BIO-006",
+      "claim": "Clinical outcome research spans fundamental prognosis, prognostic-factor, prediction-model and treatment-effect stratification questions; conflating these research goals leads to mismatched analyses and claims.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PROGRESS1-2013",
+      "supportType": "direct",
+      "supportingLocation": "Framework",
+      "domain": [
+        "prognosis",
+        "research_framework"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    }
+  ],
+  "problemCards": [
+    {
+      "id": "PRB-SUB-001",
+      "domain": "molecular_subtype",
+      "subdomain": "stability",
+      "title_cn": "热图分成4块很漂亮，就证明有4个真实亚型吗？",
+      "title_en": "Does a pretty four-block heatmap prove four real subtypes?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "无监督聚类热图显示4个清晰块状结构，直接命名四个生物亚型。",
+      "context": "",
+      "why_it_matters": "视觉分离可能受feature selection、scaling、distance和algorithm影响；需要稳定性和外部/正交证据。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-001-01",
+        "CHK-PRB-SUB-001-02",
+        "CHK-PRB-SUB-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-001"
+      ],
+      "common_wrong_actions": [
+        "heatmap_visual_separation_equals_truth"
+      ],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "缺乏稳定性与验证时，分型可能只是数据驱动结构。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SUB-002",
+      "domain": "molecular_subtype",
+      "subdomain": "k_selection",
+      "title_cn": "Consensus CDF 在 K=4 看起来最好，就一定选4类吗？",
+      "title_en": "Does consensus CDF automatically determine K?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "研究只凭CDF/Delta area某一图选择K。",
+      "context": "",
+      "why_it_matters": "聚类数选择通常需要综合稳定性、cluster size、可解释性、item ambiguity和验证，而非单一曲线机械决定。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-002-01",
+        "CHK-PRB-SUB-002-02",
+        "CHK-PRB-SUB-002-03",
+        "CHK-PRB-SUB-002-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "single_metric_determines_k"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SUB-003",
+      "domain": "molecular_subtype",
+      "subdomain": "feature_selection",
+      "title_cn": "先选与生存最相关的蛋白再做“无监督”分型，还算纯无监督吗？",
+      "title_en": "Is clustering survival-selected features still unsupervised discovery?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "先用outcome筛feature，再无监督cluster并比较survival。",
+      "context": "",
+      "why_it_matters": "虽然clustering算法本身无标签，但feature selection已注入outcome信息，后续survival separation存在循环/选择偏倚。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-003-01",
+        "CHK-PRB-SUB-003-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "典型supervised leakage disguised as unsupervised discovery。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "unsupervised_algorithm_erases_supervised_selection"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SUB-003",
+        "CLM-BIO-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SUB-004",
+      "domain": "molecular_subtype",
+      "subdomain": "validation",
+      "title_cn": "发现队列4个亚型，在验证队列重新聚类也得到4类，就算验证成功吗？",
+      "title_en": "Is reclustering a validation cohort sufficient subtype validation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "验证队列独立重新聚类后产生4类，但无法逐一映射发现亚型。",
+      "context": "",
+      "why_it_matters": "重新发现同样K不等于复制相同类别；外部验证需要可迁移classifier/centroid或清晰的mapping/concordance。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-004-01",
+        "CHK-PRB-SUB-004-02",
+        "CHK-PRB-SUB-004-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "“也分出4类”不能单独证明发现亚型复现。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "same_k_equals_same_subtypes"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SUB-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SUB-005",
+      "domain": "molecular_subtype",
+      "subdomain": "clinical_association",
+      "title_cn": "某亚型预后最差，所以分型一定有临床价值吗？",
+      "title_en": "Does survival separation prove clinical utility of a subtype?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "亚型KM显著，作者称具有临床应用价值。",
+      "context": "",
+      "why_it_matters": "prognostic association与增量预测、可重复分类、可行动性/utility是不同问题。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-005-01",
+        "CHK-PRB-SUB-005-02",
+        "CHK-PRB-SUB-005-03",
+        "CHK-PRB-SUB-005-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "KM差异支持prognostic association，不自动支持clinical utility。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "km_separation_equals_clinical_utility"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SUB-006",
+      "domain": "molecular_subtype",
+      "subdomain": "biology",
+      "title_cn": "通路富集不同，就足够给亚型命名“Immune/ECM/Metabolic”吗？",
+      "title_en": "Can enrichment labels alone define subtype biology?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "每类取top pathways后直接用一个富集term命名。",
+      "context": "",
+      "why_it_matters": "亚型命名是叙事压缩，易受数据库/feature selection影响；应有多层一致证据与清晰边界。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-006-01",
+        "CHK-PRB-SUB-006-02",
+        "CHK-PRB-SUB-006-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-006"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "可用descriptive label，但不要把label当作已证实机制。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SUB-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SUB-007",
+      "domain": "molecular_subtype",
+      "subdomain": "sample_size",
+      "title_cn": "一个亚型只有8个样本但预后极差，可以当核心亚型吗？",
+      "title_en": "Can an n=8 cluster anchor the main subtype story?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "小cluster事件率高且KM最差。",
+      "context": "",
+      "why_it_matters": "小cluster更易受outlier、resampling和事件随机性影响，需要稳定性与独立验证。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-007-01",
+        "CHK-PRB-SUB-007-02",
+        "CHK-PRB-SUB-007-03",
+        "CHK-PRB-SUB-007-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "若核心结论依赖极小cluster，通常需要额外稳健性分析。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-SUB-008",
+      "domain": "molecular_subtype",
+      "subdomain": "algorithm_sensitivity",
+      "title_cn": "NMF是4类、k-means是3类，哪一个才“真实”？",
+      "title_en": "When clustering algorithms disagree, which subtype solution is real?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "不同合理算法给不同K/assignment。",
+      "context": "",
+      "why_it_matters": "无监督class discovery存在模型依赖；应比较稳定性、可复现性和科学用途，而不是寻找唯一算法真理。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-SUB-008-01",
+        "CHK-PRB-SUB-008-02",
+        "CHK-PRB-SUB-008-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-SUB-008"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "one_clustering_algorithm_recovers_ground_truth"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-SUB-001",
+        "CLM-SUB-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-001",
+      "domain": "biomarker",
+      "subdomain": "prognostic_factor",
+      "title_cn": "单因素 Cox 显著，就算独立预后因子吗？",
+      "title_en": "Does univariable Cox significance establish an independent prognostic factor?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "marker单因素HR显著，文章写independent prognostic biomarker。",
+      "context": "",
+      "why_it_matters": "独立性涉及预设混杂/标准预后因素、模型合理性和验证；单因素只能支持粗关联。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-001-01",
+        "CHK-PRB-BIO-001-02",
+        "CHK-PRB-BIO-001-03",
+        "CHK-PRB-BIO-001-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "单因素显著≠independent prognostic factor。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "univariable_significant_equals_independent"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-001",
+        "CLM-BIO-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-002",
+      "domain": "biomarker",
+      "subdomain": "prediction",
+      "title_cn": "一个marker HR=3.0，就说明对预测很有增量吗？",
+      "title_en": "Does a large HR imply large predictive gain?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "marker关联很强，但模型performance几乎不变。",
+      "context": "",
+      "why_it_matters": "association magnitude与incremental prediction performance不是同一量。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-002-01",
+        "CHK-PRB-BIO-002-02",
+        "CHK-PRB-BIO-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "large_hr_equals_prediction_gain"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-003",
+      "domain": "biomarker",
+      "subdomain": "treatment_effect",
+      "title_cn": "marker阳性患者治疗后生存更好，就说明marker预测治疗获益吗？",
+      "title_en": "Does better outcome among marker-positive treated patients prove predictive benefit?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "治疗队列中marker+患者结局更好，没有 untreated/comparator interaction。",
+      "context": "",
+      "why_it_matters": "prognostic association不能区分自然病程与treatment-effect modification。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-003-01",
+        "CHK-PRB-BIO-003-02",
+        "CHK-PRB-BIO-003-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "需要比较相对治疗效应，而不只是治疗组内prognosis。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "prognostic_equals_predictive"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-004",
+      "domain": "biomarker",
+      "subdomain": "cutpoint",
+      "title_cn": "连续marker按中位数二分是“客观”方法吗？",
+      "title_en": "Is median dichotomization objectively optimal?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "连续biomarker按median split后做KM。",
+      "context": "",
+      "why_it_matters": "median不是数据驱动最小P，但仍丢失连续信息并强加不一定有生物学意义的阈值。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-004-01",
+        "CHK-PRB-BIO-004-02",
+        "CHK-PRB-BIO-004-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "优先保留连续信息；阈值用于临床决策时需要独立依据/验证。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "median_split_is_lossless"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-005",
+      "domain": "biomarker",
+      "subdomain": "assay",
+      "title_cn": "抗体/IHC评分在不同中心不一致，会影响biomarker结论吗？",
+      "title_en": "Does assay variability threaten biomarker validity?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "不同中心使用不同抗体/平台/评分cutoff。",
+      "context": "",
+      "why_it_matters": "biomarker效应可能混入assay variability；REMARK要求透明描述specimen/assay与quality control。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-005-01",
+        "CHK-PRB-BIO-005-02",
+        "CHK-PRB-BIO-005-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "measurement heterogeneity可能是关键限制。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-006",
+      "domain": "biomarker",
+      "subdomain": "multiple_testing",
+      "title_cn": "测了200个marker，只报告最显著3个，问题是什么？",
+      "title_en": "What is the problem with reporting only the top 3 of 200 biomarkers?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "大量候选marker被筛选，未说明总检验数量。",
+      "context": "",
+      "why_it_matters": "selection/multiplicity会使top hits乐观并增加false discoveries。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-006-01",
+        "CHK-PRB-BIO-006-02",
+        "CHK-PRB-BIO-006-03",
+        "CHK-PRB-BIO-006-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-006"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "top_hits_are_unbiased"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-007",
+      "domain": "biomarker",
+      "subdomain": "validation",
+      "title_cn": "同一队列bootstrap 1000次，就算external validation吗？",
+      "title_en": "Is bootstrap external validation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "模型/marker在原队列做bootstrap，作者称external validation。",
+      "context": "",
+      "why_it_matters": "bootstrap是内部验证/optimism评估，不提供独立人群transportability证据。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-007-01",
+        "CHK-PRB-BIO-007-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "bootstrap_is_external_validation"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-002",
+        "CLM-BIO-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-008",
+      "domain": "biomarker",
+      "subdomain": "reporting",
+      "title_cn": "Methods 没写哪些分析是预设、哪些是探索性，为什么危险？",
+      "title_en": "Why distinguish prespecified and exploratory biomarker analyses?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "多个cutoff/subgroup/model被尝试后只报告最佳结果。",
+      "context": "",
+      "why_it_matters": "透明区分预设与探索性可以暴露选择自由度并帮助审稿人判断证据强度。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-008-01",
+        "CHK-PRB-BIO-008-02",
+        "CHK-PRB-BIO-008-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-008"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "隐瞒分析自由度会显著削弱可信度。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-004",
+        "CLM-BIO-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-009",
+      "domain": "prognosis",
+      "subdomain": "research_question",
+      "title_cn": "“这个因素与预后相关”和“给患者预测风险”是同一个问题吗？",
+      "title_en": "Are prognostic-factor research and risk prediction the same question?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "研究用单一factor association结果声称建立临床预测工具。",
+      "context": "",
+      "why_it_matters": "prognostic-factor研究和prediction-model研究目标、评价指标与验证要求不同。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-009-01",
+        "CHK-PRB-BIO-009-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-009"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "prognostic_factor_equals_prediction_model"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-001",
+        "CLM-BIO-002",
+        "CLM-BIO-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-BIO-010",
+      "domain": "prognosis",
+      "subdomain": "research_question",
+      "title_cn": "“高危组更容易复发”就等于治疗应该更积极吗？",
+      "title_en": "Does prognostic risk imply treatment benefit?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "高风险marker与差预后相关，直接推荐强化治疗。",
+      "context": "",
+      "why_it_matters": "风险分层不自动识别谁从某种治疗中获得更大相对获益。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-BIO-010-01",
+        "CHK-PRB-BIO-010-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-BIO-010"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "prognostic enrichment≠predictive treatment-effect modification。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "high_risk_means_more_treatment_benefit"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-BIO-003",
+        "CLM-BIO-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    }
+  ],
+  "diagnosticCauses": [],
+  "diagnosticChecks": [
+    {
+      "id": "CHK-PRB-SUB-001-01",
+      "problemId": "PRB-SUB-001",
+      "question": "不同resampling下cluster稳定吗？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-001-02",
+      "problemId": "PRB-SUB-001",
+      "question": "不同feature sets/algorithms/k是否稳健？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-001-03",
+      "problemId": "PRB-SUB-001",
+      "question": "是否外部队列可复现？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-002-01",
+      "problemId": "PRB-SUB-002",
+      "question": "cluster-consensus/item-consensus？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-002-02",
+      "problemId": "PRB-SUB-002",
+      "question": "小cluster是否稳定？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-002-03",
+      "problemId": "PRB-SUB-002",
+      "question": "K±1是否同样合理？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-002-04",
+      "problemId": "PRB-SUB-002",
+      "question": "外部生物学/临床解释？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-003-01",
+      "problemId": "PRB-SUB-003",
+      "question": "feature选择是否看过outcome？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-003",
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-003-02",
+      "problemId": "PRB-SUB-003",
+      "question": "survival是否独立验证？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-003",
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-004-01",
+      "problemId": "PRB-SUB-004",
+      "question": "是否使用固定classifier/centroid？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-004-02",
+      "problemId": "PRB-SUB-004",
+      "question": "class mapping是否预定义？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-004-03",
+      "problemId": "PRB-SUB-004",
+      "question": "biological signatures是否一致？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-005-01",
+      "problemId": "PRB-SUB-005",
+      "question": "调整标准临床因素后独立吗？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-005-02",
+      "problemId": "PRB-SUB-005",
+      "question": "是否提高prediction performance？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-005-03",
+      "problemId": "PRB-SUB-005",
+      "question": "分类可重复吗？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-005-04",
+      "problemId": "PRB-SUB-005",
+      "question": "是否改变decision？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-006-01",
+      "problemId": "PRB-SUB-006",
+      "question": "leading proteins/genes是否一致？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-006-02",
+      "problemId": "PRB-SUB-006",
+      "question": "多数据库/组学/空间证据？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-006-03",
+      "problemId": "PRB-SUB-006",
+      "question": "名字是否超出证据？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-007-01",
+      "problemId": "PRB-SUB-007",
+      "question": "cluster consensus？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-007-02",
+      "problemId": "PRB-SUB-007",
+      "question": "leave-one-out稳定？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-007-03",
+      "problemId": "PRB-SUB-007",
+      "question": "事件数？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-007-04",
+      "problemId": "PRB-SUB-007",
+      "question": "external classifier performance？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-008-01",
+      "problemId": "PRB-SUB-008",
+      "question": "不同算法agreement？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-008-02",
+      "problemId": "PRB-SUB-008",
+      "question": "consensus/stability？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-SUB-008-03",
+      "problemId": "PRB-SUB-008",
+      "question": "external validation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-SUB-001",
+        "CLM-SUB-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-001-01",
+      "problemId": "PRB-BIO-001",
+      "question": "是否multivariable adjustment？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-001-02",
+      "problemId": "PRB-BIO-001",
+      "question": "confounders/prognostic factors是否合理？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-001-03",
+      "problemId": "PRB-BIO-001",
+      "question": "PH/functional form？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-001-04",
+      "problemId": "PRB-BIO-001",
+      "question": "external validation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-002-01",
+      "problemId": "PRB-BIO-002",
+      "question": "加入marker前后calibration/discrimination？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-002-02",
+      "problemId": "PRB-BIO-002",
+      "question": "decision utility？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-002-03",
+      "problemId": "PRB-BIO-002",
+      "question": "external validation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-003-01",
+      "problemId": "PRB-BIO-003",
+      "question": "有没有control treatment？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-003-02",
+      "problemId": "PRB-BIO-003",
+      "question": "marker×treatment interaction？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-003-03",
+      "problemId": "PRB-BIO-003",
+      "question": "是否预设？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-004-01",
+      "problemId": "PRB-BIO-004",
+      "question": "continuous functional form？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-004-02",
+      "problemId": "PRB-BIO-004",
+      "question": "nonlinearity/splines？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-004-03",
+      "problemId": "PRB-BIO-004",
+      "question": "临床阈值依据？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-005-01",
+      "problemId": "PRB-BIO-005",
+      "question": "assay protocol一致？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-005-02",
+      "problemId": "PRB-BIO-005",
+      "question": "inter-reader/center reproducibility？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-005-03",
+      "problemId": "PRB-BIO-005",
+      "question": "central review？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-006-01",
+      "problemId": "PRB-BIO-006",
+      "question": "总候选数？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-006-02",
+      "problemId": "PRB-BIO-006",
+      "question": "prespecified vs exploratory？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-006-03",
+      "problemId": "PRB-BIO-006",
+      "question": "multiplicity control？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-006-04",
+      "problemId": "PRB-BIO-006",
+      "question": "validation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-007-01",
+      "problemId": "PRB-BIO-007",
+      "question": "validation data是否独立收集？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-002",
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-007-02",
+      "problemId": "PRB-BIO-007",
+      "question": "模型是否固定？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-002",
+        "CLM-BIO-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-008-01",
+      "problemId": "PRB-BIO-008",
+      "question": "protocol/SAP？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-004",
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-008-02",
+      "problemId": "PRB-BIO-008",
+      "question": "所有analysis choices？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-004",
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-008-03",
+      "problemId": "PRB-BIO-008",
+      "question": "negative results？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-004",
+        "CLM-BIO-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-009-01",
+      "problemId": "PRB-BIO-009",
+      "question": "目标是解释factor关联还是预测individual risk？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002",
+        "CLM-BIO-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-009-02",
+      "problemId": "PRB-BIO-009",
+      "question": "是否构建完整model？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-001",
+        "CLM-BIO-002",
+        "CLM-BIO-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-010-01",
+      "problemId": "PRB-BIO-010",
+      "question": "有treatment interaction/causal evidence？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-003",
+        "CLM-BIO-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-BIO-010-02",
+      "problemId": "PRB-BIO-010",
+      "question": "benefit-harm tradeoff？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-BIO-003",
+        "CLM-BIO-006"
+      ]
+    }
+  ],
+  "diagnosticPaths": [
+    {
+      "id": "PATH-PRB-SUB-001",
+      "problemId": "PRB-SUB-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SUB-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SUB-002",
+      "problemId": "PRB-SUB-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SUB-002-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-SUB-002-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SUB-003",
+      "problemId": "PRB-SUB-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-003-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SUB-004",
+      "problemId": "PRB-SUB-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SUB-004-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SUB-005",
+      "problemId": "PRB-SUB-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SUB-005-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-SUB-005-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SUB-006",
+      "problemId": "PRB-SUB-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SUB-006-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SUB-007",
+      "problemId": "PRB-SUB-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-007-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SUB-007-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-SUB-007-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-SUB-008",
+      "problemId": "PRB-SUB-008",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-SUB-008-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-SUB-008-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-SUB-008-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-001",
+      "problemId": "PRB-BIO-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-BIO-001-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-BIO-001-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-002",
+      "problemId": "PRB-BIO-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-BIO-002-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-003",
+      "problemId": "PRB-BIO-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-BIO-003-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-004",
+      "problemId": "PRB-BIO-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-BIO-004-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-005",
+      "problemId": "PRB-BIO-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-BIO-005-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-006",
+      "problemId": "PRB-BIO-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-BIO-006-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-BIO-006-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-007",
+      "problemId": "PRB-BIO-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-007-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-008",
+      "problemId": "PRB-BIO-008",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-008-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-008-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-BIO-008-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-009",
+      "problemId": "PRB-BIO-009",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-009-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-009-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-BIO-010",
+      "problemId": "PRB-BIO-010",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-BIO-010-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-BIO-010-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    }
+  ],
+  "diagnosticEvidence": [],
+  "transferCases": [],
+  "verificationMetadata": {
+    "reviewStatus": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "externalPreReview": {
+      "status": "complete",
+      "reviewer": "OpenAI GPT-5.6 Sol",
+      "reviewedAt": "2026-08-24T22:05:00+08:00",
+      "scope": [
+        "source identity",
+        "metadata",
+        "claim-support pre-review",
+        "scope/qualification review",
+        "problem transformation",
+        "far-transfer design"
+      ]
+    }
+  }
+}

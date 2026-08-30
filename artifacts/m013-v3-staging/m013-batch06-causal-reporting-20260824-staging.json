@@ -1,0 +1,6224 @@
+{
+  "stagingSchemaVersion": 1,
+  "stagingId": "m013-batch06-causal-reporting-20260824-staging",
+  "sourcePackId": "m013-batch06-causal-reporting-20260824",
+  "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+  "originalFileSha256": "6a1b6594b5db595196b364e95776be0bdf97dcb3380bb9aae44026500c6afeec",
+  "convertedAt": "2026-08-27T16:30:19.605Z",
+  "convertedBy": "ResearchOS M013-10 legacy→v3 staging converter",
+  "provenance": "Source-first external scientific pre-review. Source metadata and claim scope were manually pre-reviewed against authoritative guidelines, original methods, peer-reviewed benchmarks/reviews, or official technical resources. Final ResearchOS verification remains reserved for Codex/formal source-pack gate.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
+  "packSchemaVersion": 1,
+  "title": "Causal Inference, Observational Research & Reporting Standards",
+  "createdAt": "2026-08-24T22:05:00+08:00",
+  "createdBy": "OpenAI GPT-5.6 Sol external scientific source review",
+  "sources": [
+    {
+      "id": "SRC-DAG-1999",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "journal": "Epidemiology",
+      "title": "Causal diagrams for epidemiologic research",
+      "authors": [
+        "Greenland S",
+        "Pearl J",
+        "Robins JM"
+      ],
+      "year": 1999,
+      "pmid": "9888278",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9888278/",
+      "authorityTier": "A",
+      "domain": [
+        "causal_inference",
+        "dag"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "c8d1a33c620139a8b2a019dff2d2d5703c6a3c488e4a4268d1964ec4c60bf5c8",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-DAG-1999",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-TARGETTRIAL-2016",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "journal": "American Journal of Epidemiology",
+      "title": "Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available",
+      "authors": [
+        "Hernán MA",
+        "Robins JM"
+      ],
+      "year": 2016,
+      "doi": "10.1093/aje/kwv254",
+      "pmid": "26994063",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26994063/",
+      "authorityTier": "A",
+      "domain": [
+        "causal_inference",
+        "observational"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "db8b82c06211c43f544b222d9dcb59a8ea0b7df90e8b0f9cf4ba1f2b6f147b0c",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-TARGETTRIAL-2016",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-PS-INTRO-2011",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "journal": "Multivariate Behavioral Research",
+      "title": "An Introduction to Propensity Score Methods for Reducing the Effects of Confounding in Observational Studies",
+      "authors": [
+        "Austin PC"
+      ],
+      "year": 2011,
+      "doi": "10.1080/00273171.2011.568786",
+      "pmid": "21818162",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21818162/",
+      "authorityTier": "A",
+      "domain": [
+        "causal_inference",
+        "propensity_score"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "9dfe30dbed8fd5d9d42e92e3d3681f9906bccf976b6541469fe4b04db6ec0181",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-PS-INTRO-2011",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-PS-BALANCE-2009",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "journal": "Statistics in Medicine",
+      "title": "Balance diagnostics for comparing the distribution of baseline covariates between treatment groups in propensity-score matched samples",
+      "authors": [
+        "Austin PC"
+      ],
+      "year": 2009,
+      "doi": "10.1002/sim.3697",
+      "pmid": "19757444",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19757444/",
+      "authorityTier": "A",
+      "domain": [
+        "causal_inference",
+        "propensity_score"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "613ce936bce372efe278b87b4c90e96b87e4584cbc9979c36d3510bdfc20ea9c",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-PS-BALANCE-2009",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-IMMORTAL-2008",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "journal": "American Journal of Epidemiology",
+      "title": "Immortal time bias in observational studies of drug effects",
+      "authors": [
+        "Suissa S"
+      ],
+      "year": 2008,
+      "doi": "10.1093/aje/kwm324",
+      "pmid": "18056625",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18056625/",
+      "authorityTier": "A",
+      "domain": [
+        "causal_inference",
+        "survival",
+        "immortal_time"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "a1cfc033863fce963f679ea7ba19494ed6230d4276c0f9e995cd5554c411ef64",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-IMMORTAL-2008",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-EVALUE-2017",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "journal": "Annals of Internal Medicine",
+      "title": "Sensitivity Analysis in Observational Research: Introducing the E-Value",
+      "authors": [],
+      "year": 2017,
+      "doi": "10.7326/M16-2607",
+      "pmid": "28693043",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28693043/",
+      "authorityTier": "A",
+      "domain": [
+        "causal_inference",
+        "unmeasured_confounding"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "902e13d02a253ca7a9ce8a963655bb68e6cf752ac003095ef5345081cbcf2600",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-EVALUE-2017",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-STROBE-2007",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "journal": "PLOS Medicine",
+      "title": "The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement",
+      "authors": [],
+      "year": 2007,
+      "doi": "10.1371/journal.pmed.0040296",
+      "pmid": "17941714",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17941714/",
+      "authorityTier": "S",
+      "domain": [
+        "observational",
+        "reporting",
+        "reviewer"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "0cf3565c46b5d439ffe36c58bc79cdd6da8ce99aea2bf99bbed435716cb8e0cd",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-STROBE-2007",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"S\" 保留为来源包提案值；正式层级需 gate 评审。",
+          "domain 合并自 SRC-STROBE-2007-B8。",
+          "title 与 SRC-STROBE-2007-B8 不一致；保留规范行 SRC-STROBE-2007 的标题（冲突已披露）。",
+          "来源去重：SRC-STROBE-2007-B8 与 SRC-STROBE-2007 同源合并（规范 ID 为字典序最小者）。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-CONSORT-2025",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "journal": "The Lancet",
+      "title": "CONSORT 2025 statement: updated guideline for reporting randomised trials",
+      "authors": [],
+      "year": 2025,
+      "doi": "10.1016/S0140-6736(25)00672-5",
+      "pmid": "40245901",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40245901/",
+      "authorityTier": "S",
+      "domain": [
+        "randomized_trial",
+        "reporting",
+        "reviewer"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [
+        "CONSORT-2010"
+      ],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "8827f7d5938024775d1fb4f70e5d15211aee90158fee955faf659bede20e86b8",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-CONSORT-2025",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"S\" 保留为来源包提案值；正式层级需 gate 评审。",
+          "domain 合并自 SRC-CONSORT-2025-B8。",
+          "来源去重：SRC-CONSORT-2025-B8 与 SRC-CONSORT-2025 同源合并（规范 ID 为字典序最小者）。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-SPIRIT-2025",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "journal": "The Lancet",
+      "title": "SPIRIT 2025 statement: updated guideline for protocols of randomised trials",
+      "authors": [],
+      "year": 2025,
+      "doi": "10.1016/S0140-6736(25)00770-6",
+      "pmid": "42290521",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42290521/",
+      "authorityTier": "S",
+      "domain": [
+        "randomized_trial",
+        "protocol",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [
+        "SPIRIT-2013"
+      ],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "ef29016c4e76f28abe6286a9f7ff76bb6296010602ac144bf57e7c3ec7f66818",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-SPIRIT-2025",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"S\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-STARD-2015",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "journal": "BMJ",
+      "title": "STARD 2015: An Updated List of Essential Items for Reporting Diagnostic Accuracy Studies",
+      "authors": [],
+      "year": 2015,
+      "doi": "10.1136/bmj.h5527",
+      "pmid": "26511519",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26511519/",
+      "authorityTier": "S",
+      "domain": [
+        "diagnostic_accuracy",
+        "reporting",
+        "reviewer"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "50635840ade1418006fecc0eb1db52d1d00c812113bf2025d71cb83aec795192",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-STARD-2015",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"S\" 保留为来源包提案值；正式层级需 gate 评审。",
+          "domain 合并自 SRC-STARD-2015-B8。",
+          "来源去重：SRC-STARD-2015-B8 与 SRC-STARD-2015 同源合并（规范 ID 为字典序最小者）。"
+        ]
+      }
+    },
+    {
+      "id": "SRC-ARRIVE-2020",
+      "schemaVersion": 1,
+      "sourceType": "guideline",
+      "journal": "PLOS Biology",
+      "title": "The ARRIVE guidelines 2.0: Updated guidelines for reporting animal research",
+      "authors": [],
+      "year": 2020,
+      "doi": "10.1371/journal.pbio.3000410",
+      "pmid": "32663219",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32663219/",
+      "authorityTier": "S",
+      "domain": [
+        "animal_research",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "pending",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "contentHash": "b6102426620bc7bbbd285441aa26d74a202b3db1e01a9866cca0a3a9a314d97d",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "SRC-ARRIVE-2020",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+        ],
+        "converterNotes": [
+          "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+          "authorityTier \"S\" 保留为来源包提案值；正式层级需 gate 评审。"
+        ]
+      }
+    }
+  ],
+  "evidenceClaims": [
+    {
+      "id": "CLM-CAUS-001",
+      "claim": "Causal diagrams can clarify which variables are confounders, mediators or colliders and can help identify adjustment sets; selecting covariates solely by statistical significance can create bias.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-DAG-1999",
+      "supportType": "qualified",
+      "supportingLocation": "Abstract and examples",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "causal_inference",
+        "dag"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-CAUS-001",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-CAUS-002",
+      "claim": "Conditioning on a collider can induce a noncausal association between variables that were otherwise independent, so “adjust for everything available” is not a generally valid causal strategy.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-DAG-1999",
+      "supportType": "qualified",
+      "supportingLocation": "Causal diagram implications",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "causal_inference",
+        "dag"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-CAUS-002",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-CAUS-003",
+      "claim": "Target-trial emulation makes eligibility, treatment strategies, time zero, follow-up, outcome and causal contrast explicit and helps expose common observational-design biases.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-TARGETTRIAL-2016",
+      "supportType": "direct",
+      "supportingLocation": "Abstract/framework",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "causal_inference",
+        "observational"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-CAUS-003",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-CAUS-004",
+      "claim": "Propensity scores balance measured baseline covariates when appropriately implemented; they do not randomize treatment and cannot by themselves remove unmeasured confounding.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PS-INTRO-2011",
+      "supportType": "qualified",
+      "supportingLocation": "Abstract/framework",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "causal_inference",
+        "propensity_score"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-CAUS-004",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-CAUS-005",
+      "claim": "After propensity-score matching/weighting, covariate balance should be assessed directly; statistical significance tests of baseline differences are not the preferred balance diagnostic.",
+      "scope": "",
+      "qualification": "Standardized differences are commonly used; exact diagnostics depend on design.",
+      "sourceId": "SRC-PS-BALANCE-2009",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "causal_inference",
+        "propensity_score"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-CAUS-005",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-CAUS-006",
+      "claim": "Immortal time bias occurs when survival time during which the outcome could not have occurred is misclassified or incorrectly attributed to an exposure group.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-IMMORTAL-2008",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "causal_inference",
+        "survival"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-CAUS-006",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-CAUS-007",
+      "claim": "The E-value is a sensitivity metric for the strength of unmeasured confounding needed to explain away an observed association; it does not prove absence of unmeasured confounding or causal identification.",
+      "scope": "",
+      "qualification": "Use alongside substantive bias analysis, not as a causal certificate.",
+      "sourceId": "SRC-EVALUE-2017",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "causal_inference",
+        "unmeasured_confounding"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-CAUS-007",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-REP-001",
+      "claim": "STROBE is a reporting guideline for observational studies; adherence improves transparency but does not itself establish low risk of bias or causality.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-STROBE-2007",
+      "supportType": "qualified",
+      "supportingLocation": "Statement",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "observational",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-REP-001",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-REP-002",
+      "claim": "CONSORT 2025 is the current updated reporting guideline for randomized trials and supersedes the prior 2010 statement.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CONSORT-2025",
+      "supportType": "direct",
+      "supportingLocation": "Title/statement",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "randomized_trial",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-REP-002",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-REP-003",
+      "claim": "SPIRIT 2025 is the current updated reporting guideline for randomized-trial protocols and supersedes SPIRIT 2013.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-SPIRIT-2025",
+      "supportType": "direct",
+      "supportingLocation": "Title/statement",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "randomized_trial",
+        "protocol"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-REP-003",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-REP-004",
+      "claim": "STARD 2015 addresses transparent reporting of diagnostic-accuracy studies, including participant selection, index test, reference standard and analysis.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-STARD-2015",
+      "supportType": "direct",
+      "supportingLocation": "Checklist scope",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "diagnostic_accuracy",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-REP-004",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    },
+    {
+      "id": "CLM-REP-005",
+      "claim": "ARRIVE 2.0 provides reporting recommendations for in vivo animal research, but reporting compliance does not by itself prove experimental rigor or translational validity.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-ARRIVE-2020",
+      "supportType": "qualified",
+      "supportingLocation": "Guideline scope",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+      "domain": [
+        "animal_research",
+        "reporting"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "contentOrigin": "external_source_pack",
+      "staging": {
+        "originalId": "CLM-REP-005",
+        "stagedMissing": [],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [
+          "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+        ],
+        "converterNotes": []
+      }
+    }
+  ],
+  "problemCards": [
+    {
+      "id": "PRB-CAUS-001",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "confounding",
+      "problemType": "unclassified",
+      "titleCn": "多因素回归把所有有P<0.1的变量都塞进去，就控制了混杂吗？",
+      "titleEn": "Does p-value-based covariate selection control confounding?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 5,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "confounder身份取决于因果结构而非它在当前数据中的显著性；错误调整还可能引入collider/mediator bias。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-001",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "pvalue_selects_confounders"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-002"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-001",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"critical\"→5（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-002",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "collider",
+      "problemType": "unclassified",
+      "titleCn": "“变量越多调整越严谨”这句话对吗？",
+      "titleEn": "Is more covariate adjustment always better?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "过度调整或collider conditioning可产生偏倚。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-002",
+      "redFlags": [],
+      "commonWrongActions": [
+        "adjust_for_everything"
+      ],
+      "recommendedReasoning": [],
+      "claimBoundary": "adjustment set需要因果问题和时间顺序支持。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "more_adjustment_is_always_better"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-002"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-002",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-003",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "mediation",
+      "problemType": "unclassified",
+      "titleCn": "把治疗后的biomarker加入主效应模型，会更“控制混杂”吗？",
+      "titleEn": "Should a post-treatment mediator be adjusted as a confounder?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "若变量位于因果路径上，调整可能改变estimand并截断部分总效应。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-003",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "claimBoundary": "不能在没有明确estimand时把post-exposure变量统称confounder。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "post_treatment_variable_is_confounder"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-003",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-004",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "propensity_score",
+      "problemType": "unclassified",
+      "titleCn": "做了PSM，两组baseline P>0.05，就说明平衡了吗？",
+      "titleEn": "Does P>0.05 after PSM prove balance?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "显著性检验受样本量影响，不是设计平衡的最佳诊断；应看standardized differences等。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-004",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "balance_pvalue"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-005"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-004",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-005",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "propensity_score",
+      "problemType": "unclassified",
+      "titleCn": "PSM 后就等同随机试验了吗？",
+      "titleEn": "Does propensity-score matching create randomization?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "PS只能基于已测量、正确建模的baseline covariates改善可比性；未测混杂仍存在。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-005",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "claimBoundary": "PSM支持measured-confounding adjustment，不是因果保证。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "psm_equals_randomization"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-005",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-006",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "propensity_score",
+      "problemType": "unclassified",
+      "titleCn": "匹配后再按普通独立样本t检验/Cox，完全没问题吗？",
+      "titleEn": "Can matched samples be analyzed as fully independent?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "matching会创建依赖结构/设计信息，后续估计与SE应与estimand和匹配设计匹配。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-006",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004",
+        "CLM-CAUS-005"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-006",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-007",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "immortal_time",
+      "problemType": "unclassified",
+      "titleCn": "把“最终接受治疗的人”从确诊日起算生存，会有什么偏倚？",
+      "titleEn": "Why is classifying future treatment from diagnosis dangerous?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 5,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "治疗前这段“必须存活”的时间若错误归给treated会制造保护性immortal time。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-007",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "future_exposure_from_baseline"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-006",
+        "CLM-CAUS-003"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-007",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"critical\"→5（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-008",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "target_trial",
+      "problemType": "unclassified",
+      "titleCn": "观察性治疗比较为什么要先写“目标试验”方案？",
+      "titleEn": "Why specify a target trial before observational causal analysis?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "target trial框架能暴露time zero、eligibility、treatment strategy等设计错位。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-008",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [
+        "先定义想模拟的随机试验，再映射到observational data。"
+      ],
+      "transferCaseIds": [],
+      "misconceptionTags": [],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-003"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-008",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-009",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "evalue",
+      "problemType": "unclassified",
+      "titleCn": "E-value 很大，就证明结果是因果的吗？",
+      "titleEn": "Does a large E-value prove causality?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "E-value量化一种敏感性门槛，不验证无未测混杂，也不处理selection/measurement/model bias。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-009",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "claimBoundary": "E-value是sensitivity analysis，不是causal certificate。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "evalue_proves_causality"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-007"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-009",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-010",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "temporal_order",
+      "problemType": "unclassified",
+      "titleCn": "横断面数据发现A和B相关，能写A导致B吗？",
+      "titleEn": "Can cross-sectional association establish direction?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "时间顺序和替代因果方向通常无法仅由横断面association识别。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-010",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "claimBoundary": "一般只能支持association，除非有额外设计识别。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "cross_sectional_causality"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-010",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-CAUS-011",
+      "schemaVersion": 1,
+      "domain": "causal_inference",
+      "subdomain": "selection_bias",
+      "problemType": "unclassified",
+      "titleCn": "只分析“术后活过6个月”的患者研究治疗效果，会有问题吗？",
+      "titleEn": "Can conditioning on post-treatment survival bias treatment comparisons?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 5,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "对exposure影响的post-exposure selection条件化可能造成selection/collider bias。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-CAUS-011",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "post_exposure_selection_is_harmless"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-CAUS-011",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"critical\"→5（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-001",
+      "schemaVersion": 1,
+      "domain": "study_design",
+      "subdomain": "reporting",
+      "problemType": "unclassified",
+      "titleCn": "按 STROBE 写全了，就说明观察性研究低偏倚吗？",
+      "titleEn": "Does STROBE compliance prove low risk of bias?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "reporting transparency与internal validity是不同维度。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-001",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "claimBoundary": "STROBE改善reporting，不是bias评分。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "reporting_guideline_equals_validity"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-REP-001"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-001",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-002",
+      "schemaVersion": 1,
+      "domain": "randomized_trial",
+      "subdomain": "reporting",
+      "problemType": "unclassified",
+      "titleCn": "2026年新RCT还只用 CONSORT 2010，可以吗？",
+      "titleEn": "Should a new 2026 RCT default to CONSORT 2010?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": 3,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "CONSORT 2025已更新并取代旧版。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-002",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "old_consort_is_current"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-REP-002"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-002",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"medium\"→3（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-003",
+      "schemaVersion": 1,
+      "domain": "randomized_trial",
+      "subdomain": "protocol",
+      "problemType": "unclassified",
+      "titleCn": "RCT方案写作为什么要看 SPIRIT 2025？",
+      "titleEn": "Why use SPIRIT 2025 for RCT protocols?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "SPIRIT 2025是当前trial protocol reporting框架。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-003",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-REP-003"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-003",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-004",
+      "schemaVersion": 1,
+      "domain": "diagnostic_accuracy",
+      "subdomain": "spectrum_bias",
+      "problemType": "unclassified",
+      "titleCn": "只在明显癌症 vs 健康志愿者中算AUC，能代表临床诊断吗？",
+      "titleEn": "Does case–healthy-control AUC represent clinical diagnostic accuracy?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "诊断accuracy受participant spectrum与selection影响；目标人群应匹配真实临床用途。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-004",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "reviewerImplication": "可能存在严重spectrum/selection bias。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "case_control_auc_equals_clinical_performance"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-REP-004"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-004",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-005",
+      "schemaVersion": 1,
+      "domain": "diagnostic_accuracy",
+      "subdomain": "reference_standard",
+      "problemType": "unclassified",
+      "titleCn": "index test参与了reference diagnosis，还能独立评估accuracy吗？",
+      "titleEn": "What if the index test contributes to the reference standard?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 5,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "incorporation会人为提高agreement/accuracy。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-005",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "reference_can_include_index"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-REP-004"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-005",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"critical\"→5（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-006",
+      "schemaVersion": 1,
+      "domain": "animal_research",
+      "subdomain": "translation",
+      "problemType": "unclassified",
+      "titleCn": "动物实验严格按 ARRIVE 2.0 报告，就能说明结果可转化到人吗？",
+      "titleEn": "Does ARRIVE compliance prove human translatability?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "ARRIVE解决reporting透明度；species/model relevance与translation需要另行判断。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-006",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "claimBoundary": "报告合规≠translational validity。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "arrive_equals_translation"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-REP-005"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-006",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-007",
+      "schemaVersion": 1,
+      "domain": "study_design",
+      "subdomain": "guidelines",
+      "problemType": "unclassified",
+      "titleCn": "Reporting guideline 越多套越好吗？",
+      "titleEn": "Should every study use every reporting guideline?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "guideline应与study design和reporting目的匹配；错误套用会制造形式合规而非科学清晰。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-007",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [
+        "先正确分类study design，再使用当前匹配guideline。"
+      ],
+      "transferCaseIds": [],
+      "misconceptionTags": [],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-REP-001",
+        "CLM-REP-002",
+        "CLM-REP-004"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-007",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "claimBoundary",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    },
+    {
+      "id": "PRB-REP-008",
+      "schemaVersion": 1,
+      "domain": "study_design",
+      "subdomain": "causal_language",
+      "problemType": "unclassified",
+      "titleCn": "“multivariable-adjusted”就可以把“associated with”改成“caused”吗？",
+      "titleEn": "Does multivariable adjustment justify causal language?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": 4,
+      "frequency": 3,
+      "context": "",
+      "whyItMatters": "回归调整只是因果识别的一部分；未测混杂、selection、measurement、time-zero等仍需满足。",
+      "candidateCauseIds": [],
+      "diagnosticPathId": "PATH-PRB-REP-008",
+      "redFlags": [],
+      "commonWrongActions": [],
+      "recommendedReasoning": [],
+      "claimBoundary": "调整后的association不自动升级为causal effect。",
+      "transferCaseIds": [],
+      "misconceptionTags": [
+        "adjusted_equals_causal"
+      ],
+      "relatedMethodIds": [],
+      "relatedProtocolIds": [],
+      "relatedPatternIds": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "contentOrigin": "external_source_pack",
+      "verificationStatus": "pending",
+      "staging": {
+        "originalId": "PRB-REP-008",
+        "stagedMissing": [
+          "knowledgeStatus",
+          "observation",
+          "reviewerImplication"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "importance",
+            "to": "importance（查找表 critical/high/medium→5/4/3）"
+          },
+          {
+            "from": "frequency",
+            "to": "frequency（查找表 very_common/common→4/3）"
+          },
+          {
+            "from": "diagnostic_path",
+            "to": "diagnosticPathId"
+          },
+          {
+            "from": "title_cn",
+            "to": "titleCn"
+          },
+          {
+            "from": "title_en",
+            "to": "titleEn"
+          },
+          {
+            "from": "why_it_matters",
+            "to": "whyItMatters"
+          },
+          {
+            "from": "candidate_causes",
+            "to": "candidateCauseIds"
+          },
+          {
+            "from": "red_flags",
+            "to": "redFlags"
+          },
+          {
+            "from": "common_wrong_actions",
+            "to": "commonWrongActions"
+          },
+          {
+            "from": "recommended_reasoning",
+            "to": "recommendedReasoning"
+          },
+          {
+            "from": "statistical_implication",
+            "to": "statisticalImplication"
+          },
+          {
+            "from": "experimental_implication",
+            "to": "experimentalImplication"
+          },
+          {
+            "from": "bioinformatics_implication",
+            "to": "bioinformaticsImplication"
+          },
+          {
+            "from": "claim_boundary",
+            "to": "claimBoundary"
+          },
+          {
+            "from": "reviewer_implication",
+            "to": "reviewerImplication"
+          },
+          {
+            "from": "transfer_cases",
+            "to": "transferCaseIds"
+          },
+          {
+            "from": "misconception_tags",
+            "to": "misconceptionTags"
+          },
+          {
+            "from": "related_methods",
+            "to": "relatedMethodIds"
+          },
+          {
+            "from": "related_protocols",
+            "to": "relatedProtocolIds"
+          },
+          {
+            "from": "related_patterns",
+            "to": "relatedPatternIds"
+          },
+          {
+            "from": "evidence_claims",
+            "to": "evidenceClaimIds"
+          },
+          {
+            "from": "content_origin",
+            "to": "contentOrigin"
+          },
+          {
+            "from": "verification_status",
+            "to": "verificationStatus"
+          },
+          {
+            "from": "verified_at",
+            "to": "verifiedAt"
+          }
+        ],
+        "converterSupplied": [
+          "schemaVersion=1（v3 实体常量）",
+          "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+          "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+        ],
+        "converterNotes": [
+          "importance \"high\"→4（显式查找表）",
+          "frequency \"common\"→3（显式查找表）"
+        ]
+      }
+    }
+  ],
+  "diagnosticCauses": [],
+  "diagnosticChecks": [
+    {
+      "id": "CHK-PRB-CAUS-001-01",
+      "problemId": "PRB-CAUS-001",
+      "questionCn": "暴露-结局因果图？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-002"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-001-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-001-02",
+      "problemId": "PRB-CAUS-001",
+      "questionCn": "变量是confounder/mediator/collider？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-002"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-001-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-001-03",
+      "problemId": "PRB-CAUS-001",
+      "questionCn": "选择依据是否预设？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-002"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-001-03",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-002-01",
+      "problemId": "PRB-CAUS-002",
+      "questionCn": "每个covariate发生在exposure前还是后？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-002"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-002-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-002-02",
+      "problemId": "PRB-CAUS-002",
+      "questionCn": "是否是共同原因/共同后果？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-002"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-002-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-003-01",
+      "problemId": "PRB-CAUS-003",
+      "questionCn": "变量测量时点？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-003-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-003-02",
+      "problemId": "PRB-CAUS-003",
+      "questionCn": "目标estimand是total还是direct effect？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-003-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-004-01",
+      "problemId": "PRB-CAUS-004",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-004-01",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-004-02",
+      "problemId": "PRB-CAUS-004",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-004-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-004-03",
+      "problemId": "PRB-CAUS-004",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-004-03",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-005-01",
+      "problemId": "PRB-CAUS-005",
+      "questionCn": "关键未测因素？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-005-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-005-02",
+      "problemId": "PRB-CAUS-005",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-005-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-005-03",
+      "problemId": "PRB-CAUS-005",
+      "questionCn": "PS model是否合理？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-005-03",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-006-01",
+      "problemId": "PRB-CAUS-006",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004",
+        "CLM-CAUS-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-006-01",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-006-02",
+      "problemId": "PRB-CAUS-006",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004",
+        "CLM-CAUS-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-006-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-006-03",
+      "problemId": "PRB-CAUS-006",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-004",
+        "CLM-CAUS-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-006-03",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-007-01",
+      "problemId": "PRB-CAUS-007",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-006",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-007-01",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-007-02",
+      "problemId": "PRB-CAUS-007",
+      "questionCn": "exposure assignment何时确定？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-006",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-007-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-007-03",
+      "problemId": "PRB-CAUS-007",
+      "questionCn": "是否time-varying exposure/landmark/target trial？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-006",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-007-03",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-008-01",
+      "problemId": "PRB-CAUS-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-008-01",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-008-02",
+      "problemId": "PRB-CAUS-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-008-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-008-03",
+      "problemId": "PRB-CAUS-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-008-03",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-008-04",
+      "problemId": "PRB-CAUS-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-008-04",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-008-05",
+      "problemId": "PRB-CAUS-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-008-05",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-009-01",
+      "problemId": "PRB-CAUS-009",
+      "questionCn": "还存在哪些bias domains？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-007"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-009-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-009-02",
+      "problemId": "PRB-CAUS-009",
+      "questionCn": "E-value针对哪个estimate/CI？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-007"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-009-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-009-03",
+      "problemId": "PRB-CAUS-009",
+      "questionCn": "是否有实质性未测confounder？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-007"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-009-03",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-010-01",
+      "problemId": "PRB-CAUS-010",
+      "questionCn": "时间顺序？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-010-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-010-02",
+      "problemId": "PRB-CAUS-010",
+      "questionCn": "反向因果可能？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-010-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-010-03",
+      "problemId": "PRB-CAUS-010",
+      "questionCn": "外部/纵向/干预证据？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-010-03",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-011-01",
+      "problemId": "PRB-CAUS-011",
+      "questionCn": "selection发生时点？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-011-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-CAUS-011-02",
+      "problemId": "PRB-CAUS-011",
+      "questionCn": "exposure/outcome是否影响selection？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-CAUS-011-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-001-01",
+      "problemId": "PRB-REP-001",
+      "questionCn": "设计本身confounding/selection/measurement risk？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-001"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-001-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-001-02",
+      "problemId": "PRB-REP-001",
+      "questionCn": "有没有causal identification strategy？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-001"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-001-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-002-01",
+      "problemId": "PRB-REP-002",
+      "questionCn": "是否使用CONSORT 2025当前清单？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-002"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-002-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-003-01",
+      "problemId": "PRB-REP-003",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-003-01",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-003-02",
+      "problemId": "PRB-REP-003",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-003-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-003-03",
+      "problemId": "PRB-REP-003",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-003-03",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-004-01",
+      "problemId": "PRB-REP-004",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-004-01",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-004-02",
+      "problemId": "PRB-REP-004",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-004-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-004-03",
+      "problemId": "PRB-REP-004",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-004-03",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-005-01",
+      "problemId": "PRB-REP-005",
+      "questionCn": "reference standard独立吗？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-005-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-005-02",
+      "problemId": "PRB-REP-005",
+      "questionCn": "assessor是否blinded？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-005-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-006-01",
+      "problemId": "PRB-REP-006",
+      "questionCn": "model是否回答临床问题？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-006-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-006-02",
+      "problemId": "PRB-REP-006",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-006-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-006-03",
+      "problemId": "PRB-REP-006",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-005"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-006-03",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-007-01",
+      "problemId": "PRB-REP-007",
+      "questionCn": "研究设计到底是什么？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-001",
+        "CLM-REP-002",
+        "CLM-REP-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-007-01",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-007-02",
+      "problemId": "PRB-REP-007",
+      "questionCn": "对应EQUATOR guideline？",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-REP-001",
+        "CLM-REP-002",
+        "CLM-REP-004"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-007-02",
+        "stagedMissing": [
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [
+          {
+            "from": "question",
+            "to": "questionCn（脚本判定含中文，原文未改写）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-008-01",
+      "problemId": "PRB-REP-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-008-01",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-008-02",
+      "problemId": "PRB-REP-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-008-02",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-008-03",
+      "problemId": "PRB-REP-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-008-03",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    },
+    {
+      "id": "CHK-PRB-REP-008-04",
+      "problemId": "PRB-REP-008",
+      "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "prerequisites": [],
+      "evidenceClaimIds": [
+        "CLM-CAUS-001",
+        "CLM-CAUS-003"
+      ],
+      "staging": {
+        "originalId": "CHK-PRB-REP-008-04",
+        "stagedMissing": [
+          "questionCn",
+          "discriminatesCauseIds",
+          "costCategory",
+          "availability"
+        ],
+        "droppedFields": [],
+        "fieldMap": [],
+        "converterSupplied": [],
+        "converterNotes": [
+          "legacy question 不含中文且规范模型无 questionEn 字段；文本保留在源包中。",
+          "legacy 无原因声明此检查为区分性检查。"
+        ]
+      }
+    }
+  ],
+  "diagnosticPaths": [
+    {
+      "id": "PATH-PRB-CAUS-001",
+      "problemId": "PRB-CAUS-001",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-001-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-001-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-001-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-001-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-001-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-001-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-001",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-002",
+      "problemId": "PRB-CAUS-002",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-002-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-002-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-002-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-002-02"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-002",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-003",
+      "problemId": "PRB-CAUS-003",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-003-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-003-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-003-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-003-02"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-003",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-004",
+      "problemId": "PRB-CAUS-004",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-004-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-004-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-004-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-004-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-004-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-004-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-004",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-005",
+      "problemId": "PRB-CAUS-005",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-005-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-005-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-005-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-005-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-005-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-005-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-005",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-006",
+      "problemId": "PRB-CAUS-006",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-006-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-006-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-006-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-006-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-006-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-006-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-006",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-007",
+      "problemId": "PRB-CAUS-007",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-007-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-007-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-007-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-007-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-007-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-007-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-007",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-008",
+      "problemId": "PRB-CAUS-008",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-008-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-008-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-008-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-008-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-008-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-008-03"
+        },
+        {
+          "id": "n4",
+          "step": 4,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-008-04"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-008-04"
+        },
+        {
+          "id": "n5",
+          "step": 5,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-008-05"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-008-05"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-008",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-009",
+      "problemId": "PRB-CAUS-009",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-009-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-009-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-009-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-009-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-009-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-009-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-009",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-010",
+      "problemId": "PRB-CAUS-010",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-010-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-010-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-010-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-010-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-010-03"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-010-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-010",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-CAUS-011",
+      "problemId": "PRB-CAUS-011",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-011-01"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-011-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-CAUS-011-02"
+          ],
+          "expectedCheckId": "CHK-PRB-CAUS-011-02"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-CAUS-011",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-001",
+      "problemId": "PRB-REP-001",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-001-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-001-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-001-02"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-001-02"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-001",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-002",
+      "problemId": "PRB-REP-002",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-002-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-002-01"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-002",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-003",
+      "problemId": "PRB-REP-003",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-003-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-003-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-003-02"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-003-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-003-03"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-003-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-003",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-004",
+      "problemId": "PRB-REP-004",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-004-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-004-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-004-02"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-004-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-004-03"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-004-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-004",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-005",
+      "problemId": "PRB-REP-005",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-005-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-005-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-005-02"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-005-02"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-005",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-006",
+      "problemId": "PRB-REP-006",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-006-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-006-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-006-02"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-006-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-006-03"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-006-03"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-006",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-007",
+      "problemId": "PRB-REP-007",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-007-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-007-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-007-02"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-007-02"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-007",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    },
+    {
+      "id": "PATH-PRB-REP-008",
+      "problemId": "PRB-REP-008",
+      "nodes": [
+        {
+          "id": "n1",
+          "step": 1,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-008-01"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-008-01"
+        },
+        {
+          "id": "n2",
+          "step": 2,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-008-02"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-008-02"
+        },
+        {
+          "id": "n3",
+          "step": 3,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-008-03"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-008-03"
+        },
+        {
+          "id": "n4",
+          "step": 4,
+          "availableEvidenceIds": [],
+          "permittedCheckIds": [
+            "CHK-PRB-REP-008-04"
+          ],
+          "expectedCheckId": "CHK-PRB-REP-008-04"
+        }
+      ],
+      "staging": {
+        "originalId": "PATH-PRB-REP-008",
+        "stagedMissing": [
+          "finalRanking",
+          "finalLayer"
+        ],
+        "droppedFields": [
+          {
+            "field": "terminalLogic",
+            "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+          }
+        ],
+        "fieldMap": [
+          {
+            "from": "nodes[].step+checkId",
+            "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+          }
+        ],
+        "converterSupplied": [],
+        "converterNotes": [
+          "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+        ]
+      }
+    }
+  ],
+  "diagnosticEvidence": [],
+  "transferCases": [],
+  "verificationMetadata": {
+    "reviewStatus": "pending",
+    "reviewer": null,
+    "reviewedAt": null
+  }
+}

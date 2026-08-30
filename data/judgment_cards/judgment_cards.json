@@ -1,0 +1,2405 @@
+[
+  {
+    "id": "jc-31",
+    "title": "DAG-guided covariate adjustment",
+    "domain": "statistics",
+    "study": "In a treatment–survival study, severity drives treatment and outcome, while a post-treatment complication lies on the causal pathway.",
+    "analysis": "Adjust for every recorded variable, including the complication, because more covariates always reduce confounding.",
+    "claim": "The fully adjusted coefficient is unbiased because every measured variable was included.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Adjustment can create bias when variables are chosen from significance or availability rather than a causal model.",
+      "Draw the assumed causal graph first; seek a sufficient set that blocks backdoor paths without conditioning on colliders or descendants of exposure.",
+      "Which arrows justify each adjustment variable, and did conditioning open a collider path or remove part of the effect?"
+    ],
+    "betterApproach": "Use before causal regression, weighting, matching, or standardization to make identification assumptions explicit.",
+    "maximalConclusion": "The estimate is causally interpretable only under the stated graph, consistency, positivity, exchangeability, and correct measurement assumptions.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-dag",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "adjust-everything",
+      "collider-bias"
+    ],
+    "variantPrompt": "In an unfamiliar statistics setting, identify whether “The fully adjusted coefficient is unbiased because every measured variable was included.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-32",
+    "title": "Estimand before estimator",
+    "domain": "clinical",
+    "study": "A trial asks whether initiating therapy reduces 2-year mortality regardless of later discontinuation.",
+    "analysis": "Choose Cox regression first and let the available variables define the question afterward.",
+    "claim": "The hazard ratio is the study objective.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "A technically correct model can answer the wrong clinical question when population, intervention, outcome, time horizon, or intercurrent events are vague.",
+      "Specify the target population, treatment strategies, outcome summary, time origin, follow-up, intercurrent-event handling, and causal contrast before selecting an estimator.",
+      "What exact quantity would this analysis estimate if every model assumption held?"
+    ],
+    "betterApproach": "Use at protocol, analysis-plan, and reviewer stages for trials, observational effects, and prediction tasks.",
+    "maximalConclusion": "The estimator is meaningful only as an implementation of a prespecified estimand.",
+    "severity": "major",
+    "sourceIds": [
+      "src-consort",
+      "src-target-trial"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "estimator-is-question"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “The hazard ratio is the study objective.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-33",
+    "title": "Target-trial emulation protocol",
+    "domain": "clinical",
+    "study": "Compare statin initiation versus no initiation among eligible clinic attendees, assigning strategy and follow-up at the same visit.",
+    "analysis": "Classify anyone who ever initiates during follow-up as treated from baseline.",
+    "claim": "Ever-treated patients lived longer, proving treatment effectiveness.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Observational treatment comparisons are vulnerable to immortal-time and selection biases when eligibility, assignment, and time zero are misaligned.",
+      "Write the hypothetical trial protocol—eligibility, strategies, assignment, time zero, follow-up, outcome, contrast, and analysis—then emulate each element with observed data.",
+      "Were eligibility, treatment classification, and follow-up aligned at a common time zero?"
+    ],
+    "betterApproach": "Use for causal questions about interventions when randomized evidence is unavailable and longitudinal observational data are adequate.",
+    "maximalConclusion": "The emulation estimates the specified contrast only under design alignment and the required identification assumptions.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-target-trial",
+      "src-dag"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ever-treated",
+      "immortal-time"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “Ever-treated patients lived longer, proving treatment effectiveness.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-34",
+    "title": "Immortal-time bias",
+    "domain": "clinical",
+    "study": "Transplant recipients must survive from diagnosis until transplant, but all that time is labeled exposed.",
+    "analysis": "Compare ever-transplanted with never-transplanted from diagnosis using a baseline group indicator.",
+    "claim": "Transplantation halves mortality from diagnosis.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Misclassified survival time can guarantee event-free exposure time and manufacture a treatment advantage.",
+      "Exposure status and risk time must be defined so participants cannot contribute pre-exposure time to the exposed group; use aligned assignment, landmarks, or time-varying exposure as appropriate.",
+      "Could a participant have the event during the time counted as exposed before actually receiving exposure?"
+    ],
+    "betterApproach": "Use when exposure, response, or biomarker status is determined after cohort entry.",
+    "maximalConclusion": "A valid analysis can estimate a clearly timed strategy effect or a conditional landmark association, not the biased ever-exposed contrast.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-target-trial",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "ever-exposed-baseline"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “Transplantation halves mortality from diagnosis.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-35",
+    "title": "Time-varying confounding affected by prior treatment",
+    "domain": "statistics",
+    "study": "Disease severity changes after each dose and determines both later dosing and mortality.",
+    "analysis": "Put current severity and current dose into a standard Cox model and interpret the dose coefficient causally.",
+    "claim": "The adjusted time-dependent coefficient is the total sustained-treatment effect.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Standard time-updated regression can adjust away treatment pathways or induce bias when a confounder is itself changed by earlier treatment.",
+      "When longitudinal confounders both predict future treatment/outcome and are affected by prior treatment, identify an appropriate longitudinal causal method such as inverse-probability-weighted marginal structural models.",
+      "Is any time-updated confounder also downstream of earlier exposure?"
+    ],
+    "betterApproach": "Use for sustained treatment strategies with repeated treatment and confounder measurements under adequate positivity and measurement.",
+    "maximalConclusion": "A causal effect requires a correctly specified longitudinal strategy, treatment/confounder models, and supported positivity.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-dag",
+      "src-target-trial"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "adjust-time-varying-confounder"
+    ],
+    "variantPrompt": "In an unfamiliar statistics setting, identify whether “The adjusted time-dependent coefficient is the total sustained-treatment effect.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-36",
+    "title": "Competing-risk estimand choice",
+    "domain": "statistics",
+    "study": "Relapse is impossible after non-relapse death during leukemia follow-up.",
+    "analysis": "Censor deaths and interpret one minus Kaplan–Meier as the relapse probability.",
+    "claim": "The treatment reduces the probability of relapse because its cause-specific hazard ratio is below one.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Cause-specific hazards and cumulative incidence answer different questions when other event types preclude the event of interest.",
+      "Choose the estimand first: cause-specific hazard for instantaneous etiologic rate among event-free individuals, or cumulative incidence/risk for prognosis in the presence of competing events.",
+      "Does the analysis estimate a transition rate or the real-world probability of the event by time t?"
+    ],
+    "betterApproach": "Use whenever mutually exclusive event types alter who remains able to experience the outcome.",
+    "maximalConclusion": "Report estimand-specific effects and cumulative incidence; probability claims require risk-scale estimates under the competing-event process.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-competing",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "km-with-competing-events"
+    ],
+    "variantPrompt": "In an unfamiliar statistics setting, identify whether “The treatment reduces the probability of relapse because its cause-specific hazard ratio is below one.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-37",
+    "title": "Restricted cubic splines",
+    "domain": "statistics",
+    "study": "Risk rises slowly across moderate age and sharply after older ages without a true threshold.",
+    "analysis": "Search every age cutpoint and report the smallest log-rank P value.",
+    "claim": "Age above the selected cutpoint causes a sudden risk transition.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Forcing a continuous predictor to be linear or splitting it at a data-driven cutpoint can hide or invent clinically important shape.",
+      "Model plausible smooth nonlinearity with a prespecified number and placement of knots, inspect the fitted function with uncertainty, and test the contribution of nonlinear terms.",
+      "Was the functional form prespecified, and are tails supported by enough observations?"
+    ],
+    "betterApproach": "Use when a continuous exposure or predictor may have a smooth nonlinear relation and sample size supports flexible parameters.",
+    "maximalConclusion": "The fitted curve describes the adjusted association over the supported range; thresholds require separate clinical justification and validation.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-cox",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "optimal-cutpoint",
+      "assume-linearity"
+    ],
+    "variantPrompt": "In an unfamiliar statistics setting, identify whether “Age above the selected cutpoint causes a sudden risk transition.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-38",
+    "title": "Missingness mechanism audit",
+    "domain": "statistics",
+    "study": "Sicker patients skip quality-of-life visits, with severity partly recorded before dropout.",
+    "analysis": "A nonsignificant Little test proves missing completely at random.",
+    "claim": "Missingness is harmless because only 8% of values are absent.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "The observed missing-data pattern does not by itself establish MCAR, MAR, or MNAR, yet those assumptions determine valid analysis.",
+      "Describe missingness by variable, group, time, and outcome proxies; use subject-matter knowledge to state the assumed mechanism and sensitivity analyses for departures.",
+      "What unobserved values could still drive missingness after conditioning on recorded variables?"
+    ],
+    "betterApproach": "Use before complete-case analysis, imputation, weighting, or joint modeling.",
+    "maximalConclusion": "Validity is conditional on an explicit, clinically argued mechanism and sensitivity to plausible MNAR departures.",
+    "severity": "major",
+    "sourceIds": [
+      "src-missing",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "low-percent-harmless",
+      "test-proves-mcar"
+    ],
+    "variantPrompt": "In an unfamiliar statistics setting, identify whether “Missingness is harmless because only 8% of values are absent.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-39",
+    "title": "Substantive-model-compatible imputation",
+    "domain": "statistics",
+    "study": "A survival model uses a biomarker spline and treatment interaction, while biomarker values are incomplete.",
+    "analysis": "Mean-impute the biomarker before deriving the spline and report ordinary standard errors.",
+    "claim": "Imputation recovered the true missing measurements.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "An imputation model that omits outcomes, interactions, nonlinear terms, clustering, or time structure can be incompatible with the final analysis.",
+      "Include variables that predict missingness and values, preserve the analysis model's structure, create multiple datasets, analyze each identically, and combine estimates with Rubin-style rules.",
+      "Does the imputation model preserve every nonlinear, interaction, outcome, and multilevel feature used downstream?"
+    ],
+    "betterApproach": "Use under a defensible MAR assumption when adequate auxiliary variables and a compatible imputation model are available.",
+    "maximalConclusion": "Inference reflects uncertainty under the specified imputation and missingness assumptions, not known replacement values.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-missing",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "single-imputation",
+      "imputed-is-observed"
+    ],
+    "variantPrompt": "In an unfamiliar statistics setting, identify whether “Imputation recovered the true missing measurements.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-40",
+    "title": "Clustered outcomes and inference",
+    "domain": "statistics",
+    "study": "Twenty hospitals contribute 4,000 patients, but intervention is assigned by hospital.",
+    "analysis": "Analyze all 4,000 patients independently because the patient is the outcome unit.",
+    "claim": "The intervention effect is precise because thousands of patient rows were analyzed.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Repeated, site-level, family-level, or cell-level observations violate independent-error assumptions and can make standard errors too small.",
+      "Identify the independent assignment/sampling unit and choose a marginal or conditional model whose correlation structure and degrees of freedom match the design.",
+      "How many independent units identify the treatment contrast, and are small-cluster corrections needed?"
+    ],
+    "betterApproach": "Use for cluster trials, multi-center cohorts, repeated measures, families, images, fields, and nested omics data.",
+    "maximalConclusion": "Precision is governed by independent clusters, within-cluster correlation, and model assumptions.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-pseudorep",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "row-count-is-n"
+    ],
+    "variantPrompt": "In an unfamiliar statistics setting, identify whether “The intervention effect is precise because thousands of patient rows were analyzed.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-41",
+    "title": "Repeated-measures contrast",
+    "domain": "clinical",
+    "study": "Symptoms are measured monthly for six months after randomized treatment.",
+    "analysis": "Run separate t tests at each month and highlight whichever is significant.",
+    "claim": "Treatment works only at month four.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "A generic time-by-group P value may not correspond to the clinically intended difference at a time point, average response, or trajectory feature.",
+      "Prespecify the repeated-measures estimand and covariance/mean structure, use all relevant times, and report contrasts with uncertainty on an interpretable scale.",
+      "Is the target a month-6 difference, an average over follow-up, or a trajectory contrast, and how was multiplicity handled?"
+    ],
+    "betterApproach": "Use for longitudinal continuous or discrete outcomes with within-person correlation.",
+    "maximalConclusion": "Report the prespecified longitudinal contrast and uncertainty; post hoc visit-specific patterns remain exploratory.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-consort",
+      "src-missing"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "multiple-timepoint-fishing"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “Treatment works only at month four.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-42",
+    "title": "Negative-control reasoning",
+    "domain": "clinical",
+    "study": "A prescribing preference instrument appears related to an outcome occurring before treatment initiation.",
+    "analysis": "Because the negative control is null, all unmeasured confounding is ruled out.",
+    "claim": "The causal estimate is validated by one null negative-control test.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Residual confounding and measurement artifacts often survive conventional adjustment but can be probed with outcomes or exposures that share bias pathways without the target causal pathway.",
+      "Choose a negative control with no plausible target causal effect but similar confounding, selection, and measurement structure; interpret a detected association as a bias warning, not a correction.",
+      "Why should the control share the relevant bias mechanism, and what violations could make it falsely reassuring?"
+    ],
+    "betterApproach": "Use as a falsification probe alongside design-based causal analysis and sensitivity work.",
+    "maximalConclusion": "The control can reveal inconsistency with assumptions; it cannot verify every unmeasured path.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-dag",
+      "src-target-trial"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "null-control-proves-causality"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “The causal estimate is validated by one null negative-control test.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-43",
+    "title": "Diagnostic spectrum and setting",
+    "domain": "clinical",
+    "study": "A cancer assay is developed on late-stage cases versus young healthy volunteers but intended for symptomatic clinic referrals.",
+    "analysis": "Report the case-control AUC as expected screening performance.",
+    "claim": "AUC 0.98 proves excellent clinic performance.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Accuracy measured in obvious cases and healthy controls rarely transports to the ambiguous population where the test will be used.",
+      "Recruit the intended-use spectrum consecutively or randomly, report clinical setting and prior testing, and evaluate accuracy in relevant subgroups.",
+      "Does the evaluation population reproduce disease severity, alternatives, prevalence, and work-up of intended use?"
+    ],
+    "betterApproach": "Use for diagnostic and screening test design, appraisal, and external evaluation.",
+    "maximalConclusion": "The study shows separation in the sampled spectrum; intended-use accuracy requires representative evaluation.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-stard-2015",
+      "src-roc"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "two-gate-design"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “AUC 0.98 proves excellent clinic performance.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-44",
+    "title": "Reference-standard bias",
+    "domain": "clinical",
+    "study": "Only patients with a positive imaging screen receive biopsy; screen-negative patients are assumed disease-free.",
+    "analysis": "Calculate sensitivity among biopsied patients and specificity among everyone else.",
+    "claim": "The model is 95% sensitive against verified clinical truth.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "An imperfect or differentially applied reference standard can misclassify disease and bias sensitivity or specificity.",
+      "Define and blind the reference standard, apply it consistently regardless of index-test result, and account for indeterminate or missing verification.",
+      "Who received definitive verification, was it independent of the index test, and how were unresolved cases handled?"
+    ],
+    "betterApproach": "Use in diagnostic accuracy studies and clinical label construction for machine learning.",
+    "maximalConclusion": "Accuracy is conditional on the reference process; verification and label error must be reported and analyzed.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-stard-2015",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "routine-label-ground-truth"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “The model is 95% sensitive against verified clinical truth.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-45",
+    "title": "Decision threshold and net benefit",
+    "domain": "prediction",
+    "study": "A recurrence model triggers adjuvant therapy only when predicted risk makes treatment harms acceptable.",
+    "analysis": "Claim clinical utility because the AUC exceeds 0.80.",
+    "claim": "High discrimination guarantees patient benefit.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "A model can rank well yet cause harm if used at implausible thresholds or with miscalibrated probabilities.",
+      "Tie threshold probability to a concrete action and relative false-positive/false-negative harms; compare model, treat-all, and treat-none net benefit over a plausible range.",
+      "What decision does the threshold encode, are probabilities calibrated, and are comparator strategies realistic?"
+    ],
+    "betterApproach": "Use after adequate internal or external evaluation when a prediction is intended to change an action.",
+    "maximalConclusion": "The model may improve decisions only in the evaluated population, threshold range, and action context.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-dca",
+      "src-calibration",
+      "src-roc"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-equals-utility"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “High discrimination guarantees patient benefit.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-46",
+    "title": "Calibration hierarchy",
+    "domain": "prediction",
+    "study": "A transported score ranks patients correctly but overpredicts absolute risk twofold.",
+    "analysis": "Declare calibration adequate because a goodness-of-fit test is nonsignificant.",
+    "claim": "The model is calibrated because P=.21.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "A single Hosmer–Lemeshow P value or intercept cannot reveal whether risk predictions are systematically too extreme or locally distorted.",
+      "Assess calibration-in-the-large, calibration slope, and flexible observed-versus-predicted curves with uncertainty at clinically relevant ranges.",
+      "Are intercept, slope, and local calibration shown, and is sample size sufficient for the curve?"
+    ],
+    "betterApproach": "Use whenever a model outputs probabilities or absolute risks.",
+    "maximalConclusion": "Calibration is population-, time-, and setting-specific and must be quantified on the prediction scale.",
+    "severity": "major",
+    "sourceIds": [
+      "src-calibration",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "hl-test-proves-calibration"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “The model is calibrated because P=.21.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-47",
+    "title": "Bootstrap optimism correction",
+    "domain": "prediction",
+    "study": "A 20-parameter survival model is developed in 180 events with backward selection.",
+    "analysis": "Bootstrap only the final fixed formula after selection and call it internally validated.",
+    "claim": "The model is validated because 1,000 bootstrap confidence intervals were calculated.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Apparent performance reuses development data and is optimistic, especially after variable selection and tuning.",
+      "Repeat the complete modeling pipeline in bootstrap samples, evaluate each fitted model in bootstrap and original data, and subtract mean optimism from apparent performance.",
+      "Did every data-driven preprocessing, selection, and tuning step occur inside each resample?"
+    ],
+    "betterApproach": "Use for internal validation and shrinkage estimation when the sample should remain available for development.",
+    "maximalConclusion": "Bootstrap correction estimates expected performance in similar data under the reproduced pipeline; external transport remains untested.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-internal-validation",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "ci-bootstrap-is-validation"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “The model is validated because 1,000 bootstrap confidence intervals were calculated.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-48",
+    "title": "External-evaluation sample size",
+    "domain": "prediction",
+    "study": "A five-year mortality model is evaluated in a new hospital with only 28 deaths.",
+    "analysis": "Call the study adequately powered because it exceeds ten events per predictor in the original model.",
+    "claim": "The unchanged C-index proves successful external validation.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Small external cohorts yield unstable calibration, discrimination, and net-benefit estimates even if they contain a traditional minimum number of events.",
+      "Plan sample size around precision for calibration-in-the-large, calibration slope, discrimination, and decision-analytic measures across the intended outcome horizon.",
+      "What precision targets justified participants and events for each performance measure?"
+    ],
+    "betterApproach": "Use before collecting or selecting a dataset for independent model evaluation.",
+    "maximalConclusion": "Performance estimates require confidence intervals and adequate precision; one cohort evaluates rather than permanently validates a model.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-pm-external",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ten-events-validation"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “The unchanged C-index proves successful external validation.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-49",
+    "title": "Nested resampling for model selection",
+    "domain": "prediction",
+    "study": "A transcriptomic classifier selects genes, scales features, tunes regularization, and reports cross-validated AUC.",
+    "analysis": "Select genes once on the full dataset, then cross-validate the classifier.",
+    "claim": "Five-fold cross-validation eliminated overfitting.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Using the same folds to tune hyperparameters and estimate performance leaks selection information into evaluation.",
+      "Place all preprocessing and tuning inside inner resampling and reserve outer folds solely for estimating performance of the full selection procedure.",
+      "Which data influenced feature selection, scaling, tuning, stopping, and the final reported metric?"
+    ],
+    "betterApproach": "Use when performance is estimated while any model or pipeline choice is data-adaptive.",
+    "maximalConclusion": "Nested resampling estimates the pipeline's internal generalization under the sampled population; external evaluation is still needed.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-leakage",
+      "src-internal-validation"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cv-after-feature-selection"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “Five-fold cross-validation eliminated overfitting.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-50",
+    "title": "Rare-outcome performance",
+    "domain": "prediction",
+    "study": "A sepsis alert has 2% event prevalence, AUC 0.88, and 12% positive predictive value at the operational threshold.",
+    "analysis": "Describe the alert as 88% accurate.",
+    "claim": "AUC 0.88 means 88% of alerts are correct.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "ROC AUC can look favorable when events are rare while positive predictions remain mostly false.",
+      "Report prevalence, calibration, sensitivity, specificity, predictive values, and precision–recall behavior at relevant thresholds; connect metrics to intended decisions.",
+      "What happens to false alerts and missed cases at the deployed threshold and prevalence?"
+    ],
+    "betterApproach": "Use for rare diagnostic, prognostic, screening, and safety outcomes.",
+    "maximalConclusion": "The model ranks cases above controls with the reported probability; operational value depends on threshold-specific errors, prevalence, and action.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-roc",
+      "src-stard-2015",
+      "src-dca"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "auc-is-accuracy"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “AUC 0.88 means 88% of alerts are correct.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-51",
+    "title": "Prediction-model transportability",
+    "domain": "prediction",
+    "study": "An ICU model trained before a treatment guideline is applied after the guideline changes baseline mortality.",
+    "analysis": "Refit the intercept and predictors in the target cohort, then label the result external validation.",
+    "claim": "The model generalized because the target-cohort AUC was unchanged.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Changes in case mix, measurement, care pathways, outcome incidence, and predictor effects can degrade absolute risk even when ranking persists.",
+      "Compare target versus development setting, reproduce the locked pipeline, evaluate calibration and discrimination, and separate original performance from any recalibrated or updated model.",
+      "Was the original model implemented unchanged, and which transport differences were anticipated?"
+    ],
+    "betterApproach": "Use before applying a model across geography, time, device, laboratory, or eligibility setting.",
+    "maximalConclusion": "Transport requires target-setting evaluation of absolute risk and decisions; ranking alone is insufficient.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST",
+      "src-calibration"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "same-auc-transports"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “The model generalized because the target-cohort AUC was unchanged.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-52",
+    "title": "RNA-seq design matrix",
+    "domain": "omics",
+    "study": "Tumor and normal tissues are paired within patients and sequencing batch partly overlaps disease status.",
+    "analysis": "Fit expression by tissue alone and treat each technical library as an independent replicate.",
+    "claim": "Thousands of significant genes reflect disease biology.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Differential-expression software cannot recover a biological contrast that is confounded or incorrectly encoded in the design matrix.",
+      "Define sample-level experimental units, factors, interactions, blocking, paired structure, and the exact contrast before fitting count models.",
+      "Is the contrast estimable separately from patient and batch, and what is the biological replicate?"
+    ],
+    "betterApproach": "Use before DESeq2, edgeR, or related bulk/pseudobulk count analyses.",
+    "maximalConclusion": "Differential expression reflects the estimable sample-level contrast under the encoded design and count-model assumptions.",
+    "severity": "major",
+    "sourceIds": [
+      "src-deseq2",
+      "src-edger",
+      "src-multiomics"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "library-is-replicate"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “Thousands of significant genes reflect disease biology.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-53",
+    "title": "Count-model dispersion shrinkage",
+    "domain": "omics",
+    "study": "Six RNA-seq samples show variance far above the mean for many genes.",
+    "analysis": "Apply a Poisson test per gene because read counts are integers.",
+    "claim": "Very small P values prove precise gene-specific effects despite two biological samples per group.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Gene-wise variance estimates are unstable with few replicates, and Poisson models understate biological variability.",
+      "Negative-binomial workflows estimate mean–dispersion trends and borrow information across genes while preserving gene-specific deviations.",
+      "How was biological dispersion estimated, moderated, and diagnosed at low counts?"
+    ],
+    "betterApproach": "Use for replicated bulk RNA-seq and sample-level pseudobulk counts with compatible library-size normalization.",
+    "maximalConclusion": "Moderation stabilizes inference under the model; it cannot replace adequate independent replication.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-deseq2",
+      "src-edger"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "poisson-rnaseq",
+      "cells-create-replication"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “Very small P values prove precise gene-specific effects despite two biological samples per group.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-54",
+    "title": "Correlation-aware gene-set testing",
+    "domain": "omics",
+    "study": "A co-regulated interferon module contains dozens of strongly correlated genes.",
+    "analysis": "Run independent hypergeometric tests on every thresholded gene list and rank by nominal P value.",
+    "claim": "The pathway is mechanistically activated because its gene set is enriched.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Genes within pathways are correlated, so treating them as independent can make competitive gene-set tests anti-conservative.",
+      "Choose competitive versus self-contained hypotheses explicitly and use a method whose null, correlation handling, and sample-level permutation scheme match the design.",
+      "What is the gene-set null, how is inter-gene correlation handled, and what unit is permuted?"
+    ],
+    "betterApproach": "Use for pathway-level interpretation after a valid sample-level differential analysis.",
+    "maximalConclusion": "The gene set shows coordinated statistical association under the specified null; mechanistic activity remains a hypothesis.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-camera",
+      "src-gsea",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "enrichment-is-activation"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “The pathway is mechanistically activated because its gene set is enriched.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-55",
+    "title": "Bulk deconvolution identifiability",
+    "domain": "omics",
+    "study": "A tumor bulk cohort is deconvolved using immune signatures derived from peripheral blood.",
+    "analysis": "Interpret every estimated fraction as an unbiased cell count in tissue.",
+    "claim": "The treatment expands a specific cell population twofold.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Estimated cell fractions depend on the reference signature, platform, cell-state coverage, and separability of cell types.",
+      "Audit signature origin and scale, collinearity, missing cell states, absolute versus relative fractions, and validation against orthogonal measurements or mixtures.",
+      "Could an absent or activated cell state be represented as a mixture of available reference profiles?"
+    ],
+    "betterApproach": "Use for hypothesis generation and composition adjustment when reference and mixture assumptions are plausible and evaluated.",
+    "maximalConclusion": "The signature model estimates relative composition under its reference assumptions; biological expansion requires validation.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-cibersort",
+      "src-multiomics"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "fraction-is-count",
+      "reference-is-universal"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “The treatment expands a specific cell population twofold.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-56",
+    "title": "Proteomics missing-value strategy",
+    "domain": "omics",
+    "study": "Low-abundance peptides disappear more often in one acquisition batch, while isolated software failures are scattered.",
+    "analysis": "Replace every missing intensity with a small constant before normalization.",
+    "claim": "Proteins absent in one group are completely silenced.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Label-free proteomics mixes stochastic missingness with abundance-dependent censoring, so a universal imputation method can distort groups and variances.",
+      "Inspect missingness by intensity, peptide, protein, batch, and group; align imputation or censored modeling with plausible mechanisms and propagate analysis uncertainty.",
+      "Which missing values are plausibly censored versus random, and how does the strategy alter group differences?"
+    ],
+    "betterApproach": "Use in label-free proteomics after QC and before differential modeling, with mechanism-specific sensitivity analyses.",
+    "maximalConclusion": "The data support condition-associated detection or abundance patterns under the stated missingness model.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-proteomics-missing",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "missing-equals-zero"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “Proteins absent in one group are completely silenced.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-57",
+    "title": "Doublet detection audit",
+    "domain": "single-cell",
+    "study": "A cluster co-expresses mutually exclusive T-cell and epithelial markers and has high UMI counts.",
+    "analysis": "Label it a novel transdifferentiating population because it lies between clusters in UMAP.",
+    "claim": "The hybrid cluster proves lineage plasticity.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Multiplets can create hybrid expression profiles, false transitional states, and misleading rare populations.",
+      "Estimate expected doublet rates per capture, use sample-aware detection, inspect QC and marker combinations, and report sensitivity limits for homotypic doublets.",
+      "Were doublets evaluated before biological naming, and could homotypic doublets remain?"
+    ],
+    "betterApproach": "Use during droplet single-cell QC before clustering and state annotation.",
+    "maximalConclusion": "The profile is compatible with a doublet or rare state; orthogonal evidence is required before a biological transition claim.",
+    "severity": "major",
+    "sourceIds": [
+      "src-doubletfinder",
+      "src-scrna-best"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "hybrid-is-transition"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “The hybrid cluster proves lineage plasticity.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-58",
+    "title": "Ambient RNA contamination",
+    "domain": "single-cell",
+    "study": "Hemoglobin transcripts appear in nearly every cell type from a blood-rich tissue.",
+    "analysis": "Annotate all hemoglobin-positive droplets as erythroid-like cells.",
+    "claim": "Every macrophage activates an erythroid program.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Cell-free transcripts can appear broadly across droplets and mimic low-level marker expression in unrelated cell types.",
+      "Use empty-droplet/background profiles and cluster-specific markers to estimate contamination, compare corrected and uncorrected results, and retain uncertainty.",
+      "Does expression exceed the ambient background expected from lysed abundant cells?"
+    ],
+    "betterApproach": "Use for droplet single-cell datasets, especially necrotic, blood-rich, or high-RNA tissues.",
+    "maximalConclusion": "Low-level expression may reflect ambient contamination; cell-intrinsic expression needs marker coherence or orthogonal validation.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-soupx",
+      "src-scrna-best"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "one-marker-annotation"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “Every macrophage activates an erythroid program.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-59",
+    "title": "Single-cell variance stabilization",
+    "domain": "single-cell",
+    "study": "Clusters separate mainly by total UMI count before regularized negative-binomial normalization.",
+    "analysis": "Regress out every QC variable and use residuals for all differential tests without checking their null model.",
+    "claim": "Normalization removed all technical effects and preserved all biology.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Sequencing depth and mean–variance dependence can dominate feature selection and embeddings if normalization assumptions are ignored.",
+      "Use a count-aware normalization model, inspect residual depth effects, preserve raw counts for compatible downstream tests, and avoid mixing assay scales silently.",
+      "Which assay scale feeds each downstream step, and do residuals still correlate with depth or biology?"
+    ],
+    "betterApproach": "Use for UMI single-cell preprocessing and variance stabilization when model assumptions fit the assay.",
+    "maximalConclusion": "The transform reduces modeled depth-related variation; remaining or removed structure must be diagnosed for the intended task.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-sctransform",
+      "src-single-cell-2023"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "normalization-solves-batch"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “Normalization removed all technical effects and preserved all biology.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-60",
+    "title": "Batch integration: remove less, prove more",
+    "domain": "single-cell",
+    "study": "Cases were sequenced in one laboratory and controls in another, with no cross-batch condition overlap.",
+    "analysis": "Choose the method whose UMAP mixes batches most completely.",
+    "claim": "After integration, all remaining separation is biological.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Visual batch mixing can be achieved by erasing true biological variation, especially when condition and batch are partially confounded.",
+      "Benchmark integration on batch removal and biological conservation, keep unintegrated references, test multiple resolutions, and avoid corrected values for unsupported differential inference.",
+      "What known biology was preserved, and is the desired condition signal statistically distinguishable from batch?"
+    ],
+    "betterApproach": "Use when batches share enough biological states to anchor integration and downstream purpose is explicit.",
+    "maximalConclusion": "The representation balances selected batch and biology metrics; causal condition effects still require an identifiable design.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-scib",
+      "src-batch",
+      "src-single-cell-2023"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "mixed-umap-is-correct"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “After integration, all remaining separation is biological.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-61",
+    "title": "Cell-type annotation evidence",
+    "domain": "single-cell",
+    "study": "A stressed myeloid cluster weakly expresses one dendritic-cell marker after integration.",
+    "analysis": "Name the cluster dendritic cells from that marker alone and treat labels as observed truth.",
+    "claim": "The rare labeled population is a novel therapeutic cell type.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Single markers, transferred labels, and cluster names can conceal ambiguity, state effects, and reference mismatch.",
+      "Combine coherent positive and negative marker programs, reference mapping, tissue context, QC, and blinded or orthogonal validation; retain hierarchical uncertainty.",
+      "Which competing identities were considered, and do markers cohere across donors rather than only pooled cells?"
+    ],
+    "betterApproach": "Use after QC and clustering or reference mapping, before abundance and communication claims.",
+    "maximalConclusion": "The expression evidence supports a probabilistic or hierarchical annotation; novelty requires independent validation.",
+    "severity": "major",
+    "sourceIds": [
+      "src-scrna-best",
+      "src-single-cell-2023"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "single-marker-label"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “The rare labeled population is a novel therapeutic cell type.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-62",
+    "title": "Sample-aware differential abundance",
+    "domain": "single-cell",
+    "study": "Eight donors contribute unequal cells across a continuous activated T-cell trajectory.",
+    "analysis": "Run a cell-level chi-square test on cluster labels pooled by condition.",
+    "claim": "The condition expands activated T cells because pooled cell proportions differ at P<10⁻¹⁰.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Cell counts and neighborhoods are compositional and nested within biological samples; pooled-cell tests exaggerate precision.",
+      "Define sample-level replication, model counts or proportions with library/composition structure, and use cluster or graph-neighborhood resolution aligned with the question.",
+      "Does uncertainty arise across donors, and are results stable to neighborhood or cluster resolution?"
+    ],
+    "betterApproach": "Use to compare cell-state abundance across replicated conditions.",
+    "maximalConclusion": "Sample-level data support a condition-associated compositional shift at the tested resolution.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-milo",
+      "src-pseudobulk",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cells-are-replicates"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “The condition expands activated T cells because pooled cell proportions differ at P<10⁻¹⁰.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-63",
+    "title": "RNA velocity assumptions",
+    "domain": "single-cell",
+    "study": "A cross-sectional tumor dataset shows arrows from one malignant cluster toward another on UMAP.",
+    "analysis": "Conclude that the first clone differentiates into the second in patients.",
+    "claim": "RNA velocity proves the tumor evolution pathway.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Velocity arrows can look like lineage direction while depending on splicing kinetics, steady-state or dynamical assumptions, neighborhood smoothing, and sampling.",
+      "Inspect phase portraits and fit diagnostics, test roots and genes, compare dynamical assumptions, and treat short-term state derivatives separately from lineage fate.",
+      "Which genes support direction, are kinetic assumptions plausible, and is lineage independently validated?"
+    ],
+    "betterApproach": "Use for hypothesis generation about near-term transcriptional dynamics in datasets with informative spliced/unspliced counts.",
+    "maximalConclusion": "The fitted model suggests local transcriptional direction under its assumptions; lineage requires orthogonal temporal or tracing evidence.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-rna-velocity",
+      "src-trajectory"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "velocity-is-lineage"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “RNA velocity proves the tumor evolution pathway.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-64",
+    "title": "Copy-number inference from RNA",
+    "domain": "single-cell",
+    "study": "Epithelial cells show a broad chromosome-arm expression shift relative to immune references.",
+    "analysis": "Call every high-scoring cell malignant and every low-scoring cell normal.",
+    "claim": "The RNA matrix proves a specific subclone's DNA architecture.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Expression-derived copy-number patterns can help distinguish aneuploid cells but are confounded by transcriptional programs, reference choice, and low coverage.",
+      "Use appropriate diploid references, inspect broad chromosome-scale consistency, compare tools and thresholds, and validate key clones with DNA or pathology evidence.",
+      "Could cell state or reference mismatch create the inferred pattern, and is DNA-level support available?"
+    ],
+    "betterApproach": "Use as a probabilistic tumor-cell or clone annotation aid in suitable single-cell transcriptomes.",
+    "maximalConclusion": "Expression supports a putative broad aneuploid pattern; genomic confirmation is required.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-copykat",
+      "src-scrna-best"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "rna-cnv-is-dna"
+    ],
+    "variantPrompt": "In an unfamiliar single-cell setting, identify whether “The RNA matrix proves a specific subclone's DNA architecture.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-65",
+    "title": "Spatial autocorrelation testing",
+    "domain": "omics",
+    "study": "A gene forms a smooth gradient across a tissue section with thousands of neighboring spots.",
+    "analysis": "Treat every spot as an independent replicate in a two-group t test.",
+    "claim": "The spatially patterned gene drives tissue organization.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Nearby spots share tissue structure, so tests assuming independent observations can inflate evidence for spatial genes or region differences.",
+      "Define the spatial null and neighborhood scale, use a model that represents spatial covariance, correct across genes, and distinguish pattern detection from mechanism.",
+      "What spatial covariance remains after modeled structure, and what is the biological replicate across sections or patients?"
+    ],
+    "betterApproach": "Use to discover spatially variable expression or test region patterns with explicit coordinates.",
+    "maximalConclusion": "The gene exhibits spatial association at the tested scale; causality and cross-patient generality remain unestablished.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-spark",
+      "src-spatial-original",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "spots-are-replicates"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “The spatially patterned gene drives tissue organization.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-66",
+    "title": "Spatial spot mixture",
+    "domain": "omics",
+    "study": "A 55-µm spot contains tumor, fibroblast, and immune cells and expresses ligands and receptors.",
+    "analysis": "Claim direct tumor–immune signaling because ligand and receptor occur in the same spot.",
+    "claim": "The spatial data prove direct paracrine signaling.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Spot-based measurements mix cells and extracellular RNA, so apparent co-expression or proximity may be a resolution artifact.",
+      "Report physical resolution and capture geometry, estimate composition with uncertainty, compare histology, and reserve cell–cell interaction claims for data that resolve the relevant scale.",
+      "Can the platform resolve the cells and distances required by the proposed interaction?"
+    ],
+    "betterApproach": "Use when interpreting spot-based spatial transcriptomics and deconvolution outputs.",
+    "maximalConclusion": "The signals co-localize at spot resolution; cellular source and interaction require higher-resolution or functional evidence.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-spatial-original",
+      "src-spatial"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "co-spot-is-interaction"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “The spatial data prove direct paracrine signaling.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-67",
+    "title": "Multi-omics latent-factor interpretation",
+    "domain": "omics",
+    "study": "A factor links methylation and expression but is also strongly associated with processing batch.",
+    "analysis": "Name the factor an immune-regulatory mechanism from its top five loadings.",
+    "claim": "The latent factor controls disease progression.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Latent factors summarize covariance but can represent technical variation, composition, or scale differences rather than a biological program.",
+      "Inspect variance explained by view, feature loadings, sample covariates, robustness, and held-out reconstruction; label factors descriptively before mechanistic interpretation.",
+      "Does the factor survive batch adjustment and resampling, and which modalities actually contribute?"
+    ],
+    "betterApproach": "Use for unsupervised discovery of shared and view-specific variation in aligned multi-omics samples.",
+    "maximalConclusion": "The factor captures reproducible cross-view covariance associated with disease and/or technical variables.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-mofa-plus",
+      "src-batch"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "factor-is-mechanism"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “The latent factor controls disease progression.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-68",
+    "title": "Supervised multi-omics without leakage",
+    "domain": "omics",
+    "study": "RNA, methylation, and proteomics from 90 patients are integrated to classify response.",
+    "analysis": "Select cross-omic features using all outcome labels, then report cross-validated accuracy on those features.",
+    "claim": "The multi-omics signature is clinically validated at 95% accuracy.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Outcome-guided feature selection across many modalities can overfit severely if preprocessing or component selection sees evaluation outcomes.",
+      "Nest normalization, filtering, component tuning, and feature selection inside resampling; keep patient groups together and reserve a locked external evaluation when possible.",
+      "Did any target label influence a feature, component, or tuning choice before its outer-fold prediction?"
+    ],
+    "betterApproach": "Use for supervised cross-omics signatures with adequate independent samples and a fully reproducible pipeline.",
+    "maximalConclusion": "Internal nested-resampling estimates are exploratory until the locked pipeline is evaluated in a suitable independent setting.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-diablo",
+      "src-leakage",
+      "src-pmsampsize"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "frontier",
+    "misconceptionTags": [
+      "features-before-cv"
+    ],
+    "variantPrompt": "In an unfamiliar omics setting, identify whether “The multi-omics signature is clinically validated at 95% accuracy.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-69",
+    "title": "Radiomics feature reproducibility",
+    "domain": "prediction",
+    "study": "A texture signature is trained on one reconstruction kernel and tested on a different vendor without harmonization analysis.",
+    "analysis": "Assume features with the same names are identical across packages.",
+    "claim": "The signature captures tumor heterogeneity independent of imaging protocol.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Scanner, reconstruction, resampling, segmentation, and software definitions can shift radiomics features more than biology.",
+      "Standardize feature definitions and image preprocessing, assess segmentation and acquisition robustness, lock the pipeline, and evaluate across scanners and sites.",
+      "Were feature values benchmarked to a standard and robustness tested across plausible acquisition and segmentation variation?"
+    ],
+    "betterApproach": "Use before developing or transporting imaging biomarkers.",
+    "maximalConclusion": "The evaluated pipeline associates standardized image features with outcome in the tested acquisition settings.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-ibsi",
+      "src-leakage",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "same-feature-name-same-value"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “The signature captures tumor heterogeneity independent of imaging protocol.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-70",
+    "title": "Prediction-model development sample size",
+    "domain": "prediction",
+    "study": "A binary model considers 30 parameters with 12% outcome prevalence in 400 participants.",
+    "analysis": "Declare ten events per variable sufficient after counting a categorical predictor as one variable.",
+    "claim": "The model is sufficiently powered because the EPV exceeds ten.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "A fixed events-per-variable rule ignores outcome prevalence, anticipated model fit, parameter complexity, and desired shrinkage.",
+      "Plan participants and events using candidate parameter count, outcome frequency, anticipated performance, global shrinkage, and precision of baseline risk.",
+      "How many parameters—not labels—are estimated, and what shrinkage and precision criteria are targeted?"
+    ],
+    "betterApproach": "Use before collecting data or finalizing candidate predictors for clinical prediction development.",
+    "maximalConclusion": "Adequacy depends on explicit performance and precision targets; sample size does not guarantee low bias if the pipeline is flawed.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-pmsampsize",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ten-epv-rule"
+    ],
+    "variantPrompt": "In an unfamiliar prediction setting, identify whether “The model is sufficiently powered because the EPV exceeds ten.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-71",
+    "title": "Reporting guideline versus risk of bias",
+    "domain": "clinical",
+    "study": "An observational paper reports every STROBE item but exposure is severely misclassified.",
+    "analysis": "Convert checklist completion into a numerical quality score and rank studies by it.",
+    "claim": "The study is high quality because it scored 20/22 on a checklist.",
+    "question": "Which assumption fails, what analysis would be defensible, and where must the conclusion stop?",
+    "expectedFindings": [
+      "Complete reporting enables appraisal but does not make a confounded, underpowered, or misclassified study valid.",
+      "Use reporting checklists to locate required information, then assess design-specific bias, applicability, precision, and identification separately.",
+      "Which reported design choices threaten validity even though they are transparently described?"
+    ],
+    "betterApproach": "Use during protocol writing, manuscript preparation, evidence extraction, and peer review.",
+    "maximalConclusion": "The report is sufficiently transparent to appraise; validity requires a separate domain-based judgment.",
+    "severity": "major",
+    "sourceIds": [
+      "src-strobe",
+      "src-prisma-2020",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "checklist-score-quality"
+    ],
+    "variantPrompt": "In an unfamiliar clinical setting, identify whether “The study is high quality because it scored 20/22 on a checklist.” is supportable and state the evidence needed to change your judgment."
+  },
+  {
+    "id": "jc-72",
+    "title": "Protocol outcome silently changed",
+    "domain": "clinical",
+    "study": "A registered trial specifies 12-month quality of life as primary; the manuscript highlights 6-month response after the primary is null.",
+    "analysis": "Report only the favorable time point without multiplicity or amendment history.",
+    "claim": "Treatment produces durable quality-of-life improvement.",
+    "question": "What provenance and inferential checks are required?",
+    "expectedFindings": [
+      "Primary outcome/time point changed",
+      "Selective reporting risk",
+      "Multiplicity not addressed",
+      "Durability is unsupported"
+    ],
+    "betterApproach": "Report the registered outcome first, disclose amendments with timing, and label post hoc time points exploratory.",
+    "maximalConclusion": "An exploratory 6-month difference was observed; the prespecified 12-month benefit was not demonstrated.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-consort"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "outcome-switching"
+    ],
+    "variantPrompt": "A new trial switches from a null registered scale to a favorable secondary endpoint. Audit the maximal conclusion."
+  },
+  {
+    "id": "jc-73",
+    "title": "Meta-analysis mixes incompatible estimands",
+    "domain": "evidence synthesis",
+    "study": "A review pools odds ratios for prevalent disease, risk ratios at one year, and hazard ratios for time to event.",
+    "analysis": "Convert all estimates to log scale and run one random-effects model.",
+    "claim": "The intervention reduces disease by 24%.",
+    "question": "Why is mathematical poolability not scientific compatibility?",
+    "expectedFindings": [
+      "Different outcome summaries",
+      "Different time horizons",
+      "Different risk sets",
+      "Clinical heterogeneity hidden"
+    ],
+    "betterApproach": "Define compatible estimands and time horizons, synthesize like with like, and explain remaining heterogeneity.",
+    "maximalConclusion": "No single pooled effect is interpretable until estimands are aligned.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-prisma-2020",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "mix-estimands"
+    ],
+    "variantPrompt": "Audit a review that pools standardized mean differences with change-score ratios."
+  },
+  {
+    "id": "jc-74",
+    "title": "Subgroup interaction omitted",
+    "domain": "clinical",
+    "study": "Treatment is significant in men and nonsignificant in women in a randomized trial.",
+    "analysis": "Compare two within-subgroup P values without a treatment-by-sex interaction.",
+    "claim": "Only men benefit.",
+    "question": "Which comparison actually tests effect modification?",
+    "expectedFindings": [
+      "Significant versus nonsignificant is not a significant difference",
+      "Interaction needed",
+      "Subgroup power is limited",
+      "Multiplicity matters"
+    ],
+    "betterApproach": "Estimate the prespecified interaction and subgroup effects with uncertainty on a meaningful scale.",
+    "maximalConclusion": "Evidence for sex-specific treatment effect is absent without a supported interaction.",
+    "severity": "major",
+    "sourceIds": [
+      "src-consort"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "p-value-subgroups"
+    ],
+    "variantPrompt": "One age subgroup is significant and another is not. Decide whether effect modification is established."
+  },
+  {
+    "id": "jc-75",
+    "title": "Mediation from cross-sectional data",
+    "domain": "causal inference",
+    "study": "Exposure, mediator, and outcome are measured at one visit.",
+    "analysis": "Fit regression paths and bootstrap an indirect effect.",
+    "claim": "The biomarker mediates the exposure's causal effect.",
+    "question": "Which temporal and identification conditions are missing?",
+    "expectedFindings": [
+      "Temporal order unresolved",
+      "Mediator–outcome confounding",
+      "Exposure-induced confounding",
+      "No causal design"
+    ],
+    "betterApproach": "Specify a causal mediation estimand, temporal design, confounders, and sensitivity analysis; otherwise describe associations.",
+    "maximalConclusion": "The variables show a cross-sectional association pattern compatible with, but not evidence of, mediation.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-dag",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "paths-equal-mediation"
+    ],
+    "variantPrompt": "Audit causal mediation claimed from a single post-treatment blood draw."
+  },
+  {
+    "id": "jc-76",
+    "title": "Batch correction uses outcome labels",
+    "domain": "omics",
+    "study": "Cases and controls show batch imbalance in proteomics.",
+    "analysis": "Tune correction parameters to maximize case–control separation, then test the corrected data.",
+    "claim": "Correction revealed the true disease signal.",
+    "question": "Where did supervised leakage enter?",
+    "expectedFindings": [
+      "Outcome used in preprocessing choice",
+      "Same signal tested afterward",
+      "Batch and disease partly confounded",
+      "Unbiased recovery impossible"
+    ],
+    "betterApproach": "Prespecify correction from design/QC, keep outcomes out of unsupervised tuning, and use replicated cross-batch controls.",
+    "maximalConclusion": "The outcome-optimized corrected association is circular and requires independent replication.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-batch",
+      "src-leakage"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "supervised-correction"
+    ],
+    "variantPrompt": "A new pipeline chooses normalization by downstream classification accuracy. Audit leakage."
+  },
+  {
+    "id": "jc-77",
+    "title": "Per-cell train–test split",
+    "domain": "single-cell",
+    "study": "Cells from 20 patients train a disease classifier.",
+    "analysis": "Randomly split cells, so every patient's cells appear in train and test.",
+    "claim": "The model generalizes to new patients at 99% accuracy.",
+    "question": "What is the independent prediction target?",
+    "expectedFindings": [
+      "Patient identity leaks",
+      "Cells are nested",
+      "Test set is not patient-independent",
+      "Accuracy targets seen donors"
+    ],
+    "betterApproach": "Split or cross-validate by patient and repeat all feature learning within training patients.",
+    "maximalConclusion": "The cell-random split measures interpolation across cells from known patients, not patient generalization.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-pseudorep",
+      "src-leakage"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "cell-split"
+    ],
+    "variantPrompt": "Images from the same patient occur in training and test. State the correct split unit."
+  },
+  {
+    "id": "jc-78",
+    "title": "Pseudo-time treated as observed time",
+    "domain": "single-cell",
+    "study": "Cross-sectional cells are ordered along inferred pseudotime.",
+    "analysis": "Regress clinical duration on pseudotime and interpret each unit as a day.",
+    "claim": "Cells progress through the program over 12 days.",
+    "question": "What does pseudotime identify?",
+    "expectedFindings": [
+      "Relative manifold coordinate",
+      "Scale not chronological",
+      "Topology/model dependent",
+      "Cross-sectional sampling"
+    ],
+    "betterApproach": "Interpret relative state ordering, test robustness across roots/methods, and validate timing experimentally.",
+    "maximalConclusion": "Cells vary along an inferred state continuum; chronological rate and direction are unmeasured.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-trajectory",
+      "src-rna-velocity"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "pseudotime-is-clock"
+    ],
+    "variantPrompt": "An organoid trajectory labels pseudotime as weeks. Audit the claim."
+  },
+  {
+    "id": "jc-79",
+    "title": "Spatial neighbors treated as interactions",
+    "domain": "spatial omics",
+    "study": "Two cell types occur within 100 µm in one tumor section.",
+    "analysis": "Count nearest neighbors and query ligand–receptor databases.",
+    "claim": "The cells communicate through the nominated pathway.",
+    "question": "Which evidence layers are still missing?",
+    "expectedFindings": [
+      "Proximity is not signaling",
+      "Expression is not protein activity",
+      "One section lacks patient replication",
+      "Database pairs are hypotheses"
+    ],
+    "betterApproach": "Use patient-level replicated spatial statistics and validate ligand, receptor, pathway activity, and perturbation.",
+    "maximalConclusion": "The cell types co-localize and express a candidate ligand–receptor pair.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-spatial",
+      "src-cellchat",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "proximity-is-signaling"
+    ],
+    "variantPrompt": "Two proteins co-occur by imaging. Decide whether direct signaling is established."
+  },
+  {
+    "id": "jc-80",
+    "title": "External data tuned repeatedly",
+    "domain": "prediction",
+    "study": "A public cohort is called external validation.",
+    "analysis": "Revise features after every disappointing result and rerun the same cohort.",
+    "claim": "The final model is independently validated.",
+    "question": "What role does the reused cohort now play?",
+    "expectedFindings": [
+      "Evaluation set became development data",
+      "Adaptive overfitting",
+      "Performance optimism",
+      "No untouched test remains"
+    ],
+    "betterApproach": "Freeze the pipeline before evaluation; if updates use the cohort, label it model updating and seek a new evaluation set.",
+    "maximalConclusion": "Performance in the repeatedly used cohort is development evidence, not independent evaluation.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-leakage",
+      "src-tripod-ai"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "test-set-reuse"
+    ],
+    "variantPrompt": "A challenge leaderboard guides 20 submissions. Is the leaderboard still an untouched test?"
+  },
+  {
+    "id": "jc-81",
+    "title": "Noninferiority margin after results",
+    "domain": "clinical",
+    "study": "A trial compares a simpler procedure with standard care.",
+    "analysis": "Choose the noninferiority margin after observing the confidence interval.",
+    "claim": "The new procedure is noninferior.",
+    "question": "Why must the margin be clinically and historically justified in advance?",
+    "expectedFindings": [
+      "Post hoc margin",
+      "Type I error",
+      "Assay sensitivity not addressed",
+      "Per-protocol/ITT roles unclear"
+    ],
+    "betterApproach": "Prespecify and justify the margin, analysis populations, constancy, and sensitivity analyses.",
+    "maximalConclusion": "The observed difference is described; noninferiority was not validly tested.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-consort"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "posthoc-margin"
+    ],
+    "variantPrompt": "A biosimilar trial widens its margin after enrollment. Audit noninferiority."
+  },
+  {
+    "id": "jc-82",
+    "title": "Composite outcome dominated",
+    "domain": "clinical",
+    "study": "A composite combines death, hospitalization, and a minor lab change.",
+    "analysis": "Analyze time to first event; most events are lab changes.",
+    "claim": "Treatment prevents serious clinical events.",
+    "question": "How can the composite conceal component meaning?",
+    "expectedFindings": [
+      "Components differ in importance",
+      "Frequent minor event dominates",
+      "Competing first events",
+      "Component effects may differ"
+    ],
+    "betterApproach": "Justify components, report each with uncertainty, and align the claim with what drives the composite.",
+    "maximalConclusion": "Treatment affects the composite primarily through the lab component; serious-event benefit is unestablished.",
+    "severity": "major",
+    "sourceIds": [
+      "src-consort",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "composite-equals-serious"
+    ],
+    "variantPrompt": "A composite benefit is driven by revascularization rather than death. Bound the claim."
+  },
+  {
+    "id": "jc-83",
+    "title": "Enrichment direction reversed",
+    "domain": "omics",
+    "study": "A ranked gene list uses positive values for control-over-case expression.",
+    "analysis": "Run enrichment without documenting rank direction.",
+    "claim": "Positive normalized enrichment means pathway activation in cases.",
+    "question": "Which sign and contrast checks precede interpretation?",
+    "expectedFindings": [
+      "Rank direction ambiguous",
+      "Gene-set statistic relative to ordering",
+      "Activation not measured",
+      "Contrast provenance missing"
+    ],
+    "betterApproach": "Document numerator/denominator, inspect leading-edge genes, and state association direction without activation language.",
+    "maximalConclusion": "The gene set is enriched toward one documented end of the contrast; activity and mechanism require validation.",
+    "severity": "major",
+    "sourceIds": [
+      "src-gsea",
+      "src-camera"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "enrichment-sign"
+    ],
+    "variantPrompt": "A log-fold change sign is reversed before pathway analysis. Recover the correct conclusion."
+  },
+  {
+    "id": "jc-84",
+    "title": "AI critique without evidence boundary",
+    "domain": "AI oversight",
+    "study": "An AI receives a locked learner answer but no source excerpts or identifiers.",
+    "analysis": "Generate a confident senior critique with three invented methodological citations.",
+    "claim": "The feedback is evidence-grounded because the model sounds cautious.",
+    "question": "What should the oversight workflow require?",
+    "expectedFindings": [
+      "No explicit evidence context",
+      "Citations unresolved",
+      "Confidence is not verification",
+      "Generated content needs provenance"
+    ],
+    "betterApproach": "Provide task-specific evidence, demand structured uncertainty, resolve identifiers, and keep generated output pending until human review.",
+    "maximalConclusion": "The critique is an unverified generated suggestion and cannot change verified training content.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-tripod-ai",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_external",
+    "verificationStatus": "verified",
+    "difficulty": "foundation",
+    "misconceptionTags": [
+      "ai-confidence-is-evidence"
+    ],
+    "variantPrompt": "An AI supplies a plausible DOI absent from Crossref. Decide status and next action."
+  },
+  {
+    "id": "jc-01",
+    "title": "Twelve thousand cells, six patients",
+    "domain": "single-cell",
+    "study": "3 patients per subtype; 12,000 cells total.",
+    "analysis": "Pool cells and run cell-level Wilcoxon DEG.",
+    "claim": "Gene X differs, P<0.001.",
+    "question": "What is the main inference problem?",
+    "expectedFindings": [
+      "Patient is the independent unit",
+      "Cells are nested within patients",
+      "Pseudoreplication makes uncertainty too small",
+      "Between-patient consistency is unknown"
+    ],
+    "betterApproach": "Use patient×cell-type pseudobulk or a justified hierarchical model; report per-patient effects and FDR.",
+    "maximalConclusion": "In sampled cells, expression differs descriptively; patient-level subtype inference is not established.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-pseudobulk",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "twelve-thousand-cells-six-patients"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Twelve thousand cells, six patients”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-02",
+    "title": "Survival HR without time zero",
+    "domain": "survival",
+    "study": "Retrospective treatment cohort with treatment started at varying times.",
+    "analysis": "Classify ever-treated patients as treated from diagnosis and fit Cox regression.",
+    "claim": "Treatment reduces mortality by 45%.",
+    "question": "Which design error comes before interpreting the HR?",
+    "expectedFindings": [
+      "Immortal time",
+      "Exposure is defined using future information",
+      "Time zero is misaligned",
+      "Adjusted Cox covariates do not repair time misclassification"
+    ],
+    "betterApproach": "Use a time-varying exposure, landmark design with explicit target population, or target-trial emulation.",
+    "maximalConclusion": "No treatment effect conclusion is supportable from the reported analysis.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-cox",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "survival-hr-without-time-zero"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Survival HR without time zero”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-03",
+    "title": "Significant here, not there",
+    "domain": "subgroup",
+    "study": "Randomized trial reports treatment effects by sex.",
+    "analysis": "Men: HR .72, P=.03; women: HR .91, P=.31.",
+    "claim": "Treatment works only in men.",
+    "question": "What statistical comparison is missing?",
+    "expectedFindings": [
+      "Direct interaction test",
+      "Subgroup power",
+      "Multiplicity",
+      "Confidence intervals for effect difference"
+    ],
+    "betterApproach": "Test a prespecified treatment×sex interaction on a defined scale and interpret uncertainty.",
+    "maximalConclusion": "Evidence supports an overall effect and uncertain subgroup estimates, not proven sex-specific efficacy.",
+    "severity": "major",
+    "sourceIds": [
+      "src-consort"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "significant-here-not-there"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Significant here, not there”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-04",
+    "title": "AUC from the training set",
+    "domain": "prediction",
+    "study": "A 60-gene recurrence model is developed in 90 patients.",
+    "analysis": "Features and coefficients chosen on all data; training AUC=.94.",
+    "claim": "The model has excellent predictive accuracy.",
+    "question": "What evidence is missing?",
+    "expectedFindings": [
+      "Apparent performance is optimistic",
+      "Feature selection was not validated",
+      "Calibration absent",
+      "Independent or nested validation absent"
+    ],
+    "betterApproach": "Repeat the full pipeline in bootstrap/nested CV, then evaluate a locked model externally.",
+    "maximalConclusion": "The model fits the development data; out-of-sample performance is unknown.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST",
+      "src-leakage"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "auc-from-the-training-set"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “AUC from the training set”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-05",
+    "title": "Calibration by Hosmer–Lemeshow",
+    "domain": "prediction",
+    "study": "A diagnostic model is tested in 1,500 patients.",
+    "analysis": "Report C=.81 and Hosmer–Lemeshow P=.18.",
+    "claim": "The model is well calibrated.",
+    "question": "Why is this insufficient?",
+    "expectedFindings": [
+      "Non-significance is not evidence of good calibration",
+      "Test depends on grouping/sample size",
+      "Intercept/slope and plot absent",
+      "Clinical thresholds absent"
+    ],
+    "betterApproach": "Report calibration-in-the-large, slope, flexible calibration plot, and uncertainty.",
+    "maximalConclusion": "The model discriminates moderately; calibration has not been adequately characterized.",
+    "severity": "major",
+    "sourceIds": [
+      "src-calibration",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "calibration-by-hosmer-lemeshow"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Calibration by Hosmer–Lemeshow”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-06",
+    "title": "Complete cases only",
+    "domain": "missing data",
+    "study": "Prognostic cohort has 28% missing performance status, concentrated among sick patients.",
+    "analysis": "Delete incomplete records and fit multivariable Cox model.",
+    "claim": "Marker is independently prognostic.",
+    "question": "What bias should be considered?",
+    "expectedFindings": [
+      "Complete-case selection",
+      "Missingness related to prognosis",
+      "Loss of precision",
+      "Adjustment set changes"
+    ],
+    "betterApproach": "Describe missingness, use principled imputation under stated assumptions, and perform sensitivity analysis.",
+    "maximalConclusion": "Association in the selected complete-case subset may not represent the full cohort.",
+    "severity": "major",
+    "sourceIds": [
+      "src-missing",
+      "src-remark"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "complete-cases-only"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Complete cases only”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-07",
+    "title": "One minus Kaplan–Meier",
+    "domain": "competing risks",
+    "study": "Elderly cancer cohort; outcome is recurrence; death can occur first.",
+    "analysis": "Censor deaths and plot 1−KM for recurrence.",
+    "claim": "Five-year recurrence risk is 42%.",
+    "question": "What is wrong with the risk estimate?",
+    "expectedFindings": [
+      "Death is a competing event",
+      "1−KM treats competing deaths as potentially recurrent later",
+      "Cumulative incidence is needed",
+      "Estimand must be stated"
+    ],
+    "betterApproach": "Estimate the cumulative incidence function; choose cause-specific or subdistribution regression by question.",
+    "maximalConclusion": "The reported 42% is not a valid absolute recurrence probability with competing death.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-competing"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "one-minus-kaplan-meier"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “One minus Kaplan–Meier”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-08",
+    "title": "Pathway from raw P values",
+    "domain": "omics",
+    "study": "20,000 genes tested in 8 vs 8 tumors.",
+    "analysis": "Select genes at raw P<.05 and run ORA using all human genes as background.",
+    "claim": "Cell cycle is activated.",
+    "question": "Identify two inference problems.",
+    "expectedFindings": [
+      "No gene-level multiple-testing control",
+      "Incorrect background if only measured genes eligible",
+      "Activation/direction may be unsupported",
+      "Small patient replication"
+    ],
+    "betterApproach": "Use effect sizes/FDR, an eligible tested-gene universe, and direction-aware ranked enrichment where appropriate.",
+    "maximalConclusion": "The data generate a hypothesis about cell-cycle-related expression; activation is not established.",
+    "severity": "major",
+    "sourceIds": [
+      "src-multiple-testing",
+      "src-gsea"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "pathway-from-raw-p-values"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Pathway from raw P values”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-09",
+    "title": "Batch equals disease",
+    "domain": "omics",
+    "study": "All tumors processed in April; all controls processed in June.",
+    "analysis": "Apply Harmony and show a mixed UMAP.",
+    "claim": "Disease-associated states remain after batch correction.",
+    "question": "Can software identify the disease effect?",
+    "expectedFindings": [
+      "Disease is perfectly confounded with batch",
+      "Mixing plot is not identification",
+      "Correction may erase or invent signal",
+      "Design cannot separate effects"
+    ],
+    "betterApproach": "Acquire balanced batches or independent replication; narrow claims and perform sensitivity checks.",
+    "maximalConclusion": "Disease and batch effects are inseparable in this dataset.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-batch"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "batch-equals-disease"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Batch equals disease”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-10",
+    "title": "Cells split across CV folds",
+    "domain": "machine learning",
+    "study": "Single-cell classifier uses 20 patients and 80,000 cells.",
+    "analysis": "Randomly split cells 80/20 for training and testing.",
+    "claim": "Test accuracy is 97%.",
+    "question": "What leaked into the test set?",
+    "expectedFindings": [
+      "Patient identity and correlated cells",
+      "Batch/sample-specific signal",
+      "Independent unit split is violated"
+    ],
+    "betterApproach": "Group splits by patient; nest all feature selection and tuning in training folds.",
+    "maximalConclusion": "Accuracy on new cells from already-seen patients may be high; new-patient performance is unknown.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-leakage",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "cells-split-across-cv-folds"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Cells split across CV folds”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-11",
+    "title": "Optimized biomarker cutpoint",
+    "domain": "biomarker",
+    "study": "A continuous marker is measured in 110 patients.",
+    "analysis": "Search 40 cutpoints; report the smallest log-rank P=.004.",
+    "claim": "The discovered cutoff robustly stratifies risk.",
+    "question": "How should the evidence be labeled?",
+    "expectedFindings": [
+      "Cutpoint is outcome-selected",
+      "P value is optimistic",
+      "Multiple search ignored",
+      "Independent validation needed"
+    ],
+    "betterApproach": "Prespecify/lock the chosen cutoff and evaluate it in independent data or validate the full selection procedure.",
+    "maximalConclusion": "The cohort suggests a candidate cutpoint requiring validation.",
+    "severity": "major",
+    "sourceIds": [
+      "src-remark",
+      "src-multiple-testing"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "optimized-biomarker-cutpoint"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Optimized biomarker cutpoint”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-12",
+    "title": "One-marker cell label",
+    "domain": "single-cell",
+    "study": "A tumor cluster expresses EPCAM and also PTPRC in many cells.",
+    "analysis": "Label as malignant epithelial solely because EPCAM is among top markers.",
+    "claim": "A novel malignant state is identified.",
+    "question": "What annotation checks are missing?",
+    "expectedFindings": [
+      "Multiple positive and exclusion markers",
+      "Doublets/ambient RNA",
+      "CNV or orthogonal evidence",
+      "Across-patient recurrence"
+    ],
+    "betterApproach": "Use marker panels, doublet/ambient checks, inferred CNV or reference mapping, and patient distribution.",
+    "maximalConclusion": "An EPCAM-expressing cluster is observed; malignant identity is uncertain.",
+    "severity": "major",
+    "sourceIds": [
+      "src-pseudobulk"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "one-marker-cell-label"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “One-marker cell label”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-13",
+    "title": "Communication is not signaling",
+    "domain": "single-cell",
+    "study": "Tumor cells express TGFB1; fibroblasts express TGFBR genes.",
+    "analysis": "CellChat assigns a high interaction score.",
+    "claim": "Tumor-to-fibroblast TGFβ signaling causes fibrosis.",
+    "question": "Where is the evidence ladder gap?",
+    "expectedFindings": [
+      "Expression-based inference only",
+      "No protein/localization",
+      "No downstream signaling readout",
+      "No perturbation or phenotype"
+    ],
+    "betterApproach": "Add spatial/protein validation, receptor-pathway readouts, perturbation, phenotype, and rescue.",
+    "maximalConclusion": "The expression pattern nominates a candidate communication axis.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-cellchat",
+      "src-spatial"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "communication-is-not-signaling"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Communication is not signaling”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-14",
+    "title": "Pseudotime as lineage",
+    "domain": "single-cell",
+    "study": "Cross-sectional tumors contain states ordered by pseudotime.",
+    "analysis": "Root chosen from marker expression; one trajectory algorithm used.",
+    "claim": "State A differentiates into state B in patients.",
+    "question": "What can pseudotime establish?",
+    "expectedFindings": [
+      "Ordering is model-dependent",
+      "Direction depends on root",
+      "No cell is longitudinally observed",
+      "Between-patient structure may confound"
+    ],
+    "betterApproach": "Show topology sensitivity and add lineage, temporal, velocity, or perturbation evidence.",
+    "maximalConclusion": "States form an expression continuum compatible with the chosen ordering.",
+    "severity": "major",
+    "sourceIds": [
+      "src-trajectory"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "pseudotime-as-lineage"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Pseudotime as lineage”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-15",
+    "title": "Spatial neighbors",
+    "domain": "spatial",
+    "study": "Exhausted T cells are closer to macrophages in tumor margins.",
+    "analysis": "Nearest-neighbor enrichment is significant across all spots pooled.",
+    "claim": "Macrophages induce T-cell exhaustion.",
+    "question": "Name the two largest claim problems.",
+    "expectedFindings": [
+      "Spots/cells nested within patients",
+      "Anatomical compartment/density confounding",
+      "Colocalization is not mechanism",
+      "No direction/perturbation"
+    ],
+    "betterApproach": "Use patient-level spatial inference with compartment controls, orthogonal imaging, and functional perturbation.",
+    "maximalConclusion": "The two states are spatially associated in sampled tissue.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-spatial",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "spatial-neighbors"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Spatial neighbors”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-16",
+    "title": "Subtypes chosen for survival",
+    "domain": "clustering",
+    "study": "Proteomic profiles permit cluster counts k=2…8.",
+    "analysis": "Choose k=4 because it gives the smallest survival P value.",
+    "claim": "Four prognostic molecular subtypes exist.",
+    "question": "What is double dipping here?",
+    "expectedFindings": [
+      "Outcome selected k",
+      "Same survival data tests selected k",
+      "Cluster stability not evaluated",
+      "P value is optimistic"
+    ],
+    "betterApproach": "Choose structure without outcome or validate the full selection externally; assess stability and assignment.",
+    "maximalConclusion": "A four-cluster exploratory solution shows survival separation requiring validation.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-clustering",
+      "src-leakage"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "subtypes-chosen-for-survival"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Subtypes chosen for survival”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-17",
+    "title": "No event count",
+    "domain": "survival",
+    "study": "Cohort includes 1,200 patients and 38 deaths.",
+    "analysis": "Fit Cox model with 24 parameters after stepwise selection.",
+    "claim": "All adjusted predictors are reliable because n is large.",
+    "question": "Which number determines information more directly?",
+    "expectedFindings": [
+      "Number of events",
+      "Effective parameters",
+      "Selection adds optimism",
+      "Wide/unstable estimates expected"
+    ],
+    "betterApproach": "Reduce/prespecify complexity, consider penalization, and use resampling with uncertainty.",
+    "maximalConclusion": "The fitted associations are likely unstable despite large total enrollment.",
+    "severity": "major",
+    "sourceIds": [
+      "src-cox",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "no-event-count"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “No event count”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-18",
+    "title": "Non-significant means equal",
+    "domain": "statistics",
+    "study": "Organoid drug responses: 4 independent lines per group.",
+    "analysis": "Mean difference 22%, 95% CI −5% to 49%, P=.09.",
+    "claim": "The drugs have equivalent effects.",
+    "question": "What does the interval allow?",
+    "expectedFindings": [
+      "Meaningful benefit and slight harm",
+      "Low precision",
+      "Non-significance is not equivalence",
+      "Equivalence margin/test absent"
+    ],
+    "betterApproach": "Report the estimate/CI and, if equivalence is the target, prespecify a clinically meaningful equivalence margin and design.",
+    "maximalConclusion": "The data are inconclusive about a potentially meaningful difference.",
+    "severity": "major",
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "non-significant-means-equal"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Non-significant means equal”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-19",
+    "title": "Technical wells as n",
+    "domain": "organoid",
+    "study": "One patient-derived organoid line is plated in 18 wells per condition.",
+    "analysis": "Two-sample t test across wells gives P<.0001.",
+    "claim": "Drug response generalizes to patient tumors.",
+    "question": "What replication is present?",
+    "expectedFindings": [
+      "Technical/nested wells",
+      "One biological donor",
+      "Generalization unsupported",
+      "Plate correlation may remain"
+    ],
+    "betterApproach": "Repeat across independent organoid lines/donors and analyze hierarchical or summarized donor-level effects.",
+    "maximalConclusion": "The drug changes the assay readout in this organoid line under these conditions.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "technical-wells-as-n"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Technical wells as n”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-20",
+    "title": "C-index without calibration",
+    "domain": "prediction",
+    "study": "External model validation reports C=.78.",
+    "analysis": "No predicted risks or calibration are shown.",
+    "claim": "The model is ready for clinical risk counseling.",
+    "question": "Which property is untested?",
+    "expectedFindings": [
+      "Accuracy of absolute risk",
+      "Calibration at clinical horizons",
+      "Clinical utility",
+      "Threshold consequences"
+    ],
+    "betterApproach": "Report calibration intercept/slope/plot, decision-relevant performance, and net benefit where appropriate.",
+    "maximalConclusion": "The model shows ranking ability in this cohort; absolute-risk use is unproven.",
+    "severity": "major",
+    "sourceIds": [
+      "src-calibration",
+      "src-dca"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "c-index-without-calibration"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “C-index without calibration”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-21",
+    "title": "Recalibration called validation",
+    "domain": "prediction",
+    "study": "External cohort is used to adjust intercept, slope, and two coefficients.",
+    "analysis": "Performance after updates is reported as external validation.",
+    "claim": "The original model transports well.",
+    "question": "What result must be shown first?",
+    "expectedFindings": [
+      "Untouched locked-model performance",
+      "Update is a new model",
+      "Updated model needs validation",
+      "Original transportability remains separate"
+    ],
+    "betterApproach": "Report original performance, then updating method and validation of the updated model.",
+    "maximalConclusion": "Only local updated-model fit is described; original transportability is unknown.",
+    "severity": "major",
+    "sourceIds": [
+      "src-calibration",
+      "src-tripod"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "recalibration-called-validation"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Recalibration called validation”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-22",
+    "title": "Case-control diagnostic AUC",
+    "domain": "diagnosis",
+    "study": "50 obvious late-stage cases and 50 healthy volunteers.",
+    "analysis": "Train/test a blood signature and report AUC=.99.",
+    "claim": "The test is suitable for population screening.",
+    "question": "What spectrum problem limits the claim?",
+    "expectedFindings": [
+      "Cases/controls do not represent screening population",
+      "Prevalence and mimics absent",
+      "Potential batch/selection bias",
+      "Predictive values unavailable"
+    ],
+    "betterApproach": "Evaluate a locked test prospectively among consecutive intended-use patients including relevant alternatives.",
+    "maximalConclusion": "The signature distinguishes these extreme sampled groups.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-tripod",
+      "src-probaST"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "case-control-diagnostic-auc"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Case-control diagnostic AUC”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-23",
+    "title": "Multi-omics concordance",
+    "domain": "multi-omics",
+    "study": "Matched RNA and protein profiles from the same 30 tumors.",
+    "analysis": "Both layers cluster into similar groups.",
+    "claim": "Independent multi-omics validation confirms two biological subtypes.",
+    "question": "Why is 'independent' incorrect?",
+    "expectedFindings": [
+      "Same patients drive both layers",
+      "Shared confounders/batch possible",
+      "Concordance is cross-layer support, not sample validation",
+      "Cluster stability needed"
+    ],
+    "betterApproach": "Use modality-specific analyses and validate a locked subtype classifier in independent patients/platforms.",
+    "maximalConclusion": "Matched layers show concordant structure in the discovery cohort.",
+    "severity": "major",
+    "sourceIds": [
+      "src-multiomics",
+      "src-clustering"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "multi-omics-concordance"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Multi-omics concordance”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-24",
+    "title": "DE then cross-validation",
+    "domain": "prediction",
+    "study": "All 200 patients are used to select 100 outcome-associated genes.",
+    "analysis": "Five-fold CV trains a model using those fixed 100 genes.",
+    "claim": "Cross-validated AUC=.86 is unbiased.",
+    "question": "Where is feature leakage?",
+    "expectedFindings": [
+      "Outcomes from held-out folds selected genes",
+      "Selection is outside CV",
+      "Estimate is optimistic",
+      "Pipeline, not final learner, must be validated"
+    ],
+    "betterApproach": "Repeat gene selection inside each training fold; use nested CV for tuning.",
+    "maximalConclusion": "The reported AUC is contaminated and does not estimate new-patient performance.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-leakage",
+      "src-internal-validation"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "de-then-cross-validation"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “DE then cross-validation”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-25",
+    "title": "Patient proportions pooled",
+    "domain": "single-cell",
+    "study": "Four responders and four nonresponders contribute unequal cell numbers.",
+    "analysis": "Pool cells by response and compare cell-type counts with chi-square.",
+    "claim": "Responders have more dendritic cells, P<10⁻⁶.",
+    "question": "What should be plotted before any model?",
+    "expectedFindings": [
+      "Per-patient proportions/counts",
+      "Total cells/QC per patient",
+      "Group balance",
+      "Potential compositional effects"
+    ],
+    "betterApproach": "Use sample-level or hierarchical compositional/count methods with patient as replicate.",
+    "maximalConclusion": "Captured pooled-cell composition differs; patient-level response association is not established.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-pseudorep",
+      "src-pseudobulk"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "patient-proportions-pooled"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Patient proportions pooled”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-26",
+    "title": "Median split",
+    "domain": "prognosis",
+    "study": "A continuous immune score is split at the sample median.",
+    "analysis": "Kaplan–Meier curves differ at P=.04.",
+    "claim": "High immune score is a validated prognostic biomarker.",
+    "question": "What information and evidence were lost?",
+    "expectedFindings": [
+      "Arbitrary dichotomization",
+      "No adjusted continuous effect",
+      "No validation",
+      "Cutpoint transportability unknown"
+    ],
+    "betterApproach": "Model the continuous score with functional-form checks; predefine/validate any clinical threshold.",
+    "maximalConclusion": "An exploratory median-defined association is observed in this cohort.",
+    "severity": "major",
+    "sourceIds": [
+      "src-remark",
+      "src-cox"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "median-split"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Median split”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-27",
+    "title": "Post-treatment biomarker",
+    "domain": "causal inference",
+    "study": "Day-30 response biomarker predicts overall survival.",
+    "analysis": "Include it as a baseline covariate from diagnosis in a Cox model.",
+    "claim": "The marker independently predicts survival from diagnosis.",
+    "question": "Which temporal issue arises?",
+    "expectedFindings": [
+      "Marker unavailable until day 30",
+      "Survival to measurement is required",
+      "Landmark/time-dependent design needed",
+      "Baseline prediction claim invalid"
+    ],
+    "betterApproach": "Use a day-30 landmark among survivors or time-dependent modeling, with the changed target population explicit.",
+    "maximalConclusion": "Among patients measured at day 30, the marker may have conditional prognostic value.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-cox",
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "post-treatment-biomarker"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Post-treatment biomarker”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-28",
+    "title": "DCA without a decision",
+    "domain": "prediction",
+    "study": "An omics score predicts progression.",
+    "analysis": "Decision curves shown from thresholds 0–100% without stating an action.",
+    "claim": "The score has clinical utility.",
+    "question": "What must threshold probability encode?",
+    "expectedFindings": [
+      "A specific clinical action",
+      "Relative harm of false positive vs false negative",
+      "Plausible range",
+      "Valid calibrated probabilities"
+    ],
+    "betterApproach": "Define the decision and threshold range, compare realistic strategies, and interpret net benefit conditionally.",
+    "maximalConclusion": "Clinical utility cannot be judged without a defined decision context.",
+    "severity": "major",
+    "sourceIds": [
+      "src-dca",
+      "src-calibration"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "intermediate",
+    "misconceptionTags": [
+      "dca-without-a-decision"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “DCA without a decision”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-29",
+    "title": "AI invents a PMID",
+    "domain": "literature",
+    "study": "An AI response cites PMID 12345678 for a claimed single-cell trial.",
+    "analysis": "Save citation and explanation directly to verified methods notes.",
+    "claim": "The claim is evidence-backed.",
+    "question": "What must happen before verification status changes?",
+    "expectedFindings": [
+      "Query PubMed/DOI service",
+      "Match title/journal/year/authors",
+      "Confirm source supports claim",
+      "Generated content remains pending by default"
+    ],
+    "betterApproach": "Resolve the identifier through an official metadata service, inspect the source, and record verification time/provenance.",
+    "maximalConclusion": "The citation is unverified and must remain pending.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-strobe"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "ai-invents-a-pmid"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “AI invents a PMID”. Identify the invalid inference and state the maximal defensible conclusion."
+  },
+  {
+    "id": "jc-30",
+    "title": "Figure story outruns evidence",
+    "domain": "scientific storytelling",
+    "study": "Figures show association, spatial proximity, and in vitro knockdown.",
+    "analysis": "Final model claims a universal human therapeutic mechanism and clinical efficacy.",
+    "claim": "The study proves the target will benefit patients.",
+    "question": "Where should the claim boundary stop?",
+    "expectedFindings": [
+      "Association and proximity are not causal",
+      "In vitro perturbation supports context-specific function",
+      "No in vivo/clinical validation",
+      "Therapeutic window absent"
+    ],
+    "betterApproach": "State the supported in vitro functional role, distinguish human association, and specify missing in vivo/clinical evidence.",
+    "maximalConclusion": "The target is associated with human disease and contributes to an in vitro phenotype under tested conditions.",
+    "severity": "critical",
+    "sourceIds": [
+      "src-strobe",
+      "src-pseudorep"
+    ],
+    "contentOrigin": "verified_seed",
+    "verificationStatus": "verified",
+    "difficulty": "advanced",
+    "misconceptionTags": [
+      "figure-story-outruns-evidence"
+    ],
+    "variantPrompt": "A different study repeats the underlying error in “Figure story outruns evidence”. Identify the invalid inference and state the maximal defensible conclusion."
+  }
+]

@@ -1,0 +1,2338 @@
+{
+  "packSchemaVersion": 1,
+  "packId": "m013-batch04-bulk-rna-pathway-20260824",
+  "title": "Bulk RNA-seq & Pathway Analysis",
+  "createdAt": "2026-08-24T22:05:00+08:00",
+  "createdBy": "OpenAI GPT-5.6 Sol external scientific source review",
+  "provenance": "Source-first external scientific pre-review. Source metadata and claim scope were manually pre-reviewed against authoritative guidelines, original methods, peer-reviewed benchmarks/reviews, or official technical resources. Final ResearchOS verification remains reserved for Codex/formal source-pack gate.",
+  "sources": [
+    {
+      "id": "SRC-DESEQ2-2014",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2",
+      "authors": [
+        "Love MI",
+        "Huber W",
+        "Anders S"
+      ],
+      "year": 2014,
+      "authorityTier": "A",
+      "domain": [
+        "bulk_rna",
+        "differential_expression"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Genome Biology",
+      "doi": "10.1186/s13059-014-0550-8",
+      "pmid": "25516281",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25516281/",
+      "contentHash": "8129eaf75c1b9f5c45b9398276901b078e64efeb95b2d466f17be7b509f4fd30"
+    },
+    {
+      "id": "SRC-VOOM-2014",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "voom: Precision weights unlock linear model analysis tools for RNA-seq read counts",
+      "authors": [
+        "Law CW",
+        "Chen Y",
+        "Shi W",
+        "Smyth GK"
+      ],
+      "year": 2014,
+      "authorityTier": "A",
+      "domain": [
+        "bulk_rna",
+        "differential_expression"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Genome Biology",
+      "doi": "10.1186/gb-2014-15-2-r29",
+      "pmid": "24485249",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24485249/",
+      "contentHash": "8d5244d2324c85d28f0276fa3c63a8754670a291ed7e96f109a76bebe2d852f6"
+    },
+    {
+      "id": "SRC-TMM-2010",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "A scaling normalization method for differential expression analysis of RNA-seq data",
+      "authors": [
+        "Robinson MD",
+        "Oshlack A"
+      ],
+      "year": 2010,
+      "authorityTier": "A",
+      "domain": [
+        "bulk_rna",
+        "normalization"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Genome Biology",
+      "doi": "10.1186/gb-2010-11-3-r25",
+      "pmid": "20196867",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20196867/",
+      "contentHash": "f57ce3da718e13c86c7a55533e3c47c4c6895cee64ca8ee7c54a8507f7dba136"
+    },
+    {
+      "id": "SRC-BATCH-2010",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Tackling the widespread and critical impact of batch effects in high-throughput data",
+      "authors": [],
+      "year": 2010,
+      "authorityTier": "A",
+      "domain": [
+        "bulk_rna",
+        "batch_effect",
+        "omics"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Nature Reviews Genetics",
+      "doi": "10.1038/nrg2825",
+      "pmid": "20838408",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20838408/",
+      "contentHash": "34cf5d600db21c7482f9a0aa1d7c38afef8619cfa0596c91e057d5ad81b09d0d"
+    },
+    {
+      "id": "SRC-INDFILT-2010",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Independent filtering increases detection power for high-throughput experiments",
+      "authors": [],
+      "year": 2010,
+      "authorityTier": "A",
+      "domain": [
+        "bulk_rna",
+        "multiple_testing"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PNAS",
+      "doi": "10.1073/pnas.0914005107",
+      "pmid": "20460310",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20460310/",
+      "contentHash": "c6cdecd8f80f9a3177565324339b52c80a0c9d2f2a8cbc7d1b5e75bfd365ac4c"
+    },
+    {
+      "id": "SRC-GSEA-2005",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles",
+      "authors": [],
+      "year": 2005,
+      "authorityTier": "A",
+      "domain": [
+        "pathway",
+        "gsea"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PNAS",
+      "doi": "10.1073/pnas.0506580102",
+      "pmid": "16199517",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16199517/",
+      "contentHash": "c7d04dbd8e8a738005a190ccc160e991ac8b59a9997f9003df392a36868f25f1"
+    },
+    {
+      "id": "SRC-CAMERA-2012",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "Camera: a competitive gene set test accounting for inter-gene correlation",
+      "authors": [],
+      "year": 2012,
+      "authorityTier": "A",
+      "domain": [
+        "pathway",
+        "gene_set_testing"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "Nucleic Acids Research",
+      "doi": "10.1093/nar/gks461",
+      "pmid": "22638577",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22638577/",
+      "contentHash": "4888397875c8b959becc0c45b0061b2ddf667dfbf96e54bf0e1b39fb70a95f3d"
+    },
+    {
+      "id": "SRC-PATHWAY-REVIEW-2012",
+      "schemaVersion": 1,
+      "sourceType": "methods_review",
+      "title": "Ten years of pathway analysis: current approaches and outstanding challenges",
+      "authors": [],
+      "year": 2012,
+      "authorityTier": "A",
+      "domain": [
+        "pathway",
+        "enrichment"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "PLOS Computational Biology",
+      "doi": "10.1371/journal.pcbi.1002375",
+      "pmid": "22383865",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22383865/",
+      "contentHash": "db935a70178c7092bb56f1edbdfeb0d9a86e6e95e1b0e340d619300c8e93a468"
+    },
+    {
+      "id": "SRC-GSVA-2013",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "GSVA: gene set variation analysis for microarray and RNA-seq data",
+      "authors": [],
+      "year": 2013,
+      "authorityTier": "A",
+      "domain": [
+        "pathway",
+        "gene_set_scoring"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "BMC Bioinformatics",
+      "doi": "10.1186/1471-2105-14-7",
+      "pmid": "23323831",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23323831/",
+      "contentHash": "78b4430a20e3e383f5995026fb694f80a00ffcf0a21add561e3a09a65a64774d"
+    },
+    {
+      "id": "SRC-CLUSTERPROFILER-2012",
+      "schemaVersion": 1,
+      "sourceType": "original_method",
+      "title": "clusterProfiler: an R package for comparing biological themes among gene clusters",
+      "authors": [],
+      "year": 2012,
+      "authorityTier": "A",
+      "domain": [
+        "pathway",
+        "ora"
+      ],
+      "knowledgeStatus": "current",
+      "supersedes": [],
+      "supersededBy": [],
+      "verificationStatus": "metadata_verified",
+      "verificationScope": [
+        "identity",
+        "metadata"
+      ],
+      "verifiedAt": "2026-08-24T22:05:00+08:00",
+      "verifiedBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "retrievedAt": "2026-08-24T22:05:00+08:00",
+      "licenseNote": "Check publisher/source terms before redistributing full text.",
+      "provenanceNote": "",
+      "journal": "OMICS",
+      "doi": "10.1089/omi.2011.0118",
+      "pmid": "22455463",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22455463/",
+      "contentHash": "88b2da7690e2b6aafa97f810c92f66f1bd7db964fffc10c55e3708089ef4165d"
+    }
+  ],
+  "evidenceClaims": [
+    {
+      "id": "CLM-RNA-001",
+      "claim": "RNA-seq count data require a model that accommodates count variability and biological replication; raw counts should not be analyzed as if they were ordinary homoscedastic continuous measurements.",
+      "scope": "",
+      "qualification": "DESeq2 is one valid implementation, not the only valid RNA-seq DE framework.",
+      "sourceId": "SRC-DESEQ2-2014",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "bulk_rna",
+        "differential_expression"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-RNA-002",
+      "claim": "Voom models the mean–variance relationship and supplies precision weights so RNA-seq can be analyzed with limma linear-model machinery.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-VOOM-2014",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "bulk_rna",
+        "differential_expression"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-RNA-003",
+      "claim": "Between-sample normalization is needed because library composition and sequencing depth can otherwise distort RNA-seq comparisons.",
+      "scope": "",
+      "qualification": "TMM is one normalization approach; method choice depends on analysis framework and assumptions.",
+      "sourceId": "SRC-TMM-2010",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "bulk_rna",
+        "normalization"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-RNA-004",
+      "claim": "Batch effects can be correlated with biological outcomes and can create erroneous biological conclusions; experimental balancing/randomization is preferable to relying only on post-hoc correction.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-BATCH-2010",
+      "supportType": "direct",
+      "supportingLocation": "Abstract and experimental solutions",
+      "domain": [
+        "bulk_rna",
+        "batch_effect"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-RNA-005",
+      "claim": "If biological group and batch are completely confounded, computational batch correction cannot uniquely recover the missing experimental comparison.",
+      "scope": "",
+      "qualification": "This is an identifiability/design principle derived from the confounding structure, not a software-specific rule.",
+      "sourceId": "SRC-BATCH-2010",
+      "supportType": "qualified",
+      "supportingLocation": "Discussion of batch-outcome correlation",
+      "domain": [
+        "bulk_rna",
+        "batch_effect"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-RNA-006",
+      "claim": "Multiple-testing correction is central in high-dimensional expression analysis; filtering that is independent of the test statistic under the null can improve discovery power without inflating type-I error.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-INDFILT-2010",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "bulk_rna",
+        "multiple_testing"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PATH-001",
+      "claim": "ORA asks whether a selected gene list contains more pathway members than expected, whereas rank-based gene-set methods such as GSEA use information across a ranked genome-wide list; these are different inferential questions.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-GSEA-2005",
+      "supportType": "qualified",
+      "supportingLocation": "Method concept",
+      "domain": [
+        "pathway",
+        "gsea",
+        "ora"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PATH-002",
+      "claim": "Gene-set enrichment does not by itself prove that a pathway is mechanistically activated or causally responsible for the phenotype.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PATHWAY-REVIEW-2012",
+      "supportType": "qualified",
+      "supportingLocation": "Review of pathway-analysis limitations",
+      "domain": [
+        "pathway",
+        "interpretation"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PATH-003",
+      "claim": "Genes within a pathway are correlated, so gene-set tests that ignore inter-gene correlation can have distorted null behavior.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CAMERA-2012",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "pathway",
+        "gene_set_testing"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PATH-004",
+      "claim": "Gene-set results depend on the chosen gene-set database, gene identifiers, background universe and statistical test; different databases can produce different biological narratives.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-PATHWAY-REVIEW-2012",
+      "supportType": "qualified",
+      "supportingLocation": "Outstanding challenges",
+      "domain": [
+        "pathway",
+        "enrichment"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PATH-005",
+      "claim": "GSVA transforms gene-level expression into sample-level gene-set scores; a GSVA score is a relative enrichment/activity-like score, not a direct biochemical measurement of pathway flux.",
+      "scope": "",
+      "qualification": "Interpretation depends on expression data, gene set and scoring parameters.",
+      "sourceId": "SRC-GSVA-2013",
+      "supportType": "direct",
+      "supportingLocation": "Abstract",
+      "domain": [
+        "pathway",
+        "gene_set_scoring"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    },
+    {
+      "id": "CLM-PATH-006",
+      "claim": "Enrichment tools such as clusterProfiler facilitate statistical testing and visualization but do not remove the need to define an appropriate gene universe and interpret redundant/overlapping pathways.",
+      "scope": "",
+      "qualification": "",
+      "sourceId": "SRC-CLUSTERPROFILER-2012",
+      "supportType": "qualified",
+      "supportingLocation": "Package purpose",
+      "domain": [
+        "pathway",
+        "ora"
+      ],
+      "knowledgeStatus": "current",
+      "verificationStatus": "pending",
+      "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate."
+    }
+  ],
+  "problemCards": [
+    {
+      "id": "PRB-RNA-001",
+      "domain": "bulk_rna",
+      "subdomain": "normalization",
+      "title_cn": "TPM 可以直接拿来做 DESeq2 差异分析吗？",
+      "title_en": "Can TPM be used directly as DESeq2 input?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "研究者把TPM矩阵输入基于原始count分布假设的DE流程。",
+      "context": "",
+      "why_it_matters": "不同方法的数据尺度与统计模型必须匹配；把预归一化值误当原始counts会破坏模型假设。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-001-01",
+        "CHK-PRB-RNA-001-02",
+        "CHK-PRB-RNA-001-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-001"
+      ],
+      "common_wrong_actions": [
+        "把TPM当原始count"
+      ],
+      "recommended_reasoning": [
+        "先确认模型的sampling distribution和input contract。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "normalized_expression_is_count"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-001",
+        "CLM-RNA-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-002",
+      "domain": "bulk_rna",
+      "subdomain": "normalization",
+      "title_cn": "测序更深的样本表达量都更高，能直接比较 raw count 吗？",
+      "title_en": "Can raw counts be compared across libraries?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "不同样本library size/composition差异明显，直接按raw count比较。",
+      "context": "",
+      "why_it_matters": "raw count受测序深度与composition影响。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-002-01",
+        "CHK-PRB-RNA-002-02",
+        "CHK-PRB-RNA-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-002"
+      ],
+      "common_wrong_actions": [
+        "raw_count_is_expression"
+      ],
+      "recommended_reasoning": [
+        "用适合分析框架的between-sample normalization。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-003",
+      "domain": "bulk_rna",
+      "subdomain": "batch_effect",
+      "title_cn": "病例全在 batch1、对照全在 batch2，ComBat 后就安全吗？",
+      "title_en": "Can ComBat rescue complete case–control batch confounding?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "condition和batch完全重合，事后做batch correction后继续DE。",
+      "context": "",
+      "why_it_matters": "完全混杂缺乏可识别的交叉信息，算法可能去掉biology或保留batch。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-003-01",
+        "CHK-PRB-RNA-003-02",
+        "CHK-PRB-RNA-003-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-003"
+      ],
+      "common_wrong_actions": [
+        "batch_correction_solves_complete_confounding"
+      ],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "结构性设计缺陷，通常无法靠算法完全修复。",
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-004",
+        "CLM-RNA-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-004",
+      "domain": "bulk_rna",
+      "subdomain": "batch_effect",
+      "title_cn": "PCA 按 batch 分开，说明一定要把 batch “消掉”吗？",
+      "title_en": "Does a batch-separated PCA mean batch must be removed?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "PCA第一主成分与batch相关，但batch也部分反映真实临床来源差异。",
+      "context": "",
+      "why_it_matters": "PCA是诊断线索；batch变量是否应该校正取决于设计和estimand。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-004-01",
+        "CHK-PRB-RNA-004-02",
+        "CHK-PRB-RNA-004-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "先画DAG/design matrix，再决定batch adjustment。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "pca_batch_signal_always_remove"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-005",
+      "domain": "bulk_rna",
+      "subdomain": "differential_expression",
+      "title_cn": "只有2个样本/组，却得到几千个DEG，可信吗？",
+      "title_en": "Thousands of DEGs with n=2 per group—credible?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "极少独立生物复制得到大量显著DEG。",
+      "context": "",
+      "why_it_matters": "高维方法可以计算P值，但小n限制dispersion估计、泛化和异常样本诊断；结果数量不代表证据强。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-005-01",
+        "CHK-PRB-RNA-005-02",
+        "CHK-PRB-RNA-005-03",
+        "CHK-PRB-RNA-005-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "通常需要显著降级结论并强调探索性。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "many_degs_equals_strong_evidence"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-006",
+      "domain": "bulk_rna",
+      "subdomain": "differential_expression",
+      "title_cn": "只看 P<0.05 不做 FDR，可以吗？",
+      "title_en": "Can RNA-seq use nominal P<0.05 without multiplicity control?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "两万基因逐个检验后用nominal P<0.05定义DEG。",
+      "context": "",
+      "why_it_matters": "大量并行检验会产生大量偶然显著。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-006-01",
+        "CHK-PRB-RNA-006-02",
+        "CHK-PRB-RNA-006-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-006"
+      ],
+      "common_wrong_actions": [
+        "nominal_p_is_enough"
+      ],
+      "recommended_reasoning": [
+        "明确multiple-testing family并报告adjusted inference。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-007",
+      "domain": "bulk_rna",
+      "subdomain": "differential_expression",
+      "title_cn": "fold change 大但 FDR 不显著，就一定没生物学意义吗？",
+      "title_en": "Does non-significant FDR mean no biological effect?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "某基因log2FC很大但不确定性很宽。",
+      "context": "",
+      "why_it_matters": "效应估计和不确定性要一起看；不显著可能是信息不足而不是“效应为零”。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-007-01",
+        "CHK-PRB-RNA-007-02",
+        "CHK-PRB-RNA-007-03",
+        "CHK-PRB-RNA-007-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "区分evidence absence与evidence of absence。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "nonsignificant_equals_no_effect"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-008",
+      "domain": "bulk_rna",
+      "subdomain": "design_matrix",
+      "title_cn": "配对样本前后治疗，DE模型不加 patient ID 有什么问题？",
+      "title_en": "Why include patient blocking in paired RNA-seq?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "同一患者前后样本被当成独立组。",
+      "context": "",
+      "why_it_matters": "配对设计包含within-person相关性和基线差异，忽略block会浪费信息并可能错误估计方差。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-008-01",
+        "CHK-PRB-RNA-008-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-008"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "按真实实验设计构建设计矩阵。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "paired_samples_are_independent"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-001",
+        "CLM-RNA-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-RNA-009",
+      "domain": "bulk_rna",
+      "subdomain": "outlier",
+      "title_cn": "一个样本驱动所有差异，删掉它就行吗？",
+      "title_en": "Can an outlier simply be deleted to improve DE results?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "去掉一个异常样本后大量结果变显著。",
+      "context": "",
+      "why_it_matters": "outlier处理必须基于预先/客观QC与原因，而不能因结果方向决定。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-RNA-009-01",
+        "CHK-PRB-RNA-009-02",
+        "CHK-PRB-RNA-009-03",
+        "CHK-PRB-RNA-009-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-RNA-009"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "结果驱动排除会产生选择偏倚。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "delete_outlier_if_results_improve"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-001",
+      "domain": "pathway",
+      "subdomain": "ora",
+      "title_cn": "先筛 DEG 再做 GO 富集，就等于 GSEA 吗？",
+      "title_en": "Is ORA on DEGs equivalent to GSEA?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "foundation",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "作者把DEG列表超几何富集称为GSEA。",
+      "context": "",
+      "why_it_matters": "ORA与rank-based GSEA使用的信息和零假设不同。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-001-01",
+        "CHK-PRB-PATH-001-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-001"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "ora_equals_gsea"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-001"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-002",
+      "domain": "pathway",
+      "subdomain": "interpretation",
+      "title_cn": "GSEA 的 EMT pathway NES>0，就能写“EMT被激活”吗？",
+      "title_en": "Does positive EMT GSEA prove EMT activation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "表达数据的EMT gene set富集被直接写成细胞已发生EMT机制。",
+      "context": "",
+      "why_it_matters": "gene-set enrichment是转录signature关联，不是直接功能或机制证明。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-002-01",
+        "CHK-PRB-PATH-002-02",
+        "CHK-PRB-PATH-002-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-002"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "可写EMT-related transcriptional program/enrichment；强机制需额外证据。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "enrichment_equals_activation"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-003",
+      "domain": "pathway",
+      "subdomain": "ora",
+      "title_cn": "ORA 的背景基因用“全基因组”总是对的吗？",
+      "title_en": "Should ORA always use the whole genome as background?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "实验只测到/过滤后保留一部分gene，却用全人类基因作为universe。",
+      "context": "",
+      "why_it_matters": "背景集合应反映有机会进入selected list的可检测/测试基因，否则富集概率会偏。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-003-01",
+        "CHK-PRB-PATH-003-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-003"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "whole_genome_is_always_background"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-004",
+        "CLM-PATH-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-004",
+      "domain": "pathway",
+      "subdomain": "gene_set_testing",
+      "title_cn": "同一路径几十个gene高度相关，普通基因级独立假设有影响吗？",
+      "title_en": "Does inter-gene correlation matter in gene-set tests?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "gene set中的gene高度共表达，但方法按独立gene处理。",
+      "context": "",
+      "why_it_matters": "忽略相关结构会影响部分gene-set test的null calibration。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-004-01",
+        "CHK-PRB-PATH-004-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-004"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "genes_in_pathway_are_independent"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-003"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-005",
+      "domain": "pathway",
+      "subdomain": "database",
+      "title_cn": "KEGG显著、Reactome不显著，哪个才是真？",
+      "title_en": "Why do pathway databases disagree?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "同一DEG/rank list在多个数据库得到不同story。",
+      "context": "",
+      "why_it_matters": "gene-set定义、版本和重叠关系不同，会改变结果。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-005-01",
+        "CHK-PRB-PATH-005-02",
+        "CHK-PRB-PATH-005-03",
+        "CHK-PRB-PATH-005-04"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-005"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "比较具体gene-level evidence，不只读pathway label。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "pathway_database_labels_are_truth"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-006",
+      "domain": "pathway",
+      "subdomain": "redundancy",
+      "title_cn": "GO 富集出100个几乎同义term，是100条独立证据吗？",
+      "title_en": "Are 100 redundant GO terms 100 independent findings?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "大量高度重叠GO terms被逐条当作独立生物发现。",
+      "context": "",
+      "why_it_matters": "ontology层级和gene overlap造成冗余，term数量不能当独立证据数量。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-006-01",
+        "CHK-PRB-PATH-006-02",
+        "CHK-PRB-PATH-006-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-006"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "聚类/简化term，并回到核心gene/program。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "more_enriched_terms_equals_more_evidence"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-004",
+        "CLM-PATH-006"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-007",
+      "domain": "pathway",
+      "subdomain": "gsva",
+      "title_cn": "GSVA score 高 0.3 就等于 pathway 活性增加30%吗？",
+      "title_en": "Is a GSVA score a percent pathway activity?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "GSVA score被解释为直接生化活性和百分比变化。",
+      "context": "",
+      "why_it_matters": "GSVA是表达空间中的相对gene-set score，不是有物理单位的通量测量。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-007-01",
+        "CHK-PRB-PATH-007-02",
+        "CHK-PRB-PATH-007-03"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-007"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "可描述相对gene-set enrichment/score差异，不可赋予未经定义的绝对生化单位。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "gsva_score_is_flux"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-005"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-008",
+      "domain": "pathway",
+      "subdomain": "circularity",
+      "title_cn": "用差异基因定义 signature，再在同一数据证明这个 signature 区分两组，有问题吗？",
+      "title_en": "Is deriving and testing a signature in the same data circular?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "critical",
+      "frequency": "common",
+      "observation": "在同一队列选择group-DE genes组成score，再展示score在同组间显著。",
+      "context": "",
+      "why_it_matters": "特征选择与验证未分离，会造成同数据循环和乐观偏倚。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-008-01",
+        "CHK-PRB-PATH-008-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-008"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": "典型double-dipping / data leakage。",
+      "transfer_cases": [],
+      "misconception_tags": [
+        "same_data_signature_validation"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-RNA-006",
+        "CLM-PATH-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-009",
+      "domain": "pathway",
+      "subdomain": "leading_edge",
+      "title_cn": "GSEA显著后只报 pathway 名，不看 leading-edge 可以吗？",
+      "title_en": "Why inspect leading-edge genes?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "pathway label很吸引人，但富集由少量unexpected genes驱动。",
+      "context": "",
+      "why_it_matters": "同名pathway可以由不同gene subsets驱动；机制解释应回到具体贡献gene。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-009-01",
+        "CHK-PRB-PATH-009-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-009"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [
+        "pathway label是压缩描述，不应替代gene-level inspection。"
+      ],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": null,
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-001",
+        "CLM-PATH-004"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    },
+    {
+      "id": "PRB-PATH-010",
+      "domain": "pathway",
+      "subdomain": "cell_composition",
+      "title_cn": "bulk RNA 的 immune pathway 升高，就说明肿瘤细胞激活免疫程序吗？",
+      "title_en": "Does a bulk immune signature prove tumor-cell activation?",
+      "aliases": [],
+      "keywords": [],
+      "difficulty": "intermediate",
+      "importance": "high",
+      "frequency": "common",
+      "observation": "bulk tumor tissue中immune gene-set上升。",
+      "context": "",
+      "why_it_matters": "bulk signal可能来自cell-composition变化而非同一细胞内program变化。",
+      "candidate_causes": [],
+      "discriminating_checks": [
+        "CHK-PRB-PATH-010-01",
+        "CHK-PRB-PATH-010-02"
+      ],
+      "red_flags": [],
+      "diagnostic_path": [
+        "PATH-PRB-PATH-010"
+      ],
+      "common_wrong_actions": [],
+      "recommended_reasoning": [],
+      "statistical_implication": null,
+      "experimental_implication": null,
+      "bioinformatics_implication": null,
+      "claim_boundary": "bulk enrichment不直接定位到特定cell type。",
+      "reviewer_implication": null,
+      "transfer_cases": [],
+      "misconception_tags": [
+        "bulk_pathway_equals_tumor_cell_state"
+      ],
+      "related_methods": [],
+      "related_protocols": [],
+      "related_patterns": [],
+      "evidence_claims": [
+        "CLM-PATH-002"
+      ],
+      "content_origin": "external_source_pack",
+      "verification_status": "pending",
+      "verified_at": null
+    }
+  ],
+  "diagnosticCauses": [],
+  "diagnosticChecks": [
+    {
+      "id": "CHK-PRB-RNA-001-01",
+      "problemId": "PRB-RNA-001",
+      "question": "DE方法期望什么输入尺度？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001",
+        "CLM-RNA-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-001-02",
+      "problemId": "PRB-RNA-001",
+      "question": "raw count是否仍可获得？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001",
+        "CLM-RNA-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-001-03",
+      "problemId": "PRB-RNA-001",
+      "question": "normalization由哪一层完成？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001",
+        "CLM-RNA-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-002-01",
+      "problemId": "PRB-RNA-002",
+      "question": "library size差异？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-002-02",
+      "problemId": "PRB-RNA-002",
+      "question": "是否存在少数极高表达gene改变composition？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-002-03",
+      "problemId": "PRB-RNA-002",
+      "question": "使用了什么normalization factor？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-003-01",
+      "problemId": "PRB-RNA-003",
+      "question": "condition×batch是否有交叉？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-004",
+        "CLM-RNA-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-003-02",
+      "problemId": "PRB-RNA-003",
+      "question": "有无桥接样本？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-004",
+        "CLM-RNA-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-003-03",
+      "problemId": "PRB-RNA-003",
+      "question": "设计阶段能否重新平衡？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-004",
+        "CLM-RNA-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-004-01",
+      "problemId": "PRB-RNA-004",
+      "question": "batch和biology关系？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-004-02",
+      "problemId": "PRB-RNA-004",
+      "question": "batch是否technical nuisance？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-004-03",
+      "problemId": "PRB-RNA-004",
+      "question": "校正后已知biology是否保留？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-005-01",
+      "problemId": "PRB-RNA-005",
+      "question": "independent biological n？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-005-02",
+      "problemId": "PRB-RNA-005",
+      "question": "样本间变异？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-005-03",
+      "problemId": "PRB-RNA-005",
+      "question": "是否一个样本驱动？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-005-04",
+      "problemId": "PRB-RNA-005",
+      "question": "有无validation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-006-01",
+      "problemId": "PRB-RNA-006",
+      "question": "检验数量？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-006-02",
+      "problemId": "PRB-RNA-006",
+      "question": "FDR/adjusted P？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-006-03",
+      "problemId": "PRB-RNA-006",
+      "question": "过滤是否独立？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-007-01",
+      "problemId": "PRB-RNA-007",
+      "question": "CI/SE？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-007-02",
+      "problemId": "PRB-RNA-007",
+      "question": "表达量和dispersion？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-007-03",
+      "problemId": "PRB-RNA-007",
+      "question": "样本量？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-007-04",
+      "problemId": "PRB-RNA-007",
+      "question": "预设靶点还是全基因组探索？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-008-01",
+      "problemId": "PRB-RNA-008",
+      "question": "是否同一patient重复测量？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001",
+        "CLM-RNA-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-008-02",
+      "problemId": "PRB-RNA-008",
+      "question": "design matrix是否含patient block？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001",
+        "CLM-RNA-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-009-01",
+      "problemId": "PRB-RNA-009",
+      "question": "异常是否technical？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-009-02",
+      "problemId": "PRB-RNA-009",
+      "question": "QC证据？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-009-03",
+      "problemId": "PRB-RNA-009",
+      "question": "删前删后敏感性？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-RNA-009-04",
+      "problemId": "PRB-RNA-009",
+      "question": "排除标准是否预设？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-001-01",
+      "problemId": "PRB-PATH-001",
+      "question": "输入是selected list还是ranked genome-wide list？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-001-02",
+      "problemId": "PRB-PATH-001",
+      "question": "统计null是什么？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-001"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-002-01",
+      "problemId": "PRB-PATH-002",
+      "question": "gene set组成？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-002-02",
+      "problemId": "PRB-PATH-002",
+      "question": "cell composition confounding？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-002-03",
+      "problemId": "PRB-PATH-002",
+      "question": "蛋白/形态/功能证据？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-003-01",
+      "problemId": "PRB-PATH-003",
+      "question": "哪些gene实际进入DE检验？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004",
+        "CLM-PATH-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-003-02",
+      "problemId": "PRB-PATH-003",
+      "question": "ID mapping后哪些gene可被annotation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004",
+        "CLM-PATH-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-004-01",
+      "problemId": "PRB-PATH-004",
+      "question": "使用self-contained还是competitive test？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-004-02",
+      "problemId": "PRB-PATH-004",
+      "question": "方法是否处理inter-gene correlation？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-003"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-005-01",
+      "problemId": "PRB-PATH-005",
+      "question": "数据库版本？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-005-02",
+      "problemId": "PRB-PATH-005",
+      "question": "gene set overlap？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-005-03",
+      "problemId": "PRB-PATH-005",
+      "question": "核心leading-edge genes？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-005-04",
+      "problemId": "PRB-PATH-005",
+      "question": "是否多个数据库一致？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-006-01",
+      "problemId": "PRB-PATH-006",
+      "question": "term gene overlap？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004",
+        "CLM-PATH-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-006-02",
+      "problemId": "PRB-PATH-006",
+      "question": "parent-child关系？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004",
+        "CLM-PATH-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-006-03",
+      "problemId": "PRB-PATH-006",
+      "question": "leading genes是否相同？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-004",
+        "CLM-PATH-006"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-007-01",
+      "problemId": "PRB-PATH-007",
+      "question": "score scale/normalization？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-007-02",
+      "problemId": "PRB-PATH-007",
+      "question": "跨dataset可比性？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-007-03",
+      "problemId": "PRB-PATH-007",
+      "question": "是否有functional readout？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-005"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-008-01",
+      "problemId": "PRB-PATH-008",
+      "question": "signature是否预定义？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-006",
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-008-02",
+      "problemId": "PRB-PATH-008",
+      "question": "是否有held-out/external data？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-RNA-006",
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-009-01",
+      "problemId": "PRB-PATH-009",
+      "question": "leading-edge/core enrichment genes？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-001",
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-009-02",
+      "problemId": "PRB-PATH-009",
+      "question": "这些gene是否与预期biology一致？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-001",
+        "CLM-PATH-004"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-010-01",
+      "problemId": "PRB-PATH-010",
+      "question": "tumor purity/cell composition？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-002"
+      ]
+    },
+    {
+      "id": "CHK-PRB-PATH-010-02",
+      "problemId": "PRB-PATH-010",
+      "question": "deconvolution/single-cell/spatial evidence？",
+      "informationRevealed": "获取该信息后应更新候选解释、证据等级或推断边界。",
+      "reasoningEffect": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+      "evidenceReferences": [
+        "CLM-PATH-002"
+      ]
+    }
+  ],
+  "diagnosticPaths": [
+    {
+      "id": "PATH-PRB-RNA-001",
+      "problemId": "PRB-RNA-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-001-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-001-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-002",
+      "problemId": "PRB-RNA-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-002-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-003",
+      "problemId": "PRB-RNA-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-003-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-003-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-004",
+      "problemId": "PRB-RNA-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-004-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-004-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-005",
+      "problemId": "PRB-RNA-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-005-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-RNA-005-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-006",
+      "problemId": "PRB-RNA-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-006-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-007",
+      "problemId": "PRB-RNA-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-007-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-007-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-RNA-007-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-008",
+      "problemId": "PRB-RNA-008",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-008-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-008-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-RNA-009",
+      "problemId": "PRB-RNA-009",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-RNA-009-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-RNA-009-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-RNA-009-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-RNA-009-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-001",
+      "problemId": "PRB-PATH-001",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-001-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-001-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-002",
+      "problemId": "PRB-PATH-002",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-002-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-002-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PATH-002-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-003",
+      "problemId": "PRB-PATH-003",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-003-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-003-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-004",
+      "problemId": "PRB-PATH-004",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-004-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-004-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-005",
+      "problemId": "PRB-PATH-005",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-005-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-005-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PATH-005-03"
+        },
+        {
+          "step": 4,
+          "checkId": "CHK-PRB-PATH-005-04"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-006",
+      "problemId": "PRB-PATH-006",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-006-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-006-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PATH-006-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-007",
+      "problemId": "PRB-PATH-007",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-007-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-007-02"
+        },
+        {
+          "step": 3,
+          "checkId": "CHK-PRB-PATH-007-03"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-008",
+      "problemId": "PRB-PATH-008",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-008-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-008-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-009",
+      "problemId": "PRB-PATH-009",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-009-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-009-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    },
+    {
+      "id": "PATH-PRB-PATH-010",
+      "problemId": "PRB-PATH-010",
+      "nodes": [
+        {
+          "step": 1,
+          "checkId": "CHK-PRB-PATH-010-01"
+        },
+        {
+          "step": 2,
+          "checkId": "CHK-PRB-PATH-010-02"
+        }
+      ],
+      "terminalLogic": "综合判别信息后更新判断；不得由单一P值、可视化、模型输出或相关性直接升级为强机制/因果结论。"
+    }
+  ],
+  "diagnosticEvidence": [],
+  "transferCases": [],
+  "verificationMetadata": {
+    "reviewStatus": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "externalPreReview": {
+      "status": "complete",
+      "reviewer": "OpenAI GPT-5.6 Sol",
+      "reviewedAt": "2026-08-24T22:05:00+08:00",
+      "scope": [
+        "source identity",
+        "metadata",
+        "claim-support pre-review",
+        "scope/qualification review",
+        "problem transformation",
+        "far-transfer design"
+      ]
+    }
+  }
+}

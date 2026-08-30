@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-08-27T16:25:49.809Z",
+  "passed": true,
+  "errors": [],
+  "warnings": [
+    "Audit audit-01 is an all-unsafe plan; every step is expected to be rejected."
+  ],
+  "checks": [
+    {
+      "name": "Evidence sources count",
+      "passed": true,
+      "detail": "49 present; minimum 40"
+    },
+    {
+      "name": "Evidence sources IDs unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Evidence sources titles unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Method concepts count",
+      "passed": true,
+      "detail": "88 present; minimum 80"
+    },
+    {
+      "name": "Method concepts IDs unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Method concepts titles unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Research patterns count",
+      "passed": true,
+      "detail": "25 present; minimum 25"
+    },
+    {
+      "name": "Research patterns IDs unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Research patterns titles unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Judgment cards count",
+      "passed": true,
+      "detail": "84 present; minimum 80"
+    },
+    {
+      "name": "Judgment cards IDs unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Judgment cards titles unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "AI audit cases count",
+      "passed": true,
+      "detail": "40 present; minimum 40"
+    },
+    {
+      "name": "AI audit cases IDs unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "AI audit cases titles unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "Usable methods",
+      "passed": true,
+      "detail": "84 usable methods"
+    },
+    {
+      "name": "DOIs unique",
+      "passed": true,
+      "detail": "no duplicates"
+    },
+    {
+      "name": "PMIDs unique",
+      "passed": true,
+      "detail": "no duplicates"
+    }
+  ],
+  "counts": {
+    "evidence": 49,
+    "methods": 88,
+    "usableMethods": 84,
+    "patterns": 25,
+    "judgmentCards": 84,
+    "auditCases": 40
+  },
+  "provenance": {
+    "verifiedSeed": 133,
+    "verifiedExternal": 153,
+    "aiGenerated": 0
+  }
+}

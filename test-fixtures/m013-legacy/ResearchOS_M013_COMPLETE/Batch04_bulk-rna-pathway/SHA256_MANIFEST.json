@@ -1,0 +1,21 @@
+{
+  "packId": "m013-batch04-bulk-rna-pathway-20260824",
+  "generatedAt": "2026-08-24T22:05:00+08:00",
+  "files": [
+    {
+      "name": "ResearchOS_M013_Batch04_SourcePack.json",
+      "sha256": "51b0edc7d85e03f6cc6d35769f94a0f2528cf9b3c96580008b39619bf1c812ef",
+      "bytes": 82351
+    },
+    {
+      "name": "ResearchOS_M013_Batch04_Scientific_PreReview.md",
+      "sha256": "e1e85b05f0f920f55373e0d0498ec72b16ea59d871b0c382876e58f01174356c",
+      "bytes": 1115
+    },
+    {
+      "name": "ResearchOS_M013_Batch04_Qualification_Register.md",
+      "sha256": "59133810aca89b64acd066c1a124db815c062a774cf1d803bf65d1c33e76b629",
+      "bytes": 925
+    }
+  ]
+}
