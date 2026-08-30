@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-24T16:27:57.761Z",
-  "inputArchive": "C:/Users/Lenovo/Downloads/ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+  "inputArchive": "<local-source-archive>",
   "productionMutationPerformed": false,
   "currentStateBasis": "compiled M013 candidate seed collections; no production DB read or write",
   "packCount": 8,

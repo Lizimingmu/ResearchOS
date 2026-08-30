@@ -31,7 +31,7 @@ This runbook does not authorize M014-02R foreground verification, real Obsidian 
 Start once from the user's normal PowerShell environment:
 
 ~~~powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File D:\Agents\ResearchOS\scripts\start-m015-overnight.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-m015-overnight.ps1
 ~~~
 
 The starter detaches a hidden watchdog. Progress is authoritative in `.agent/M015_RUN_STATE.json`; operational logs are under `.agent/m015-run-logs/`. A live lock prevents duplicate workers; a stale lock whose recorded PID no longer exists is removed safely on restart.
