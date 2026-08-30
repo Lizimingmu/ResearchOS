@@ -1,34 +1,7 @@
-import { AlertTriangle, ArrowDownRight, ArrowRight, ArrowUpRight, Database } from "lucide-react";
+import { BookOpen, Brain, Database, FlaskConical, Microscope, SearchCheck, Sparkles, Target } from "lucide-react";
+import { learningUnits } from "../../data/learningUnits";
+import { projectSkillMap } from "../../domain/learningKernel";
 import { summarizeSkills } from "../../learning/scoring";
 import { useAppStore } from "../../state/store";
-
-export function SkillMapView() {
-  const evidence = useAppStore((state) => state.skillEvidence);
-  const summaries = summarizeSkills(evidence);
-  const bandLabel = { "insufficient evidence": "证据不足", developing: "发展中", functional: "可应用", strong: "稳固" } as const;
-  const reliabilityLabel = { low: "低", moderate: "中等", substantial: "较充分" } as const;
-  return (
-    <div className="page skills-page">
-      <header className="page-header">
-        <div><span className="eyebrow">能力图谱</span><h1>证据加权的能力评估</h1><p>评分综合延迟提取、迁移、难度、信心校准和概念覆盖度。</p></div>
-        <div className="evidence-count"><Database size={16} /><span>{evidence.length} 条观察</span></div>
-      </header>
-      <div className="skill-table">
-        <div className="skill-table-head"><span>能力</span><span>等级</span><span>证据</span><span>趋势</span><span>近期薄弱概念</span></div>
-        {summaries.map((skill) => {
-          const Trend = skill.trend === "up" ? ArrowUpRight : skill.trend === "down" ? ArrowDownRight : ArrowRight;
-          return (
-            <article key={skill.id}>
-              <div><strong>{skill.name}</strong>{skill.score === null ? <small>证据不足，暂不评分</small> : <div className="skill-meter"><i style={{ width: `${Math.round(skill.score * 100)}%` }} /><small>≈{Math.round(skill.score * 10) * 10}/100</small></div>}</div>
-              <span className={`skill-band ${skill.band.replace(" ", "-")}`}>{bandLabel[skill.band]}</span>
-              <span>{reliabilityLabel[skill.reliability]}<small>{skill.evidenceCount} 条观察 · {skill.conceptCount} 个概念</small></span>
-              <span><Trend size={15} /> {{ up: "上升", down: "下降", flat: "稳定", unknown: "未知" }[skill.trend]}<small>{skill.lastTestedAt ? `测试于 ${new Date(skill.lastTestedAt).toLocaleDateString("zh-CN")}` : "尚未测试"}</small></span>
-              <span>{skill.recentWeakConcepts.length ? skill.recentWeakConcepts.join(", ") : "暂无证据支持的薄弱点"}</span>
-            </article>
-          );
-        })}
-      </div>
-      <section className="skill-caution"><AlertTriangle size={16} /><div><strong>拒绝虚假精确</strong><p>至少有三条观察覆盖两个概念后才会显示评分。高信心错误会形成明确的错误观念证据，并提高复习优先级。</p></div></section>
-    </div>
-  );
-}
+const capabilities=[["Scientific Question",Target,["reasoning"]],["Study Design",FlaskConical,["methods"]],["Statistical Reasoning",Brain,["methods","claim-calibration"]],["Omics Reasoning",Microscope,["omics"]],["Literature Reading",BookOpen,["literature","patterns"]],["Result Interpretation",SearchCheck,["evidence-discrimination","claim-calibration"]],["Next-step Design",Sparkles,["reasoning","troubleshooting"]],["AI Oversight",Database,["ai-oversight"]]] as const;
+export function SkillMapView(){const evidence=useAppStore((s)=>s.skillEvidence),states=useAppStore((s)=>s.learnerUnitStates),summaries=summarizeSkills(evidence);const learning=learningUnits.map((u)=>projectSkillMap(u,states.find((s)=>s.unitId===u.id)));return <div className="page progress-page"><header className="page-header"><div><span className="eyebrow">Progress</span><h1>八项核心科研能力</h1><p>学习过多少与真正独立证明过多少始终是两件事。</p></div><div className="evidence-count"><Database/><span>{evidence.length} 条独立证据</span></div></header><div className="capability-grid">{capabilities.map(([name,Icon,ids])=>{const rows=summaries.filter((x)=>(ids as readonly string[]).includes(x.id)),observations=rows.reduce((n,x)=>n+x.evidenceCount,0),related=name==="Statistical Reasoning"||name==="Study Design"?learning:[];return <article key={name}><Icon/><h2>{name}</h2><div><span>Learning progress</span><strong>{related.length?`${related.filter((x)=>x.learningProgress.exposure==="complete").length}/${related.length} 个基础单元`:"按学习路径逐步记录"}</strong></div><div><span>Demonstrated competence</span><strong>{observations?`${observations} 条独立证据`:"尚未评估，不代表零能力"}</strong></div><details><summary>查看具体概念</summary>{rows.map((x)=><p key={x.id}>{x.name} · {x.score===null?"证据不足":x.band}</p>)}</details></article>})}</div><section className="skill-caution"><strong>拒绝虚假精确</strong><p>阅读、点击完成或 guided practice 都不会冒充 independent competence。</p></section></div>}

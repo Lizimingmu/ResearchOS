@@ -1,6 +1,6 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
 
-export const CURRENT_STATE_SCHEMA = 5;
+export const CURRENT_STATE_SCHEMA = 6;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -99,6 +99,13 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     learnerUnitStates: arrayOr(raw.learnerUnitStates, defaults.learnerUnitStates),
     learningEvents: arrayOr(raw.learningEvents, defaults.learningEvents),
     pausedLearningUnitIds: arrayOr(raw.pausedLearningUnitIds, defaults.pausedLearningUnitIds),
+    // M017 schema 6 is additive and zero-inference. Old completions and skill
+    // evidence must never fabricate lesson cursor, routine, reasoning or paper-card state.
+    lessonProgressByUnitId: recordOr(raw.lessonProgressByUnitId, defaults.lessonProgressByUnitId),
+    routineSettings: isRecord(raw.routineSettings) ? { ...defaults.routineSettings, ...raw.routineSettings } as AppStateData["routineSettings"] : defaults.routineSettings,
+    routineLogs: arrayOr(raw.routineLogs, defaults.routineLogs),
+    reasoningRecords: arrayOr(raw.reasoningRecords, defaults.reasoningRecords),
+    paperCards: recordOr(raw.paperCards, defaults.paperCards),
     obsidianConnection: isRecord(raw.obsidianConnection)
       ? raw.obsidianConnection as unknown as AppStateData["obsidianConnection"]
       : defaults.obsidianConnection,

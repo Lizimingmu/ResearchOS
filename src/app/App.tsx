@@ -10,6 +10,7 @@ import { resolveTheme } from "./theme";
 const views = {
   today: lazy(() => import("../features/today/TodayView").then((module) => ({ default: module.TodayView }))),
   learning: lazy(() => import("../features/learning/LearningView").then((module) => ({ default: module.LearningView }))),
+  practice: lazy(() => import("../features/practice/PracticeHubView").then((module) => ({ default: module.PracticeHubView }))),
   library: lazy(() => import("../features/library/LibraryView").then((module) => ({ default: module.LibraryView }))),
   "paper-lab": lazy(() => import("../features/paper-lab/PaperLabView").then((module) => ({ default: module.PaperLabView }))),
   methods: lazy(() => import("../features/methods/MethodLabView").then((module) => ({ default: module.MethodLabView }))),

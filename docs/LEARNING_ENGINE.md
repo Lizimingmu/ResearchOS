@@ -1,45 +1,36 @@
 # ResearchOS learning engine
 
-*Operational specification for Today, attempts, misconceptions, review, scoring, and blind assessment in v0.10.1.*
+*Operational contract for the M017 guided research apprenticeship loop.*
 
----
+## Learning loop
 
-## 🎯 Today scheduler
+The default path is Learning Mode. One 8–12 minute unit progresses through why, intuition, prediction, precise explanation, worked-example fading, misconception contrast, real self-check, guided practice and independent practice. Review and far transfer appear only when their due gates are satisfied. Challenge Mode is an explicit fast path and never fabricates instruction exposure.
 
-Today ranks eligible tasks with five configurable signals: weakness, project relevance, due review, frontier value, and misconception risk. Selection then enforces a bounded five-task mix: foundation, current weakness, project relevance, due retrieval, and occasional frontier material. It never turns accumulated overdue work into a punitive backlog counter.
+Opening a step or completing instruction is not competence. The engine stores two independent projections:
 
-Difficulty labels are Foundation, Intermediate, Advanced, and Frontier. Variety rules avoid consecutive advanced-heavy tasks. Project and onboarding context affect relevance without overriding urgent misconceptions.
+- learning progress: exposure to required instruction;
+- demonstrated competence: guided-only, independent-once, retained or transferred evidence.
 
-## 🔒 Attempt contract
+At most two unpaused learning threads may be active. Required prerequisite edges can be satisfied by complete instruction exposure or at least one independent demonstration; project relevance can rank eligible work but cannot bypass a gate.
 
-1. Present an uncued problem and autosave the learner's draft.
-2. Capture confidence before correctness is known.
-3. Lock and persist the original response.
-4. Reveal source-bounded senior feedback.
-5. Record a concrete project transfer where applicable.
-6. Schedule delayed review and update evidence exactly once.
-7. Optionally request AI critique only after lock; it remains a labeled secondary review.
+## Practice asset and event contract
 
-Opening, drafting, or completing a screen does not equal mastery.
+`PracticeAssetV1` has a stable ID, revision, deterministic content hash, role, concept target, difficulty, interaction, rubric, standardized feedback and provenance. Supported interactions are single choice, multi-select, ordering, classification, claim boundary, short reasoning, evidence chain, error detection and project transfer.
 
-## 🧯 Misconception state machine
+Every practice transition requires both a versioned asset reference and a locked response. Self-check cannot record a pass from navigation alone and is never competence-eligible. Guided practice may reveal tiered hints and records which were used. Independent, review and far-transfer bindings contain no hints, require confidence and use distinct assets. Free reasoning is required where configured but is not assigned a fabricated AI precision score.
 
-A wrong response with high confidence opens an explicit misconception linked to the concept and original response. It receives next-day review priority. Review shows an unfamiliar variant rather than the original wording. Only a correct variant resolution closes it; partial/wrong ratings preserve the open misconception and shorten the next interval.
+Feedback always distinguishes what was correct, what was missed, overreach, a reference reasoning chain and the maximal acceptable conclusion.
 
-`recordCalibration` is idempotent, so repeated clicks/renders cannot create duplicate correctness, evidence, review, or misconception records.
+## Review and transfer
 
-## 🗓️ Review state
+An independent pass schedules a distinct unfamiliar review asset. A due review pass records retention and schedules far transfer. Far transfer uses a third asset and may be an unfamiliar-paper evidence chain, an AI-analysis critique, or a transfer bound to a user-selected local project. Only a successful far-transfer event advances competence to `transferred`.
 
-Reviews store due date, stability, difficulty, lapse count, last-review time, and misconception linkage. Correct retrieval expands stability; partial/wrong retrieval increases difficulty and shortens the interval. The state is FSRS-compatible but the interval heuristic is not presented as the full FSRS reference optimizer.
+## Today and routines
 
-## 📏 Skill evidence
+Today first determines legal state transitions, then selects at most one visible core learning item and one genuinely due review. A lightweight routine action is presented separately. Priority values and gate terminology are internal details.
 
-Scores are withheld below three observations across at least two concepts. Evidence combines correctness, confidence calibration, delayed retrieval, task difficulty, project transfer, and unresolved misconceptions. The UI reports broad bands, reliability, observation count, and last-tested date; rounded values are orientation aids, not validated psychometric traits.
+Routine targets default to two papers, one concept and one project reflection per week, plus one competence review per month. They are editable and logs accept completed, partially completed and skipped. No streak, XP or punitive backlog is computed.
 
-## 🧪 Blind assessment
+## Validation boundary
 
-First-run baseline and later assessment use three unfamiliar cases. The original response is locked, references remain hidden until submission, and six research-judgment domains are scored 0/1/2: framing, design, bias, analysis, interpretation, and transfer. Baseline and later runs can be compared, but assessment completion never creates skill mastery by itself.
-
-## 🧾 Validation boundary
-
-Implementation and state-transition evidence is documented in `LEARNING_ENGINE_VALIDATION.md`. The mechanisms align with retrieval, spacing, interleaving, feedback, transfer, confidence calibration, misconception correction, and blind assessment. That alignment is not proof that ResearchOS improves research competence.
+Pure transition tests cover response locking, confidence, hint exclusion, instruction/competence separation, prerequisite/two-thread gates, due timing and migration. Deterministic content audit closes unit/binding/asset/source references and rejects role reuse. These tests establish implementation invariants, not validated improvement in research competence.

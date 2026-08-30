@@ -686,3 +686,50 @@ Agent: Codex, directly implementing at the user's request. Scope: background-onl
 - performance — PASS after startup-content isolation: initial JS 983,945 bytes < 1.9 MB; scheduler 0.0103 ms; CSS 74,038 bytes < updated 85 KB Learning UI budget.
 - `cargo test --offline` — NOT RUN past dependency resolution: local cache lacks `urlencoding`; no Rust files changed. Accepted RC evidence remains 27/27.
 - FOREGROUND UI / INSTALLER / REAL VAULT / USER MANUAL / PACKAGING — NOT RUN.
+
+# M016 Learning-first UX / external-AI flow follow-up (2026-08-30)
+
+Agent: Codex. Diff-based review from approved baseline `e2c10c2`; no history rescan, foreground app, installer, real Vault, packaging or Rust change.
+
+## Fixed before foreground validation
+
+- `LearningView` now remounts the practice form at guided → independent → review → transfer stage boundaries, so a locked guided answer cannot leave the next independent form permanently locked.
+- A due `review_eligible` unit now exposes a real `retrieval_attempt` form instead of continuing to show only the waiting card; Today and the destination view agree on legality.
+- `consolidating` units stay blocked until the far-transfer due time. Retrieval pass schedules that time from the unit's declared `far_transfer` plan rather than a hard-coded seven days; the scheduler emits `far_transfer` only when due.
+- External-AI audit prompts no longer request an empty `changes` object that the strict ContentPatchPack parser rejects. A no-change audit returns an explicit non-patch result instead.
+- Clipboard failures in both AI prompt actions now surface as an in-app error instead of an unhandled promise rejection.
+
+## Verification
+
+- `npm run typecheck` — PASS.
+- `npm run test:unit` — PASS 103/103 after one test-only SSR correction (Zustand server snapshots intentionally expose initial state; the dynamic due-state assertion was replaced by source-contract assertions while the pure engine/scheduler paths remain behaviorally tested).
+- `npm test` — PASS 103/103 + localization 11 + startup smoke.
+- `npm run audit:learning-kernel` — PASS 12/12.
+- `git diff --check` — no whitespace errors (Git reported only the repository's LF→CRLF checkout warnings).
+
+## Remaining release blocker discovered by the evaluation
+
+- The bespoke `prototypePracticeByUnitId` questions rendered by `LearningView` are not versioned assets attached to `LearningEvent.asset`. Meanwhile guided, independent, review and far-transfer bindings for a unit currently reuse one existing judgment-card reference. The event therefore cannot prove which displayed prompt was answered, and far transfer is not yet an auditable unfamiliar variant. This must be repaired with versioned practice assets, distinct role variants and event asset snapshots before foreground acceptance or packaging.
+- FOREGROUND UI / USER-MANUAL / PACKAGING remain NOT RUN. Per `.agent/TESTING_POLICY.md`, a visible session still requires fresh explicit permission after the provenance patch is complete.
+
+# M017 Learning Experience Refactor (2026-08-30)
+
+Agent: Codex. Diff-based implementation; no history rescan, foreground app, installer, real Vault, packaging, version bump or curriculum expansion.
+
+## Implemented
+
+- Replaced the accordion-style Learning surface with a focused progressive lesson and persistent lesson cursor.
+- Added 21 versioned practice assets (seven distinct roles for each of the three verified units), deterministic hashes, provenance validation and event response snapshots.
+- Removed the fake self-check transition: every practice event now requires a bound asset and locked response; self-check/guided cannot become independent evidence.
+- Added structured choice, multi-select, ordering, classification, reasoning, claim-boundary, evidence-chain, error-detection and project-transfer schema/rendering support.
+- Added Today A/B/C, editable Research Routine targets/logs, Think Before AI, beginner Paper Card, eight-capability two-axis Progress, simplified primary navigation and Practice tools hub.
+- Added additive state schema 5→6 migration for lesson cursors, routines, reasoning records and Paper Cards, with no inferred learning or competence.
+- Updated M017 product, learning, UX, architecture, migration and handoff documentation.
+
+## Validation added
+
+Regression coverage now explicitly rejects response-less self-check passes, instruction/guided competence inflation, hinted or confidence-less independent evidence, independent/review/transfer asset reuse, unbound project transfer, destructive migration and public built-in personal data.
+
+## Validation boundary
+
+Final gate results are recorded in `M017_LEARNING_EXPERIENCE_HANDOFF.md`. Foreground UI, user-manual, installer, real Vault and packaging remain NOT RUN.

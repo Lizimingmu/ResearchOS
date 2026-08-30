@@ -1,58 +1,66 @@
-# ResearchOS v0.10.1 product specification
+# ResearchOS v0.12.0 product specification
 
-*Implemented product contract for a medical-research deliberate-practice, scientific-judgment, and AI-oversight desktop system.*
+*Implemented contract for a local-first guided research apprenticeship system for medical-research beginners.*
 
----
+## Product thesis
 
-## 🎯 Product thesis
+ResearchOS helps a learner move from phenomenon to research question, hypothesis, study design, analysis, interpretation, critique and next question. Its primary evidence is how many research-cognition steps the learner can perform independently, not how many cards were opened or read.
 
-ResearchOS trains research judgment through effortful retrieval, pre-feedback confidence, immutable first attempts, source-bounded feedback, delayed variant review, and transfer into a real project. AI is an optional reviewer or an object to audit; it is not the primary interface and cannot promote its own output to verified knowledge.
+The product is educational, not clinical decision support, and makes no claim of validated improvement in competence or patient outcomes.
 
-The product is local-first and educational. It does not provide clinical recommendations and does not claim validated improvement in scientific competence.
+## First-run and daily experience
 
-## 🧭 First-run and daily experience
+Onboarding captures target level, research context, unsystematic foundations, available daily time and whether local project state may affect relevance. It then routes the learner to Learning Mode; Challenge is optional. No forced blind baseline or feature tour is the default.
 
-First launch explains the effort-first contract, captures research focus/familiarity, and runs a blind three-case baseline. Subsequent launches open a bounded Today queue of five high-value tasks chosen from foundation, current weakness, project relevance, due retrieval, misconception correction, and occasional frontier material.
+Today presents at most three categories: one Today's Core lesson, genuinely Due Review and one Research Routine/project action. It explains why the core matters without exposing scheduling formulas. A learner enters a focused guided lesson, predicts before reveal, completes a real self-check, works through tiered guidance and then attempts a new no-hint independent case with confidence and reasoning.
 
-Drafts autosave. A learner must answer and record confidence before feedback, sources, transfer prompts, or optional AI critique appear. Wrong high-confidence answers open explicit misconceptions and return as unfamiliar variants. The interface does not display punitive overdue totals, XP, coins, or streak penalties.
+## Primary workspaces
 
-## 🧰 Implemented workspaces
+1. **Today** — the bounded daily training plan.
+2. **Learn** — progressive guided lessons and optional Challenge path.
+3. **Practice** — secondary hub for Method Lab, Problem Atlas, AI Audit, Paper Lab, Assessment, Frontier and Content Studio.
+4. **Projects** — real local project context, Think Before AI notes and linked transfer evidence.
+5. **Review** — due unfamiliar retrieval and misconception repair.
+6. **Progress** — eight research capabilities with separate learning and demonstrated-competence axes.
+7. **Library** — local PDFs, metadata, notes and verification state.
 
-1. **Today** — project/onboarding-aware five-task queue with variety and completion state.
-2. **Library** — local PDFs, metadata, notes, tags, status filters, and DOI/PMID identifier checks.
-3. **Paper Lab** — lazy three-pane PDF, evidence reconstruction, note, and training workspace.
-4. **Method Lab** — source-linked why/core/example/error/reviewer/use/boundary/transfer modules with four difficulty levels.
-5. **Review** — due-only delayed retrieval, unfamiliar variants, one rating, and correct-only misconception resolution.
-6. **AI Audit** — approve/question/reject each analysis step with reasons before calibrated feedback.
-7. **Frontier** — cautious, source-linked emerging topics separated from mastery.
-8. **Projects** — disease, design, cohort, omics, outcome, stage, bottleneck, methods, and persisted transfer notes.
-9. **Skill Map** — evidence bands, reliability, observation count, and last tested; insufficient evidence is withheld.
-10. **Blind Assessment** — three unfamiliar cases and locked rubric-scored baseline/longitudinal runs.
-11. **Settings / System Health** — theme, scheduler weights, optional provider, database health, content inventory, schema, backup, and learning export.
-12. **Global Search / Command Palette** — demand-loaded navigation and search across papers, notes, methods, patterns, projects, cards, and audits.
+Settings is an auxiliary entry and includes editable routine targets, learning controls, provider configuration, data/recovery and system health.
 
-## 🔒 Safety and data contract
+## Learning contract
 
-- Original responses are locked before correctness/feedback and remain auditable.
-- Calibration side effects are centralized and idempotent.
-- Frontend and SQLite v1 data migrate to v2 without destructive rewrite; future schema is refused.
-- SQLite writes are atomic and retain five bounded recovery snapshots.
-- API keys stay in Windows Credential Manager and are excluded from state/backups/exports.
-- AI output requires evidence context, exact parsing, explicit labeling, and cannot become verified content.
-- Core use remains offline; provider/evidence lookups are optional actions.
+- Learning Mode default; Challenge optional.
+- Units are 8–12 minutes and no more than two unpaused learning threads are active.
+- Sequence: why → intuition → prediction → precise explanation → worked-example fading → misconception contrast → real self-check → guided → independent → delayed unfamiliar review → far transfer.
+- Instruction exposure never equals demonstrated competence.
+- Self-check and guided work cannot create independent evidence.
+- Independent/review/transfer use versioned, role-distinct assets; no hints; confidence is required.
+- Feedback explains correct structure, omissions, overreach, reasoning chain and maximal conclusion.
+- Formal curriculum requires verified content and valid provenance.
 
-## 📚 Content contract
+M017 intentionally retains only the three verified prototypes: Statistical Unit, Biological vs Technical Replicates and Pseudoreplication.
 
-Release minimums are enforced automatically. v0.10.1 ships 49 evidence sources, 88 method concepts (84 usable), 25 research patterns, 84 judgment cards, and 40 AI-audit cases. Every scheduled training item has difficulty and misconception metadata plus an unfamiliar review variant where required. Source foreign keys, IDs/titles, DOI/PMID uniqueness, verification scope, and AI self-verification are release gates.
+## Research routines and AI
 
-## 📤 Export and recovery
+Think Before AI stores six fields: question, known facts, largest unknown, proposed next step, reason and uncertainty. It never invokes AI automatically and may be saved as a local project reasoning record. Optional post-AI reflection fields are available in the record model.
 
-JSON, CSV, and Markdown exports include learning history, weak concepts, notes, project transfers, assessment, and skill evidence. SQLite backup preserves canonical application state but intentionally excludes external PDF files and Credential Manager secrets.
+Routine targets default to two original papers, one concept and one project reflection per week, plus one competence review per month. They are editable and logs accept completed, partially completed or skipped. There is no XP, coin, leaderboard or punitive streak.
 
-## 🚫 Explicit non-goals
+Paper Lab retains advanced analysis and adds a beginner Paper Card for research question, importance, study design, figure evidence jobs, main claim, weakest evidence, alternative explanation and transferable lesson.
 
-No Zotero sync, licensed full-text acquisition, OCR/GROBID, semantic RAG, multi-user sync, autonomous systematic review, automatic evidence promotion, clinical decision support, or psychometrically validated competency certification is included in v0.10.1.
+## Data, safety and provenance
 
-## ✅ Release acceptance
+- Frontend state schema 6 migrates additively from 5 without inferring progress, routine completion, reasoning or competence.
+- Future schemas are rejected rather than downgraded; existing arrays and records remain preserved.
+- SQLite writes remain atomic under WAL with five bounded recovery snapshots and integrity-checked backup restore.
+- Content Studio overlays, revisions, hashes, dependency closure, conflicts and finite Obsidian workflows remain intact.
+- API credentials remain in Windows Credential Manager and outside state, backups and exports.
+- Optional AI output is pending and cannot promote itself to verified content.
+- Public built-in content contains no personal project, patient identifier, private chat or local machine path.
 
-Acceptance requires lint/typecheck, 20 frontend/integration checks, a production-bundle startup smoke without Node/WebView compatibility globals, seven Rust tests, content/performance gates, production/Tauri/NSIS builds, version/hash alignment, release first launch, schema-v2 database creation, integrity check, and same-database restart. Interactive Windows visual acceptance remains separately disclosed when automation cannot observe it.
+## Explicit non-goals
+
+No curriculum expansion, autonomous tutor chat, AI free-response grading, psychometric certification, automatic evidence promotion, cloud sync, clinical advice, gamified economy, punitive streak or autonomous content publishing is part of M017.
+
+## Acceptance status
+
+Background lint, typecheck, frontend tests, deterministic audits, content/performance checks and production web build are release gates. Foreground application, packaged restart, installer, real Vault and user-manual trial remain separate, explicitly reported checks.

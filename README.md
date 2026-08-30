@@ -4,7 +4,7 @@
 
 Release status: **v0.12.0 release candidate (`v0.12.0-rc1`)**. Background gates passed; packaged-app foreground, installer and user-manual checks remain NOT RUN.
 
-Development branch status: the post-RC M016 Learning Kernel is implemented and background-validated but not yet packaged. The default loop now teaches before testing, and Content Studio can exchange structured pending learning packs and audit patches with an explicitly chosen external AI.
+Development branch status: M017 refactors the post-RC Learning Kernel into a focused guided research apprenticeship experience. Today now leads into a progressive lesson with a genuine self-check, versioned role-distinct practice, delayed unfamiliar review and real far transfer. The refactor is background-validated but not yet foreground-tested or packaged.
 
 ---
 
@@ -16,7 +16,7 @@ Development branch status: the post-RC M016 Learning Kernel is implemented and b
 - Draft/pending/archived/deprecated/superseded items never enter Today, Review, search or publishing. Local activation keeps the 待核验 status — using material privately is separate from scientific verification.
 - Review-pack export bundles selected content plus its dependency closure as exactly five deterministic files for Codex/OpenScience review without repository-wide scanning.
 
-All v0.11.0 improvements remain: the Research Problem Atlas (科研常见问题库) with eight diagnostic modes, the Chinese-first five-minute tutorial, two independent import gates keeping the external 166-card corpus quarantined as `unclassified`, pending demo content displayed as 拟直接支持 · 待核验, Simplified Chinese interface, 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, 40 AI-audit cases, versioned state migrations (now schema 4), atomic persistence with five recovery snapshots, and JSON/CSV/Markdown exports.
+All v0.11.0 improvements remain: the Research Problem Atlas (科研常见问题库) with eight diagnostic modes, the Chinese-first tutorial, two independent import gates keeping the external 166-card corpus quarantined as `unclassified`, pending demo content displayed as 拟直接支持 · 待核验, Simplified Chinese interface, 49 evidence sources, 88 methods (84 usable), 25 research patterns, 84 judgment cards, 40 AI-audit cases, versioned state migrations (now frontend schema 6), atomic persistence with five recovery snapshots, and JSON/CSV/Markdown exports.
 
 ResearchOS is an educational research tool, not clinical decision support. Its mechanisms align with established learning principles, but the product has not been shown in a trial to improve research competence or patient outcomes.
 
@@ -54,6 +54,7 @@ Provider use is optional and occurs only after a human answer is locked. API key
 - `docs/PRODUCT_SPEC.md` — implemented behavior and non-goals
 - `docs/ARCHITECTURE.md` — runtime, boundaries, persistence, and performance
 - `docs/LEARNING_ENGINE.md` — scheduler and state model
+- `docs/M017_STATE_MIGRATION.md` — additive schema 5→6 contract
 - `docs/LEARNING_ENGINE_VALIDATION.md` — mechanism-by-mechanism validation and limits
 - `docs/CONTENT_PROVENANCE.md` — source/verification policy
 - `docs/CONTENT_AUDIT.md` and `docs/SCIENTIFIC_REVIEW.md` — automated and human scientific review

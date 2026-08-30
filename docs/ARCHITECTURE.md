@@ -1,6 +1,6 @@
 # ResearchOS architecture
 
-*Runtime, trust-boundary, persistence, startup-recovery, and release architecture for v0.10.1.*
+*Runtime, trust-boundary, persistence, startup-recovery, and learning architecture for v0.12.0 / M017.*
 
 ---
 
@@ -29,13 +29,13 @@ Tauri creates one WebView window during Rust setup so its data directory can liv
 
 ## 🖥️ Frontend boundaries
 
-`src/app` owns routing, lazy view boundaries, restoration, and global keyboard behavior. `src/features` contains workspaces; Paper Lab and PDF.js are lazy-loaded. `src/components/AttemptFlow.tsx` enforces the human-first contract. `src/learning` contains pure scheduler/review/scoring functions. `src/data` contains typed, source-linked seed content. `src/state/store.ts` is the only place that coordinates state mutations and persistence.
+`src/app` owns routing, lazy view boundaries, restoration, and global keyboard behavior. `src/features` contains workspaces; Paper Lab and PDF.js are lazy-loaded. `src/components/AttemptFlow.tsx` enforces the legacy human-first attempt contract, while `src/features/learning/LearningShell.tsx` and `PracticeActivity.tsx` implement the progressive lesson surface. `src/learning` contains pure scheduler/review/scoring/state-transition functions. `src/data` contains typed, source-linked seed content. `src/state/store.ts` is the only place that coordinates state mutations and persistence.
 
 Calibration is centralized in `recordCalibration`: it writes correctness once, adds one skill-evidence record, creates/updates one review, and opens an explicit misconception only for wrong high-confidence responses. Feature views cannot independently duplicate those side effects.
 
 ## 💾 State and database
 
-The serializable frontend schema is v2 and migrates v1 without dropping user arrays/settings. A future unknown schema is rejected rather than downgraded or overwritten. Drafts, misconceptions, onboarding, assessment runs, recovery state, and persistence diagnostics are first-class state.
+The serializable frontend application schema is v6 and migrates earlier versions without dropping user arrays/settings. M017's 5→6 step adds lesson cursors, routine settings/logs, reasoning records and Paper Cards with zero inferred competence. A future unknown schema is rejected rather than downgraded or overwritten. The native SQLite schema remains `user_version=2`; canonical state still uses the same atomic persistence boundary.
 
 Rust applies database migrations transactionally and verifies `PRAGMA user_version=2`. Canonical state is atomically stored in `app_state`; normalized/entity tables remain available for forward evolution. SQLite uses WAL, a five-second busy timeout, and five bounded pre-save snapshots. Backup import opens the candidate read-only, runs `PRAGMA integrity_check`, verifies ResearchOS state, and only then writes restored state.
 
@@ -67,3 +67,7 @@ Initial JavaScript is 663,763 bytes; Paper Lab (859,540 bytes), its worker (1,23
 TypeScript emits `.build`, Rollup emits `dist`, Cargo builds `src-tauri/target`, and Tauri packages an NSIS current-user installer. Content/performance reports are generated release gates. Version is aligned across npm, Cargo, Tauri, build metadata, artifact names, and schema documentation.
 
 The local Cargo transport proxy/configuration used in the restricted build environment is development-only and is not packaged or retained as release configuration.
+
+## M017 learning evidence boundary
+
+`PracticeAssetV1` is immutable by `(id, revision, contentHash)` and a binding assigns one role within a unit. A persisted practice event snapshots that asset identity plus the user's structured/free response. The pure engine rejects response-less practice transitions, separates instruction exposure from competence, and only marks no-hint confidence-bearing independent/review/transfer passes as competence evidence. Built-in assets remain public, de-identified and source-linked; project transfer stores only a local project ID in user state.

@@ -33,7 +33,7 @@ check("fake vault root is inside the project .tmp directory", fakeVaultRoot.star
 
 // --- Invariants: schema versions -------------------------------------------------
 const migrationsSource = readFileSync(path.join(root, "src/state/migrations.ts"), "utf8");
-check("frontend state schema advances compatibly to 5", /CURRENT_STATE_SCHEMA = 5;/.test(migrationsSource), "CURRENT_STATE_SCHEMA = 5");
+check("frontend state schema remains compatible at 5 or later", /CURRENT_STATE_SCHEMA = (?:[6-9]|[1-9]\d+);/.test(migrationsSource), "CURRENT_STATE_SCHEMA >= 6");
 const m015Collections = ["personalContent", "contentRevisionHistory", "contentConflicts", "obsidianPublishBatches"];
 check("schema 5 migration preserves every M015 collection", m015Collections.every((name) => migrationsSource.includes(`${name}:`)), m015Collections.join(", "));
 const libRs = readFileSync(path.join(root, "src-tauri/src/lib.rs"), "utf8");

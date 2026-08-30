@@ -5,6 +5,7 @@ import { PdfViewer } from "../../components/PdfViewer";
 import { researchPatterns } from "../../data/patterns";
 import { useAppStore } from "../../state/store";
 import { verificationLabel } from "../../app/localization";
+import { PaperCard } from "./PaperCard";
 
 const modes = [
   { id: "prediction", label: "图表预测", icon: ChevronRight, prompt: "说明核心科学问题、当前图表承担的证据任务，以及下一个尚未解决的问题。", transfer: "在你自己的论文中，下一步需要补充哪项证据？" },
@@ -23,6 +24,7 @@ export function PaperLabView() {
   const [modeId, setModeId] = useState("prediction");
   const [patternId, setPatternId] = useState("biomarker-discovery");
   const [comparisonId, setComparisonId] = useState(papers[1]?.id ?? papers[0]?.id);
+  const [beginnerMode, setBeginnerMode] = useState(true);
   const paper = papers.find((item) => item.id === selectedId) ?? papers[0];
   const mode = modes.find((item) => item.id === modeId)!;
   const pattern = researchPatterns.find((item) => item.id === patternId)!;
@@ -54,6 +56,8 @@ export function PaperLabView() {
         <div className="paper-note-strip"><BookOpen size={14} /><textarea rows={2} placeholder="与当前页面关联的工作笔记…" value={paper.notes} onChange={(event) => updatePaper(paper.id, { notes: event.target.value })} /></div>
       </section>
       <aside className="training-inspector">
+        <div className="review-tabs"><button className={beginnerMode?"active":""} onClick={()=>setBeginnerMode(true)}>Paper Card</button><button className={!beginnerMode?"active":""} onClick={()=>setBeginnerMode(false)}>进阶训练</button></div>
+        {beginnerMode ? <PaperCard key={paper.id} paperId={paper.id}/> : <>
         <div className="training-mode-tabs">{modes.map((item) => { const Icon = item.icon; return <button key={item.id} className={item.id === modeId ? "active" : ""} onClick={() => setModeId(item.id)} title={item.label}><Icon size={14} /><span>{item.label}</span></button>; })}</div>
         {modeId === "compare" && <label className="compare-picker">比较对象<select value={comparisonId} onChange={(event) => setComparisonId(event.target.value)}>{papers.filter((item) => item.id !== paper.id).map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}</select></label>}
         <AttemptFlow
@@ -71,6 +75,7 @@ export function PaperLabView() {
           difficulty={pattern.difficulty}
           variantPrompt={`使用“${pattern.title}”模式，在一篇陌生论文中重建相同的证据功能，再指出一项这些图表无法支持的主张。`}
         />
+        </>}
       </aside>
     </div>
   );

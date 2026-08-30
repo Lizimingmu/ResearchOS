@@ -12,7 +12,10 @@ import type {
   DraftResponse,
   Misconception,
   Paper,
+  PaperCardRecord,
   Project,
+  ResearchReasoningRecord,
+  ResearchRoutineLog,
   ReviewItem,
   SkillEvidence,
   UserResponse,
@@ -100,6 +103,11 @@ export const createInitialState = (): AppStateData => {
     learnerUnitStates: [],
     learningEvents: [],
     pausedLearningUnitIds: [],
+    lessonProgressByUnitId: {},
+    routineSettings: { weeklyPapers: 2, weeklyConcepts: 1, weeklyProjectReflections: 1, monthlyCompetenceReviews: 1 },
+    routineLogs: [],
+    reasoningRecords: [],
+    paperCards: {},
     obsidianConnection: undefined,
     obsidianPublishBatches: [],
     ...atlas,
@@ -142,6 +150,12 @@ interface AppStore extends AppStateData {
   startLearningUnit: (id: string, mode: LearningMode) => void;
   recordLearningTransition: (unitId: string, input: Omit<LearningTransitionInput, "id" | "occurredAt">) => void;
   toggleLearningUnitPaused: (unitId: string) => void;
+  setLessonStep: (unitId: string, stepId: string, completeCurrent?: string) => void;
+  updateRoutineSettings: (patch: Partial<AppStateData["routineSettings"]>) => void;
+  recordRoutine: (input: Omit<ResearchRoutineLog, "id" | "occurredAt">) => void;
+  saveReasoningRecord: (input: Omit<ResearchReasoningRecord, "id" | "createdAt">) => string;
+  updateReasoningRecord: (id: string, patch: Partial<ResearchReasoningRecord>) => void;
+  savePaperCard: (paperId: string, patch: Omit<PaperCardRecord, "paperId" | "updatedAt">) => void;
   setPaletteOpen: (open: boolean) => void;
   setGlobalSearch: (value: string) => void;
   notify: (text: string, tone?: ToastMessage["tone"]) => void;
@@ -167,7 +181,7 @@ interface AppStore extends AppStateData {
   snoozeTask: (id: string) => void;
   addAssessment: (assessment: AssessmentResult) => void;
   updateAssessment: (id: string, patch: Partial<AssessmentResult>) => void;
-  completeOnboarding: (interests: string[], familiarity: AppStateData["onboarding"]["familiarity"]) => void;
+  completeOnboarding: (interests: string[], familiarity: AppStateData["onboarding"]["familiarity"], profile?: Pick<AppStateData["onboarding"], "targetLevel" | "researchTypes" | "foundationGaps" | "allowProjectRelevance">) => void;
   replaceData: (data: unknown) => void;
   resetDemo: () => void;
   openTutorial: () => void;
@@ -230,6 +244,11 @@ function stateData(state: AppStore): AppStateData {
     learnerUnitStates: state.learnerUnitStates,
     learningEvents: state.learningEvents,
     pausedLearningUnitIds: state.pausedLearningUnitIds,
+    lessonProgressByUnitId: state.lessonProgressByUnitId,
+    routineSettings: state.routineSettings,
+    routineLogs: state.routineLogs,
+    reasoningRecords: state.reasoningRecords,
+    paperCards: state.paperCards,
     obsidianConnection: state.obsidianConnection,
     obsidianPublishBatches: state.obsidianPublishBatches,
   };
@@ -335,6 +354,31 @@ export const useAppStore = create<AppStore>((set, get) => {
         : [...state.pausedLearningUnitIds, unitId] }));
       queuePersist();
     },
+    setLessonStep: (unitId, currentStepId, completeCurrent) => {
+      set((state) => {
+        const previous = state.lessonProgressByUnitId[unitId];
+        return { lessonProgressByUnitId: {
+          ...state.lessonProgressByUnitId,
+          [unitId]: {
+            unitId,
+            currentStepId,
+            completedStepIds: [...new Set([...(previous?.completedStepIds ?? []), ...(completeCurrent ? [completeCurrent] : [])])],
+            updatedAt: new Date().toISOString(),
+          },
+        } };
+      });
+      queuePersist();
+    },
+    updateRoutineSettings: (patch) => { set((state) => ({ routineSettings: { ...state.routineSettings, ...patch } })); queuePersist(); },
+    recordRoutine: (input) => { set((state) => ({ routineLogs: [{ ...input, id: makeId("routine"), occurredAt: new Date().toISOString() }, ...state.routineLogs] })); queuePersist(); },
+    saveReasoningRecord: (input) => {
+      const id = makeId("reasoning");
+      set((state) => ({ reasoningRecords: [{ ...input, id, createdAt: new Date().toISOString() }, ...state.reasoningRecords] }));
+      queuePersist();
+      return id;
+    },
+    updateReasoningRecord: (id, patch) => { set((state) => ({ reasoningRecords: state.reasoningRecords.map((item) => item.id === id ? { ...item, ...patch } : item) })); queuePersist(); },
+    savePaperCard: (paperId, patch) => { set((state) => ({ paperCards: { ...state.paperCards, [paperId]: { paperId, ...patch, updatedAt: new Date().toISOString() } } })); queuePersist(); },
     setPaletteOpen: (paletteOpen) => set({ paletteOpen }),
     setGlobalSearch: (globalSearch) => set({ globalSearch }),
     notify: (text, tone = "info") => set({ toast: { id: makeId("toast"), tone, text } }),
@@ -505,10 +549,10 @@ export const useAppStore = create<AppStore>((set, get) => {
       }));
       queuePersist();
     },
-    completeOnboarding: (interests, familiarity) => {
+    completeOnboarding: (interests, familiarity, profile) => {
       const now = new Date().toISOString();
       set((state) => ({
-        onboarding: { ...state.onboarding, completed: true, interests, familiarity, completedAt: now, learningKernelOnboardingCompletedAt: now },
+        onboarding: { ...state.onboarding, ...profile, completed: true, interests, familiarity, completedAt: now, learningKernelOnboardingCompletedAt: now },
         tutorialOpen: false,
         selectedLearningUnitId: "lu-statistical-unit-v1",
         view: "today",

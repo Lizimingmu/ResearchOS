@@ -1,16 +1,18 @@
 # Project State
 
-Last updated: 2026-08-28
+Last updated: 2026-08-30
 
-- Product version: 0.12.0 release candidate containing the accepted M015 Personal Content Studio.
-- Development state schema / SQLite user version: 5 / 2. The accepted `v0.12.0-rc1` artifact remains schema 4 / SQLite 2.
-- Approved baseline: commit `e2c10c2` (M016 release implementation); the accepted release candidate is identified by tag `v0.12.0-rc1`.
-- Accepted milestones: M013 Problem Atlas, M014-01 Chinese tutorial, M015 Personal Content Studio.
-- Accepted checkpoints: M015 tag `m015-accepted`; M016 background release candidate tag `v0.12.0-rc1`.
-- Working features: Chinese-first state-driven Learning Kernel, three prerequisite-linked prototype units, Learning/Challenge paths, learning-progress/competence separation, teaching-first n/statistical-unit onboarding, external-AI prompt/content-pack exchange, Problem Atlas, versioned personal-content overlays, review-pack export, patch/history/rollback, and explicit finite Obsidian publish/review workflow.
-- Current deterministic evidence: frontend 103/103 PASS plus localization/startup; Learning Kernel audit 12/12; source-pack and Problem Atlas 0/0; staging 63/63; content 0 errors/1 existing warning; M015 compatibility audit 32/32; handoff validator PASS; initial JS 983,945 bytes under the 1.9 MB budget. Rust offline re-run did not start because the local cache lacks `urlencoding`; no Rust code changed and the accepted RC's prior Rust evidence remains 27/27.
-- Scientific state: the three M016 prototype units were reviewed by Codex against the existing verified pseudoreplication/pseudobulk sources and accepted with explicit unit/estimand/model boundaries. External AI content is always forced to `pending_review` + `pending`; 166 external cards remain `unclassified` and import-ineligible.
-- Current candidate artifacts: `release/ResearchOS_0.12.0_x64.exe` and `release/ResearchOS_0.12.0_x64-setup.exe`; both are unsigned and independently hash-verified. Historical binaries v0.9.0–v0.11.0 and reproducible build/smoke output were removed from the working copy on 2026-08-27; history remains in Git/CHANGELOG.
-- Current milestone: M016 Learning Kernel and external-AI content exchange are background-complete; foreground user validation remains NOT RUN.
-- Blockers: no frontend S1 blocker. Rust re-verification is externally blocked by missing local crate cache plus Schannel network credentials. Foreground packaged-app smoke remains permission-gated and was not run.
-- M012 Protocol Lab remains paused until explicitly selected.
+- Product version: 0.12.0 release candidate; M017 is a post-RC source refactor and does not bump or package the product.
+- Branch: `codex/m016-release`.
+- Approved baseline: commit `e2c10c2` (M016 release implementation); M017 remains an uncommitted diff-based refactor on top of it.
+- Frontend state schema / SQLite user version: 6 / 2. Schema 5→6 is additive and zero-inference; native atomic persistence, WAL and five recovery snapshots are unchanged.
+- Accepted milestones/checkpoints: M013, M014-01, M015 (`m015-accepted`), and M016 background candidate (`v0.12.0-rc1`).
+- Current milestone: M017 Learning Experience Refactor — background implementation complete, foreground/manual acceptance not run.
+- Current experience: Today A/B/C plan; focused guided lessons; genuine response-locked self-check; tiered guided practice; no-hint confidence-bearing independent cases; distinct delayed review and three-mode far transfer; editable routines; Think Before AI; beginner Paper Card; eight-capability two-axis Progress; simplified navigation.
+- Learning content: exactly three existing verified prototypes. M017 added versioned practice assets and did not expand the curriculum.
+- Scientific/provenance state: formal assets are hashed, source-linked and verified; external AI imports remain forced pending and cannot self-promote. Public built-in privacy audit is present.
+- Safety state: Content Studio, overlays/conflicts/history/rollback, bounded Obsidian workflows, future-schema refusal, SQLite recovery and credentials isolation remain in scope of the full gates.
+- Foreground, installer, real Vault, packaging and user-manual checks: **NOT RUN**.
+- Current deterministic evidence: frontend 111/111 + localization 11 + startup smoke; Learning Kernel 16/16; M015 32/32; source-pack and Problem Atlas 0/0; content 0 errors / 1 pre-existing warning; performance PASS at 989,042 initial JS and 0.0058 ms scheduler; handoff validator PASS.
+- Rust status: tests did not reach compilation because offline cache lacks `urlencoding` and the normal retry hit repeated Schannel `SEC_E_NO_CREDENTIALS`/timeouts. No Rust source changed.
+- Next action: stop for the user's real foreground trial before deciding whether to modify further or package.

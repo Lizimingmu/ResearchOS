@@ -127,6 +127,69 @@ export interface LearningEventAssetRef {
   hash: string;
 }
 
+export type PracticeInteraction =
+  | "single_choice"
+  | "multi_select"
+  | "ordering"
+  | "classification"
+  | "claim_boundary"
+  | "short_reasoning"
+  | "evidence_chain"
+  | "error_detection"
+  | "project_transfer";
+
+export interface PracticeResponseV1 {
+  selectedOptionIds?: string[];
+  orderedItemIds?: string[];
+  classifications?: Record<string, string>;
+  shortReasoning?: string;
+  claimBoundary?: string;
+  projectId?: string;
+}
+
+export interface PracticeFeedbackV1 {
+  correctCn: string[];
+  missedCn: string[];
+  overreachCn: string[];
+  reasoningChainCn: string[];
+  maximalConclusionCn: string;
+}
+
+export interface PracticeAssetV1 {
+  schemaVersion: 1;
+  id: string;
+  revision: number;
+  contentHash: string;
+  role: PracticeRole;
+  conceptTarget: string;
+  difficulty: "foundation" | "intermediate" | "advanced";
+  interaction: PracticeInteraction;
+  titleCn: string;
+  scenarioCn: string;
+  promptCn: string;
+  options?: Array<{ id: string; labelCn: string }>;
+  orderingItems?: Array<{ id: string; labelCn: string }>;
+  classificationItems?: Array<{ id: string; labelCn: string; categories: string[] }>;
+  hints: string[];
+  rubric: {
+    expectedOptionIds?: string[];
+    expectedOrderIds?: string[];
+    expectedClassifications?: Record<string, string>;
+    minReasoningChars?: number;
+    requiredReasoningTerms?: string[];
+  };
+  feedback: PracticeFeedbackV1;
+  provenance: {
+    contentOrigin: LearningUnitV1["contentOrigin"];
+    verificationStatus: VerificationStatus;
+    evidenceSourceIds: string[];
+  };
+}
+
+export function practiceAssetHash(asset: Omit<PracticeAssetV1, "contentHash">): string {
+  return sha256(canonicalJson(asset));
+}
+
 export interface LearningEventV1 {
   schemaVersion: 1;
   id: string;
@@ -137,6 +200,7 @@ export interface LearningEventV1 {
   mode: LearningMode;
   occurredAt: string;
   asset?: LearningEventAssetRef;
+  response?: PracticeResponseV1;
   outcome?: "pass" | "fail" | "incomplete";
   score?: number;
   confidence?: 1 | 2 | 3 | 4;
@@ -157,6 +221,7 @@ export interface PrerequisiteEdgeV1 {
 }
 
 export type PracticeAssetKind =
+  | "learning_practice"
   | "method_concept"
   | "judgment_card"
   | "problem_card"
@@ -164,7 +229,7 @@ export type PracticeAssetKind =
   | "paper_task"
   | "project_case";
 
-export type PracticeRole = "worked" | "guided" | "independent" | "review" | "far_transfer";
+export type PracticeRole = "prediction" | "worked" | "self_check" | "guided" | "independent" | "review" | "far_transfer";
 
 export interface PracticeAssetBindingV1 {
   schemaVersion: 1;
@@ -349,6 +414,11 @@ export function validateBinding(binding: PracticeAssetBindingV1, ctx: {
     errors.push(`binding ${binding.id} 资产 revision/hash 与登记不符`);
   }
   switch (binding.role) {
+    case "prediction":
+    case "self_check":
+      if (binding.competenceEligible) errors.push(`${binding.role} binding ${binding.id} 不得计入独立能力`);
+      if (binding.minStage !== "learning") errors.push(`${binding.role} binding ${binding.id} minStage 必须是 learning`);
+      break;
     case "worked":
       if (binding.hintPolicy !== "solution_visible") errors.push(`worked binding ${binding.id} 必须 solution_visible`);
       if (binding.competenceEligible) errors.push(`worked binding ${binding.id} 不得计入能力`);
@@ -368,7 +438,7 @@ export function validateBinding(binding: PracticeAssetBindingV1, ctx: {
       if (!binding.competenceEligible) errors.push(`${binding.role} binding ${binding.id} 必须可计能力`);
       if (binding.role === "independent" && binding.minStage !== "independent_ready") errors.push(`independent binding ${binding.id} minStage 必须是 independent_ready`);
       if (binding.role === "review" && binding.minStage !== "review_eligible") errors.push(`review binding ${binding.id} minStage 必须是 review_eligible`);
-      if (binding.role === "far_transfer" && binding.minStage !== "transferable") errors.push(`far_transfer binding ${binding.id} minStage 必须是 transferable`);
+      if (binding.role === "far_transfer" && binding.minStage !== "consolidating") errors.push(`far_transfer binding ${binding.id} minStage 必须是 consolidating`);
       break;
   }
   return errors;
@@ -447,15 +517,62 @@ export function validateLearningKernelContent(input: {
       else if (binding.unitId !== unit.id) errors.push(`binding ${id} 不属于单元 ${unit.id}`);
     }
     const roles = new Set(attached.filter((binding): binding is PracticeAssetBindingV1 => binding !== undefined).map((binding) => binding.role));
-    for (const role of ["guided", "independent", "review", "far_transfer"] as PracticeRole[]) {
+    for (const role of ["prediction", "worked", "self_check", "guided", "independent", "review", "far_transfer"] as PracticeRole[]) {
       if (!roles.has(role)) errors.push(`单元 ${unit.id} 缺少 ${role} practice binding`);
     }
+    const assetFor = (role: PracticeRole) => attached.find((binding) => binding?.role === role)?.assetId;
+    if (assetFor("independent") && assetFor("independent") === assetFor("review")) errors.push(`单元 ${unit.id} 的 independent 与 review 不得复用同一资产`);
+    if (assetFor("independent") && assetFor("independent") === assetFor("far_transfer")) errors.push(`单元 ${unit.id} 的 far_transfer 不得机械复用 independent 资产`);
   }
   for (const binding of input.bindings) {
     const owner = input.units.find((unit) => unit.id === binding.unitId);
     if (owner && !owner.practiceBindingIds.includes(binding.id)) errors.push(`binding ${binding.id} 未登记在所属单元`);
   }
   return [...new Set(errors)];
+}
+
+export function validatePracticeAsset(asset: PracticeAssetV1): string[] {
+  const errors: string[] = [];
+  if (asset.schemaVersion !== 1) errors.push("不支持的 Practice Asset schemaVersion");
+  if (!/^[a-z0-9][a-z0-9._-]{2,95}$/i.test(asset.id)) errors.push("Practice Asset ID 格式无效");
+  if (!Number.isInteger(asset.revision) || asset.revision < 1) errors.push("Practice Asset revision 必须为正整数");
+  const { contentHash: _hash, ...payload } = asset;
+  if (!SHA256_PATTERN.test(asset.contentHash) || practiceAssetHash(payload) !== asset.contentHash) errors.push(`Practice Asset ${asset.id} hash 不匹配`);
+  if (!asset.titleCn.trim() || !asset.scenarioCn.trim() || !asset.promptCn.trim()) errors.push(`Practice Asset ${asset.id} 文本不完整`);
+  const optionInteractions: PracticeInteraction[] = ["single_choice", "multi_select", "claim_boundary", "short_reasoning", "evidence_chain", "error_detection", "project_transfer"];
+  if (optionInteractions.includes(asset.interaction) && (!asset.options || asset.options.length < 2)) errors.push(`Practice Asset ${asset.id} 缺少可评分选项`);
+  if (asset.interaction === "ordering" && (!asset.orderingItems || asset.orderingItems.length < 2 || !asset.rubric.expectedOrderIds)) errors.push(`Practice Asset ${asset.id} 缺少 ordering rubric`);
+  if (asset.interaction === "classification" && (!asset.classificationItems || asset.classificationItems.length < 1 || !asset.rubric.expectedClassifications)) errors.push(`Practice Asset ${asset.id} 缺少 classification rubric`);
+  if (asset.interaction === "project_transfer" && asset.role !== "far_transfer") errors.push(`Practice Asset ${asset.id} 的 project_transfer 只能用于 far_transfer`);
+  if (["independent", "review", "far_transfer"].includes(asset.role) && asset.hints.length > 0) errors.push(`${asset.role} asset ${asset.id} 不得包含 hints`);
+  if (asset.role === "guided" && asset.hints.length < 2) errors.push(`guided asset ${asset.id} 至少需要两层 hint`);
+  if (asset.provenance.verificationStatus !== "verified") errors.push(`正式 curriculum 的 Practice Asset ${asset.id} 必须 verified`);
+  if (asset.provenance.evidenceSourceIds.length === 0) errors.push(`Practice Asset ${asset.id} 缺少 provenance`);
+  return errors;
+}
+
+export function scorePracticeAsset(asset: PracticeAssetV1, response: PracticeResponseV1): { passed: boolean; score: number; missing: string[] } {
+  const missing: string[] = [];
+  const selected = new Set(response.selectedOptionIds ?? []);
+  const expected = new Set(asset.rubric.expectedOptionIds ?? []);
+  const decisionCorrect = expected.size === 0 || (selected.size === expected.size && [...expected].every((id) => selected.has(id)));
+  if (!decisionCorrect) missing.push("结构化判断与参考标准不一致");
+  const orderCorrect = !asset.rubric.expectedOrderIds || JSON.stringify(response.orderedItemIds ?? []) === JSON.stringify(asset.rubric.expectedOrderIds);
+  if (!orderCorrect) missing.push("推理顺序仍需调整");
+  const classCorrect = !asset.rubric.expectedClassifications || Object.entries(asset.rubric.expectedClassifications).every(([id, category]) => response.classifications?.[id] === category);
+  if (!classCorrect) missing.push("分类中仍有层级混淆");
+  const reasoning = response.shortReasoning?.trim() ?? "";
+  const reasoningPresent = reasoning.length >= (asset.rubric.minReasoningChars ?? 0);
+  if (!reasoningPresent) missing.push("需要写出自己的理由");
+  const reasoningTermsPresent = (asset.rubric.requiredReasoningTerms ?? []).every((term) => reasoning.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
+  if (!reasoningTermsPresent) missing.push("理由中缺少 rubric 要求的关键关系");
+  const boundaryPresent = !["claim_boundary", "project_transfer"].includes(asset.interaction) || (response.claimBoundary?.trim().length ?? 0) >= 8;
+  if (!boundaryPresent) missing.push("需要写出结论边界");
+  const projectLinked = asset.interaction !== "project_transfer" || Boolean(response.projectId?.trim());
+  if (!projectLinked) missing.push("需要选择一个真实项目作为迁移目标");
+  const checks = [decisionCorrect, orderCorrect, classCorrect, reasoningPresent, reasoningTermsPresent, boundaryPresent, projectLinked];
+  const score = checks.filter(Boolean).length / checks.length;
+  return { passed: decisionCorrect && orderCorrect && classCorrect && reasoningPresent && reasoningTermsPresent && boundaryPresent && projectLinked, score, missing };
 }
 
 /** Pure two-axis projection. Absence of a state means unassessed, never zero competence. */

@@ -2,6 +2,19 @@
 
 Status: READY FOR REVIEW
 
+## M017 practice-asset review note
+
+### SC-M017-01 — Role-distinct practice variants for the three verified Learning Units
+
+- Concept: Statistical unit; biological versus technical replicate; pseudoreplication. M017 adds prediction, worked, self-check, guided, independent, delayed-review and far-transfer scenarios without adding a curriculum unit.
+- Claim: No new general scientific claim is introduced. Each scenario applies the already accepted boundary that the inferential/independent layer depends on the research question, estimand, sampling/allocation and dependence structure; lower-level repeated measurements do not automatically increase biological n.
+- Answer/rubric: Deterministic structured answers identify the relevant independent source or dependence error. Independent/review/transfer additionally require a short rationale; claim/project transfer requires a maximal conclusion boundary. Free text is presence-gated and is not assigned a fabricated AI accuracy score.
+- Evidence source IDs: `src-pseudorep`; `src-pseudobulk`.
+- PMID/DOI: `10.1085/jgp.202012826`; `10.1038/s41467-021-25960-2`.
+- Risk level: HIGH
+- Verification status: verified seed variants reviewed against the accepted M016 unit boundaries; no source status was promoted and no external pending content entered curriculum.
+- Changed files: `src/data/learningUnits.ts`; `src/domain/learningKernel.ts`; `scripts/learning-kernel-audit.mjs`; `tests-node/suite.mjs`.
+
 ## M014-01 engineering status note
 
 M014-01 added **no scientific content**: no new claims, sources, cards, answers or generated scientific text. The Chinese tutorial reuses existing pending demo content only; its preview exercise runs in isolated local state. Existing entries above are unchanged.

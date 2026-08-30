@@ -80,7 +80,7 @@ export function AiContentExchangePanel() {
       <span className="eyebrow">外部 AI · 内容生成</span><h2>生成可复制的结构化任务</h2>
       <p>ResearchOS 不自动调用外部模型。你明确复制提示词，外部 AI 只返回内容包；导入后仍是待核验草稿。</p>
       <div className="form-grid two"><label>主题<input value={topic} onChange={(event) => setTopic(event.target.value)} /></label><label>学习目标<input value={objective} onChange={(event) => setObjective(event.target.value)} /></label></div>
-      <div className="settings-actions"><button className="primary" onClick={generate}><Sparkles size={14}/> 生成提示词</button>{prompt && <button onClick={() => void copyText(prompt).then(() => notify("提示词已复制。", "success"))}><Clipboard size={14}/> 复制给外部 AI</button>}</div>
+      <div className="settings-actions"><button className="primary" onClick={generate}><Sparkles size={14}/> 生成提示词</button>{prompt && <button onClick={() => void copyText(prompt).then(() => notify("提示词已复制。", "success")).catch((error) => notify(String(error), "error"))}><Clipboard size={14}/> 复制给外部 AI</button>}</div>
       {prompt && <label className="studio-payload">可复制提示词<textarea rows={12} readOnly value={prompt} /></label>}
     </section>
 
@@ -96,7 +96,7 @@ export function AiContentExchangePanel() {
       <span className="eyebrow">旧内容也能拿出去审计</span><h2>生成内部内容审计提示词</h2>
       <p>选择内置或个人内容。内置内容会先建立个人 overlay，外部 AI 返回标准 patch；之后在“版本历史”中预览字段 diff，再决定是否应用。</p>
       <div className="form-grid two"><label>审计对象<select value={auditSelection} onChange={(event) => setAuditSelection(event.target.value)}>{auditOptions.map(({ selectionId, item }) => <option key={selectionId} value={selectionId}>{item.title} · {item.owner === "builtin" ? "内置" : "个人"} · r{item.revision}</option>)}</select></label><label>&nbsp;</label></div>
-      <div className="settings-actions"><button className="primary" disabled={!auditSelection} onClick={prepareAudit}>建立可修订目标并生成审计提示词</button>{auditPrompt && <button onClick={() => void copyText(auditPrompt).then(() => notify("审计提示词已复制。", "success"))}><Clipboard size={14}/> 复制审计提示词</button>}</div>
+      <div className="settings-actions"><button className="primary" disabled={!auditSelection} onClick={prepareAudit}>建立可修订目标并生成审计提示词</button>{auditPrompt && <button onClick={() => void copyText(auditPrompt).then(() => notify("审计提示词已复制。", "success")).catch((error) => notify(String(error), "error"))}><Clipboard size={14}/> 复制审计提示词</button>}</div>
       {auditPrompt && <label className="studio-payload">审计提示词<textarea rows={12} readOnly value={auditPrompt}/></label>}
     </section>
   </div>;

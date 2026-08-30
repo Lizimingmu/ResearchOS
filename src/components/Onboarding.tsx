@@ -1,39 +1,5 @@
-import { ArrowRight, CheckCircle2, Layers3, Lightbulb } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Target } from "lucide-react";
 import { useState } from "react";
 import { useAppStore } from "../state/store";
-
-export function Onboarding() {
-  const completeOnboarding = useAppStore((state) => state.completeOnboarding);
-  const [step, setStep] = useState(0);
-  const [choice, setChoice] = useState<number | null>(null);
-  const correct = choice === 1;
-  return <div className="onboarding-overlay">
-    <section className="onboarding-card learning-onboarding">
-      <div className="onboarding-progress"><i style={{ width: `${(step + 1) * 33.33}%` }} /></div>
-      {step === 0 && <>
-        <span className="eyebrow">5 分钟入门 · 不是功能导览</span>
-        <h1>3 位患者，每人测了 2,000 个细胞：n 是 6,000 吗？</h1>
-        <p>先别急着答。这个问题决定了单细胞、病理视野、类器官孔和重复测量研究中的不确定性应该怎样计算。</p>
-        <div className="onboarding-principles"><span><Lightbulb/> 先建立直觉</span><span><Layers3/> 再看数据层级</span><span><CheckCircle2/> 最后才做低压力自检</span></div>
-        <button className="primary" onClick={() => setStep(1)}>先理解这个问题 <ArrowRight size={14}/></button>
-      </>}
-      {step === 1 && <>
-        <span className="eyebrow">一句话直觉</span>
-        <h1>n 不是表里有多少行。</h1>
-        <p>n 要和你想推断的对象、独立采样或分配的层级对应。若目标是比较患者组，许多细胞可以让每位患者的测量更稳定，却不会把 3 位患者变成 6,000 位患者。</p>
-        <div className="onboarding-levels"><div><strong>患者</strong><small>独立生物来源</small></div><span>→</span><div><strong>样本</strong><small>属于患者</small></div><span>→</span><div><strong>细胞</strong><small>嵌套测量</small></div></div>
-        <button className="primary" onClick={() => setStep(2)}>用一个例子确认理解 <ArrowRight size={14}/></button>
-      </>}
-      {step === 2 && <>
-        <span className="eyebrow">低压力自检</span>
-        <h1>4 只小鼠/组，每只取 10 个视野。</h1>
-        <p>若处理分配给小鼠，目标也是比较小鼠层效应，主要独立单位是什么？</p>
-        <div className="choice-grid onboarding-quiz">
-          {["80 个视野", "8 只小鼠", "视野中的所有细胞"].map((option, index) => <button key={option} className={choice === index ? "selected" : ""} onClick={() => setChoice(index)}>{option}</button>)}
-        </div>
-        {choice !== null && <div className={correct ? "onboarding-answer correct" : "onboarding-answer"}><strong>{correct ? "对：独立信息主要来自 8 只小鼠" : "再看一眼层级：处理是分配给小鼠的"}</strong><p>视野增加小鼠内测量精度，但共享同一只小鼠的视野不能无条件当成独立小鼠。</p></div>}
-        <button className="primary" disabled={!correct} onClick={() => completeOnboarding([], {})}>进入学习路径 <ArrowRight size={14}/></button>
-      </>}
-    </section>
-  </div>;
-}
+const researchTypes=["临床观察研究","实验/动物研究","组学与生物信息","预测模型","论文与课题设计"],gaps=["科研问题与假设","研究设计","统计推断","组学方法","论文阅读","AI 结果审查"];
+export function Onboarding(){const complete=useAppStore((s)=>s.completeOnboarding),updateSettings=useAppStore((s)=>s.updateSettings);const[step,setStep]=useState(0),[targetLevel,setTargetLevel]=useState<"foundation"|"working"|"independent">("working"),[types,setTypes]=useState<string[]>([]),[foundationGaps,setGaps]=useState<string[]>([]),[minutes,setMinutes]=useState(20),[allowProjectRelevance,setAllow]=useState(true);const toggle=(v:string,list:string[],set:(x:string[])=>void)=>set(list.includes(v)?list.filter((x)=>x!==v):[...list,v]);const finish=()=>{updateSettings({dailyMinutes:minutes});complete(types,Object.fromEntries(foundationGaps.map((x)=>[x,"new"])),{targetLevel,researchTypes:types,foundationGaps,allowProjectRelevance});};return <div className="onboarding-overlay"><section className="onboarding-card apprenticeship-onboarding"><div className="onboarding-progress"><i style={{width:`${(step+1)*20}%`}}/></div>{step===0&&<><Target/><span className="eyebrow">1 / 5 · 训练目标</span><h1>你希望训练到什么程度？</h1><div className="choice-grid">{[["foundation","系统补齐基础"],["working","能独立推进常见科研步骤"],["independent","能审查复杂设计与 AI 建议"]].map(([v,l])=><button key={v} className={targetLevel===v?"selected":""} onClick={()=>setTargetLevel(v as typeof targetLevel)}>{l}</button>)}</div></>}{step===1&&<><span className="eyebrow">2 / 5 · 真实科研情境</span><h1>你目前主要做什么类型的科研？</h1><div className="choice-grid">{researchTypes.map((x)=><button key={x} className={types.includes(x)?"selected":""} onClick={()=>toggle(x,types,setTypes)}>{x}</button>)}</div></>}{step===2&&<><BookOpen/><span className="eyebrow">3 / 5 · 基础缺口</span><h1>哪些基础你没有系统学过？</h1><div className="choice-grid">{gaps.map((x)=><button key={x} className={foundationGaps.includes(x)?"selected":""} onClick={()=>toggle(x,foundationGaps,setGaps)}>{x}</button>)}</div></>}{step===3&&<><span className="eyebrow">4 / 5 · 每日投入</span><h1>每天愿意投入多少时间？</h1><div className="choice-grid">{[10,20,30,40].map((x)=><button key={x} className={minutes===x?"selected":""} onClick={()=>setMinutes(x)}>{x} 分钟</button>)}</div><p>学习单元仍保持 8–12 分钟，同时最多两个 active learning threads。</p></>}{step===4&&<><span className="eyebrow">5 / 5 · 项目相关性</span><h1>是否根据真实项目提高相关内容优先级？</h1><div className="choice-grid"><button className={allowProjectRelevance?"selected":""} onClick={()=>setAllow(true)}>允许，仅使用本地项目状态</button><button className={!allowProjectRelevance?"selected":""} onClick={()=>setAllow(false)}>暂不使用项目相关性</button></div><blockquote>ResearchOS 会先教，再让你练，最后要求你把知识用到真实科研问题。</blockquote><p>默认使用 Learning Mode；Challenge 只作为你主动选择的诊断快速通道。</p></>}<footer className="onboarding-actions"><button disabled={step===0} onClick={()=>setStep((x)=>x-1)}><ArrowLeft/> 上一步</button>{step<4?<button className="primary" onClick={()=>setStep((x)=>x+1)}>下一步 <ArrowRight/></button>:<button className="primary" onClick={finish}>开始第一节 Guided Lesson <ArrowRight/></button>}</footer></section></div>}

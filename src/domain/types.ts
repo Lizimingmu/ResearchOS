@@ -284,6 +284,63 @@ export interface OnboardingState {
   tutorialSkippedAt?: string;
   learningKernelOnboardingCompletedAt?: string;
   learningKernelOnboardingSkippedAt?: string;
+  targetLevel?: "foundation" | "working" | "independent";
+  researchTypes?: string[];
+  foundationGaps?: string[];
+  allowProjectRelevance?: boolean;
+}
+
+export interface LessonProgressState {
+  unitId: string;
+  currentStepId: string;
+  completedStepIds: string[];
+  updatedAt: string;
+}
+
+export interface ResearchRoutineSettings {
+  weeklyPapers: number;
+  weeklyConcepts: number;
+  weeklyProjectReflections: number;
+  monthlyCompetenceReviews: number;
+}
+
+export interface ResearchRoutineLog {
+  id: string;
+  routineType: "think_before_ai" | "paper_reading" | "concept_learning" | "project_reflection" | "competence_review";
+  status: "completed" | "partially_completed" | "skipped";
+  occurredAt: string;
+  projectId?: string;
+  paperId?: string;
+}
+
+export interface ResearchReasoningRecord {
+  id: string;
+  projectId?: string;
+  source: "project" | "today" | "learning_transfer";
+  question: string;
+  known: string;
+  biggestUnknown: string;
+  nextStep: string;
+  rationale: string;
+  uncertainty: string;
+  postAiChanged?: string;
+  postAiAccepted?: string;
+  postAiRejected?: string;
+  postAiWhy?: string;
+  createdAt: string;
+}
+
+export interface PaperCardRecord {
+  paperId: string;
+  researchQuestion: string;
+  whyImportant: string;
+  studyDesign: string;
+  figureEvidenceJobs: string;
+  mainClaim: string;
+  weakestEvidence: string;
+  alternativeExplanation: string;
+  transferableLesson: string;
+  updatedAt: string;
 }
 
 export interface AIProvider {
@@ -349,6 +406,11 @@ export interface AppStateData {
   learnerUnitStates: LearnerUnitStateV1[];
   learningEvents: LearningEventV1[];
   pausedLearningUnitIds: string[];
+  lessonProgressByUnitId: Record<string, LessonProgressState>;
+  routineSettings: ResearchRoutineSettings;
+  routineLogs: ResearchRoutineLog[];
+  reasoningRecords: ResearchReasoningRecord[];
+  paperCards: Record<string, PaperCardRecord>;
   obsidianConnection?: ObsidianConnectionSettings;
   obsidianPublishBatches: ObsidianPublishBatch[];
 }
@@ -365,7 +427,7 @@ export interface AssessmentResult {
   domainScores?: Record<string, number>;
 }
 
-export type ViewId = "today" | "learning" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
+export type ViewId = "today" | "learning" | "practice" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
 
 export interface DailyTask {
   id: string;

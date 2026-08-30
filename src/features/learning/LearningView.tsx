@@ -1,133 +1,44 @@
+import { ArrowLeft, ArrowRight, BookOpen, FastForward, X } from "lucide-react";
 import { useMemo, useState } from "react";
-import { ArrowRight, BookOpen, Brain, CheckCircle2, ChevronDown, ChevronUp, Clock3, FastForward, Lightbulb, Pause, Play, ShieldCheck } from "lucide-react";
-import { learningUnits, prerequisiteEdges, prototypePracticeByUnitId } from "../../data/learningUnits";
-import type { DisclosureLayer, LearningMode } from "../../domain/learningKernel";
+import { ThinkBeforeAi } from "../../components/ThinkBeforeAi";
+import { bindingByUnitRole, learningUnits, practiceAssetById, prerequisiteEdges } from "../../data/learningUnits";
+import type { LearningEventAssetRef, PracticeRole } from "../../domain/learningKernel";
 import { projectSkillMap } from "../../domain/learningKernel";
 import { canStartUnit } from "../../learning/learningKernelEngine";
 import { useAppStore } from "../../state/store";
-
-const layerMeta: Record<DisclosureLayer, { label: string; description: string }> = {
-  understand: { label: "先懂", description: "先建立需要和直觉，不急着背术语。" },
-  explain: { label: "弄明白", description: "再看定义、机制、专家示范和常见误区。" },
-  judge: { label: "会判断", description: "最后练习独立判断、结论边界和审稿视角。" },
-};
-
-const stageLabel: Record<string, string> = {
-  unseen: "尚未开始", learning: "正在学习", guided: "引导练习", independent_ready: "可独立练习",
-  review_eligible: "等待延迟复习", consolidating: "正在巩固", transferable: "可迁移应用",
-};
-
-function PracticePanel({ unitId, mode }: { unitId: string; mode: LearningMode }) {
-  const practice = prototypePracticeByUnitId.get(unitId);
-  const learner = useAppStore((state) => state.learnerUnitStates.find((item) => item.unitId === unitId));
-  const record = useAppStore((state) => state.recordLearningTransition);
-  const notify = useAppStore((state) => state.notify);
-  const [choice, setChoice] = useState<number | null>(null);
-  const [confidence, setConfidence] = useState<1 | 2 | 3 | 4>(2);
-  const [boundary, setBoundary] = useState("");
-  const [hintCount, setHintCount] = useState(0);
-  const [locked, setLocked] = useState(false);
-  if (!practice) return null;
-  const isChallenge = mode === "challenge";
-  const isGuided = !isChallenge && learner?.stage === "guided";
-  const task = isGuided ? practice.guided : practice.independent;
-  const submit = () => {
-    if (choice == null) return;
-    const correct = choice === task.correctOption;
-    const type = isChallenge ? "challenge_attempt" : isGuided ? "guided_attempt" : learner?.stage === "review_eligible" ? "retrieval_attempt" : learner?.stage === "consolidating" || learner?.stage === "transferable" ? "far_transfer_attempt" : "independent_attempt";
-    try {
-      record(unitId, {
-        type,
-        mode,
-        outcome: correct && (!('boundaryPrompt' in task) || boundary.trim().length >= 8) ? "pass" : "fail",
-        score: correct ? 1 : 0,
-        confidence: isGuided ? undefined : confidence,
-        hintsUsed: isGuided ? practice.guided.hints.slice(0, hintCount).map((_, index) => `hint-${index + 1}`) : [],
-        highConfidenceConceptualError: !correct && confidence >= 3,
-      });
-      setLocked(true);
-      notify(correct ? "已锁定。现在可以对照解释；能力与学习经历会分开记录。" : "已锁定。错误不会被当成零能力，系统会把你带回需要补学的位置。", correct ? "success" : "warning");
-    } catch (error) { notify(String(error), "error"); }
-  };
-  return <section className="learning-practice">
-    <span className="eyebrow">{isChallenge ? "可选快速路径 · 无提示" : isGuided ? "引导练习 · 可看提示" : "独立练习 · 锁定后反馈"}</span>
-    <h2>{task.scenario}</h2>
-    <p>{task.question}</p>
-    <div className="learning-options">{task.options.map((option, index) => <button key={option} disabled={locked} className={choice === index ? "selected" : ""} onClick={() => setChoice(index)}>{String.fromCharCode(65 + index)}. {option}</button>)}</div>
-    {isGuided && <div className="learning-hints">
-      {practice.guided.hints.slice(0, hintCount).map((hint, index) => <p key={hint}><Lightbulb size={14}/> 提示 {index + 1}：{hint}</p>)}
-      <button className="subtle" disabled={locked || hintCount >= practice.guided.hints.length} onClick={() => setHintCount((value) => value + 1)}>给我下一层提示</button>
-    </div>}
-    {!isGuided && <div className="learning-confidence"><span>作答信心</span>{([1,2,3,4] as const).map((value) => <button key={value} disabled={locked} className={confidence === value ? "selected" : ""} onClick={() => setConfidence(value)}>{value}</button>)}</div>}
-    {'boundaryPrompt' in task && <label className="learning-boundary">{task.boundaryPrompt}<textarea disabled={locked} rows={3} value={boundary} onChange={(event) => setBoundary(event.target.value)} placeholder="先用自己的话写，不必像标准答案。" /></label>}
-    {!locked ? <button className="primary" disabled={choice == null || ('boundaryPrompt' in task && boundary.trim().length < 8)} onClick={submit}>锁定作答并查看反馈</button>
-      : <div className={choice === task.correctOption ? "learning-feedback correct" : "learning-feedback"}><strong>{choice === task.correctOption ? "核心判断正确" : "这一步值得重新拆开"}</strong><p>{'explanation' in task ? task.explanation : `参考边界：${task.referenceBoundary}`}</p></div>}
-  </section>;
-}
+import { LearningShell } from "./LearningShell";
+import { PracticeActivity } from "./PracticeActivity";
+import { coreLessonSteps, defaultStepForStage, stepsForLearner } from "./lessonFlow";
 
 export function LearningView() {
-  const selectedId = useAppStore((state) => state.selectedLearningUnitId);
-  const learnerStates = useAppStore((state) => state.learnerUnitStates);
-  const pausedIds = useAppStore((state) => state.pausedLearningUnitIds);
-  const startUnit = useAppStore((state) => state.startLearningUnit);
-  const record = useAppStore((state) => state.recordLearningTransition);
-  const selectUnit = useAppStore((state) => state.selectLearningUnit);
-  const togglePause = useAppStore((state) => state.toggleLearningUnitPaused);
-  const notify = useAppStore((state) => state.notify);
-  const unit = learningUnits.find((item) => item.id === selectedId) ?? learningUnits[0];
-  const learner = learnerStates.find((item) => item.unitId === unit.id);
-  const [layer, setLayer] = useState<DisclosureLayer>("understand");
-  const [expanded, setExpanded] = useState<ReadonlySet<string>>(new Set());
-  const blocks = useMemo(() => unit.blocks.filter((block) => block.layer === layer), [unit, layer]);
-  const completed = new Set(learner?.instruction.completedBlockIds ?? []);
-  const projection = projectSkillMap(unit, learner);
-  const gate = canStartUnit({ unitId: unit.id, states: learnerStates, edges: prerequisiteEdges, pausedUnitIds: new Set(pausedIds) });
-  const isPaused = pausedIds.includes(unit.id);
-  const toggleBlock = (id: string) => setExpanded((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
-  const completeBlock = (id: string) => {
-    try { record(unit.id, { type: "instruction_block_completed", mode: "learning", blockId: id, hintsUsed: [] }); }
-    catch (error) { notify(String(error), "error"); }
+  const selectedId=useAppStore((s)=>s.selectedLearningUnitId), states=useAppStore((s)=>s.learnerUnitStates), pausedIds=useAppStore((s)=>s.pausedLearningUnitIds), progress=useAppStore((s)=>s.lessonProgressByUnitId[selectedId]), projects=useAppStore((s)=>s.projects);
+  const start=useAppStore((s)=>s.startLearningUnit),record=useAppStore((s)=>s.recordLearningTransition),setStep=useAppStore((s)=>s.setLessonStep),togglePause=useAppStore((s)=>s.toggleLearningUnitPaused),notify=useAppStore((s)=>s.notify);
+  const [mapOpen,setMapOpen]=useState(false),[thinking,setThinking]=useState(false),[feedbackRole,setFeedbackRole]=useState<PracticeRole>(),[attemptRevision,setAttemptRevision]=useState(0); const unit=learningUnits.find((x)=>x.id===selectedId)??learningUnits[0], learner=states.find((x)=>x.unitId===unit.id), steps=stepsForLearner(learner,feedbackRole), desired=progress?.currentStepId??defaultStepForStage(learner), currentIndex=Math.max(0,steps.findIndex((x)=>x.id===desired)), step=steps[currentIndex]??steps[0];
+  const blocks=useMemo(()=>unit.blocks.filter((b)=>step.blockKinds?.includes(b.kind)),[unit,step]),gate=canStartUnit({unitId:unit.id,states,edges:prerequisiteEdges,pausedUnitIds:new Set(pausedIds)}),projection=projectSkillMap(unit,learner),due=learner?.dueAt?Date.parse(learner.dueAt)<=Date.now():true;
+  const advanceInstruction=()=>{for(const block of blocks)if(!useAppStore.getState().learnerUnitStates.find((x)=>x.unitId===unit.id)?.instruction.completedBlockIds.includes(block.id))record(unit.id,{type:"instruction_block_completed",mode:"learning",blockId:block.id,hintsUsed:[]});const next=steps[Math.min(currentIndex+1,steps.length-1)];setStep(unit.id,next.id,step.id);};
+  const continueAfterFeedback=(role:PracticeRole,passed:boolean)=>{setFeedbackRole(undefined);setAttemptRevision((value)=>value+1);if(role==="prediction"||role==="worked"){const next=steps[Math.min(currentIndex+1,steps.length-1)];setStep(unit.id,next.id,step.id);return;}const latest=useAppStore.getState().learnerUnitStates.find((item)=>item.unitId===unit.id);const nextId=role==="self_check"?(passed?"guided":"misconception"):role==="guided"?"independent":defaultStepForStage(latest);setStep(unit.id,nextId,passed||role==="guided"?step.id:undefined);};
+  const practice=(role:PracticeRole)=>{
+    const binding=bindingByUnitRole.get(`${unit.id}:${role}`),asset=binding?practiceAssetById.get(binding.assetId):undefined;
+    if(!binding||!asset)return <div className="empty-state"><p>练习资产未通过绑定校验。</p></div>;
+    const assetRef:LearningEventAssetRef={bindingId:binding.id,kind:binding.assetKind,id:asset.id,revision:asset.revision,hash:asset.contentHash};
+    return <PracticeActivity key={`${asset.id}:${attemptRevision}`} asset={asset} binding={binding} projects={projects} onContinue={(passed)=>continueAfterFeedback(role,passed)} onSubmit={(result)=>{
+      setFeedbackRole(role);
+      if(role==="prediction"||role==="worked"){if(role==="worked")for(const block of unit.blocks.filter((item)=>item.kind==="worked_example"))record(unit.id,{type:"instruction_block_completed",mode:"learning",blockId:block.id,hintsUsed:[]});return;}
+      const challenge=role==="independent"&&learner?.selectedMode==="challenge"&&learner.stage==="unseen";
+      const type=role==="self_check"?"self_check_attempt":role==="guided"?"guided_attempt":challenge?"challenge_attempt":role==="independent"?"independent_attempt":role==="review"?"retrieval_attempt":"far_transfer_attempt";
+      try{record(unit.id,{type,mode:challenge?"challenge":"learning",outcome:result.passed?"pass":"fail",score:result.score,confidence:result.confidence,hintsUsed:result.hintsUsed,asset:assetRef,response:result.response,highConfidenceConceptualError:!result.passed&&(result.confidence??0)>=3});}catch(error){setFeedbackRole(undefined);notify(String(error),"error");}
+    }}/>;
   };
-  const allRequiredDone = unit.blocks.filter((block) => block.required).every((block) => completed.has(block.id));
-
-  return <div className="page learning-page">
-    <header className="page-header learning-header">
-      <div><span className="eyebrow">学习路径 · {unit.curriculumOrder}/3</span><h1>{unit.titleCn}</h1><p>{unit.titleEn} · 约 {unit.estimatedMinutes} 分钟</p></div>
-      <div className="learning-header-actions"><button className="subtle" onClick={() => togglePause(unit.id)}>{isPaused ? <Play size={14}/> : <Pause size={14}/>} {isPaused ? "继续主题" : "暂停主题"}</button></div>
-    </header>
-
-    <section className="learning-path-strip">{learningUnits.map((item) => {
-      const state = learnerStates.find((entry) => entry.unitId === item.id);
-      const itemGate = canStartUnit({ unitId: item.id, states: learnerStates, edges: prerequisiteEdges, pausedUnitIds: new Set(pausedIds) });
-      return <button key={item.id} className={item.id === unit.id ? "active" : ""} disabled={!state && !itemGate.allowed} onClick={() => selectUnit(item.id)}><span>{item.curriculumOrder}</span><div><strong>{item.titleCn}</strong><small>{stageLabel[state?.stage ?? "unseen"]}{!state && !itemGate.allowed ? " · 前置未完成" : ""}</small></div></button>;
-    })}</section>
-
-    {!learner ? <section className="learning-start-card">
-      <BookOpen size={28}/><h2>默认从讲解开始，不先考试</h2><p>先用真实问题建立直觉，再看定义和专家示范，最后才进入练习。已经熟悉时，可以主动选择无提示挑战。</p>
-      <div><button className="primary" disabled={!gate.allowed} onClick={() => startUnit(unit.id, "learning")}>开始学习 <ArrowRight size={14}/></button><button className="subtle" disabled={!gate.allowed} onClick={() => startUnit(unit.id, "challenge")}><FastForward size={14}/> 我已熟悉，直接挑战</button></div>
-      {!gate.allowed && <small>{gate.reasonCn}</small>}
-    </section> : <>
-      <section className="learning-axis-card">
-        <div><BookOpen size={18}/><span>学习进度</span><strong>{projection.learningProgress.completedRequired}/{projection.learningProgress.totalRequired} 个必需块</strong></div>
-        <div><Brain size={18}/><span>已证明能力</span><strong>{projection.demonstratedCompetence.level === "unassessed" ? "尚未评估" : projection.labelCn.split(" · ")[1]}</strong></div>
-        <div><Clock3 size={18}/><span>当前阶段</span><strong>{stageLabel[learner.stage]}</strong></div>
-      </section>
-
-      {learner.selectedMode === "challenge" && learner.stage === "unseen" ? <PracticePanel unitId={unit.id} mode="challenge"/> : <>
-        <nav className="learning-layers" aria-label="教学层级">{(Object.keys(layerMeta) as DisclosureLayer[]).map((value) => <button key={value} className={layer === value ? "active" : ""} onClick={() => setLayer(value)}><strong>{layerMeta[value].label}</strong><small>{layerMeta[value].description}</small></button>)}</nav>
-        <div className="learning-blocks">{blocks.map((item) => {
-          const open = expanded.has(item.id) || !completed.has(item.id);
-          return <article key={item.id} className={completed.has(item.id) ? "completed" : ""}>
-            <button className="learning-block-title" onClick={() => toggleBlock(item.id)}><div>{completed.has(item.id) ? <CheckCircle2 size={17}/> : <span className="block-dot"/>}<strong>{item.titleCn}</strong></div>{open ? <ChevronUp size={16}/> : <ChevronDown size={16}/>}</button>
-            {open && <div className="learning-block-body"><p>{item.bodyCn}</p>{item.terms?.map((term) => <dl key={term.en}><dt>{term.zh} <span>{term.en}</span></dt><dd>{term.definitionCn}</dd></dl>)}<button className="subtle" disabled={completed.has(item.id)} onClick={() => completeBlock(item.id)}>{completed.has(item.id) ? "已完成" : "我理解了这一块"}</button></div>}
-          </article>;
-        })}</div>
-        {allRequiredDone && learner.stage === "learning" && <section className="learning-checkpoint"><ShieldCheck size={22}/><div><h2>讲解已完成，做一个低压力自检</h2><p>这一步只是确认可以进入带提示练习，不作为独立能力证明。</p></div><button onClick={() => record(unit.id, { type: "self_check_attempt", mode: "learning", outcome: "pass", score: 1, hintsUsed: [] })}>进入引导练习</button></section>}
-        {learner.stage === "guided" && <PracticePanel unitId={unit.id} mode="learning"/>}
-        {learner.stage === "independent_ready" && <PracticePanel unitId={unit.id} mode="learning"/>}
-        {learner.stage === "review_eligible" && <section className="learning-wait"><Clock3/><h2>先让记忆隔一段时间</h2><p>到期时间：{learner.dueAt ? new Intl.DateTimeFormat("zh-CN", { dateStyle: "medium", timeStyle: "short" }).format(new Date(learner.dueAt)) : "待安排"}。立即重答不算延迟提取。</p></section>}
-        {(learner.stage === "consolidating" || learner.stage === "transferable") && <PracticePanel unitId={unit.id} mode="learning"/>}
-      </>}
+  if(!learner)return <div className="page learning-page"><section className="learning-start-card"><BookOpen size={30}/><h1>{unit.titleCn}</h1><p>从真实科研问题开始，先建立直觉，再预测、看示范、完成自检和逐步撤除提示。</p><button className="primary" disabled={!gate.allowed} onClick={()=>start(unit.id,"learning")}>开始 Guided Lesson <ArrowRight size={14}/></button><button disabled={!gate.allowed} onClick={()=>start(unit.id,"challenge")}><FastForward size={14}/> 已熟悉，进入 Challenge</button>{!gate.allowed&&<small>{gate.reasonCn}</small>}</section></div>;
+  return <LearningShell title={unit.titleCn} step={currentIndex+1} total={steps.length} minutes={Math.max(1,unit.estimatedMinutes-Math.floor(currentIndex*unit.estimatedMinutes/steps.length))} paused={pausedIds.includes(unit.id)} onPause={()=>togglePause(unit.id)} onMap={()=>setMapOpen(true)}>
+    {pausedIds.includes(unit.id)?<section className="learning-wait"><h2>本单元已暂停</h2><p>当前步骤和所有作答证据都已保留；继续后从这里恢复。</p><button className="primary" onClick={()=>togglePause(unit.id)}>继续本单元</button></section>:<>
+    {mapOpen&&<aside className="lesson-map"><button aria-label="关闭课程地图" onClick={()=>setMapOpen(false)}><X/></button><h2>课程地图</h2>{coreLessonSteps.map((x,i)=><button key={x.id} className={progress?.completedStepIds.includes(x.id)?"completed":""} disabled={!progress?.completedStepIds.includes(x.id)&&x.id!==desired} onClick={()=>{setStep(unit.id,x.id);setMapOpen(false);}}>{i+1}. {x.titleCn}</button>)}<div><strong>学习进度</strong><span>{projection.learningProgress.completedRequired}/{projection.learningProgress.totalRequired}</span><strong>独立能力</strong><span>{projection.demonstratedCompetence.level}</span></div></aside>}
+    {step.kind==="instruction"&&<section className="lesson-instruction"><span className="eyebrow">{step.titleCn}</span>{blocks.map((b)=><article key={b.id}><h2>{b.titleCn}</h2><p>{b.bodyCn}</p>{b.terms?.map((t)=><dl key={t.en}><dt>{t.zh} <span>{t.en}</span></dt><dd>{t.definitionCn}</dd></dl>)}</article>)}{projects[0]&&step.id==="why"&&<p className="project-relevance">与你的项目“{projects[0].name}”相关：先确认 {unit.projectRelevanceTerms.slice(0,2).join(" / ")} 在哪个层级支持推断。</p>}</section>}
+    {step.role&&((step.id==="review"||step.id==="far-transfer")&&!due?<section className="learning-wait"><h2>让记忆先隔一段时间</h2><p>到期时间：{new Date(learner.dueAt!).toLocaleString("zh-CN")}</p></section>:practice(step.role))}
+    {step.id==="far-transfer"&&<button className="subtle" onClick={()=>setThinking(true)}>先写 Think Before AI 迁移笔记</button>}
+    {thinking&&<ThinkBeforeAi source="learning_transfer" projectId={projects[0]?.id} onClose={()=>setThinking(false)}/>}
+    {step.kind==="complete"&&<section className="lesson-complete"><h2>你已经完成一次真实迁移</h2><p>学习经历与独立能力仍分开记录；后续证据会继续更新，而不是生成永久 mastery 标签。</p></section>}
+    <footer className="lesson-navigation"><button disabled={currentIndex===0} onClick={()=>setStep(unit.id,steps[currentIndex-1].id)}><ArrowLeft/> 上一步</button>{step.kind==="instruction"&&<button className="primary" onClick={advanceInstruction}>继续 <ArrowRight/></button>}</footer>
     </>}
-  </div>;
+  </LearningShell>;
 }

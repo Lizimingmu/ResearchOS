@@ -1,58 +1,41 @@
-# ResearchOS UX audit
+# ResearchOS UX audit — M017
 
-*Desktop workflow audit for effortful practice, navigation, recovery, accessibility, and honest verification limits.*
+*Background/source-level audit of the guided learning experience. Foreground visual acceptance is not claimed.*
 
----
+## Audited workflows
 
-## 🧑‍🔬 Audited workflows
-
-| Workflow | Result | Evidence |
+| Workflow | Background result | Remaining manual evidence |
 |---|---|---|
-| First launch → orientation → focus → blind baseline | PASS (logic/component) | First-run state, three unfamiliar assessment cases, locked responses, rubric persistence |
-| Today → retrieval → confidence → feedback → transfer → review | PASS (integration) | Central idempotent calibration action and response/review/misconception tests |
-| Create project → project-relevant scheduling → transfer | PASS (integration) | Project state, scheduler relevance, and export coverage |
-| Due review → unfamiliar variant → rating | PASS (integration) | Due-only list and misconception-resolution tests |
-| AI audit → approve/question/reject → rationale → calibration | PASS (integration) | Shared response lock and explicit unsafe-step handling |
-| Restart → migrate/restore existing state | PASS (native/data) | v1→v2 migration tests plus release process restart on the same SQLite database |
-| PDF chooser/render/native dialog | PARTIAL | Mapping and component behavior tested; native interaction was not visually click-tested |
+| Today → one core lesson | PASS | Visual hierarchy and click path |
+| Why → intuition → prediction → explanation | PASS | Readability and pacing |
+| Worked example → real self-check | PASS | Fading clarity and feedback comprehension |
+| Guided hints → independent no-hint case | PASS | Keyboard/focus behavior and perceived difficulty |
+| Due unfamiliar review → far transfer | PASS | Multi-day trial and project-transfer usefulness |
+| Think Before AI → saved reasoning record | PASS | Entry-point discoverability |
+| Paper Lab → beginner Paper Card | PASS | PDF/Paper Card layout at Windows scaling |
+| Pause → resume exact lesson step | PASS | Restart from packaged application |
 
-## 🧠 Cognitive UX
+## Cognitive UX
 
-- Reference feedback, evidence, and optional AI critique remain hidden until the learner answers and records confidence.
-- High-confidence wrong answers become named misconceptions, not generic failed tasks.
-- Today presents the highest-value five tasks instead of a punitive overdue counter.
-- Reviews use an unfamiliar variant, reducing answer-recognition masquerading as retrieval.
-- Assessment uses explicit domain rubrics and does not award mastery for completion.
-- Labels distinguish an identifier lookup from claim verification and an AI critique from verified knowledge.
+- The lesson surface presents one current step, remaining time and state; the full map is optional.
+- Prediction is low pressure and not competence-eligible.
+- Self-check requires a response and cannot be passed by clicking Continue.
+- Guided hints are progressively revealed and recorded; independent cases show no hints and require confidence plus reasoning.
+- Feedback explains correct structure, omissions, overreach, a reasoning chain and a claim boundary.
+- Delayed review and far transfer never mechanically reuse the independent prompt.
+- Today shows why the item matters and avoids priority numbers, formulas and backend gate language.
+- Routine feedback has completed/partial/skipped states without streak punishment.
 
-## 🧭 Desktop navigation and search
+## Information architecture
 
-The activity bar and sidebar retain the IDE-like desktop structure. `Ctrl+K`/`Ctrl+Shift+P` opens the command palette, `Ctrl+F` invokes cross-workspace search, `Ctrl+,` opens Settings, and `Esc` closes transient surfaces. Global search covers papers, notes, methods, patterns, projects, judgment cards, and audit cases without loading the entire training corpus at startup.
+Primary navigation is Today, Learn, Practice, Projects, Review, Progress and Library, with Settings as an auxiliary entry. Method Lab, Problem Atlas, AI Audit, Paper Lab, Assessment, Frontier and Content Studio remain intact under Practice rather than competing as first-level workspaces.
 
-Empty/due-only states explain the next useful action. Settings contains low-prominence System Health, persistence status, inventory, migration version, backup controls, and three export formats.
+Onboarding asks for target level, research types, foundation gaps, daily time and permission to use local project relevance. It does not force a blind baseline.
 
-## ♿ Responsive and accessibility review
+## Accessibility and visual status
 
-Source-level review confirmed semantic buttons/inputs, visible labels, keyboard routes, minimum window sizing, light/dark variables, reduced decoration, and responsive rules for constrained widths. Production CSS is 52,516 bytes. Final focus order, screen-reader announcements, Windows text scaling, high-contrast behavior, and PDF canvas semantics still require hands-on target-machine inspection.
+Buttons, labels and semantic form controls remain source-visible and headless rendering is tested. Final focus order, screen-reader announcements, high contrast, Windows text scaling, native PDF rendering and visual density require a real foreground session.
 
-## 🖼️ Visual QA status
+## Conclusion
 
-The required in-app browser was used for the local preview attempt. Its saved security permission explicitly blocked navigation to the localhost preview. The browser-control policy prohibited switching to an alternate browser surface or CDP workaround, so no screenshot was fabricated and no visual pass is claimed.
-
-Native release smoke established a responsive process plus SQLite/WAL/WebView creation and restart, but the automated desktop session did not expose a top-level HWND. Consequently, monitor scaling, PDF appearance, and native dialogs remain **human visual acceptance items**, not hidden passes.
-
-## 🐛 UX findings and disposition
-
-| Priority | Finding | Disposition |
-|---|---|---|
-| P0 | A wrong high-confidence answer could previously remain an implicit review flag | Fixed with explicit misconception state and variant-only resolution |
-| P1 | Calibration paths differed between ordinary practice and AI Audit | Fixed through one centralized idempotent action |
-| P1 | First use lacked a research context and baseline | Fixed with onboarding and blind baseline |
-| P1 | Draft work could be lost before submit | Fixed with per-task draft autosave and restore |
-| P1 | Search was route-limited | Fixed with demand-loaded global search |
-| P1 | Persistence and schema health were opaque | Fixed in Settings/System Health |
-| P2 | Native visual coverage is incomplete in this environment | Open; requires an interactive Windows session |
-
-## ✅ UX conclusion
-
-No known code-level P0 or P1 workflow blocker remains. The interaction model now consistently protects effort, answer locking, calibration, transfer, and recovery. Visual polish is not certified because the mandated capture surface was blocked; a short human acceptance pass remains required before broad deployment.
+No known background-code blocker remains in the intended Today → lesson → practice loop. **FOREGROUND UI, USER-MANUAL, INSTALLER and real-Vault checks remain NOT RUN** and must be accepted separately before packaging.

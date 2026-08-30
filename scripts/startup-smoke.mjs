@@ -21,8 +21,8 @@ await new Promise((resolve) => setTimeout(resolve, 500));
 
 const root = document.getElementById("root");
 assert.ok(root?.querySelector(".onboarding-overlay"), "production bundle did not render onboarding");
-assert.match(root.textContent, /3 位患者，每人测了 2,000 个细胞/);
-assert.match(root.textContent, /先建立直觉/);
+assert.match(root.textContent, /你希望训练到什么程度/);
+assert.match(root.textContent, /系统补齐基础/);
 assert.ok(localStorage.getItem("researchos-browser-state-v1"), "frontend hydration did not persist initial state");
 
 Object.defineProperty(globalThis, "process", { value: nodeProcess, configurable: true, writable: true });

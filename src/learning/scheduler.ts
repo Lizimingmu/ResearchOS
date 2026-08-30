@@ -33,7 +33,7 @@ const legalActivity = (stage: LearningStage, dueAt: string | undefined, now: Dat
   if (stage === "guided") return "guided_practice";
   if (stage === "independent_ready") return "independent_case";
   if (stage === "review_eligible") return dueAt && Date.parse(dueAt) <= now.getTime() ? "delayed_retrieval" : undefined;
-  if (stage === "consolidating") return dueAt && Date.parse(dueAt) <= now.getTime() ? "variant_retrieval" : undefined;
+  if (stage === "consolidating") return dueAt && Date.parse(dueAt) <= now.getTime() ? "far_transfer" : undefined;
   return "far_transfer";
 };
 

@@ -28,7 +28,27 @@
       "detail": ""
     },
     {
-      "name": "every unit has guided/independent/review/far-transfer bindings",
+      "name": "every practice asset passes version/hash/provenance validation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "every binding role matches its practice asset role",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "every unit has all seven lesson/practice roles",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "review and transfer use unseen assets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "independent/review/transfer assets contain no hints",
       "passed": true,
       "detail": ""
     },
@@ -58,7 +78,7 @@
       "detail": ""
     },
     {
-      "name": "onboarding teaches n and has no blind baseline",
+      "name": "onboarding captures goal, research context, gaps, time, and project relevance without a baseline quiz",
       "passed": true,
       "detail": ""
     }

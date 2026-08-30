@@ -4,6 +4,8 @@ import type {
   LearningMode,
   LearningUnitV1,
   LearnerUnitStateV1,
+  LearningEventAssetRef,
+  PracticeResponseV1,
   PrerequisiteEdgeV1,
 } from "../domain/learningKernel";
 
@@ -18,6 +20,8 @@ export interface LearningTransitionInput {
   confidence?: 1 | 2 | 3 | 4;
   hintsUsed?: string[];
   highConfidenceConceptualError?: boolean;
+  asset?: LearningEventAssetRef;
+  response?: PracticeResponseV1;
 }
 
 const competenceRank = { unassessed: 0, guided_only: 1, independent_once: 2, retained: 3, transferred: 4 } as const;
@@ -79,6 +83,11 @@ export function applyLearningTransition(
   let instructionCompletedAt = base.instruction.instructionCompletedAt;
   let dueAt = base.dueAt;
 
+  const practiceEvent = input.type !== "instruction_block_completed";
+  if (practiceEvent && (!input.asset || !input.response || Object.keys(input.response).length === 0)) {
+    throw new Error("练习事件必须绑定版本化资产并先锁定真实作答");
+  }
+
   if (input.type === "instruction_block_completed") {
     if (input.mode === "challenge") throw new Error("Challenge 不能写入教学完成记录");
     const target = unit.blocks.find((block) => block.id === input.blockId);
@@ -124,10 +133,11 @@ export function applyLearningTransition(
     if (input.outcome === "pass") {
       stage = "consolidating";
       level = competenceRank[level] < competenceRank.retained ? "retained" : level;
-      dueAt = addDays(input.occurredAt, 7);
+      dueAt = addDays(input.occurredAt, unit.delayedReviewPlan.find((plan) => plan.role === "far_transfer")?.afterDays ?? 14);
     } else stage = "independent_ready";
   } else if (input.type === "variant_attempt" || input.type === "far_transfer_attempt") {
     if (!['consolidating', 'transferable'].includes(stage)) throw new Error("当前阶段不能记录迁移证据");
+    if (stage === "consolidating" && (!base.dueAt || Date.parse(input.occurredAt) < Date.parse(base.dueAt))) throw new Error("远迁移练习尚未到期");
     competenceEligible = input.outcome === "pass";
     if (input.type === "far_transfer_attempt" && input.outcome === "pass") {
       stage = "transferable";
@@ -160,6 +170,8 @@ export function applyLearningTransition(
     type: input.type,
     mode: input.mode,
     occurredAt: input.occurredAt,
+    asset: input.asset ? structuredClone(input.asset) : undefined,
+    response: input.response ? structuredClone(input.response) : undefined,
     outcome: input.outcome,
     score: input.score,
     confidence: input.confidence,
