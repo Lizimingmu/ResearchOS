@@ -101,8 +101,10 @@ export const methodLessons: MethodLessonV1[] = [{
   reviewerChecksCn: ["time origin 与 censoring 是否明确", "HR 的单位和参考组", "PH 检查及处理", "变量选择依据", "事件数、缺失数据和验证"],
   paperAppearanceCn: "Methods 应说明时间起点、事件定义、删失、协变量编码、PH 检查与缺失处理；Results 应报告 HR、CI 和绝对风险语境，而不只给 P value。",
   applyPromptCn: "某研究对 42 个事件同时放入 18 个数据驱动筛选的协变量，只报告 HR=1.8、P=0.03，并称风险增加 80%，未说明变量单位、time origin 或 PH 检查。请列出至少三项审稿问题，并写出最大可接受结论。",
-  unitId: "method-cox-v1", applyAssetId: "pa-m018-cox-apply-v1", reviewAssetId: "pa-m018-cox-review-v1",
-  interactionContract: { kind: "methods_audit", checklistOptionIds: ["time-origin", "events-complexity", "ph", "hr-unit", "selection", "overadjustment"], reasoningRequired: true, maximumConclusionRequired: true },
+  remediationExplanationCn: "先把生存分析拆成时间起点、风险集、事件/删失、变量编码、模型复杂度与假设六个审查面；失败后不要背原题选项，而要在新的临床预测场景中重建这条链。",
+  remediationPromptCn: "概念提示：总样本量不能替代事件信息量；HR 的解释必须带上单位、参考组、时间结构与模型假设。",
+  unitId: "method-cox-v1", applyAssetId: "pa-m018-cox-apply-v1", remediationAssetId: "pa-m018-cox-remediation-v1", reviewAssetId: "pa-m018-cox-review-v1",
+  interactionContract: { kind: "methods_audit", checklistOptionIds: ["time-origin", "events-complexity", "ph", "hr-unit", "selection"], reasoningRequired: true, maximumConclusionRequired: true },
   guideSectionIds: [], evidenceSourceIds: ["src-cox", "src-pmsampsize"],
 }];
 
@@ -172,9 +174,17 @@ const architectureOnlyPracticeAssets: PracticeAssetV1[] = [
     id: "pa-m018-cox-apply-v1", role: "independent", conceptTarget: "cox-regression", interaction: "multi_select",
     titleCn: "Cox · Methods audit", scenarioCn: "某研究只有 42 个事件，却同时放入 18 个数据驱动筛选的协变量；只报告 HR=1.8、P=0.03，并称风险增加 80%。",
     promptCn: "勾选全部必须追问的问题，写出简短审稿理由和最大可辩护结论。",
-    options: [{ id: "time-origin", labelCn: "time origin 不清楚" }, { id: "events-complexity", labelCn: "事件数与变量复杂度不相称" }, { id: "ph", labelCn: "未报告 PH 检查" }, { id: "hr-unit", labelCn: "HR 的变量单位/参考组不清楚" }, { id: "selection", labelCn: "数据驱动变量选择" }, { id: "overadjustment", labelCn: "可能过度调整或调整不当" }],
-    hints: [], rubric: { expectedOptionIds: ["time-origin", "events-complexity", "ph", "hr-unit", "selection", "overadjustment"], minReasoningChars: 28, minClaimBoundaryChars: 16 },
+    options: [{ id: "time-origin", labelCn: "需要核对 time origin、进入风险集与暴露定义是否对齐" }, { id: "events-complexity", labelCn: "42 个事件相对 18 个筛选协变量可能使估计不稳定" }, { id: "ph", labelCn: "需要报告并处理关键协变量的 PH 假设" }, { id: "hr-unit", labelCn: "HR 的变量单位和参考组必须明确" }, { id: "selection", labelCn: "同一数据内筛选变量再报告普通推断会增加乐观偏倚" }, { id: "sample-size", labelCn: "总样本量足够大时，事件数和有效参数数不再重要" }, { id: "absolute-effect", labelCn: "HR=1.8 可直接解释为任一时点绝对风险增加 80%" }, { id: "pvalue-validates", labelCn: "P=0.03 足以证明变量选择和函数形式正确" }, { id: "univariable-screen", labelCn: "先按单因素 P value 筛选可消除过拟合风险" }],
+    hints: [], rubric: { expectedOptionIds: ["time-origin", "events-complexity", "ph", "hr-unit", "selection"], minReasoningChars: 28, minClaimBoundaryChars: 16 },
     feedback: { correctCn: ["检查 time origin、事件复杂度、PH、HR 单位与变量选择。"], missedCn: ["任何漏项都可能改变 HR 的可解释性或稳定性。"], overreachCn: ["HR=1.8 不能脱离单位、时间和基线风险直接写成绝对风险增加 80%。"], reasoningChainCn: ["确认 time origin/事件/删失", "审查事件数与自由度", "检查 PH 和函数形式", "明确 HR 单位与参考组", "限制关联性措辞"], maximalConclusionCn: "当前只能说模型报告了 HR=1.8 的条件关联；在时间起点、单位、PH 与模型稳定性澄清前，不能接受‘风险增加 80%’的宽泛结论。" }, sourceIds: ["src-cox", "src-pmsampsize"],
+  }),
+  makeArchitectureAsset({
+    id: "pa-m018-cox-remediation-v1", role: "independent", conceptTarget: "cox-regression", interaction: "multi_select",
+    titleCn: "Cox · 新表面补救审查", scenarioCn: "一项肾移植预后研究记录 31 次移植物失功。团队从 24 个候选指标中反复尝试 cut-point，保留 12 个参数；最终只给出每增加‘1’单位的 HR=0.72，未说明该单位是原始值还是标准差，也未展示基线风险或 PH 诊断。",
+    promptCn: "在这个不同场景中选择全部必须优先处理的问题，并写出当前最大可辩护结论。",
+    options: [{ id: "event-information", labelCn: "31 个事件与候选搜索/参数复杂度之间的信息量风险" }, { id: "unit-scale", labelCn: "HR 的连续指标尺度不明确" }, { id: "cutpoint-search", labelCn: "反复尝试 cut-point 会引入选择乐观偏倚" }, { id: "ph-check", labelCn: "需要检查 PH 并说明违反时的处理" }, { id: "absolute-context", labelCn: "相对 hazard 不能代替有时间点的绝对风险" }, { id: "protective-cause", labelCn: "HR<1 已经证明指标具有保护性因果作用" }, { id: "large-cohort", labelCn: "只要队列总人数较多就不必考虑事件数" }, { id: "standardize-fix", labelCn: "把所有变量标准化即可修复数据驱动筛选" }],
+    hints: [], rubric: { expectedOptionIds: ["event-information", "unit-scale", "cutpoint-search", "ph-check", "absolute-context"], minReasoningChars: 28, minClaimBoundaryChars: 16 },
+    feedback: { correctCn: ["把事件信息、搜索自由度、HR 尺度、PH 与绝对风险语境连成审查链。"], missedCn: ["数据驱动 cut-point 与参数搜索会让同一数据上的效应显得过于稳定。"], overreachCn: ["HR<1 不是保护性因果作用的证明，总人数也不能替代事件信息。"], reasoningChainCn: ["明确 time-to-event estimand", "盘点事件与有效参数", "审查筛选和 cut-point 搜索", "明确 HR 尺度并检查 PH", "将结论限制为待验证关联"], maximalConclusionCn: "该队列仅报告了经数据驱动搜索得到的条件关联；在模型稳定性、尺度、PH 与外部验证澄清前，不能声称指标具有稳定预后价值或保护性作用。" }, sourceIds: ["src-cox", "src-pmsampsize"],
   }),
   makeArchitectureAsset({
     id: "pa-m018-cox-review-v1", role: "review", conceptTarget: "cox-regression", interaction: "multi_select",
@@ -206,6 +216,7 @@ const architectureAssetUnitId: Record<string, string> = {
   "pa-m018-confounding-remediation-v1": "concept-confounding-v1",
   "pa-m018-confounding-review-v1": "concept-confounding-v1",
   "pa-m018-cox-apply-v1": "method-cox-v1",
+  "pa-m018-cox-remediation-v1": "method-cox-v1",
   "pa-m018-cox-review-v1": "method-cox-v1",
 };
 
@@ -252,6 +263,6 @@ export const learningArchitectureBindingByAssetId = new Map(learningArchitecture
 export const learningContentRegistry: LearningContentRegistryEntryV1[] = [
   ...guideSections.map((section) => ({ schemaVersion: 1 as const, id: section.id, contentType: section.contentType, titleCn: section.titleCn, capabilityIds: [], prerequisiteIds: [], thread: "reference" as const, projectRelevanceTerms: [], estimatedMinutes: 5, rationaleCn: section.summaryCn, contentOrigin: section.contentOrigin, verificationStatus: section.verificationStatus, lifecycle: section.lifecycle, evidenceSourceIds: section.evidenceSourceIds })),
   ...conceptLessons.map((lesson, index) => ({ schemaVersion: 1 as const, id: lesson.id, contentType: lesson.contentType, titleCn: lesson.titleCn, capabilityIds: lesson.capabilityIds, prerequisiteIds: index === 0 ? [] : [conceptLessons[0].id], thread: "foundation" as const, projectRelevanceTerms: lesson.conceptId === "statistical-unit" ? learningUnits[0].projectRelevanceTerms : ["混杂", "观察研究", "因果", "治疗", "cohort"], estimatedMinutes: 10, rationaleCn: lesson.whyItMattersCn, unitId: lesson.unitId, applyAssetId: lesson.applyAssetId, remediationAssetId: lesson.remediationAssetId, reviewAssetId: lesson.reviewAssetId, contentOrigin: lesson.contentOrigin, verificationStatus: lesson.verificationStatus, lifecycle: lesson.lifecycle, evidenceSourceIds: lesson.evidenceSourceIds })),
-  ...methodLessons.map((lesson) => ({ schemaVersion: 1 as const, id: lesson.id, contentType: lesson.contentType, titleCn: lesson.titleCn, capabilityIds: lesson.capabilityIds, prerequisiteIds: ["concept-statistical-unit-v1"], thread: "project_overlay" as const, projectRelevanceTerms: ["Cox", "survival", "生存", "time-to-event", "hazard", "随访", "事件"], estimatedMinutes: 10, rationaleCn: lesson.scientificQuestionCn, unitId: lesson.unitId, applyAssetId: lesson.applyAssetId, reviewAssetId: lesson.reviewAssetId, contentOrigin: lesson.contentOrigin, verificationStatus: lesson.verificationStatus, lifecycle: lesson.lifecycle, evidenceSourceIds: lesson.evidenceSourceIds })),
+  ...methodLessons.map((lesson) => ({ schemaVersion: 1 as const, id: lesson.id, contentType: lesson.contentType, titleCn: lesson.titleCn, capabilityIds: lesson.capabilityIds, prerequisiteIds: ["concept-statistical-unit-v1"], thread: "project_overlay" as const, projectRelevanceTerms: ["Cox", "survival", "生存", "time-to-event", "hazard", "随访", "事件"], estimatedMinutes: 10, rationaleCn: lesson.scientificQuestionCn, unitId: lesson.unitId, applyAssetId: lesson.applyAssetId, remediationAssetId: lesson.remediationAssetId, reviewAssetId: lesson.reviewAssetId, contentOrigin: lesson.contentOrigin, verificationStatus: lesson.verificationStatus, lifecycle: lesson.lifecycle, evidenceSourceIds: lesson.evidenceSourceIds })),
   ...researchCases.map((researchCase) => ({ schemaVersion: 1 as const, id: researchCase.id, contentType: researchCase.contentType, titleCn: researchCase.titleCn, capabilityIds: ["scientific_question", "result_interpretation", "next_step_design"] as LearningContentRegistryEntryV1["capabilityIds"], prerequisiteIds: ["concept-statistical-unit-v1", "concept-confounding-v1"], thread: "project_overlay" as const, projectRelevanceTerms: ["oncology", "肿瘤", "omics", "蛋白组", "ECM"], estimatedMinutes: 12, rationaleCn: researchCase.learningObjectives.join("；"), contentOrigin: researchCase.contentOrigin, verificationStatus: researchCase.verificationStatus, lifecycle: researchCase.lifecycle, evidenceSourceIds: researchCase.evidenceSourceIds })),
 ];

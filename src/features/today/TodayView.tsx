@@ -9,7 +9,7 @@ import { useAppStore } from "../../state/store";
 
 export function TodayView() {
   const state = useAppStore(useShallow((s) => ({ schemaVersion: s.schemaVersion, papers: s.papers, projects: s.projects, responses: s.responses, reviewItems: s.reviewItems, reviewLogs: s.reviewLogs, skillEvidence: s.skillEvidence, providers: s.providers, settings: s.settings, completedTaskIds: s.completedTaskIds, snoozedTaskIds: s.snoozedTaskIds, assessmentHistory: s.assessmentHistory, notesByPaperId: s.notesByPaperId, draftResponses: s.draftResponses, misconceptions: s.misconceptions, onboarding: s.onboarding, problemAtlasSources: s.problemAtlasSources, problemAtlasClaims: s.problemAtlasClaims, problemCards: s.problemCards, diagnosticCauses: s.diagnosticCauses, diagnosticChecks: s.diagnosticChecks, diagnosticPaths: s.diagnosticPaths, diagnosticEvidence: s.diagnosticEvidence, problemTrainingCases: s.problemTrainingCases, diagnosticSessions: s.diagnosticSessions, sourcePackImports: s.sourcePackImports, problemSearchLog: s.problemSearchLog, personalContent: s.personalContent, contentRevisionHistory: s.contentRevisionHistory, contentConflicts: s.contentConflicts, learnerUnitStates: s.learnerUnitStates, learningEvents: s.learningEvents, pausedLearningUnitIds: s.pausedLearningUnitIds, lessonProgressByUnitId: s.lessonProgressByUnitId, learningContentProgress: s.learningContentProgress, routineSettings: s.routineSettings, routineLogs: s.routineLogs, reasoningRecords: s.reasoningRecords, paperCards: s.paperCards, guideReadSectionIds: s.guideReadSectionIds, caseSessions: s.caseSessions, transferArtifacts: s.transferArtifacts, projectStudioRecords: s.projectStudioRecords, obsidianConnection: s.obsidianConnection, obsidianPublishBatches: s.obsidianPublishBatches })));
-  const setView = useAppStore((s) => s.setView), selectContent = useAppStore((s) => s.selectLearningContent), selectCase = useAppStore((s) => s.selectCase), selectPaper = useAppStore((s) => s.selectPaper), recordRoutine = useAppStore((s) => s.recordRoutine);
+  const setView = useAppStore((s) => s.setView), openLearningContentTask = useAppStore((s) => s.openLearningContentTask), selectPaper = useAppStore((s) => s.selectPaper), recordRoutine = useAppStore((s) => s.recordRoutine);
   const [thinking, setThinking] = useState(false);
   const tasks = generateTodayTasks(state);
   const due = tasks.find((task) => task.learningActivityType === "delayed_retrieval");
@@ -20,8 +20,7 @@ export function TodayView() {
   const paperCount = new Set(weekLogs.filter((item) => item.routineType === "paper_reading" && item.status === "completed" && item.paperId).map((item) => item.paperId)).size;
   const start = (task: DailyTask) => {
     const entry = task.learningContentId ? learningContentRegistry.find((item) => item.id === task.learningContentId) : undefined;
-    if (entry?.contentType === "case_lab") selectCase(entry.id);
-    else if (entry) selectContent(entry.id);
+    if (entry) openLearningContentTask({ contentId: entry.id, activityType: task.learningActivityType });
     else setView(task.destination);
   };
   const taskCard = (task: DailyTask | undefined, emptyTitle: string, emptyBody: string) => task ? <><h2>{task.title}</h2><p>{task.subtitle}</p><div className="recommendation-why"><strong>为什么今天学这个</strong><span>{task.rationale}</span></div><button className="primary" onClick={() => start(task)}>继续今天学习 <ArrowRight/></button></> : <div className="empty-state"><h2>{emptyTitle}</h2><p>{emptyBody}</p><button onClick={() => setView("learning")}><RotateCcw/> 打开学习</button></div>;

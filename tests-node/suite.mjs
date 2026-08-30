@@ -15,6 +15,7 @@ import { LibraryView, paperFromPath } from "../.build/features/library/LibraryVi
 import { Tutorial, TUTORIAL_STEPS, tutorialStepFromKey } from "../.build/components/Tutorial.js";
 import { ContentStudioView } from "../.build/features/content-studio/ContentStudioView.js";
 import { LearningView } from "../.build/features/learning/LearningView.js";
+import { CaseLabView } from "../.build/features/case-lab/CaseLabView.js";
 import { Onboarding } from "../.build/components/Onboarding.js";
 import { learningUnits, practiceAssetBindings, practiceAssets, prerequisiteEdges } from "../.build/data/learningUnits.js";
 import { applyLearningTransition, canStartUnit, createLearnerUnitState } from "../.build/learning/learningKernelEngine.js";
@@ -2065,7 +2066,7 @@ test("unit: M018 capability projection consumes Kernel events once and separates
 });
 
 test("integration: M018 Case Lab locks stage history and migration preserves restart state", () => {
-  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  useAppStore.setState({ ...createInitialState(), hydrated: true, learnerUnitStates: casePrerequisiteStates() });
   const id = useAppStore.getState().startCaseSession(researchCases[0].id);
   useAppStore.getState().lockCaseStage(id, { stageId: "context", reasoning: "当前观察到分子状态，但来源与结局机制仍未知，应先界定可回答的关联问题。" });
   const session = useAppStore.getState().caseSessions.find((item) => item.id === id);
@@ -2133,6 +2134,11 @@ const architectureResponse = (assetId) => {
   assert.ok(asset, assetId);
   return { selectedOptionIds: [...(asset.rubric.expectedOptionIds ?? [])], shortReasoning: "根据目标问题、数据生成结构和模型假设逐项审查，并保留未解决的不确定性。", claimBoundary: "当前最多支持对明确结构和模型假设敏感的有限关联结论。" };
 };
+function casePrerequisiteStates() { return ["lu-statistical-unit-v1", "concept-confounding-v1"].map((unitId, index) => {
+  const unit = learningArchitectureKernelUnits.find((item) => item.id === unitId);
+  assert.ok(unit);
+  return { ...createLearnerUnitState(unit, "2026-09-01T00:00:00Z"), stage: "review_eligible", competence: { level: "independent_once", evidenceEventIds: [`case-prerequisite-${index}`] }, dueAt: "2026-09-20T00:00:00Z" };
+}); }
 
 test("M018.1-01 Confounding Apply pass creates independent_once", () => {
   const entry = architectureEntry("concept-confounding-v1");
@@ -2166,7 +2172,7 @@ test("M018.1-04 Cox response is cloned and locked into the event", () => {
   const response = architectureResponse(entry.applyAssetId);
   const result = submitArchitecturePractice({ entry, attemptKind: "apply", response, confidence: 4, occurredAt: "2026-09-01T00:00:00Z", eventId: "cox-lock" });
   response.selectedOptionIds.length = 0;
-  assert.equal(result.event.response.selectedOptionIds.length, 6);
+  assert.equal(result.event.response.selectedOptionIds.length, 5);
   assert.equal(result.event.confidence, 4);
 });
 
@@ -2277,7 +2283,7 @@ test("M018.1-17 registry audit rejects an unknown unit mapping", () => {
 });
 
 test("M018.1-18 Case lock stores expert reveal separately", () => {
-  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  useAppStore.setState({ ...createInitialState(), hydrated: true, learnerUnitStates: casePrerequisiteStates() });
   const id = useAppStore.getState().startCaseSession(researchCases.at(0).id);
   useAppStore.getState().lockCaseStage(id, { stageId: "context", reasoning: "当前只有未解释的分子状态，需要形成可被后续证据改变的研究问题。" });
   const entry = useAppStore.getState().caseSessions.find((session) => session.id === id).reasoningHistory[0];
@@ -2286,7 +2292,7 @@ test("M018.1-18 Case lock stores expert reveal separately", () => {
 });
 
 test("M018.1-19 Case update reflection is stored without overwriting reasoning", () => {
-  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  useAppStore.setState({ ...createInitialState(), hydrated: true, learnerUnitStates: casePrerequisiteStates() });
   const id = useAppStore.getState().startCaseSession(researchCases.at(0).id);
   const original = "当前只有未解释的分子状态，需要形成可被后续证据改变的研究问题。";
   useAppStore.getState().lockCaseStage(id, { stageId: "context", reasoning: original });
@@ -2333,8 +2339,8 @@ test("M018.1-23 Paper fields use specific capability gates", () => {
 
 test("M018.1-24 Guide deep links select exact content and case IDs", () => {
   const source = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "guide", "GuideView.tsx"), "utf8");
-  assert.match(source, /selectContent\(link\.targetId\)/);
-  assert.match(source, /selectCase\(link\.targetId\)/);
+  assert.match(source, /openLearningContentTask\(\{ contentId: link\.targetId/);
+  assert.match(source, /link\.type === "case_lab" \? "independent_case"/);
   assert.equal(guideSections.find((section) => section.id === "guide-statistical-unit").links[0].targetId, "concept-statistical-unit-v1");
 });
 
@@ -2404,4 +2410,72 @@ test("M018.1-33 legacy Learning Kernel remains available for compatibility", () 
   const source = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "learning", "LearningView.tsx"), "utf8");
   assert.match(source, /onOpenLegacy/);
   assert.match(source, /PracticeActivity/);
+});
+
+test("M019-A1 Case start is blocked at the store and reports exact missing prerequisites", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true });
+  assert.throws(() => useAppStore.getState().startCaseSession(researchCases[0].id), /缺少先修能力：统计单位、混杂/);
+  assert.equal(useAppStore.getState().caseSessions.length, 0);
+  const html = renderToStaticMarkup(createElement(CaseLabView));
+  assert.match(html, /缺少先修能力/);
+  assert.match(html, /统计单位/);
+  assert.match(html, /混杂/);
+  assert.match(html, /前往学习/);
+});
+
+test("M019-A1 Case start succeeds only after both standardized prerequisites", () => {
+  useAppStore.setState({ ...createInitialState(), hydrated: true, learnerUnitStates: casePrerequisiteStates() });
+  const id = useAppStore.getState().startCaseSession(researchCases[0].id);
+  assert.ok(id);
+  assert.equal(useAppStore.getState().caseSessions.length, 1);
+});
+
+test("M019-A1 Guide and Practice direct paths land on the same gated Case surface", () => {
+  const guide = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "guide", "GuideView.tsx"), "utf8");
+  const practice = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "practice", "PracticeHubView.tsx"), "utf8");
+  assert.match(guide, /openLearningContentTask/);
+  assert.match(practice, /case-lab/);
+  const caseSurface = readFileSync(path.resolve(import.meta.dirname, "..", "src", "features", "case-lab", "CaseLabView.tsx"), "utf8");
+  assert.match(caseSurface, /missingContentPrerequisites/);
+});
+
+test("M019-A2 canonical task navigation forces an exact due review after phase drift", () => {
+  const entry = architectureEntry("concept-confounding-v1");
+  const applied = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "due-route-apply" });
+  useAppStore.setState({ ...createInitialState(), hydrated: true, learnerUnitStates: [applied.state], learningEvents: [applied.event], learningContentProgress: { [entry.id]: { ...applied.progress, phase: "learn" } } });
+  useAppStore.getState().openLearningContentTask({ contentId: entry.id, activityType: "delayed_retrieval", now: applied.state.dueAt });
+  const state = useAppStore.getState();
+  assert.equal(state.selectedLearningContentId, entry.id);
+  assert.equal(state.learningContentProgress[entry.id].phase, "review");
+  assert.equal(state.view, "learning");
+});
+
+test("M019-A2 canonical task navigation refuses an early review", () => {
+  const entry = architectureEntry("concept-confounding-v1");
+  const applied = submitArchitecturePractice({ entry, attemptKind: "apply", response: architectureResponse(entry.applyAssetId), confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "early-route-apply" });
+  useAppStore.setState({ ...createInitialState(), hydrated: true, learnerUnitStates: [applied.state] });
+  assert.throws(() => useAppStore.getState().openLearningContentTask({ contentId: entry.id, activityType: "delayed_retrieval", now: "2026-09-02T00:00:00Z" }), /尚未到期/);
+});
+
+test("M019-A3 Cox primary Apply has discriminating plausible distractors", () => {
+  const entry = architectureEntry("method-cox-v1");
+  const asset = learningArchitectureAssetById.get(entry.applyAssetId);
+  assert.ok(asset.options.length >= 8 && asset.options.length <= 10);
+  assert.ok(asset.rubric.expectedOptionIds.length >= 4 && asset.rubric.expectedOptionIds.length <= 6);
+  assert.ok(asset.options.length - asset.rubric.expectedOptionIds.length >= 2);
+  assert.equal(asset.hints.length, 0);
+});
+
+test("M019-A4 Cox failure routes to a fresh remediation asset", () => {
+  const entry = architectureEntry("method-cox-v1");
+  assert.notEqual(entry.applyAssetId, entry.remediationAssetId);
+  assert.notEqual(entry.remediationAssetId, entry.reviewAssetId);
+  const apply = learningArchitectureAssetById.get(entry.applyAssetId);
+  const remediation = learningArchitectureAssetById.get(entry.remediationAssetId);
+  assert.notEqual(apply.scenarioCn, remediation.scenarioCn);
+  assert.notDeepEqual(apply.options.map((item) => item.id), remediation.options.map((item) => item.id));
+  assert.equal(remediation.hints.length, 0);
+  const failed = submitArchitecturePractice({ entry, attemptKind: "apply", response: { selectedOptionIds: ["absolute-effect"], shortReasoning: "把相对 hazard 直接当绝对风险的回答虽然足够长，但科学结构判断错误。", claimBoundary: "当前不能形成可靠模型结论。" }, confidence: 3, occurredAt: "2026-09-01T00:00:00Z", eventId: "cox-remediation-route" });
+  assert.equal(failed.passed, false);
+  assert.equal(failed.progress.phase, "remediation");
 });

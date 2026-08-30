@@ -95,3 +95,16 @@ export function contentPrerequisitesMet(entry: LearningContentRegistryEntryV1, i
     return Boolean(state && ["independent_once", "retained", "transferred"].includes(state.competence.level));
   });
 }
+
+export function missingContentPrerequisites(entry: LearningContentRegistryEntryV1, input: {
+  registry: LearningContentRegistryEntryV1[];
+  progress: LearningContentProgressV1[];
+  states: LearnerUnitStateV1[];
+}): LearningContentRegistryEntryV1[] {
+  return entry.prerequisiteIds.flatMap((id) => {
+    const prerequisite = input.registry.find((item) => item.id === id);
+    if (!prerequisite) return [];
+    const state = prerequisite.unitId ? input.states.find((item) => item.unitId === prerequisite.unitId) : undefined;
+    return state && ["independent_once", "retained", "transferred"].includes(state.competence.level) ? [] : [prerequisite];
+  });
+}

@@ -23,7 +23,7 @@ import type {
 } from "../domain/types";
 import type { CaseReasoningEntryV1, LearningContentPhase, LearningContentProgressV1, ProjectStudioRecordV1, TransferArtifactV1 } from "../domain/learningArchitecture";
 import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
-import type { LearningMode } from "../domain/learningKernel";
+import type { LearningActivityType, LearningMode } from "../domain/learningKernel";
 import type { ContentConflict, ContentLifecycle, ContentPatchPack, ContentPatchPreview, ObsidianPublishBatch, PersonalContentEntry, PortableContentRecord } from "../domain/contentStudio";
 import { createReviewItem, scheduleReview } from "../learning/review";
 import { makeId } from "../lib/ids";
@@ -36,7 +36,7 @@ import { CURRENT_STATE_SCHEMA, migratePersistedState } from "./migrations";
 import { learningUnitById, prerequisiteEdges } from "../data/learningUnits";
 import { learningContentRegistry, researchCases } from "../data/learningArchitecture";
 import { applyLearningTransition, canStartUnit, createLearnerUnitState, type LearningTransitionInput } from "../learning/learningKernelEngine";
-import { createLearningContentProgress, submitArchitecturePractice, type ArchitectureAttemptKind } from "../learning/learningArchitectureEngine";
+import { createLearningContentProgress, missingContentPrerequisites, submitArchitecturePractice, type ArchitectureAttemptKind } from "../learning/learningArchitectureEngine";
 import type { PracticeResponseV1 } from "../domain/learningKernel";
 
 const providers: AIProvider[] = [
@@ -160,6 +160,7 @@ interface AppStore extends AppStateData {
   selectLearningUnit: (id: string) => void;
   selectLearningContent: (id: string) => void;
   selectCase: (id: string) => void;
+  openLearningContentTask: (input: { contentId: string; activityType?: LearningActivityType; now?: string }) => void;
   setLearningContentPhase: (contentId: string, phase: LearningContentPhase, patch?: Partial<Pick<LearningContentProgressV1, "explainCompleted" | "applyStarted" | "remediationNeeded">>) => void;
   recordLearningContentPractice: (contentId: string, attemptKind: ArchitectureAttemptKind, response: PracticeResponseV1, confidence: 1 | 2 | 3 | 4) => { passed: boolean; score: number };
   startLearningUnit: (id: string, mode: LearningMode) => void;
@@ -354,6 +355,27 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectLearningUnit: (selectedLearningUnitId) => set({ selectedLearningUnitId, view: "learning" }),
     selectLearningContent: (selectedLearningContentId) => set({ selectedLearningContentId, view: "learning" }),
     selectCase: (selectedCaseId) => set({ selectedCaseId, view: "case-lab" }),
+    openLearningContentTask: ({ contentId, activityType, now }) => {
+      const entry = learningContentRegistry.find((item) => item.id === contentId);
+      if (!entry) throw new Error("学习内容不存在");
+      if (entry.contentType === "case_lab") {
+        set({ selectedCaseId: entry.id, view: "case-lab" });
+        return;
+      }
+      if (activityType !== "delayed_retrieval") {
+        set({ selectedLearningContentId: entry.id, view: "learning" });
+        return;
+      }
+      const learner = entry.unitId ? get().learnerUnitStates.find((item) => item.unitId === entry.unitId) : undefined;
+      const at = Date.parse(now ?? new Date().toISOString());
+      if (learner?.stage !== "review_eligible" || !learner.dueAt || Date.parse(learner.dueAt) > at) throw new Error("该学习内容的复习尚未到期");
+      const updatedAt = new Date(at).toISOString();
+      set((state) => {
+        const current = state.learningContentProgress[entry.id] ?? createLearningContentProgress(entry, updatedAt);
+        return { selectedLearningContentId: entry.id, view: "learning", learningContentProgress: { ...state.learningContentProgress, [entry.id]: { ...current, phase: "review", updatedAt } } };
+      });
+      queuePersist();
+    },
     setLearningContentPhase: (contentId, phase, patch) => {
       const entry = learningContentRegistry.find((item) => item.id === contentId);
       if (!entry) throw new Error("学习内容不存在");
@@ -449,6 +471,10 @@ export const useAppStore = create<AppStore>((set, get) => {
     startCaseSession: (caseId) => {
       const researchCase = researchCases.find((item) => item.id === caseId);
       if (!researchCase) throw new Error("Case Lab 案例不存在");
+      const entry = learningContentRegistry.find((item) => item.id === caseId && item.contentType === "case_lab");
+      if (!entry) throw new Error("Case Lab 案例未登记");
+      const missing = missingContentPrerequisites(entry, { registry: learningContentRegistry, progress: Object.values(get().learningContentProgress), states: get().learnerUnitStates });
+      if (missing.length) throw new Error(`缺少先修能力：${missing.map((item) => item.titleCn).join("、")}`);
       const existing = get().caseSessions.find((item) => item.caseId === caseId && !item.completedAt);
       if (existing) return existing.id;
       const id = makeId("case-session"), now = new Date().toISOString();

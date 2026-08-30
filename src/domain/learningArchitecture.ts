@@ -65,8 +65,11 @@ export interface MethodLessonV1 extends LearningContentMeta {
   reviewerChecksCn: string[];
   paperAppearanceCn: string;
   applyPromptCn: string;
+  remediationExplanationCn: string;
+  remediationPromptCn: string;
   unitId: string;
   applyAssetId: string;
+  remediationAssetId: string;
   reviewAssetId: string;
   interactionContract: {
     kind: "methods_audit";
@@ -254,8 +257,10 @@ export function validateLearningContentRegistry(input: {
       if (!entry.unitId || !input.knownUnitIds.has(entry.unitId)) errors.push(`${entry.id} 引用未知 unit：${entry.unitId ?? "missing"}`);
       if (!entry.applyAssetId || !assetIds.has(entry.applyAssetId)) errors.push(`${entry.id} 缺少 Apply asset`);
       if (!entry.reviewAssetId || !assetIds.has(entry.reviewAssetId)) errors.push(`${entry.id} 缺少 review asset`);
+      if (entry.remediationAssetId && !assetIds.has(entry.remediationAssetId)) errors.push(`${entry.id} 引用未知 remediation asset`);
       if (entry.applyAssetId && entry.applyAssetId === entry.reviewAssetId) errors.push(`${entry.id} Apply 与 review 不得相同`);
       if (entry.remediationAssetId && entry.remediationAssetId === entry.applyAssetId) errors.push(`${entry.id} remediation 与 Apply 不得相同`);
+      if (entry.remediationAssetId && entry.remediationAssetId === entry.reviewAssetId) errors.push(`${entry.id} remediation 与 review 不得相同`);
       if (entry.unitId && !(input.unitCapabilityMapping[entry.unitId]?.length)) errors.push(`${entry.id} 缺少 unit capability mapping`);
     }
   }

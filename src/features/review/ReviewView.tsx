@@ -25,7 +25,7 @@ function OtherPracticeReview({ item }: { item: ReviewItem }) {
 }
 
 export function ReviewView() {
-  const reviewItems = useAppStore((state) => state.reviewItems), learnerStates = useAppStore((state) => state.learnerUnitStates), selectLearningUnit = useAppStore((state) => state.selectLearningUnit), selectLearningContent = useAppStore((state) => state.selectLearningContent), setContentPhase = useAppStore((state) => state.setLearningContentPhase), selectJudgment = useAppStore((state) => state.selectJudgment);
+  const reviewItems = useAppStore((state) => state.reviewItems), learnerStates = useAppStore((state) => state.learnerUnitStates), selectLearningUnit = useAppStore((state) => state.selectLearningUnit), openLearningContentTask = useAppStore((state) => state.openLearningContentTask), selectJudgment = useAppStore((state) => state.selectJudgment);
   const [tab, setTab] = useState<"learning" | "other">("learning"), [selectedId, setSelectedId] = useState(reviewItems.find((item) => isReviewDue(item))?.id);
   const due = useMemo(() => reviewItems.filter((item) => isReviewDue(item)), [reviewItems]);
   const learningDue = learnerStates.filter((state) => {
@@ -36,7 +36,7 @@ export function ReviewView() {
   const current = due.find((item) => item.id === selectedId) ?? due[0];
   const openLearningReview = (unitId: string) => {
     const content = learningContentRegistry.find((entry) => entry.unitId === unitId && ["concept_lesson", "method_lesson"].includes(entry.contentType));
-    if (content) { setContentPhase(content.id, "review"); selectLearningContent(content.id); }
+    if (content) openLearningContentTask({ contentId: content.id, activityType: "delayed_retrieval" });
     else selectLearningUnit(unitId);
   };
   return <div className="page unified-review"><header className="page-header"><div><span className="eyebrow">Review</span><h1>一个入口，两类复习来源</h1><p>Today 的 Due Review 与这里的 Learning Reviews 使用同一 Learning Kernel source。</p></div></header><div className="review-tabs"><button className={tab === "learning" ? "active" : ""} onClick={() => setTab("learning")}>Learning Reviews <b>{learningDue.length}</b></button><button className={tab === "other" ? "active" : ""} onClick={() => setTab("other")}>Other Practice Reviews <b>{due.length}</b></button></div>{tab === "learning" ? <div className="learning-review-list">{learningDue.length ? learningDue.map((state) => <button key={state.unitId} onClick={() => openLearningReview(state.unitId)}><RotateCcw/><span><strong>{learningContentRegistry.find((entry) => entry.unitId === state.unitId)?.titleCn ?? learningUnits.find((unit) => unit.id === state.unitId)?.titleCn ?? state.unitId}</strong><small><Clock3 size={11}/>现在到期 · 使用不同版本化 surface asset</small></span></button>) : <div className="empty-state"><h2>暂无真正到期的学习复习</h2><p>未到期不是落后；间隔本身是学习设计的一部分。</p></div>}</div> : <div className="split-page review-page"><aside className="feature-list-pane"><div className="review-list">{due.map((item) => <button key={item.id} className={item.id === current?.id ? "active" : ""} onClick={() => setSelectedId(item.id)}><RotateCcw size={14}/><span>{item.prompt}<small>现在到期</small></span></button>)}</div><h3>Judgment cards</h3>{judgmentCards.slice(0, 6).map((card) => <button key={card.id} onClick={() => selectJudgment(card.id)}>{card.title}</button>)}</aside><section className="feature-workspace scrollable">{current ? <OtherPracticeReview key={`${current.id}-${current.lastReview}`} item={current}/> : <div className="empty-state"><h2>暂无 Other Practice Review</h2></div>}</section></div>}</div>;
