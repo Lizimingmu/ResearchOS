@@ -1,0 +1,3175 @@
+{
+  "schemaVersion": 1,
+  "reviewMode": "TRUE_INDEPENDENT_REVIEW",
+  "reviewType": "FINAL2_DIFF_ONLY",
+  "baselineReview": "M019_EVIDENCE_REREVIEW_FINAL.md",
+  "baselineSnapshotCommit": "35750c3",
+  "currentSnapshotGeneratedAt": "2026-08-31T00:00:00+08:00",
+  "scope": {
+    "includedBaselineClassifications": [
+      "SOURCE_MISMATCH",
+      "WEAKLY_SUPPORTED"
+    ],
+    "includedBaselineResolutions": [
+      "NOT",
+      "PARTIAL"
+    ],
+    "reviewedClaimCount": 104,
+    "relatedStagedMethodClaimIds": [
+      "claim-staged-method-linear-regression-method-core",
+      "claim-staged-method-kaplan-logrank-method-core",
+      "claim-staged-method-restricted-cubic-spline-method-core"
+    ],
+    "excludedEvidenceReadyHistory": true,
+    "fullHistoryRescanned": false
+  },
+  "claimResolutionCounts": {
+    "RESOLVED": 69,
+    "PARTIAL": 34,
+    "NOT": 1,
+    "NEW": 0
+  },
+  "claimResolutionTransitions": {
+    "NOT": {
+      "RESOLVED": 37,
+      "PARTIAL": 13,
+      "NOT": 0,
+      "NEW": 0
+    },
+    "PARTIAL": {
+      "RESOLVED": 32,
+      "PARTIAL": 21,
+      "NOT": 1,
+      "NEW": 0
+    }
+  },
+  "finalClassificationCounts": {
+    "DIRECTLY_SUPPORTED": 25,
+    "REASONABLE_SYNTHESIS": 45,
+    "WEAKLY_SUPPORTED": 33,
+    "UNSUPPORTED": 0,
+    "SOURCE_MISMATCH": 1,
+    "NEEDS_CURRENT_SOURCE": 0
+  },
+  "currentUnresolvedEvidenceCounts": {
+    "SOURCE_MISMATCH": 1,
+    "UNSUPPORTED": 0
+  },
+  "severityCounts": {
+    "BLOCKER": 1,
+    "MAJOR": 34,
+    "NONE": 69
+  },
+  "activationCounts": {
+    "currentlyActivatable": 0,
+    "evidenceReadyButPendingReview": 69,
+    "unresolvedPendingReview": 35
+  },
+  "diffSummary": {
+    "claimsWithChangedSourceIds": 97,
+    "changedSourceOutcomeCounts": {
+      "RESOLVED": 69,
+      "PARTIAL": 27,
+      "NOT": 1,
+      "NEW": 0
+    },
+    "unchangedSourceOutcomeCounts": {
+      "RESOLVED": 0,
+      "PARTIAL": 7,
+      "NOT": 0,
+      "NEW": 0
+    },
+    "claimLevelReviewPending": 104,
+    "deterministicIdentifierVerified": 104,
+    "deterministicMetadataVerified": 104
+  },
+  "exactTitleMappingReview": {
+    "verdict": "PASS_WITH_REMAINING_CLAIM_GAPS",
+    "behavior": "explicitSourceIdsByTitle is checked before regex fallback",
+    "resolvedStagedMethods": [
+      {
+        "claimId": "claim-staged-method-linear-regression-method-core",
+        "sourceIds": [
+          "src-regression-strategies",
+          "src-dag"
+        ],
+        "resolution": "RESOLVED"
+      },
+      {
+        "claimId": "claim-staged-method-kaplan-logrank-method-core",
+        "sourceIds": [
+          "src-km-tutorial",
+          "src-logrank",
+          "src-survival-censoring",
+          "src-competing"
+        ],
+        "resolution": "RESOLVED"
+      },
+      {
+        "claimId": "claim-staged-method-restricted-cubic-spline-method-core",
+        "sourceIds": [
+          "src-rcs",
+          "src-regression-strategies"
+        ],
+        "resolution": "RESOLVED"
+      }
+    ]
+  },
+  "metadataResolutionCounts": {
+    "RESOLVED": 12,
+    "PARTIAL": 0,
+    "NOT": 0,
+    "NEW": 1
+  },
+  "metadataItems": [
+    {
+      "sourceId": "src-nist-statistics-handbook",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-regression-strategies",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-tidy-data",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-good-enough-computing",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-paper-reading",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-better-figures",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-paper-structure",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-logrank",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-proteomics-overview",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-proteomics-missing",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-ecm-proteomics",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-multiomics",
+      "finalResolution": "RESOLVED",
+      "metadataVerdict": "PASS"
+    },
+    {
+      "sourceId": "src-git-docs",
+      "finalResolution": "NEW",
+      "metadataVerdict": "PARTIAL",
+      "severity": "MAJOR",
+      "reason": "The URL resolves to Git - everyday Documentation. The local title is a synthetic collection title and year 2026 is an access/current-review year rather than the page's publication/manual-change year.",
+      "action": "Use the exact official page title and an access-date field, or split commit, branch, and diff into their exact official documentation pages."
+    }
+  ],
+  "deterministicBlockers": [
+    {
+      "id": "B1",
+      "severity": "BLOCKER",
+      "claimIds": [
+        "claim-guide-v1-m02-t23-guide-summary"
+      ],
+      "issue": "Information-bias claim remains mapped to STROBE plus a selection-bias methods paper.",
+      "action": "Add a direct misclassification/measurement-error source or narrow the claim."
+    }
+  ],
+  "deterministicMajors": [
+    {
+      "id": "M1",
+      "severity": "MAJOR",
+      "affectedClaimCount": 34,
+      "issue": "Sources are relevant or improved but do not cover the full prescriptive or taxonomic claim.",
+      "action": "Keep pending; narrow unsupported clauses or add direct sources."
+    },
+    {
+      "id": "M2",
+      "severity": "MAJOR",
+      "sourceId": "src-git-docs",
+      "issue": "Deterministic metadata flags pass despite a non-exact source title/year representation.",
+      "action": "Correct metadata and do not treat identifierVerified/metadataVerified as sufficient evidence approval."
+    }
+  ],
+  "items": [
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t02-guide-summary",
+      "contentId": "guide-v1-m01-t02",
+      "currentClaim": "Topic 是领域，Phenomenon 是观察，Problem 是知识或决策缺口，Question 才是可回答的约束表达。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference and paper-structure guidance are adjacent, but neither source directly establishes the Topic→Phenomenon→Problem→Question taxonomy.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t04-guide-summary",
+      "contentId": "guide-v1-m01-t04",
+      "currentClaim": "问题必须对应可观察或可估计量，并预先说明哪些结果支持、削弱或无法区分解释。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t05-guide-summary",
+      "contentId": "guide-v1-m01-t05",
+      "currentClaim": "假设是对数据生成机制或可观察差异的可检验预期，不是希望结果成立的宣言。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t06-guide-summary",
+      "contentId": "guide-v1-m01-t06",
+      "currentClaim": "观察是记录，结果是分析输出，解释连接模型与机制，结论则受设计和不确定性共同约束。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t07-guide-summary",
+      "contentId": "guide-v1-m01-t07",
+      "currentClaim": "证据的层级、直接性和独立性共同限定主张；引用存在不等于主张被支持。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "STROBE and Strong Inference support reporting and discriminating evidence, but not the full hierarchy/directness/independence rule.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t10-guide-summary",
+      "contentId": "guide-v1-m01-t10",
+      "currentClaim": "空白只有在对应重要决策、机制或可推广知识且能够被可靠回答时才具有研究价值。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Paper-reading and structure guidance do not directly support the stated decision-theoretic criteria for when an unstudied gap is important.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t11-guide-summary",
+      "contentId": "guide-v1-m01-t11",
+      "currentClaim": "新颖性说明与既有工作不同，重要性说明会改变理解、决策或后续资源配置，两者不能互相替代。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "The sources discuss contribution and paper structure, but do not directly establish the novelty-versus-importance distinction or resource-allocation consequence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure",
+        "src-paper-reading"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t12-guide-summary",
+      "contentId": "guide-v1-m01-t12",
+      "currentClaim": "探索允许生成模式与假设；确证要求预先限定问题、分析与误差控制，二者的语言和证据门槛不同。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference and the ASA p-value statement do not directly define exploratory versus confirmatory status, prespecification, and error-control requirements.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-asa-pvalue"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t17-guide-summary",
+      "contentId": "guide-v1-m01-t17",
+      "currentClaim": "下一步应瞄准当前证据链最薄弱、最能区分解释且可行动的缺口，而不是继续堆方法。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m01-t18-guide-summary",
+      "contentId": "guide-v1-m01-t18",
+      "currentClaim": "当关键不确定性不能由现有数据解决、边际分析不再改变决策或验证需要新数据时，应停止并记录边界。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference supports discriminating experiments, not the stated stopping rule based on unresolved uncertainty, marginal value, and need for new data.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m02-t10-guide-summary",
+      "contentId": "guide-v1-m02-t10",
+      "currentClaim": "实际能够被抽取的名单或流程；覆盖不足会让某些目标总体成员没有进入样本的机会。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-selection-bias"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m02-t11-guide-summary",
+      "contentId": "guide-v1-m02-t11",
+      "currentClaim": "研究中作为原因、条件或预测信息考察的变量，定义必须包含时间、剂量与测量窗口。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "currentSourceIds": [
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m02-t13-guide-summary",
+      "contentId": "guide-v1-m02-t13",
+      "currentClaim": "模型中的附加变量，其角色可能是混杂因素、精度变量、中介、碰撞点或预测因子。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-dag"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m02-t14-guide-summary",
+      "contentId": "guide-v1-m02-t14",
+      "currentClaim": "预测变量按新数据表现评价，解释变量按问题和结构解释；相同列在不同目标下承担不同责任。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-dag"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m02-t23-guide-summary",
+      "contentId": "guide-v1-m02-t23",
+      "currentClaim": "暴露、结局或协变量的信息获取错误导致误分类或测量误差，方向不一定朝零。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "NOT",
+      "finalClassification": "SOURCE_MISMATCH",
+      "severity": "BLOCKER",
+      "reason": "STROBE is a reporting guideline and the added selection-bias paper addresses selection mechanisms, not exposure/outcome/covariate misclassification or its direction; the central information-bias claim remains mismatched.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-selection-bias"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CHANGED_BUT_STILL_MISMATCHED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t01-guide-summary",
+      "contentId": "guide-v1-m03-t01",
+      "currentClaim": "变量的测量尺度和编码决定可进行的比较、距离与模型函数形式。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "The NIST handbook is a broad statistics reference, but its recorded core evidence does not directly cover measurement-scale and coding restrictions on distances and model functions.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-nist-statistics-handbook"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t02-guide-summary",
+      "contentId": "guide-v1-m03-t02",
+      "currentClaim": "分布描述可能取值及其相对频率；中心、离散、偏态和尾部共同影响总结与模型。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-nist-statistics-handbook"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t03-guide-summary",
+      "contentId": "guide-v1-m03-t03",
+      "currentClaim": "均值利用全部数值但受极端值影响，中位数描述排序中心；选择应服务于问题和分布。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-nist-statistics-handbook"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t04-guide-summary",
+      "contentId": "guide-v1-m03-t04",
+      "currentClaim": "SD 描述观测值离散程度，不是均值估计的不确定性，也不随样本量按同一方式缩小。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-nist-statistics-handbook",
+        "src-standard-error"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t05-guide-summary",
+      "contentId": "guide-v1-m03-t05",
+      "currentClaim": "重复从同一总体抽样会得到不同估计；推断量化的是这种数据生成波动。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-nist-statistics-handbook",
+        "src-standard-error"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t14-guide-summary",
+      "contentId": "guide-v1-m03-t14",
+      "currentClaim": "两类错误针对预定义决策规则；其概率依赖真实效应、阈值和设计。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-nist-statistics-handbook",
+        "src-power"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t16-guide-summary",
+      "contentId": "guide-v1-m03-t16",
+      "currentClaim": "样本量应由 estimand、预期信息量、变异、事件率、模型复杂度和失访共同论证。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-power"
+      ],
+      "currentSourceIds": [
+        "src-power",
+        "src-pmsampsize",
+        "src-pm-external"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t17-guide-summary",
+      "contentId": "guide-v1-m03-t17",
+      "currentClaim": "相关系数概括指定尺度上的共同变化，受范围、离群值、非线性和混合总体影响。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-correlation-regression"
+      ],
+      "currentSourceIds": [
+        "src-correlation-regression",
+        "src-nist-statistics-handbook"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t18-guide-summary",
+      "contentId": "guide-v1-m03-t18",
+      "currentClaim": "条件均值模型用系数表达协变量变化与连续结局的调整后关联，解释依赖函数形式和残差。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-correlation-regression"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-correlation-regression"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t19-guide-summary",
+      "contentId": "guide-v1-m03-t19",
+      "currentClaim": "模型连接条件 log-odds 与协变量；odds ratio 不是常见结局下的 risk ratio。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t20-guide-summary",
+      "contentId": "guide-v1-m03-t20",
+      "currentClaim": "调整集合由目标问题和因果/预测目的决定，加入更多变量不保证偏倚更小。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-dag"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t22-guide-summary",
+      "contentId": "guide-v1-m03-t22",
+      "currentClaim": "连续变量与结局的关系未必是直线；强制线性或随意分组都可能掩盖形状。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-rcs"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t25-guide-summary",
+      "contentId": "guide-v1-m03-t25",
+      "currentClaim": "诊断用于发现函数形式、异方差、影响点或相关结构问题，不是模型正确的证明。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-nist-statistics-handbook"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t28-guide-summary",
+      "contentId": "guide-v1-m03-t28",
+      "currentClaim": "按完整建模流程重复划分评估泛化误差；预处理和特征选择也必须留在训练折内。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-internal-validation",
+        "src-leakage"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t38-guide-summary",
+      "contentId": "guide-v1-m03-t38",
+      "currentClaim": "比较组间整个随访的观察与期望事件，主要检验曲线差异而不量化绝对效应。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-km-tutorial",
+        "src-survival-censoring"
+      ],
+      "currentSourceIds": [
+        "src-logrank",
+        "src-survival-censoring"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m03-t45-guide-summary",
+      "contentId": "guide-v1-m03-t45",
+      "currentClaim": "多变量模型需预先定义目标、编码、时间依赖、缺失处理与验证，不能靠 stepwise 自动获得独立效应。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-cox"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t02-guide-summary",
+      "contentId": "guide-v1-m04-t02",
+      "currentClaim": "宽表把重复变量展开成列，长表把重复测量放进行；选择影响连接、建模和可视化。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-tidy-data"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t03-guide-summary",
+      "contentId": "guide-v1-m04-t03",
+      "currentClaim": "类别参照、缺失码、单位和日期编码都会改变模型矩阵与系数含义。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Tidy Data and Good Enough Computing support data structure and reproducible practice, but not the complete claim that category references, missing codes, units, and date encoding determine the model matrix and coefficient meaning.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-tidy-data",
+        "src-good-enough-computing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t05-guide-summary",
+      "contentId": "guide-v1-m04-t05",
+      "currentClaim": "重复可能来自真实重复测量、连接放大或导入错误，删除前必须确认实体与键。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-tidy-data",
+        "src-good-enough-computing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t06-guide-summary",
+      "contentId": "guide-v1-m04-t06",
+      "currentClaim": "连接键应稳定、唯一并符合实体层级；多对多连接需要显式检查行数膨胀。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-tidy-data",
+        "src-good-enough-computing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t07-guide-summary",
+      "contentId": "guide-v1-m04-t07",
+      "currentClaim": "这些操作分别改变行、列、分组上下文和聚合层级，顺序错误会改变 estimand。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-tidy-data"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t11-guide-summary",
+      "contentId": "guide-v1-m04-t11",
+      "currentClaim": "把明确输入映射为输出的可复用单元，帮助隔离假设、测试边界并减少复制错误。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-good-enough-computing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t13-guide-summary",
+      "contentId": "guide-v1-m04-t13",
+      "currentClaim": "固定伪随机序列有助复现特定运行，但不能消除随机算法的不稳定性或数据依赖。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-good-enough-computing",
+        "src-nist-statistics-handbook"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t15-guide-summary",
+      "contentId": "guide-v1-m04-t15",
+      "currentClaim": "确定性过程同输入同输出，随机过程还依赖随机状态，二者都需记录版本和参数。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-good-enough-computing",
+        "src-nist-statistics-handbook"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t16-guide-summary",
+      "contentId": "guide-v1-m04-t16",
+      "currentClaim": "每一步都声明输入模式、变换规则、输出模式和检查不变量，形成可审计契约。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-good-enough-computing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t19-guide-summary",
+      "contentId": "guide-v1-m04-t19",
+      "currentClaim": "commit 是可追溯快照，branch 隔离变化，diff 显示语义增量；版本控制不替代备份和数据治理。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "The official Git material and computing guideline support the substance, but src-git-docs uses a synthetic title and year 2026 for a page titled Git - everyday Documentation whose recorded manual change date is 2014; metadata must be corrected or split across exact Git pages.",
+      "previousSourceIds": [
+        "src-fair"
+      ],
+      "currentSourceIds": [
+        "src-git-docs",
+        "src-good-enough-computing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PARTIAL",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m04-t23-guide-summary",
+      "contentId": "guide-v1-m04-t23",
+      "currentClaim": "单位错配、键连接膨胀、日期解析、因子参照、过滤顺序和类型转换常不报错却改变结论。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-fair",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-good-enough-computing",
+        "src-tidy-data"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t02-guide-summary",
+      "contentId": "guide-v1-m05-t02",
+      "currentClaim": "从主要比较、estimand、结局与 Figure 证据任务反推问题，不只抄作者最后一句目的。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t03-guide-summary",
+      "contentId": "guide-v1-m05-t03",
+      "currentClaim": "每段应从已知推进到关键未知和研究必要性，而不是无层次罗列领域知识。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t04-guide-summary",
+      "contentId": "guide-v1-m05-t04",
+      "currentClaim": "缺口可能是证据质量、总体、测量、机制或决策不足，不等同于未出现某关键词。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Paper-reading and PRISMA sources support critical review, but not the full evidence/population/measurement/mechanism/decision gap taxonomy.",
+      "previousSourceIds": [
+        "src-prisma-2020"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-prisma-2020"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t05-guide-summary",
+      "contentId": "guide-v1-m05-t05",
+      "currentClaim": "先读主图和图注建立证据骨架，再用方法与补充材料验证骨架是否站得住。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-better-figures"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t06-guide-summary",
+      "contentId": "guide-v1-m05-t06",
+      "currentClaim": "每张图应回答一个明确问题：描述、比较、验证、机制支持或决策价值。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-better-figures",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t07-guide-summary",
+      "contentId": "guide-v1-m05-t07",
+      "currentClaim": "结果顺序应使前一项证据提出下一项必要问题，而非把所有分析并排堆放。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure",
+        "src-paper-reading"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t14-guide-summary",
+      "contentId": "guide-v1-m05-t14",
+      "currentClaim": "核对标准化、距离、聚类、色标、排序和注释，避免把视觉块状结构直接称为亚型。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-clustering",
+        "src-batch",
+        "src-better-figures"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t15-guide-summary",
+      "contentId": "guide-v1-m05-t15",
+      "currentClaim": "检查背景集、排名统计量、基因集版本、冗余、方向和多重检验。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-gsea",
+        "src-camera",
+        "src-ora"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t18-guide-summary",
+      "contentId": "guide-v1-m05-t18",
+      "currentClaim": "会改变核心结论、需要新分析/数据的问题是 major；不改变主张的澄清通常是 minor。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "The sources support structured appraisal and reporting, but do not define the stated major-versus-minor decision rule.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t19-guide-summary",
+      "contentId": "guide-v1-m05-t19",
+      "currentClaim": "主动寻找若错误会推翻主张的最薄弱环节，并提出能验证的修复要求。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "The sources support scrutiny of evidence and reporting, but the weakest-link falsification and repair rule remains a course-authored heuristic.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t20-guide-summary",
+      "contentId": "guide-v1-m05-t20",
+      "currentClaim": "提取问题分解、队列角色、Figure 工作和验证逻辑，而不是照搬某个方法名称。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-prisma-2020"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t21-guide-summary",
+      "contentId": "guide-v1-m05-t21",
+      "currentClaim": "记录问题、设计、单位、主要证据、最大主张、替代解释、可迁移结构和待核验来源。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-prisma-2020"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m05-t23-guide-summary",
+      "contentId": "guide-v1-m05-t23",
+      "currentClaim": "比较问题重要性、设计强度、验证层级和证据链，而不是只比较分析数量或图的美观。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Paper reading and PRISMA support structured comparison, but do not directly justify this exact importance/design/validation/evidence-chain ranking rule.",
+      "previousSourceIds": [
+        "src-prisma-2020"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-prisma-2020"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t02-guide-summary",
+      "contentId": "guide-v1-m06-t02",
+      "currentClaim": "转录、翻译、降解和技术覆盖使 RNA 与蛋白不必一一对应，失配不自动代表错误。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-multiomics",
+        "src-proteomics-overview"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t08-guide-summary",
+      "contentId": "guide-v1-m06-t08",
+      "currentClaim": "估计预定义组间特征差异并控制模型与多重性；结果是关联而非自动机制。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-deseq2",
+        "src-edger"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t17-guide-summary",
+      "contentId": "guide-v1-m06-t17",
+      "currentClaim": "筛选特征改变估计空间，必须在训练流程内完成并在新数据评价。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-leakage",
+        "src-internal-validation",
+        "src-tripod-ai"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t23-guide-summary",
+      "contentId": "guide-v1-m06-t23",
+      "currentClaim": "从程序中挑代表特征要说明选择规则、稳定性与是否只是高丰度代理。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Leakage and internal-validation sources support training/evaluation separation, but not representative-feature selection, stability, or high-abundance proxy interpretation.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-leakage",
+        "src-internal-validation"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t26-guide-summary",
+      "contentId": "guide-v1-m06-t26",
+      "currentClaim": "肽段鉴定、蛋白推断、动态范围和缺失共同限制丰度估计。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-proteomics-overview",
+        "src-proteomics-missing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t30-guide-summary",
+      "contentId": "guide-v1-m06-t30",
+      "currentClaim": "ECM 蛋白增加可来自组成、沉积、降解或取样；不能单凭 bulk 丰度指定 CAF 机制。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-ecm-proteomics",
+        "src-spatial"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t55-guide-summary",
+      "contentId": "guide-v1-m06-t55",
+      "currentClaim": "使用偏倚结构不同的方法或数据回答同一问题，观察结论是否在不同弱点下保持。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-multiomics"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m06-t58-guide-summary",
+      "contentId": "guide-v1-m06-t58",
+      "currentClaim": "用证据图记录相容、冲突和未测量环节，让不一致指导下一步而非通过权重掩盖。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference and multi-omics guidance support competing explanations and modality limits, but not a general evidence-graph procedure for concordance, conflict, and unmeasured links.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-scib"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-multiomics"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m07-t01-guide-summary",
+      "contentId": "guide-v1-m07-t01",
+      "currentClaim": "观察是数据层事实，意义是基于模型和背景的解释；两者之间存在可质疑的推理链。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m07-t10-guide-summary",
+      "contentId": "guide-v1-m07-t10",
+      "currentClaim": "异常点可能是错误、真实极端或新亚群；应查来源和影响而非自动删除。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-nist-statistics-handbook",
+        "src-regression-strategies"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m07-t15-guide-summary",
+      "contentId": "guide-v1-m07-t15",
+      "currentClaim": "亚组差异需要交互和预设，不能用一组显著另一组不显著声称效应不同。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-interaction",
+        "src-consort"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m07-t21-guide-summary",
+      "contentId": "guide-v1-m07-t21",
+      "currentClaim": "直接回答主问题、跨合理分析稳健且有清楚边界的结果才应进入主结论。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Paper structure and STROBE support a bounded central claim, but not the requirement that a result be robust across all reasonable analyses before entering the main conclusion.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t02-guide-summary",
+      "contentId": "guide-v1-m08-t02",
+      "currentClaim": "把结果拆成已知、仍不确定和竞争解释，再选择能区分它们的问题。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t03-guide-summary",
+      "contentId": "guide-v1-m08-t03",
+      "currentClaim": "用最少但足以改变判断的分析回答具体缺口，避免复杂度掩盖核心。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference supports discriminating tests, but not the minimum-complexity and information-value criterion in the full claim.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t05-guide-summary",
+      "contentId": "guide-v1-m08-t05",
+      "currentClaim": "阴性结果后检查信息量、测量和边界，决定停止、改设计或测试更有针对性的解释。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Confidence-interval and power sources support negative-result interpretation, but not the full measurement, stopping, redesign, and next-explanation decision rule.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-confidence-interval",
+        "src-power"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t11-guide-summary",
+      "contentId": "guide-v1-m08-t11",
+      "currentClaim": "边际结果不再改变主张、决策或验证计划，或关键缺口需要新数据时停止。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference does not directly support the stated stopping rule based on marginal effect on claims, decisions, or validation plans.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t12-guide-summary",
+      "contentId": "guide-v1-m08-t12",
+      "currentClaim": "每个 panel 对应一个问题、比较和结论边界，避免只展示可生成的图。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-better-figures",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t13-guide-summary",
+      "contentId": "guide-v1-m08-t13",
+      "currentClaim": "主图组合应完成一项完整证据工作并让读者看见必要对照和不确定性。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-better-figures",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t14-guide-summary",
+      "contentId": "guide-v1-m08-t14",
+      "currentClaim": "从问题到描述、主要检验、验证和边界形成递进链，后一图由前一图留下的缺口驱动。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-prisma-2020"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure",
+        "src-paper-reading"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t15-guide-summary",
+      "contentId": "guide-v1-m08-t15",
+      "currentClaim": "Figure 1 建立总体与现象，后续逐步回答差异、稳健、解释和验证，而非按分析完成顺序排列。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure",
+        "src-better-figures"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t16-guide-summary",
+      "contentId": "guide-v1-m08-t16",
+      "currentClaim": "机制深度来自区分性和干预证据；多层相关结果不能用数量代替。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t19-guide-summary",
+      "contentId": "guide-v1-m08-t19",
+      "currentClaim": "为每个 panel 分配独立证据任务、必要对照、估计与视觉层级，减少结果仓库式布局。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-better-figures"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t20-guide-summary",
+      "contentId": "guide-v1-m08-t20",
+      "currentClaim": "把生物发现转成可测干预或决策路径，并明确每一步的前临床和临床证据门槛。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference and STROBE do not directly establish a staged preclinical/clinical evidence-gate framework for translation.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t21-guide-summary",
+      "contentId": "guide-v1-m08-t21",
+      "currentClaim": "用当前主张、最大不确定性、备选方案、预期分支、成本和停止规则组织建议。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference supports alternatives and discriminating outcomes, but not the full recommendation template with costs and stopping rules.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m08-t22-guide-summary",
+      "contentId": "guide-v1-m08-t22",
+      "currentClaim": "按问题重要性、信息增益、可行性、机会成本和失败后仍能学到什么排序。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference does not directly support prioritization by importance, information gain, feasibility, opportunity cost, and learning after failure.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t03-guide-summary",
+      "contentId": "guide-v1-m09-t03",
+      "currentClaim": "用一句可检验、不过度的陈述概括该图完成的证据任务。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-better-figures",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t05-guide-summary",
+      "contentId": "guide-v1-m09-t05",
+      "currentClaim": "主图选择必要证据链，结果仓库只按分析数量堆图且没有问题结构。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-better-figures",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t07-guide-summary",
+      "contentId": "guide-v1-m09-t07",
+      "currentClaim": "按读者需要回答的问题组织，而非按实验日期或软件运行顺序。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t08-guide-summary",
+      "contentId": "guide-v1-m09-t08",
+      "currentClaim": "每张图明确回答描述、比较、验证、机制候选或决策价值中的哪一项。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-better-figures",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t15-guide-summary",
+      "contentId": "guide-v1-m09-t15",
+      "currentClaim": "主动标出单位、偏倚、模型灵活性、验证和主张边界中最易被质疑的接口。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t16-guide-summary",
+      "contentId": "guide-v1-m09-t16",
+      "currentClaim": "先判断评论指向何种证据风险，再用分析、澄清、降级主张或新数据回应。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Paper-reading and STROBE sources support appraisal and reporting, but not this response-to-reviewer action taxonomy.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-reading",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t18-guide-summary",
+      "contentId": "guide-v1-m09-t18",
+      "currentClaim": "让听众看见当前决策点和不确定性，图服务于讨论而不是展示工作量。",
+      "baselineResolution": "NOT",
+      "baselineClassification": "SOURCE_MISMATCH",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-better-figures",
+        "src-paper-structure"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t19-guide-summary",
+      "contentId": "guide-v1-m09-t19",
+      "currentClaim": "连接证据缺口、目标 estimand、预期分支和对决策的影响。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Paper structure and STROBE do not directly establish the exact gap→estimand→branch→decision-impact justification chain.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m09-t20-guide-summary",
+      "contentId": "guide-v1-m09-t20",
+      "currentClaim": "指出它无法识别什么、会引入何种偏倚、与已有证据何处冗余及机会成本。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "The sources do not directly support the stated opportunity-cost, redundancy, bias, and non-identifiability rejection rule.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-remark"
+      ],
+      "currentSourceIds": [
+        "src-paper-structure",
+        "src-strobe"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-guide-v1-m10-t05-guide-summary",
+      "contentId": "guide-v1-m10-t05",
+      "currentClaim": "检查问题对齐、单位、时间、偏倚、泄漏、假设、验证和不可识别目标。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "No source mapping changed. NIST AI governance supports human verification, but not this exact biomedical-method checklist.",
+      "previousSourceIds": [
+        "src-nist-genai-profile",
+        "src-nist-ai-rmf"
+      ],
+      "currentSourceIds": [
+        "src-nist-genai-profile",
+        "src-nist-ai-rmf"
+      ],
+      "sourceChanged": false,
+      "sourceMappingVerdict": "UNCHANGED_INDIRECT",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-research-question-concept-boundary",
+      "contentId": "staged-concept-research-question",
+      "currentClaim": "在本题材料下，只有完成“补齐总体、比较、结局、时间和目标效应，并删除现有数据不能回答的部分”并核对“问题中的每个字段都能对应可观察数据和明确分析单位”后，才能作出与“明确总体、对象、比较、结局、时间与估计目标，使证据能够回答而不是只围绕主题堆积。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "No targeted source correction occurred; STROBE and DAG remain indirect for the full population/comparison/outcome/time/estimand rule.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "sourceChanged": false,
+      "sourceMappingVerdict": "UNCHANGED_INDIRECT",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-hypothesis-concept-boundary",
+      "contentId": "staged-concept-hypothesis",
+      "currentClaim": "在本题材料下，只有完成“把机制陈述、可观察预测和预先可接受的反证结果一一匹配”并核对“预测含对象、时间、方向与测量，反证条件不是事后追加”后，才能作出与“假设是对数据生成机制或可观察差异的可检验预期，不是希望结果成立的宣言。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-exploratory-confirmatory-concept-boundary",
+      "contentId": "staged-concept-exploratory-confirmatory",
+      "currentClaim": "在本题材料下，只有完成“逐项标记特征、阈值、主要终点和分析集是事前还是事后决定，并据此改写结论”并核对“没有把同一数据上的发现和确证写成两个独立阶段”后，才能作出与“探索允许生成模式与假设；确证要求预先限定问题、分析与误差控制，二者的语言和证据门槛不同。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference and the ASA p-value statement remain indirect for prespecification and confirmatory error-control status.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-asa-pvalue"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-population-sample-concept-boundary",
+      "contentId": "staged-concept-population-sample",
+      "currentClaim": "在本题材料下，只有完成“明确目标总体、抽样框、入组与分析选择，并收窄可推广范围”并核对“每一个从总体到样本的选择机制及其与暴露/结局关系都被审查”后，才能作出与“样本来自可接触总体，目标总体是希望推广到的人群；三者不一致会限制外推。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "No targeted source correction occurred; the current reporting and pseudoreplication sources do not fully cover sampling-frame and transportability logic.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "sourceChanged": false,
+      "sourceMappingVerdict": "UNCHANGED_INDIRECT",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-internal-external-validity-concept-boundary",
+      "contentId": "staged-concept-internal-external-validity",
+      "currentClaim": "在本题材料下，只有完成“分别审查样本内识别和向目标总体运输，而不是给单一‘有效’标签”并核对“目标总体、选择机制和测量/治疗环境差异均被显式比较”后，才能作出与“结果对实际研究样本与目标对照是否可信，首先取决于偏倚、测量和分析。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "No targeted source correction occurred; the attached reporting and pseudoreplication sources remain indirect for internal validity and transportability.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-consort",
+        "src-pseudorep"
+      ],
+      "sourceChanged": false,
+      "sourceMappingVerdict": "UNCHANGED_INDIRECT",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-effect-size-concept-boundary",
+      "contentId": "staged-concept-effect-size",
+      "currentClaim": "在本题材料下，只有完成“计算并报告与问题匹配的绝对/相对效应及单位”并核对“效应与临床重要界值、基线风险和 CI 一起解释”后，才能作出与“效应量把差异或关联放在可解释尺度上；应与不确定性、基线风险和临床语境共同报告。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "No targeted effect-size source was added; ASA, multiple-testing, and STROBE sources do not cover the full scale, baseline-risk, clinical-threshold, and interval rule.",
+      "previousSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "currentSourceIds": [
+        "src-asa-pvalue",
+        "src-multiple-testing",
+        "src-strobe"
+      ],
+      "sourceChanged": false,
+      "sourceMappingVerdict": "UNCHANGED_INDIRECT",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-rna-protein-concept-boundary",
+      "contentId": "staged-concept-rna-protein",
+      "currentClaim": "在本题材料下，只有完成“分别审查两种模态的时间、测量对象和生成/降解机制”并核对“不一致没有被简化成‘其中一种模态一定错’”后，才能作出与“转录、翻译、降解和技术覆盖使 RNA 与蛋白不必一一对应，失配不自动代表错误。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-multiomics",
+        "src-proteomics-overview"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-robustness-concept-boundary",
+      "contentId": "staged-concept-robustness",
+      "currentClaim": "在本题材料下，只有完成“只运行有科学理由的敏感性分析，并按全部结果更新结论”并核对“没有从大量分析中挑选支持原故事的版本”后，才能作出与“结论在合理预处理、模型、排除和假设变化下保持，而不是只重复同一分析。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "No targeted robustness source was added; STROBE and DAG remain indirect for principled sensitivity-analysis selection and complete-result updating.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "sourceChanged": false,
+      "sourceMappingVerdict": "UNCHANGED_INDIRECT",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-triangulation-concept-boundary",
+      "contentId": "staged-concept-triangulation",
+      "currentClaim": "在本题材料下，只有完成“组合测量同一构念但主要偏倚不同的证据，并解释不一致如何更新”并核对“证据数量没有替代偏倚独立性和构念对齐”后，才能作出与“使用偏倚结构不同的方法或数据回答同一问题，观察结论是否在不同弱点下保持。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "REASONABLE_SYNTHESIS",
+      "severity": "NONE",
+      "reason": "The exact-title sources support the central evidence range and the explicit curriculum-synthesis boundary keeps the teaching rule proportionate to that evidence.",
+      "previousSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference",
+        "src-multiomics"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-minimal-sufficient-analysis-concept-boundary",
+      "contentId": "staged-concept-minimal-sufficient-analysis",
+      "currentClaim": "在本题材料下，只有完成“选择能以最低成本最大区分当前关键解释的下一步，并预写分支动作”并核对“下一步结果会实际改变主张或行动，而非只增加图表”后，才能作出与“用最少但足以改变判断的分析回答具体缺口，避免复杂度掩盖核心。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "Strong Inference supports discrimination among explanations, but not the minimum-cost/information-gain and prewritten branch-action rule.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-tripod",
+        "src-internal-validation"
+      ],
+      "currentSourceIds": [
+        "src-strong-inference"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "IMPROVED_NOT_COMPLETE",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-concept-evidence-redundancy-concept-boundary",
+      "contentId": "staged-concept-evidence-redundancy",
+      "currentClaim": "在本题材料下，只有完成“按数据与误差独立性判断新增信息，而不是按结果数量”并核对“共享受试者、测量和模型假设均被显式标记”后，才能作出与“新证据若改变偏倚结构或可区分解释才是 corroboration；同一数据换图常只是冗余。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "PARTIAL",
+      "finalClassification": "WEAKLY_SUPPORTED",
+      "severity": "MAJOR",
+      "reason": "No targeted corroboration or dependent-evidence source was added; STROBE and DAG remain indirect.",
+      "previousSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-strobe",
+        "src-dag"
+      ],
+      "sourceChanged": false,
+      "sourceMappingVerdict": "UNCHANGED_INDIRECT",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "NOT_ACTIVATABLE"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-method-linear-regression-method-core",
+      "contentId": "staged-method-linear-regression",
+      "currentClaim": "通过线性预测子估计其他变量给定时的均值差异或斜率。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-correlation-regression",
+        "src-dag"
+      ],
+      "currentSourceIds": [
+        "src-regression-strategies",
+        "src-dag"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-method-kaplan-logrank-method-core",
+      "contentId": "staged-method-kaplan-logrank",
+      "currentClaim": "KM 乘积估计条件生存，log-rank 比较事件时刻的观察与期望。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "WEAKLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-km-tutorial",
+        "src-survival-censoring",
+        "src-competing"
+      ],
+      "currentSourceIds": [
+        "src-km-tutorial",
+        "src-logrank",
+        "src-survival-censoring",
+        "src-competing"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    },
+    {
+      "itemType": "claim",
+      "claimId": "claim-staged-method-restricted-cubic-spline-method-core",
+      "contentId": "staged-method-restricted-cubic-spline",
+      "currentClaim": "用分段立方基函数表示曲线，并在线性尾部约束以减少极端不稳定。",
+      "baselineResolution": "PARTIAL",
+      "baselineClassification": "DIRECTLY_SUPPORTED",
+      "finalResolution": "RESOLVED",
+      "finalClassification": "DIRECTLY_SUPPORTED",
+      "severity": "NONE",
+      "reason": "The exact-title mapping now points to a source whose recorded core evidence directly supports the central method or definition, and unrelated fallback sources were removed.",
+      "previousSourceIds": [
+        "src-rcs",
+        "src-tripod"
+      ],
+      "currentSourceIds": [
+        "src-rcs",
+        "src-regression-strategies"
+      ],
+      "sourceChanged": true,
+      "sourceMappingVerdict": "CORRECTED",
+      "metadataVerdict": "PASS",
+      "deterministicIdentifierFlag": true,
+      "deterministicMetadataFlag": true,
+      "supportMode": "curriculum_synthesis",
+      "supportStatus": "claim_level_review_pending",
+      "activationVerdict": "EVIDENCE_READY_BUT_PENDING_REVIEW"
+    }
+  ]
+}
+

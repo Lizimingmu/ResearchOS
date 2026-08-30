@@ -2,15 +2,16 @@
 
 ACCEPT
 
-M018.1 End-to-End Learning Wiring passes background review.
+Scope: **pending candidate branch only; this is not curriculum activation approval.**
 
-- Confounding and Cox now enter the real standardized competence pipeline through locked, confidence-bearing, versioned and role-distinct Apply/review assets. Learn/Explain and transfer remain non-competence evidence.
-- Schema 7→8 persists M018 content progress additively with no inferred learning. Restart, future-schema refusal and legacy compatibility have regression coverage.
-- Today, Learn, Guide and Progress share the canonical registry. Foundation/Project Overlay, hard prerequisites, project-consent isolation, due review and the two-thread ceiling are covered by deterministic tests.
-- Case reasoning, expert calibration and learner update are preserved separately; canonical artifact creation prevents repeated counting from one Case or Project Studio record.
-- Paper fields use capability-specific evidence, and unavailable capabilities remain locked.
-- Background gates: lint/typecheck, tests 155/155, localization 11, startup smoke, Learning Kernel 16/16, M018 registry audit, M015 32/32, source-pack 0/0, Problem Atlas 0/0, content 0 errors / 1 pre-existing warning and performance PASS.
-- Rust is BLOCKED before compilation because the offline cache lacks `urlencoding`; no Rust source changed.
-- Foreground UI, user-manual, keyboard/screen-reader, high-DPI, installer, packaged restart and real Vault are **NOT RUN** and are not accepted by this review.
+M019 is accepted as a reviewable ResearchOS candidate snapshot, not as a fully activated curriculum.
 
-Next action: real-user foreground trial of the four bounded prototypes before any curriculum expansion, architecture refactor or packaging.
+- Software/state gates pass: 178/178 tests, registry 297/9, Learning Kernel 16/16, M015 32/32, localization 11/11 and startup smoke.
+- Curriculum gates pass structurally: 288 Guide / 40 Concept / 21 Method / 12 Case / 13 Studio; 374/374 generated items remain pending and zero are active/verified.
+- Scientific packet passes completeness/routing: 361 claims, 78 referenced sources, 248 high-risk claims, no missing source IDs.
+- Independent evidence review closed all deterministic source mismatches in its final delta; 33 previously reviewed claims remain partial and require claim-level human judgment.
+- Independent pedagogy review confirms semantic stimulus schemas and closes automatic false-completion via fail-closed `review_required`; it retains full-library stimulus sufficiency and distractor/natural-language validity as human activation gates.
+- Review artifacts are bound to exact snapshot, claims and source-registry hashes; a stale mixture is not accepted.
+- Foreground UI, high-DPI and screen-reader trials are not accepted because local preview permission is blocked. Tauri packaging is not accepted because MSVC `link.exe` is absent.
+
+Final disposition: keep all M019 candidates `pending_review`, publish the branch for external inspection, and proceed only to a four-prototype/verified-flow human trial followed by selective incremental approval. No bulk activation and no further architecture refactor.

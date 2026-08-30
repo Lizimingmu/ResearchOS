@@ -49,7 +49,7 @@ export const curriculumManifest: CurriculumManifestItemV1[] = selfRescueGuideSec
     capabilityIds: capabilitiesByModule[section.chapterId] ?? ["result_interpretation"],
     prerequisiteIds: concept?.prerequisiteIds ?? method?.prerequisiteIds ?? (index > 0 && selfRescueGuideSections[index - 1].chapterId === section.chapterId ? [`curriculum-${selfRescueGuideSections[index - 1].id}`] : []),
     recommendedContentTypes: types,
-    estimatedMinutes: types.includes("method_lesson") ? 10 : types.includes("concept_lesson") ? 9 : types.includes("case_lab") ? 12 : 5,
+    estimatedMinutes: method?.estimatedMinutes ?? concept?.estimatedMinutes ?? (types.includes("case_lab") ? 12 : 5),
     threadEligibility: moduleIndex <= 5 ? ["foundation", "project_overlay"] : ["project_overlay", "foundation"],
     projectRelevanceTerms: [section.titleCn, section.titleEn, section.chapterId],
     scientificRisk: [2, 3, 6, 7, 10].includes(moduleIndex) ? "HIGH" : [1, 5, 8, 9].includes(moduleIndex) ? "MEDIUM" : "LOW",
@@ -63,6 +63,11 @@ export const curriculumManifest: CurriculumManifestItemV1[] = selfRescueGuideSec
 
 const claim = (contentId: string, claimCn: string, sourceIds: string[], suffix: string): CurriculumClaimV1 => ({
   id: `claim-${contentId}-${suffix}`, contentId, claimCn, sourceIds,
+  evidenceBoundaryCn: suffix === "case-calibration"
+    ? "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。"
+    : suffix === "method-core"
+      ? "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。"
+      : "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
   supportMode: "curriculum_synthesis",
   supportStatus: "claim_level_review_pending",
   identifierVerified: sourceIds.every((id) => Boolean(evidenceById[id]?.doi || evidenceById[id]?.pmid || evidenceById[id]?.url)),

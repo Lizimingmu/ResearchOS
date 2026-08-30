@@ -19,6 +19,21 @@ const caseSeeds: CaseSeed[] = [
   { slug: "ai-plan-audit", titleCn: "审查 AI 生成的生存分析计划", titleEn: "Auditing an AI-Generated Survival Plan", theme: "AI analysis-plan audit", initial: "AI 建议按最优 cut-point 二分所有 biomarker，再用 stepwise Cox 选择显著变量。", result: "计划未定义 time origin、事件、删失、事件数或验证数据。", conflict: "代码可运行并会自动输出 KM、HR、P value 和漂亮森林图；学习者必须在任何校准文本出现前提交自己的修订计划。", validation: "按学习者冻结的计划重跑后，数据驱动 cut-point 不稳定且 PH 违反；任务是更新计划并说明拒绝哪些 AI 建议，而不是照抄一份标准答案。", prerequisites: ["staged-concept-ai-cognitive-outsourcing", "staged-concept-time-origin", "staged-concept-overfitting"], sources: ["src-nist-genai-profile", "src-cox", "src-tripod-ai"] },
 ];
 
+const caseFinalTasks: Record<string, string[]> = {
+  "topic-to-question": ["提交 v0 与 v3 的 PICO/estimand 差异", "标出因选择机制而收窄的目标总体", "保留一个现有样本可回答的主要问题和一个敏感性分析"],
+  "evidence-to-claim": ["提交证据层级与共享样本依赖图", "逐词收窄驱动/来源/机制措辞", "选择一项能区分产生与积累的验证"],
+  "confounding-observational": ["声明总效应或直接效应", "提交基线共同原因与治疗后变量的时间化 DAG", "写出负对照后仍可辩护的最大结论"],
+  "statistical-unit": ["报告供体级独立 n、效应与 CI", "说明逐细胞结果为何伪精确", "给出保留供体层级的下一项分析"],
+  "overfitting-validation": ["提交开发与独立验证性能差异", "定位泄漏发生的流程节点", "按 AUC 与校准区间重写模型主张"],
+  "negative-result": ["用效应、CI 与临床界值解释主要结果", "撤回‘无差异’或事后主要终点措辞", "说明失访如何改变可信度"],
+  "omics-subtype-mechanism": ["报告 rank/初始化下的稳定与不稳定簇", "把不可冻结类别改写为连续 program", "定义新样本分配和独立复现门槛"],
+  "bulk-single-cell-discordance": ["列出组成、状态、测量区域三种兼容解释", "标出每个模态的样本独立性", "选择区分产生与沉积的空间/功能证据"],
+  "composition-state": ["分别报告供体级比例与类内效应/CI", "展示注释与捕获敏感性如何改变判断", "禁止用未显著结果宣称等效"],
+  "main-figure-chain": ["提交四个 panel 的证据任务", "删除共享数据造成的冗余图", "说明独立校准图替换的 panel 与理由"],
+  "alternative-next-step": ["按成本×区分力冻结选择", "根据中心差异撤回或保留原判断", "给出下一项最小充分检查及停止规则"],
+  "ai-plan-audit": ["列出拒绝的 AI 建议及理由", "冻结 time zero、事件、复杂度与验证计划", "按 cut-point/PH 结果追加更新而不覆盖原方案"],
+};
+
 export const stagedCaseLabs: StagedCaseLabV1[] = caseSeeds.map((seed) => ({
   schemaVersion: 1, id: `staged-case-${seed.slug}`, titleCn: seed.titleCn, titleEn: seed.titleEn, theme: seed.theme,
   capabilityIds: seed.slug === "ai-plan-audit" ? ["ai_oversight", "statistical_reasoning", "result_interpretation"] : ["scientific_question", "result_interpretation", "next_step_design"],
@@ -29,7 +44,7 @@ export const stagedCaseLabs: StagedCaseLabV1[] = caseSeeds.map((seed) => ({
     { id: "conflict", titleCn: "Stage 2 · 冲突或替代解释", evidenceCn: seed.conflict, reasoningPromptCn: "复制 v1 为 v2：至少两个模型如何分别预测这条冲突证据？哪一个模型因此升降级？", calibrationCn: seed.slug === "confounding-observational" ? "本案必须先声明目标是总效应还是直接效应。估计治疗总效应时，治疗后的炎症可能是中介，不能与基线严重度一样机械调整；若目标改为直接效应，则必须另行说明识别假设并处理治疗后混杂。" : `必须正面处理这条冲突：${seed.conflict}。不能把不一致平均掉或只写“仍有限制”。`, updatePromptCn: "保存 v2；指出至少一项被撤回的旧判断与一项新增的区分预测。" },
     { id: "validation", titleCn: "Stage 3 · 验证与更新", evidenceCn: seed.validation, reasoningPromptCn: "在看到校准前冻结 v3：当前最大可辩护结论、停止/升级条件和下一项最小充分工作是什么？", calibrationCn: `本案最终证据是：${seed.validation}。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。`, updatePromptCn: "保存 v3 与 v2 的 diff；逐字标出变化的主张、解释权重和下一步。" },
   ],
-  finalTaskCn: ["v0→v1→v2→v3 版本化答案与逐阶段 diff", "当前解释与至少一个竞争解释的相对支持", "每次变化对应的触发证据", "最强证据与最弱证据", "最大可辩护结论", "下一项最小充分分析或验证", "停止、升级或改变判断的预设条件"],
+  finalTaskCn: caseFinalTasks[seed.slug],
   sourceIds: seed.sources, contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
 }));
 

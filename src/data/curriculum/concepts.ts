@@ -79,7 +79,7 @@ const prerequisiteMap: Record<string, string[]> = {
   "hazard-ratio": ["staged-concept-effect-size", "staged-concept-time-origin", "staged-concept-censoring"],
   "time-origin": ["staged-concept-statistical-unit"],
   "composition-state": ["staged-concept-bulk-mixture"],
-  "cluster-stability": ["staged-concept-overfitting"],
+  "cluster-stability": ["staged-method-clustering", "staged-concept-overfitting"],
   pseudobulk: ["staged-concept-statistical-unit", "staged-concept-pseudoreplication", "staged-concept-composition-state", "staged-concept-multiple-testing-fdr"],
   "cross-modal-validation": ["staged-concept-evidence-claim", "staged-concept-bulk-mixture", "staged-concept-composition-state", "staged-concept-rna-protein", "staged-concept-validation"],
   "alternative-explanation": ["staged-concept-evidence-claim", "staged-concept-association-causation"],
@@ -150,7 +150,7 @@ const conceptCases: Record<string, ConceptCaseBlueprint> = {
   "internal-external-validity": { worked: "一项随机试验样本内偏倚低但仅纳入年轻低风险患者；分开回答样本内估计可信度与能否运输到高龄目标总体。", remediation: "把混杂、失访、窄纳入和测量变化四种威胁归类到内部、外部、两者或均非。", review: "在单中心诊断模型迁移到基层前，区分验证失败与 case mix 变化。", decision: "分别审查样本内识别和向目标总体运输，而不是给单一‘有效’标签", keyCheck: "目标总体、选择机制和测量/治疗环境差异均被显式比较", nearMiss: "内部随机化良好就自动宣称结论适用于所有临床场景" },
   "effect-size": { worked: "死亡风险 20% vs 15%：风险差 -5 个百分点、风险比 0.75；与最小临床重要差异 3 个百分点一起解释。", remediation: "从 2×2 风险表短算绝对与相对效应并比较语言印象。", review: "诊断干预把误诊率从 4% 降至 3%，选择与决策问题匹配的尺度。", decision: "计算并报告与问题匹配的绝对/相对效应及单位", keyCheck: "效应与临床重要界值、基线风险和 CI 一起解释", nearMiss: "只选相对变化更大的尺度来强化结果" },
   "standard-error": { worked: "6 位患者的均值重复抽样分布说明 SD 描述个体变异、SE 描述估计不确定性；按细胞与按供体计算得到不同 SE。", remediation: "在两份输出中找出哪个把细胞行数误作独立 n，并重算聚类层。", review: "每只动物多个时间点的均值差应使用何种相关结构与 SE？", decision: "依据抽样单位和相关结构选择标准误计算", keyCheck: "能清楚区分 SD、SE 和生物学变异层级", nearMiss: "样本内观测越多就按平方根行数缩小患者级 SE" },
-  "confidence-interval": { worked: "效应 2.0，95% CI -0.5–4.5，临床重要界值 3：数据兼容轻微伤害到重要获益，估计不精确，不能写‘无差异’。", remediation: "读取 20 次重复研究的区间图建立覆盖直觉，再回到单次区间。", review: "影像诊断敏感度差 5%，CI -2%–12%，判断统计兼容性、精度和临床结论。", decision: "用区间端点与临床界值写出兼容范围和精度", keyCheck: "没有把 95% CI 解释为参数有 95% 概率位于本区间", nearMiss: "区间跨零就断言两组等效或没有效应" },
+  "confidence-interval": { worked: "效应 2.0，95% CI -0.5–4.5，临床重要界值 3：数据兼容轻微伤害到重要获益，估计不精确，不能写‘无差异’。", remediation: "真实效应固定为 2.0；20 次重复研究的 95% CI 依次为 [-0.8,3.4]、[-0.2,4.0]、[0.1,3.8]、[-1.1,2.9]、[0.4,4.6]、[-0.5,3.6]、[0.0,4.1]、[0.7,4.8]、[-0.9,3.0]、[0.3,3.9]、[-0.4,4.2]、[0.2,4.5]、[-0.7,3.2]、[0.5,4.3]、[-0.1,3.7]、[0.6,4.9]、[-0.6,3.5]、[0.8,4.7]、[2.2,5.1]、[-1.0,1.8]；其中最后两条未覆盖 2.0。", review: "影像诊断敏感度差 5%，CI -2%–12%，判断统计兼容性、精度和临床结论。", decision: "用区间端点与临床界值写出兼容范围和精度", keyCheck: "没有把 95% CI 解释为参数有 95% 概率位于本区间", nearMiss: "区间跨零就断言两组等效或没有效应" },
   "p-value": { worked: "在预设零假设和模型下，观测到当前或更极端检验统计量的条件概率；它不是零假设为真的概率，也不表示效应大小。", remediation: "用硬币零分布把观测统计量放到尾部，并逐句改写四种错误表述。", review: "多中心诊断研究 P=0.03 但效应小且 CI 宽，判断能说什么。", decision: "只在明确 H0、检验统计量、模型和选择过程下解释 P 值", keyCheck: "区分 P(data or more extreme | H0, model) 与 P(H0 | data)", nearMiss: "P=0.03 就写研究假设有 97% 概率为真且可重复" },
   "multiple-testing-fdr": { worked: "1000 次检验得到 50 个 q<0.05 候选；FDR 控制的是重复选择中发现集合的错误比例期望，不证明每个基因有 95% 概率为真。", remediation: "用原始 P、BH q 和预定义检验族表决定候选集合。", review: "空间转录组多个区域×通路检验需先定义 family，再解释局部发现。", decision: "先定义检验族，再按预设 FDR 程序形成候选集合", keyCheck: "单个发现的真假概率没有从 q 值直接推出", nearMiss: "只对最终挑中的显著结果做 BH，忽略筛选前的全部检验" },
   power: { worked: "设计前用最小重要效应、SD、alpha、独立 n 和计划检验比较两个方案；结果后用效应与 CI 讨论信息量，不算 observed power。", remediation: "在效应×方差×样本量方向表中判断哪项改变事前功效。", review: "稀疏事件预测研究按事件率、参数数和目标收缩论证信息量。", decision: "用事前效应假设、alpha、设计、方差/事件率与分析规则规划样本量", keyCheck: "结果解释阶段没有用观察效应计算事后功效背书", nearMiss: "P>0.05 后计算低 observed power，并把它当作无效或需要更多样本的独立证据" },
@@ -179,23 +179,87 @@ const conceptCases: Record<string, ConceptCaseBlueprint> = {
 };
 
 function assessment(id: string, summary: string, role: StagedAssessmentAssetV1["role"], blueprint: ConceptCaseBlueprint): StagedAssessmentAssetV1 {
-  const scenario = role === "apply" ? blueprint.worked : role === "remediation" ? `上一题最常见错误是只凭术语语气作答。改用另一种表征：${blueprint.remediation}` : blueprint.review;
+  const scenario = role === "apply" ? blueprint.review : role === "remediation" ? `改用另一种表征：${blueprint.remediation}` : `跨场景复核：研究团队准备“${blueprint.nearMiss}”。当前材料要求独立判断该行动缺少什么，并提出会改变决定的结果。`;
   const roleAction = role === "apply" ? blueprint.decision : role === "remediation" ? `先从新表征重建信息，再执行：${blueprint.decision}` : `在未提示原术语的跨情境中独立执行：${blueprint.decision}`;
+  const roleIndex = role === "apply" ? 0 : role === "remediation" ? 1 : 2;
+  const lessonVariant = [...id].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 3;
+  const variant = (lessonVariant + roleIndex) % 3;
+  const stimulusFormats = ["case_table", "evidence_matrix", "decision_timeline"] as const;
+  const stimulusFormat = stimulusFormats[(lessonVariant + roleIndex) % 3];
+  const valid = [
+    { id: `${id}-${role}-decision`, labelCn: roleAction },
+    { id: `${id}-${role}-check`, labelCn: `必须核对：${blueprint.keyCheck}` },
+    { id: `${id}-${role}-boundary`, labelCn: `把结论限制为：${summary}；同时保留尚未被题面区分的解释` },
+    { id: `${id}-${role}-change`, labelCn: `预先写出一项会推翻“${summary}”这一当前边界的具体结果，并说明出现后如何更新` },
+  ];
+  const invalid = [
+    { id: `${id}-${role}-near-miss`, labelCn: blueprint.nearMiss },
+    { id: `${id}-${role}-partial`, labelCn: `只记录“${blueprint.keyCheck}”，但不据此修改分析决定或主张` },
+    { id: `${id}-${role}-premature`, labelCn: `在完成“${blueprint.decision}”前，先把结果写成稳定、可推广的结论，再把独立验证留给后续研究` },
+  ];
+  const correctCount = variant === 0 ? 3 : variant === 1 ? 4 : 2;
+  const options = [...valid.slice(0, correctCount), ...invalid];
+  const expectedOptionIds = valid.slice(0, correctCount).map((option) => option.id);
+  const roleLabel = role === "apply" ? "首次应用" : role === "remediation" ? "纠错迁移" : "延迟复习";
+  const material = role === "apply"
+    ? { observation: scenario, proposed: blueprint.nearMiss, check: blueprint.keyCheck, boundary: summary }
+    : role === "remediation"
+      ? { observation: blueprint.remediation, proposed: blueprint.nearMiss, check: blueprint.keyCheck, boundary: `纠错后只能主张：${summary}` }
+      : { observation: `跨场景记录：${scenario}`, proposed: blueprint.nearMiss, check: blueprint.keyCheck, boundary: `延迟复核边界：${summary}` };
+  const stimulus = stimulusFormat === "decision_timeline" ? {
+    format: stimulusFormat,
+    columnsCn: ["时点", "当时新增证据", "冻结的决定或更新"],
+    rowsCn: [["T0", material.observation, "先记录初始判断，不回写"], ["T1", material.proposed, "团队提出当前行动"], ["T2", material.check, "新证据到达后检查前提"], ["T3", material.boundary, "前提失败则收窄、撤回或修改决定"]],
+    noteCn: "T0–T3 按证据到达顺序冻结；作答必须说明 T2 如何使 T1 的决定在 T3 更新。",
+  } : stimulusFormat === "case_table" ? {
+    format: stimulusFormat,
+    columnsCn: ["病例/样本记录", "可比较观察", "当前处理状态"],
+    rowsCn: [["C1", material.observation, "目标场景"], ["C2", material.proposed, "待比较的近似行动"], ["C3", material.check, "合格行动必须满足"], ["C4", material.boundary, "允许报告的最大范围"]],
+    noteCn: "C1–C4 是同一决策中可逐行比较的记录；未列出的独立样本、精度或因果条件视为未提供。",
+  } : {
+    format: stimulusFormat,
+    columnsCn: ["证据ID", "证据事实", "支持/反驳对象", "对结论的约束"],
+    rowsCn: [["E1", material.observation, "当前问题", "建立待判断事实"], ["E2", material.proposed, "近似行动", "不能自动视为充分"], ["E3", material.check, "核心判别点", "未满足时必须改动决定"], ["E4", material.boundary, "最大主张", "超出范围即证据不足"]],
+    noteCn: "E1–E4 明确证据×行动/主张关系；作答必须引用对应格，不能只复述选项。",
+  };
+  const evidenceRowIndexByOptionSuffix: Record<string, number> = { decision: 0, check: 2, boundary: 1, change: 3 };
+  const reasoningMarkersByOptionSuffix: Record<string, string[]> = {
+    decision: ["因此", "所以", "需要"], check: ["若", "否则", "不满足"], boundary: ["只能", "限于", "不足"], change: ["若", "一旦", "更新"],
+  };
+  const factFragment = (row: string[]) => row.slice(1).join("").replace(/[\s，。；：、“”‘’（）()\-—]/g, "").slice(0, 8);
+  const evidenceExpectations = expectedOptionIds.map((optionId) => {
+    const suffix = optionId.split("-").at(-1) ?? "decision";
+    const row = stimulus.rowsCn[evidenceRowIndexByOptionSuffix[suffix] ?? 0];
+    return { optionId, allowedRowIds: [row[0]], requiredFactFragmentsCn: [factFragment(row)], reasoningMarkersCn: reasoningMarkersByOptionSuffix[suffix] ?? ["因此"] };
+  });
+  const optionFeedbackCn = Object.fromEntries(options.map((option) => {
+    if (option.id.endsWith("-decision")) return [option.id, `正确机制：把题面决定落实为“${blueprint.decision}”。作答必须引用 ${stimulus.rowsCn[0][0]} 的新场景事实。`];
+    if (option.id.endsWith("-check")) return [option.id, `正确机制：直接核对“${blueprint.keyCheck}”；若不满足，应收窄或撤回当前决定。`];
+    if (option.id.endsWith("-boundary")) return [option.id, `正确机制：材料只支持“${summary}”这一边界，未给出的独立性、精度或因果条件不能补写。`];
+    if (option.id.endsWith("-change")) return [option.id, `正确机制：预先写出会推翻“${summary}”的结果，能防止看到结果后只保留有利解释。`];
+    if (option.id.endsWith("-near-miss")) return [option.id, `错误机制：把“${blueprint.nearMiss}”当成充分行动，遗漏了题面要求的“${blueprint.keyCheck}”。修正为：${blueprint.decision}。`];
+    if (option.id.endsWith("-partial")) return [option.id, `错误机制：只记录“${blueprint.keyCheck}”却不改变决定，形成无行动的清单。必须据此执行“${blueprint.decision}”。`];
+    return [option.id, `错误机制：把方向一致提前升级为稳定可推广结论；${stimulus.rowsCn.at(-1)?.[0]} 明确限制为“${summary}”，应先保留未区分解释。`];
+  }));
   return {
     id: `${id}-${role}-v1`, role,
     scenarioCn: scenario,
-    promptCn: "不按术语语气猜答案。选择全部必须执行的判断，用题面中的数字、时间、层级或设计说明依据，并写出什么新证据会改变决定。",
-    options: [
-      { id: `${id}-${role}-decision`, labelCn: roleAction },
-      { id: `${id}-${role}-check`, labelCn: `必须核对：${blueprint.keyCheck}` },
-      { id: `${id}-${role}-boundary`, labelCn: `把结论限制为：${summary}；同时保留尚未被题面区分的解释` },
-      { id: `${id}-${role}-near-miss`, labelCn: blueprint.nearMiss },
-      { id: `${id}-${role}-partial`, labelCn: `只完成“${blueprint.keyCheck}”的记录，但不据此修改分析决定或主张` },
-      { id: `${id}-${role}-premature`, labelCn: "主要结果方向一致时先写成稳定、可推广的结论，再把独立验证留给后续研究" },
-    ],
-    expectedOptionIds: [`${id}-${role}-decision`, `${id}-${role}-check`, `${id}-${role}-boundary`],
+    promptCn: `这是${roleLabel}材料。正确项数量不固定：选择题面下的最小充分行动集，并为每个所选正确决定引用表中不同材料行、写出事实与决定的关系。`,
+    options,
+    expectedOptionIds,
+    stimulus,
     reasoningCriteriaCn: [blueprint.decision, blueprint.keyCheck, "指出 near-miss 为什么在本题中只完成了部分工作", "写出会改变决定的具体结果"],
-    feedbackCn: [`本题需要的决定是：${blueprint.decision}。`, `关键判别点：${blueprint.keyCheck}。`, `半正确但不足的做法：${blueprint.nearMiss}。`],
+    feedbackCn: [`${roleLabel}的目标决定：${blueprint.decision}。`, `${roleLabel}的关键判别点：${blueprint.keyCheck}。`, `${roleLabel}中最危险的半正确路径：${blueprint.nearMiss}。`],
+    optionFeedbackCn,
+    scoringRule: {
+      minimumEvidenceUnits: expectedOptionIds.length,
+      criticalErrorOptionIds: invalid.filter((option) => option.id.endsWith("near-miss") || option.id.endsWith("premature")).map((option) => option.id),
+      evidenceExpectations,
+      partialCreditCn: `若已选择“${blueprint.decision}”但未为每个正确决定提供一条匹配材料行的证据，只记部分完成；不得形成标准化能力证据。`,
+      stopRuleCn: `若选择“${blueprint.nearMiss}”或提前升级主张，立即锁定失败并路由到 ${role === "apply" ? "remediation" : "同构念新材料"}。`,
+      changeMindCriteriaCn: [blueprint.keyCheck, blueprint.decision],
+      changeMindActionMarkersCn: ["撤回", "收窄", "修改", "停止", "改为", "重新", "更新"],
+    },
     maximumConclusionCn: `在本题材料下，只有完成“${blueprint.decision}”并核对“${blueprint.keyCheck}”后，才能作出与“${summary}”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。`,
     hints: [], confidenceRequired: true, responseLocked: true,
   };
@@ -218,7 +282,7 @@ export const stagedConceptLessons: StagedConceptLessonV1[] = conceptRows.map((ro
     primaryApply: assessment(id, summary, "apply", blueprint),
     remediation: assessment(id, summary, "remediation", blueprint),
     delayedReview: assessment(id, summary, "review", blueprint),
-    sourceIds: section.evidenceSourceIds, estimatedMinutes: 8 + (index % 3),
+    sourceIds: section.evidenceSourceIds, estimatedMinutes: 14 + (index % 4) * 2,
     contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
   };
 });

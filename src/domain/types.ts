@@ -38,7 +38,7 @@ export interface EvidenceSource {
   sourceName: string;
   year?: number;
   tier: EvidenceTier;
-  sourceType: "primary_research" | "guideline" | "methods" | "exemplary_paper" | "official_documentation";
+  sourceType: "primary_research" | "guideline" | "methods" | "methods_review" | "exemplary_paper" | "official_documentation";
   doi?: string;
   pmid?: string;
   url?: string;

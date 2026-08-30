@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T16:21:38.790Z",
+  "generatedAt": "2026-08-30T20:07:58.317Z",
   "passed": true,
   "errors": [],
   "warnings": [
@@ -9,7 +9,7 @@
     {
       "name": "Evidence sources count",
       "passed": true,
-      "detail": "49 present; minimum 40"
+      "detail": "85 present; minimum 40"
     },
     {
       "name": "Evidence sources IDs unique",
@@ -98,7 +98,7 @@
     }
   ],
   "counts": {
-    "evidence": 49,
+    "evidence": 85,
     "methods": 88,
     "usableMethods": 84,
     "patterns": 25,
@@ -106,8 +106,8 @@
     "auditCases": 40
   },
   "provenance": {
-    "verifiedSeed": 133,
-    "verifiedExternal": 153,
+    "verifiedSeed": 134,
+    "verifiedExternal": 188,
     "aiGenerated": 0
   }
 }

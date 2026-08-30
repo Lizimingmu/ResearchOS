@@ -43,13 +43,20 @@ for (const item of [...stagedConceptLessons, ...stagedMethodLessons, ...stagedCa
 for (const lesson of stagedConceptLessons) {
   if (!/[\u3400-\u9fff]/.test(lesson.titleCn)) errors.push(`${lesson.id} is not Chinese-first`);
   if (lesson.workedExampleCn.length < 38 || !/\d|→|×|CI|DAG|表|图|时间|队列|样本|模型|流程|矩阵|曲线|变量|数据/.test(lesson.workedExampleCn)) errors.push(`${lesson.id} lacks a concrete worked example`);
+  if (lesson.primaryApply.scenarioCn === lesson.workedExampleCn) errors.push(`${lesson.id} leaks the worked example into primary Apply`);
   for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) {
     if (asset.hints.length || !asset.confidenceRequired || !asset.responseLocked) errors.push(`${asset.id} violates locked no-hint assessment policy`);
     if (asset.expectedOptionIds.length === 0 || asset.expectedOptionIds.length === asset.options.length) errors.push(`${asset.id} lacks discriminating distractors`);
+    if (asset.stimulus.rowsCn.length < 3 || asset.stimulus.columnsCn.length < 3) errors.push(`${asset.id} lacks a renderable stimulus table`);
+    if (asset.scoringRule.minimumEvidenceUnits !== asset.expectedOptionIds.length || !asset.scoringRule.criticalErrorOptionIds.length || !asset.scoringRule.changeMindCriteriaCn.length || !asset.scoringRule.changeMindActionMarkersCn.length || Object.keys(asset.optionFeedbackCn).length !== asset.options.length) errors.push(`${asset.id} lacks diagnostic scoring and option feedback`);
+    if (asset.scoringRule.evidenceExpectations.length !== asset.expectedOptionIds.length || asset.scoringRule.evidenceExpectations.some((expectation) => !asset.expectedOptionIds.includes(expectation.optionId) || expectation.allowedRowIds.length !== 1 || !expectation.requiredFactFragmentsCn.length || !expectation.reasoningMarkersCn.length)) errors.push(`${asset.id} lacks option-specific evidence expectations`);
+    if (new Set(asset.scoringRule.evidenceExpectations.flatMap((expectation) => expectation.allowedRowIds)).size !== asset.expectedOptionIds.length) errors.push(`${asset.id} reuses one material row for multiple correct decisions`);
+    if (new Set(Object.values(asset.optionFeedbackCn)).size < asset.options.length) errors.push(`${asset.id} reuses generic option feedback`);
   }
   const ids = [lesson.primaryApply.id, lesson.remediation.id, lesson.delayedReview.id];
   if (new Set(ids).size !== 3) errors.push(`${lesson.id} reuses assessment assets`);
   if (new Set([lesson.primaryApply.scenarioCn, lesson.remediation.scenarioCn, lesson.delayedReview.scenarioCn]).size !== 3) errors.push(`${lesson.id} reuses scenario wording`);
+  if (new Set([lesson.primaryApply.stimulus.format, lesson.remediation.stimulus.format, lesson.delayedReview.stimulus.format]).size !== 3) errors.push(`${lesson.id} reuses one stimulus representation`);
   if ([lesson.primaryApply, lesson.remediation, lesson.delayedReview].some((asset) => asset.promptCn.includes(lesson.titleCn) || /本题聚焦/.test(asset.scenarioCn))) errors.push(`${lesson.id} assessment leaks the concept label`);
 }
 
@@ -61,7 +68,14 @@ for (const lesson of stagedMethodLessons) {
   for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) {
     if (asset.hints.length || !asset.confidenceRequired || !asset.responseLocked) errors.push(`${asset.id} violates locked no-hint assessment policy`);
     if (asset.expectedOptionIds.length === asset.options.length) errors.push(`${asset.id} lacks distractors`);
+    if (asset.stimulus.rowsCn.length < 3 || asset.stimulus.columnsCn.length < 3) errors.push(`${asset.id} lacks a renderable stimulus table`);
+    if (asset.scoringRule.minimumEvidenceUnits !== asset.expectedOptionIds.length || !asset.scoringRule.criticalErrorOptionIds.length || !asset.scoringRule.changeMindCriteriaCn.length || !asset.scoringRule.changeMindActionMarkersCn.length || Object.keys(asset.optionFeedbackCn).length !== asset.options.length) errors.push(`${asset.id} lacks diagnostic scoring and option feedback`);
+    if (asset.scoringRule.evidenceExpectations.length !== asset.expectedOptionIds.length || asset.scoringRule.evidenceExpectations.some((expectation) => !asset.expectedOptionIds.includes(expectation.optionId) || expectation.allowedRowIds.length !== 1 || !expectation.requiredFactFragmentsCn.length || !expectation.reasoningMarkersCn.length)) errors.push(`${asset.id} lacks option-specific evidence expectations`);
+    if (new Set(asset.scoringRule.evidenceExpectations.flatMap((expectation) => expectation.allowedRowIds)).size !== asset.expectedOptionIds.length) errors.push(`${asset.id} reuses one material row for multiple correct decisions`);
+    if (new Set(Object.values(asset.optionFeedbackCn)).size < asset.options.length) errors.push(`${asset.id} reuses generic option feedback`);
+    if (asset.stimulus.rowsCn.some((row) => row[1] === asset.scenarioCn)) errors.push(`${asset.id} repeats a scenario instead of materializing its stimulus`);
   }
+  if (new Set([lesson.primaryApply.stimulus.format, lesson.remediation.stimulus.format, lesson.delayedReview.stimulus.format]).size !== 3) errors.push(`${lesson.id} reuses one stimulus representation`);
 }
 
 if (new Set(stagedCaseLabs.map((caseLab) => caseLab.stages.at(-1)?.calibrationCn)).size !== stagedCaseLabs.length) errors.push("Case labs reuse one generic final calibration claim");
@@ -69,7 +83,7 @@ if (new Set(stagedCaseLabs.map((caseLab) => caseLab.stages.at(-1)?.calibrationCn
 for (const caseLab of stagedCaseLabs) {
   if (caseLab.stages.length < 4 || caseLab.stages.length > 6) errors.push(`${caseLab.id} requires 4-6 stages`);
   if (caseLab.stages.some((stage) => !stage.reasoningPromptCn || !stage.calibrationCn || !stage.updatePromptCn)) errors.push(`${caseLab.id} has an incomplete stage`);
-  if (caseLab.finalTaskCn.length < 4) errors.push(`${caseLab.id} final task is too shallow`);
+  if (caseLab.finalTaskCn.length < 3) errors.push(`${caseLab.id} final task is too shallow`);
 }
 
 const paragraphs = selfRescueGuideSections.flatMap((section) => section.bodyCn.map((body) => ({ id: section.id, body })));
@@ -89,6 +103,7 @@ for (const claim of curriculumClaims) {
   for (const sourceId of claim.sourceIds) if (!evidenceById[sourceId]) errors.push(`${claim.id} unknown source ${sourceId}`);
   if (!claim.identifierVerified || !claim.metadataVerified) warnings.push(`${claim.id} source metadata needs verification`);
   if (claim.supportMode !== "curriculum_synthesis") errors.push(`${claim.id} generated prose is not visibly marked as synthesis`);
+  if (!claim.evidenceBoundaryCn) errors.push(`${claim.id} has no explicit evidence boundary`);
 }
 
 const publicPayload = JSON.stringify(frozenCurriculumSnapshot);

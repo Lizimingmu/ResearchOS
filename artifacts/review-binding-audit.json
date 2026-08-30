@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "deterministic",
+  "status": "PASS",
+  "expected": {
+    "snapshot_byte_sha256": "c94358e6b35335a0a70c84d81c5e7fb9798467d687c1ac4fc4a84811ae86d4d2",
+    "claims_sha256": "ebaa525d5855963a975767d98fb433e12dcc46e30d36fe36fcfbb12e3ff0554d",
+    "source_registry_sha256": "4b2206782876550e22a57c2305a77a15d0dd03f0af75e0230936f36c0bda4c0f"
+  },
+  "reviews": [
+    {
+      "file": "M019_SCIENTIFIC_REREVIEW_FINAL2.md",
+      "observed": {
+        "snapshot_byte_sha256": "c94358e6b35335a0a70c84d81c5e7fb9798467d687c1ac4fc4a84811ae86d4d2",
+        "claims_sha256": "ebaa525d5855963a975767d98fb433e12dcc46e30d36fe36fcfbb12e3ff0554d",
+        "source_registry_sha256": "4b2206782876550e22a57c2305a77a15d0dd03f0af75e0230936f36c0bda4c0f"
+      },
+      "bindingMatches": true
+    },
+    {
+      "file": "M019_EVIDENCE_REREVIEW_FINAL4.md",
+      "observed": {
+        "snapshot_byte_sha256": "c94358e6b35335a0a70c84d81c5e7fb9798467d687c1ac4fc4a84811ae86d4d2",
+        "claims_sha256": "ebaa525d5855963a975767d98fb433e12dcc46e30d36fe36fcfbb12e3ff0554d",
+        "source_registry_sha256": "4b2206782876550e22a57c2305a77a15d0dd03f0af75e0230936f36c0bda4c0f"
+      },
+      "bindingMatches": true
+    },
+    {
+      "file": "M019_PEDAGOGY_REREVIEW_FINAL5.md",
+      "observed": {
+        "snapshot_byte_sha256": "c94358e6b35335a0a70c84d81c5e7fb9798467d687c1ac4fc4a84811ae86d4d2",
+        "claims_sha256": "ebaa525d5855963a975767d98fb433e12dcc46e30d36fe36fcfbb12e3ff0554d",
+        "source_registry_sha256": "4b2206782876550e22a57c2305a77a15d0dd03f0af75e0230936f36c0bda4c0f"
+      },
+      "bindingMatches": true
+    },
+    {
+      "file": "M019_AUDIT_ROUND4_RECHECK.md",
+      "observed": {
+        "snapshot_byte_sha256": "c94358e6b35335a0a70c84d81c5e7fb9798467d687c1ac4fc4a84811ae86d4d2",
+        "claims_sha256": "ebaa525d5855963a975767d98fb433e12dcc46e30d36fe36fcfbb12e3ff0554d",
+        "source_registry_sha256": "4b2206782876550e22a57c2305a77a15d0dd03f0af75e0230936f36c0bda4c0f"
+      },
+      "bindingMatches": true
+    }
+  ],
+  "errors": []
+}

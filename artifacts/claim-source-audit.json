@@ -10,6 +10,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -20,9 +21,10 @@
       "contentId": "guide-v1-m01-t02",
       "claimCn": "Topic 是领域，Phenomenon 是观察，Problem 是知识或决策缺口，Question 才是可回答的约束表达。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -36,6 +38,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -46,9 +49,10 @@
       "contentId": "guide-v1-m01-t04",
       "claimCn": "问题必须对应可观察或可估计量，并预先说明哪些结果支持、削弱或无法区分解释。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -59,9 +63,9 @@
       "contentId": "guide-v1-m01-t05",
       "claimCn": "假设是对数据生成机制或可观察差异的可检验预期，不是希望结果成立的宣言。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -73,8 +77,9 @@
       "claimCn": "观察是记录，结果是分析输出，解释连接模型与机制，结论则受设计和不确定性共同约束。",
       "sourceIds": [
         "src-strobe",
-        "src-dag"
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -85,11 +90,10 @@
       "contentId": "guide-v1-m01-t07",
       "claimCn": "证据的层级、直接性和独立性共同限定主张；引用存在不等于主张被支持。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -100,9 +104,9 @@
       "contentId": "guide-v1-m01-t08",
       "claimCn": "关联描述共同变化；因果主张还要求时间顺序、可比性、结构假设与对偏倚的处理。",
       "sourceIds": [
-        "src-dag",
-        "src-strobe"
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -114,10 +118,9 @@
       "claimCn": "预测追求对新个体的表现，解释追问关系和机制；高预测性能不自动识别因果变量。",
       "sourceIds": [
         "src-tripod",
-        "src-probaST",
-        "src-strobe",
-        "src-dag"
+        "src-probaST"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -128,9 +131,10 @@
       "contentId": "guide-v1-m01-t10",
       "claimCn": "空白只有在对应重要决策、机制或可推广知识且能够被可靠回答时才具有研究价值。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-paper-reading",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -141,9 +145,10 @@
       "contentId": "guide-v1-m01-t11",
       "claimCn": "新颖性说明与既有工作不同，重要性说明会改变理解、决策或后续资源配置，两者不能互相替代。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-paper-structure",
+        "src-paper-reading"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -154,9 +159,10 @@
       "contentId": "guide-v1-m01-t12",
       "claimCn": "探索允许生成模式与假设；确证要求预先限定问题、分析与误差控制，二者的语言和证据门槛不同。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference",
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -170,6 +176,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -180,9 +187,9 @@
       "contentId": "guide-v1-m01-t14",
       "claimCn": "同时列出能解释同一观察的多个机制，优先设计能使它们产生不同预测的证据。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -193,9 +200,9 @@
       "contentId": "guide-v1-m01-t15",
       "claimCn": "替代解释不是 Discussion 的礼貌性清单，而是决定还需何种区分性证据的工作模型。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -206,9 +213,9 @@
       "contentId": "guide-v1-m01-t16",
       "claimCn": "在看结果前写出会提高、降低或不改变信念的证据，减少事后为任何结果编故事。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -219,9 +226,9 @@
       "contentId": "guide-v1-m01-t17",
       "claimCn": "下一步应瞄准当前证据链最薄弱、最能区分解释且可行动的缺口，而不是继续堆方法。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -232,9 +239,9 @@
       "contentId": "guide-v1-m01-t18",
       "claimCn": "当关键不确定性不能由现有数据解决、边际分析不再改变决策或验证需要新数据时，应停止并记录边界。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -245,10 +252,9 @@
       "contentId": "guide-v1-m02-t01",
       "claimCn": "数据表中每一条被记录的实体或时点；它可以是细胞、访问、样本或患者。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -259,10 +265,9 @@
       "contentId": "guide-v1-m02-t02",
       "claimCn": "能够被独立分配到干预条件的最小单位，决定随机化和实验误差应在哪一层解释。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -273,10 +278,9 @@
       "contentId": "guide-v1-m02-t03",
       "claimCn": "对目标推断贡献独立信息的层级，由问题与设计共同决定而不是由数据行数决定。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -287,10 +291,9 @@
       "contentId": "guide-v1-m02-t04",
       "claimCn": "代表目标生物总体中独立来源的重复，用于估计来源之间的真实变异。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -301,10 +304,9 @@
       "contentId": "guide-v1-m02-t05",
       "claimCn": "对同一生物材料重复测量，用于评估或降低测量误差，不能替代生物重复。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -315,10 +317,9 @@
       "contentId": "guide-v1-m02-t06",
       "claimCn": "把共享来源或处理的相关观测当作独立重复会夸大有效样本量并低估不确定性。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -333,6 +334,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -347,6 +349,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -361,6 +364,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -372,9 +376,9 @@
       "claimCn": "实际能够被抽取的名单或流程；覆盖不足会让某些目标总体成员没有进入样本的机会。",
       "sourceIds": [
         "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-selection-bias"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -385,10 +389,9 @@
       "contentId": "guide-v1-m02-t11",
       "claimCn": "研究中作为原因、条件或预测信息考察的变量，定义必须包含时间、剂量与测量窗口。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -403,6 +406,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -413,10 +417,10 @@
       "contentId": "guide-v1-m02-t13",
       "claimCn": "模型中的附加变量，其角色可能是混杂因素、精度变量、中介、碰撞点或预测因子。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-regression-strategies",
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -427,10 +431,10 @@
       "contentId": "guide-v1-m02-t14",
       "claimCn": "预测变量按新数据表现评价，解释变量按问题和结构解释；相同列在不同目标下承担不同责任。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-regression-strategies",
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -445,6 +449,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -459,6 +464,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -473,6 +479,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -487,6 +494,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -501,6 +509,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -511,11 +520,9 @@
       "contentId": "guide-v1-m02-t20",
       "claimCn": "暴露与结局共同原因造成目标关联混入非目标路径，处理依赖明确 estimand 和结构假设。",
       "sourceIds": [
-        "src-dag",
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -526,10 +533,9 @@
       "contentId": "guide-v1-m02-t21",
       "claimCn": "进入研究、留在随访或进入分析的机制可使目标对照不再可识别；当选择是暴露与结局或其原因的共同结果时，条件化还会开启 collider 路径。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-selection-bias"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -544,6 +550,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -554,10 +561,9 @@
       "contentId": "guide-v1-m02-t23",
       "claimCn": "暴露、结局或协变量的信息获取错误导致误分类或测量误差，方向不一定朝零。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-misclassification-direction"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -568,11 +574,9 @@
       "contentId": "guide-v1-m02-t24",
       "claimCn": "缺失机制、变量关系和分析模型共同决定完整病例或插补推断是否合理。",
       "sourceIds": [
-        "src-missing",
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-missing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -587,6 +591,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -601,6 +606,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -615,6 +621,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -625,11 +632,9 @@
       "contentId": "guide-v1-m02-t28",
       "claimCn": "在开发数据内部用重采样或分割估计乐观偏倚；不能模拟真正的新场景。",
       "sourceIds": [
-        "src-internal-validation",
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -642,9 +647,9 @@
       "sourceIds": [
         "src-tripod-ai",
         "src-probaST",
-        "src-pm-external",
-        "src-strobe"
+        "src-pm-external"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -659,6 +664,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -673,6 +679,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -684,10 +691,9 @@
       "claimCn": "同一受试者的另一模态可提供互补支持，却共享采样与队列，不能自动称为独立验证。",
       "sourceIds": [
         "src-mofa-plus",
-        "src-diablo",
-        "src-strobe",
-        "src-consort"
+        "src-diablo"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -698,10 +704,9 @@
       "contentId": "guide-v1-m03-t01",
       "claimCn": "变量的测量尺度和编码决定可进行的比较、距离与模型函数形式。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-nist-statistics-handbook"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -712,10 +717,9 @@
       "contentId": "guide-v1-m03-t02",
       "claimCn": "分布描述可能取值及其相对频率；中心、离散、偏态和尾部共同影响总结与模型。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-nist-statistics-handbook"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -726,10 +730,9 @@
       "contentId": "guide-v1-m03-t03",
       "claimCn": "均值利用全部数值但受极端值影响，中位数描述排序中心；选择应服务于问题和分布。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-nist-statistics-handbook"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -740,10 +743,10 @@
       "contentId": "guide-v1-m03-t04",
       "claimCn": "SD 描述观测值离散程度，不是均值估计的不确定性，也不随样本量按同一方式缩小。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-nist-statistics-handbook",
+        "src-standard-error"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -754,10 +757,10 @@
       "contentId": "guide-v1-m03-t05",
       "claimCn": "重复从同一总体抽样会得到不同估计；推断量化的是这种数据生成波动。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-nist-statistics-handbook",
+        "src-standard-error"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -768,10 +771,9 @@
       "contentId": "guide-v1-m03-t06",
       "claimCn": "标准误描述估计量的抽样变异，依赖独立单位、模型和样本信息量，而非个体差异大小。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-standard-error"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -786,6 +788,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -796,10 +799,10 @@
       "contentId": "guide-v1-m03-t08",
       "claimCn": "频率学区间的覆盖性质来自重复程序，不能解释为本次区间含真值的概率。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-confidence-interval",
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -810,10 +813,9 @@
       "contentId": "guide-v1-m03-t09",
       "claimCn": "在指定模型和零假设下，得到至少同样极端数据的概率；不是零假设为真的概率。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -828,6 +830,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -838,10 +841,9 @@
       "contentId": "guide-v1-m03-t11",
       "claimCn": "阈值判断不提供效应大小、临床价值、偏倚或可重复性。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -852,10 +854,9 @@
       "contentId": "guide-v1-m03-t12",
       "claimCn": "同时探索许多假设会增加偶然极端结果，分析族的定义与选择过程必须透明。",
       "sourceIds": [
-        "src-multiple-testing",
-        "src-asa-pvalue",
-        "src-strobe"
+        "src-multiple-testing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -866,10 +867,9 @@
       "contentId": "guide-v1-m03-t13",
       "claimCn": "FDR 控制被拒绝假设中错误发现的期望比例，不保证每个具体发现为真。",
       "sourceIds": [
-        "src-multiple-testing",
-        "src-asa-pvalue",
-        "src-strobe"
+        "src-multiple-testing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -880,10 +880,10 @@
       "contentId": "guide-v1-m03-t14",
       "claimCn": "两类错误针对预定义决策规则；其概率依赖真实效应、阈值和设计。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-nist-statistics-handbook",
+        "src-power"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -894,10 +894,9 @@
       "contentId": "guide-v1-m03-t15",
       "claimCn": "功效是在特定真实效应和设计下拒绝零假设的概率，不是已得显著结果为真的概率。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-power"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -908,10 +907,11 @@
       "contentId": "guide-v1-m03-t16",
       "claimCn": "样本量应由 estimand、预期信息量、变异、事件率、模型复杂度和失访共同论证。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-power",
+        "src-pmsampsize",
+        "src-pm-external"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -922,10 +922,10 @@
       "contentId": "guide-v1-m03-t17",
       "claimCn": "相关系数概括指定尺度上的共同变化，受范围、离群值、非线性和混合总体影响。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-correlation-regression",
+        "src-nist-statistics-handbook"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -936,10 +936,10 @@
       "contentId": "guide-v1-m03-t18",
       "claimCn": "条件均值模型用系数表达协变量变化与连续结局的调整后关联，解释依赖函数形式和残差。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-regression-strategies",
+        "src-correlation-regression"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -950,10 +950,9 @@
       "contentId": "guide-v1-m03-t19",
       "claimCn": "模型连接条件 log-odds 与协变量；odds ratio 不是常见结局下的 risk ratio。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-regression-strategies"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -964,10 +963,10 @@
       "contentId": "guide-v1-m03-t20",
       "claimCn": "调整集合由目标问题和因果/预测目的决定，加入更多变量不保证偏倚更小。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-regression-strategies",
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -978,10 +977,9 @@
       "contentId": "guide-v1-m03-t21",
       "claimCn": "交互表示一个变量的效应尺度随另一个变量改变；其含义依赖所选链接和尺度。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-interaction"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -992,10 +990,10 @@
       "contentId": "guide-v1-m03-t22",
       "claimCn": "连续变量与结局的关系未必是直线；强制线性或随意分组都可能掩盖形状。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-regression-strategies",
+        "src-rcs"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1006,11 +1004,9 @@
       "contentId": "guide-v1-m03-t23",
       "claimCn": "限制性立方样条用若干基函数表示平滑非线性，尾部受数据支持和结点选择约束。",
       "sourceIds": [
-        "src-rcs",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-rcs"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1025,6 +1021,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1035,10 +1032,10 @@
       "contentId": "guide-v1-m03-t25",
       "claimCn": "诊断用于发现函数形式、异方差、影响点或相关结构问题，不是模型正确的证明。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-regression-strategies",
+        "src-nist-statistics-handbook"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1049,11 +1046,9 @@
       "contentId": "guide-v1-m03-t26",
       "claimCn": "模型学习了开发数据中的偶然波动，在新数据上表现下降；复杂度与信息量失衡是核心风险。",
       "sourceIds": [
-        "src-internal-validation",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1064,11 +1059,9 @@
       "contentId": "guide-v1-m03-t27",
       "claimCn": "训练或选择过程使用了预测时不可获得的信息，使内部表现带入未来或测试信息。",
       "sourceIds": [
-        "src-leakage",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-leakage"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1079,10 +1072,10 @@
       "contentId": "guide-v1-m03-t28",
       "claimCn": "按完整建模流程重复划分评估泛化误差；预处理和特征选择也必须留在训练折内。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-internal-validation",
+        "src-leakage"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1093,11 +1086,9 @@
       "contentId": "guide-v1-m03-t29",
       "claimCn": "从经验分布有放回重采样评估估计稳定性或内部乐观偏倚，但不能创造外部人群差异。",
       "sourceIds": [
-        "src-internal-validation",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1108,11 +1099,9 @@
       "contentId": "guide-v1-m03-t30",
       "claimCn": "预测概率与实际风险在相应范围内是否一致；校准需要截距、斜率和曲线而非单一检验。",
       "sourceIds": [
-        "src-calibration",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-calibration"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1123,11 +1112,9 @@
       "contentId": "guide-v1-m03-t31",
       "claimCn": "区分更早发生事件或有无结局个体的排序能力，不说明概率是否准确。",
       "sourceIds": [
-        "src-roc",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-roc"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1138,11 +1125,9 @@
       "contentId": "guide-v1-m03-t32",
       "claimCn": "可比较个体对中风险排序与结局顺序一致的比例，受删失处理和时间框架影响。",
       "sourceIds": [
-        "src-harrell-c",
-        "src-mofa-plus",
-        "src-diablo",
-        "src-asa-pvalue"
+        "src-harrell-c"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1153,11 +1138,9 @@
       "contentId": "guide-v1-m03-t33",
       "claimCn": "AUC 概括不同阈值下灵敏度与特异度的排序表现，不直接给临床净获益。",
       "sourceIds": [
-        "src-roc",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-roc"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1169,10 +1152,9 @@
       "claimCn": "在指定预测时间和删失处理下评价动态病例/对照区分，定义必须与问题一致。",
       "sourceIds": [
         "src-roc",
-        "src-time-auc",
-        "src-asa-pvalue",
-        "src-multiple-testing"
+        "src-time-auc"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1183,11 +1165,11 @@
       "contentId": "guide-v1-m03-t35",
       "claimCn": "同时包含事件是否发生和从明确起点到事件或删失的时间。",
       "sourceIds": [
-        "src-cox",
         "src-asa-pvalue",
         "src-multiple-testing",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1198,11 +1180,10 @@
       "contentId": "guide-v1-m03-t36",
       "claimCn": "事件时间仅部分已知：可为右删失、左删失或区间删失；方法需匹配类型并说明条件独立删失假设，且与竞争事件、左截断区分。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-survival-censoring",
+        "src-km-tutorial"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1213,11 +1194,10 @@
       "contentId": "guide-v1-m03-t37",
       "claimCn": "用风险集和条件生存概率乘积估计生存曲线；竞争事件下不能直接当目标事件风险。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-km-tutorial",
+        "src-survival-censoring"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1228,11 +1208,10 @@
       "contentId": "guide-v1-m03-t38",
       "claimCn": "比较组间整个随访的观察与期望事件，主要检验曲线差异而不量化绝对效应。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-logrank",
+        "src-survival-censoring"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1243,11 +1222,9 @@
       "contentId": "guide-v1-m03-t39",
       "claimCn": "半参数模型比较风险集中个体的相对瞬时 hazard，基线 hazard 不作参数化。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-cox"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1258,11 +1235,9 @@
       "contentId": "guide-v1-m03-t40",
       "claimCn": "HR 是条件瞬时事件率之比，不是固定时点风险比、概率比或寿命倍数。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-cox"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1273,11 +1248,9 @@
       "contentId": "guide-v1-m03-t41",
       "claimCn": "每个以固定系数进入 Cox 模型的协变量，其 log-HR 假定不随分析时间变化；需检查变量特异与全局 PH，违反时建模时间变化或分层。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-cox"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1288,10 +1261,9 @@
       "contentId": "guide-v1-m03-t42",
       "claimCn": "所有个体进入风险过程的零点必须与资格、暴露分配和随访一致。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-target-trial"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1302,11 +1274,9 @@
       "contentId": "guide-v1-m03-t43",
       "claimCn": "暴露在随访后确定时，必须避免把事件不可能发生的等待时间错误归入暴露组。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-target-trial"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1317,11 +1287,9 @@
       "contentId": "guide-v1-m03-t44",
       "claimCn": "另一事件会阻止目标事件发生时，cause-specific hazard 与累积发生风险回答不同问题。",
       "sourceIds": [
-        "src-competing",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-competing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1332,10 +1300,10 @@
       "contentId": "guide-v1-m03-t45",
       "claimCn": "多变量模型需预先定义目标、编码、时间依赖、缺失处理与验证，不能靠 stepwise 自动获得独立效应。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-regression-strategies",
+        "src-cox"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1346,11 +1314,9 @@
       "contentId": "guide-v1-m03-t46",
       "claimCn": "事件提供主要信息，但简单固定阈值不能替代基于收缩、预期性能和参数数的样本量论证。",
       "sourceIds": [
-        "src-pmsampsize",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-pmsampsize"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1361,11 +1327,9 @@
       "contentId": "guide-v1-m03-t47",
       "claimCn": "相对 hazard 描述风险集中的比率，临床决策常需要指定时间点的绝对风险和基线风险。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-cox"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1379,6 +1343,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1389,9 +1354,9 @@
       "contentId": "guide-v1-m04-t02",
       "claimCn": "宽表把重复变量展开成列，长表把重复测量放进行；选择影响连接、建模和可视化。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-tidy-data"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1402,9 +1367,10 @@
       "contentId": "guide-v1-m04-t03",
       "claimCn": "类别参照、缺失码、单位和日期编码都会改变模型矩阵与系数含义。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-tidy-data",
+        "src-good-enough-computing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1415,10 +1381,9 @@
       "contentId": "guide-v1-m04-t04",
       "claimCn": "NA、空字符串、零和检测下限不是同一状态，必须在数据字典中区分。",
       "sourceIds": [
-        "src-missing",
-        "src-fair",
-        "src-strobe"
+        "src-missing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1429,9 +1394,10 @@
       "contentId": "guide-v1-m04-t05",
       "claimCn": "重复可能来自真实重复测量、连接放大或导入错误，删除前必须确认实体与键。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-tidy-data",
+        "src-good-enough-computing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1442,9 +1408,10 @@
       "contentId": "guide-v1-m04-t06",
       "claimCn": "连接键应稳定、唯一并符合实体层级；多对多连接需要显式检查行数膨胀。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-tidy-data",
+        "src-good-enough-computing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1455,9 +1422,9 @@
       "contentId": "guide-v1-m04-t07",
       "claimCn": "这些操作分别改变行、列、分组上下文和聚合层级，顺序错误会改变 estimand。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-tidy-data"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1471,6 +1438,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1484,6 +1452,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1497,6 +1466,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1507,9 +1477,9 @@
       "contentId": "guide-v1-m04-t11",
       "claimCn": "把明确输入映射为输出的可复用单元，帮助隔离假设、测试边界并减少复制错误。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-good-enough-computing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1520,9 +1490,9 @@
       "contentId": "guide-v1-m04-t12",
       "claimCn": "软件包版本、系统库和运行时共同决定行为；环境锁用于重建而不是保证科学正确。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1533,9 +1503,10 @@
       "contentId": "guide-v1-m04-t13",
       "claimCn": "固定伪随机序列有助复现特定运行，但不能消除随机算法的不稳定性或数据依赖。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-good-enough-computing",
+        "src-nist-statistics-handbook"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1546,9 +1517,9 @@
       "contentId": "guide-v1-m04-t14",
       "claimCn": "相同数据和流程可得到相同结果；它不同于结论在新样本中的 replicability。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1559,9 +1530,10 @@
       "contentId": "guide-v1-m04-t15",
       "claimCn": "确定性过程同输入同输出，随机过程还依赖随机状态，二者都需记录版本和参数。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-good-enough-computing",
+        "src-nist-statistics-handbook"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1572,9 +1544,9 @@
       "contentId": "guide-v1-m04-t16",
       "claimCn": "每一步都声明输入模式、变换规则、输出模式和检查不变量，形成可审计契约。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-good-enough-computing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1585,9 +1557,9 @@
       "contentId": "guide-v1-m04-t17",
       "claimCn": "程序成功只说明语法和运行路径可执行，不说明实体层级、统计目标或实现逻辑正确。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1600,9 +1572,9 @@
       "sourceIds": [
         "src-nist-genai-profile",
         "src-nist-ai-rmf",
-        "src-fair",
-        "src-strobe"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1613,9 +1585,10 @@
       "contentId": "guide-v1-m04-t19",
       "claimCn": "commit 是可追溯快照，branch 隔离变化，diff 显示语义增量；版本控制不替代备份和数据治理。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-git-docs",
+        "src-good-enough-computing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1626,9 +1599,9 @@
       "contentId": "guide-v1-m04-t20",
       "claimCn": "输出文件与代码提交、输入哈希和参数绑定，避免同名覆盖造成无法重现。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1639,9 +1612,9 @@
       "contentId": "guide-v1-m04-t21",
       "claimCn": "记录数据和结论从哪里来、经过何种转换、由谁在何时生成以及验证到什么范围。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1655,6 +1628,7 @@
         "src-fair",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1665,9 +1639,10 @@
       "contentId": "guide-v1-m04-t23",
       "claimCn": "单位错配、键连接膨胀、日期解析、因子参照、过滤顺序和类型转换常不报错却改变结论。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe"
+        "src-good-enough-computing",
+        "src-tidy-data"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1678,11 +1653,9 @@
       "contentId": "guide-v1-m05-t01",
       "claimCn": "摘要压缩主张，引言建立必要性，方法定义可重复过程，结果呈现证据，讨论解释边界。",
       "sourceIds": [
-        "src-prisma-2020",
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-prisma-2020"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1693,11 +1666,10 @@
       "contentId": "guide-v1-m05-t02",
       "claimCn": "从主要比较、estimand、结局与 Figure 证据任务反推问题，不只抄作者最后一句目的。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-paper-reading",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1708,11 +1680,9 @@
       "contentId": "guide-v1-m05-t03",
       "claimCn": "每段应从已知推进到关键未知和研究必要性，而不是无层次罗列领域知识。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1723,11 +1693,10 @@
       "contentId": "guide-v1-m05-t04",
       "claimCn": "缺口可能是证据质量、总体、测量、机制或决策不足，不等同于未出现某关键词。",
       "sourceIds": [
-        "src-prisma-2020",
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-paper-reading",
+        "src-prisma-2020"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1738,11 +1707,10 @@
       "contentId": "guide-v1-m05-t05",
       "claimCn": "先读主图和图注建立证据骨架，再用方法与补充材料验证骨架是否站得住。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-paper-reading",
+        "src-better-figures"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1753,11 +1721,10 @@
       "contentId": "guide-v1-m05-t06",
       "claimCn": "每张图应回答一个明确问题：描述、比较、验证、机制支持或决策价值。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-better-figures",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1768,11 +1735,10 @@
       "contentId": "guide-v1-m05-t07",
       "claimCn": "结果顺序应使前一项证据提出下一项必要问题，而非把所有分析并排堆放。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-strobe",
-        "src-consort"
+        "src-paper-structure",
+        "src-paper-reading"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1788,6 +1754,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1803,6 +1770,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1818,6 +1786,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1833,6 +1802,7 @@
         "src-prisma-2020",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1843,11 +1813,9 @@
       "contentId": "guide-v1-m05-t12",
       "claimCn": "识别效应尺度、零线、权重、亚组交互和异质性；单个亚组显著性差异不是交互证据。",
       "sourceIds": [
-        "src-prisma-2020",
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-prisma-2020"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1859,10 +1827,10 @@
       "claimCn": "检查 time origin、风险表、删失、曲线交叉、HR 单位和绝对风险语境。",
       "sourceIds": [
         "src-cox",
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020"
+        "src-km-tutorial",
+        "src-survival-censoring"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1873,11 +1841,11 @@
       "contentId": "guide-v1-m05-t14",
       "claimCn": "核对标准化、距离、聚类、色标、排序和注释，避免把视觉块状结构直接称为亚型。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-clustering",
+        "src-batch",
+        "src-better-figures"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1888,11 +1856,11 @@
       "contentId": "guide-v1-m05-t15",
       "claimCn": "检查背景集、排名统计量、基因集版本、冗余、方向和多重检验。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-gsea",
+        "src-camera",
+        "src-ora"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1903,11 +1871,12 @@
       "contentId": "guide-v1-m05-t16",
       "claimCn": "比较主张动词与设计：关联数据不应写成导致，内部开发不应写成普适临床价值。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort"
+        "src-consort",
+        "src-prisma-2020",
+        "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1918,11 +1887,9 @@
       "contentId": "guide-v1-m05-t17",
       "claimCn": "从选择、混杂、测量、组成、批次和模型灵活性系统地产生竞争解释。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1933,11 +1900,10 @@
       "contentId": "guide-v1-m05-t18",
       "claimCn": "会改变核心结论、需要新分析/数据的问题是 major；不改变主张的澄清通常是 minor。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-paper-reading",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1948,11 +1914,10 @@
       "contentId": "guide-v1-m05-t19",
       "claimCn": "主动寻找若错误会推翻主张的最薄弱环节，并提出能验证的修复要求。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-prisma-2020",
-        "src-remark"
+        "src-paper-reading",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1963,11 +1928,10 @@
       "contentId": "guide-v1-m05-t20",
       "claimCn": "提取问题分解、队列角色、Figure 工作和验证逻辑，而不是照搬某个方法名称。",
       "sourceIds": [
-        "src-prisma-2020",
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-paper-reading",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1978,11 +1942,10 @@
       "contentId": "guide-v1-m05-t21",
       "claimCn": "记录问题、设计、单位、主要证据、最大主张、替代解释、可迁移结构和待核验来源。",
       "sourceIds": [
-        "src-prisma-2020",
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-paper-reading",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -1993,11 +1956,9 @@
       "contentId": "guide-v1-m05-t22",
       "claimCn": "原始研究用于审查直接数据和方法，综述用于地图和综合；两者的证据责任不同。",
       "sourceIds": [
-        "src-prisma-2020",
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-prisma-2020"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2008,11 +1969,10 @@
       "contentId": "guide-v1-m05-t23",
       "claimCn": "比较问题重要性、设计强度、验证层级和证据链，而不是只比较分析数量或图的美观。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-prisma-2020",
-        "src-strobe"
+        "src-paper-reading",
+        "src-prisma-2020"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2026,6 +1986,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2036,9 +1997,10 @@
       "contentId": "guide-v1-m06-t02",
       "claimCn": "转录、翻译、降解和技术覆盖使 RNA 与蛋白不必一一对应，失配不自动代表错误。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-multiomics",
+        "src-proteomics-overview"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2052,6 +2014,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2065,6 +2028,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2076,9 +2040,9 @@
       "claimCn": "技术处理与时间/平台造成系统差异；若与生物组重合，事后校正无法可靠分离。",
       "sourceIds": [
         "src-batch",
-        "src-scib",
-        "src-single-cell-2023"
+        "src-scib"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2087,11 +2051,12 @@
     {
       "id": "claim-guide-v1-m06-t06-guide-summary",
       "contentId": "guide-v1-m06-t06",
-      "claimCn": "归一化目标与假设依模态和方法而异；必须说明技术因子、参考尺度及稳定特征、spike-in 或组成参考，不能把一套规则迁移到全部组学。",
+      "claimCn": "归一化目标随模态和方法而异；例如单细胞 RNA 计数模型与批次处理各有前提，其他模态必须使用本模态依据，不能直接迁移同一规则。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-sctransform",
+        "src-batch"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2102,10 +2067,9 @@
       "contentId": "guide-v1-m06-t07",
       "claimCn": "检测下限、随机失败和生物缺失机制不同；零填充或完整病例会造成特定偏倚。",
       "sourceIds": [
-        "src-missing",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-missing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2116,9 +2080,10 @@
       "contentId": "guide-v1-m06-t08",
       "claimCn": "估计预定义组间特征差异并控制模型与多重性；结果是关联而非自动机制。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-deseq2",
+        "src-edger"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2132,6 +2097,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2142,10 +2108,9 @@
       "contentId": "guide-v1-m06-t10",
       "claimCn": "成千上万特征形成一个检验族，FDR 与预过滤、对比和报告选择必须一致。",
       "sourceIds": [
-        "src-multiple-testing",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-multiple-testing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2156,10 +2121,9 @@
       "contentId": "guide-v1-m06-t11",
       "claimCn": "PCA 寻找线性最大方差方向；主成分不保证对应单一机制或分组。",
       "sourceIds": [
-        "src-pca",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-pca"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2170,10 +2134,9 @@
       "contentId": "guide-v1-m06-t12",
       "claimCn": "UMAP 保留选定尺度的邻域结构用于嵌入；簇间距离和孤岛不等于生物谱系或类别。",
       "sourceIds": [
-        "src-umap",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-umap"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2184,9 +2147,9 @@
       "contentId": "guide-v1-m06-t13",
       "claimCn": "按所选特征、尺度、距离和算法划分相似性；稳定性与外部意义需另行验证。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-clustering"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2197,10 +2160,9 @@
       "contentId": "guide-v1-m06-t14",
       "claimCn": "NMF 将非负矩阵分解为样本权重与特征程序，秩和初始化影响结果。",
       "sourceIds": [
-        "src-nmf",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-nmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2211,9 +2173,10 @@
       "contentId": "guide-v1-m06-t15",
       "claimCn": "先判断结构是离散类别还是连续轴；只有稳定、可冻结分配且能在独立数据复现的离散类别才称 subtype，连续结构应报告 program 或 axis。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-clustering",
+        "src-nmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2224,9 +2187,9 @@
       "contentId": "guide-v1-m06-t16",
       "claimCn": "对重采样、预处理和算法扰动保持一致才说明结构稳健；漂亮热图不能替代稳定性。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-clustering"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2237,9 +2200,11 @@
       "contentId": "guide-v1-m06-t17",
       "claimCn": "筛选特征改变估计空间，必须在训练流程内完成并在新数据评价。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-leakage",
+        "src-internal-validation",
+        "src-tripod-ai"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2253,6 +2218,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2263,10 +2229,9 @@
       "contentId": "guide-v1-m06-t19",
       "claimCn": "检验阈值化候选列表是否相对明确 universe 过度出现；列表阈值、背景集和超几何或 Fisher 型零模型必须预先说明，不与 ranked-list GSEA 混用。",
       "sourceIds": [
-        "src-ora",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-ora"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2278,10 +2243,9 @@
       "claimCn": "GSEA 沿排序列表检查基因集成员是否集中在两端，置换单位需匹配实验设计。",
       "sourceIds": [
         "src-gsea",
-        "src-camera",
-        "src-ora",
-        "src-batch"
+        "src-ora"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2292,11 +2256,10 @@
       "contentId": "guide-v1-m06-t21",
       "claimCn": "产生样本级相对基因集分数以描述表达模式；分数不是通路活性或因果机制的直接测量。",
       "sourceIds": [
-        "src-gsea",
-        "src-camera",
         "src-gsva",
         "src-ssgsea"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2310,6 +2273,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2320,9 +2284,10 @@
       "contentId": "guide-v1-m06-t23",
       "claimCn": "从程序中挑代表特征要说明选择规则、稳定性与是否只是高丰度代理。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-leakage",
+        "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2336,6 +2301,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2349,6 +2315,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2359,9 +2326,10 @@
       "contentId": "guide-v1-m06-t26",
       "claimCn": "肽段鉴定、蛋白推断、动态范围和缺失共同限制丰度估计。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-proteomics-overview",
+        "src-proteomics-missing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2375,6 +2343,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2388,6 +2357,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2401,6 +2371,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2411,9 +2382,10 @@
       "contentId": "guide-v1-m06-t30",
       "claimCn": "ECM 蛋白增加可来自组成、沉积、降解或取样；不能单凭 bulk 丰度指定 CAF 机制。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-ecm-proteomics",
+        "src-spatial"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2424,11 +2396,10 @@
       "contentId": "guide-v1-m06-t31",
       "claimCn": "跨层一致提供相容性，失配可能来自调控、半衰期、细胞组成或测量，需有竞争解释。",
       "sourceIds": [
-        "src-mofa-plus",
-        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2442,6 +2413,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2455,6 +2427,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2467,9 +2440,9 @@
       "sourceIds": [
         "src-scrna-best",
         "src-doubletfinder",
-        "src-soupx",
-        "src-batch"
+        "src-soupx"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2483,6 +2456,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2496,6 +2470,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2509,6 +2484,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2519,10 +2495,9 @@
       "contentId": "guide-v1-m06-t38",
       "claimCn": "把数千细胞当独立患者会低估不确定性并夸大发现。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2533,10 +2508,9 @@
       "contentId": "guide-v1-m06-t39",
       "claimCn": "在供体×细胞类型内汇总计数后使用样本级模型，保留生物重复并利用成熟 bulk 方法。",
       "sourceIds": [
-        "src-pseudobulk",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-pseudobulk"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2550,6 +2524,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2560,10 +2535,9 @@
       "contentId": "guide-v1-m06-t41",
       "claimCn": "效应、变异、协变量和验证围绕供体汇总或层级模型，避免细胞数替代供体数。",
       "sourceIds": [
-        "src-pseudobulk",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-pseudobulk"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2577,6 +2551,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2590,6 +2565,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2600,10 +2576,9 @@
       "contentId": "guide-v1-m06-t44",
       "claimCn": "从快照表达推断相对状态顺序，不等于真实时间、谱系或因果方向。",
       "sourceIds": [
-        "src-trajectory",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-trajectory"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2614,10 +2589,9 @@
       "contentId": "guide-v1-m06-t45",
       "claimCn": "配体受体表达提供潜在通信兼容性，不直接证明接触、信号传递或功能效应。",
       "sourceIds": [
-        "src-cellchat",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-cellchat"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2628,10 +2602,9 @@
       "contentId": "guide-v1-m06-t46",
       "claimCn": "结果依赖数据库、表达阈值、组成和归一化，应作为候选相互作用生成而非机制证明。",
       "sourceIds": [
-        "src-cellchat",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-cellchat"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2642,10 +2615,9 @@
       "contentId": "guide-v1-m06-t47",
       "claimCn": "检验细胞群或邻域在样本间比例差异，需以样本为复制并处理组成约束。",
       "sourceIds": [
-        "src-milo",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-milo"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2657,9 +2629,9 @@
       "claimCn": "对齐共享生物结构以减少技术差异，评价时同时检查批次混合与生物信号保留。",
       "sourceIds": [
         "src-batch",
-        "src-scib",
-        "src-single-cell-2023"
+        "src-scib"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2671,9 +2643,9 @@
       "claimCn": "过强对齐会抹掉真实条件差异或强迫不相同细胞对应，需用已知生物对照检测。",
       "sourceIds": [
         "src-batch",
-        "src-scib",
-        "src-single-cell-2023"
+        "src-scib"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2685,10 +2657,9 @@
       "claimCn": "不同模态可支持同一构念，但测量层、样本独立性和方向必须明确。",
       "sourceIds": [
         "src-mofa-plus",
-        "src-diablo",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-diablo"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2699,10 +2670,9 @@
       "contentId": "guide-v1-m06-t51",
       "claimCn": "细胞捕获、转录—蛋白调控、空间取样和组成差异都可造成合理不一致。",
       "sourceIds": [
-        "src-fair",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2714,10 +2684,9 @@
       "claimCn": "空间共定位提供组织上下文；有限分辨率和相关性不能自动证明细胞来源或相互作用。",
       "sourceIds": [
         "src-spatial",
-        "src-spatial-original",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-spatial-original"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2728,11 +2697,10 @@
       "contentId": "guide-v1-m06-t53",
       "claimCn": "跨层方向一致说明结果相容，但共享样本和共同偏倚限制独立证据强度。",
       "sourceIds": [
-        "src-mofa-plus",
-        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2743,11 +2711,10 @@
       "contentId": "guide-v1-m06-t54",
       "claimCn": "不一致可暴露层特异调控、时间差或技术/组成问题，不应被简单删除。",
       "sourceIds": [
-        "src-mofa-plus",
-        "src-diablo",
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2758,9 +2725,10 @@
       "contentId": "guide-v1-m06-t55",
       "claimCn": "使用偏倚结构不同的方法或数据回答同一问题，观察结论是否在不同弱点下保持。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-strong-inference",
+        "src-multiomics"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2774,6 +2742,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2785,10 +2754,9 @@
       "claimCn": "匹配多模态共享受试者，能互补但不是独立队列验证。",
       "sourceIds": [
         "src-mofa-plus",
-        "src-diablo",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-diablo"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2799,10 +2767,10 @@
       "contentId": "guide-v1-m06-t58",
       "claimCn": "用证据图记录相容、冲突和未测量环节，让不一致指导下一步而非通过权重掩盖。",
       "sourceIds": [
-        "src-batch",
-        "src-scib",
-        "src-single-cell-2023"
+        "src-strong-inference",
+        "src-multiomics"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2814,8 +2782,9 @@
       "claimCn": "观察是数据层事实，意义是基于模型和背景的解释；两者之间存在可质疑的推理链。",
       "sourceIds": [
         "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2829,6 +2798,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2842,6 +2812,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2852,9 +2823,9 @@
       "contentId": "guide-v1-m07-t04",
       "claimCn": "为同一结果建立能产生不同后续预测的竞争模型，推动区分性验证。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2865,9 +2836,9 @@
       "contentId": "guide-v1-m07-t05",
       "claimCn": "共同原因可产生暴露—结局关联，需通过设计、调整和敏感性而非显著性处理。",
       "sourceIds": [
-        "src-dag",
-        "src-strobe"
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2881,6 +2852,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2894,6 +2866,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2905,10 +2878,9 @@
       "claimCn": "技术批次与生物条件重合会制造不可辨识差异，校正后消失也不证明原差异全是批次。",
       "sourceIds": [
         "src-batch",
-        "src-scib",
-        "src-strobe",
-        "src-dag"
+        "src-scib"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2922,6 +2894,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2932,9 +2905,10 @@
       "contentId": "guide-v1-m07-t10",
       "claimCn": "异常点可能是错误、真实极端或新亚群；应查来源和影响而非自动删除。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-nist-statistics-handbook",
+        "src-regression-strategies"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2945,9 +2919,10 @@
       "contentId": "guide-v1-m07-t11",
       "claimCn": "未达阈值需结合效应区间、功效、测量和可辨识性，不能简单写成没有作用。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-confidence-interval",
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2958,9 +2933,10 @@
       "contentId": "guide-v1-m07-t12",
       "claimCn": "与零相容的数据可能同时容许重要正负效应；等效或非劣需要专门设计。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-confidence-interval",
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2974,6 +2950,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2987,6 +2964,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -2997,9 +2975,10 @@
       "contentId": "guide-v1-m07-t15",
       "claimCn": "亚组差异需要交互和预设，不能用一组显著另一组不显著声称效应不同。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-interaction",
+        "src-consort"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3013,6 +2992,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3023,9 +3003,10 @@
       "contentId": "guide-v1-m07-t17",
       "claimCn": "偏倚方向不同的证据若收敛，比同一数据重复多种相似模型更有信息。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference",
+        "src-multiomics"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3039,6 +3020,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3049,11 +3031,10 @@
       "contentId": "guide-v1-m07-t19",
       "claimCn": "明确当前证据最多允许陈述的总体、尺度、关系类型和时间范围。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3067,6 +3048,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3077,11 +3059,10 @@
       "contentId": "guide-v1-m07-t21",
       "claimCn": "直接回答主问题、跨合理分析稳健且有清楚边界的结果才应进入主结论。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-strobe",
-        "src-dag"
+        "src-paper-structure",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3095,6 +3076,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3108,6 +3090,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3121,6 +3104,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3131,11 +3115,10 @@
       "contentId": "guide-v1-m07-t25",
       "claimCn": "层间或队列间不一致若可重复并对应不同机制预测，可成为新的研究问题。",
       "sourceIds": [
-        "src-mofa-plus",
-        "src-diablo",
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3150,6 +3133,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3160,10 +3144,9 @@
       "contentId": "guide-v1-m08-t02",
       "claimCn": "把结果拆成已知、仍不确定和竞争解释，再选择能区分它们的问题。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3174,10 +3157,9 @@
       "contentId": "guide-v1-m08-t03",
       "claimCn": "用最少但足以改变判断的分析回答具体缺口，避免复杂度掩盖核心。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3192,6 +3174,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3202,10 +3185,10 @@
       "contentId": "guide-v1-m08-t05",
       "claimCn": "阴性结果后检查信息量、测量和边界，决定停止、改设计或测试更有针对性的解释。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-confidence-interval",
+        "src-power"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3216,10 +3199,9 @@
       "contentId": "guide-v1-m08-t06",
       "claimCn": "选择让不同假设产生可观察差异的分析或实验，而非分别寻找支持材料。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3234,6 +3216,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3248,6 +3231,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3262,6 +3246,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3276,6 +3261,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3286,10 +3272,9 @@
       "contentId": "guide-v1-m08-t11",
       "claimCn": "边际结果不再改变主张、决策或验证计划，或关键缺口需要新数据时停止。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3300,10 +3285,10 @@
       "contentId": "guide-v1-m08-t12",
       "claimCn": "每个 panel 对应一个问题、比较和结论边界，避免只展示可生成的图。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-better-figures",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3314,11 +3299,10 @@
       "contentId": "guide-v1-m08-t13",
       "claimCn": "主图组合应完成一项完整证据工作并让读者看见必要对照和不确定性。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-strobe",
-        "src-tripod"
+        "src-better-figures",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3329,11 +3313,10 @@
       "contentId": "guide-v1-m08-t14",
       "claimCn": "从问题到描述、主要检验、验证和边界形成递进链，后一图由前一图留下的缺口驱动。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-prisma-2020",
-        "src-strobe"
+        "src-paper-structure",
+        "src-paper-reading"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3344,10 +3327,10 @@
       "contentId": "guide-v1-m08-t15",
       "claimCn": "Figure 1 建立总体与现象，后续逐步回答差异、稳健、解释和验证，而非按分析完成顺序排列。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-paper-structure",
+        "src-better-figures"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3358,10 +3341,10 @@
       "contentId": "guide-v1-m08-t16",
       "claimCn": "机制深度来自区分性和干预证据；多层相关结果不能用数量代替。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3376,6 +3359,7 @@
         "src-tripod",
         "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3388,9 +3372,9 @@
       "sourceIds": [
         "src-tripod-ai",
         "src-probaST",
-        "src-pm-external",
-        "src-strobe"
+        "src-pm-external"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3401,10 +3385,9 @@
       "contentId": "guide-v1-m08-t19",
       "claimCn": "为每个 panel 分配独立证据任务、必要对照、估计与视觉层级，减少结果仓库式布局。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-better-figures"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3415,10 +3398,10 @@
       "contentId": "guide-v1-m08-t20",
       "claimCn": "把生物发现转成可测干预或决策路径，并明确每一步的前临床和临床证据门槛。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3429,10 +3412,9 @@
       "contentId": "guide-v1-m08-t21",
       "claimCn": "用当前主张、最大不确定性、备选方案、预期分支、成本和停止规则组织建议。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3443,10 +3425,9 @@
       "contentId": "guide-v1-m08-t22",
       "claimCn": "按问题重要性、信息增益、可行性、机会成本和失败后仍能学到什么排序。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3457,11 +3438,11 @@
       "contentId": "guide-v1-m09-t01",
       "claimCn": "主张包含对象、关系、尺度和适用域；动词强度必须与证据类型一致。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort"
+        "src-consort",
+        "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3476,6 +3457,7 @@
         "src-consort",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3486,10 +3468,10 @@
       "contentId": "guide-v1-m09-t03",
       "claimCn": "用一句可检验、不过度的陈述概括该图完成的证据任务。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-better-figures",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3504,6 +3486,7 @@
         "src-consort",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3514,11 +3497,10 @@
       "contentId": "guide-v1-m09-t05",
       "claimCn": "主图选择必要证据链，结果仓库只按分析数量堆图且没有问题结构。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-strobe",
-        "src-consort"
+        "src-better-figures",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3529,11 +3511,11 @@
       "contentId": "guide-v1-m09-t06",
       "claimCn": "主文承载理解核心结论所需证据，补充承载透明细节与次要结果。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort"
+        "src-consort",
+        "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3544,10 +3526,9 @@
       "contentId": "guide-v1-m09-t07",
       "claimCn": "按读者需要回答的问题组织，而非按实验日期或软件运行顺序。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3558,10 +3539,10 @@
       "contentId": "guide-v1-m09-t08",
       "claimCn": "每张图明确回答描述、比较、验证、机制候选或决策价值中的哪一项。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-better-figures",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3576,6 +3557,7 @@
         "src-consort",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3586,11 +3568,9 @@
       "contentId": "guide-v1-m09-t10",
       "claimCn": "报告足以重建总体、时间、测量、预处理、模型、软件和随机过程的信息。",
       "sourceIds": [
-        "src-fair",
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3605,6 +3585,7 @@
         "src-consort",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3615,10 +3596,9 @@
       "contentId": "guide-v1-m09-t12",
       "claimCn": "把会改变主张的竞争解释与可区分证据写清，而非泛泛承认。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3633,6 +3613,7 @@
         "src-consort",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3643,11 +3624,11 @@
       "contentId": "guide-v1-m09-t14",
       "claimCn": "警惕 causes、proves、validates、clinically useful 等超过设计的动词。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
-        "src-consort"
+        "src-consort",
+        "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3658,10 +3639,10 @@
       "contentId": "guide-v1-m09-t15",
       "claimCn": "主动标出单位、偏倚、模型灵活性、验证和主张边界中最易被质疑的接口。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-paper-reading",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3672,10 +3653,10 @@
       "contentId": "guide-v1-m09-t16",
       "claimCn": "先判断评论指向何种证据风险，再用分析、澄清、降级主张或新数据回应。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-paper-reading",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3690,6 +3671,7 @@
         "src-consort",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3700,10 +3682,10 @@
       "contentId": "guide-v1-m09-t18",
       "claimCn": "让听众看见当前决策点和不确定性，图服务于讨论而不是展示工作量。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-remark"
+        "src-better-figures",
+        "src-paper-structure"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3714,11 +3696,10 @@
       "contentId": "guide-v1-m09-t19",
       "claimCn": "连接证据缺口、目标 estimand、预期分支和对决策的影响。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-strobe",
-        "src-consort"
+        "src-paper-structure",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3729,11 +3710,10 @@
       "contentId": "guide-v1-m09-t20",
       "claimCn": "指出它无法识别什么、会引入何种偏倚、与已有证据何处冗余及机会成本。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-strobe",
-        "src-consort"
+        "src-paper-structure",
+        "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3745,9 +3725,9 @@
       "claimCn": "把问题形成、证据判断和结论边界整体交给 AI，会移除可审计的人类检查点并使错误归因与责任记录变得困难。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3759,9 +3739,9 @@
       "claimCn": "适合帮助列候选、改写、生成测试和整理公开信息，但输出需按风险验证。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3776,6 +3756,7 @@
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3787,9 +3768,9 @@
       "claimCn": "先留下独立判断，再让 AI 寻找漏洞，最后由研究者基于证据记录决定。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3801,9 +3782,9 @@
       "claimCn": "检查问题对齐、单位、时间、偏倚、泄漏、假设、验证和不可识别目标。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3818,6 +3799,7 @@
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3830,9 +3812,9 @@
       "sourceIds": [
         "src-nist-genai-profile",
         "src-nist-ai-rmf",
-        "src-prisma-2020",
-        "src-fair"
+        "src-prisma-2020"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3847,6 +3829,7 @@
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3858,9 +3841,9 @@
       "claimCn": "流畅叙事常把相关结果连接成未被检验的机制，需要证据图和替代解释拆解。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3869,13 +3852,13 @@
     {
       "id": "claim-guide-v1-m10-t10-guide-summary",
       "contentId": "guide-v1-m10-t10",
-      "claimCn": "模型倾向使用 drives、leads to 等动词；必须按设计、时间和结构降级。",
+      "claimCn": "AI 输出若使用 drives、leads to 等因果动词，应先视为待审风险信号；只有设计、时间顺序与因果结构支持时才可保留，否则降级措辞。",
       "sourceIds": [
         "src-dag",
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3890,6 +3873,7 @@
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3901,9 +3885,9 @@
       "claimCn": "在调用前记录当前问题、独立判断、未知、允许发送的数据和期望批评。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3915,9 +3899,9 @@
       "claimCn": "记录接受、拒绝或修改了什么、依据何在、仍需验证什么以及 AI 影响了哪些决定。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3929,9 +3913,9 @@
       "claimCn": "要求列失败模式、反例、替代解释和验证步骤，比要求生成最终故事更利于所有权。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3942,10 +3926,11 @@
       "contentId": "guide-v1-m10-t15",
       "claimCn": "把已知证据与边界结构化提供，要求每个解释给出可区分预测并标注不确定性。",
       "sourceIds": [
+        "src-strong-inference",
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3957,9 +3942,9 @@
       "claimCn": "使用独立上下文和明确 rubric 主动找错；AI 审查不能代替领域专家或自我批准。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3971,9 +3956,9 @@
       "claimCn": "限定接口、提供测试、最小化权限、审查 diff，并由人对结果负责。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -3988,6 +3973,7 @@
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4002,6 +3988,7 @@
         "src-nist-ai-rmf",
         "src-fair"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4013,9 +4000,9 @@
       "claimCn": "以独立判断记录、可验证任务分解和责任链，把 AI 限定为可审计的辅助而非最终决策者。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4029,6 +4016,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4039,9 +4027,9 @@
       "contentId": "staged-concept-hypothesis",
       "claimCn": "在本题材料下，只有完成“把机制陈述、可观察预测和预先可接受的反证结果一一匹配”并核对“预测含对象、时间、方向与测量，反证条件不是事后追加”后，才能作出与“假设是对数据生成机制或可观察差异的可检验预期，不是希望结果成立的宣言。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4052,11 +4040,10 @@
       "contentId": "staged-concept-evidence-claim",
       "claimCn": "在本题材料下，只有完成“为每条证据标出直接性、独立性和它实际支持的主张动词”并核对“来源于同一受试者或同一误差机制的结果没有被重复计作独立验证”后，才能作出与“证据的层级、直接性和独立性共同限定主张；引用存在不等于主张被支持。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4067,9 +4054,9 @@
       "contentId": "staged-concept-association-causation",
       "claimCn": "在本题材料下，只有完成“指出阻止因果解释的具体路径，并选择能阻断或识别它的设计/分析”并核对“时间顺序、共同原因和目标 estimand 均被明确，而非仅写‘相关不等因果’”后，才能作出与“关联描述共同变化；因果主张还要求时间顺序、可比性、结构假设与对偏倚的处理。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-dag",
-        "src-strobe"
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4080,9 +4067,10 @@
       "contentId": "staged-concept-exploratory-confirmatory",
       "claimCn": "在本题材料下，只有完成“逐项标记特征、阈值、主要终点和分析集是事前还是事后决定，并据此改写结论”并核对“没有把同一数据上的发现和确证写成两个独立阶段”后，才能作出与“探索允许生成模式与假设；确证要求预先限定问题、分析与误差控制，二者的语言和证据门槛不同。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference",
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4093,10 +4081,9 @@
       "contentId": "staged-concept-statistical-unit",
       "claimCn": "在本题材料下，只有完成“先由研究问题确定独立信息层级，再填写聚类层和有效 n”并核对“区分观测行数、测量精度与独立样本量”后，才能作出与“对目标推断贡献独立信息的层级，由问题与设计共同决定而不是由数据行数决定。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4107,10 +4094,9 @@
       "contentId": "staged-concept-biological-technical-replicate",
       "claimCn": "在本题材料下，只有完成“给每个重复标明独立来源与它能估计的变异成分”并核对“增加技术重复没有被解释成增加目标总体的生物学 n”后，才能作出与“代表目标生物总体中独立来源的重复，用于估计来源之间的真实变异。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4121,10 +4107,9 @@
       "contentId": "staged-concept-pseudoreplication",
       "claimCn": "在本题材料下，只有完成“按独立单位重做估计或显式建模相关结构，并报告有效 n”并核对“标准误与自由度来自独立来源而不是下层观测数”后，才能作出与“把共享来源或处理的相关观测当作独立重复会夸大有效样本量并低估不确定性。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-pseudorep",
-        "src-strobe",
-        "src-consort"
+        "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4139,6 +4124,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4149,11 +4135,9 @@
       "contentId": "staged-concept-confounding",
       "claimCn": "在本题材料下，只有完成“先定义总效应或直接效应，再依据时间化 DAG 选择调整集”并核对“共同原因、中介、碰撞点和治疗后变量被分别处理”后，才能作出与“暴露与结局共同原因造成目标关联混入非目标路径，处理依赖明确 estimand 和结构假设。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-dag",
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4164,10 +4148,9 @@
       "contentId": "staged-concept-selection-bias",
       "claimCn": "在本题材料下，只有完成“画出进入、留存和分析选择机制，并说明目标对照何处被破坏”并核对“区分抽样覆盖、差异参与、失访和 collider 条件化”后，才能作出与“进入研究、留在随访或进入分析的机制可使目标对照不再可识别；当选择是暴露与结局或其原因的共同结果时，条件化还会开启 collider 路径。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-strobe",
-        "src-consort",
-        "src-pseudorep"
+        "src-selection-bias"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4182,6 +4165,7 @@
         "src-consort",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4196,6 +4180,7 @@
         "src-multiple-testing",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4206,10 +4191,9 @@
       "contentId": "staged-concept-standard-error",
       "claimCn": "在本题材料下，只有完成“依据抽样单位和相关结构选择标准误计算”并核对“能清楚区分 SD、SE 和生物学变异层级”后，才能作出与“标准误描述估计量的抽样变异，依赖独立单位、模型和样本信息量，而非个体差异大小。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-standard-error"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4220,10 +4204,10 @@
       "contentId": "staged-concept-confidence-interval",
       "claimCn": "在本题材料下，只有完成“用区间端点与临床界值写出兼容范围和精度”并核对“没有把 95% CI 解释为参数有 95% 概率位于本区间”后，才能作出与“频率学区间的覆盖性质来自重复程序，不能解释为本次区间含真值的概率。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-confidence-interval",
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4234,10 +4218,9 @@
       "contentId": "staged-concept-p-value",
       "claimCn": "在本题材料下，只有完成“只在明确 H0、检验统计量、模型和选择过程下解释 P 值”并核对“区分 P(data or more extreme | H0, model) 与 P(H0 | data)”后，才能作出与“在指定模型和零假设下，得到至少同样极端数据的概率；不是零假设为真的概率。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4248,10 +4231,9 @@
       "contentId": "staged-concept-multiple-testing-fdr",
       "claimCn": "在本题材料下，只有完成“先定义检验族，再按预设 FDR 程序形成候选集合”并核对“单个发现的真假概率没有从 q 值直接推出”后，才能作出与“FDR 控制被拒绝假设中错误发现的期望比例，不保证每个具体发现为真。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-multiple-testing",
-        "src-asa-pvalue",
-        "src-strobe"
+        "src-multiple-testing"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4262,10 +4244,9 @@
       "contentId": "staged-concept-power",
       "claimCn": "在本题材料下，只有完成“用事前效应假设、alpha、设计、方差/事件率与分析规则规划样本量”并核对“结果解释阶段没有用观察效应计算事后功效背书”后，才能作出与“功效是在特定真实效应和设计下拒绝零假设的概率，不是已得显著结果为真的概率。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-power"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4276,10 +4257,9 @@
       "contentId": "staged-concept-interaction",
       "claimCn": "在本题材料下，只有完成“在预先指定的尺度上计算亚组效应及正式 interaction contrast”并核对“没有用‘一个显著、一个不显著’冒充亚组间差异”后，才能作出与“交互表示一个变量的效应尺度随另一个变量改变；其含义依赖所选链接和尺度。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-interaction"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4290,11 +4270,9 @@
       "contentId": "staged-concept-overfitting",
       "claimCn": "在本题材料下，只有完成“让全部选择步骤接受内部重采样并在独立样本上冻结评估”并核对“复杂度按事件/独立单位信息而非总行数约束”后，才能作出与“模型学习了开发数据中的偶然波动，在新数据上表现下降；复杂度与信息量失衡是核心风险。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-internal-validation",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-internal-validation"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4305,11 +4283,9 @@
       "contentId": "staged-concept-data-leakage",
       "claimCn": "在本题材料下，只有完成“把预处理、特征选择和调参全部嵌套进训练数据角色”并核对“受试者、时间与样本层面的泄漏都被审查”后，才能作出与“训练或选择过程使用了预测时不可获得的信息，使内部表现带入未来或测试信息。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-leakage",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-leakage"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4322,9 +4298,9 @@
       "sourceIds": [
         "src-tripod-ai",
         "src-probaST",
-        "src-pm-external",
-        "src-strobe"
+        "src-pm-external"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4335,11 +4311,10 @@
       "contentId": "staged-concept-censoring",
       "claimCn": "在本题材料下，只有完成“识别删失类型并选择匹配方法，同时说明条件独立删失假设”并核对“删失、左截断和竞争事件没有混为同一状态”后，才能作出与“事件时间仅部分已知：可为右删失、左删失或区间删失；方法需匹配类型并说明条件独立删失假设，且与竞争事件、左截断区分。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-survival-censoring",
+        "src-km-tutorial"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4350,11 +4325,9 @@
       "contentId": "staged-concept-hazard-ratio",
       "claimCn": "在本题材料下，只有完成“明确 time zero、风险集、变量单位、PH 与时间点绝对风险语境”并核对“HR 没有被解释成任一时点风险降低固定百分比”后，才能作出与“HR 是条件瞬时事件率之比，不是固定时点风险比、概率比或寿命倍数。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-cox",
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-cox"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4365,10 +4338,9 @@
       "contentId": "staged-concept-time-origin",
       "claimCn": "在本题材料下，只有完成“让资格、策略分配和随访零点在同一临床时刻对齐”并核对“任何必须存活才能进入暴露组的时间都没有被计作暴露后风险时间”后，才能作出与“所有个体进入风险过程的零点必须与资格、暴露分配和随访一致。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-asa-pvalue",
-        "src-multiple-testing",
-        "src-strobe"
+        "src-target-trial"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4382,6 +4354,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4393,9 +4366,9 @@
       "claimCn": "在本题材料下，只有完成“先在设计阶段打破技术因素与生物组的完全重合，再做有依据的校正”并核对“完全混杂被认定为不可由算法唯一分离”后，才能作出与“技术处理与时间/平台造成系统差异；若与生物组重合，事后校正无法可靠分离。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-batch",
-        "src-scib",
-        "src-single-cell-2023"
+        "src-scib"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4409,6 +4382,7 @@
         "src-batch",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4419,9 +4393,10 @@
       "contentId": "staged-concept-rna-protein",
       "claimCn": "在本题材料下，只有完成“分别审查两种模态的时间、测量对象和生成/降解机制”并核对“不一致没有被简化成‘其中一种模态一定错’”后，才能作出与“转录、翻译、降解和技术覆盖使 RNA 与蛋白不必一一对应，失配不自动代表错误。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-multiomics",
+        "src-proteomics-overview"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4432,9 +4407,9 @@
       "contentId": "staged-concept-cluster-stability",
       "claimCn": "在本题材料下，只有完成“比较重采样、预处理和算法扰动下的分配，并验证冻结的新样本规则”并核对“稳定性、可分配性和离散-vs-连续结构都被检查”后，才能作出与“对重采样、预处理和算法扰动保持一致才说明结构稳健；漂亮热图不能替代稳定性。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-clustering"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4445,10 +4420,9 @@
       "contentId": "staged-concept-pseudobulk",
       "claimCn": "在本题材料下，只有完成“保留最小生物样本/条件单元并在模型中处理 donor 配对”并核对“没有在聚合时抹去条件，也没有把多样本冒充多供体”后，才能作出与“在供体×细胞类型内汇总计数后使用样本级模型，保留生物重复并利用成熟 bulk 方法。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-pseudobulk",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-pseudobulk"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4460,10 +4434,9 @@
       "claimCn": "在本题材料下，只有完成“准确命名跨模态证据支持的对象及共享偏倚，不自动使用 validation”并核对“同一样本的多模态一致没有被当作独立总体复现”后，才能作出与“不同模态可支持同一构念，但测量层、样本独立性和方向必须明确。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-mofa-plus",
-        "src-diablo",
-        "src-batch",
-        "src-single-cell-2023"
+        "src-diablo"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4474,9 +4447,9 @@
       "contentId": "staged-concept-alternative-explanation",
       "claimCn": "在本题材料下，只有完成“为每个竞争解释写出不同预测，并用新证据更新相对支持”并核对“解释能覆盖全部现有证据且存在可使其升降级的观察”后，才能作出与“替代解释不是 Discussion 的礼貌性清单，而是决定还需何种区分性证据的工作模型。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4487,11 +4460,10 @@
       "contentId": "staged-concept-claim-boundary",
       "claimCn": "在本题材料下，只有完成“逐词修订主张，使动词和适用域不超过设计、测量与验证”并核对“总体、时间、效应尺度、关系类型和不确定性均可在句中找到”后，才能作出与“明确当前证据最多允许陈述的总体、尺度、关系类型和时间范围。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-nist-genai-profile",
-        "src-nist-ai-rmf",
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4505,6 +4477,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4515,9 +4488,10 @@
       "contentId": "staged-concept-triangulation",
       "claimCn": "在本题材料下，只有完成“组合测量同一构念但主要偏倚不同的证据，并解释不一致如何更新”并核对“证据数量没有替代偏倚独立性和构念对齐”后，才能作出与“使用偏倚结构不同的方法或数据回答同一问题，观察结论是否在不同弱点下保持。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-batch",
-        "src-single-cell-2023"
+        "src-strong-inference",
+        "src-multiomics"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4528,10 +4502,9 @@
       "contentId": "staged-concept-minimal-sufficient-analysis",
       "claimCn": "在本题材料下，只有完成“选择能以最低成本最大区分当前关键解释的下一步，并预写分支动作”并核对“下一步结果会实际改变主张或行动，而非只增加图表”后，才能作出与“用最少但足以改变判断的分析回答具体缺口，避免复杂度掩盖核心。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod",
-        "src-internal-validation"
+        "src-strong-inference"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4545,6 +4518,7 @@
         "src-strobe",
         "src-dag"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4555,9 +4529,10 @@
       "contentId": "staged-concept-negative-result",
       "claimCn": "在本题材料下，只有完成“用效应、CI、最小重要/等效界值和偏倚解释阴性结果”并核对“未显著没有被解释成无效，post-hoc power 没有替代区间”后，才能作出与“未达阈值需结合效应区间、功效、测量和可辨识性，不能简单写成没有作用。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
-        "src-strobe",
-        "src-dag"
+        "src-confidence-interval",
+        "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4569,9 +4544,9 @@
       "claimCn": "在本题材料下，只有完成“在调用 AI 前冻结自己的问题与判断，之后逐项验证并记录最终人类决定”并核对“研究者能独立解释问题、复核代码/引用并为结论承担证据责任”后，才能作出与“把问题形成、证据判断和结论边界整体交给 AI，会移除可审计的人类检查点并使错误归因与责任记录变得困难。”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。",
       "sourceIds": [
         "src-nist-genai-profile",
-        "src-nist-ai-rmf",
-        "src-fair"
+        "src-nist-ai-rmf"
       ],
+      "evidenceBoundaryCn": "这是课程综合主张；来源分别支持其核心证据范围，不表示任一来源逐字提出整段教学规则。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4586,6 +4561,7 @@
         "src-edger",
         "src-multiple-testing"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4596,9 +4572,10 @@
       "contentId": "staged-method-correlation",
       "claimCn": "用 Pearson、Spearman 等统计量概括指定关系，但不识别方向或共同原因。",
       "sourceIds": [
-        "src-strobe",
-        "src-pseudorep"
+        "src-correlation-regression",
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4609,9 +4586,10 @@
       "contentId": "staged-method-linear-regression",
       "claimCn": "通过线性预测子估计其他变量给定时的均值差异或斜率。",
       "sourceIds": [
-        "src-strobe",
-        "src-tripod"
+        "src-regression-strategies",
+        "src-dag"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4625,6 +4603,7 @@
         "src-tripod",
         "src-probaST"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4638,6 +4617,7 @@
         "src-cox",
         "src-pmsampsize"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4648,9 +4628,12 @@
       "contentId": "staged-method-kaplan-logrank",
       "claimCn": "KM 乘积估计条件生存，log-rank 比较事件时刻的观察与期望。",
       "sourceIds": [
-        "src-cox",
+        "src-km-tutorial",
+        "src-logrank",
+        "src-survival-censoring",
         "src-competing"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4662,8 +4645,9 @@
       "claimCn": "用分段立方基函数表示曲线，并在线性尾部约束以减少极端不稳定。",
       "sourceIds": [
         "src-rcs",
-        "src-tripod"
+        "src-regression-strategies"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4677,6 +4661,7 @@
         "src-internal-validation",
         "src-tripod"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4690,6 +4675,7 @@
         "src-leakage",
         "src-tripod"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4703,6 +4689,7 @@
         "src-roc",
         "src-tripod"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4717,6 +4704,7 @@
         "src-cox",
         "src-tripod"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4730,6 +4718,7 @@
         "src-pca",
         "src-batch"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4743,6 +4732,7 @@
         "src-nmf",
         "src-clustering"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4756,6 +4746,7 @@
         "src-clustering",
         "src-batch"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4769,6 +4760,7 @@
         "src-gsea",
         "src-camera"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4783,6 +4775,7 @@
         "src-ssgsea",
         "src-multiple-testing"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4796,6 +4789,7 @@
         "src-wgcna",
         "src-batch"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4811,6 +4805,7 @@
         "src-edger",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4824,6 +4819,7 @@
         "src-milo",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4837,6 +4833,7 @@
         "src-trajectory",
         "src-rna-velocity"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4850,6 +4847,7 @@
         "src-cellchat",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是对方法核心逻辑的课程化综合；来源支持方法原理，但不表示原文逐字给出本课程表述。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4863,6 +4861,7 @@
         "src-strobe",
         "src-remark"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4877,6 +4876,7 @@
         "src-diablo",
         "src-spatial"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4891,6 +4891,7 @@
         "src-target-trial",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4904,6 +4905,7 @@
         "src-pseudobulk",
         "src-pseudorep"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4919,6 +4921,7 @@
         "src-calibration",
         "src-pm-external"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4932,6 +4935,7 @@
         "src-consort",
         "src-asa-pvalue"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4945,6 +4949,7 @@
         "src-nmf",
         "src-clustering"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4959,6 +4964,7 @@
         "src-single-cell-2023",
         "src-spatial"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4973,6 +4979,7 @@
         "src-milo",
         "src-single-cell-2023"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -4987,6 +4994,7 @@
         "src-remark",
         "src-calibration"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -5000,6 +5008,7 @@
         "src-dag",
         "src-strobe"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,
@@ -5014,6 +5023,7 @@
         "src-cox",
         "src-tripod-ai"
       ],
+      "evidenceBoundaryCn": "这是虚构课程场景中的校准规则；场景数值不是外部论文结果，来源仅支持所用方法与解释边界。",
       "supportMode": "curriculum_synthesis",
       "supportStatus": "claim_level_review_pending",
       "identifierVerified": true,

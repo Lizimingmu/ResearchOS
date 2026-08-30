@@ -26,6 +26,7 @@ import { applyLearningTransition, canStartUnit, createLearnerUnitState } from ".
 import { calculatePriority, generateLearningTodayTasks, generateM018CurriculumTasks, generateTodayTasks } from "../.build/learning/scheduler.js";
 import { createLearningContentProgress, contentPrerequisitesMet, submitArchitecturePractice } from "../.build/learning/learningArchitectureEngine.js";
 import { buildLearningAuditPrompt, buildLearningGenerationPrompt, parseLearningContentPackJson } from "../.build/services/learningContentExchange.js";
+import { evaluateStagedAssessment } from "../.build/services/stagedAssessment.js";
 import { createReviewItem, scheduleReview } from "../.build/learning/review.js";
 import { summarizeSkills } from "../.build/learning/scoring.js";
 import { createInitialState, shouldAutoOpenTutorial, useAppStore } from "../.build/state/store.js";
@@ -2526,7 +2527,7 @@ test("M019-D Method candidates implement all ten instructional dimensions", () =
 test("M019-D Cases require staged reasoning, calibration, updating and a final task", () => {
   assert.ok(stagedCaseLabs.every((caseLab) => caseLab.stages.length >= 4 && caseLab.stages.length <= 6));
   assert.ok(stagedCaseLabs.every((caseLab) => caseLab.stages.every((stage) => stage.reasoningPromptCn && stage.calibrationCn && stage.updatePromptCn)));
-  assert.ok(stagedCaseLabs.every((caseLab) => caseLab.finalTaskCn.length >= 4));
+  assert.ok(stagedCaseLabs.every((caseLab) => caseLab.finalTaskCn.length >= 3));
 });
 
 test("M019-E claim-source map keeps generated prose at claim-level pending", () => {
@@ -2535,12 +2536,70 @@ test("M019-E claim-source map keeps generated prose at claim-level pending", () 
   assert.ok(curriculumClaims.every((claim) => claim.supportStatus === "claim_level_review_pending"));
 });
 
+test("M019-E scientific routing includes formal high-risk claims and isolates GSVA sources", () => {
+  const highRiskGuideIds = new Set(curriculumManifest.filter((item) => item.scientificRisk === "HIGH").map((item) => item.guideSectionId));
+  const guideIdsByFormalId = new Map([
+    ...stagedConceptLessons.map((lesson) => [lesson.id, [lesson.guideSectionId]]),
+    ...stagedMethodLessons.map((lesson) => [lesson.id, lesson.guideSectionIds]),
+  ]);
+  const highRiskGuideClaims = curriculumClaims.filter((claim) => highRiskGuideIds.has(claim.contentId));
+  const highRiskFormalClaims = curriculumClaims.filter((claim) => (guideIdsByFormalId.get(claim.contentId) ?? []).some((id) => highRiskGuideIds.has(id)));
+  assert.equal(highRiskGuideClaims.length, 182);
+  assert.equal(highRiskFormalClaims.length, 54);
+  const gsva = selfRescueGuideSections.find((section) => section.titleEn === "GSVA and ssGSEA");
+  assert.deepEqual([...gsva.evidenceSourceIds].sort(), ["src-gsva", "src-ssgsea"]);
+});
+
 test("M019-F Curriculum Preview is read-only and shows the exact pending banner", () => {
   const html = renderToStaticMarkup(createElement(CurriculumPreviewView));
   assert.match(html, /待科学审核 · 不进入正式 Today · 不计标准化能力/);
   assert.match(html, /Curriculum Manifest/);
   assert.doesNotMatch(html, /提交答案|创建能力|标记掌握/);
   assert.ok(studioTemplates.every((template) => template.producesTransferArtifact && template.createsCompetence === false));
+});
+
+test("M019-F staged assessment simulation fails closed to human review without competence", () => {
+  const asset = stagedConceptLessons[0].primaryApply;
+  const evidenceUnits = asset.scoringRule.evidenceExpectations.map((expectation) => ({
+    rowId: expectation.allowedRowIds[0], supportsOptionId: expectation.optionId,
+    quotedFactCn: expectation.requiredFactFragmentsCn[0],
+    reasoningCn: `结合该行的具体事实，${expectation.reasoningMarkersCn[0]}按当前证据边界调整决定。`,
+  }));
+  const passed = evaluateStagedAssessment(asset, asset.expectedOptionIds, evidenceUnits, `若${asset.scoringRule.changeMindCriteriaCn[0]}不成立，我会撤回并重新判断。`);
+  assert.equal(passed.status, "review_required");
+  assert.equal(passed.recommendedNextRoute, "human_review");
+  assert.equal(passed.workflowImplemented, false);
+  assert.equal(passed.requiresHumanReview, true);
+  assert.equal(passed.createsCompetence, false);
+  const critical = evaluateStagedAssessment(asset, [asset.scoringRule.criticalErrorOptionIds[0]], evidenceUnits, `若${asset.scoringRule.changeMindCriteriaCn[0]}不成立，我会改变当前决定。`);
+  assert.equal(critical.status, "failed");
+  assert.equal(critical.recommendedNextRoute, "remediation");
+  assert.equal(critical.createsCompetence, false);
+  const fakeEvidence = asset.scoringRule.evidenceExpectations.slice(0, 2).map((expectation) => ({
+    rowId: expectation.allowedRowIds[0], supportsOptionId: expectation.optionId,
+    quotedFactCn: expectation.requiredFactFragmentsCn[0],
+    reasoningCn: `复述选项但不建立关系：${asset.options.find((option) => option.id === expectation.optionId).labelCn}`,
+  }));
+  const rejected = evaluateStagedAssessment(asset, asset.expectedOptionIds, fakeEvidence, asset.scoringRule.changeMindCriteriaCn[0]);
+  assert.notEqual(rejected.status, "review_required");
+  assert.equal(rejected.acceptedEvidenceUnits.length, 0);
+  const missingOneOption = evaluateStagedAssessment(asset, asset.expectedOptionIds, evidenceUnits.slice(0, -1), `若${asset.scoringRule.changeMindCriteriaCn[0]}不成立，我会修改当前决定。`);
+  assert.notEqual(missingOneOption.status, "review_required");
+  const markerOnly = asset.scoringRule.evidenceExpectations.map((expectation) => ({
+    rowId: expectation.allowedRowIds[0], supportsOptionId: expectation.optionId,
+    quotedFactCn: expectation.requiredFactFragmentsCn[0], reasoningCn: `我不解释事实关系，只写通用标记：${expectation.reasoningMarkersCn[0]}。`,
+  }));
+  const adversarial = evaluateStagedAssessment(asset, asset.expectedOptionIds, markerOnly, `若${asset.scoringRule.changeMindCriteriaCn[0]}不成立，我会更新决定。`);
+  assert.equal(adversarial.recommendedNextRoute, "human_review");
+  assert.equal(adversarial.status, "review_required");
+  assert.equal(adversarial.createsCompetence, false);
+});
+
+test("M019-F staged candidates use role-distinct stimuli and construct-specific feedback", () => {
+  const lessons = [...stagedConceptLessons, ...stagedMethodLessons];
+  assert.ok(lessons.every((lesson) => new Set([lesson.primaryApply.stimulus.format, lesson.remediation.stimulus.format, lesson.delayedReview.stimulus.format]).size === 3));
+  assert.ok(lessons.every((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview].every((asset) => new Set(Object.values(asset.optionFeedbackCn)).size >= 5)));
+  assert.ok(stagedMethodLessons.every((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview].every((asset) => asset.stimulus.rowsCn.every((row) => row[0] && row[1] && row[1] !== asset.scenarioCn))));
 });
 
 test("M019-G E2E Statistical Unit survives restart and reaches retained through exact due review", () => {

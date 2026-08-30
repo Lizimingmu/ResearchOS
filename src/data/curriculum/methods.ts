@@ -9,12 +9,12 @@ interface MethodSeed {
 
 const seeds: MethodSeed[] = [
   { slug: "differential-analysis", titleCn: "组间比较与差异分析", titleEn: "Group Comparison and Differential Analysis", guideTitles: ["Differential Analysis"], question: "预定义组间在某个连续结局或高维特征上有多大差异？", inputs: ["独立统计单位与分组", "结局/特征及协变量", "预处理与检验族"], core: "在与设计一致的模型中估计组间对比，并在高维场景控制多重性。", outputs: ["效应估计与方向", "标准误/置信区间", "P value 与 FDR"], assumptions: ["独立或正确建模的相关结构", "可辩护的分布/均值—方差关系", "对比与过滤预定义"], use: ["比较预定义生物组", "需要特征级效应与不确定性"], avoid: ["细胞级行数替代供体复制", "先按结果选组或阈值"], misuse: ["只报显著特征", "把 fold change 当机制", "忽略背景检验族"], checks: ["统计单位", "模型与归一化", "FDR 与效应", "批次是否与组混杂"], paper: "Methods 写清单位、归一化、设计矩阵、对比和 FDR；Results 同时报效应与不确定性。", sources: ["src-deseq2", "src-edger", "src-multiple-testing"] },
-  { slug: "correlation", titleCn: "相关分析", titleEn: "Correlation", guideTitles: ["Correlation"], question: "两个变量在目标总体中如何共同变化？", inputs: ["成对观测", "变量尺度与范围", "聚类/重复结构"], core: "用 Pearson、Spearman 等统计量概括指定关系，但不识别方向或共同原因。", outputs: ["相关系数", "不确定性", "散点与诊断"], assumptions: ["独立单位正确", "关系形式与系数匹配", "范围和异常点可解释"], use: ["描述共同变化", "生成后续问题"], avoid: ["推断因果", "混合不同总体后给单一系数"], misuse: ["只报 P value", "删除离群点提高相关", "把细胞当供体"], checks: ["散点形状", "范围限制", "共同原因", "分层与聚类"], paper: "报告系数类型、样本单位、图形、区间与预先分析，并限制为关联。", sources: ["src-strobe", "src-pseudorep"] },
-  { slug: "linear-regression", titleCn: "线性回归", titleEn: "Linear Regression", guideTitles: ["Linear Regression"], question: "协变量如何与连续结局的条件均值相关？", inputs: ["连续结局", "预定义协变量", "独立单位"], core: "通过线性预测子估计其他变量给定时的均值差异或斜率。", outputs: ["回归系数", "置信区间", "残差诊断"], assumptions: ["条件均值函数形式合理", "残差结构可处理", "观测独立或相关已建模"], use: ["连续结局效应估计", "调整后关联"], avoid: ["强非线性未建模", "无重叠范围外推"], misuse: ["系数写成因果", "单因素筛变量", "忽略单位与交互"], checks: ["变量编码", "函数形式", "影响点", "缺失处理"], paper: "说明公式、编码、诊断和敏感性，报告系数尺度而非只报显著性。", sources: ["src-strobe", "src-tripod"] },
+  { slug: "correlation", titleCn: "相关分析", titleEn: "Correlation", guideTitles: ["Correlation"], question: "两个变量在目标总体中如何共同变化？", inputs: ["成对观测", "变量尺度与范围", "聚类/重复结构"], core: "用 Pearson、Spearman 等统计量概括指定关系，但不识别方向或共同原因。", outputs: ["相关系数", "不确定性", "散点与诊断"], assumptions: ["独立单位正确", "关系形式与系数匹配", "范围和异常点可解释"], use: ["描述共同变化", "生成后续问题"], avoid: ["推断因果", "混合不同总体后给单一系数"], misuse: ["只报 P value", "删除离群点提高相关", "把细胞当供体"], checks: ["散点形状", "范围限制", "共同原因", "分层与聚类"], paper: "报告系数类型、样本单位、图形、区间与预先分析，并限制为关联。", sources: ["src-correlation-regression", "src-dag"] },
+  { slug: "linear-regression", titleCn: "线性回归", titleEn: "Linear Regression", guideTitles: ["Linear Regression"], question: "协变量如何与连续结局的条件均值相关？", inputs: ["连续结局", "预定义协变量", "独立单位"], core: "通过线性预测子估计其他变量给定时的均值差异或斜率。", outputs: ["回归系数", "置信区间", "残差诊断"], assumptions: ["条件均值函数形式合理", "残差结构可处理", "观测独立或相关已建模"], use: ["连续结局效应估计", "调整后关联"], avoid: ["强非线性未建模", "无重叠范围外推"], misuse: ["系数写成因果", "单因素筛变量", "忽略单位与交互"], checks: ["变量编码", "函数形式", "影响点", "缺失处理"], paper: "说明公式、编码、诊断和敏感性，报告系数尺度而非只报显著性。", sources: ["src-regression-strategies", "src-dag"] },
   { slug: "logistic-regression", titleCn: "Logistic 回归", titleEn: "Logistic Regression", guideTitles: ["Logistic Regression"], question: "协变量如何与二元结局的条件 odds 或预测概率相关？", inputs: ["二元结局", "协变量和参照", "事件/非事件信息"], core: "以 logit 链接建立条件 log-odds 模型，并可转换为给定协变量下的概率。", outputs: ["odds ratio", "预测概率", "CI、校准与区分"], assumptions: ["函数形式合理", "事件信息与参数相称", "结局定义一致"], use: ["二元结局关联", "风险预测开发"], avoid: ["常见结局下把 OR 当 RR", "完全分离未处理"], misuse: ["stepwise 后普通 CI", "只看 AUC", "开发数据即验证"], checks: ["事件数", "非线性/交互", "校准", "验证隔离"], paper: "区分解释与预测目标，报告 OR 单位、绝对概率、校准和验证。", sources: ["src-tripod", "src-probaST"] },
   { slug: "cox-regression", titleCn: "Cox 比例风险回归", titleEn: "Cox Proportional Hazards Regression", guideTitles: ["Cox Proportional Hazards", "Hazard Ratio", "PH assumption", "Time origin"], question: "协变量如何与 time-to-event 结局的相对瞬时 hazard 相关？", inputs: ["时间起点和随访时间", "事件/删失", "编码明确的协变量"], core: "在每个事件时刻的风险集中比较相对 hazard，不参数化基线 hazard。", outputs: ["HR 与 CI", "PH/函数形式诊断", "调整后生存或风险语境"], assumptions: ["time origin 对齐", "PH 或已建模时间变化", "删失可处理", "事件信息充分"], use: ["时间—事件关联", "预后模型中的相对 hazard"], avoid: ["固定时点绝对风险问题却只给 HR", "immortal time 未处理"], misuse: ["HR 当风险比", "总样本量替代事件数", "不检查 PH"], checks: ["风险集", "HR 单位", "事件/参数", "验证与绝对风险"], paper: "说明起点、事件、删失、变量选择、PH 与验证；Results 报 HR、CI 和时间化绝对风险。", sources: ["src-cox", "src-pmsampsize"] },
-  { slug: "kaplan-logrank", titleCn: "Kaplan–Meier 与 log-rank", titleEn: "Kaplan–Meier and Log-Rank", guideTitles: ["Kaplan–Meier", "Log-rank test"], question: "不同组的生存经验在随访中是否、如何不同？", inputs: ["起点、时间、事件", "组别", "删失与风险表"], core: "KM 乘积估计条件生存，log-rank 比较事件时刻的观察与期望。", outputs: ["生存曲线", "时点生存率与区间", "log-rank P value"], assumptions: ["删失可处理", "组和起点定义正确", "比较问题与权重匹配"], use: ["描述生存分布", "预定义组间整体比较"], avoid: ["竞争事件下把 1-KM 当目标风险", "数据驱动 cut-point"], misuse: ["只看曲线分离", "忽略风险表", "log-rank 代替效应"], checks: ["time zero", "删失标记", "风险人数", "曲线交叉"], paper: "给曲线、风险表、时点估计和区间；检验不能替代效应尺度。", sources: ["src-cox", "src-competing"] },
-  { slug: "restricted-cubic-spline", titleCn: "限制性立方样条", titleEn: "Restricted Cubic Spline", guideTitles: ["Restricted Cubic Spline"], question: "连续变量与结局的关系是否呈平滑非线性？", inputs: ["连续变量", "结局模型", "预设结点/自由度"], core: "用分段立方基函数表示曲线，并在线性尾部约束以减少极端不稳定。", outputs: ["调整后曲线", "区间", "非线性贡献"], assumptions: ["数据范围支持曲线", "自由度与信息量相称", "结点策略可辩护"], use: ["避免强制线性", "探索预先合理的平滑形状"], avoid: ["稀疏尾部读阈值", "用最小 P 选 cut-point"], misuse: ["曲线拐点称生物阈值", "不画数据支持", "过多结点"], checks: ["结点与参照", "尾部样本", "整体/非线性检验", "外部验证"], paper: "报告结点、参照、自由度并展示带区间曲线和数据分布。", sources: ["src-rcs", "src-tripod"] },
+  { slug: "kaplan-logrank", titleCn: "Kaplan–Meier 与 log-rank", titleEn: "Kaplan–Meier and Log-Rank", guideTitles: ["Kaplan–Meier", "Log-rank test"], question: "不同组的生存经验在随访中是否、如何不同？", inputs: ["起点、时间、事件", "组别", "删失与风险表"], core: "KM 乘积估计条件生存，log-rank 比较事件时刻的观察与期望。", outputs: ["生存曲线", "时点生存率与区间", "log-rank P value"], assumptions: ["删失可处理", "组和起点定义正确", "比较问题与权重匹配"], use: ["描述生存分布", "预定义组间整体比较"], avoid: ["竞争事件下把 1-KM 当目标风险", "数据驱动 cut-point"], misuse: ["只看曲线分离", "忽略风险表", "log-rank 代替效应"], checks: ["time zero", "删失标记", "风险人数", "曲线交叉"], paper: "给曲线、风险表、时点估计和区间；检验不能替代效应尺度。", sources: ["src-km-tutorial", "src-logrank", "src-survival-censoring", "src-competing"] },
+  { slug: "restricted-cubic-spline", titleCn: "限制性立方样条", titleEn: "Restricted Cubic Spline", guideTitles: ["Restricted Cubic Spline"], question: "连续变量与结局的关系是否呈平滑非线性？", inputs: ["连续变量", "结局模型", "预设结点/自由度"], core: "用分段立方基函数表示曲线，并在线性尾部约束以减少极端不稳定。", outputs: ["调整后曲线", "区间", "非线性贡献"], assumptions: ["数据范围支持曲线", "自由度与信息量相称", "结点策略可辩护"], use: ["避免强制线性", "探索预先合理的平滑形状"], avoid: ["稀疏尾部读阈值", "用最小 P 选 cut-point"], misuse: ["曲线拐点称生物阈值", "不画数据支持", "过多结点"], checks: ["结点与参照", "尾部样本", "整体/非线性检验", "外部验证"], paper: "报告结点、参照、自由度并展示带区间曲线和数据分布。", sources: ["src-rcs", "src-regression-strategies"] },
   { slug: "bootstrap", titleCn: "Bootstrap", titleEn: "Bootstrap", guideTitles: ["Bootstrap"], question: "估计、选择或模型表现对样本扰动有多稳定？", inputs: ["独立抽样单位", "完整分析流程", "重采样次数"], core: "从经验分布有放回抽取单位，重复完整流程以近似抽样分布或乐观偏倚。", outputs: ["标准误/区间", "稳定性", "乐观校正表现"], assumptions: ["重采样层级正确", "经验样本代表目标过程", "完整选择步骤被重复"], use: ["内部验证", "估计不确定性"], avoid: ["创造外部验证", "细胞级重采样患者问题"], misuse: ["只重拟合最终模型", "忽略聚类", "把稳定当无偏"], checks: ["重采样单位", "流程嵌套", "重复充分", "报告分布"], paper: "说明重采样单位、次数、每次步骤和汇总方式。", sources: ["src-internal-validation", "src-tripod"] },
   { slug: "cross-validation", titleCn: "交叉验证", titleEn: "Cross-Validation", guideTitles: ["Cross-validation"], question: "完整开发流程在未用于拟合的样本上表现如何？", inputs: ["样本级分折", "完整预处理/选择/拟合流程", "预定义指标"], core: "轮流用训练折拟合全部步骤并在保留折评价，必要时用嵌套 CV 调参。", outputs: ["折外性能", "相关折间的稳定性描述（不能把折 SD 当独立重复的 CI）", "调参选择"], assumptions: ["分折保留聚类和时间结构", "测试折未泄漏", "评价样本代表目标"], use: ["内部泛化评估", "模型比较与调参"], avoid: ["时间外推却随机分折", "先全数据选特征"], misuse: ["预处理在全数据", "把折间 SD 当泛化误差 SE", "CV 叫外部验证"], checks: ["折分单位", "嵌套选择", "重复策略", "不确定性估计方法"], paper: "画清数据流，说明分折、重复、嵌套、所有预处理位置，以及为何折间散布不等于独立重复区间。", sources: ["src-leakage", "src-tripod"] },
   { slug: "roc-auc", titleCn: "ROC / AUC", titleEn: "ROC and AUC", guideTitles: ["ROC / AUC"], question: "模型在不同阈值上区分病例与非病例的排序能力如何？", inputs: ["连续预测分数", "二元参照结局", "独立评价数据"], core: "ROC 描述灵敏度—1特异度权衡；AUC 等于随机病例得分高于随机非病例的概率，加上并列得分概率的一半（若实现采用该 convention）。", outputs: ["ROC 曲线", "AUC 与 CI", "阈值性能"], assumptions: ["参照结局可靠", "评价集未用于开发", "抽样与目标使用匹配"], use: ["比较区分能力", "阈值前总体排序"], avoid: ["证明校准或临床效用", "同数据选 cut-point 并评价"], misuse: ["AUC 高等于可用", "忽略 prevalence/代价", "无 CI"], checks: ["验证集", "校准", "临床阈值", "比较检验"], paper: "报告数据角色、ties convention、AUC 区间、阈值指标并与校准和 utility 分开。", sources: ["src-roc", "src-tripod"] },
@@ -36,18 +36,18 @@ const guideIds = (titles: string[]) => titles.map((title) => selfRescueGuideSect
 
 interface MethodBlueprint { intuition: string; worked: string; apply: string; remediation: string; review: string; decision: string; nearMiss: string }
 const methodBlueprints: Record<string, MethodBlueprint> = {
-  "differential-analysis": { intuition: "差异分析不是找红点，而是在设计矩阵中写清谁与谁比较、以谁为独立复制。", worked: "6 位供体 RNA counts：先写 group+batch 设计矩阵和 treatment-control contrast，再逐行解释 log2FC、CI、P 与 q；批次与组完全重合时标记不可估。", apply: "给出 8 位供体的组别×批次表和一行 DESeq2 输出，选择可估 contrast 并解释效应。", remediation: "在一张错误设计矩阵中找出供体被展开成技术重复和批次完全混杂的位置。", review: "蛋白组多中心研究需冻结检验族、效应尺度和缺失处理后再解释 q 值。", decision: "按独立单位建立可估设计矩阵、预定义 contrast，并同时解释效应/CI/FDR", nearMiss: "先逐特征筛 P<0.05，再只对入选特征计算 FDR" },
+  "differential-analysis": { intuition: "差异分析不是找红点，而是在设计矩阵中写清谁与谁比较、以谁为独立复制。", worked: "6 位供体 RNA counts：先写 group+batch 设计矩阵和 treatment-control contrast，再逐行解释 log2FC、CI、P 与 q；批次与组完全重合时标记不可估。", apply: "D1=control/B1、D2=control/B1、D3=control/B2、D4=control/B2、D5=treatment/B1、D6=treatment/B1、D7=treatment/B2、D8=treatment/B2；GeneX 的归一化计数依次为 100、120、90、110、190、210、170、200；预定义 treatment-control contrast 的 log2FC=0.88，95% CI 0.42–1.34，P=0.0004，BH q=0.018。", remediation: "错误矩阵把 D1 的 L1a/L1b、D2 的 L2a/L2b 各编码成独立供体，且 control 全在 B1、treatment 全在 B2；候选 design=~batch+group 的两列完全共线，contrast 不可估。", review: "中心 C1/C2 各有 control 3 人和 treatment 3 人；预注册 500 个蛋白为同一检验族；ProteinY 差异=0.31 log2，95% CI -0.08–0.70，原始 P=0.04，BH q=0.41；缺失率 control=6%、treatment=19%。", decision: "按独立单位建立可估设计矩阵、预定义 contrast，并同时解释效应/CI/FDR", nearMiss: "先逐特征筛 P<0.05，再只对入选特征计算 FDR" },
   correlation: { intuition: "一个相关系数把散点云压成一个数；先看云的形状、层级与范围，再决定这个数是否有意义。", worked: "四幅散点图分别是线性、单调非线性、单个离群点驱动和供体内聚类；逐图选择 Pearson、Spearman、分层模型或不汇总。", apply: "同一数据给出总体相关和按中心分层散点，判断 Simpson 反转与独立单位。", remediation: "删除一个离群点前后系数剧变；用影响诊断和预设规则决定是否保留。", review: "单细胞基因相关需先聚合到供体层，再审查组成共同原因。", decision: "依据关系形状、尺度、范围和聚类选择统计量或拒绝单一相关系数", nearMiss: "Pearson 不显著后改报 Spearman，选择更显著者但不说明" },
   "linear-regression": { intuition: "线性回归是在其他已写入变量固定时比较条件均值；系数的单位与参照决定它说什么。", worked: "从年龄、治疗、中心的系数表逐步读单位、参照、CI，再用残差—拟合图发现非线性和异方差。", apply: "变量编码把 0/1 参照写反且残差呈弯曲；修正公式并解释一个系数。", remediation: "用边际预测表而非系数口号重建连续变量每 10 单位的效应。", review: "实验动物重复测量结局需保留动物内相关，而非普通 OLS 行级独立。", decision: "修正编码和函数形式，按条件均值尺度解释系数与 CI，并处理相关/残差结构", nearMiss: "加入所有协变量后把任一系数写成独立因果效应" },
   "logistic-regression": { intuition: "logistic 模型在线性预测子上建模 log-odds；OR 不是常见结局下的 RR，也不是概率差。", worked: "从 2×2 风险表连接 odds、OR、RR 与基线概率，再把一个 logit 系数转成两个临床情境的预测概率并检查校准。", apply: "结局率 40%、OR=2.0；判断能否称风险翻倍，并给基线风险下绝对概率。", remediation: "完全分离小表导致无限估计；选择惩罚/合并策略并限制结论。", review: "外部中心 AUC 尚可但校准差，判断是否能直接使用阈值。", decision: "明确目标是关联还是预测，解释 OR 单位并用绝对概率、CI 和校准补足", nearMiss: "结局常见时仍把 OR=2 直接写成风险增加 100%" },
   "cox-regression": { intuition: "Cox 模型每到一个事件时刻，只在仍处于风险集的人之间比较瞬时 hazard。", worked: "6 人事件表在两个事件时刻手工形成 risk set；再读 HR 单位、Schoenfeld 诊断和交叉生存曲线。", apply: "time zero 错位、31 事件却搜索 cut-point，并未报告 PH；找出具体缺陷和最大结论。", remediation: "从 landmark 时间线与风险集表重建正确进入规则，而非继续调模型。", review: "移植预后研究 HR 未说明每 SD 还是每单位，并缺绝对风险验证。", decision: "重建 time zero/风险集，约束事件—复杂度，检查 PH，按单位解释 HR 并补时间化绝对风险", nearMiss: "总队列人数很大，因此忽略事件数、cut-point 搜索和 PH" },
-  "kaplan-logrank": { intuition: "KM 每个事件时刻把条件生存概率相乘；删失者贡献到离开风险集为止。", worked: "5 人事件/删失表逐步算两个 KM 台阶、风险人数和时点 CI，再解释 log-rank 在曲线交叉时的限制。", apply: "给交叉曲线、风险表和 2 年风险差，选择主要描述量并限制整体检验。", remediation: "从时间线重建被错误当事件的竞争事件和行政删失。", review: "数据驱动 cut-point 后的两条 KM 曲线不能作为已验证分组证据。", decision: "核对 time zero/事件/删失，读风险表和时点估计，把 log-rank 与效应分开", nearMiss: "只根据曲线早期分开和 log-rank P 值判断临床重要性" },
+  "kaplan-logrank": { intuition: "KM 每个事件时刻把条件生存概率相乘；删失者贡献到离开风险集为止。", worked: "5 人事件/删失表逐步算两个 KM 台阶、风险人数和时点 CI，再解释 log-rank 在曲线交叉时的限制。", apply: "风险人数 A/B 在 0、6、12、24 月分别为 20/20、15/17、10/11、4/3；KM 生存率 A 在 6、12、24 月为 0.84、0.66、0.52，B 为 0.90、0.63、0.50，曲线在 10–14 月交叉；24 月风险差=2 个百分点，95% CI -18 至 22，log-rank P=0.78。", remediation: "患者 R1 在 8 月死于目标事件，R2 在 6 月死于竞争事件，R3 在 10 月失访，R4/R5 于 12 月行政截止仍无事件；原表错误地把 R2 记为目标事件、把 R4/R5 记为 12 月删失前事件。", review: "在同一 42 事件队列尝试 19 个 biomarker cut-point 后选出 log-rank P=0.01 的阈值；500 次 bootstrap 中该阈值的四分位范围为 1.2–3.9，分组一致率 54%，没有冻结外部队列。", decision: "核对 time zero/事件/删失，读风险表和时点估计，把 log-rank 与效应分开", nearMiss: "只根据曲线早期分开和 log-rank P 值判断临床重要性" },
   "restricted-cubic-spline": { intuition: "样条让一条直线弯曲，但尾部数据稀少处的漂亮拐点最容易是模型自由度。", worked: "带结点、参照、rug 和 CI 的曲线显示中段稳定、尾部稀疏；比较 3 与 5 knots 敏感性，不把拐点称阈值。", apply: "曲线在仅 4% 样本的尾部急升；判断阈值主张及应做的结点/函数形式检查。", remediation: "用分箱点估计叠加到 spline 图，识别哪段缺数据支持。", review: "新队列按冻结 spline 预测但测量范围更窄，判断可运输部分。", decision: "冻结结点/参照和自由度，展示数据支持与 CI，并对尾部和函数形式做敏感性", nearMiss: "选择非线性 P 最小的结点数，并把视觉拐点二分为临床阈值" },
   bootstrap: { intuition: "bootstrap 是从已有独立单位有放回抽样；每一轮必须重做完整选择流程。", worked: "6 名患者有放回抽样三轮，逐轮重复预处理、特征选择、拟合与评价，比较 naive 与乐观校正性能。", apply: "每人多切片的数据选择患者还是切片重采样，并指出哪些步骤必须嵌套。", remediation: "给出只重拟合最终模型的伪 bootstrap 流程，补回被遗漏的选择步骤。", review: "小型外部验证不能由开发队列 bootstrap 取代。", decision: "按独立抽样单位重采样，并在每轮重做全部数据驱动步骤", nearMiss: "固定已选特征，只对最终系数 bootstrap 并称已校正全部乐观偏倚" },
   "cross-validation": { intuition: "每个保留折都必须像未来数据一样不可见；任何先看全数据的步骤都会污染折外表现。", worked: "在 preprocessing→selection→tuning→test 的嵌套折图中，所有步骤只在训练折拟合；折间散布不当作独立重复 CI。", apply: "四条流水线中一条在训练折调参但全数据归一化；定位首次泄漏并重画。", remediation: "按时间和患者 ID 重新分折，修复同一人的样本跨训练/测试。", review: "多中心模型用 leave-center-out 评价场景迁移，同时保留最终外部队列。", decision: "按目标泛化结构分折，把预处理/选择/调参嵌套，并正确汇总折外性能", nearMiss: "无监督归一化不看结局，因此可在全数据上先完成" },
   "roc-auc": { intuition: "AUC 衡量排序，不告诉概率准不准，也不替你选择有临床后果的阈值。", worked: "两个模型 AUC 相同但校准不同；结合给定患病率、混淆矩阵与误诊代价选择阈值，并说明 ties convention。", apply: "AUC=0.82 的开发模型在同数据选 cut-point；判断还能报告什么及缺少的校准/utility。", remediation: "从同 AUC、不同校准图中选择临床上可修复的模型，而非只看曲线面积。", review: "独立诊断队列 case mix 改变时同时报告 AUC、CI、校准和阈值指标。", decision: "在独立评价数据报告 AUC/CI 与 ties convention，并分开检查校准和决策阈值", nearMiss: "AUC 高于 0.8 就宣称模型临床可用且无需校准" },
   "time-dependent-auc": { intuition: "到 t 时刻谁算病例、谁算对照会随定义变化；删失者不能被简单丢弃。", worked: "在 t=2 年定义 cumulative/dynamic 病例与对照，标记删失个体并用 IPCW 估计 AUC(t)。", apply: "给 1 年与 5 年风险人数、AUC/CI 和校准，判断哪个时点估计可用。", remediation: "在时间线中修复把 2 年前删失者当非病例的错误。", review: "外部队列须按冻结预测时间和同一 AUC(t) 定义评价。", decision: "预设预测时点、病例/对照定义和删失方法，再报告 AUC(t)/CI 与同时间点校准", nearMiss: "挑 AUC(t) 最大的时点作为主要结果，不报告风险人数和删失" },
-  pca: { intuition: "PCA 旋转坐标轴，让第一根轴承载最多线性方差；方差最大不等于最重要生物机制。", worked: "3 样本×2 特征先中心化并画几何投影，读 PC1 scores、loadings 和解释方差，再比较缩放前后。", apply: "PCA 分离与批次完全一致；判断能否解释为疾病亚型并提出设计检查。", remediation: "从未缩放高方差特征主导的图重算标准化 PCA。", review: "新平台投影到冻结 loadings 前需统一特征、尺度和缺失处理。", decision: "冻结中心化/缩放，联合解释 scores、loadings、方差和元数据关联", nearMiss: "PC1 分组清晰就把它命名为疾病机制轴" },
+  pca: { intuition: "PCA 旋转坐标轴，让第一根轴承载最多线性方差；方差最大不等于最重要生物机制。", worked: "3 样本×2 特征先中心化并画几何投影，读 PC1 scores、loadings 和解释方差，再比较缩放前后。", apply: "样本 S1–S6 的 PC1 score 为 -3.1、-2.4、-1.8、1.7、2.5、3.0；S1–S3 全为 batch B1/control，S4–S6 全为 batch B2/case；PC1 解释 71% 方差，batch 与 disease 完全重合。", remediation: "四个特征的 SD 为 100、8、1.2、0.9；未缩放 PCA 的 PC1 loading 为 0.99、0.08、0.01、0.00，解释 96% 方差；z-score 后 PC1 loading 为 0.52、0.50、0.49、0.49，解释 54% 方差。", review: "冻结 loadings 来自平台 A 的 100 个特征；平台 B 缺 14 个特征，剩余特征中 22 个量纲由 raw intensity 改为 log2，且 9 个超出训练范围；当前未定义缺失填补和中心化参数。", decision: "冻结中心化/缩放，联合解释 scores、loadings、方差和元数据关联", nearMiss: "PC1 分组清晰就把它命名为疾病机制轴" },
   nmf: { intuition: "NMF 用少数非负程序相加近似每个样本；rank 和初始化决定看到几套程序。", worked: "rank 2 小矩阵展示 basis×coefficient 重构，再比较多个 rank 的误差、共识和外部分配。", apply: "rank=4 与结局差异最大但稳定性差；选择 rank 并限制 subtype 语言。", remediation: "从单次初始化结果改为多次初始化共识矩阵。", review: "独立队列只复现连续 program，更新离散亚型主张。", decision: "综合重构误差、稳定性、可解释性和冻结外部分配选择 rank", nearMiss: "按结局 P 值选择 rank，并把最显著分组称机制亚型" },
   clustering: { intuition: "聚类回答‘在这套表征和距离下如何分组’，换尺度或距离就可能换答案。", worked: "同一数据在原始尺度、z-score 和两种距离下簇分配改变；共识矩阵提示连续谱而非清晰块。", apply: "热图看似三簇但重采样不稳且批次主导；决定是否报告 subtype。", remediation: "用连续轴和软分配替代强制 k-means 标签。", review: "冻结预处理和新样本分配器后在独立队列测试。", decision: "比较表征、尺度、距离、算法与重采样稳定性，并判断离散还是连续", nearMiss: "挑结局差异最大的 k 作为最佳簇数" },
   gsea: { intuition: "GSEA 沿完整有方向排名累计基因集成员；它不是把显著基因列表拿去数重叠。", worked: "10 基因排名手动画 running sum、leading edge；置换单位保持供体设计并解释 NES/FDR。", apply: "供体内有大量细胞，选择排名统计量和可交换单位。", remediation: "修复用阈值化 DEG 列表代替全排名的错误流程。", review: "独立队列冻结基因集版本与排名规则，审查方向和冗余。", decision: "用完整方向排名、版本化基因集和设计匹配的零模型报告 NES/leading edge/FDR", nearMiss: "只对 P<0.05 基因运行 GSEA，并把富集称通路激活" },
@@ -63,21 +63,87 @@ function methodAssessment(seed: MethodSeed, role: StagedAssessmentAssetV1["role"
   const id = `staged-method-${seed.slug}`;
   const scenario = role === "apply" ? blueprint.apply : role === "remediation" ? blueprint.remediation : blueprint.review;
   const roleIndex = role === "apply" ? 0 : role === "remediation" ? 1 : 2;
+  const lessonVariant = [...seed.slug].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 3;
+  const variant = (lessonVariant + roleIndex) % 3;
+  const stimulusFormats = ["case_table", "evidence_matrix", "decision_timeline"] as const;
+  const stimulusFormat = stimulusFormats[(lessonVariant + roleIndex) % 3];
+  const valid = [
+    { id: `${id}-${role}-decision`, labelCn: blueprint.decision },
+    { id: `${id}-${role}-assumption`, labelCn: `核对“${seed.assumptions[roleIndex]}”，并报告失败时如何改变分析` },
+    { id: `${id}-${role}-report`, labelCn: `把${seed.outputs[roleIndex]}与不确定性、数据角色和适用范围一起报告` },
+    { id: `${id}-${role}-diagnostic`, labelCn: `先执行“${seed.checks[roleIndex]}”诊断，再决定保留、修改或停止该分析` },
+  ];
+  const invalid = [
+    { id: `${id}-${role}-near-miss`, labelCn: blueprint.nearMiss },
+    { id: `${id}-${role}-misuse`, labelCn: seed.misuse[roleIndex] },
+    { id: `${id}-${role}-upgrade`, labelCn: `输出方向符合预期时，直接升级为机制或临床价值，不再区分${seed.avoid[roleIndex % seed.avoid.length]}` },
+  ];
+  const correctCount = variant === 0 ? 3 : variant === 1 ? 4 : 2;
+  const options = [...valid.slice(0, correctCount), ...invalid];
+  const expectedOptionIds = valid.slice(0, correctCount).map((option) => option.id);
+  const roleLabel = role === "apply" ? "首次方法应用" : role === "remediation" ? "错误定位后的新材料" : "延迟跨情境复习";
+  const scenarioFacts = scenario.split(/[；。]/).map((item) => item.trim()).filter(Boolean);
+  const material = {
+    input: seed.inputs[roleIndex] ?? seed.inputs[0],
+    result: scenarioFacts.join("；") || scenario,
+    assumption: seed.assumptions[roleIndex],
+    diagnostic: seed.checks[roleIndex],
+    boundary: `${seed.outputs[roleIndex]}；不可升级为：${seed.avoid[roleIndex % seed.avoid.length]}`,
+  };
+  const stimulus = stimulusFormat === "decision_timeline" ? {
+    format: stimulusFormat,
+    columnsCn: ["时点", "当时新增输入/结果", "冻结的分析决定"],
+    rowsCn: [["T0", material.input, "冻结分析单位与输入"], ["T1", material.result, "读取结果但不升级主张"], ["T2", `${material.assumption}；${material.diagnostic}`, "诊断到达后决定保留、修改或停止"], ["T3", material.boundary, "记录更新后的报告边界"]],
+    noteCn: "T0–T3 按分析过程排序；必须说明 T2 的新诊断如何改变 T1 的暂定解释。",
+  } : stimulusFormat === "case_table" ? {
+    format: stimulusFormat,
+    columnsCn: ["样本/分析记录", "可比较输入或结果", "当前判读状态"],
+    rowsCn: [["C1", material.input, "输入与单位"], ["C2", material.result, "观察到的方法结果"], ["C3", `${material.assumption}；${material.diagnostic}`, "尚待诊断"], ["C4", material.boundary, "允许报告的最大范围"]],
+    noteCn: "C1–C4 必须逐行比较输入、结果、诊断和报告边界；未出现的外部验证视为未提供。",
+  } : {
+    format: stimulusFormat,
+    columnsCn: ["证据ID", "实际材料", "支持/反驳对象", "对决定的含义"],
+    rowsCn: [["E1", material.input, "分析输入", "限定可回答的问题"], ["E2", material.result, "当前方法输出", "尚不能独立升级科学主张"], ["E3", `${material.assumption}；${material.diagnostic}`, "关键假设与诊断", "失败则修改或停止"], ["E4", material.boundary, "最终报告", "限定不确定性与适用范围"]],
+    noteCn: "E1–E4 明确 evidence×output/assumption/claim 关系；不能用选项复述代替材料推理。",
+  };
+  const evidenceRowIndexByOptionSuffix: Record<string, number> = { decision: 1, assumption: 0, report: 3, diagnostic: 2 };
+  const reasoningMarkersByOptionSuffix: Record<string, string[]> = {
+    decision: ["因此", "所以", "需要"], assumption: ["若", "否则", "不满足"], report: ["只能", "报告", "限于"], diagnostic: ["检查", "诊断", "决定"],
+  };
+  const factFragment = (row: string[]) => row.slice(1).join("").replace(/[\s，。；：、“”‘’（）()\-—]/g, "").slice(0, 8);
+  const evidenceExpectations = expectedOptionIds.map((optionId) => {
+    const suffix = optionId.split("-").at(-1) ?? "decision";
+    const row = stimulus.rowsCn[evidenceRowIndexByOptionSuffix[suffix] ?? 0];
+    return { optionId, allowedRowIds: [row[0]], requiredFactFragmentsCn: [factFragment(row)], reasoningMarkersCn: reasoningMarkersByOptionSuffix[suffix] ?? ["因此"] };
+  });
+  const optionFeedbackCn = Object.fromEntries(options.map((option) => {
+    if (option.id.endsWith("-decision")) return [option.id, `正确机制：本题需要“${blueprint.decision}”；请用 ${stimulus.rowsCn[0][0]} 与 ${stimulus.rowsCn[1][0]} 说明单位和结果为何支持该决定。`];
+    if (option.id.endsWith("-assumption")) return [option.id, `正确机制：显式核对“${seed.assumptions[roleIndex]}”。若失败，必须修改分析或把结果降级为描述。`];
+    if (option.id.endsWith("-report")) return [option.id, `正确机制：${seed.outputs[roleIndex]} 只是方法输出，必须与不确定性、数据角色和适用范围一起报告。`];
+    if (option.id.endsWith("-diagnostic")) return [option.id, `正确机制：先执行“${seed.checks[roleIndex]}”，它直接决定当前分析应保留、修改还是停止。`];
+    if (option.id.endsWith("-near-miss")) return [option.id, `错误机制：该近似做法“${blueprint.nearMiss}”遗漏 ${stimulus.rowsCn.at(-1)?.[0]} 的诊断。修正为：${blueprint.decision}。`];
+    if (option.id.endsWith("-misuse")) return [option.id, `错误机制：这正是常见误用“${seed.misuse[roleIndex]}”。题面要求先做“${seed.checks[roleIndex]}”，再决定是否继续。`];
+    return [option.id, `错误机制：结果方向不能自动升级为机制或临床价值；题面未解决“${seed.avoid[roleIndex % seed.avoid.length]}”，只能报告有边界的方法输出。`];
+  }));
   return {
     id: `${id}-${role}-v1`, role,
     scenarioCn: scenario,
-    promptCn: "选择全部必须执行的决定；用题面中的数据结构、输出或诊断逐项论证，并写出不能宣称的结论。",
-    options: [
-      { id: `${id}-${role}-decision`, labelCn: blueprint.decision },
-      { id: `${id}-${role}-assumption`, labelCn: `本情境必须核对“${seed.assumptions[roleIndex]}”，并报告失败时如何改变分析` },
-      { id: `${id}-${role}-report`, labelCn: `把${seed.outputs[roleIndex]}与不确定性、数据角色和适用范围一起报告` },
-      { id: `${id}-${role}-near-miss`, labelCn: blueprint.nearMiss },
-      { id: `${id}-${role}-misuse`, labelCn: seed.misuse[roleIndex] },
-      { id: `${id}-${role}-upgrade`, labelCn: `输出方向符合预期时，直接升级为机制或临床价值，不再区分${seed.avoid[roleIndex % seed.avoid.length]}` },
-    ],
-    expectedOptionIds: [`${id}-${role}-decision`, `${id}-${role}-assumption`, `${id}-${role}-report`],
+    promptCn: `${roleLabel}的正确项数量不固定。根据材料表选择最小充分决定，并为每个所选正确决定引用不同材料行，解释事实为何支持该决定且不能采用近似做法。`,
+    options,
+    expectedOptionIds,
+    stimulus,
     reasoningCriteriaCn: [blueprint.decision, seed.checks[roleIndex], "解释 near-miss 在本题中遗漏的步骤", "区分方法输出与科学主张"],
-    feedbackCn: [`本题需要的分析决定：${blueprint.decision}`, `半正确但不足：${blueprint.nearMiss}`, `论文核查：${seed.paper}`],
+    feedbackCn: [`${roleLabel}需要的分析决定：${blueprint.decision}`, `${roleLabel}的关键诊断：${seed.checks[roleIndex]}`, `${roleLabel}中半正确但不足：${blueprint.nearMiss}`],
+    optionFeedbackCn,
+    scoringRule: {
+      minimumEvidenceUnits: expectedOptionIds.length,
+      criticalErrorOptionIds: invalid.map((option) => option.id),
+      evidenceExpectations,
+      partialCreditCn: `选择“${blueprint.decision}”但未为每个正确决定引用一条匹配材料行，只记部分完成且不生成标准化能力。`,
+      stopRuleCn: `选择误用“${seed.misuse[roleIndex]}”或把输出升级为机制时锁定失败，并路由到 ${role === "apply" ? "remediation" : "同方法新材料"}。`,
+      changeMindCriteriaCn: [seed.assumptions[roleIndex], seed.checks[roleIndex]],
+      changeMindActionMarkersCn: ["撤回", "收窄", "修改", "停止", "改为", "重新", "更新"],
+    },
     maximumConclusionCn: `本题只能在“${blueprint.decision}”完成、且“${seed.assumptions[roleIndex]}”经诊断后解释${seed.outputs[roleIndex]}；${seed.avoid[roleIndex % seed.avoid.length]}仍不由当前结果支持。`,
     hints: [], confidenceRequired: true, responseLocked: true,
   };
@@ -119,5 +185,5 @@ export const stagedMethodLessons: StagedMethodLessonV1[] = seeds.map((seed, inde
   primaryApply: methodAssessment(seed, "apply", methodBlueprints[seed.slug]),
   remediation: methodAssessment(seed, "remediation", methodBlueprints[seed.slug]),
   delayedReview: methodAssessment(seed, "review", methodBlueprints[seed.slug]),
-  sourceIds: seed.sources, estimatedMinutes: 9 + (index % 3), contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
+  sourceIds: seed.sources, estimatedMinutes: 20 + (index % 5) * 2, contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
 }));

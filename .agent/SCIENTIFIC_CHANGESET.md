@@ -1,6 +1,30 @@
-# Scientific Changeset — M013 Complete Source Packs
+# Scientific Changeset — M019 Pending Curriculum Review
 
-Status: ACCEPTED
+Status: READY FOR REVIEW
+
+## M019 pending-curriculum review note
+
+### SC-M019-01 — Self-rescue claims and evidence mappings
+
+- Concept: 288 Guide sections, 40 Concept Lessons, 21 Method Lessons and 12 fictionalized Case Labs mapped to a versioned evidence registry.
+- Claim: Course text distinguishes measurement, association, prediction, causation, validation and mechanism boundaries; generated prose remains curriculum synthesis rather than source-verified fact by declaration.
+- Answer/rubric: Independent scientific/evidence review repaired source identity, high-risk routing, Information Bias, GSVA/ssGSEA, multi-omics, interaction, power, censoring, selection-bias and survival-method mappings. No machine audit promotes a claim.
+- Evidence source IDs: 78 referenced source IDs recorded in `artifacts/curriculum-scientific-audit.json`; exact claim mappings are recorded in the bound snapshot.
+- PMID/DOI: Verified identifiers include `35231925` / `10.1093/aje/kwac035`, `28476144` / `10.1186/s13059-017-1215-1`, `5910392`, `10.1007/978-3-319-19425-7`, and the remaining registry identifiers.
+- Risk level: HIGH.
+- Verification status: READY FOR REVIEW only; 361/361 claims are `claim_level_review_pending`, 374/374 generated content objects are `pending_review`, active 0.
+- Changed files: `src/data/evidence.ts`; `src/data/self-rescue-guide/build.ts`; `src/data/curriculum/`; `scripts/scientific-audit.mjs`; bound review reports.
+
+### SC-M019-02 — Candidate assessment measurement boundary
+
+- Concept: Concept/Method Apply, remediation and delayed review use case tables, evidence matrices and decision timelines with option-specific evidence contracts.
+- Claim: Structural string checks can establish completeness for human review but cannot establish semantic correctness or standardized competence.
+- Answer/rubric: Machine output is fail-closed: `review_required | partial | failed`; there is no `passed` or `complete`, `recommendedNextRoute` is display-only, and `createsCompetence=false` is invariant.
+- Evidence source IDs: Not applicable; this is a measurement/governance constraint rather than a new biomedical fact.
+- PMID/DOI: Not applicable.
+- Risk level: HIGH.
+- Verification status: READY FOR CONTROLLED PILOT; only four lesson prototypes have deep materialization evidence, and no generated assessment is active.
+- Changed files: `src/domain/curriculum.ts`; `src/services/stagedAssessment.ts`; `src/data/curriculum/concepts.ts`; `src/data/curriculum/methods.ts`; `src/features/curriculum-preview/CurriculumPreviewView.tsx`; `tests-node/suite.mjs`.
 
 ## M018.1 end-to-end wiring review note
 

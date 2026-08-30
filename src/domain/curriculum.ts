@@ -32,8 +32,29 @@ export interface StagedAssessmentAssetV1 {
   promptCn: string;
   options: Array<{ id: string; labelCn: string }>;
   expectedOptionIds: string[];
+  stimulus: {
+    format: "case_table" | "evidence_matrix" | "decision_timeline";
+    columnsCn: string[];
+    rowsCn: string[][];
+    noteCn: string;
+  };
   reasoningCriteriaCn: string[];
   feedbackCn: string[];
+  optionFeedbackCn: Record<string, string>;
+  scoringRule: {
+    minimumEvidenceUnits: number;
+    criticalErrorOptionIds: string[];
+    evidenceExpectations: Array<{
+      optionId: string;
+      allowedRowIds: string[];
+      requiredFactFragmentsCn: string[];
+      reasoningMarkersCn: string[];
+    }>;
+    partialCreditCn: string;
+    stopRuleCn: string;
+    changeMindCriteriaCn: string[];
+    changeMindActionMarkersCn: string[];
+  };
   maximumConclusionCn: string;
   hints: string[];
   confidenceRequired: true;
@@ -140,6 +161,7 @@ export interface CurriculumClaimV1 {
   contentId: string;
   claimCn: string;
   sourceIds: string[];
+  evidenceBoundaryCn: string;
   supportMode: "curriculum_synthesis" | "source_direct";
   supportStatus: "claim_level_review_pending" | "directly_supported" | "reasonable_synthesis" | "weakly_supported" | "unsupported" | "source_mismatch";
   identifierVerified: boolean;

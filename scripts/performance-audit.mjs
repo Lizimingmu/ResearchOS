@@ -76,7 +76,7 @@ ${rows}
 
 ## ⚠️ Measurement limits
 
-Interactive paint timing and multi-DPI screenshots could not be captured because the in-app browser's saved permission blocks local preview URLs. Static payload budgets, server-rendered component tests, native compilation, and process-level smoke checks remain valid; the visual limitation is recorded in the UX audit rather than marked as a pass.
+Interactive paint timing and multi-DPI screenshots could not be captured because the in-app browser's saved permission blocks local preview URLs. Static payload budgets, server-rendered component tests, web production builds, and process-level smoke checks remain valid; current-source native packaging is separately blocked by the missing MSVC linker and is not counted as a pass.
 `;
 await writeFile(path.join(root, "docs", "PERFORMANCE_AUDIT.md"), markdown);
 console.log(`Performance audit ${passed ? "PASSED" : "FAILED"}. Initial JS ${initial.bytes} bytes; scheduler ${schedulerMeanMs.toFixed(4)} ms.`);

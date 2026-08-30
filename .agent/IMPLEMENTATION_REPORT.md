@@ -794,3 +794,41 @@ Agent: Codex. Diff-based implementation from approved M018 commit `401c0ed8469d7
 
 - Foreground UI, keyboard/screen-reader behavior, high-DPI layout, real restart pacing, user-manual acceptance, installer, packaged restart and real Vault remain NOT RUN.
 - The next action is a real foreground user trial. No further architecture refactor or curriculum expansion is authorized before that evidence.
+
+# M019 Overnight Self-Rescue Curriculum Audit (2026-08-31)
+
+Agent: Codex with three independent reviewers. Diff-based implementation from `55730c2`; architecture frozen, no private Vault/account access, no merge to `main`.
+
+## Implemented
+
+- Repaired Case/Today/Review/Cox/Paper/Project deterministic learning-flow defects and added six named E2E journeys.
+- Built 10 Guide modules / 288 sections plus 40 Concept, 21 Method, 12 Case and 13 Studio candidates with a 288-item manifest and 361 claim-source records.
+- Kept all 374 generated items `ai_generated`, `pending`, `pending_review`; exact warning banner and no-competence preview are enforced.
+- Added scientific/evidence sources, exact method mappings, evidence-boundary metadata, 248-item high-risk routing and a machine scientific review packet.
+- Added three semantic stimulus schemas, option-specific evidence contracts and adversarial checks. Because string rules cannot establish semantic validity, the scorer now fails closed to `review_required/human_review`, uses display-only route advice and never returns complete or creates competence.
+- Added snapshot/source hash binding for the independent scientific, evidence, pedagogy and Round 4 reports; stale review combinations fail deterministically.
+
+## Independent review disposition
+
+- Scientific issues identified across initial and fresh reviews were repaired against the current bound snapshot; generated prose remains unapproved claim-level content.
+- Evidence delta: 71 evidence-ready and 33 partial in the 104-item re-review cohort; source mismatch and unsupported counts are zero in that cohort; activation remains zero.
+- Pedagogy: semantic format and automatic false-completion issues are resolved. Only four high-value prototypes have deep materialization evidence; full-library stimulus sufficiency and natural Chinese/distractor validity remain human gates.
+- Consensus: branch is safe for pending inspection and controlled pilot, not bulk activation.
+
+## Final gates
+
+- `npm test` — PASS 178/178 + localization 11/11 + startup smoke.
+- Learning Kernel 16/16; M018 registry 297/9; M015 32/32.
+- Curriculum and scientific packet PASS: 374 items, 361 claims, 78 referenced sources, 248 high-risk claims.
+- Content audit 0 errors / 1 intentional unsafe-plan fixture warning; source-pack and Problem Atlas 0/0.
+- Accessibility 11/11; performance PASS at 1,119,622-byte initial JS and 0.0092 ms scheduler.
+- Agent handoff and diff whitespace gates PASS (only checkout CRLF warnings).
+
+## Environment limitations
+
+- In-app browser saved permission rejected the local preview URL; no foreground/high-DPI/screen-reader pass is claimed.
+- Final-source `npx tauri build -- --offline` reached Rust compilation but failed because Windows MSVC `link.exe` is not installed. No current-source installer or packaged restart is claimed.
+
+## Next action
+
+Run a controlled human trial of Confidence Interval, Differential Analysis, KM/log-rank and PCA, followed by the verified Statistical Unit → Confounding → Cox → Case flow. Use dual-rater open-response review and activate only individually approved items. Do not redesign the architecture or bulk-activate the candidate corpus.
