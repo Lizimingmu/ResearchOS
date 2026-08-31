@@ -36,7 +36,7 @@ export function evaluateStagedAssessment(
   const criticalErrorIds = incorrectIds.filter((id) => asset.scoringRule.criticalErrorOptionIds.includes(id));
   const rowsById = new Map(asset.stimulus.rowsCn.map((row) => [row[0], row.slice(1).join(" ")]));
   const expectationsByOptionId = new Map(asset.scoringRule.evidenceExpectations.map((expectation) => [expectation.optionId, expectation]));
-  const usedRowIds = new Set<string>();
+  const usedEvidenceBindings = new Set<string>();
   const normalize = (value: string) => value.toLowerCase().replace(/[\s，。；：、“”‘’（）()\-—]/g, "");
   const copiesDecisionLabel = (reasoning: string, optionId: string) => {
     const label = asset.options.find((option) => option.id === optionId)?.labelCn ?? "";
@@ -50,17 +50,21 @@ export function evaluateStagedAssessment(
     const expectation = expectationsByOptionId.get(unit.supportsOptionId);
     const quote = normalize(unit.quotedFactCn);
     const reasoning = normalize(unit.reasoningCn);
-    if (!rowText || !expectation || usedRowIds.has(rowId) || !selectedCorrectIds.includes(unit.supportsOptionId) || quote.length < 4) return false;
+    const bindingKey = `${unit.supportsOptionId}:${rowId}`;
+    if (!rowText || !expectation || usedEvidenceBindings.has(bindingKey) || !selectedCorrectIds.includes(unit.supportsOptionId) || quote.length < 4) return false;
     if (!expectation.allowedRowIds.includes(rowId) || !normalize(rowText).includes(quote)) return false;
     if (!expectation.requiredFactFragmentsCn.some((fragment) => quote.includes(normalize(fragment)))) return false;
     if (unit.reasoningCn.trim().length < 12 || copiesDecisionLabel(unit.reasoningCn, unit.supportsOptionId)) return false;
     if (!expectation.reasoningMarkersCn.some((marker) => reasoning.includes(normalize(marker)))) return false;
-    usedRowIds.add(rowId);
+    usedEvidenceBindings.add(bindingKey);
     return true;
   });
   const evidencedOptionIds = new Set(acceptedEvidenceUnits.map((unit) => unit.supportsOptionId));
+  const evidencedRowsByOptionId = new Map<string, Set<string>>();
+  for (const unit of acceptedEvidenceUnits) evidencedRowsByOptionId.set(unit.supportsOptionId, new Set([...(evidencedRowsByOptionId.get(unit.supportsOptionId) ?? []), unit.rowId]));
+  const hasAllRequiredRows = asset.scoringRule.evidenceExpectations.every((expectation) => expectation.allowedRowIds.every((rowId) => evidencedRowsByOptionId.get(expectation.optionId)?.has(rowId)));
   const hasEnoughEvidence = acceptedEvidenceUnits.length >= asset.scoringRule.minimumEvidenceUnits
-    && asset.expectedOptionIds.every((id) => evidencedOptionIds.has(id));
+    && asset.expectedOptionIds.every((id) => evidencedOptionIds.has(id)) && hasAllRequiredRows;
   const normalizedChangeMind = normalize(changeMindCn);
   const hasCriterion = asset.scoringRule.changeMindCriteriaCn.some((criterion) => {
     const normalizedCriterion = normalize(criterion);

@@ -59,14 +59,19 @@ for (const caseLab of stagedCaseLabs) {
 
 const correctCountDistribution = Object.fromEntries([1, 2, 3, 4].map((count) => [count, assessments.filter((asset) => asset.expectedOptionIds.length === count).length]));
 const taskContractDistribution = Object.fromEntries([...validContracts].map((contract) => [contract, assessments.filter((asset) => asset.taskContract === contract).length]));
+const roleContractDistribution = Object.fromEntries(["apply", "remediation", "review"].map((role) => [role, Object.fromEntries([...validContracts].map((contract) => [contract, assessments.filter((asset) => asset.role === role && asset.taskContract === contract).length]))]));
 const instantiatedContractTypes = Object.values(taskContractDistribution).filter(Boolean).length;
+const roleContractTypes = Object.fromEntries(Object.entries(roleContractDistribution).map(([role, distribution]) => [role, Object.values(distribution).filter(Boolean).length]));
 const variableFactCountAssessments = assessments.filter((asset) => asset.materialization?.independentFactsCn.length !== 4).length;
 const multiFactEvidenceMappings = assessments.filter((asset) => asset.scoringRule.evidenceExpectations.some((expectation) => expectation.allowedRowIds.length > 1)).length;
-if (instantiatedContractTypes < 3) errors.push(`expected at least 3 task contract types, got ${instantiatedContractTypes}`);
-if (!variableFactCountAssessments) errors.push("no assessment instantiates a variable fact count");
-if (!multiFactEvidenceMappings) errors.push("no assessment instantiates multi-fact evidence mapping");
+if (instantiatedContractTypes < 5) errors.push(`expected at least 5 task contract types, got ${instantiatedContractTypes}`);
+for (const [role, count] of Object.entries(roleContractTypes)) if (count < 2) errors.push(`${role} remains mechanically bound to one task contract`);
+if (variableFactCountAssessments < Math.ceil(assessments.length * 0.25)) errors.push(`variable fact count requires >=25%, got ${variableFactCountAssessments}/${assessments.length}`);
+if (multiFactEvidenceMappings < Math.ceil(assessments.length * 0.20)) errors.push(`multi-fact reasoning requires >=20%, got ${multiFactEvidenceMappings}/${assessments.length}`);
+if (materialSpecificityFlags.length) errors.push(`material specificity flags remain: ${materialSpecificityFlags.join(", ")}`);
+if (obviousDistractorFlags.length) errors.push(`${obviousDistractorFlags.length} obvious distractor cues remain`);
 if (duplicateDistractorFlags.length) errors.push(`duplicate distractors within assessments: ${duplicateDistractorFlags.join(", ")}`);
-const report = { schemaVersion: 2, status: errors.length ? "FAIL" : "PASS", counts: { lessons: lessons.length, assessments: assessments.length, caseLabs: stagedCaseLabs.length, fullyMaterialized: assessments.filter((asset) => asset.materialization?.contentVersion === "m019.1").length, correctCountDistribution, taskContractDistribution, instantiatedContractTypes, variableFactCountAssessments, multiFactEvidenceMappings, obviousDistractorFlags: obviousDistractorFlags.length, duplicateDistractorFlags: duplicateDistractorFlags.length, materialSpecificityFlags: materialSpecificityFlags.length }, obviousDistractorFlags, duplicateDistractorFlags, materialSpecificityFlags, errors };
+const report = { schemaVersion: 3, status: errors.length ? "FAIL" : "PASS", counts: { lessons: lessons.length, assessments: assessments.length, caseLabs: stagedCaseLabs.length, fullyMaterialized: assessments.filter((asset) => asset.materialization?.contentVersion === "m019.1").length, correctCountDistribution, taskContractDistribution, roleContractDistribution, roleContractTypes, instantiatedContractTypes, variableFactCountAssessments, multiFactEvidenceMappings, obviousDistractorFlags: obviousDistractorFlags.length, duplicateDistractorFlags: duplicateDistractorFlags.length, materialSpecificityFlags: materialSpecificityFlags.length }, obviousDistractorFlags, duplicateDistractorFlags, materialSpecificityFlags, errors };
 await mkdir(path.resolve("artifacts"), { recursive: true });
 await writeFile(path.resolve("artifacts/assessment-materialization-audit.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(`Assessment materialization audit: ${report.status} (${report.counts.fullyMaterialized}/${assessments.length})`);

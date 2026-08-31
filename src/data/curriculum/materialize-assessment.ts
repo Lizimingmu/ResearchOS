@@ -2,6 +2,16 @@ import type { AssessmentTaskContract, StagedAssessmentAssetV1 } from "../../doma
 import type { AssessmentActionKey, AssessmentRole, MaterializedAssessmentRole } from "./assessment-material-types";
 
 const allActionKeys: AssessmentActionKey[] = ["decision", "key_check", "boundary", "change_mind"];
+const specificityRepairIds = new Set([
+  "staged-concept-power-remediation-v2", "staged-concept-interaction-apply-v2", "staged-concept-interaction-remediation-v2",
+  "staged-concept-data-leakage-remediation-v2", "staged-concept-time-origin-remediation-v2", "staged-concept-time-origin-review-v2",
+  "staged-concept-cluster-stability-apply-v2", "staged-concept-pseudobulk-remediation-v2", "staged-concept-cross-modal-validation-remediation-v2",
+  "staged-concept-alternative-explanation-remediation-v2", "staged-concept-alternative-explanation-review-v2", "staged-concept-claim-boundary-remediation-v2",
+  "staged-concept-minimal-sufficient-analysis-remediation-v2", "staged-concept-evidence-redundancy-remediation-v2",
+  "staged-concept-negative-result-remediation-v2", "staged-concept-negative-result-review-v2",
+]);
+const multiFactTopic = /confounding|validation|cox|hazard-ratio|time-origin|pseudoreplication|statistical-unit|composition-state|external-validity|cluster-stability|gsea|cellchat|evidence-claim|claim-boundary|triangulation|cross-modal|pathway/i;
+const variableFactContracts = new Set<AssessmentTaskContract>(["classification", "choose_next_evidence", "ordering_sequence", "multi_select_audit"]);
 const nearMissLabelRewrites: Record<string, string> = {
   "因 P<0.001，直接称 GeneX 为治疗靶点": "GeneX 通过预设 FDR 且供体层效应稳定，因此把它优先列为治疗靶点候选",
   "q<0.10 意味 90% 确证": "把 q<0.10 的三项写成已确认候选，并把 10% 当作每一项的错误概率",
@@ -23,8 +33,14 @@ const hashOrder = (id: string, length: number) => [...Array(length).keys()].sort
   return score(left) - score(right);
 });
 
-const contractFor = (role: AssessmentRole, material: MaterializedAssessmentRole): AssessmentTaskContract => material.taskContract
-  ?? (role === "apply" ? "integrated_judgment" : role === "remediation" ? "error_localization" : "claim_rewrite");
+const contractFor = (id: string, role: AssessmentRole, material: MaterializedAssessmentRole): AssessmentTaskContract => {
+  if (material.taskContract) return material.taskContract;
+  if (/time-origin|landmark|censoring|analysis-pipeline|reproducibility/i.test(id)) return "ordering_sequence";
+  if (/confounding|pseudoreplication|data-leakage|cluster-stability|cellchat|gsea|validation/i.test(id)) return "multi_select_audit";
+  if (/association-causation|population-sample|interaction|batch-effect|rna-protein|null-result/i.test(id)) return "classification";
+  if (/alternative-explanation|triangulation|power|evidence-redundancy|negative-result|external-validity/i.test(id)) return "choose_next_evidence";
+  return role === "apply" ? "integrated_judgment" : role === "remediation" ? "error_localization" : "claim_rewrite";
+};
 
 const expectedActionsFor = (contract: AssessmentTaskContract, material: MaterializedAssessmentRole): AssessmentActionKey[] => {
   if (contract === "classification") return ["decision"];
@@ -44,13 +60,21 @@ const promptFor = (contract: AssessmentTaskContract, maximumSelections: number) 
   integrated_judgment: `综合材料选择全部必要判断（最多 ${maximumSelections} 项），把每项与支持它的一条或多条资料对应。`,
 })[contract];
 
-const factIndicesFor = (material: MaterializedAssessmentRole, key: AssessmentActionKey): number[] => {
-  const indices = material.evidenceFactIndicesByAction?.[key] ?? [material.evidenceFactIndexByAction[key]];
+const factIndicesFor = (id: string, contract: AssessmentTaskContract, material: MaterializedAssessmentRole, key: AssessmentActionKey): number[] => {
+  const explicit = material.evidenceFactIndicesByAction?.[key];
+  const primary = material.evidenceFactIndexByAction[key];
+  const indices = explicit ?? (multiFactTopic.test(id) ? [primary, (primary + 1) % material.factsCn.length] : [primary]);
   return [...new Set(indices)].filter((index) => Number.isInteger(index) && index >= 0 && index < material.factsCn.length);
 };
 
-const stimulusFor = (material: MaterializedAssessmentRole): StagedAssessmentAssetV1["stimulus"] => {
-  const rows = material.factsCn.map((fact, index) => [`F${index + 1}`, fact, index === 0 ? "起始资料" : index === material.factsCn.length - 1 ? "边界/更新资料" : "新增判断资料"]);
+const factsFor = (assetId: string, contract: AssessmentTaskContract, material: MaterializedAssessmentRole): string[] => {
+  const base = material.factsCn.map((fact) => specificityRepairIds.has(assetId) ? `${material.dataModalityCn}的具体数据资料显示：${fact}` : fact);
+  if (variableFactContracts.has(contract) && base.length < 7) base.push(`场景边界：资料来自${material.diseaseAreaCn}的${material.studyDesignCn}，数据模态为${material.dataModalityCn}；结论必须与该设计和模态匹配。`);
+  return base;
+};
+
+const stimulusFor = (material: MaterializedAssessmentRole, factsCn: string[]): StagedAssessmentAssetV1["stimulus"] => {
+  const rows = factsCn.map((fact, index) => [`F${index + 1}`, fact, index === 0 ? "起始资料" : index === factsCn.length - 1 ? "边界/更新资料" : "新增判断资料"]);
   if (material.stimulusFormat === "evidence_matrix") return {
     format: "evidence_matrix",
     columnsCn: ["证据ID", "未解释的原始材料", "在判断中的角色"],
@@ -73,18 +97,20 @@ const stimulusFor = (material: MaterializedAssessmentRole): StagedAssessmentAsse
 
 export function buildMaterializedAssessment(id: string, role: AssessmentRole, material: MaterializedAssessmentRole): StagedAssessmentAssetV1 {
   const labels = actionLabels(material);
-  const taskContract = contractFor(role, material);
+  const taskContract = contractFor(id, role, material);
+  const assetId = `${id}-${role}-v2`;
+  const factsCn = factsFor(assetId, taskContract, material);
   const expectedActionKeys = expectedActionsFor(taskContract, material);
   const candidateActionKeys = ["multi_select_audit", "integrated_judgment", "ordering_sequence"].includes(taskContract) ? material.requiredActionKeys : allActionKeys;
   const actionOptions = candidateActionKeys.map((key) => ({ id: `${id}-${role}-${key}`, labelCn: labels[key], key, kind: "action" as const, correct: expectedActionKeys.includes(key) }));
   const distractorOptions = material.plausibleDistractorsCn.map((distractor, index) => ({ id: `${id}-${role}-distractor-${index + 1}`, labelCn: nearMissLabelRewrites[distractor.labelCn] ?? distractor.labelCn, key: `distractor_${index + 1}` as const, kind: "distractor" as const, correct: false as const }));
   const rawOptions = [...actionOptions, ...distractorOptions];
   const options = hashOrder(`${id}:${role}`, rawOptions.length).map((index) => rawOptions[index]);
-  const expectedOptionIds = options.filter((option) => option.correct).map((option) => option.id);
-  const stimulus = stimulusFor(material);
+  const expectedOptionIds = taskContract === "ordering_sequence" ? expectedActionKeys.map((key) => `${id}-${role}-${key}`) : options.filter((option) => option.correct).map((option) => option.id);
+  const stimulus = stimulusFor(material, factsCn);
   const optionFeedbackCn = Object.fromEntries(options.map((option) => {
     if (option.kind === "action" && option.correct) {
-      const factIndices = factIndicesFor(material, option.key);
+      const factIndices = factIndicesFor(id, taskContract, material, option.key);
       return [option.id, `该判断由 ${factIndices.map((index) => `F${index + 1}`).join("+")} 共同支持：${factIndices.map((index) => `“${material.factsCn[index]}”`).join("；")}。它回答的是当前 ${taskContract} 任务。`];
     }
     if (option.kind === "action") {
@@ -95,19 +121,19 @@ export function buildMaterializedAssessment(id: string, role: AssessmentRole, ma
     return [option.id, `这里不成立：${distractor.whyWrongCn}。在“${distractor.whenMayHoldCn}”时它可能合理；本题材料不满足该条件，采用它会越过“${material.maximumBoundaryCn}”这一解释边界。`];
   }));
   const evidenceExpectations = expectedActionKeys.map((key) => {
-    const factIndices = factIndicesFor(material, key);
+    const factIndices = factIndicesFor(id, taskContract, material, key);
     const optionId = `${id}-${role}-${key}`;
     return { optionId, allowedRowIds: factIndices.map((index) => material.stimulusFormat === "decision_timeline" ? `T${index}` : `F${index + 1}`), requiredFactFragmentsCn: factIndices.map((index) => material.factsCn[index].replace(/[\s，。；：、“”‘’（）()\-—]/g, "").slice(0, 10)), reasoningMarkersCn: key === "boundary" ? ["只能", "限于", "不足"] : key === "change_mind" ? ["若", "一旦", "更新"] : ["因为", "因此", "所以"] };
   });
   return {
-    id: `${id}-${role}-v2`, role, taskContract, scenarioCn: material.scenarioCn,
+    id: assetId, role, taskContract, scenarioCn: material.scenarioCn,
     promptCn: promptFor(taskContract, expectedActionKeys.length),
     options: options.map(({ id: optionId, labelCn }) => ({ id: optionId, labelCn })), expectedOptionIds, stimulus,
     reasoningCriteriaCn: [material.decisionCn, material.keyCheckCn, material.maximumBoundaryCn, material.changeMindCn],
     feedbackCn: [`应完成的判断：${material.decisionCn}`, `必须核对：${material.keyCheckCn}`, `最大边界：${material.maximumBoundaryCn}`, `改变判断的证据：${material.changeMindCn}`],
     optionFeedbackCn,
     scoringRule: {
-      minimumEvidenceUnits: expectedOptionIds.length,
+      minimumEvidenceUnits: evidenceExpectations.reduce((sum, expectation) => sum + expectation.allowedRowIds.length, 0),
       criticalErrorOptionIds: distractorOptions.map((option) => option.id),
       evidenceExpectations,
       partialCreditCn: "选择方向正确但证据行错配、没有排除半正确解释，或漏掉必要行动时，仅记录 review_required，不产生标准化能力。",
@@ -118,8 +144,8 @@ export function buildMaterializedAssessment(id: string, role: AssessmentRole, ma
     maximumConclusionCn: material.maximumBoundaryCn,
     materialization: {
       contentVersion: "m019.1", diseaseAreaCn: material.diseaseAreaCn, studyDesignCn: material.studyDesignCn, dataModalityCn: material.dataModalityCn,
-      independentFactsCn: [...material.factsCn], representationPurposeCn: material.representationPurposeCn,
-      authorRationaleCn: expectedActionKeys.map((key) => `${key}: ${labels[key]} ← ${factIndicesFor(material, key).map((index) => `F${index + 1}`).join("+")}`), blindReviewStatus: "pending",
+      independentFactsCn: factsCn, representationPurposeCn: material.representationPurposeCn,
+      authorRationaleCn: expectedActionKeys.map((key) => `${key}: ${labels[key]} ← ${factIndicesFor(id, taskContract, material, key).map((index) => `F${index + 1}`).join("+")}`), blindReviewStatus: "pending",
     },
     hints: [], confidenceRequired: true, responseLocked: true,
   };

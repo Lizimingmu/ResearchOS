@@ -8,11 +8,13 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 
 const allowed = new Set([
   "assessment-materialization-audit.mjs",
+  "assessment-ambiguity-audit.mjs",
   "blind-solvability-audit.mjs",
   "content-fill-checkpoint-audit.mjs",
   "freeze-blind-assessment-packet.mjs",
   "freeze-strict-blind-assessment-packet.mjs",
   "freeze-m019-1-content.mjs",
+  "generated-lifecycle-audit.mjs",
   "guide-materialization-audit.mjs",
   "guide-template-audit.mjs",
   "guide-source-linkage-audit.mjs",

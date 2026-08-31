@@ -2490,7 +2490,13 @@ test("M019-A4 Cox failure routes to a fresh remediation asset", () => {
 test("M019-B Guide v1 covers all ten required modules and 288 substantive sections", () => {
   assert.deepEqual(selfRescueGuideModules.map((module) => module.topics.length), [18, 32, 47, 23, 23, 58, 25, 22, 20, 20]);
   assert.equal(selfRescueGuideSections.length, 288);
-  assert.ok(selfRescueGuideSections.every((section) => section.bodyCn.join("").length >= 250));
+  const tierByTopic = new Map(authoredGuideContent.map((item) => [`${item.moduleId}::${item.titleEn}`, item.tier]));
+  const bounds = { tier1: [800, 1500], tier2: [500, 900], tier3: [250, 600] };
+  assert.ok(selfRescueGuideSections.every((section) => {
+    const [minimum, maximum] = bounds[tierByTopic.get(`${section.chapterId}::${section.titleEn}`)];
+    const length = section.bodyCn.join("").length;
+    return length >= minimum && length <= maximum;
+  }));
   assert.ok(selfRescueGuideSections.every((section) => section.contentOrigin === "ai_generated" && section.verificationStatus === "pending" && section.lifecycle === "pending_review"));
   assert.equal(Object.keys(curriculumContentHashes.guide).length, 288);
   assert.equal(authoredGuideContent.length, 288);
@@ -2533,6 +2539,15 @@ test("M019.1a assessment contracts support variable facts and multi-fact evidenc
   assert.ok(assets.some((asset) => asset.materialization.independentFactsCn.length !== 4));
   assert.ok(assets.some((asset) => asset.scoringRule.evidenceExpectations.some((expectation) => expectation.allowedRowIds.length > 1)));
   assert.equal(assets.length, 183);
+});
+
+test("M019.1b assessment diversity is role-independent and materially instantiated", () => {
+  const assets = [...stagedConceptLessons, ...stagedMethodLessons].flatMap((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview]);
+  assert.ok(new Set(assets.map((asset) => asset.taskContract)).size >= 5);
+  for (const role of ["apply", "remediation", "review"]) assert.ok(new Set(assets.filter((asset) => asset.role === role).map((asset) => asset.taskContract)).size >= 2);
+  assert.ok(assets.filter((asset) => asset.materialization.independentFactsCn.length !== 4).length >= Math.ceil(assets.length * 0.25));
+  assert.ok(assets.filter((asset) => asset.scoringRule.evidenceExpectations.some((expectation) => expectation.allowedRowIds.length >= 2)).length >= Math.ceil(assets.length * 0.20));
+  assert.ok(assets.every((asset) => asset.scoringRule.minimumEvidenceUnits === asset.scoringRule.evidenceExpectations.reduce((sum, expectation) => sum + expectation.allowedRowIds.length, 0)));
 });
 
 test("M019.1a authored sources supplement rather than remove canonical source links", () => {
@@ -2596,11 +2611,11 @@ test("M019-F Curriculum Preview is read-only and shows the exact pending banner"
 
 test("M019-F staged assessment simulation fails closed to human review without competence", () => {
   const asset = stagedConceptLessons[0].primaryApply;
-  const evidenceUnits = asset.scoringRule.evidenceExpectations.map((expectation) => ({
-    rowId: expectation.allowedRowIds[0], supportsOptionId: expectation.optionId,
-    quotedFactCn: expectation.requiredFactFragmentsCn[0],
+  const evidenceUnits = asset.scoringRule.evidenceExpectations.flatMap((expectation) => expectation.allowedRowIds.map((rowId, index) => ({
+    rowId, supportsOptionId: expectation.optionId,
+    quotedFactCn: expectation.requiredFactFragmentsCn[index],
     reasoningCn: `结合该行的具体事实，${expectation.reasoningMarkersCn[0]}按当前证据边界调整决定。`,
-  }));
+  })));
   const passed = evaluateStagedAssessment(asset, asset.expectedOptionIds, evidenceUnits, `若${asset.scoringRule.changeMindCriteriaCn[0]}不成立，我会撤回并重新判断。`);
   assert.equal(passed.status, "review_required");
   assert.equal(passed.recommendedNextRoute, "human_review");
@@ -2611,20 +2626,20 @@ test("M019-F staged assessment simulation fails closed to human review without c
   assert.equal(critical.status, "failed");
   assert.equal(critical.recommendedNextRoute, "remediation");
   assert.equal(critical.createsCompetence, false);
-  const fakeEvidence = asset.scoringRule.evidenceExpectations.slice(0, 2).map((expectation) => ({
-    rowId: expectation.allowedRowIds[0], supportsOptionId: expectation.optionId,
-    quotedFactCn: expectation.requiredFactFragmentsCn[0],
+  const fakeEvidence = asset.scoringRule.evidenceExpectations.slice(0, 2).flatMap((expectation) => expectation.allowedRowIds.map((rowId, index) => ({
+    rowId, supportsOptionId: expectation.optionId,
+    quotedFactCn: expectation.requiredFactFragmentsCn[index],
     reasoningCn: `复述选项但不建立关系：${asset.options.find((option) => option.id === expectation.optionId).labelCn}`,
-  }));
+  })));
   const rejected = evaluateStagedAssessment(asset, asset.expectedOptionIds, fakeEvidence, asset.scoringRule.changeMindCriteriaCn[0]);
   assert.notEqual(rejected.status, "review_required");
   assert.equal(rejected.acceptedEvidenceUnits.length, 0);
   const missingOneOption = evaluateStagedAssessment(asset, asset.expectedOptionIds, evidenceUnits.slice(0, -1), `若${asset.scoringRule.changeMindCriteriaCn[0]}不成立，我会修改当前决定。`);
   assert.notEqual(missingOneOption.status, "review_required");
-  const markerOnly = asset.scoringRule.evidenceExpectations.map((expectation) => ({
-    rowId: expectation.allowedRowIds[0], supportsOptionId: expectation.optionId,
-    quotedFactCn: expectation.requiredFactFragmentsCn[0], reasoningCn: `我不解释事实关系，只写通用标记：${expectation.reasoningMarkersCn[0]}。`,
-  }));
+  const markerOnly = asset.scoringRule.evidenceExpectations.flatMap((expectation) => expectation.allowedRowIds.map((rowId, index) => ({
+    rowId, supportsOptionId: expectation.optionId,
+    quotedFactCn: expectation.requiredFactFragmentsCn[index], reasoningCn: `我不解释事实关系，只写通用标记：${expectation.reasoningMarkersCn[0]}。`,
+  })));
   const adversarial = evaluateStagedAssessment(asset, asset.expectedOptionIds, markerOnly, `若${asset.scoringRule.changeMindCriteriaCn[0]}不成立，我会更新决定。`);
   assert.equal(adversarial.recommendedNextRoute, "human_review");
   assert.equal(adversarial.status, "review_required");

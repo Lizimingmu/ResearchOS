@@ -59,11 +59,11 @@ export const module04ComputationContent: AuthoredGuideContent[] = [
   },
   {
     titleEn: "Analysis-Ready Table", tier: "tier3",
-    whyItMattersCn: "分析就绪并不等于“没有NA的最终CSV”，而是表的每一行与目标统计单位一致，变量语义、时间、推导和纳入规则足以让模型输入被独立重建。",
+    whyItMattersCn: "分析就绪不是“无NA的最终CSV”，而是行层级、变量语义、时间和纳入规则与目标 estimand 一致，并能独立重建。",
     intuitionCn: "它是一份针对某个分析问题签署的数据契约：同一原始数据库可以为不同 estimand 产生不同而各自合法的分析表。",
-    preciseExplanationCn: ["分析表应声明总体、索引时间、观察窗口、结局、暴露、协变量角色、单位、参照、缺失与派生规则，并给出稳定主键。原始事实与分析派生量分离，派生代码从只读输入生成。", "就绪检查包括一行一单位、键唯一、日期逻辑、单位一致、取值范围、组别分母、事件数和排除流程。表中不应含预测时不可获得的信息；若用于训练/测试，预处理参数只从训练数据估计。"],
+    preciseExplanationCn: ["分析表须声明总体、索引时间、结局、暴露、单位、缺失与派生规则，并给出稳定主键；原始事实与派生量分离。", "就绪检查覆盖一行一单位、键与日期逻辑、组别分母和排除流程；预测表不得含预测时不可得的信息，预处理只在训练数据拟合。"],
     biomedicalExample: { setupCn: "构建术后两年复发预测队列。", dataCn: ["病理变量在手术后7天可得", "随访表含复发后补录的分子检测", "一位患者有多次住院记录"], wrongPathCn: "挑每位患者最新一行并填满所有字段，形成看似完整的宽表。", reasoningStepsCn: ["以手术日定义一行一患者和预测时点", "仅保留预测时可用信息并标注获取时间", "按规则生成两年结局与删失", "输出数据字典、流程计数和自动断言"], conclusionCn: "就绪表应忠实表示部署时的信息状态，而非事后最完整记录。" },
-    misconceptionCn: ["一个全项目通用master table能直接支持所有问题。", "删除所有缺失即可得到高质量分析表。"], boundaryCn: ["去标识化分析表仍可能敏感，访问控制不因格式改变而消失。", "就绪表是可重建产物，不应覆盖原始数据。"], connectForwardCn: "它为脚本化分析、泄漏检查和可复现重跑提供稳定接口。", evidenceSourceIds: ["src-fair", "src-strobe"],
+    misconceptionCn: ["一个通用 master table 能直接支持所有问题。"], boundaryCn: ["去标识化表仍可能敏感；就绪表只能是可重建产物，不能覆盖原始数据。"], connectForwardCn: "它为脚本化分析和泄漏检查提供稳定接口。", evidenceSourceIds: ["src-fair", "src-strobe"],
   },
   {
     titleEn: "Data-Cleaning Log", tier: "tier3",

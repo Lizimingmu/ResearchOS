@@ -1,0 +1,1112 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "counts": {
+    "assessments": 183,
+    "singleBest": 109,
+    "CLEAR": 183,
+    "AMBIGUOUS": 0,
+    "AUTHOR_DEPENDENT": 0
+  },
+  "results": [
+    {
+      "assessmentId": "staged-concept-research-question-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-research-question-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-research-question-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-apply-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-remediation-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-review-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-pseudoreplication-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-pseudoreplication-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-pseudoreplication-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-apply-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-remediation-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-review-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-confounding-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-confounding-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-confounding-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-apply-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-remediation-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-review-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-p-value-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-p-value-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-p-value-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-power-apply-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-power-remediation-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-power-review-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-interaction-apply-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-interaction-remediation-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-interaction-review-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-data-leakage-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-data-leakage-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-data-leakage-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-validation-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-validation-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-validation-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-censoring-apply-v2",
+      "taskContract": "ordering_sequence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-censoring-remediation-v2",
+      "taskContract": "ordering_sequence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-censoring-review-v2",
+      "taskContract": "ordering_sequence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-time-origin-apply-v2",
+      "taskContract": "ordering_sequence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-time-origin-remediation-v2",
+      "taskContract": "ordering_sequence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-time-origin-review-v2",
+      "taskContract": "ordering_sequence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-apply-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-remediation-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-review-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-apply-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-remediation-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-review-v2",
+      "taskContract": "classification",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-cluster-stability-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-cluster-stability-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-cluster-stability-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-cross-modal-validation-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-cross-modal-validation-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-cross-modal-validation-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-apply-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-remediation-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-review-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-robustness-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-robustness-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-robustness-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-apply-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-remediation-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-review-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-apply-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-remediation-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-review-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-apply-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-remediation-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-review-v2",
+      "taskContract": "choose_next_evidence",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-correlation-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-correlation-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-correlation-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cross-validation-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cross-validation-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cross-validation-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-pca-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-pca-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-pca-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-nmf-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-nmf-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-nmf-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-clustering-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-clustering-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-clustering-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-gsea-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-gsea-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-gsea-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-gsva-ssgsea-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-gsva-ssgsea-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-gsva-ssgsea-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-wgcna-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-wgcna-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-wgcna-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-apply-v2",
+      "taskContract": "integrated_judgment",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-remediation-v2",
+      "taskContract": "error_localization",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-review-v2",
+      "taskContract": "claim_rewrite",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cellchat-communication-apply-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cellchat-communication-remediation-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    },
+    {
+      "assessmentId": "staged-method-cellchat-communication-review-v2",
+      "taskContract": "multi_select_audit",
+      "classification": "CLEAR",
+      "reasons": []
+    }
+  ],
+  "errors": []
+}

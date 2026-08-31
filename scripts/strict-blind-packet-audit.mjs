@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const packet = JSON.parse(await readFile(path.resolve("artifacts/m019-1-strict-blind-assessment-packet.json"), "utf8"));
@@ -25,6 +25,12 @@ for (const item of packet.items ?? []) {
   if (item.options?.some((option, index) => JSON.stringify(Object.keys(option).sort()) !== JSON.stringify(allowedOptionKeys) || option.id !== `O${index + 1}`)) errors.push(`${item.anonymousAssessmentId} options leak metadata or use non-opaque IDs`);
 }
 if (leakedPaths.length) errors.push(`strict packet leaks forbidden metadata at ${leakedPaths.slice(0, 10).join(", ")}`);
+try {
+  await access(path.resolve("artifacts/m019-1-strict-blind-answer-key.json"));
+  errors.push("adjacent strict-blind answer key exists");
+} catch {
+  // Absence is required: the reviewer packet must not be colocated with an answer key.
+}
 const report = { schemaVersion: 1, status: errors.length ? "FAIL" : "PASS", counts: { items: packet.items?.length ?? 0, metadataLeaks: leakedPaths.length }, leakedPaths, errors };
 await mkdir(path.resolve("artifacts"), { recursive: true });
 await writeFile(path.resolve("artifacts/m019-1-strict-blind-packet-audit.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
