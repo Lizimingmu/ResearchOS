@@ -1,5 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "sourceCommitSha": "195b53cc1d33f0c15364017041e88a448179415d",
+  "stagedAssessmentSnapshotHash": "4f66e9c7b3001e52ac4550bc4864504459439898f0891a5ff3b50a3d7133539d",
   "itemCount": 183,
   "items": [
     {
@@ -11503,5 +11505,5 @@
       "maximumSelections": 2
     }
   ],
-  "packetHash": "853144db7883bf1d4db23d8be3ee4d289acae6dec333498daf351003ba37e9a5"
+  "packetHash": "7dd0f335ae73f4e9668d871016cd732ddbeabc5788d4b4e663848d676af14290"
 }

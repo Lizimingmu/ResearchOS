@@ -27,6 +27,7 @@
     "freeze:blind-assessments": "npm run build && node scripts/run-m019-1-script.mjs freeze-blind-assessment-packet.mjs",
     "freeze:strict-blind-assessments": "npm run build && node scripts/run-m019-1-script.mjs freeze-strict-blind-assessment-packet.mjs",
     "audit:strict-blind-packet": "npm run build && node scripts/run-m019-1-script.mjs freeze-strict-blind-assessment-packet.mjs && node scripts/run-m019-1-script.mjs strict-blind-packet-audit.mjs",
+    "audit:strict-blind-binding": "npm run build && node scripts/run-m019-1-script.mjs strict-blind-snapshot-binding-audit.mjs",
     "audit:m019-1-source-linkage": "npm run build && node scripts/run-m019-1-script.mjs guide-source-linkage-audit.mjs",
     "audit:generated-lifecycle": "npm run build && node scripts/run-m019-1-script.mjs generated-lifecycle-audit.mjs",
     "freeze:m019-1-content": "npm run build && node scripts/run-m019-1-script.mjs freeze-m019-1-content.mjs && node scripts/run-m019-1-script.mjs freeze-blind-assessment-packet.mjs",

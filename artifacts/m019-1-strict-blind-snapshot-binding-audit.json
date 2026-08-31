@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "counts": {
+    "currentAssets": 183,
+    "packetItems": 183,
+    "boundItems": 183,
+    "mismatches": 0
+  },
+  "hashes": {
+    "sourceCommitSha": "195b53cc1d33f0c15364017041e88a448179415d",
+    "stagedAssessmentSnapshotHash": "4f66e9c7b3001e52ac4550bc4864504459439898f0891a5ff3b50a3d7133539d",
+    "strictBlindPacketHash": "7dd0f335ae73f4e9668d871016cd732ddbeabc5788d4b4e663848d676af14290",
+    "recomputedStrictBlindPacketHash": "7dd0f335ae73f4e9668d871016cd732ddbeabc5788d4b4e663848d676af14290"
+  },
+  "mismatches": [],
+  "errors": []
+}

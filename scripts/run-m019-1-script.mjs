@@ -20,6 +20,7 @@ const allowed = new Set([
   "guide-source-linkage-audit.mjs",
   "m019-1-readiness-audit.mjs",
   "strict-blind-packet-audit.mjs",
+  "strict-blind-snapshot-binding-audit.mjs",
 ]);
 const scriptName = process.argv[2];
 if (!allowed.has(scriptName)) throw new Error(`Unsupported M019.1 script: ${scriptName ?? "<missing>"}`);
