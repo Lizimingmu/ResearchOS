@@ -1,4 +1,5 @@
 import type { StagedCaseLabV1, StudioTemplateV1 } from "../../domain/curriculum";
+import { caseInformationUpdates } from "./case-information-updates";
 
 interface CaseSeed {
   slug: string; titleCn: string; titleEn: string; theme: string; initial: string; result: string; conflict: string; validation: string; prerequisites: string[]; sources: string[];
@@ -34,19 +35,23 @@ const caseFinalTasks: Record<string, string[]> = {
   "ai-plan-audit": ["列出拒绝的 AI 建议及理由", "冻结 time zero、事件、复杂度与验证计划", "按 cut-point/PH 结果追加更新而不覆盖原方案"],
 };
 
-export const stagedCaseLabs: StagedCaseLabV1[] = caseSeeds.map((seed) => ({
+export const stagedCaseLabs: StagedCaseLabV1[] = caseSeeds.map((seed) => {
+  const updates = caseInformationUpdates[seed.slug];
+  if (!updates) throw new Error(`Missing staged information updates for ${seed.slug}`);
+  return ({
   schemaVersion: 1, id: `staged-case-${seed.slug}`, titleCn: seed.titleCn, titleEn: seed.titleEn, theme: seed.theme,
   capabilityIds: seed.slug === "ai-plan-audit" ? ["ai_oversight", "statistical_reasoning", "result_interpretation"] : ["scientific_question", "result_interpretation", "next_step_design"],
   prerequisiteIds: seed.prerequisites, initialContextCn: seed.initial,
   stages: [
-    { id: "context", titleCn: "Stage 0 · 定义当前问题", evidenceCn: seed.initial, reasoningPromptCn: "冻结 v0：当前问题、总体、单位、时间、当前主张和至少两个解释分别是什么？", calibrationCn: `本案起点是：${seed.initial}。先冻结问题、总体、单位与时间，不得从标题预设最终解释。`, updatePromptCn: "保存 v0，不覆盖；标记校准后新增、删除或收窄的具体字段。" },
-    { id: "primary", titleCn: "Stage 1 · 主要证据", evidenceCn: seed.result, reasoningPromptCn: "复制 v0 为 v1：这项证据具体改变了哪个解释的权重、哪一个主张动词或哪项下一步？", calibrationCn: `本阶段只能解释：${seed.result}。同时记录效应、不确定性与仍共享的偏倚。`, updatePromptCn: "保存 v1 与 v0 的逐项 diff，并写明触发变化的证据句。" },
-    { id: "conflict", titleCn: "Stage 2 · 冲突或替代解释", evidenceCn: seed.conflict, reasoningPromptCn: "复制 v1 为 v2：至少两个模型如何分别预测这条冲突证据？哪一个模型因此升降级？", calibrationCn: seed.slug === "confounding-observational" ? "本案必须先声明目标是总效应还是直接效应。估计治疗总效应时，治疗后的炎症可能是中介，不能与基线严重度一样机械调整；若目标改为直接效应，则必须另行说明识别假设并处理治疗后混杂。" : `必须正面处理这条冲突：${seed.conflict}。不能把不一致平均掉或只写“仍有限制”。`, updatePromptCn: "保存 v2；指出至少一项被撤回的旧判断与一项新增的区分预测。" },
-    { id: "validation", titleCn: "Stage 3 · 验证与更新", evidenceCn: seed.validation, reasoningPromptCn: "在看到校准前冻结 v3：当前最大可辩护结论、停止/升级条件和下一项最小充分工作是什么？", calibrationCn: `本案最终证据是：${seed.validation}。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。`, updatePromptCn: "保存 v3 与 v2 的 diff；逐字标出变化的主张、解释权重和下一步。" },
+    { id: "context", titleCn: "Stage 0 · 定义当前问题", evidenceCn: seed.initial, reasoningPromptCn: "冻结 v0：当前问题、总体、单位、时间、当前主张和至少两个解释分别是什么？", calibrationCn: `本案起点是：${seed.initial}。先冻结问题、总体、单位与时间，不得从标题预设最终解释。`, updatePromptCn: "保存 v0，不覆盖；标记校准后新增、删除或收窄的具体字段。", informationUpdate: updates[0] },
+    { id: "primary", titleCn: "Stage 1 · 主要证据", evidenceCn: seed.result, reasoningPromptCn: "复制 v0 为 v1：这项证据具体改变了哪个解释的权重、哪一个主张动词或哪项下一步？", calibrationCn: `本阶段只能解释：${seed.result}。同时记录效应、不确定性与仍共享的偏倚。`, updatePromptCn: "保存 v1 与 v0 的逐项 diff，并写明触发变化的证据句。", informationUpdate: updates[1] },
+    { id: "conflict", titleCn: "Stage 2 · 冲突或替代解释", evidenceCn: seed.conflict, reasoningPromptCn: "复制 v1 为 v2：至少两个模型如何分别预测这条冲突证据？哪一个模型因此升降级？", calibrationCn: seed.slug === "confounding-observational" ? "本案必须先声明目标是总效应还是直接效应。估计治疗总效应时，治疗后的炎症可能是中介，不能与基线严重度一样机械调整；若目标改为直接效应，则必须另行说明识别假设并处理治疗后混杂。" : `必须正面处理这条冲突：${seed.conflict}。不能把不一致平均掉或只写“仍有限制”。`, updatePromptCn: "保存 v2；指出至少一项被撤回的旧判断与一项新增的区分预测。", informationUpdate: updates[2] },
+    { id: "validation", titleCn: "Stage 3 · 验证与更新", evidenceCn: seed.validation, reasoningPromptCn: "在看到校准前冻结 v3：当前最大可辩护结论、停止/升级条件和下一项最小充分工作是什么？", calibrationCn: `本案最终证据是：${seed.validation}。只允许按它的独立性、测量层和精度更新，不得把支持自动写成验证。`, updatePromptCn: "保存 v3 与 v2 的 diff；逐字标出变化的主张、解释权重和下一步。", informationUpdate: updates[3] },
   ],
   finalTaskCn: caseFinalTasks[seed.slug],
   sourceIds: seed.sources, contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
-}));
+  });
+});
 
 const paperFields = [
   { id: "question", labelCn: "真实研究问题", promptCn: "作者实际估计或比较了什么？", required: true },

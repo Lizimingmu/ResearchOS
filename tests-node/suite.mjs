@@ -20,6 +20,7 @@ import { CurriculumPreviewView } from "../.build/features/curriculum-preview/Cur
 import { getPaperFieldAccess, PaperCard } from "../.build/features/paper-lab/PaperCard.js";
 import { stagedCaseLabs, stagedConceptLessons, stagedMethodLessons, studioTemplates, curriculumClaims, curriculumContentHashes, curriculumManifest } from "../.build/data/curriculum/index.js";
 import { selfRescueGuideModules, selfRescueGuideSections } from "../.build/data/self-rescue-guide/index.js";
+import { authoredGuideContent } from "../.build/data/self-rescue-guide/content/index.js";
 import { Onboarding } from "../.build/components/Onboarding.js";
 import { learningUnits, practiceAssetBindings, practiceAssets, prerequisiteEdges } from "../.build/data/learningUnits.js";
 import { applyLearningTransition, canStartUnit, createLearnerUnitState } from "../.build/learning/learningKernelEngine.js";
@@ -2488,9 +2489,19 @@ test("M019-A4 Cox failure routes to a fresh remediation asset", () => {
 test("M019-B Guide v1 covers all ten required modules and 288 substantive sections", () => {
   assert.deepEqual(selfRescueGuideModules.map((module) => module.topics.length), [18, 32, 47, 23, 23, 58, 25, 22, 20, 20]);
   assert.equal(selfRescueGuideSections.length, 288);
-  assert.ok(selfRescueGuideSections.every((section) => section.bodyCn.join("").length >= 400));
+  const tierByTopic = new Map(authoredGuideContent.map((item) => [`${item.moduleId}::${item.titleEn}`, item.tier]));
+  const bounds = { tier1: [800, 1500], tier2: [500, 900], tier3: [250, 600] };
+  assert.ok(selfRescueGuideSections.every((section) => {
+    const [minimum, maximum] = bounds[tierByTopic.get(`${section.chapterId}::${section.titleEn}`)];
+    const length = section.bodyCn.join("").length;
+    return length >= minimum && length <= maximum;
+  }));
   assert.ok(selfRescueGuideSections.every((section) => section.contentOrigin === "ai_generated" && section.verificationStatus === "pending" && section.lifecycle === "pending_review"));
   assert.equal(Object.keys(curriculumContentHashes.guide).length, 288);
+  assert.equal(authoredGuideContent.length, 288);
+  assert.equal(new Set(authoredGuideContent.map((item) => `${item.moduleId}::${item.titleEn}`)).size, 288);
+  assert.ok(authoredGuideContent.every((item) => item.whyItMattersCn && item.intuitionCn && item.preciseExplanationCn.length && item.biomedicalExample.reasoningStepsCn.length && item.misconceptionCn.length && item.boundaryCn.length));
+  assert.ok(authoredGuideContent.filter((item) => item.tier === "tier1").length >= 70);
 });
 
 test("M019-C curriculum manifest maps every item to Guide, capabilities and sources", () => {
@@ -2512,6 +2523,11 @@ test("M019-D formal curriculum meets target sizes and assessment separation", ()
     assert.equal(new Set(assets.map((asset) => asset.scenarioCn)).size, 3);
     assert.ok(assets.every((asset) => asset.hints.length === 0 && asset.confidenceRequired && asset.responseLocked));
     assert.ok(assets.every((asset) => asset.expectedOptionIds.length > 0 && asset.expectedOptionIds.length < asset.options.length));
+    assert.ok(assets.every((asset) => asset.materialization?.contentVersion === "m019.1" && asset.materialization.independentFactsCn.length === 4));
+    assert.equal(new Set(assets.map((asset) => asset.stimulus.format)).size, 3);
+    assert.notEqual(assets[0].materialization.diseaseAreaCn, assets[2].materialization.diseaseAreaCn);
+    assert.notEqual(assets[0].materialization.studyDesignCn, assets[2].materialization.studyDesignCn);
+    assert.notEqual(assets[0].materialization.dataModalityCn, assets[2].materialization.dataModalityCn);
   }
 });
 
@@ -2521,6 +2537,9 @@ test("M019-D Method candidates implement all ten instructional dimensions", () =
     assert.ok(lesson.inputsCn.length && lesson.coreLogicCn.length && lesson.outputsCn.length && lesson.assumptionsCn.length);
     assert.ok(lesson.appropriateWhenCn.length && lesson.inappropriateWhenCn.length && lesson.misusePatternsCn.length && lesson.reviewerChecksCn.length);
     assert.ok(lesson.paperAppearanceCn.length > 0 && lesson.guideSectionIds.length > 0 && lesson.sourceIds.length > 0);
+    assert.ok(lesson.walkthroughStepsCn.length >= 6);
+    assert.ok(lesson.paperReadingExample.snippetCn.length >= 30 && lesson.paperReadingExample.readerChecksCn.length >= 3);
+    assert.ok(lesson.methodComparisonCn.length >= 1 && lesson.methodComparisonCn.every((item) => item.alternativeCn && item.chooseThisWhenCn && item.chooseAlternativeWhenCn));
   }
 });
 
@@ -2528,6 +2547,7 @@ test("M019-D Cases require staged reasoning, calibration, updating and a final t
   assert.ok(stagedCaseLabs.every((caseLab) => caseLab.stages.length >= 4 && caseLab.stages.length <= 6));
   assert.ok(stagedCaseLabs.every((caseLab) => caseLab.stages.every((stage) => stage.reasoningPromptCn && stage.calibrationCn && stage.updatePromptCn)));
   assert.ok(stagedCaseLabs.every((caseLab) => caseLab.finalTaskCn.length >= 3));
+  assert.ok(stagedCaseLabs.every((caseLab) => caseLab.stages.every((stage) => stage.informationUpdate.strengthenedCn.length && stage.informationUpdate.weakenedCn.length && stage.informationUpdate.unresolvedCn.length && stage.informationUpdate.forcingEvidenceCn)));
 });
 
 test("M019-E claim-source map keeps generated prose at claim-level pending", () => {

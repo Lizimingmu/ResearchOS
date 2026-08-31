@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "counts": {
+    "guideAuthored": 288,
+    "guideRendered": 288,
+    "guideUniqueModuleTopicKeys": 288,
+    "tier1": 82,
+    "tier2": 140,
+    "tier3": 66,
+    "conceptLessons": 40,
+    "conceptAssessmentRoles": 120,
+    "methodLessons": 21,
+    "methodAssessmentRoles": 63,
+    "formalLessons": 61,
+    "formalAssessmentRoles": 183,
+    "duplicateIds": 0,
+    "missingMaterial": 0,
+    "blindPacketItems": 183,
+    "blindMetadataLeaks": 0
+  },
+  "duplicateIds": [],
+  "missingMaterial": [],
+  "internalAnswerMetadataLeaks": [],
+  "errors": []
+}

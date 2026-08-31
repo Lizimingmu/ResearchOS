@@ -56,6 +56,16 @@ export interface StagedAssessmentAssetV1 {
     changeMindActionMarkersCn: string[];
   };
   maximumConclusionCn: string;
+  materialization: {
+    contentVersion: "m019.1";
+    diseaseAreaCn: string;
+    studyDesignCn: string;
+    dataModalityCn: string;
+    independentFactsCn: string[];
+    representationPurposeCn: string;
+    authorRationaleCn: string[];
+    blindReviewStatus: "pending" | "agree" | "ambiguous" | "disagree";
+  };
   hints: string[];
   confidenceRequired: true;
   responseLocked: true;
@@ -96,6 +106,15 @@ export interface StagedMethodLessonV1 {
   intuitionCn: string;
   workedExampleCn: string;
   walkthroughStepsCn: string[];
+  paperReadingExample: {
+    snippetCn: string;
+    readerChecksCn: string[];
+  };
+  methodComparisonCn: Array<{
+    alternativeCn: string;
+    chooseThisWhenCn: string;
+    chooseAlternativeWhenCn: string;
+  }>;
   scientificQuestionCn: string;
   inputsCn: string[];
   coreLogicCn: string;
@@ -132,6 +151,12 @@ export interface StagedCaseLabV1 {
     reasoningPromptCn: string;
     calibrationCn: string;
     updatePromptCn: string;
+    informationUpdate: {
+      strengthenedCn: string[];
+      weakenedCn: string[];
+      unresolvedCn: string[];
+      forcingEvidenceCn: string;
+    };
   }>;
   finalTaskCn: string[];
   sourceIds: string[];

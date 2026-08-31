@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { stagedCaseLabs, stagedConceptLessons, stagedMethodLessons, studioTemplates, curriculumClaims, curriculumContentHashes, curriculumManifest, frozenCurriculumSnapshot } from "../.build/data/curriculum/index.js";
 import { selfRescueGuideSections, selfRescueGuideModules } from "../.build/data/self-rescue-guide/index.js";
+import { authoredGuideContent } from "../.build/data/self-rescue-guide/content/index.js";
 import { evidenceById } from "../.build/data/evidence.js";
 
 const errors = [];
@@ -64,7 +65,9 @@ for (const lesson of stagedMethodLessons) {
   const dimensions = [lesson.scientificQuestionCn, lesson.inputsCn, lesson.coreLogicCn, lesson.outputsCn, lesson.assumptionsCn, lesson.appropriateWhenCn, lesson.inappropriateWhenCn, lesson.misusePatternsCn, lesson.reviewerChecksCn, lesson.paperAppearanceCn];
   if (dimensions.some((value) => Array.isArray(value) ? value.length === 0 : value.trim().length === 0)) errors.push(`${lesson.id} misses a required method dimension`);
   if (!lesson.guideSectionIds.length || lesson.guideSectionIds.some((id) => !guideIds.has(id))) errors.push(`${lesson.id} has invalid Guide mapping`);
-  if (lesson.intuitionCn.length < 24 || lesson.workedExampleCn.length < 40 || lesson.walkthroughStepsCn.length < 3) errors.push(`${lesson.id} lacks intuition or worked reasoning`);
+  if (lesson.intuitionCn.length < 24 || lesson.workedExampleCn.length < 40 || lesson.walkthroughStepsCn.length < 6) errors.push(`${lesson.id} lacks intuition or a six-step worked reasoning walkthrough`);
+  if (!lesson.paperReadingExample?.snippetCn || lesson.paperReadingExample.snippetCn.length < 30 || lesson.paperReadingExample.readerChecksCn.length < 3) errors.push(`${lesson.id} lacks a materialized paper-reading example`);
+  if (!lesson.methodComparisonCn?.length || lesson.methodComparisonCn.some((item) => !item.alternativeCn || !item.chooseThisWhenCn || !item.chooseAlternativeWhenCn)) errors.push(`${lesson.id} lacks a materialized method comparison`);
   for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) {
     if (asset.hints.length || !asset.confidenceRequired || !asset.responseLocked) errors.push(`${asset.id} violates locked no-hint assessment policy`);
     if (asset.expectedOptionIds.length === asset.options.length) errors.push(`${asset.id} lacks distractors`);
@@ -84,6 +87,7 @@ for (const caseLab of stagedCaseLabs) {
   if (caseLab.stages.length < 4 || caseLab.stages.length > 6) errors.push(`${caseLab.id} requires 4-6 stages`);
   if (caseLab.stages.some((stage) => !stage.reasoningPromptCn || !stage.calibrationCn || !stage.updatePromptCn)) errors.push(`${caseLab.id} has an incomplete stage`);
   if (caseLab.finalTaskCn.length < 3) errors.push(`${caseLab.id} final task is too shallow`);
+  if (caseLab.stages.some((stage) => !stage.informationUpdate || !stage.informationUpdate.strengthenedCn.length || !stage.informationUpdate.weakenedCn.length || !stage.informationUpdate.unresolvedCn.length || !stage.informationUpdate.forcingEvidenceCn)) errors.push(`${caseLab.id} does not explicitly change information state at every stage`);
 }
 
 const paragraphs = selfRescueGuideSections.flatMap((section) => section.bodyCn.map((body) => ({ id: section.id, body })));
@@ -91,9 +95,12 @@ const exactParagraphs = new Map();
 for (const paragraph of paragraphs) exactParagraphs.set(paragraph.body, [...(exactParagraphs.get(paragraph.body) ?? []), paragraph.id]);
 for (const [body, ids] of exactParagraphs) if (ids.length > 1 && body.length > 80) errors.push(`duplicated Guide paragraph in ${ids.join(", ")}`);
 const guideLengths = selfRescueGuideSections.map((section) => section.bodyCn.join("").length);
+const guideTierByTopic = new Map(authoredGuideContent.map((item) => [`${item.moduleId}::${item.titleEn}`, item.tier]));
+const guideTierBounds = { tier1: [800, 1500], tier2: [500, 900], tier3: [250, 600] };
 selfRescueGuideSections.forEach((section, index) => {
-  if (guideLengths[index] < 400) errors.push(`${section.id} is below 400 Chinese-character target (${guideLengths[index]})`);
-  if (guideLengths[index] > 1500) warnings.push(`${section.id} exceeds 1500 characters (${guideLengths[index]})`);
+  const tier = guideTierByTopic.get(`${section.chapterId}::${section.titleEn}`);
+  const [minimum, maximum] = guideTierBounds[tier] ?? [250, 1500];
+  if (guideLengths[index] < minimum || guideLengths[index] > maximum) errors.push(`${section.id} ${tier ?? "unknown tier"} length ${guideLengths[index]} outside ${minimum}-${maximum}`);
   if (!section.titleEn || !/[A-Za-z]/.test(section.titleEn)) errors.push(`${section.id} lacks English terminology bridge`);
   if (/\b(?:TODO|TBD|PLACEHOLDER|lorem ipsum)\b/i.test(JSON.stringify(section))) errors.push(`${section.id} contains placeholder text`);
 });

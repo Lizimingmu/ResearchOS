@@ -1,5 +1,8 @@
-import type { StagedAssessmentAssetV1, StagedMethodLessonV1 } from "../../domain/curriculum";
+import type { StagedMethodLessonV1 } from "../../domain/curriculum";
 import { selfRescueGuideSections } from "../self-rescue-guide";
+import { methodAssessmentMaterial } from "./assessment-material";
+import { buildMaterializedAssessment } from "./materialize-assessment";
+import { methodTeachingMaterial } from "./method-teaching-material";
 
 interface MethodSeed {
   slug: string; titleCn: string; titleEn: string; guideTitles: string[];
@@ -59,96 +62,6 @@ const methodBlueprints: Record<string, MethodBlueprint> = {
   "cellchat-communication": { intuition: "配体 RNA 与受体 RNA 同时出现只产生候选通信边；空间邻近和功能阻断才逐步增加机制支持。", worked: "配体 RNA→受体 RNA→空间邻近→功能阻断四级证据阶梯，并审查供体重现与细胞比例。", apply: "网络在治疗组更密但髓系比例也更高；排序候选边并提出验证。", remediation: "把逐细胞 P 值改为供体层重现和组成敏感性。", review: "独立组织中空间共定位但无功能实验，限定为候选支持。", decision: "按供体比较并控制组成，把表达边限定为候选，再用空间与功能证据升级", nearMiss: "CellChat 边权显著就写成已发生细胞间信号传递机制" },
 };
 
-function methodAssessment(seed: MethodSeed, role: StagedAssessmentAssetV1["role"], blueprint: MethodBlueprint): StagedAssessmentAssetV1 {
-  const id = `staged-method-${seed.slug}`;
-  const scenario = role === "apply" ? blueprint.apply : role === "remediation" ? blueprint.remediation : blueprint.review;
-  const roleIndex = role === "apply" ? 0 : role === "remediation" ? 1 : 2;
-  const lessonVariant = [...seed.slug].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 3;
-  const variant = (lessonVariant + roleIndex) % 3;
-  const stimulusFormats = ["case_table", "evidence_matrix", "decision_timeline"] as const;
-  const stimulusFormat = stimulusFormats[(lessonVariant + roleIndex) % 3];
-  const valid = [
-    { id: `${id}-${role}-decision`, labelCn: blueprint.decision },
-    { id: `${id}-${role}-assumption`, labelCn: `核对“${seed.assumptions[roleIndex]}”，并报告失败时如何改变分析` },
-    { id: `${id}-${role}-report`, labelCn: `把${seed.outputs[roleIndex]}与不确定性、数据角色和适用范围一起报告` },
-    { id: `${id}-${role}-diagnostic`, labelCn: `先执行“${seed.checks[roleIndex]}”诊断，再决定保留、修改或停止该分析` },
-  ];
-  const invalid = [
-    { id: `${id}-${role}-near-miss`, labelCn: blueprint.nearMiss },
-    { id: `${id}-${role}-misuse`, labelCn: seed.misuse[roleIndex] },
-    { id: `${id}-${role}-upgrade`, labelCn: `输出方向符合预期时，直接升级为机制或临床价值，不再区分${seed.avoid[roleIndex % seed.avoid.length]}` },
-  ];
-  const correctCount = variant === 0 ? 3 : variant === 1 ? 4 : 2;
-  const options = [...valid.slice(0, correctCount), ...invalid];
-  const expectedOptionIds = valid.slice(0, correctCount).map((option) => option.id);
-  const roleLabel = role === "apply" ? "首次方法应用" : role === "remediation" ? "错误定位后的新材料" : "延迟跨情境复习";
-  const scenarioFacts = scenario.split(/[；。]/).map((item) => item.trim()).filter(Boolean);
-  const material = {
-    input: seed.inputs[roleIndex] ?? seed.inputs[0],
-    result: scenarioFacts.join("；") || scenario,
-    assumption: seed.assumptions[roleIndex],
-    diagnostic: seed.checks[roleIndex],
-    boundary: `${seed.outputs[roleIndex]}；不可升级为：${seed.avoid[roleIndex % seed.avoid.length]}`,
-  };
-  const stimulus = stimulusFormat === "decision_timeline" ? {
-    format: stimulusFormat,
-    columnsCn: ["时点", "当时新增输入/结果", "冻结的分析决定"],
-    rowsCn: [["T0", material.input, "冻结分析单位与输入"], ["T1", material.result, "读取结果但不升级主张"], ["T2", `${material.assumption}；${material.diagnostic}`, "诊断到达后决定保留、修改或停止"], ["T3", material.boundary, "记录更新后的报告边界"]],
-    noteCn: "T0–T3 按分析过程排序；必须说明 T2 的新诊断如何改变 T1 的暂定解释。",
-  } : stimulusFormat === "case_table" ? {
-    format: stimulusFormat,
-    columnsCn: ["样本/分析记录", "可比较输入或结果", "当前判读状态"],
-    rowsCn: [["C1", material.input, "输入与单位"], ["C2", material.result, "观察到的方法结果"], ["C3", `${material.assumption}；${material.diagnostic}`, "尚待诊断"], ["C4", material.boundary, "允许报告的最大范围"]],
-    noteCn: "C1–C4 必须逐行比较输入、结果、诊断和报告边界；未出现的外部验证视为未提供。",
-  } : {
-    format: stimulusFormat,
-    columnsCn: ["证据ID", "实际材料", "支持/反驳对象", "对决定的含义"],
-    rowsCn: [["E1", material.input, "分析输入", "限定可回答的问题"], ["E2", material.result, "当前方法输出", "尚不能独立升级科学主张"], ["E3", `${material.assumption}；${material.diagnostic}`, "关键假设与诊断", "失败则修改或停止"], ["E4", material.boundary, "最终报告", "限定不确定性与适用范围"]],
-    noteCn: "E1–E4 明确 evidence×output/assumption/claim 关系；不能用选项复述代替材料推理。",
-  };
-  const evidenceRowIndexByOptionSuffix: Record<string, number> = { decision: 1, assumption: 0, report: 3, diagnostic: 2 };
-  const reasoningMarkersByOptionSuffix: Record<string, string[]> = {
-    decision: ["因此", "所以", "需要"], assumption: ["若", "否则", "不满足"], report: ["只能", "报告", "限于"], diagnostic: ["检查", "诊断", "决定"],
-  };
-  const factFragment = (row: string[]) => row.slice(1).join("").replace(/[\s，。；：、“”‘’（）()\-—]/g, "").slice(0, 8);
-  const evidenceExpectations = expectedOptionIds.map((optionId) => {
-    const suffix = optionId.split("-").at(-1) ?? "decision";
-    const row = stimulus.rowsCn[evidenceRowIndexByOptionSuffix[suffix] ?? 0];
-    return { optionId, allowedRowIds: [row[0]], requiredFactFragmentsCn: [factFragment(row)], reasoningMarkersCn: reasoningMarkersByOptionSuffix[suffix] ?? ["因此"] };
-  });
-  const optionFeedbackCn = Object.fromEntries(options.map((option) => {
-    if (option.id.endsWith("-decision")) return [option.id, `正确机制：本题需要“${blueprint.decision}”；请用 ${stimulus.rowsCn[0][0]} 与 ${stimulus.rowsCn[1][0]} 说明单位和结果为何支持该决定。`];
-    if (option.id.endsWith("-assumption")) return [option.id, `正确机制：显式核对“${seed.assumptions[roleIndex]}”。若失败，必须修改分析或把结果降级为描述。`];
-    if (option.id.endsWith("-report")) return [option.id, `正确机制：${seed.outputs[roleIndex]} 只是方法输出，必须与不确定性、数据角色和适用范围一起报告。`];
-    if (option.id.endsWith("-diagnostic")) return [option.id, `正确机制：先执行“${seed.checks[roleIndex]}”，它直接决定当前分析应保留、修改还是停止。`];
-    if (option.id.endsWith("-near-miss")) return [option.id, `错误机制：该近似做法“${blueprint.nearMiss}”遗漏 ${stimulus.rowsCn.at(-1)?.[0]} 的诊断。修正为：${blueprint.decision}。`];
-    if (option.id.endsWith("-misuse")) return [option.id, `错误机制：这正是常见误用“${seed.misuse[roleIndex]}”。题面要求先做“${seed.checks[roleIndex]}”，再决定是否继续。`];
-    return [option.id, `错误机制：结果方向不能自动升级为机制或临床价值；题面未解决“${seed.avoid[roleIndex % seed.avoid.length]}”，只能报告有边界的方法输出。`];
-  }));
-  return {
-    id: `${id}-${role}-v1`, role,
-    scenarioCn: scenario,
-    promptCn: `${roleLabel}的正确项数量不固定。根据材料表选择最小充分决定，并为每个所选正确决定引用不同材料行，解释事实为何支持该决定且不能采用近似做法。`,
-    options,
-    expectedOptionIds,
-    stimulus,
-    reasoningCriteriaCn: [blueprint.decision, seed.checks[roleIndex], "解释 near-miss 在本题中遗漏的步骤", "区分方法输出与科学主张"],
-    feedbackCn: [`${roleLabel}需要的分析决定：${blueprint.decision}`, `${roleLabel}的关键诊断：${seed.checks[roleIndex]}`, `${roleLabel}中半正确但不足：${blueprint.nearMiss}`],
-    optionFeedbackCn,
-    scoringRule: {
-      minimumEvidenceUnits: expectedOptionIds.length,
-      criticalErrorOptionIds: invalid.map((option) => option.id),
-      evidenceExpectations,
-      partialCreditCn: `选择“${blueprint.decision}”但未为每个正确决定引用一条匹配材料行，只记部分完成且不生成标准化能力。`,
-      stopRuleCn: `选择误用“${seed.misuse[roleIndex]}”或把输出升级为机制时锁定失败，并路由到 ${role === "apply" ? "remediation" : "同方法新材料"}。`,
-      changeMindCriteriaCn: [seed.assumptions[roleIndex], seed.checks[roleIndex]],
-      changeMindActionMarkersCn: ["撤回", "收窄", "修改", "停止", "改为", "重新", "更新"],
-    },
-    maximumConclusionCn: `本题只能在“${blueprint.decision}”完成、且“${seed.assumptions[roleIndex]}”经诊断后解释${seed.outputs[roleIndex]}；${seed.avoid[roleIndex % seed.avoid.length]}仍不由当前结果支持。`,
-    hints: [], confidenceRequired: true, responseLocked: true,
-  };
-}
-
 const methodPrerequisites: Record<string, string[]> = {
   "differential-analysis": ["staged-concept-statistical-unit", "staged-concept-effect-size", "staged-concept-standard-error", "staged-concept-batch-effect", "staged-concept-multiple-testing-fdr"],
   correlation: ["staged-concept-statistical-unit", "staged-concept-effect-size", "staged-concept-association-causation"],
@@ -173,17 +86,25 @@ const methodPrerequisites: Record<string, string[]> = {
   "cellchat-communication": ["staged-concept-statistical-unit", "staged-concept-pseudoreplication", "staged-concept-batch-effect", "staged-concept-evidence-claim", "staged-concept-composition-state"],
 };
 
-export const stagedMethodLessons: StagedMethodLessonV1[] = seeds.map((seed, index) => ({
+export const stagedMethodLessons: StagedMethodLessonV1[] = seeds.map((seed, index) => {
+  const material = methodAssessmentMaterial[seed.slug];
+  if (!material) throw new Error(`Curriculum method missing materialized assessments: ${seed.slug}`);
+  const teaching = methodTeachingMaterial[seed.slug];
+  if (!teaching) throw new Error(`Curriculum method missing teaching material: ${seed.slug}`);
+  return ({
   schemaVersion: 1, id: `staged-method-${seed.slug}`, titleCn: seed.titleCn, titleEn: seed.titleEn,
   guideSectionIds: guideIds(seed.guideTitles), capabilityIds: seed.slug.includes("cell") || ["pca", "nmf", "clustering", "gsea", "gsva-ssgsea", "wgcna", "pseudobulk", "differential-abundance", "trajectory-pseudotime"].includes(seed.slug) ? ["omics_reasoning", "statistical_reasoning", "result_interpretation"] : ["statistical_reasoning", "result_interpretation"],
   prerequisiteIds: methodPrerequisites[seed.slug] ?? ["staged-concept-statistical-unit"],
   intuitionCn: methodBlueprints[seed.slug].intuition,
   workedExampleCn: methodBlueprints[seed.slug].worked,
-  walkthroughStepsCn: [`1. 冻结问题与独立单位：${seed.question}`, `2. 核对输入与核心逻辑：${seed.inputs.join("；")}；${seed.core}`, `3. 读取输出并检查失败模式：${seed.outputs.join("；")}；${methodBlueprints[seed.slug].nearMiss}`],
+  walkthroughStepsCn: teaching.walkthroughStepsCn,
+  paperReadingExample: teaching.paperReadingExample,
+  methodComparisonCn: teaching.methodComparisonCn,
   scientificQuestionCn: seed.question, inputsCn: seed.inputs, coreLogicCn: seed.core, outputsCn: seed.outputs, assumptionsCn: seed.assumptions,
   appropriateWhenCn: seed.use, inappropriateWhenCn: seed.avoid, misusePatternsCn: seed.misuse, reviewerChecksCn: seed.checks, paperAppearanceCn: seed.paper,
-  primaryApply: methodAssessment(seed, "apply", methodBlueprints[seed.slug]),
-  remediation: methodAssessment(seed, "remediation", methodBlueprints[seed.slug]),
-  delayedReview: methodAssessment(seed, "review", methodBlueprints[seed.slug]),
+  primaryApply: buildMaterializedAssessment(`staged-method-${seed.slug}`, "apply", material.apply),
+  remediation: buildMaterializedAssessment(`staged-method-${seed.slug}`, "remediation", material.remediation),
+  delayedReview: buildMaterializedAssessment(`staged-method-${seed.slug}`, "review", material.review),
   sourceIds: seed.sources, estimatedMinutes: 20 + (index % 5) * 2, contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
-}));
+  });
+});

@@ -1,6 +1,8 @@
 import type { CapabilityId } from "../../domain/learningArchitecture";
-import type { StagedAssessmentAssetV1, StagedConceptLessonV1 } from "../../domain/curriculum";
+import type { StagedConceptLessonV1 } from "../../domain/curriculum";
 import { selfRescueGuideSections } from "../self-rescue-guide";
+import { conceptAssessmentMaterial } from "./assessment-material";
+import { buildMaterializedAssessment } from "./materialize-assessment";
 
 const conceptRows = [
   "research-question|Research Question",
@@ -178,93 +180,6 @@ const conceptCases: Record<string, ConceptCaseBlueprint> = {
   "ai-cognitive-outsourcing": { worked: "研究者先独立审查一份 AI Cox 计划，按 5 项清单标出 time zero、cut-point、stepwise、数据泄漏和引用问题，再对照 AI 批评并逐项记录接受/拒绝依据。", remediation: "把另一份单细胞 AI 计划拆成输入契约、真值测试、供体层推断与引用核验表。", review: "先手写最小诊断研究方案，再审查 AI 的阈值、样本角色和因果措辞。", decision: "在调用 AI 前冻结自己的问题与判断，之后逐项验证并记录最终人类决定", keyCheck: "研究者能独立解释问题、复核代码/引用并为结论承担证据责任", nearMiss: "让 AI 先生成完整方案，再由研究者只检查语言是否流畅" },
 };
 
-function assessment(id: string, summary: string, role: StagedAssessmentAssetV1["role"], blueprint: ConceptCaseBlueprint): StagedAssessmentAssetV1 {
-  const scenario = role === "apply" ? blueprint.review : role === "remediation" ? `改用另一种表征：${blueprint.remediation}` : `跨场景复核：研究团队准备“${blueprint.nearMiss}”。当前材料要求独立判断该行动缺少什么，并提出会改变决定的结果。`;
-  const roleAction = role === "apply" ? blueprint.decision : role === "remediation" ? `先从新表征重建信息，再执行：${blueprint.decision}` : `在未提示原术语的跨情境中独立执行：${blueprint.decision}`;
-  const roleIndex = role === "apply" ? 0 : role === "remediation" ? 1 : 2;
-  const lessonVariant = [...id].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 3;
-  const variant = (lessonVariant + roleIndex) % 3;
-  const stimulusFormats = ["case_table", "evidence_matrix", "decision_timeline"] as const;
-  const stimulusFormat = stimulusFormats[(lessonVariant + roleIndex) % 3];
-  const valid = [
-    { id: `${id}-${role}-decision`, labelCn: roleAction },
-    { id: `${id}-${role}-check`, labelCn: `必须核对：${blueprint.keyCheck}` },
-    { id: `${id}-${role}-boundary`, labelCn: `把结论限制为：${summary}；同时保留尚未被题面区分的解释` },
-    { id: `${id}-${role}-change`, labelCn: `预先写出一项会推翻“${summary}”这一当前边界的具体结果，并说明出现后如何更新` },
-  ];
-  const invalid = [
-    { id: `${id}-${role}-near-miss`, labelCn: blueprint.nearMiss },
-    { id: `${id}-${role}-partial`, labelCn: `只记录“${blueprint.keyCheck}”，但不据此修改分析决定或主张` },
-    { id: `${id}-${role}-premature`, labelCn: `在完成“${blueprint.decision}”前，先把结果写成稳定、可推广的结论，再把独立验证留给后续研究` },
-  ];
-  const correctCount = variant === 0 ? 3 : variant === 1 ? 4 : 2;
-  const options = [...valid.slice(0, correctCount), ...invalid];
-  const expectedOptionIds = valid.slice(0, correctCount).map((option) => option.id);
-  const roleLabel = role === "apply" ? "首次应用" : role === "remediation" ? "纠错迁移" : "延迟复习";
-  const material = role === "apply"
-    ? { observation: scenario, proposed: blueprint.nearMiss, check: blueprint.keyCheck, boundary: summary }
-    : role === "remediation"
-      ? { observation: blueprint.remediation, proposed: blueprint.nearMiss, check: blueprint.keyCheck, boundary: `纠错后只能主张：${summary}` }
-      : { observation: `跨场景记录：${scenario}`, proposed: blueprint.nearMiss, check: blueprint.keyCheck, boundary: `延迟复核边界：${summary}` };
-  const stimulus = stimulusFormat === "decision_timeline" ? {
-    format: stimulusFormat,
-    columnsCn: ["时点", "当时新增证据", "冻结的决定或更新"],
-    rowsCn: [["T0", material.observation, "先记录初始判断，不回写"], ["T1", material.proposed, "团队提出当前行动"], ["T2", material.check, "新证据到达后检查前提"], ["T3", material.boundary, "前提失败则收窄、撤回或修改决定"]],
-    noteCn: "T0–T3 按证据到达顺序冻结；作答必须说明 T2 如何使 T1 的决定在 T3 更新。",
-  } : stimulusFormat === "case_table" ? {
-    format: stimulusFormat,
-    columnsCn: ["病例/样本记录", "可比较观察", "当前处理状态"],
-    rowsCn: [["C1", material.observation, "目标场景"], ["C2", material.proposed, "待比较的近似行动"], ["C3", material.check, "合格行动必须满足"], ["C4", material.boundary, "允许报告的最大范围"]],
-    noteCn: "C1–C4 是同一决策中可逐行比较的记录；未列出的独立样本、精度或因果条件视为未提供。",
-  } : {
-    format: stimulusFormat,
-    columnsCn: ["证据ID", "证据事实", "支持/反驳对象", "对结论的约束"],
-    rowsCn: [["E1", material.observation, "当前问题", "建立待判断事实"], ["E2", material.proposed, "近似行动", "不能自动视为充分"], ["E3", material.check, "核心判别点", "未满足时必须改动决定"], ["E4", material.boundary, "最大主张", "超出范围即证据不足"]],
-    noteCn: "E1–E4 明确证据×行动/主张关系；作答必须引用对应格，不能只复述选项。",
-  };
-  const evidenceRowIndexByOptionSuffix: Record<string, number> = { decision: 0, check: 2, boundary: 1, change: 3 };
-  const reasoningMarkersByOptionSuffix: Record<string, string[]> = {
-    decision: ["因此", "所以", "需要"], check: ["若", "否则", "不满足"], boundary: ["只能", "限于", "不足"], change: ["若", "一旦", "更新"],
-  };
-  const factFragment = (row: string[]) => row.slice(1).join("").replace(/[\s，。；：、“”‘’（）()\-—]/g, "").slice(0, 8);
-  const evidenceExpectations = expectedOptionIds.map((optionId) => {
-    const suffix = optionId.split("-").at(-1) ?? "decision";
-    const row = stimulus.rowsCn[evidenceRowIndexByOptionSuffix[suffix] ?? 0];
-    return { optionId, allowedRowIds: [row[0]], requiredFactFragmentsCn: [factFragment(row)], reasoningMarkersCn: reasoningMarkersByOptionSuffix[suffix] ?? ["因此"] };
-  });
-  const optionFeedbackCn = Object.fromEntries(options.map((option) => {
-    if (option.id.endsWith("-decision")) return [option.id, `正确机制：把题面决定落实为“${blueprint.decision}”。作答必须引用 ${stimulus.rowsCn[0][0]} 的新场景事实。`];
-    if (option.id.endsWith("-check")) return [option.id, `正确机制：直接核对“${blueprint.keyCheck}”；若不满足，应收窄或撤回当前决定。`];
-    if (option.id.endsWith("-boundary")) return [option.id, `正确机制：材料只支持“${summary}”这一边界，未给出的独立性、精度或因果条件不能补写。`];
-    if (option.id.endsWith("-change")) return [option.id, `正确机制：预先写出会推翻“${summary}”的结果，能防止看到结果后只保留有利解释。`];
-    if (option.id.endsWith("-near-miss")) return [option.id, `错误机制：把“${blueprint.nearMiss}”当成充分行动，遗漏了题面要求的“${blueprint.keyCheck}”。修正为：${blueprint.decision}。`];
-    if (option.id.endsWith("-partial")) return [option.id, `错误机制：只记录“${blueprint.keyCheck}”却不改变决定，形成无行动的清单。必须据此执行“${blueprint.decision}”。`];
-    return [option.id, `错误机制：把方向一致提前升级为稳定可推广结论；${stimulus.rowsCn.at(-1)?.[0]} 明确限制为“${summary}”，应先保留未区分解释。`];
-  }));
-  return {
-    id: `${id}-${role}-v1`, role,
-    scenarioCn: scenario,
-    promptCn: `这是${roleLabel}材料。正确项数量不固定：选择题面下的最小充分行动集，并为每个所选正确决定引用表中不同材料行、写出事实与决定的关系。`,
-    options,
-    expectedOptionIds,
-    stimulus,
-    reasoningCriteriaCn: [blueprint.decision, blueprint.keyCheck, "指出 near-miss 为什么在本题中只完成了部分工作", "写出会改变决定的具体结果"],
-    feedbackCn: [`${roleLabel}的目标决定：${blueprint.decision}。`, `${roleLabel}的关键判别点：${blueprint.keyCheck}。`, `${roleLabel}中最危险的半正确路径：${blueprint.nearMiss}。`],
-    optionFeedbackCn,
-    scoringRule: {
-      minimumEvidenceUnits: expectedOptionIds.length,
-      criticalErrorOptionIds: invalid.filter((option) => option.id.endsWith("near-miss") || option.id.endsWith("premature")).map((option) => option.id),
-      evidenceExpectations,
-      partialCreditCn: `若已选择“${blueprint.decision}”但未为每个正确决定提供一条匹配材料行的证据，只记部分完成；不得形成标准化能力证据。`,
-      stopRuleCn: `若选择“${blueprint.nearMiss}”或提前升级主张，立即锁定失败并路由到 ${role === "apply" ? "remediation" : "同构念新材料"}。`,
-      changeMindCriteriaCn: [blueprint.keyCheck, blueprint.decision],
-      changeMindActionMarkersCn: ["撤回", "收窄", "修改", "停止", "改为", "重新", "更新"],
-    },
-    maximumConclusionCn: `在本题材料下，只有完成“${blueprint.decision}”并核对“${blueprint.keyCheck}”后，才能作出与“${summary}”一致的有限判断；当前未提供的独立性、精度或区分性证据不得被补写。`,
-    hints: [], confidenceRequired: true, responseLocked: true,
-  };
-}
-
 export const stagedConceptLessons: StagedConceptLessonV1[] = conceptRows.map((row, index) => {
   const [slug, title] = row.split("|");
   const section = sectionFor(title);
@@ -273,15 +188,17 @@ export const stagedConceptLessons: StagedConceptLessonV1[] = conceptRows.map((ro
   const summary = section.summaryCn;
   const blueprint = conceptCases[slug];
   if (!blueprint) throw new Error(`Curriculum concept missing pedagogy blueprint: ${slug}`);
+  const material = conceptAssessmentMaterial[slug];
+  if (!material) throw new Error(`Curriculum concept missing materialized assessments: ${slug}`);
   return {
     schemaVersion: 1, id, titleCn: chineseTitles[slug] ?? section.titleCn, titleEn: section.titleEn, guideSectionId: section.id,
     capabilityIds: capabilitiesFor(section.chapterId), prerequisiteIds: prerequisiteMap[slug] ?? [],
     whyItMattersCn: section.bodyCn[0], intuitionCn: section.bodyCn[1], preciseExplanationCn: section.bodyCn[2], workedExampleCn: blueprint.worked,
     explainPromptCn: `不用术语复述：请用两三句话解释「${section.titleCn}」会怎样改变一个生物医学研究的设计、分析或结论边界。`,
     explanationChecklistCn: [`说清研究对象和时间`, `指出「${section.titleCn}」作用的推断层级`, "给出一个会改变判断的反例", "没有把自由文本当成能力分数"],
-    primaryApply: assessment(id, summary, "apply", blueprint),
-    remediation: assessment(id, summary, "remediation", blueprint),
-    delayedReview: assessment(id, summary, "review", blueprint),
+    primaryApply: buildMaterializedAssessment(id, "apply", material.apply),
+    remediation: buildMaterializedAssessment(id, "remediation", material.remediation),
+    delayedReview: buildMaterializedAssessment(id, "review", material.review),
     sourceIds: section.evidenceSourceIds, estimatedMinutes: 14 + (index % 4) * 2,
     contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
   };
