@@ -32,10 +32,11 @@ for (const lesson of lessons) {
   if (new Set(assets.map((asset) => asset.stimulus.format)).size !== 3) missingMaterial.push(`lesson-representations:${lesson.id}`);
   for (const asset of assets) {
     const complete = asset.materialization?.contentVersion === "m019.1"
-      && asset.materialization.independentFactsCn.length === 4
-      && asset.stimulus.rowsCn.length === 4
+      && asset.materialization.independentFactsCn.length >= 3
+      && asset.materialization.independentFactsCn.length <= 7
+      && asset.stimulus.rowsCn.length === asset.materialization.independentFactsCn.length
       && asset.options.length >= 4
-      && asset.expectedOptionIds.length >= 2
+      && asset.expectedOptionIds.length >= 1
       && asset.expectedOptionIds.every((id) => asset.options.some((option) => option.id === id))
       && Object.keys(asset.optionFeedbackCn).length === asset.options.length
       && asset.scoringRule.evidenceExpectations.length === asset.expectedOptionIds.length;

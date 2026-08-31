@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "counts": {
+    "sections": 288,
+    "canonicalLinks": 549,
+    "targetMappings": 11,
+    "generatedRecords": 662,
+    "activeGenerated": 0,
+    "nonPendingGenerated": 0,
+    "direct": 181,
+    "methodology": 150,
+    "curriculum_synthesis": 218,
+    "supplemental": 227
+  },
+  "mappings": [
+    {
+      "key": "study-design::External Validity",
+      "canonical": [
+        {
+          "sourceId": "src-strobe",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-pm-external",
+          "role": "direct"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-strobe"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-strobe",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-pm-external",
+          "role": "direct"
+        }
+      ]
+    },
+    {
+      "key": "study-design::Orthogonal Validation",
+      "canonical": [
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-strobe",
+          "role": "methodology"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-strobe"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-strobe",
+          "role": "methodology"
+        }
+      ]
+    },
+    {
+      "key": "study-design::Technical versus Biological Validation",
+      "canonical": [
+        {
+          "sourceId": "src-pseudorep",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-pseudorep"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-pseudorep",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        }
+      ]
+    },
+    {
+      "key": "omics-bioinformatics::RNA Is Not Protein",
+      "canonical": [
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-proteomics-overview",
+          "role": "direct"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-batch"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-proteomics-overview",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-batch",
+          "role": "supplemental"
+        }
+      ]
+    },
+    {
+      "key": "omics-bioinformatics::Feature Selection",
+      "canonical": [
+        {
+          "sourceId": "src-leakage",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-internal-validation",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-tripod-ai",
+          "role": "methodology"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-batch",
+        "src-strobe"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-leakage",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-internal-validation",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-tripod-ai",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-batch",
+          "role": "supplemental"
+        },
+        {
+          "sourceId": "src-strobe",
+          "role": "supplemental"
+        }
+      ]
+    },
+    {
+      "key": "omics-bioinformatics::Pathway and Program Interpretation",
+      "canonical": [
+        {
+          "sourceId": "src-gsea",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-camera",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-ora",
+          "role": "direct"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-batch",
+        "src-single-cell-2023"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-gsea",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-camera",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-ora",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-batch",
+          "role": "supplemental"
+        },
+        {
+          "sourceId": "src-single-cell-2023",
+          "role": "supplemental"
+        }
+      ]
+    },
+    {
+      "key": "omics-bioinformatics::Pseudoreplication in Single-Cell RNA-seq",
+      "canonical": [
+        {
+          "sourceId": "src-pseudorep",
+          "role": "direct"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-single-cell-2023",
+        "src-strobe"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-pseudorep",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-single-cell-2023",
+          "role": "supplemental"
+        },
+        {
+          "sourceId": "src-strobe",
+          "role": "supplemental"
+        }
+      ]
+    },
+    {
+      "key": "omics-bioinformatics::Pseudobulk",
+      "canonical": [
+        {
+          "sourceId": "src-pseudobulk",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-deseq2",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-edger",
+          "role": "direct"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-single-cell-2023",
+        "src-strobe",
+        "src-batch"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-pseudobulk",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-deseq2",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-edger",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-single-cell-2023",
+          "role": "supplemental"
+        },
+        {
+          "sourceId": "src-strobe",
+          "role": "supplemental"
+        },
+        {
+          "sourceId": "src-batch",
+          "role": "supplemental"
+        }
+      ]
+    },
+    {
+      "key": "research-strategy::Orthogonal Validation",
+      "canonical": [
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-strobe",
+          "role": "methodology"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-tripod-ai",
+        "src-strong-inference"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-multiomics",
+          "role": "direct"
+        },
+        {
+          "sourceId": "src-strobe",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-tripod-ai",
+          "role": "supplemental"
+        },
+        {
+          "sourceId": "src-strong-inference",
+          "role": "supplemental"
+        }
+      ]
+    },
+    {
+      "key": "ai-assisted-research::Cognitive Outsourcing",
+      "canonical": [
+        {
+          "sourceId": "src-nist-genai-profile",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-nist-ai-rmf",
+          "role": "methodology"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-nist-genai-profile",
+        "src-nist-ai-rmf"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-nist-genai-profile",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-nist-ai-rmf",
+          "role": "methodology"
+        }
+      ]
+    },
+    {
+      "key": "ai-assisted-research::Think, AI Critique, Decide",
+      "canonical": [
+        {
+          "sourceId": "src-nist-genai-profile",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-nist-ai-rmf",
+          "role": "methodology"
+        }
+      ],
+      "authoredSourceIds": [
+        "src-nist-genai-profile",
+        "src-nist-ai-rmf"
+      ],
+      "resolved": [
+        {
+          "sourceId": "src-nist-genai-profile",
+          "role": "methodology"
+        },
+        {
+          "sourceId": "src-nist-ai-rmf",
+          "role": "methodology"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

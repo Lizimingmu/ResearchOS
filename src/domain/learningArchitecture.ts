@@ -5,6 +5,8 @@ import { canonicalJson, sha256 } from "../services/contentStudio";
 export type LearningContentType = "guide" | "concept_lesson" | "method_lesson" | "case_lab" | "studio_task";
 export type CapabilityId = "scientific_question" | "study_design" | "statistical_reasoning" | "omics_reasoning" | "literature_reading" | "result_interpretation" | "next_step_design" | "ai_oversight";
 export type ContentClassification = "reference_only" | "threshold_concept" | "method" | "judgment_skill" | "integrated_skill";
+export type EvidenceSourceRole = "direct" | "methodology" | "curriculum_synthesis" | "supplemental";
+export interface EvidenceSourceLinkV1 { sourceId: string; role: EvidenceSourceRole }
 
 export interface LearningContentMeta {
   schemaVersion: 1;
@@ -28,6 +30,7 @@ export interface ResearchGuideSectionV1 extends LearningContentMeta {
   glossaryTerms: Array<{ zh: string; en: string; definitionCn: string }>;
   advancedNotes?: string[];
   links: Array<{ type: Exclude<LearningContentType, "guide">; targetId: string; labelCn: string }>;
+  evidenceSourceLinks?: EvidenceSourceLinkV1[];
 }
 
 export interface ConceptLessonV1 extends LearningContentMeta {

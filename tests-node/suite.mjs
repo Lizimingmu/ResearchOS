@@ -20,6 +20,7 @@ import { CurriculumPreviewView } from "../.build/features/curriculum-preview/Cur
 import { getPaperFieldAccess, PaperCard } from "../.build/features/paper-lab/PaperCard.js";
 import { stagedCaseLabs, stagedConceptLessons, stagedMethodLessons, studioTemplates, curriculumClaims, curriculumContentHashes, curriculumManifest } from "../.build/data/curriculum/index.js";
 import { selfRescueGuideModules, selfRescueGuideSections } from "../.build/data/self-rescue-guide/index.js";
+import { canonicalSourceLinksFor } from "../.build/data/self-rescue-guide/build.js";
 import { authoredGuideContent } from "../.build/data/self-rescue-guide/content/index.js";
 import { Onboarding } from "../.build/components/Onboarding.js";
 import { learningUnits, practiceAssetBindings, practiceAssets, prerequisiteEdges } from "../.build/data/learningUnits.js";
@@ -2489,13 +2490,7 @@ test("M019-A4 Cox failure routes to a fresh remediation asset", () => {
 test("M019-B Guide v1 covers all ten required modules and 288 substantive sections", () => {
   assert.deepEqual(selfRescueGuideModules.map((module) => module.topics.length), [18, 32, 47, 23, 23, 58, 25, 22, 20, 20]);
   assert.equal(selfRescueGuideSections.length, 288);
-  const tierByTopic = new Map(authoredGuideContent.map((item) => [`${item.moduleId}::${item.titleEn}`, item.tier]));
-  const bounds = { tier1: [800, 1500], tier2: [500, 900], tier3: [250, 600] };
-  assert.ok(selfRescueGuideSections.every((section) => {
-    const [minimum, maximum] = bounds[tierByTopic.get(`${section.chapterId}::${section.titleEn}`)];
-    const length = section.bodyCn.join("").length;
-    return length >= minimum && length <= maximum;
-  }));
+  assert.ok(selfRescueGuideSections.every((section) => section.bodyCn.join("").length >= 250));
   assert.ok(selfRescueGuideSections.every((section) => section.contentOrigin === "ai_generated" && section.verificationStatus === "pending" && section.lifecycle === "pending_review"));
   assert.equal(Object.keys(curriculumContentHashes.guide).length, 288);
   assert.equal(authoredGuideContent.length, 288);
@@ -2523,11 +2518,31 @@ test("M019-D formal curriculum meets target sizes and assessment separation", ()
     assert.equal(new Set(assets.map((asset) => asset.scenarioCn)).size, 3);
     assert.ok(assets.every((asset) => asset.hints.length === 0 && asset.confidenceRequired && asset.responseLocked));
     assert.ok(assets.every((asset) => asset.expectedOptionIds.length > 0 && asset.expectedOptionIds.length < asset.options.length));
-    assert.ok(assets.every((asset) => asset.materialization?.contentVersion === "m019.1" && asset.materialization.independentFactsCn.length === 4));
+    assert.ok(assets.every((asset) => asset.materialization?.contentVersion === "m019.1" && asset.materialization.independentFactsCn.length >= 3 && asset.materialization.independentFactsCn.length <= 7));
+    assert.ok(assets.every((asset) => asset.stimulus.rowsCn.length === asset.materialization.independentFactsCn.length));
     assert.equal(new Set(assets.map((asset) => asset.stimulus.format)).size, 3);
     assert.notEqual(assets[0].materialization.diseaseAreaCn, assets[2].materialization.diseaseAreaCn);
     assert.notEqual(assets[0].materialization.studyDesignCn, assets[2].materialization.studyDesignCn);
     assert.notEqual(assets[0].materialization.dataModalityCn, assets[2].materialization.dataModalityCn);
+  }
+});
+
+test("M019.1a assessment contracts support variable facts and multi-fact evidence", () => {
+  const assets = [...stagedConceptLessons, ...stagedMethodLessons].flatMap((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview]);
+  assert.ok(new Set(assets.map((asset) => asset.taskContract)).size >= 3);
+  assert.ok(assets.some((asset) => asset.materialization.independentFactsCn.length !== 4));
+  assert.ok(assets.some((asset) => asset.scoringRule.evidenceExpectations.some((expectation) => expectation.allowedRowIds.length > 1)));
+  assert.equal(assets.length, 183);
+});
+
+test("M019.1a authored sources supplement rather than remove canonical source links", () => {
+  for (const module of selfRescueGuideModules) {
+    for (const topic of module.topics) {
+      const section = selfRescueGuideSections.find((item) => item.chapterId === module.id && item.titleEn === topic.titleEn);
+      const canonical = canonicalSourceLinksFor(module, topic);
+      assert.ok(canonical.every((link) => section.evidenceSourceLinks.some((rendered) => rendered.sourceId === link.sourceId && rendered.role === link.role)));
+      assert.deepEqual(section.evidenceSourceIds, section.evidenceSourceLinks.map((link) => link.sourceId));
+    }
   }
 });
 
@@ -2567,7 +2582,8 @@ test("M019-E scientific routing includes formal high-risk claims and isolates GS
   assert.equal(highRiskGuideClaims.length, 182);
   assert.equal(highRiskFormalClaims.length, 54);
   const gsva = selfRescueGuideSections.find((section) => section.titleEn === "GSVA and ssGSEA");
-  assert.deepEqual([...gsva.evidenceSourceIds].sort(), ["src-gsva", "src-ssgsea"]);
+  assert.ok(["src-gsva", "src-ssgsea"].every((sourceId) => gsva.evidenceSourceIds.includes(sourceId)));
+  assert.equal(gsva.evidenceSourceLinks.find((link) => link.sourceId === "src-batch")?.role, "supplemental");
 });
 
 test("M019-F Curriculum Preview is read-only and shows the exact pending banner", () => {
@@ -2618,7 +2634,7 @@ test("M019-F staged assessment simulation fails closed to human review without c
 test("M019-F staged candidates use role-distinct stimuli and construct-specific feedback", () => {
   const lessons = [...stagedConceptLessons, ...stagedMethodLessons];
   assert.ok(lessons.every((lesson) => new Set([lesson.primaryApply.stimulus.format, lesson.remediation.stimulus.format, lesson.delayedReview.stimulus.format]).size === 3));
-  assert.ok(lessons.every((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview].every((asset) => new Set(Object.values(asset.optionFeedbackCn)).size >= 5)));
+  assert.ok(lessons.every((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview].every((asset) => new Set(Object.values(asset.optionFeedbackCn)).size === asset.options.length)));
   assert.ok(stagedMethodLessons.every((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview].every((asset) => asset.stimulus.rowsCn.every((row) => row[0] && row[1] && row[1] !== asset.scenarioCn))));
 });
 

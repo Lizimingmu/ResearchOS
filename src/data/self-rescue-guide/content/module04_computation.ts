@@ -6,7 +6,7 @@ export const module04ComputationContent: AuthoredGuideContent[] = [
     whyItMattersCn: "表格语法决定研究对象是否被正确表示；一旦把患者、活检和细胞混在同一行层级，后面的样本量、缺失率和模型系数都会被误读。",
     intuitionCn: "先给每一行补完一句“这是一个什么实体在什么时点的一次记录”，再允许任何统计操作。",
     preciseExplanationCn: ["行是观测记录，列是对该记录定义的变量；变量还要有类型、单位、允许值和缺失规则。宽表的一行患者与细胞表的一行细胞都合法，但不能据此声称它们提供同样数量的独立信息。", "表的主键应唯一标识观察层级，外键把它连接到更高层实体；统计单位则由研究问题与设计决定。"],
-    biomedicalExample: { setupCn: "研究者合并乳腺癌患者表、每位患者两次活检和每个活检的单细胞计数。", dataCn: ["patient_id 在患者表唯一，在活检表重复两次", "cell_id 只在样本内唯一"], wrongPathCn: "把合并后的每个细胞行称为一个样本并计算组间 n。", reasoningStepsCn: ["分别声明患者、活检、细胞三张表的主键", "画出患者→活检→细胞的嵌套关系", "按目标效应选择患者或活检层模型"], conclusionCn: "观测行可很多，患者级推断仍由独立患者数支撑。" },
+    biomedicalExample: { setupCn: "研究者合并乳腺癌患者表、每位患者两次活检和每个活检的单细胞计数。", dataCn: ["participant_key 在患者表唯一，在活检表重复两次", "cell_key 只在样本内唯一"], wrongPathCn: "把合并后的每个细胞行称为一个样本并计算组间 n。", reasoningStepsCn: ["分别声明患者、活检、细胞三张表的主键", "画出患者→活检→细胞的嵌套关系", "按目标效应选择患者或活检层模型"], conclusionCn: "观测行可很多，患者级推断仍由独立患者数支撑。" },
     misconceptionCn: ["一行永远等于一个独立样本。"], boundaryCn: ["事件日志可让一行代表一次事件，但仍须保留主体与时间键。"], connectForwardCn: "这一区分是正确连接和分析就绪表的前提。", evidenceSourceIds: ["src-fair", "src-strobe"],
   },
   {
@@ -38,7 +38,7 @@ export const module04ComputationContent: AuthoredGuideContent[] = [
     whyItMattersCn: "重复行可能是技术复测、真实重复访问、连接放大或导入错误；盲目删除既可能伪增样本量，也可能丢掉真实信息。",
     intuitionCn: "先问“什么应该唯一”，再问“为什么重复”，最后才决定是否合并或删除。",
     preciseExplanationCn: ["重复检查必须基于预期主键，而不是整行相同。对每类重复记录来源、时间、测量规则和保留策略；技术复测可按预定义质控聚合，重复访问则保留时间结构。", "连接后的重复还要回查左右表的键基数。"],
-    biomedicalExample: { setupCn: "病理数据库中同一患者同日出现两条HER2结果。", dataCn: ["一条为初检，一条为复核FISH", "导出表未含assay_id"], wrongPathCn: "按patient_id去重只保留第一条。", reasoningStepsCn: ["补回检测类型与时间", "定义主要判定规则", "保留原始记录和推导结果"], conclusionCn: "重复是实体关系问题，不是简单的数据卫生问题。" },
+    biomedicalExample: { setupCn: "病理数据库中同一患者同日出现两条HER2结果。", dataCn: ["一条为初检，一条为复核FISH", "导出表未含assay_key"], wrongPathCn: "按 participant_key 去重只保留第一条。", reasoningStepsCn: ["补回检测类型与时间", "定义主要判定规则", "保留原始记录和推导结果"], conclusionCn: "重复是实体关系问题，不是简单的数据卫生问题。" },
     misconceptionCn: ["drop_duplicates 后行数下降就说明数据更干净。"], boundaryCn: ["完全相同的重复导出也应在删除前留下计数和来源记录。"], evidenceSourceIds: ["src-fair"],
   },
   {
@@ -46,7 +46,7 @@ export const module04ComputationContent: AuthoredGuideContent[] = [
     whyItMattersCn: "生物医学数据常分散在患者、样本、检测、随访和批次表中。连接若使用不唯一或层级不匹配的键，会无声复制结局、错配组学样本，甚至把另一患者的信息带入模型。",
     intuitionCn: "join 不是把两张表“靠共同列粘起来”，而是在声明两个实体之间是一对一、一对多还是多对多的科学关系。",
     preciseExplanationCn: ["连接前应为左右表声明主键、外键、预期基数和未匹配政策。连接后核对行数变化、键唯一性、左右未匹配、重复倍数以及若干人工追踪样本。患者ID、样本ID和测序run ID不可互换。", "多对多连接只有在关系本身确为多对多且有桥接表时才合理。用姓名、日期等可变字段拼键既有错配风险，也涉及隐私。任何ID映射都应保留来源与版本。"],
-    biomedicalExample: { setupCn: "研究者把肺癌患者生存表与肿瘤/邻癌RNA-seq样本表连接。", dataCn: ["每位患者可有两个组织样本和多次测序run", "生存表每位患者一行，表达表每个run一行", "部分样本更换过实验室编号"], wrongPathCn: "用patient_id直接连接后把每个run当独立患者，导致生存事件被复制。", reasoningStepsCn: ["建立patient→specimen→library→run映射并检查各层唯一性", "先按预定义规则合并技术run，保留组织类型", "若目标是患者级肿瘤表达，明确同一患者多样本的选择或层级模型", "报告未匹配和排除的样本流程"], conclusionCn: "正确连接保留真实层级，患者事件不能因测序次数而增加。" },
+    biomedicalExample: { setupCn: "研究者把肺癌患者生存表与肿瘤/邻癌RNA-seq样本表连接。", dataCn: ["每位患者可有两个组织样本和多次测序run", "生存表每位患者一行，表达表每个run一行", "部分样本更换过实验室编号"], wrongPathCn: "用 participant_key 直接连接后把每个run当独立患者，导致生存事件被复制。", reasoningStepsCn: ["建立 participant→specimen→library→run 映射并检查各层唯一性", "先按预定义规则合并技术run，保留组织类型", "若目标是患者级肿瘤表达，明确同一患者多样本的选择或层级模型", "报告未匹配和排除的样本流程"], conclusionCn: "正确连接保留真实层级，患者事件不能因测序次数而增加。" },
     misconceptionCn: ["inner join 能自动保留最可靠样本。", "连接成功且不报错就说明键正确。"], boundaryCn: ["完全重合的技术重复可聚合，但聚合规则须先于结局分析。", "跨中心ID哈希仍需验证碰撞和映射版本。"], connectBackCn: "建立在观察单位和唯一键定义之上。", connectForwardCn: "连接契约是分析就绪表与数据溯源的核心检查点。", evidenceSourceIds: ["src-fair", "src-strobe"],
   },
   {

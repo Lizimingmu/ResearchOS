@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "counts": {
+    "exact": 0,
+    "normalized": 0,
+    "highSimilarity": 0,
+    "repeatedPrefix": 0
+  },
+  "tierLengths": {
+    "tier1": {
+      "count": 82,
+      "min": 609,
+      "max": 1712,
+      "coefficientOfVariation": 0.35
+    },
+    "tier2": {
+      "count": 140,
+      "min": 626,
+      "max": 1094,
+      "coefficientOfVariation": 0.147
+    },
+    "tier3": {
+      "count": 66,
+      "min": 632,
+      "max": 957,
+      "coefficientOfVariation": 0.115
+    }
+  },
+  "repeatedPrefix": [],
+  "highSimilarity": [],
+  "errors": []
+}

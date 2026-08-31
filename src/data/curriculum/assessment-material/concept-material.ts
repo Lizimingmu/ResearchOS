@@ -13,9 +13,9 @@ export const conceptAssessmentMaterial: Record<string, MaterializedLessonAssessm
   "research-question": {
     apply: role({
       diseaseAreaCn: "晚期非小细胞肺癌", studyDesignCn: "新使用者前瞻性队列", dataModalityCn: "结构化电子病历与死亡登记", scenarioCn: "团队要把“免疫治疗是否更好”改写成可分析的目标问题。",
-      stimulusFormat: "case_table", factsCn: ["2026 年首次开始一线治疗的 IV 期 NSCLC 成人可连续入组。", "暴露为首次用药当日选择方案 A 或含铂方案 B，不能用治疗后反应重新分组。", "主要结局为用药后 3 年全因死亡；死亡登记完整率为 98%。", "拟报告 3 年死亡风险差；现有资料缺少基线 ECOG 的 14% 记录。"],
+      stimulusFormat: "case_table", factsCn: ["2026 年首次开始一线治疗的 IV 期 NSCLC 成人可连续入组。", "暴露为首次用药当日选择方案 A 或含铂方案 B，不能用治疗后反应重新分组。", "主要结局为用药后 3 年全因死亡；死亡登记完整率为 98%。", "临床决策需要绝对风险，因此预设报告 3 年死亡风险差而不是只给 hazard ratio。", "现有资料缺少基线 ECOG 的 14% 记录，且缺失更多见于急诊起始治疗者。"],
       decisionCn: "把问题冻结为目标患者中 A 对 B 的 3 年死亡风险差", keyCheckCn: "核对资格、分组与随访零点均为首次用药日", maximumBoundaryCn: "只能回答该可入组总体的方案关联，不能声称随机化因果效果", changeMindCn: "若 ECOG 缺失与方案及死亡均强相关，则暂停主分析并修改可识别目标",
-      requiredActionKeys: ["decision", "key_check", "boundary", "change_mind"], evidenceFactIndexByAction: { decision: 2, key_check: 1, boundary: 0, change_mind: 3 },
+      requiredActionKeys: ["decision", "key_check", "boundary", "change_mind"], evidenceFactIndexByAction: { decision: 2, key_check: 1, boundary: 0, change_mind: 4 }, evidenceFactIndicesByAction: { decision: [2, 0, 1, 3], key_check: [1, 4], boundary: [3, 0], change_mind: [4] },
       plausibleDistractorsCn: [{ labelCn: "先比较所有接受过 A 与 B 的患者", whyWrongCn: "既往治疗和幸存至换药会混入暴露定义", whenMayHoldCn: "若问题明确是动态治疗策略且使用相应方法" }, { labelCn: "把肿瘤缩小率作为唯一结局", whyWrongCn: "它替换了团队要回答的死亡结局", whenMayHoldCn: "若预先问题就是短期影像反应且阈值已冻结" }], representationPurposeCn: "病例表迫使问题的总体、比较、时间零点、结局与 estimand 各自落到可观察字段。"
     }),
     remediation: role({

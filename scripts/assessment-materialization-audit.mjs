@@ -7,24 +7,34 @@ const lessons = [...stagedConceptLessons, ...stagedMethodLessons];
 const assessments = lessons.flatMap((lesson) => [lesson.primaryApply, lesson.remediation, lesson.delayedReview]);
 if (lessons.length !== 61) errors.push(`expected 61 formal lessons, got ${lessons.length}`);
 if (assessments.length !== 183) errors.push(`expected 183 formal assessments, got ${assessments.length}`);
-const concreteData = /\d|患者|供体|样本|事件|风险表|效应|CI|FDR|批次|中心|时间|比例|loading|方差|阈值|队列|病例|对照/;
+const concreteData = /\d|患者|供体|样本|事件|风险|效应|CI|FDR|批次|中心|时间|比例|loading|方差|阈值|队列|病例|对照|基线|暴露|结局|治疗|测量|模型|变量|算法|分支|关联|调整|复现|数据|标签|代码|指南/;
+const validContracts = new Set(["multi_select_audit", "classification", "claim_rewrite", "error_localization", "choose_next_evidence", "ordering_sequence", "integrated_judgment"]);
+const obviousDistractorCue = /(?:P|q)\s*[<≤=].*(?:证明|确证|必然)|(?:AI|模型).*(?:完整|合理).*(?:直接执行|无需测试)|(?:所有|一切).*(?:证明|无偏|可靠)/i;
+const obviousDistractorFlags = [];
+const duplicateDistractorFlags = [];
+const materialSpecificityFlags = [];
 
 for (const lesson of lessons) {
   const assets = [lesson.primaryApply, lesson.remediation, lesson.delayedReview];
   for (const asset of assets) {
     const material = asset.materialization;
     if (!material || material.contentVersion !== "m019.1") { errors.push(`${asset.id} lacks M019.1 materialization`); continue; }
-    if (material.independentFactsCn.length !== 4 || new Set(material.independentFactsCn.map((fact) => fact.replace(/\s/g, ""))).size !== 4) errors.push(`${asset.id} requires four distinct independent facts`);
-    if (material.independentFactsCn.filter((fact) => concreteData.test(fact)).length < 3) errors.push(`${asset.id} lacks independently solvable concrete data`);
+    if (material.independentFactsCn.length < 3 || material.independentFactsCn.length > 7 || new Set(material.independentFactsCn.map((fact) => fact.replace(/\s/g, ""))).size !== material.independentFactsCn.length) errors.push(`${asset.id} requires 3-7 distinct independent facts`);
+    if (material.independentFactsCn.some((fact) => fact.trim().length < 10) || material.independentFactsCn.filter((fact) => concreteData.test(fact)).length < 2) materialSpecificityFlags.push(asset.id);
     if (!material.diseaseAreaCn || !material.studyDesignCn || !material.dataModalityCn || !material.representationPurposeCn) errors.push(`${asset.id} lacks context or representation purpose`);
     if (material.authorRationaleCn.length !== asset.expectedOptionIds.length) errors.push(`${asset.id} rationale count does not match the author answer`);
-    if (asset.expectedOptionIds.length < 2 || asset.expectedOptionIds.length > 4) errors.push(`${asset.id} has a templated or non-discriminating correct-answer count`);
+    if (!validContracts.has(asset.taskContract)) errors.push(`${asset.id} has an invalid task contract`);
+    if (asset.expectedOptionIds.length < 1 || asset.expectedOptionIds.length > 4) errors.push(`${asset.id} has a non-discriminating correct-answer count`);
     if (asset.options.length < asset.expectedOptionIds.length + 2) errors.push(`${asset.id} lacks two plausible distractors`);
-    if (asset.stimulus.rowsCn.length !== 4 || new Set(asset.stimulus.rowsCn.map((row) => row.slice(1).join(""))).size !== 4) errors.push(`${asset.id} stimulus is not four-row materialized evidence`);
-    for (const option of asset.options) {
+    if (asset.stimulus.rowsCn.length !== material.independentFactsCn.length || new Set(asset.stimulus.rowsCn.map((row) => row.slice(1).join(""))).size !== material.independentFactsCn.length) errors.push(`${asset.id} stimulus does not preserve its materialized facts`);
+    const authoredDistractors = asset.options.filter((option) => option.id.includes("-distractor-"));
+    if (new Set(authoredDistractors.map((option) => option.labelCn.replace(/\s/g, ""))).size !== authoredDistractors.length) duplicateDistractorFlags.push(asset.id);
+    for (const option of authoredDistractors) {
       const feedback = asset.optionFeedbackCn[option.id] ?? "";
-      if (!asset.expectedOptionIds.includes(option.id) && (!/这里不成立/.test(feedback) || !/可能合理/.test(feedback) || !/本题/.test(feedback))) errors.push(`${asset.id}/${option.id} distractor feedback lacks why/when/here chain`);
+      if (!/这里不成立/.test(feedback) || !/可能合理/.test(feedback) || !/本题/.test(feedback) || !/边界/.test(feedback)) errors.push(`${asset.id}/${option.id} distractor feedback lacks why/when/here/consequence chain`);
+      if (obviousDistractorCue.test(option.labelCn)) obviousDistractorFlags.push({ assessmentId: asset.id, optionId: option.id, labelCn: option.labelCn });
     }
+    if (!authoredDistractors.some((option) => !obviousDistractorCue.test(option.labelCn))) errors.push(`${asset.id} lacks a credible near-miss distractor`);
   }
   const [apply, remediation, review] = assets.map((asset) => asset.materialization);
   if (apply && review && (apply.diseaseAreaCn === review.diseaseAreaCn || apply.studyDesignCn === review.studyDesignCn || apply.dataModalityCn === review.dataModalityCn)) errors.push(`${lesson.id} delayed review does not change disease, design and modality`);
@@ -47,9 +57,16 @@ for (const caseLab of stagedCaseLabs) {
   if (new Set(caseLab.stages.map((stage) => stage.informationUpdate?.forcingEvidenceCn)).size !== caseLab.stages.length) errors.push(`${caseLab.id} repeats forcing evidence across stages`);
 }
 
-const correctCountDistribution = Object.fromEntries([2, 3, 4].map((count) => [count, assessments.filter((asset) => asset.expectedOptionIds.length === count).length]));
-for (const count of [2, 3, 4]) if (!correctCountDistribution[count]) errors.push(`no assessments use ${count} correct decisions`);
-const report = { schemaVersion: 1, status: errors.length ? "FAIL" : "PASS", counts: { lessons: lessons.length, assessments: assessments.length, caseLabs: stagedCaseLabs.length, fullyMaterialized: assessments.filter((asset) => asset.materialization?.contentVersion === "m019.1").length, correctCountDistribution }, errors };
+const correctCountDistribution = Object.fromEntries([1, 2, 3, 4].map((count) => [count, assessments.filter((asset) => asset.expectedOptionIds.length === count).length]));
+const taskContractDistribution = Object.fromEntries([...validContracts].map((contract) => [contract, assessments.filter((asset) => asset.taskContract === contract).length]));
+const instantiatedContractTypes = Object.values(taskContractDistribution).filter(Boolean).length;
+const variableFactCountAssessments = assessments.filter((asset) => asset.materialization?.independentFactsCn.length !== 4).length;
+const multiFactEvidenceMappings = assessments.filter((asset) => asset.scoringRule.evidenceExpectations.some((expectation) => expectation.allowedRowIds.length > 1)).length;
+if (instantiatedContractTypes < 3) errors.push(`expected at least 3 task contract types, got ${instantiatedContractTypes}`);
+if (!variableFactCountAssessments) errors.push("no assessment instantiates a variable fact count");
+if (!multiFactEvidenceMappings) errors.push("no assessment instantiates multi-fact evidence mapping");
+if (duplicateDistractorFlags.length) errors.push(`duplicate distractors within assessments: ${duplicateDistractorFlags.join(", ")}`);
+const report = { schemaVersion: 2, status: errors.length ? "FAIL" : "PASS", counts: { lessons: lessons.length, assessments: assessments.length, caseLabs: stagedCaseLabs.length, fullyMaterialized: assessments.filter((asset) => asset.materialization?.contentVersion === "m019.1").length, correctCountDistribution, taskContractDistribution, instantiatedContractTypes, variableFactCountAssessments, multiFactEvidenceMappings, obviousDistractorFlags: obviousDistractorFlags.length, duplicateDistractorFlags: duplicateDistractorFlags.length, materialSpecificityFlags: materialSpecificityFlags.length }, obviousDistractorFlags, duplicateDistractorFlags, materialSpecificityFlags, errors };
 await mkdir(path.resolve("artifacts"), { recursive: true });
 await writeFile(path.resolve("artifacts/assessment-materialization-audit.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(`Assessment materialization audit: ${report.status} (${report.counts.fullyMaterialized}/${assessments.length})`);

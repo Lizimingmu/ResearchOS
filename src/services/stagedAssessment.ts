@@ -70,7 +70,8 @@ export function evaluateStagedAssessment(
   const hasCounterfactual = /(若|如果|一旦|当).*(不成立|失败|相反|未复现|未达到|超过|低于|出现)/.test(changeMindCn);
   const hasUpdateAction = asset.scoringRule.changeMindActionMarkersCn.some((marker) => normalizedChangeMind.includes(normalize(marker)));
   const hasChangeRule = changeMindCn.trim().length >= 12 && hasCriterion && hasCounterfactual && hasUpdateAction;
-  const exactOptions = incorrectIds.length === 0 && missedCorrectIds.length === 0;
+  const exactOrder = asset.taskContract !== "ordering_sequence" || (selectedIds.length === asset.expectedOptionIds.length && selectedIds.every((id, index) => id === asset.expectedOptionIds[index]));
+  const exactOptions = incorrectIds.length === 0 && missedCorrectIds.length === 0 && exactOrder;
   const mechanicallyReviewable = exactOptions && hasEnoughEvidence && hasChangeRule;
   const partial = !mechanicallyReviewable && criticalErrorIds.length === 0 && selectedCorrectIds.length > 0;
   return {

@@ -1,4 +1,6 @@
-import type { StagedAssessmentAssetV1 } from "../../domain/curriculum";
+import type { AssessmentTaskContract, StagedAssessmentAssetV1 } from "../../domain/curriculum";
+
+export type AssessmentActionKey = "decision" | "key_check" | "boundary" | "change_mind";
 
 export interface MaterializedAssessmentRole {
   diseaseAreaCn: string;
@@ -6,13 +8,15 @@ export interface MaterializedAssessmentRole {
   dataModalityCn: string;
   scenarioCn: string;
   stimulusFormat: StagedAssessmentAssetV1["stimulus"]["format"];
-  factsCn: [string, string, string, string];
+  factsCn: [string, string, string, ...string[]];
   decisionCn: string;
   keyCheckCn: string;
   maximumBoundaryCn: string;
   changeMindCn: string;
-  requiredActionKeys: Array<"decision" | "key_check" | "boundary" | "change_mind">;
-  evidenceFactIndexByAction: Record<"decision" | "key_check" | "boundary" | "change_mind", 0 | 1 | 2 | 3>;
+  requiredActionKeys: AssessmentActionKey[];
+  evidenceFactIndexByAction: Record<AssessmentActionKey, number>;
+  evidenceFactIndicesByAction?: Partial<Record<AssessmentActionKey, number[]>>;
+  taskContract?: AssessmentTaskContract;
   plausibleDistractorsCn: [
     { labelCn: string; whyWrongCn: string; whenMayHoldCn: string },
     { labelCn: string; whyWrongCn: string; whenMayHoldCn: string },

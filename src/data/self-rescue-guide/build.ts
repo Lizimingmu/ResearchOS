@@ -1,4 +1,4 @@
-import type { ContentClassification, ResearchGuideSectionV1 } from "../../domain/learningArchitecture";
+import type { ContentClassification, EvidenceSourceLinkV1, EvidenceSourceRole, ResearchGuideSectionV1 } from "../../domain/learningArchitecture";
 import { canonicalJson, sha256 } from "../../services/contentStudio";
 import { advancedGuideModules } from "./catalog-advanced";
 import { foundationGuideModules } from "./catalog-foundations";
@@ -75,6 +75,14 @@ const explicitSourceIdsByTitle: Record<string, string[]> = {
   "What to Record in a Paper Card": ["src-paper-reading", "src-strobe"],
   "Benchmarking against High-Level Literature": ["src-paper-reading", "src-prisma-2020"],
   "Feature Selection": ["src-leakage", "src-internal-validation", "src-tripod-ai"],
+  "Pathway and Program Interpretation": ["src-gsea", "src-camera", "src-ora"],
+  "Pseudoreplication in Single-Cell RNA-seq": ["src-pseudorep"],
+  "Pseudobulk": ["src-pseudobulk", "src-deseq2", "src-edger"],
+  "External Validity": ["src-strobe", "src-pm-external"],
+  "Orthogonal Validation": ["src-multiomics", "src-strobe"],
+  "Technical versus Biological Validation": ["src-pseudorep", "src-multiomics"],
+  "Cognitive Outsourcing": ["src-nist-genai-profile", "src-nist-ai-rmf"],
+  "Think, AI Critique, Decide": ["src-nist-genai-profile", "src-nist-ai-rmf"],
   "Proteomics Measurement Concepts": ["src-proteomics-overview", "src-proteomics-missing"],
   "ECM and Matrisome Interpretation Boundaries": ["src-ecm-proteomics", "src-spatial"],
   "Integrating Evidence without Forcing Agreement": ["src-strong-inference", "src-multiomics"],
@@ -111,9 +119,17 @@ const explicitSourceIdsByTitle: Record<string, string[]> = {
   "Explaining Why an Analysis Should Not Be Done": ["src-paper-structure", "src-strobe"],
 };
 
-function sourceIdsFor(module: GuideModuleSpec, topic: GuideTopicSeed): string[] {
-  if (topic.sourceIds?.length) return topic.sourceIds;
-  if (explicitSourceIdsByTitle[topic.titleEn]) return explicitSourceIdsByTitle[topic.titleEn];
+const methodologySourceIds = new Set([
+  "src-strobe", "src-consort", "src-tripod", "src-tripod-ai", "src-probaST", "src-prisma-2020",
+  "src-regression-strategies", "src-nist-statistics-handbook", "src-good-enough-computing", "src-git-docs",
+  "src-fair", "src-paper-structure", "src-paper-reading", "src-better-figures", "src-nist-ai-rmf", "src-nist-genai-profile",
+]);
+
+const canonicalRoleFor = (sourceId: string): EvidenceSourceRole => methodologySourceIds.has(sourceId) ? "methodology" : "direct";
+
+export function canonicalSourceLinksFor(module: GuideModuleSpec, topic: GuideTopicSeed): EvidenceSourceLinkV1[] {
+  if (topic.sourceIds?.length) return topic.sourceIds.map((sourceId) => ({ sourceId, role: canonicalRoleFor(sourceId) }));
+  if (explicitSourceIdsByTitle[topic.titleEn]) return explicitSourceIdsByTitle[topic.titleEn].map((sourceId) => ({ sourceId, role: canonicalRoleFor(sourceId) }));
   const text = `${topic.titleCn} ${topic.titleEn}`;
   const specific: Array<[RegExp, string[]]> = [
     [/p.?value|statistical significance/i, ["src-asa-pvalue"]],
@@ -168,7 +184,15 @@ function sourceIdsFor(module: GuideModuleSpec, topic: GuideTopicSeed): string[] 
     [/paper|literature|review article|forest plot/i, ["src-prisma-2020"]],
   ];
   const matched = specific.flatMap(([pattern, ids]) => pattern.test(text) ? ids : []);
-  return [...new Set(matched.length ? matched : module.defaultSourceIds)].slice(0, 4);
+  const sourceIds = [...new Set(matched.length ? matched : module.defaultSourceIds)].slice(0, 4);
+  return sourceIds.map((sourceId) => ({ sourceId, role: matched.length ? canonicalRoleFor(sourceId) : "curriculum_synthesis" }));
+}
+
+function mergedSourceLinks(module: GuideModuleSpec, topic: GuideTopicSeed, authoredSourceIds: string[] | undefined): EvidenceSourceLinkV1[] {
+  const canonical = canonicalSourceLinksFor(module, topic);
+  const links = new Map(canonical.map((link) => [link.sourceId, link]));
+  for (const sourceId of authoredSourceIds ?? []) if (!links.has(sourceId)) links.set(sourceId, { sourceId, role: "supplemental" });
+  return [...links.values()];
 }
 
 function authoredBody(content: AuthoredGuideContent): string[] {
@@ -191,6 +215,7 @@ function authoredBody(content: AuthoredGuideContent): string[] {
 export const selfRescueGuideSections: ResearchGuideSectionV1[] = selfRescueGuideModules.flatMap((module) => module.topics.map((topic, topicIndex) => {
   const authored = guideContentByModuleAndTitle.get(`${module.id}::${topic.titleEn}`);
   if (!authored) throw new Error(`Missing topic-specific Guide content for ${topic.titleEn}`);
+  const evidenceSourceLinks = mergedSourceLinks(module, topic, authored.evidenceSourceIds);
   return ({
   schemaVersion: 1,
   id: `guide-v1-m${String(module.order).padStart(2, "0")}-t${String(topicIndex + 1).padStart(2, "0")}`,
@@ -209,7 +234,8 @@ export const selfRescueGuideSections: ResearchGuideSectionV1[] = selfRescueGuide
   contentOrigin: "ai_generated" as const,
   verificationStatus: "pending" as const,
   lifecycle: "pending_review" as const,
-  evidenceSourceIds: authored.evidenceSourceIds?.length ? authored.evidenceSourceIds : sourceIdsFor(module, topic),
+  evidenceSourceIds: evidenceSourceLinks.map((link) => link.sourceId),
+  evidenceSourceLinks,
   });
 }));
 

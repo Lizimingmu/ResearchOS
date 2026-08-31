@@ -1,15 +1,10 @@
 {
   "schemaVersion": 1,
-  "frozenAt": "deterministic",
   "itemCount": 183,
   "items": [
     {
-      "assessmentId": "staged-concept-research-question-apply-v2",
-      "lessonId": "staged-concept-research-question",
-      "lessonTitleCn": "科研问题",
-      "role": "apply",
-      "scenarioCn": "团队要把“免疫治疗是否更好”改写成可分析的目标问题。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A001",
+      "scenario": "团队要把“免疫治疗是否更好”改写成可分析的目标问题。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -72,15 +67,11 @@
           "labelCn": "把肿瘤缩小率作为唯一结局"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-research-question-remediation-v2",
-      "lessonId": "staged-concept-research-question",
-      "lessonTitleCn": "科研问题",
-      "role": "remediation",
-      "scenarioCn": "一条只写“数字疗法改善关节炎”的问题需逐格补齐。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A002",
+      "scenario": "一条只写“数字疗法改善关节炎”的问题需逐格补齐。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -138,15 +129,11 @@
           "labelCn": "改问治疗后是否显著"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-research-question-review-v2",
-      "lessonId": "staged-concept-research-question",
-      "lessonTitleCn": "科研问题",
-      "role": "review",
-      "scenarioCn": "实验室要把“蛋白能早期发现癌症”冻结为诊断问题。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A003",
+      "scenario": "实验室要把“蛋白能早期发现癌症”冻结为诊断问题。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -204,15 +191,11 @@
           "labelCn": "按结果选择最佳阈值"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-hypothesis-apply-v2",
-      "lessonId": "staged-concept-hypothesis",
-      "lessonTitleCn": "研究假设",
-      "role": "apply",
-      "scenarioCn": "团队需把 PI3K 抑制机制写成可被反驳的假设。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A004",
+      "scenario": "团队需把 PI3K 抑制机制写成可被反驳的假设。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -266,15 +249,11 @@
           "labelCn": "无下降即可证明通路无关"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-hypothesis-remediation-v2",
-      "lessonId": "staged-concept-hypothesis",
-      "lessonTitleCn": "研究假设",
-      "role": "remediation",
-      "scenarioCn": "把“药物有抗炎作用”修成可失败的预测。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A005",
+      "scenario": "把“药物有抗炎作用”修成可失败的预测。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -332,15 +311,11 @@
           "labelCn": "把未显著称为实验失败"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-hypothesis-review-v2",
-      "lessonId": "staged-concept-hypothesis",
-      "lessonTitleCn": "研究假设",
-      "role": "review",
-      "scenarioCn": "审查宿主通路假设是否有时间和反证条件。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A006",
+      "scenario": "审查宿主通路假设是否有时间和反证条件。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -398,15 +373,11 @@
           "labelCn": "ISG 不变说明药物没有任何作用"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-evidence-claim-apply-v2",
-      "lessonId": "staged-concept-evidence-claim",
-      "lessonTitleCn": "证据与主张",
-      "role": "apply",
-      "scenarioCn": "团队要判断三项结果究竟支持“相关”还是“驱动”。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A007",
+      "scenario": "团队要判断三项结果究竟支持“相关”还是“驱动”。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -464,15 +435,11 @@
           "labelCn": "同一样本蛋白结果毫无价值"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-evidence-claim-remediation-v2",
-      "lessonId": "staged-concept-evidence-claim",
-      "lessonTitleCn": "证据与主张",
-      "role": "remediation",
-      "scenarioCn": "学员需修复“两个模态一致即完成验证”的判断。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A008",
+      "scenario": "学员需修复“两个模态一致即完成验证”的判断。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -530,15 +497,11 @@
           "labelCn": "要求两模态效应完全相等"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-evidence-claim-review-v2",
-      "lessonId": "staged-concept-evidence-claim",
-      "lessonTitleCn": "证据与主张",
-      "role": "review",
-      "scenarioCn": "判断三种资料是否共同证明模型临床有效。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A009",
+      "scenario": "判断三种资料是否共同证明模型临床有效。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -596,15 +559,11 @@
           "labelCn": "病理样本有金标准所以无偏"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-association-causation-apply-v2",
-      "lessonId": "staged-concept-association-causation",
-      "lessonTitleCn": "关联与因果",
-      "role": "apply",
-      "scenarioCn": "评估激素使用与死亡关联能否解释为治疗效果。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A010",
+      "scenario": "评估激素使用与死亡关联能否解释为治疗效果。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -658,15 +617,11 @@
           "labelCn": "完全不调整以避免模型依赖"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-association-causation-remediation-v2",
-      "lessonId": "staged-concept-association-causation",
-      "lessonTitleCn": "关联与因果",
-      "role": "remediation",
-      "scenarioCn": "为含糖饮料与脂肪肝关联寻找可检验的替代路径。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A011",
+      "scenario": "为含糖饮料与脂肪肝关联寻找可检验的替代路径。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -724,15 +679,11 @@
           "labelCn": "有时间顺序就足以称因果"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-association-causation-review-v2",
-      "lessonId": "staged-concept-association-causation",
-      "lessonTitleCn": "关联与因果",
-      "role": "review",
-      "scenarioCn": "审查筛查政策与死亡下降是否有因果解释。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A012",
+      "scenario": "审查筛查政策与死亡下降是否有因果解释。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -790,15 +741,11 @@
           "labelCn": "跨组污染使试验完全无因果价值"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-exploratory-confirmatory-apply-v2",
-      "lessonId": "staged-concept-exploratory-confirmatory",
-      "lessonTitleCn": "探索性与确证性研究",
-      "role": "apply",
-      "scenarioCn": "判断 800 个代谢物筛选属于发现还是确证。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A013",
+      "scenario": "判断 800 个代谢物筛选属于发现还是确证。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -856,15 +803,11 @@
           "labelCn": "随机分一半就天然独立"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-exploratory-confirmatory-remediation-v2",
-      "lessonId": "staged-concept-exploratory-confirmatory",
-      "lessonTitleCn": "探索性与确证性研究",
-      "role": "remediation",
-      "scenarioCn": "修复把事后 cut-point 搜索写成确证的报告。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A014",
+      "scenario": "修复把事后 cut-point 搜索写成确证的报告。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -922,15 +865,11 @@
           "labelCn": "删除开发结果避免偏倚"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-exploratory-confirmatory-review-v2",
-      "lessonId": "staged-concept-exploratory-confirmatory",
-      "lessonTitleCn": "探索性与确证性研究",
-      "role": "review",
-      "scenarioCn": "区分预设主要终点和揭盲后的亚组发现。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A015",
+      "scenario": "区分预设主要终点和揭盲后的亚组发现。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -988,15 +927,11 @@
           "labelCn": "所有事后分析都应丢弃"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-statistical-unit-apply-v2",
-      "lessonId": "staged-concept-statistical-unit",
-      "lessonTitleCn": "统计单位",
-      "role": "apply",
-      "scenarioCn": "确定 6 名患者、每人 4000 个细胞的有效 n。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A016",
+      "scenario": "确定 6 名患者、每人 4000 个细胞的有效 n。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -1050,15 +985,11 @@
           "labelCn": "每供体只随机取一个细胞"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-statistical-unit-remediation-v2",
-      "lessonId": "staged-concept-statistical-unit",
-      "lessonTitleCn": "统计单位",
-      "role": "remediation",
-      "scenarioCn": "在患者—切片—ROI 层级中找统计单位。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A017",
+      "scenario": "在患者—切片—ROI 层级中找统计单位。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -1116,15 +1047,11 @@
           "labelCn": "先平均到全队列一个值"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-statistical-unit-review-v2",
-      "lessonId": "staged-concept-statistical-unit",
-      "lessonTitleCn": "统计单位",
-      "role": "review",
-      "scenarioCn": "判断医院、患者、切片和 tile 的分析角色。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A018",
+      "scenario": "判断医院、患者、切片和 tile 的分析角色。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -1182,15 +1109,11 @@
           "labelCn": "随机切片分折即可防泄漏"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-biological-technical-replicate-apply-v2",
-      "lessonId": "staged-concept-biological-technical-replicate",
-      "lessonTitleCn": "生物学重复与技术重复",
-      "role": "apply",
-      "scenarioCn": "区分患者、重复提取和重复进样。",
-      "promptCn": "综合材料选择全部必要判断（最多 2 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A019",
+      "scenario": "区分患者、重复提取和重复进样。\n作答要求：综合材料选择全部必要判断（最多 2 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -1240,15 +1163,11 @@
           "labelCn": "把重复提取当独立患者"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 2
     },
     {
-      "assessmentId": "staged-concept-biological-technical-replicate-remediation-v2",
-      "lessonId": "staged-concept-biological-technical-replicate",
-      "lessonTitleCn": "生物学重复与技术重复",
-      "role": "remediation",
-      "scenarioCn": "修复将技术孔当作动物数的分析。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A020",
+      "scenario": "修复将技术孔当作动物数的分析。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -1306,15 +1225,11 @@
           "labelCn": "技术重复完全无用"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-biological-technical-replicate-review-v2",
-      "lessonId": "staged-concept-biological-technical-replicate",
-      "lessonTitleCn": "生物学重复与技术重复",
-      "role": "review",
-      "scenarioCn": "确定供体、脑区、视野是否独立重复。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A021",
+      "scenario": "确定供体、脑区、视野是否独立重复。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -1372,15 +1287,11 @@
           "labelCn": "把所有视野先合成一张图"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-pseudoreplication-apply-v2",
-      "lessonId": "staged-concept-pseudoreplication",
-      "lessonTitleCn": "伪重复",
-      "role": "apply",
-      "scenarioCn": "两份输出分别按 6000 个细胞和 6 个供体计算炎症模块差。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A022",
+      "scenario": "两份输出分别按 6000 个细胞和 6 个供体计算炎症模块差。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -1438,15 +1349,11 @@
           "labelCn": "把每供体细胞数降到相同即可"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-pseudoreplication-remediation-v2",
-      "lessonId": "staged-concept-pseudoreplication",
-      "lessonTitleCn": "伪重复",
-      "role": "remediation",
-      "scenarioCn": "找出 8 只动物×12 视野分析中的伪重复。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A023",
+      "scenario": "找出 8 只动物×12 视野分析中的伪重复。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -1504,15 +1411,11 @@
           "labelCn": "每只鼠只留一个视野"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-pseudoreplication-review-v2",
-      "lessonId": "staged-concept-pseudoreplication",
-      "lessonTitleCn": "伪重复",
-      "role": "review",
-      "scenarioCn": "审查 30 名患者、每人上千 spot 的预后分析。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A024",
+      "scenario": "审查 30 名患者、每人上千 spot 的预后分析。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -1570,15 +1473,11 @@
           "labelCn": "AUC 下降证明标志物完全无用"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-population-sample-apply-v2",
-      "lessonId": "staged-concept-population-sample",
-      "lessonTitleCn": "总体、样本与目标总体",
-      "role": "apply",
-      "scenarioCn": "画出目标总体到分析样本的选择漏斗。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A025",
+      "scenario": "画出目标总体到分析样本的选择漏斗。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -1632,15 +1531,11 @@
           "labelCn": "只按年龄加权即可"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-population-sample-remediation-v2",
-      "lessonId": "staged-concept-population-sample",
-      "lessonTitleCn": "总体、样本与目标总体",
-      "role": "remediation",
-      "scenarioCn": "修复把自愿答卷者等同所有学生。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A026",
+      "scenario": "修复把自愿答卷者等同所有学生。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -1698,15 +1593,11 @@
           "labelCn": "删除缺勤变量避免偏倚"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-population-sample-review-v2",
-      "lessonId": "staged-concept-population-sample",
-      "lessonTitleCn": "总体、样本与目标总体",
-      "role": "review",
-      "scenarioCn": "判断社区样本如何估计老年目标总体。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A027",
+      "scenario": "判断社区样本如何估计老年目标总体。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -1764,15 +1655,11 @@
           "labelCn": "完成 70% 已足够忽略缺失"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-confounding-apply-v2",
-      "lessonId": "staged-concept-confounding",
-      "lessonTitleCn": "混杂",
-      "role": "apply",
-      "scenarioCn": "评估药物 A 与卒中风险差是否受适应证混杂。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A028",
+      "scenario": "评估药物 A 与卒中风险差是否受适应证混杂。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -1830,15 +1717,11 @@
           "labelCn": "HR 接近 1 说明没有混杂"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-confounding-remediation-v2",
-      "lessonId": "staged-concept-confounding",
-      "lessonTitleCn": "混杂",
-      "role": "remediation",
-      "scenarioCn": "区分共同原因、中介和碰撞点。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A029",
+      "scenario": "区分共同原因、中介和碰撞点。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -1896,15 +1779,11 @@
           "labelCn": "只保留依从者减少噪声"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-confounding-review-v2",
-      "lessonId": "staged-concept-confounding",
-      "lessonTitleCn": "混杂",
-      "role": "review",
-      "scenarioCn": "判断随机后 PSA 是否可作为普通混杂变量。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A030",
+      "scenario": "判断随机后 PSA 是否可作为普通混杂变量。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -1962,15 +1841,11 @@
           "labelCn": "随机化使任何二次分析都无混杂"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-selection-bias-apply-v2",
-      "lessonId": "staged-concept-selection-bias",
-      "lessonTitleCn": "选择偏倚",
-      "role": "apply",
-      "scenarioCn": "判断只含可用石蜡块的样本是否产生选择偏倚。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A031",
+      "scenario": "判断只含可用石蜡块的样本是否产生选择偏倚。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -2024,15 +1899,11 @@
           "labelCn": "组织随机损坏所以无偏"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-selection-bias-remediation-v2",
-      "lessonId": "staged-concept-selection-bias",
-      "lessonTitleCn": "选择偏倚",
-      "role": "remediation",
-      "scenarioCn": "修复完整病例分析。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A032",
+      "scenario": "修复完整病例分析。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -2090,15 +1961,11 @@
           "labelCn": "最后观测值结转"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-selection-bias-review-v2",
-      "lessonId": "staged-concept-selection-bias",
-      "lessonTitleCn": "选择偏倚",
-      "role": "review",
-      "scenarioCn": "只有初筛阳性者获得培养参照。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A033",
+      "scenario": "只有初筛阳性者获得培养参照。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -2156,15 +2023,11 @@
           "labelCn": "把皮试当金标准补齐"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-internal-external-validity-apply-v2",
-      "lessonId": "staged-concept-internal-external-validity",
-      "lessonTitleCn": "内部效度与外部效度",
-      "role": "apply",
-      "scenarioCn": "分开判断样本内效应和向高龄患者外推。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A034",
+      "scenario": "分开判断样本内效应和向高龄患者外推。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -2218,15 +2081,11 @@
           "labelCn": "人群不同使试验内部无效"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-internal-external-validity-remediation-v2",
-      "lessonId": "staged-concept-internal-external-validity",
-      "lessonTitleCn": "内部效度与外部效度",
-      "role": "remediation",
-      "scenarioCn": "把失访和宽纳入分别归类。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A035",
+      "scenario": "把失访和宽纳入分别归类。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -2284,15 +2143,11 @@
           "labelCn": "只做 per-protocol 提高内部效度"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-internal-external-validity-review-v2",
-      "lessonId": "staged-concept-internal-external-validity",
-      "lessonTitleCn": "内部效度与外部效度",
-      "role": "review",
-      "scenarioCn": "解释新医院性能下降。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A036",
+      "scenario": "解释新医院性能下降。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -2350,15 +2205,11 @@
           "labelCn": "AUC 下降必因过拟合"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-effect-size-apply-v2",
-      "lessonId": "staged-concept-effect-size",
-      "lessonTitleCn": "效应大小",
-      "role": "apply",
-      "scenarioCn": "选择绝对与相对效应尺度。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A037",
+      "scenario": "选择绝对与相对效应尺度。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -2412,15 +2263,11 @@
           "labelCn": "点估计超过 3% 即确定临床重要"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-effect-size-remediation-v2",
-      "lessonId": "staged-concept-effect-size",
-      "lessonTitleCn": "效应大小",
-      "role": "remediation",
-      "scenarioCn": "从 2×2 风险表修复夸大的相对语言。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A038",
+      "scenario": "从 2×2 风险表修复夸大的相对语言。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -2478,15 +2325,11 @@
           "labelCn": "按患者数算精确区间"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-effect-size-review-v2",
-      "lessonId": "staged-concept-effect-size",
-      "lessonTitleCn": "效应大小",
-      "role": "review",
-      "scenarioCn": "解释误诊从 4% 降到 3%。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A039",
+      "scenario": "解释误诊从 4% 降到 3%。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -2544,15 +2387,11 @@
           "labelCn": "误诊少 20 例就直接采用"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-standard-error-apply-v2",
-      "lessonId": "staged-concept-standard-error",
-      "lessonTitleCn": "标准误",
-      "role": "apply",
-      "scenarioCn": "区分 SD 与均值差 SE。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A040",
+      "scenario": "区分 SD 与均值差 SE。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -2606,15 +2445,11 @@
           "labelCn": "SE 小表示个体变异小"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-standard-error-remediation-v2",
-      "lessonId": "staged-concept-standard-error",
-      "lessonTitleCn": "标准误",
-      "role": "remediation",
-      "scenarioCn": "找出按视野缩小 SE 的错误。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A041",
+      "scenario": "找出按视野缩小 SE 的错误。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -2672,15 +2507,11 @@
           "labelCn": "忽略所有视野只用一张"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-standard-error-review-v2",
-      "lessonId": "staged-concept-standard-error",
-      "lessonTitleCn": "标准误",
-      "role": "review",
-      "scenarioCn": "审查 30 人各 14 天的治疗差 SE。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A042",
+      "scenario": "审查 30 人各 14 天的治疗差 SE。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -2738,15 +2569,11 @@
           "labelCn": "完全平均掉时间"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-confidence-interval-apply-v2",
-      "lessonId": "staged-concept-confidence-interval",
-      "lessonTitleCn": "置信区间",
-      "role": "apply",
-      "scenarioCn": "判断区间跨零但仍含临床重要获益。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A043",
+      "scenario": "判断区间跨零但仍含临床重要获益。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -2804,15 +2631,11 @@
           "labelCn": "95% 概率真效应位于本区间"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-confidence-interval-remediation-v2",
-      "lessonId": "staged-concept-confidence-interval",
-      "lessonTitleCn": "置信区间",
-      "role": "remediation",
-      "scenarioCn": "用重复区间修复 95% 概率误解。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A044",
+      "scenario": "用重复区间修复 95% 概率误解。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -2870,15 +2693,11 @@
           "labelCn": "未覆盖的两个区间无效"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-confidence-interval-review-v2",
-      "lessonId": "staged-concept-confidence-interval",
-      "lessonTitleCn": "置信区间",
-      "role": "review",
-      "scenarioCn": "解释敏感度差的区间与临床界值。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A045",
+      "scenario": "解释敏感度差的区间与临床界值。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -2936,15 +2755,11 @@
           "labelCn": "点估计为正所以更优"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-p-value-apply-v2",
-      "lessonId": "staged-concept-p-value",
-      "lessonTitleCn": "P 值",
-      "role": "apply",
-      "scenarioCn": "解释 P=0.03 的含义。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A046",
+      "scenario": "解释 P=0.03 的含义。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -2998,15 +2813,11 @@
           "labelCn": "P<0.05 就临床重要"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-p-value-remediation-v2",
-      "lessonId": "staged-concept-p-value",
-      "lessonTitleCn": "P 值",
-      "role": "remediation",
-      "scenarioCn": "用零分布尾部修复概率倒置。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A047",
+      "scenario": "用零分布尾部修复概率倒置。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -3064,15 +2875,11 @@
           "labelCn": "P=0.05 表示效应很大"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-p-value-review-v2",
-      "lessonId": "staged-concept-p-value",
-      "lessonTitleCn": "P 值",
-      "role": "review",
-      "scenarioCn": "审查 P=0.03 但 CI 宽的中心比较。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A048",
+      "scenario": "审查 P=0.03 但 CI 宽的中心比较。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -3130,15 +2937,11 @@
           "labelCn": "q>0.05 证明无差异"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-multiple-testing-fdr-apply-v2",
-      "lessonId": "staged-concept-multiple-testing-fdr",
-      "lessonTitleCn": "多重检验与 FDR",
-      "role": "apply",
-      "scenarioCn": "解释 1000 次检验后的 50 个发现。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A049",
+      "scenario": "解释 1000 次检验后的 50 个发现。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -3196,15 +2999,11 @@
           "labelCn": "仅校正 73 个名义显著项"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-multiple-testing-fdr-remediation-v2",
-      "lessonId": "staged-concept-multiple-testing-fdr",
-      "lessonTitleCn": "多重检验与 FDR",
-      "role": "remediation",
-      "scenarioCn": "从 P、q 与 family 表修复候选清单。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A050",
+      "scenario": "从 P、q 与 family 表修复候选清单。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -3262,15 +3061,11 @@
           "labelCn": "把 q<0.10 的三项写成已确认候选，并把 10% 当作每一项的错误概率"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-multiple-testing-fdr-review-v2",
-      "lessonId": "staged-concept-multiple-testing-fdr",
-      "lessonTitleCn": "多重检验与 FDR",
-      "role": "review",
-      "scenarioCn": "为区域×通路检验定义 family。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A051",
+      "scenario": "为区域×通路检验定义 family。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -3328,15 +3123,11 @@
           "labelCn": "FDR 校正可忽略患者相关"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-power-apply-v2",
-      "lessonId": "staged-concept-power",
-      "lessonTitleCn": "统计功效",
-      "role": "apply",
-      "scenarioCn": "按重要效应与事件率规划样本量。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A052",
+      "scenario": "按重要效应与事件率规划样本量。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -3394,15 +3185,11 @@
           "labelCn": "按总人数保证 power"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-power-remediation-v2",
-      "lessonId": "staged-concept-power",
-      "lessonTitleCn": "统计功效",
-      "role": "remediation",
-      "scenarioCn": "判断效应、SD 与 n 如何改变功效。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A053",
+      "scenario": "判断效应、SD 与 n 如何改变功效。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -3460,15 +3247,11 @@
           "labelCn": "增加重复测量等同增加患者"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-power-review-v2",
-      "lessonId": "staged-concept-power",
-      "lessonTitleCn": "统计功效",
-      "role": "review",
-      "scenarioCn": "按事件和收缩目标评估信息量。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A054",
+      "scenario": "按事件和收缩目标评估信息量。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -3526,15 +3309,11 @@
           "labelCn": "删至显著变量"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-interaction-apply-v2",
-      "lessonId": "staged-concept-interaction",
-      "lessonTitleCn": "交互作用",
-      "role": "apply",
-      "scenarioCn": "比较绝经状态的治疗效应。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A055",
+      "scenario": "比较绝经状态的治疗效应。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -3588,15 +3367,11 @@
           "labelCn": "分别报告风险比"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-interaction-remediation-v2",
-      "lessonId": "staged-concept-interaction",
-      "lessonTitleCn": "交互作用",
-      "role": "remediation",
-      "scenarioCn": "计算药物与吸烟状态交互。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A056",
+      "scenario": "计算药物与吸烟状态交互。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -3654,15 +3429,11 @@
           "labelCn": "合并两组提高精度"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-interaction-review-v2",
-      "lessonId": "staged-concept-interaction",
-      "lessonTitleCn": "交互作用",
-      "role": "review",
-      "scenarioCn": "审查基因×治疗乘积项。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A057",
+      "scenario": "审查基因×治疗乘积项。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -3720,15 +3491,11 @@
           "labelCn": "交互 P>0.05 证明相同"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-overfitting-apply-v2",
-      "lessonId": "staged-concept-overfitting",
-      "lessonTitleCn": "过拟合",
-      "role": "apply",
-      "scenarioCn": "解释训练与外部性能落差。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A058",
+      "scenario": "解释训练与外部性能落差。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -3782,15 +3549,11 @@
           "labelCn": "只报训练 AUC"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-overfitting-remediation-v2",
-      "lessonId": "staged-concept-overfitting",
-      "lessonTitleCn": "过拟合",
-      "role": "remediation",
-      "scenarioCn": "修复最佳模型挑选。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A059",
+      "scenario": "修复最佳模型挑选。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -3848,15 +3611,11 @@
           "labelCn": "多算法增加稳健性"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-overfitting-review-v2",
-      "lessonId": "staged-concept-overfitting",
-      "lessonTitleCn": "过拟合",
-      "role": "review",
-      "scenarioCn": "比较细胞分折与供体分折。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A060",
+      "scenario": "比较细胞分折与供体分折。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -3914,15 +3673,11 @@
           "labelCn": "外验下降即无生物信号"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-data-leakage-apply-v2",
-      "lessonId": "staged-concept-data-leakage",
-      "lessonTitleCn": "数据泄漏",
-      "role": "apply",
-      "scenarioCn": "找出全数据筛基因造成的泄漏。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A061",
+      "scenario": "找出全数据筛基因造成的泄漏。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -3980,15 +3735,11 @@
           "labelCn": "删除标签后全数据归一化都安全"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-data-leakage-remediation-v2",
-      "lessonId": "staged-concept-data-leakage",
-      "lessonTitleCn": "数据泄漏",
-      "role": "remediation",
-      "scenarioCn": "修复未来信息特征。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A062",
+      "scenario": "修复未来信息特征。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -4046,15 +3797,11 @@
           "labelCn": "只要没直接写结局就不泄漏"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-data-leakage-review-v2",
-      "lessonId": "staged-concept-data-leakage",
-      "lessonTitleCn": "数据泄漏",
-      "role": "review",
-      "scenarioCn": "审查患者与时间泄漏。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A063",
+      "scenario": "审查患者与时间泄漏。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -4112,15 +3859,11 @@
           "labelCn": "随机窗口 CV 足够"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-validation-apply-v2",
-      "lessonId": "staged-concept-validation",
-      "lessonTitleCn": "验证的类型与独立性",
-      "role": "apply",
-      "scenarioCn": "准确命名三种验证。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A064",
+      "scenario": "准确命名三种验证。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -4174,15 +3917,11 @@
           "labelCn": "AUC 复现即部署"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-validation-remediation-v2",
-      "lessonId": "staged-concept-validation",
-      "lessonTitleCn": "验证的类型与独立性",
-      "role": "remediation",
-      "scenarioCn": "区分技术重复和独立队列。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A065",
+      "scenario": "区分技术重复和独立队列。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -4240,15 +3979,11 @@
           "labelCn": "新医院结果不显著即失败"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-validation-review-v2",
-      "lessonId": "staged-concept-validation",
-      "lessonTitleCn": "验证的类型与独立性",
-      "role": "review",
-      "scenarioCn": "审查冻结模型在基层表现。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A066",
+      "scenario": "审查冻结模型在基层表现。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -4306,15 +4041,11 @@
           "labelCn": "在当前样本重调后立即通过"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-censoring-apply-v2",
-      "lessonId": "staged-concept-censoring",
-      "lessonTitleCn": "删失",
-      "role": "apply",
-      "scenarioCn": "识别右删失、左截断和竞争事件。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A067",
+      "scenario": "识别右删失、左截断和竞争事件。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -4372,15 +4103,11 @@
           "labelCn": "诊断日起纳入 B 风险集"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-censoring-remediation-v2",
-      "lessonId": "staged-concept-censoring",
-      "lessonTitleCn": "删失",
-      "role": "remediation",
-      "scenarioCn": "修复把确诊日当精确发病日。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A068",
+      "scenario": "修复把确诊日当精确发病日。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -4438,15 +4165,11 @@
           "labelCn": "按第 24 月右删失"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-censoring-review-v2",
-      "lessonId": "staged-concept-censoring",
-      "lessonTitleCn": "删失",
-      "role": "review",
-      "scenarioCn": "审查 6 月存活者入组。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A069",
+      "scenario": "审查 6 月存活者入组。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -4504,15 +4227,11 @@
           "labelCn": "从入组日改 time zero"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-hazard-ratio-apply-v2",
-      "lessonId": "staged-concept-hazard-ratio",
-      "lessonTitleCn": "风险率比",
-      "role": "apply",
-      "scenarioCn": "解释 HR=0.70。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A070",
+      "scenario": "解释 HR=0.70。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -4566,15 +4285,11 @@
           "labelCn": "HR 显著即临床获益大"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-hazard-ratio-remediation-v2",
-      "lessonId": "staged-concept-hazard-ratio",
-      "lessonTitleCn": "风险率比",
-      "role": "remediation",
-      "scenarioCn": "从风险集理解 hazard。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A071",
+      "scenario": "从风险集理解 hazard。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -4632,15 +4347,11 @@
           "labelCn": "删失者算未发生事件"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-hazard-ratio-review-v2",
-      "lessonId": "staged-concept-hazard-ratio",
-      "lessonTitleCn": "风险率比",
-      "role": "review",
-      "scenarioCn": "审查 HR=0.7 但 PH 未给出。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A072",
+      "scenario": "审查 HR=0.7 但 PH 未给出。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -4698,15 +4409,11 @@
           "labelCn": "单一 HR 足够"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-time-origin-apply-v2",
-      "lessonId": "staged-concept-time-origin",
-      "lessonTitleCn": "时间起点",
-      "role": "apply",
-      "scenarioCn": "对齐资格、分组和随访。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A073",
+      "scenario": "对齐资格、分组和随访。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -4760,15 +4467,11 @@
           "labelCn": "从治疗日开始两组随访"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-time-origin-remediation-v2",
-      "lessonId": "staged-concept-time-origin",
-      "lessonTitleCn": "时间起点",
-      "role": "remediation",
-      "scenarioCn": "移动三个时间锚点。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A074",
+      "scenario": "移动三个时间锚点。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -4826,15 +4529,11 @@
           "labelCn": "用第 7 日作为所有人零点"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-time-origin-review-v2",
-      "lessonId": "staged-concept-time-origin",
-      "lessonTitleCn": "时间起点",
-      "role": "review",
-      "scenarioCn": "审查按首次活检起算。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A075",
+      "scenario": "审查按首次活检起算。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -4892,15 +4591,11 @@
           "labelCn": "补充早期事件但仍排除"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-composition-state-apply-v2",
-      "lessonId": "staged-concept-composition-state",
-      "lessonTitleCn": "组成变化与状态变化",
-      "role": "apply",
-      "scenarioCn": "区分 bulk 增幅来自组成还是类内状态。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A076",
+      "scenario": "区分 bulk 增幅来自组成还是类内状态。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -4958,15 +4653,11 @@
           "labelCn": "类内 P>0.05 证明无状态变化"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-composition-state-remediation-v2",
-      "lessonId": "staged-concept-composition-state",
-      "lessonTitleCn": "组成变化与状态变化",
-      "role": "remediation",
-      "scenarioCn": "两个机制产生相同混合均值。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A077",
+      "scenario": "两个机制产生相同混合均值。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -5024,15 +4715,11 @@
           "labelCn": "解卷积比例即可证明状态"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-composition-state-review-v2",
-      "lessonId": "staged-concept-composition-state",
-      "lessonTitleCn": "组成变化与状态变化",
-      "role": "review",
-      "scenarioCn": "解释蛋白和单细胞汇总不一致。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A078",
+      "scenario": "解释蛋白和单细胞汇总不一致。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -5090,15 +4777,11 @@
           "labelCn": "比例升高等于激活"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-batch-effect-apply-v2",
-      "lessonId": "staged-concept-batch-effect",
-      "lessonTitleCn": "批次效应",
-      "role": "apply",
-      "scenarioCn": "判断组别与批次完全重合。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A079",
+      "scenario": "判断组别与批次完全重合。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -5156,15 +4839,11 @@
           "labelCn": "把 batch 加协变量"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-batch-effect-remediation-v2",
-      "lessonId": "staged-concept-batch-effect",
-      "lessonTitleCn": "批次效应",
-      "role": "remediation",
-      "scenarioCn": "重新分配样本与桥接。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A080",
+      "scenario": "重新分配样本与桥接。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -5222,15 +4901,11 @@
           "labelCn": "测序后再平衡"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-batch-effect-review-v2",
-      "lessonId": "staged-concept-batch-effect",
-      "lessonTitleCn": "批次效应",
-      "role": "review",
-      "scenarioCn": "审查中心、平台和疾病构成重合。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A081",
+      "scenario": "审查中心、平台和疾病构成重合。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -5288,15 +4963,11 @@
           "labelCn": "中心效应相反就平均为零"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-bulk-mixture-apply-v2",
-      "lessonId": "staged-concept-bulk-mixture",
-      "lessonTitleCn": "Bulk 组织是混合物",
-      "role": "apply",
-      "scenarioCn": "解释混合组织 signature。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A082",
+      "scenario": "解释混合组织 signature。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -5350,15 +5021,11 @@
           "labelCn": "调整比例后不显著证明纯组成"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-bulk-mixture-remediation-v2",
-      "lessonId": "staged-concept-bulk-mixture",
-      "lessonTitleCn": "Bulk 组织是混合物",
-      "role": "remediation",
-      "scenarioCn": "计算比例加权均值。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A083",
+      "scenario": "计算比例加权均值。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -5416,15 +5083,11 @@
           "labelCn": "去卷积给比例后机制确定"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-bulk-mixture-review-v2",
-      "lessonId": "staged-concept-bulk-mixture",
-      "lessonTitleCn": "Bulk 组织是混合物",
-      "role": "review",
-      "scenarioCn": "设计区分来源与沉积。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A084",
+      "scenario": "设计区分来源与沉积。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -5482,15 +5145,11 @@
           "labelCn": "区域内 P>0.05 即完全不变"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-rna-protein-apply-v2",
-      "lessonId": "staged-concept-rna-protein",
-      "lessonTitleCn": "RNA 不等于蛋白",
-      "role": "apply",
-      "scenarioCn": "解释 RNA 先升蛋白后升。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A085",
+      "scenario": "解释 RNA 先升蛋白后升。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -5544,15 +5203,11 @@
           "labelCn": "只保留一致的 24 h"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-rna-protein-remediation-v2",
-      "lessonId": "staged-concept-rna-protein",
-      "lessonTitleCn": "RNA 不等于蛋白",
-      "role": "remediation",
-      "scenarioCn": "列出不一致的可检验机制。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A086",
+      "scenario": "列出不一致的可检验机制。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -5610,15 +5265,11 @@
           "labelCn": "qPCR 更灵敏所以总是正确"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-rna-protein-review-v2",
-      "lessonId": "staged-concept-rna-protein",
-      "lessonTitleCn": "RNA 不等于蛋白",
-      "role": "review",
-      "scenarioCn": "解释 RNA 降低而蛋白沉积增加。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A087",
+      "scenario": "解释 RNA 降低而蛋白沉积增加。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -5676,15 +5327,11 @@
           "labelCn": "蛋白增加证明 RNA 检测错"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-cluster-stability-apply-v2",
-      "lessonId": "staged-concept-cluster-stability",
-      "lessonTitleCn": "聚类稳定性",
-      "role": "apply",
-      "scenarioCn": "比较 k=2 与 k=4 稳定性。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A088",
+      "scenario": "比较 k=2 与 k=4 稳定性。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -5738,15 +5385,11 @@
           "labelCn": "热图清楚即可"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-cluster-stability-remediation-v2",
-      "lessonId": "staged-concept-cluster-stability",
-      "lessonTitleCn": "聚类稳定性",
-      "role": "remediation",
-      "scenarioCn": "读取共识矩阵。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A089",
+      "scenario": "读取共识矩阵。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -5804,15 +5447,11 @@
           "labelCn": "最低 PAC 保证真实"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-cluster-stability-review-v2",
-      "lessonId": "staged-concept-cluster-stability",
-      "lessonTitleCn": "聚类稳定性",
-      "role": "review",
-      "scenarioCn": "新医院只复现连续轴。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A090",
+      "scenario": "新医院只复现连续轴。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -5870,15 +5509,11 @@
           "labelCn": "外院不同说明模型失败"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-pseudobulk-apply-v2",
-      "lessonId": "staged-concept-pseudobulk",
-      "lessonTitleCn": "Pseudobulk 的独立单位",
-      "role": "apply",
-      "scenarioCn": "写出 pseudobulk 聚合键。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A091",
+      "scenario": "写出 pseudobulk 聚合键。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -5936,15 +5571,11 @@
           "labelCn": "每个 pseudobulk 行独立"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-pseudobulk-remediation-v2",
-      "lessonId": "staged-concept-pseudobulk",
-      "lessonTitleCn": "Pseudobulk 的独立单位",
-      "role": "remediation",
-      "scenarioCn": "修复错误聚合。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A092",
+      "scenario": "修复错误聚合。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -6002,15 +5633,11 @@
           "labelCn": "缺时间点供体全部删除"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-pseudobulk-review-v2",
-      "lessonId": "staged-concept-pseudobulk",
-      "lessonTitleCn": "Pseudobulk 的独立单位",
-      "role": "review",
-      "scenarioCn": "审查每样本当独立 donor 的矩阵。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A093",
+      "scenario": "审查每样本当独立 donor 的矩阵。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -6068,15 +5695,11 @@
           "labelCn": "只加测序深度协变量"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-cross-modal-validation-apply-v2",
-      "lessonId": "staged-concept-cross-modal-validation",
-      "lessonTitleCn": "跨模态支持",
-      "role": "apply",
-      "scenarioCn": "命名同样本跨模态支持。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A094",
+      "scenario": "命名同样本跨模态支持。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -6130,15 +5753,11 @@
           "labelCn": "不同 assay 必须数值相同"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-cross-modal-validation-remediation-v2",
-      "lessonId": "staged-concept-cross-modal-validation",
-      "lessonTitleCn": "跨模态支持",
-      "role": "remediation",
-      "scenarioCn": "修复‘两模态等于两队列’。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A095",
+      "scenario": "修复‘两模态等于两队列’。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -6196,15 +5815,11 @@
           "labelCn": "共享批次使结果无价值"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-cross-modal-validation-review-v2",
-      "lessonId": "staged-concept-cross-modal-validation",
-      "lessonTitleCn": "跨模态支持",
-      "role": "review",
-      "scenarioCn": "同队列影像—病理一致能否称外验。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A096",
+      "scenario": "同队列影像—病理一致能否称外验。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -6262,15 +5877,11 @@
           "labelCn": "同患者所以不算任何验证"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-alternative-explanation-apply-v2",
-      "lessonId": "staged-concept-alternative-explanation",
-      "lessonTitleCn": "替代解释",
-      "role": "apply",
-      "scenarioCn": "在真实状态、组成、批次和选择间更新。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A097",
+      "scenario": "在真实状态、组成、批次和选择间更新。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -6324,15 +5935,11 @@
           "labelCn": "调整后不显著证明纯组成"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-alternative-explanation-remediation-v2",
-      "lessonId": "staged-concept-alternative-explanation",
-      "lessonTitleCn": "替代解释",
-      "role": "remediation",
-      "scenarioCn": "用新证据更新四个模型。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A098",
+      "scenario": "用新证据更新四个模型。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -6390,15 +5997,11 @@
           "labelCn": "分层后为零证明无机制"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-alternative-explanation-review-v2",
-      "lessonId": "staged-concept-alternative-explanation",
-      "lessonTitleCn": "替代解释",
-      "role": "review",
-      "scenarioCn": "解释中心差异。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A099",
+      "scenario": "解释中心差异。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -6456,15 +6059,11 @@
           "labelCn": "统一重建后问题全解决"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-claim-boundary-apply-v2",
-      "lessonId": "staged-concept-claim-boundary",
-      "lessonTitleCn": "主张边界",
-      "role": "apply",
-      "scenarioCn": "把‘驱动转移’逐词收窄。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A100",
+      "scenario": "把‘驱动转移’逐词收窄。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -6522,15 +6121,11 @@
           "labelCn": "改为相关即可省略总体"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-claim-boundary-remediation-v2",
-      "lessonId": "staged-concept-claim-boundary",
-      "lessonTitleCn": "主张边界",
-      "role": "remediation",
-      "scenarioCn": "填补主张五个缺失槽。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A101",
+      "scenario": "填补主张五个缺失槽。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -6588,15 +6183,11 @@
           "labelCn": "加显著 P 值即可因果"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-claim-boundary-review-v2",
-      "lessonId": "staged-concept-claim-boundary",
-      "lessonTitleCn": "主张边界",
-      "role": "review",
-      "scenarioCn": "修订‘临床可用’主张。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A102",
+      "scenario": "修订‘临床可用’主张。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -6654,15 +6245,11 @@
           "labelCn": "加‘初步’保留可用"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-robustness-apply-v2",
-      "lessonId": "staged-concept-robustness",
-      "lessonTitleCn": "稳健性",
-      "role": "apply",
-      "scenarioCn": "比较缺失、极端值和协变量集。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A103",
+      "scenario": "比较缺失、极端值和协变量集。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -6720,15 +6307,11 @@
           "labelCn": "运行越多越可靠"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-robustness-remediation-v2",
-      "lessonId": "staged-concept-robustness",
-      "lessonTitleCn": "稳健性",
-      "role": "remediation",
-      "scenarioCn": "标注哪些变体改变目标量。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A104",
+      "scenario": "标注哪些变体改变目标量。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -6786,15 +6369,11 @@
           "labelCn": "删掉不一致变体"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-robustness-review-v2",
-      "lessonId": "staged-concept-robustness",
-      "lessonTitleCn": "稳健性",
-      "role": "review",
-      "scenarioCn": "结果对注释方案敏感。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A105",
+      "scenario": "结果对注释方案敏感。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -6852,15 +6431,11 @@
           "labelCn": "任一分析显著即稳健"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-triangulation-apply-v2",
-      "lessonId": "staged-concept-triangulation",
-      "lessonTitleCn": "三角验证",
-      "role": "apply",
-      "scenarioCn": "组合偏倚不同的证据。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A106",
+      "scenario": "组合偏倚不同的证据。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -6914,15 +6489,11 @@
           "labelCn": "细胞机制可替代人群效应"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-triangulation-remediation-v2",
-      "lessonId": "staged-concept-triangulation",
-      "lessonTitleCn": "三角验证",
-      "role": "remediation",
-      "scenarioCn": "从四项证据选偏倚互补项。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A107",
+      "scenario": "从四项证据选偏倚互补项。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -6980,15 +6551,11 @@
           "labelCn": "不同软件即独立"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-triangulation-review-v2",
-      "lessonId": "staged-concept-triangulation",
-      "lessonTitleCn": "三角验证",
-      "role": "review",
-      "scenarioCn": "共享患者限制三角验证。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A108",
+      "scenario": "共享患者限制三角验证。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -7046,15 +6613,11 @@
           "labelCn": "共享患者使所有模态冗余"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-minimal-sufficient-analysis-apply-v2",
-      "lessonId": "staged-concept-minimal-sufficient-analysis",
-      "lessonTitleCn": "最小充分分析",
-      "role": "apply",
-      "scenarioCn": "选择最能区分批次或生物解释的一步。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A109",
+      "scenario": "选择最能区分批次或生物解释的一步。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -7108,15 +6671,11 @@
           "labelCn": "多画几张相关图"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-minimal-sufficient-analysis-remediation-v2",
-      "lessonId": "staged-concept-minimal-sufficient-analysis",
-      "lessonTitleCn": "最小充分分析",
-      "role": "remediation",
-      "scenarioCn": "画若 A 停止、若 B 升级的树。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A110",
+      "scenario": "画若 A 停止、若 B 升级的树。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -7174,15 +6733,11 @@
           "labelCn": "选最显著的下一步"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-minimal-sufficient-analysis-review-v2",
-      "lessonId": "staged-concept-minimal-sufficient-analysis",
-      "lessonTitleCn": "最小充分分析",
-      "role": "review",
-      "scenarioCn": "在新实验与额外建模间选择。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A111",
+      "scenario": "在新实验与额外建模间选择。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -7240,15 +6795,11 @@
           "labelCn": "扩大模型复杂度"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-evidence-redundancy-apply-v2",
-      "lessonId": "staged-concept-evidence-redundancy",
-      "lessonTitleCn": "证据佐证与冗余",
-      "role": "apply",
-      "scenarioCn": "排序三种新增证据。",
-      "promptCn": "综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A112",
+      "scenario": "排序三种新增证据。\n作答要求：综合材料选择全部必要判断（最多 3 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -7302,15 +6853,11 @@
           "labelCn": "蛋白一定比新队列强"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 3
     },
     {
-      "assessmentId": "staged-concept-evidence-redundancy-remediation-v2",
-      "lessonId": "staged-concept-evidence-redundancy",
-      "lessonTitleCn": "证据佐证与冗余",
-      "role": "remediation",
-      "scenarioCn": "连接共享数据和误差。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A113",
+      "scenario": "连接共享数据和误差。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -7368,15 +6915,11 @@
           "labelCn": "同供体结果全删"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-evidence-redundancy-review-v2",
-      "lessonId": "staged-concept-evidence-redundancy",
-      "lessonTitleCn": "证据佐证与冗余",
-      "role": "review",
-      "scenarioCn": "分配图表优先级。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A114",
+      "scenario": "分配图表优先级。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -7434,15 +6977,11 @@
           "labelCn": "有外验就无需开发诊断"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-negative-result-apply-v2",
-      "lessonId": "staged-concept-negative-result",
-      "lessonTitleCn": "阴性结果解释",
-      "role": "apply",
-      "scenarioCn": "解释 P=0.08 的阴性结果。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A115",
+      "scenario": "解释 P=0.08 的阴性结果。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -7500,15 +7039,11 @@
           "labelCn": "强调有利趋势"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-negative-result-remediation-v2",
-      "lessonId": "staged-concept-negative-result",
-      "lessonTitleCn": "阴性结果解释",
-      "role": "remediation",
-      "scenarioCn": "区分不确定、排除大效应和等效。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A116",
+      "scenario": "区分不确定、排除大效应和等效。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -7566,15 +7101,11 @@
           "labelCn": "非劣等于等效"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-negative-result-review-v2",
-      "lessonId": "staged-concept-negative-result",
-      "lessonTitleCn": "阴性结果解释",
-      "role": "review",
-      "scenarioCn": "解释未显著但排除不可接受损失。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A117",
+      "scenario": "解释未显著但排除不可接受损失。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -7632,15 +7163,11 @@
           "labelCn": "非劣即新方法更好"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-ai-cognitive-outsourcing-apply-v2",
-      "lessonId": "staged-concept-ai-cognitive-outsourcing",
-      "lessonTitleCn": "AI 认知外包风险",
-      "role": "apply",
-      "scenarioCn": "先冻结判断再核验 AI。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A118",
+      "scenario": "先冻结判断再核验 AI。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -7698,15 +7225,11 @@
           "labelCn": "只润色 AI 文字"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-concept-ai-cognitive-outsourcing-remediation-v2",
-      "lessonId": "staged-concept-ai-cognitive-outsourcing",
-      "lessonTitleCn": "AI 认知外包风险",
-      "role": "remediation",
-      "scenarioCn": "拆成输入契约与真值测试。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A119",
+      "scenario": "拆成输入契约与真值测试。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -7764,15 +7287,11 @@
           "labelCn": "结果与预期方向一致，因此只在真实标签上复算，不再运行伪标签对照"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-concept-ai-cognitive-outsourcing-review-v2",
-      "lessonId": "staged-concept-ai-cognitive-outsourcing",
-      "lessonTitleCn": "AI 认知外包风险",
-      "role": "review",
-      "scenarioCn": "先手写最小方案再审查 AI。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A120",
+      "scenario": "先手写最小方案再审查 AI。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -7830,15 +7349,11 @@
           "labelCn": "由 AI 在交叉验证均值最高处固定阈值，再把同一队列称为外部验证"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-differential-analysis-apply-v2",
-      "lessonId": "staged-method-differential-analysis",
-      "lessonTitleCn": "组间比较与差异分析",
-      "role": "apply",
-      "scenarioCn": "审稿人需判断 GeneX 的预定义 treatment-control 差异能否成立。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A121",
+      "scenario": "审稿人需判断 GeneX 的预定义 treatment-control 差异能否成立。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -7896,15 +7411,11 @@
           "labelCn": "只对显著的 12 个基因计算 FDR"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-differential-analysis-remediation-v2",
-      "lessonId": "staged-method-differential-analysis",
-      "lessonTitleCn": "组间比较与差异分析",
-      "role": "remediation",
-      "scenarioCn": "从矩阵结构识别伪重复和不可估 contrast。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A122",
+      "scenario": "从矩阵结构识别伪重复和不可估 contrast。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -7962,15 +7473,11 @@
           "labelCn": "技术重复增加到 20 个即可提高组间证据"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-differential-analysis-review-v2",
-      "lessonId": "staged-method-differential-analysis",
-      "lessonTitleCn": "组间比较与差异分析",
-      "role": "review",
-      "scenarioCn": "判断论文摘要能否把 ProteinY 写为病例标志物。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A123",
+      "scenario": "判断论文摘要能否把 ProteinY 写为病例标志物。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -8028,15 +7535,11 @@
           "labelCn": "两个中心都有患者，因此自动属于外部验证"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-correlation-apply-v2",
-      "lessonId": "staged-method-correlation",
-      "lessonTitleCn": "相关分析",
-      "role": "apply",
-      "scenarioCn": "总体散点呈正相关，但需判断中心分层后的含义。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A124",
+      "scenario": "总体散点呈正相关，但需判断中心分层后的含义。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -8094,15 +7597,11 @@
           "labelCn": "改用 Spearman 即可消除中心混杂"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-correlation-remediation-v2",
-      "lessonId": "staged-method-correlation",
-      "lessonTitleCn": "相关分析",
-      "role": "remediation",
-      "scenarioCn": "一个极端患者使相关方向改变，需决定是否删除。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A125",
+      "scenario": "一个极端患者使相关方向改变，需决定是否删除。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -8160,15 +7659,11 @@
           "labelCn": "只报告更显著的稳健估计"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-correlation-review-v2",
-      "lessonId": "staged-method-correlation",
-      "lessonTitleCn": "相关分析",
-      "role": "review",
-      "scenarioCn": "论文以 18,420 个细胞声称两个基因程序高度相关。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A126",
+      "scenario": "论文以 18,420 个细胞声称两个基因程序高度相关。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -8226,15 +7721,11 @@
           "labelCn": "Spearman 已对组成差异稳健"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-linear-regression-apply-v2",
-      "lessonId": "staged-method-linear-regression",
-      "lessonTitleCn": "线性回归",
-      "role": "apply",
-      "scenarioCn": "解释年龄系数前发现编码和函数形式问题。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A127",
+      "scenario": "解释年龄系数前发现编码和函数形式问题。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -8292,15 +7783,11 @@
           "labelCn": "加入中心和治疗后年龄效应就是因果效应"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-linear-regression-remediation-v2",
-      "lessonId": "staged-method-linear-regression",
-      "lessonTitleCn": "线性回归",
-      "role": "remediation",
-      "scenarioCn": "把每 1 单位系数改写为临床可读的每 10 单位预测差。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A128",
+      "scenario": "把每 1 单位系数改写为临床可读的每 10 单位预测差。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -8358,15 +7845,11 @@
           "labelCn": "可预测 60 μg/m³ 的 FEV1"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-linear-regression-review-v2",
-      "lessonId": "staged-method-linear-regression",
-      "lessonTitleCn": "线性回归",
-      "role": "review",
-      "scenarioCn": "判断把每只动物 6 次测量当 72 行普通 OLS 是否可接受。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A129",
+      "scenario": "判断把每只动物 6 次测量当 72 行普通 OLS 是否可接受。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -8424,15 +7907,11 @@
           "labelCn": "两模型点估计接近即可保留 OLS"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-logistic-regression-apply-v2",
-      "lessonId": "staged-method-logistic-regression",
-      "lessonTitleCn": "Logistic 回归",
-      "role": "apply",
-      "scenarioCn": "结局常见时判断 OR=2 能否写成风险翻倍。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A130",
+      "scenario": "结局常见时判断 OR=2 能否写成风险翻倍。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -8490,15 +7969,11 @@
           "labelCn": "CI 排除 1 就能直接选择临床阈值"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-logistic-regression-remediation-v2",
-      "lessonId": "staged-method-logistic-regression",
-      "lessonTitleCn": "Logistic 回归",
-      "role": "remediation",
-      "scenarioCn": "所有变异携带者均为病例，普通极大似然失败。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A131",
+      "scenario": "所有变异携带者均为病例，普通极大似然失败。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -8556,15 +8031,11 @@
           "labelCn": "删除变异变量即可解决"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-logistic-regression-review-v2",
-      "lessonId": "staged-method-logistic-regression",
-      "lessonTitleCn": "Logistic 回归",
-      "role": "review",
-      "scenarioCn": "外部 AUC 尚可但校准差，判断阈值能否部署。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A132",
+      "scenario": "外部 AUC 尚可但校准差，判断阈值能否部署。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -8622,15 +8093,11 @@
           "labelCn": "外部验证失败，应从头重训所有参数"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-cox-regression-apply-v2",
-      "lessonId": "staged-method-cox-regression",
-      "lessonTitleCn": "Cox 比例风险回归",
-      "role": "apply",
-      "scenarioCn": "原论文错置 time zero 并用 31 个事件搜索 cut-point。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A133",
+      "scenario": "原论文错置 time zero 并用 31 个事件搜索 cut-point。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -8688,15 +8155,11 @@
           "labelCn": "HR=3.8 表示 12 月复发风险高 3.8 倍"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-cox-regression-remediation-v2",
-      "lessonId": "staged-method-cox-regression",
-      "lessonTitleCn": "Cox 比例风险回归",
-      "role": "remediation",
-      "scenarioCn": "按第 60 天 landmark 重画谁能进入风险集。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A134",
+      "scenario": "按第 60 天 landmark 重画谁能进入风险集。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -8754,15 +8217,11 @@
           "labelCn": "将 A/B MRD 记为缺失并多重插补"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-cox-regression-review-v2",
-      "lessonId": "staged-method-cox-regression",
-      "lessonTitleCn": "Cox 比例风险回归",
-      "role": "review",
-      "scenarioCn": "论文只报未注明单位的 HR，缺绝对风险与验证。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A135",
+      "scenario": "论文只报未注明单位的 HR，缺绝对风险与验证。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -8820,15 +8279,11 @@
           "labelCn": "外部 PH P>0.05 即完成验证"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-kaplan-logrank-apply-v2",
-      "lessonId": "staged-method-kaplan-logrank",
-      "lessonTitleCn": "Kaplan–Meier 与 log-rank",
-      "role": "apply",
-      "scenarioCn": "曲线交叉时判断整体检验和 24 月差异。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A136",
+      "scenario": "曲线交叉时判断整体检验和 24 月差异。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -8886,15 +8341,11 @@
           "labelCn": "log-rank 不显著证明两曲线相同"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-kaplan-logrank-remediation-v2",
-      "lessonId": "staged-method-kaplan-logrank",
-      "lessonTitleCn": "Kaplan–Meier 与 log-rank",
-      "role": "remediation",
-      "scenarioCn": "逐人修正目标事件、竞争事件和行政截止编码。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A137",
+      "scenario": "逐人修正目标事件、竞争事件和行政截止编码。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -8952,15 +8403,11 @@
           "labelCn": "行政截止时仍存活者记 12 月事件"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-kaplan-logrank-review-v2",
-      "lessonId": "staged-method-kaplan-logrank",
-      "lessonTitleCn": "Kaplan–Meier 与 log-rank",
-      "role": "review",
-      "scenarioCn": "同队列尝试 19 个阈值后出现显著 log-rank。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A138",
+      "scenario": "同队列尝试 19 个阈值后出现显著 log-rank。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -9018,15 +8465,11 @@
           "labelCn": "bootstrap 500 次证明阈值可靠"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-restricted-cubic-spline-apply-v2",
-      "lessonId": "staged-method-restricted-cubic-spline",
-      "lessonTitleCn": "限制性立方样条",
-      "role": "apply",
-      "scenarioCn": "曲线在仅 4% 样本的尾部急升，被称为阈值。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A139",
+      "scenario": "曲线在仅 4% 样本的尾部急升，被称为阈值。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -9084,15 +8527,11 @@
           "labelCn": "选曲线最陡点二分可便于临床"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-restricted-cubic-spline-remediation-v2",
-      "lessonId": "staged-method-restricted-cubic-spline",
-      "lessonTitleCn": "限制性立方样条",
-      "role": "remediation",
-      "scenarioCn": "用分箱点识别漂亮曲线哪一段缺少数据。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A140",
+      "scenario": "用分箱点识别漂亮曲线哪一段缺少数据。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -9150,15 +8589,11 @@
           "labelCn": "宽 CI 只影响精度，不影响曲线形状"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-restricted-cubic-spline-review-v2",
-      "lessonId": "staged-method-restricted-cubic-spline",
-      "lessonTitleCn": "限制性立方样条",
-      "role": "review",
-      "scenarioCn": "新队列测量范围更窄，判断可运输部分。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A141",
+      "scenario": "新队列测量范围更窄，判断可运输部分。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -9216,15 +8651,11 @@
           "labelCn": "把高端患者外推到验证范围之外"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-bootstrap-apply-v2",
-      "lessonId": "staged-method-bootstrap",
-      "lessonTitleCn": "Bootstrap",
-      "role": "apply",
-      "scenarioCn": "确定 bootstrap 的重采样单位和完整流程。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A142",
+      "scenario": "确定 bootstrap 的重采样单位和完整流程。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -9282,15 +8713,11 @@
           "labelCn": "固定入选特征只 bootstrap 系数"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-bootstrap-remediation-v2",
-      "lessonId": "staged-method-bootstrap",
-      "lessonTitleCn": "Bootstrap",
-      "role": "remediation",
-      "scenarioCn": "修复只重拟合最终模型的伪 bootstrap。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A143",
+      "scenario": "修复只重拟合最终模型的伪 bootstrap。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -9348,15 +8775,11 @@
           "labelCn": "选特征是无监督步骤可固定"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-bootstrap-review-v2",
-      "lessonId": "staged-method-bootstrap",
-      "lessonTitleCn": "Bootstrap",
-      "role": "review",
-      "scenarioCn": "判断开发队列 bootstrap 能否替代真实外部验证。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A144",
+      "scenario": "判断开发队列 bootstrap 能否替代真实外部验证。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -9414,15 +8837,11 @@
           "labelCn": "11 个事件足以宣布模型无效"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-cross-validation-apply-v2",
-      "lessonId": "staged-method-cross-validation",
-      "lessonTitleCn": "交叉验证",
-      "role": "apply",
-      "scenarioCn": "定位全数据归一化造成的首次泄漏。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A145",
+      "scenario": "定位全数据归一化造成的首次泄漏。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -9480,15 +8899,11 @@
           "labelCn": "五折保证每人都被测试所以结果有效"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-cross-validation-remediation-v2",
-      "lessonId": "staged-method-cross-validation",
-      "lessonTitleCn": "交叉验证",
-      "role": "remediation",
-      "scenarioCn": "修复同患者片段跨训练和测试。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A146",
+      "scenario": "修复同患者片段跨训练和测试。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -9546,15 +8961,11 @@
           "labelCn": "选患者分折中 AUC 较高的一次"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-cross-validation-review-v2",
-      "lessonId": "staged-method-cross-validation",
-      "lessonTitleCn": "交叉验证",
-      "role": "review",
-      "scenarioCn": "比较 leave-center-out 与最终时间隔离队列的角色。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A147",
+      "scenario": "比较 leave-center-out 与最终时间隔离队列的角色。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -9612,15 +9023,11 @@
           "labelCn": "AUC 尚可即可忽略校准斜率"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-roc-auc-apply-v2",
-      "lessonId": "staged-method-roc-auc",
-      "lessonTitleCn": "ROC / AUC",
-      "role": "apply",
-      "scenarioCn": "判断 AUC=0.82 后还能声称什么。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A148",
+      "scenario": "判断 AUC=0.82 后还能声称什么。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -9678,15 +9085,11 @@
           "labelCn": "Youden 阈值天然最优"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-roc-auc-remediation-v2",
-      "lessonId": "staged-method-roc-auc",
-      "lessonTitleCn": "ROC / AUC",
-      "role": "remediation",
-      "scenarioCn": "从同 AUC、不同校准中选择可修复模型。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A149",
+      "scenario": "从同 AUC、不同校准中选择可修复模型。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -9744,15 +9147,11 @@
           "labelCn": "选择预测概率更极端的 B"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-roc-auc-review-v2",
-      "lessonId": "staged-method-roc-auc",
-      "lessonTitleCn": "ROC / AUC",
-      "role": "review",
-      "scenarioCn": "case mix 改变时审核 AUC、校准和阈值。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A150",
+      "scenario": "case mix 改变时审核 AUC、校准和阈值。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -9810,15 +9209,11 @@
           "labelCn": "灵敏度 0.91 足以推荐"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-time-dependent-auc-apply-v2",
-      "lessonId": "staged-method-time-dependent-auc",
-      "lessonTitleCn": "时间依赖 AUC",
-      "role": "apply",
-      "scenarioCn": "比较 1 年和 5 年估计的可用性。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A151",
+      "scenario": "比较 1 年和 5 年估计的可用性。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -9876,15 +9271,11 @@
           "labelCn": "删失者全部当非病例"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-time-dependent-auc-remediation-v2",
-      "lessonId": "staged-method-time-dependent-auc",
-      "lessonTitleCn": "时间依赖 AUC",
-      "role": "remediation",
-      "scenarioCn": "修复把两年前删失者当动态对照。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A152",
+      "scenario": "修复把两年前删失者当动态对照。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -9942,15 +9333,11 @@
           "labelCn": "删除 P2 不会影响 AUC"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-time-dependent-auc-review-v2",
-      "lessonId": "staged-method-time-dependent-auc",
-      "lessonTitleCn": "时间依赖 AUC",
-      "role": "review",
-      "scenarioCn": "审核是否复用了同一时点定义和删失模型。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A153",
+      "scenario": "审核是否复用了同一时点定义和删失模型。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -10008,15 +9395,11 @@
           "labelCn": "5 年 AUC 更高说明模型改善"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-pca-apply-v2",
-      "lessonId": "staged-method-pca",
-      "lessonTitleCn": "主成分分析",
-      "role": "apply",
-      "scenarioCn": "PC1 完全分组但 batch 与疾病重合，判断能否命名疾病轴。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A154",
+      "scenario": "PC1 完全分组但 batch 与疾病重合，判断能否命名疾病轴。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -10074,15 +9457,11 @@
           "labelCn": "PCA 不使用标签所以不受批次混杂"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-pca-remediation-v2",
-      "lessonId": "staged-method-pca",
-      "lessonTitleCn": "主成分分析",
-      "role": "remediation",
-      "scenarioCn": "用缩放前后 loading 变化重建 PCA 含义。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A155",
+      "scenario": "用缩放前后 loading 变化重建 PCA 含义。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -10140,15 +9519,11 @@
           "labelCn": "z-score 后 loadings 接近证明四特征同机制"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-pca-review-v2",
-      "lessonId": "staged-method-pca",
-      "lessonTitleCn": "主成分分析",
-      "role": "review",
-      "scenarioCn": "判断缺特征和量纲改变时能否直接投影。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A156",
+      "scenario": "判断缺特征和量纲改变时能否直接投影。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -10206,15 +9581,11 @@
           "labelCn": "只要 PC1 解释方差接近就复现"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-nmf-apply-v2",
-      "lessonId": "staged-method-nmf",
-      "lessonTitleCn": "非负矩阵分解",
-      "role": "apply",
-      "scenarioCn": "rank=4 结局最显著但稳定性差，选择可辩护 rank。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A157",
+      "scenario": "rank=4 结局最显著但稳定性差，选择可辩护 rank。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -10272,15 +9643,11 @@
           "labelCn": "误差最低的最高 rank 总是更好"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-nmf-remediation-v2",
-      "lessonId": "staged-method-nmf",
-      "lessonTitleCn": "非负矩阵分解",
-      "role": "remediation",
-      "scenarioCn": "修复单次初始化被当作稳定程序。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A158",
+      "scenario": "修复单次初始化被当作稳定程序。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -10338,15 +9705,11 @@
           "labelCn": "误差差异小所以标签稳定"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-nmf-review-v2",
-      "lessonId": "staged-method-nmf",
-      "lessonTitleCn": "非负矩阵分解",
-      "role": "review",
-      "scenarioCn": "外部只复现连续 program，更新离散 subtype 主张。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A159",
+      "scenario": "外部只复现连续 program，更新离散 subtype 主张。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -10404,15 +9767,11 @@
           "labelCn": "58% 高于随机所以亚型已复现"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-clustering-apply-v2",
-      "lessonId": "staged-method-clustering",
-      "lessonTitleCn": "聚类",
-      "role": "apply",
-      "scenarioCn": "三簇热图受批次主导，决定能否报告亚型。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A160",
+      "scenario": "三簇热图受批次主导，决定能否报告亚型。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -10470,15 +9829,11 @@
           "labelCn": "silhouette>0 即三簇成立"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-clustering-remediation-v2",
-      "lessonId": "staged-method-clustering",
-      "lessonTitleCn": "聚类",
-      "role": "remediation",
-      "scenarioCn": "把强制 k-means 标签改为连续轴。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A161",
+      "scenario": "把强制 k-means 标签改为连续轴。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -10536,15 +9891,11 @@
           "labelCn": "k-means 必须给每人一个亚型"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-clustering-review-v2",
-      "lessonId": "staged-method-clustering",
-      "lessonTitleCn": "聚类",
-      "role": "review",
-      "scenarioCn": "审核新队列是否真正验证聚类。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A162",
+      "scenario": "审核新队列是否真正验证聚类。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -10602,15 +9953,11 @@
           "labelCn": "删除低相关样本即可提高一致率"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-gsea-apply-v2",
-      "lessonId": "staged-method-gsea",
-      "lessonTitleCn": "GSEA",
-      "role": "apply",
-      "scenarioCn": "大量细胞下选择可交换单位和完整排名。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A163",
+      "scenario": "大量细胞下选择可交换单位和完整排名。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -10668,15 +10015,11 @@
           "labelCn": "只取显著 DEG 再做 GSEA"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-gsea-remediation-v2",
-      "lessonId": "staged-method-gsea",
-      "lessonTitleCn": "GSEA",
-      "role": "remediation",
-      "scenarioCn": "修复把 43 个 DEG 列表冒充 GSEA 输入。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A164",
+      "scenario": "修复把 43 个 DEG 列表冒充 GSEA 输入。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -10734,15 +10077,11 @@
           "labelCn": "名义 P=0.01 比 FDR 更应优先"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-gsea-review-v2",
-      "lessonId": "staged-method-gsea",
-      "lessonTitleCn": "GSEA",
-      "role": "review",
-      "scenarioCn": "审查方向、数据库版本和冗余。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A165",
+      "scenario": "审查方向、数据库版本和冗余。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -10800,15 +10139,11 @@
           "labelCn": "多个同义集合是独立支持"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-gsva-ssgsea-apply-v2",
-      "lessonId": "staged-method-gsva-ssgsea",
-      "lessonTitleCn": "GSVA 与 ssGSEA",
-      "role": "apply",
-      "scenarioCn": "判断不同算法原始分数能否直接合并。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A166",
+      "scenario": "判断不同算法原始分数能否直接合并。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -10866,15 +10201,11 @@
           "labelCn": "高分证明 IFN 通路活化"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-gsva-ssgsea-remediation-v2",
-      "lessonId": "staged-method-gsva-ssgsea",
-      "lessonTitleCn": "GSVA 与 ssGSEA",
-      "role": "remediation",
-      "scenarioCn": "修复 30000 个细胞的伪重复。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A167",
+      "scenario": "修复 30000 个细胞的伪重复。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -10932,15 +10263,11 @@
           "labelCn": "合并所有 T 细胞可增加功效"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-gsva-ssgsea-review-v2",
-      "lessonId": "staged-method-gsva-ssgsea",
-      "lessonTitleCn": "GSVA 与 ssGSEA",
-      "role": "review",
-      "scenarioCn": "审核实现冻结后仍可能的队列组成影响。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A168",
+      "scenario": "审核实现冻结后仍可能的队列组成影响。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -10998,15 +10325,11 @@
           "labelCn": "CI 排除 0 即复现"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-wgcna-apply-v2",
-      "lessonId": "staged-method-wgcna",
-      "lessonTitleCn": "WGCNA",
-      "role": "apply",
-      "scenarioCn": "模块同时关联结局和批次时决定主张。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A169",
+      "scenario": "模块同时关联结局和批次时决定主张。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -11064,15 +10387,11 @@
           "labelCn": "最高 connectivity 基因是上游因果基因"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-wgcna-remediation-v2",
-      "lessonId": "staged-method-wgcna",
-      "lessonTitleCn": "WGCNA",
-      "role": "remediation",
-      "scenarioCn": "修复按性状 P 值调软阈值。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A170",
+      "scenario": "修复按性状 P 值调软阈值。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -11130,15 +10449,11 @@
           "labelCn": "模块出现 43% 仍可命名"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-wgcna-review-v2",
-      "lessonId": "staged-method-wgcna",
-      "lessonTitleCn": "WGCNA",
-      "role": "review",
-      "scenarioCn": "新队列应测 preservation 而非重命名。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A171",
+      "scenario": "新队列应测 preservation 而非重命名。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -11196,15 +10511,11 @@
           "labelCn": "Z>2 就可称强保存"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-pseudobulk-apply-v2",
-      "lessonId": "staged-method-pseudobulk",
-      "lessonTitleCn": "Pseudobulk",
-      "role": "apply",
-      "scenarioCn": "把逐细胞矩阵改成保留配对的 pseudobulk。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A172",
+      "scenario": "把逐细胞矩阵改成保留配对的 pseudobulk。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -11262,15 +10573,11 @@
           "labelCn": "每供体合成一个向量即可"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-pseudobulk-remediation-v2",
-      "lessonId": "staged-method-pseudobulk",
-      "lessonTitleCn": "Pseudobulk",
-      "role": "remediation",
-      "scenarioCn": "修复聚合时抹掉时间条件。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A173",
+      "scenario": "修复聚合时抹掉时间条件。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -11328,15 +10635,11 @@
           "labelCn": "把 18 列当独立样本"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-pseudobulk-review-v2",
-      "lessonId": "staged-method-pseudobulk",
-      "lessonTitleCn": "Pseudobulk",
-      "role": "review",
-      "scenarioCn": "审核多组织是否保留 donor 重复。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A174",
+      "scenario": "审核多组织是否保留 donor 重复。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -11394,15 +10697,11 @@
           "labelCn": "CI 排除 0 所以忽略 FDR"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-differential-abundance-apply-v2",
-      "lessonId": "staged-method-differential-abundance",
-      "lessonTitleCn": "差异丰度",
-      "role": "apply",
-      "scenarioCn": "捕获总数不同下比较细胞群丰度。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A175",
+      "scenario": "捕获总数不同下比较细胞群丰度。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -11460,15 +10759,11 @@
           "labelCn": "比例升高证明 B 细胞增殖"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-differential-abundance-remediation-v2",
-      "lessonId": "staged-method-differential-abundance",
-      "lessonTitleCn": "差异丰度",
-      "role": "remediation",
-      "scenarioCn": "把逐细胞二项检验改为样本层模型。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A176",
+      "scenario": "把逐细胞二项检验改为样本层模型。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -11526,15 +10821,11 @@
           "labelCn": "offset 后系数不显著证明无差异"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-differential-abundance-review-v2",
-      "lessonId": "staged-method-differential-abundance",
-      "lessonTitleCn": "差异丰度",
-      "role": "review",
-      "scenarioCn": "连续状态邻域仍需供体层检验和组成敏感性。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A177",
+      "scenario": "连续状态邻域仍需供体层检验和组成敏感性。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -11592,15 +10883,11 @@
           "labelCn": "邻域连续就可按细胞独立"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-trajectory-pseudotime-apply-v2",
-      "lessonId": "staged-method-trajectory-pseudotime",
-      "lessonTitleCn": "轨迹与伪时间",
-      "role": "apply",
-      "scenarioCn": "轨迹由一个供体驱动且根无外部依据。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A178",
+      "scenario": "轨迹由一个供体驱动且根无外部依据。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -11658,15 +10945,11 @@
           "labelCn": "12000 个细胞提供巨大复制"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-trajectory-pseudotime-remediation-v2",
-      "lessonId": "staged-method-trajectory-pseudotime",
-      "lessonTitleCn": "轨迹与伪时间",
-      "role": "remediation",
-      "scenarioCn": "更换根与表征后记录分支稳定性。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A179",
+      "scenario": "更换根与表征后记录分支稳定性。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -11724,15 +11007,11 @@
           "labelCn": "7/8 分支足以忽略另一分支"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-trajectory-pseudotime-review-v2",
-      "lessonId": "staged-method-trajectory-pseudotime",
-      "lessonTitleCn": "轨迹与伪时间",
-      "role": "review",
-      "scenarioCn": "区分状态排列与真实转化证据。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A180",
+      "scenario": "区分状态排列与真实转化证据。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -11790,15 +11069,11 @@
           "labelCn": "38% 已证明所有 A 都进入 C"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-cellchat-communication-apply-v2",
-      "lessonId": "staged-method-cellchat-communication",
-      "lessonTitleCn": "CellChat 与细胞通信推断",
-      "role": "apply",
-      "scenarioCn": "网络更密但髓系比例更高，排序候选边。",
-      "promptCn": "综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
+      "anonymousAssessmentId": "A181",
+      "scenario": "网络更密但髓系比例更高，排序候选边。\n作答要求：综合材料选择全部必要判断（最多 4 项），把每项与支持它的一条或多条资料对应。",
       "stimulus": {
         "format": "case_table",
         "columnsCn": [
@@ -11856,15 +11131,11 @@
           "labelCn": "逐细胞 P 值可证明患者一致"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 4
     },
     {
-      "assessmentId": "staged-method-cellchat-communication-remediation-v2",
-      "lessonId": "staged-method-cellchat-communication",
-      "lessonTitleCn": "CellChat 与细胞通信推断",
-      "role": "remediation",
-      "scenarioCn": "把逐细胞显著边改为供体重现和组成敏感性。",
-      "promptCn": "选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
+      "anonymousAssessmentId": "A182",
+      "scenario": "把逐细胞显著边改为供体重现和组成敏感性。\n作答要求：选择最先必须修复的一处分析错误；不要把后续边界说明误当根因定位。",
       "stimulus": {
         "format": "evidence_matrix",
         "columnsCn": [
@@ -11922,15 +11193,11 @@
           "labelCn": "数据库有配体受体对就是机制"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     },
     {
-      "assessmentId": "staged-method-cellchat-communication-review-v2",
-      "lessonId": "staged-method-cellchat-communication",
-      "lessonTitleCn": "CellChat 与细胞通信推断",
-      "role": "review",
-      "scenarioCn": "空间共定位但无功能实验时限定主张。",
-      "promptCn": "选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
+      "anonymousAssessmentId": "A183",
+      "scenario": "空间共定位但无功能实验时限定主张。\n作答要求：选择唯一一条没有越过现有证据的结论改写，并指出原主张被收窄的依据。",
       "stimulus": {
         "format": "decision_timeline",
         "columnsCn": [
@@ -11988,8 +11255,8 @@
           "labelCn": "10/14 供体意味着普遍机制"
         }
       ],
-      "maximumAnswerSlots": 4
+      "maximumSelections": 1
     }
   ],
-  "packetHash": "ae8d345ae5f564b48c3674fa241c209fe81c1083141276651d04cb8e0ca8ac59"
+  "packetHash": "7069a743cc5304c5c9e10c2f89b197d3145307d2ac7d064877fdc14e6c8b7386"
 }

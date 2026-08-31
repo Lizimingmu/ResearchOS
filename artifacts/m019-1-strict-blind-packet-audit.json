@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "counts": {
+    "items": 183,
+    "metadataLeaks": 0
+  },
+  "leakedPaths": [],
+  "errors": []
+}

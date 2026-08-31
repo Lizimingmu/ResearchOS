@@ -2,6 +2,7 @@ import type { CapabilityId, ContentClassification } from "./learningArchitecture
 
 export type CurriculumContentType = "guide" | "concept_lesson" | "method_lesson" | "case_lab" | "studio";
 export type ScientificRisk = "LOW" | "MEDIUM" | "HIGH";
+export type AssessmentTaskContract = "multi_select_audit" | "classification" | "claim_rewrite" | "error_localization" | "choose_next_evidence" | "ordering_sequence" | "integrated_judgment";
 
 export interface CurriculumManifestItemV1 {
   schemaVersion: 1;
@@ -28,6 +29,7 @@ export interface CurriculumManifestItemV1 {
 export interface StagedAssessmentAssetV1 {
   id: string;
   role: "apply" | "remediation" | "review";
+  taskContract: AssessmentTaskContract;
   scenarioCn: string;
   promptCn: string;
   options: Array<{ id: string; labelCn: string }>;

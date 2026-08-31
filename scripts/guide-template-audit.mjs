@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { authoredGuideContent } from "../.build/data/self-rescue-guide/content/index.js";
+import { selfRescueGuideSections } from "../.build/data/self-rescue-guide/index.js";
 
 const normalize = (value) => value.toLowerCase().replace(/[\s，。；：、“”‘’（）()\[\]【】\-—_/|0-9]/g, "");
 const grams = (value, n = 4) => {
@@ -15,11 +16,16 @@ const dice = (left, right) => {
   let overlap = 0; for (const token of a) if (b.has(token)) overlap += 1;
   return (2 * overlap) / (a.size + b.size);
 };
+const renderedBodyByTopic = new Map(selfRescueGuideSections.map((section) => [`${section.chapterId}::${section.titleEn}`, section.bodyCn.join("\n")]));
+const topicLabel = (item) => `${item.moduleId}::${item.titleEn}`;
 const fields = (item) => ({
+  whyItMatters: item.whyItMattersCn,
   intuition: item.intuitionCn,
+  preciseExplanation: item.preciseExplanationCn.join(""),
   misconception: item.misconceptionCn.join(""),
   boundary: item.boundaryCn.join(""),
   example: JSON.stringify(item.biomedicalExample),
+  fullRenderedBody: renderedBodyByTopic.get(topicLabel(item)) ?? "",
 });
 const exact = [];
 const normalized = [];
@@ -34,18 +40,18 @@ for (const item of authoredGuideContent) {
     const exactKey = `${field}:${text}`;
     const normKey = `${field}:${normalize(text)}`;
     const prefixKey = `${field}:${normalize(text).slice(0, 32)}`;
-    if (seenExact.has(exactKey)) exact.push([seenExact.get(exactKey), item.titleEn, field]); else seenExact.set(exactKey, item.titleEn);
-    if (seenNormalized.has(normKey)) normalized.push([seenNormalized.get(normKey), item.titleEn, field]); else seenNormalized.set(normKey, item.titleEn);
-    if (prefixKey.length > field.length + 20 && seenPrefix.has(prefixKey)) repeatedPrefix.push([seenPrefix.get(prefixKey), item.titleEn, field]); else seenPrefix.set(prefixKey, item.titleEn);
+    if (seenExact.has(exactKey)) exact.push([seenExact.get(exactKey), topicLabel(item), field]); else seenExact.set(exactKey, topicLabel(item));
+    if (seenNormalized.has(normKey)) normalized.push([seenNormalized.get(normKey), topicLabel(item), field]); else seenNormalized.set(normKey, topicLabel(item));
+    if (prefixKey.length > field.length + 20 && seenPrefix.has(prefixKey)) repeatedPrefix.push([seenPrefix.get(prefixKey), topicLabel(item), field]); else seenPrefix.set(prefixKey, topicLabel(item));
   }
 }
 
 for (let left = 0; left < authoredGuideContent.length; left += 1) {
   for (let right = left + 1; right < authoredGuideContent.length; right += 1) {
     const a = authoredGuideContent[left]; const b = authoredGuideContent[right];
-    for (const field of ["intuition", "misconception", "boundary", "example"]) {
+    for (const field of ["whyItMatters", "intuition", "preciseExplanation", "misconception", "boundary", "example", "fullRenderedBody"]) {
       const score = dice(fields(a)[field], fields(b)[field]);
-      if (score >= 0.82) highSimilarity.push({ left: a.titleEn, right: b.titleEn, field, score: Number(score.toFixed(3)) });
+      if (score >= 0.82) highSimilarity.push({ left: topicLabel(a), right: topicLabel(b), field, score: Number(score.toFixed(3)) });
     }
   }
 }

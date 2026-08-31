@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "status": "PASS",
+  "counts": {
+    "lessons": 61,
+    "assessments": 183,
+    "caseLabs": 12,
+    "fullyMaterialized": 183,
+    "correctCountDistribution": {
+      "1": 122,
+      "2": 1,
+      "3": 22,
+      "4": 38
+    },
+    "taskContractDistribution": {
+      "multi_select_audit": 0,
+      "classification": 0,
+      "claim_rewrite": 61,
+      "error_localization": 61,
+      "choose_next_evidence": 0,
+      "ordering_sequence": 0,
+      "integrated_judgment": 61
+    },
+    "instantiatedContractTypes": 3,
+    "variableFactCountAssessments": 1,
+    "multiFactEvidenceMappings": 1,
+    "obviousDistractorFlags": 0,
+    "duplicateDistractorFlags": 0,
+    "materialSpecificityFlags": 16
+  },
+  "obviousDistractorFlags": [],
+  "duplicateDistractorFlags": [],
+  "materialSpecificityFlags": [
+    "staged-concept-power-remediation-v2",
+    "staged-concept-interaction-apply-v2",
+    "staged-concept-interaction-remediation-v2",
+    "staged-concept-data-leakage-remediation-v2",
+    "staged-concept-time-origin-remediation-v2",
+    "staged-concept-time-origin-review-v2",
+    "staged-concept-cluster-stability-apply-v2",
+    "staged-concept-pseudobulk-remediation-v2",
+    "staged-concept-cross-modal-validation-remediation-v2",
+    "staged-concept-alternative-explanation-remediation-v2",
+    "staged-concept-alternative-explanation-review-v2",
+    "staged-concept-claim-boundary-remediation-v2",
+    "staged-concept-minimal-sufficient-analysis-remediation-v2",
+    "staged-concept-evidence-redundancy-remediation-v2",
+    "staged-concept-negative-result-remediation-v2",
+    "staged-concept-negative-result-review-v2"
+  ],
+  "errors": []
+}
