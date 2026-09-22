@@ -1,5 +1,53 @@
 # Implementation Report
 
+Status: COMPLETE — M020 background acceptance passed.
+Baseline: `7a41b4926e3a2a408acce7c073b2351c4fc230cc`.
+Implementer/reviewer: Codex with bounded collaborators. OpenCode / configured DeepSeek Pro could not execute due to environment errors; no model/provider settings changed.
+
+## Changed files
+
+- `src/domain/knowledge.ts`, `src/services/knowledge.ts`: six typed knowledge contracts, immutable operations, local imports, exact dependency impact, audit and activation safety.
+- `src/services/knowledgeAdapters.ts`, `src/data/knowledge.ts`, `data/knowledge/protocol-staging-examples.json`: lossless pending wrappers and real protocol staging adapters/examples.
+- Content Studio Knowledge Maintenance panel, dedicated CSS and maintenance notices in learning/Guide/Case surfaces.
+- State schema 9 migration, store persistence and update boundaries; scheduler/Review holds; optional historical binding metadata on LearningEventV1; JSON learning export.
+- `tests-node/m020.mjs`, `tests-node/m020-ui.mjs`, audit/UI runner scripts and package scripts; deterministic M020 audit artifact and public report.
+
+## Implemented
+
+Create, duplicate, revise, supersede, deprecate, restore, compare; seven local input formats and six candidate change classes; eight candidate learning projections; append-only source/claim/unit histories, exact learning id/revision/hash dependency nodes, patch proposals and review holds. Personal overlays receive explicit conflicts without silent merge. Existing Kernel score/stage logic and M019 scientific content are unchanged.
+
+Initial canonical seed contains 79 pending knowledge units, 85 sources, 375 claims and 688 learning bindings. 327 bindings lack an explicit knowledge mapping; 328 contain migration review gaps. Five protocol examples and two original complete staging packages migrate without scientific promotion.
+
+## Tests
+
+- BACKGROUND AUTOMATED — PASS: `npm run typecheck`; `npm test` (201/201 regression + 1/1 isolated DOM workflow, seven knowledge audits, original registry/localization/startup checks).
+- BACKGROUND AUTOMATED — PASS: privacy selection (4/4), covering public payloads, credentials and zero-network imports; migration and all four acceptance scenarios are part of the full suite.
+- HEADLESS/OFF-SCREEN — browser NOT RUN; component rendering/JSDOM runs are included in background tests, not visual acceptance.
+- FOREGROUND UI — NOT RUN; no current foreground session authorized and prior localhost browser denial was not bypassed.
+- USER-MANUAL — NOT RUN.
+- Independent review probes covered empty-history hydration, removed update decisions/holds, legacy aliases, full protocol packs and same-id/revision different-hash impact separation.
+
+## Failures
+
+- OpenCode failed before implementation on log-directory permissions, then `EPERM uv_spawn 'git'`; explicitly reported and replaced by authorized Codex implementation.
+- First regression run: 187/197 passed; JSON-persisted undefined fields changed new knowledge hashes. Knowledge hashes now normalize JSON storage semantics without changing old content hashes. Two test expectations also needed JSON-aware comparison and a credential-regex boundary.
+- Second regression run: 198/199 passed; remaining test compared an absent JSON property with an in-memory undefined property. Corrected to compare storage semantics. Final run passes 201/201.
+- A separate Node `--test` privacy command encountered child-process `spawn EPERM`. The same targeted tests pass in the ordinary in-process Node test harness; package privacy command uses that mode. No permissions were bypassed.
+- Browser visual checks remain unperformed; automated checks do not establish scientific validity or learning effectiveness.
+
+## Remaining issues
+
+No required M020 engineering acceptance check remains failing. Scientific review gaps and unresolved mappings are intentionally preserved. Activation/reapproval, real target-learner validation, exact recovery of unknown historical revisions and future seed-upgrade migration policy need later explicit work. M019 assessment/content issues were not repaired. Stop after authorized commit + push.
+
+
+---
+
+## Historical record retained from the baseline
+
+The material below belongs to earlier milestones. It does not change the M020 scope, current acceptance, or pending scientific status above.
+
+# Implementation Report
+
 Status: COMPLETE — awaiting Codex review
 Task IDs: M013-01 through M013-07; M013-10; M013-09 + M013-10R (final patch); M013-11R (micro-patch); M013-11R2 (metadata patch); M014-01 (tutorial); M014-02 (release candidate — background work complete, interactive smoke paused per `.agent/TESTING_POLICY.md`)
 Agent/model: OpenCode / DeepSeek V4 Pro

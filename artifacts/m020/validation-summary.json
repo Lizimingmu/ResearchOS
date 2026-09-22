@@ -1,0 +1,44 @@
+{
+  "milestone": "M020",
+  "baseline": "7a41b4926e3a2a408acce7c073b2351c4fc230cc",
+  "branch": "codex/m020-extensible-knowledge-architecture",
+  "typecheck": "PASS",
+  "fullRegression": {
+    "failed": 0,
+    "passed": 201
+  },
+  "isolatedDom": {
+    "failed": 0,
+    "passed": 1
+  },
+  "privacy": {
+    "passed": 4,
+    "failed": 0,
+    "note": "Targeted subset of full regression; no child-process test runner."
+  },
+  "deterministicKnowledgeAudits": 7,
+  "legacyRegistry": "PASS (297 entries, 9 assets)",
+  "localization": "PASS (11 checks, 88 bilingual method titles)",
+  "productionStartup": "PASS (isolated JSDOM; no browser)",
+  "migration": "PASS (schema 8 to 9, exact history preserved; malformed and incomplete update history rejected)",
+  "independentProtocolChecks": [
+    "five examples sequentially imported",
+    "original batch01: 18 units, 31 bindings",
+    "original batch07: 22 units, 22 bindings"
+  ],
+  "foreground": "NOT RUN",
+  "browser": "NOT RUN; prior permission denial respected",
+  "manual": "NOT RUN",
+  "scientificActivation": 0,
+  "newVerifiedKnowledge": 0,
+  "sourceSha256": {
+    "src/domain/knowledge.ts": "206f8c88e208b38c2a786e64501c288a4a6c7946c5fafb4238e18bc05f397440",
+    "src/services/knowledge.ts": "e042b254ec330b3842aefc065284ba40b0dcbc244bd9703cdfcdc7bf37f9b2f7",
+    "src/services/knowledgeAdapters.ts": "4db40754248ee0ec92d21c27cacc3bb1e7f801b4f2b428c72d2023f154dc8c7f",
+    "src/data/knowledge.ts": "2a89396c31978b5f82e13ad1e8e94310e194ea5e1bf69e8fb4be43d427b56a76",
+    "src/state/migrations.ts": "249047eb4ad89f79001713bb33d42d64022d00d929af9fde683e87f0aa7137d2",
+    "src/state/store.ts": "d9ee46205896709ca3341de875547e88622eed4e4eafe300f7c6e8dc19db64aa",
+    "tests-node/m020.mjs": "90c6d7f6cb928ce770822d8e45b5b773356b493e0d768f130c540da55f3c0de9",
+    "tests-node/m020-ui.mjs": "b4222d13455e51ca3291de6ea1207cc818a571c024798e83e158b063c2e67a4d"
+  }
+}

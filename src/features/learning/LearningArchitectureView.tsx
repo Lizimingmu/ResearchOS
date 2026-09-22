@@ -11,6 +11,8 @@ import type { ConceptLessonV1, LearningContentPhase, LearningContentRegistryEntr
 import type { PracticeResponseV1 } from "../../domain/learningKernel";
 import { contentPrerequisitesMet, type ArchitectureAttemptKind } from "../../learning/learningArchitectureEngine";
 import { useAppStore } from "../../state/store";
+import { isKnowledgeLearningAllowed } from "../../services/knowledge";
+import { KnowledgeMaintenanceNotice } from "../../components/KnowledgeMaintenanceNotice";
 import { PracticeActivity } from "./PracticeActivity";
 
 function HierarchyExplorer() {
@@ -91,9 +93,10 @@ export function LearningArchitectureView({ onOpenLegacy }: { onOpenLegacy: () =>
   const select = useAppStore((state) => state.selectLearningContent);
   const progress = useAppStore((state) => Object.values(state.learningContentProgress));
   const states = useAppStore((state) => state.learnerUnitStates);
+  const knowledgeWorkspace = useAppStore((state) => state.knowledgeWorkspace);
   const selectedConcept = conceptLessons.find((item) => item.id === selectedId) ?? (!methodLessons.some((item) => item.id === selectedId) ? conceptLessons[0] : undefined);
   const selectedMethod = methodLessons.find((item) => item.id === selectedId);
   const entry = learningContentRegistry.find((item) => item.id === (selectedConcept?.id ?? selectedMethod?.id));
   const gate = entry ? contentPrerequisitesMet(entry, { registry: learningContentRegistry, progress, states }) : false;
-  return <div className="learn-architecture"><aside><span className="eyebrow">LEARN</span><h2>Thread A · Foundation</h2>{conceptLessons.map((lesson) => <button key={lesson.id} className={lesson.id === selectedId ? "active" : ""} onClick={() => select(lesson.id)}><BookOpen size={14}/><span>{lesson.titleCn}<small>Concept Lesson</small></span></button>)}<h2>Thread B · Project Overlay</h2>{methodLessons.map((lesson) => <button key={lesson.id} className={lesson.id === selectedId ? "active" : ""} onClick={() => select(lesson.id)}><Layers3 size={14}/><span>{lesson.titleCn}<small>Method Lesson</small></span></button>)}<button className="subtle" onClick={onOpenLegacy}>查看 M017 兼容学习记录</button></aside><main className="scrollable">{entry && gate ? <>{selectedConcept && <ConceptSurface lesson={selectedConcept} entry={entry}/>} {selectedMethod && <MethodSurface lesson={selectedMethod} entry={entry}/>}</> : <section className="learning-wait"><h2>前置能力尚未建立</h2><p>请先在 Foundation Thread 中通过所需 Concept 的无提示标准 Apply。项目相关性不能绕过先修条件。</p></section>}</main></div>;
+  return <div className="learn-architecture"><aside><span className="eyebrow">LEARN</span><h2>Thread A · Foundation</h2>{conceptLessons.map((lesson) => <button key={lesson.id} className={lesson.id === selectedId ? "active" : ""} onClick={() => select(lesson.id)}><BookOpen size={14}/><span>{lesson.titleCn}<small>Concept Lesson</small></span></button>)}<h2>Thread B · Project Overlay</h2>{methodLessons.map((lesson) => <button key={lesson.id} className={lesson.id === selectedId ? "active" : ""} onClick={() => select(lesson.id)}><Layers3 size={14}/><span>{lesson.titleCn}<small>Method Lesson</small></span></button>)}<button className="subtle" onClick={onOpenLegacy}>查看 M017 兼容学习记录</button></aside><main className="scrollable">{entry && (!isKnowledgeLearningAllowed(knowledgeWorkspace, entry.id) || (entry.unitId && !isKnowledgeLearningAllowed(knowledgeWorkspace, entry.unitId))) ? <KnowledgeMaintenanceNotice/> : entry && gate ? <>{selectedConcept && <ConceptSurface lesson={selectedConcept} entry={entry}/>} {selectedMethod && <MethodSurface lesson={selectedMethod} entry={entry}/>}</> : <section className="learning-wait"><h2>前置能力尚未建立</h2><p>请先在 Foundation Thread 中通过所需 Concept 的无提示标准 Apply。项目相关性不能绕过先修条件。</p></section>}</main></div>;
 }

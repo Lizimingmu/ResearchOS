@@ -1,17 +1,15 @@
 # Review Result
 
-ACCEPT
+ACCEPT — M020 engineering scope; scientific candidates remain pending.
 
-Scope: **pending candidate branch only; this is not curriculum activation approval.**
+Review baseline: `7a41b4926e3a2a408acce7c073b2351c4fc230cc`. Requested branch: `codex/m020-extensible-knowledge-architecture`.
 
-M019 is accepted as a reviewable ResearchOS candidate snapshot, not as a fully activated curriculum.
+The implementation provides persistent canonical knowledge contracts, versioned dependency impact, pending imports/projections, real staging adapters, maintenance UI and holds around existing learning pathways. It does not rewrite the Learning Kernel or M019 teaching corpus.
 
-- Software/state gates pass: 178/178 tests, registry 297/9, Learning Kernel 16/16, M015 32/32, localization 11/11 and startup smoke.
-- Curriculum gates pass structurally: 288 Guide / 40 Concept / 21 Method / 12 Case / 13 Studio; 374/374 generated items remain pending and zero are active/verified.
-- Scientific packet passes completeness/routing: 361 claims, 78 referenced sources, 248 high-risk claims, no missing source IDs.
-- Independent evidence review closed all deterministic source mismatches in its final delta; 33 previously reviewed claims remain partial and require claim-level human judgment.
-- Independent pedagogy review confirms semantic stimulus schemas and closes automatic false-completion via fail-closed `review_required`; it retains full-library stimulus sufficiency and distractor/natural-language validity as human activation gates.
-- Review artifacts are bound to exact snapshot, claims and source-registry hashes; a stale mixture is not accepted.
-- Foreground UI, high-DPI and screen-reader trials are not accepted because local preview permission is blocked. Tauri packaging is not accepted because MSVC `link.exe` is absent.
+Closed review findings: persistence hash drift, duplicate freezing its base, restore removing a terminal status, malformed validator crashes, known-revision append bypass, forged activation/compatibility flags, deleted seed history, removed applied-update decisions/holds, legacy alias bypass, and conflated historical asset hashes. Negative regressions and independent probes cover these cases.
 
-Final disposition: keep all M019 candidates `pending_review`, publish the branch for external inspection, and proceed only to a four-prototype/verified-flow human trial followed by selective incremental approval. No bulk activation and no further architecture refactor.
+Evidence: typecheck PASS; full suite 201/201; isolated DOM interaction 1/1; seven knowledge audits PASS; old registry/localization/startup PASS; privacy 4/4. No browser/foreground/manual visual acceptance is claimed.
+
+Accepted limitation: 327 unresolved learning mappings and 328 review-gap bindings are explicit quarantine/debt. No scientific review approval, answer-key validation, course activation or M021 authorization follows from this engineering ACCEPT.
+
+Commit and push as requested, then stop.

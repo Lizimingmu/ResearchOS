@@ -6,6 +6,8 @@ import type { LearningEventAssetRef, PracticeRole } from "../../domain/learningK
 import { projectSkillMap } from "../../domain/learningKernel";
 import { canStartUnit } from "../../learning/learningKernelEngine";
 import { useAppStore } from "../../state/store";
+import { isKnowledgeLearningAllowed } from "../../services/knowledge";
+import { KnowledgeMaintenanceNotice } from "../../components/KnowledgeMaintenanceNotice";
 import { LearningShell } from "./LearningShell";
 import { PracticeActivity } from "./PracticeActivity";
 import { coreLessonSteps, defaultStepForStage, stepsForLearner } from "./lessonFlow";
@@ -13,6 +15,7 @@ import { LearningArchitectureView } from "./LearningArchitectureView";
 
 export function LearningView() {
   const [legacyOpen,setLegacyOpen]=useState(false);
+  const knowledgeWorkspace=useAppStore((s)=>s.knowledgeWorkspace);
   const selectedId=useAppStore((s)=>s.selectedLearningUnitId), states=useAppStore((s)=>s.learnerUnitStates), pausedIds=useAppStore((s)=>s.pausedLearningUnitIds), progress=useAppStore((s)=>s.lessonProgressByUnitId[selectedId]), projects=useAppStore((s)=>s.projects);
   const start=useAppStore((s)=>s.startLearningUnit),record=useAppStore((s)=>s.recordLearningTransition),setStep=useAppStore((s)=>s.setLessonStep),togglePause=useAppStore((s)=>s.toggleLearningUnitPaused),notify=useAppStore((s)=>s.notify);
   const [mapOpen,setMapOpen]=useState(false),[thinking,setThinking]=useState(false),[feedbackRole,setFeedbackRole]=useState<PracticeRole>(),[attemptRevision,setAttemptRevision]=useState(0); const unit=learningUnits.find((x)=>x.id===selectedId)??learningUnits[0], learner=states.find((x)=>x.unitId===unit.id), steps=stepsForLearner(learner,feedbackRole), desired=progress?.currentStepId??defaultStepForStage(learner), currentIndex=Math.max(0,steps.findIndex((x)=>x.id===desired)), step=steps[currentIndex]??steps[0];
@@ -32,6 +35,7 @@ export function LearningView() {
     }}/>;
   };
   if(!legacyOpen)return <LearningArchitectureView onOpenLegacy={()=>setLegacyOpen(true)}/>;
+  if(!isKnowledgeLearningAllowed(knowledgeWorkspace,unit.id))return <div className="page learning-page"><KnowledgeMaintenanceNotice/></div>;
   if(!learner)return <div className="page learning-page"><section className="learning-start-card"><BookOpen size={30}/><h1>{unit.titleCn}</h1><p>兼容的 M017 路径保留用于既有记录；M018 默认使用 Learn → Explain → Apply。</p><button className="primary" disabled={!gate.allowed} onClick={()=>start(unit.id,"learning")}>开始 Guided Lesson <ArrowRight size={14}/></button><button disabled={!gate.allowed} onClick={()=>start(unit.id,"challenge")}><FastForward size={14}/> 进入标准 Apply</button>{!gate.allowed&&<small>{gate.reasonCn}</small>}</section></div>;
   return <LearningShell title={unit.titleCn} step={currentIndex+1} total={steps.length} minutes={Math.max(1,unit.estimatedMinutes-Math.floor(currentIndex*unit.estimatedMinutes/steps.length))} paused={pausedIds.includes(unit.id)} onPause={()=>togglePause(unit.id)} onMap={()=>setMapOpen(true)}>
     {pausedIds.includes(unit.id)?<section className="learning-wait"><h2>本单元已暂停</h2><p>当前步骤和所有作答证据都已保留；继续后从这里恢复。</p><button className="primary" onClick={()=>togglePause(unit.id)}>继续本单元</button></section>:<>

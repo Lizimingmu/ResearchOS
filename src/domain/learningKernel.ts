@@ -192,6 +192,10 @@ export function practiceAssetHash(asset: Omit<PracticeAssetV1, "contentHash">): 
 }
 
 export interface LearningEventV1 {
+  /** M020 event envelope; historical events are not retroactively rewritten. */
+  knowledgeUnitIds?: string[];
+  knowledgeRevisionBindings?: import("./knowledge").KnowledgeRevisionBinding[];
+  knowledgeBindingStatus?: "RESOLVED" | "UNRESOLVED";
   schemaVersion: 1;
   id: string;
   unitId: string;

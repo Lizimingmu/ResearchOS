@@ -1,3 +1,29 @@
+# Scientific Changeset — M020 canonical architecture
+
+Status: READY FOR REVIEW
+
+This is an engineering acceptance record, not scientific content approval. Existing teaching text and answer keys were not edited. Machine audits do not verify migrated claims.
+
+### SC-M020-01 — Pending canonical adapters and update quarantine
+
+- Concept: Existing Concept/Method/Case/Kernel content and experimental staging are represented by typed, versioned canonical knowledge wrappers.
+- Claim: No new scientific claim is asserted; original text, IDs, source attribution and pending states remain in provenance. Missing mappings/fields are explicitly REVIEW_REQUIRED.
+- Answer/rubric: Existing answer keys and Learning Kernel scoring are unchanged. New learning projections contain no approved answer keys and always createsCompetence=false.
+- Evidence source IDs: 85 original source IDs and 375 migrated claims, plus source IDs retained verbatim in the five protocol examples; exact bindings in the deterministic seed and staging payloads.
+- PMID/DOI: Original identifiers are preserved; M020 makes no new identifier/full-text verification claim and performs no network resolution.
+- Risk level: HIGH for eventual scientific use; this milestone accepts engineering containment only.
+- Verification status: All 79 new canonical wrappers pending; all generated/imported candidates pending. No activation. 327 learning bindings remain unresolved; 328 carry review gaps.
+- Changed files: src/domain/knowledge.ts; src/services/knowledge.ts; src/services/knowledgeAdapters.ts; src/data/knowledge.ts; data/knowledge/protocol-staging-examples.json; store/scheduler/Review/Guide/Case safety boundaries.
+
+The explicit legacy Cox bridge (`cox-ph` → `method-cox-v1`) is a conservative maintenance dependency reviewed against the two existing identifiers/titles and shared `src-cox` source. It does not assert identical pedagogical text or provide new scientific approval.
+
+
+---
+
+## Historical record retained from the baseline
+
+The material below belongs to earlier milestones. It does not change the M020 scope, current acceptance, or pending scientific status above.
+
 # Scientific Changeset — M019 Pending Curriculum Review
 
 Status: READY FOR REVIEW

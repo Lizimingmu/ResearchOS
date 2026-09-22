@@ -381,6 +381,7 @@ export interface AppSettings {
 }
 
 export interface AppStateData {
+  knowledgeWorkspace: import("./knowledge").KnowledgeWorkspace;
   schemaVersion: number;
   papers: Paper[];
   projects: Project[];

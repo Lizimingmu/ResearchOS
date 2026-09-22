@@ -1,6 +1,8 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
+import { auditKnowledgeWorkspace } from "../services/knowledge";
+import { canonicalJson } from "../services/contentStudio";
 
-export const CURRENT_STATE_SCHEMA = 8;
+export const CURRENT_STATE_SCHEMA = 9;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -26,6 +28,22 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
   }
 
   const settings = isRecord(raw.settings) ? raw.settings : {};
+  // A malformed canonical history is never silently replaced by today's seed.
+  if (raw.knowledgeWorkspace !== undefined) {
+    const audit = auditKnowledgeWorkspace(raw.knowledgeWorkspace);
+    if (!audit.ok) throw new Error(`知识版本历史无效，数据库未被修改：${audit.errors.join("；")}`);
+    const workspace = raw.knowledgeWorkspace as AppStateData["knowledgeWorkspace"];
+    const seed = defaults.knowledgeWorkspace;
+    for (const collection of ["units", "sources", "claims", "learningBindings"] as const) {
+      if (seed[collection].some((known, index) => canonicalJson(known) !== canonicalJson(workspace[collection][index]))) {
+        throw new Error(`知识历史缺少或改写了已迁移的 ${collection} 基础记录，数据库未被修改。`);
+      }
+    }
+    const unauthorizedLegacy = workspace.learningBindings.some((binding) => binding.legacyActive && !seed.learningBindings.some((known) => known.legacyActive && canonicalJson(known) === canonicalJson(binding)));
+    const unauthorizedKnowledge = workspace.units.some((unit) => (unit.lifecycle === "active" || unit.verificationStatus === "verified") && !seed.units.some((known) => canonicalJson(known) === canonicalJson(unit)));
+    const unauthorizedClaim = workspace.claims.some((claim) => claim.verificationStatus === "verified" && !seed.claims.some((known) => canonicalJson(known) === canonicalJson(claim)));
+    if (unauthorizedLegacy || unauthorizedKnowledge || unauthorizedClaim) throw new Error("知识记录包含未经授权的激活或兼容绑定，数据库未被修改。M020 不支持导入新的正式核验状态。");
+  }
   const weights = isRecord(settings.weights) ? settings.weights : {};
   const migratedReviewItems = arrayOr<ReviewItem>(raw.reviewItems, defaults.reviewItems).map((item) => ({
     ...item,
@@ -56,6 +74,9 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
   return {
     ...defaults,
     schemaVersion: CURRENT_STATE_SCHEMA,
+    knowledgeWorkspace: raw.knowledgeWorkspace === undefined
+      ? structuredClone(defaults.knowledgeWorkspace)
+      : structuredClone(raw.knowledgeWorkspace) as AppStateData["knowledgeWorkspace"],
     papers: arrayOr(raw.papers, defaults.papers),
     projects: arrayOr(raw.projects, defaults.projects),
     responses: arrayOr(raw.responses, defaults.responses),

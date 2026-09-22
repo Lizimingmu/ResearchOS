@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import "./m020.mjs";
 import { test } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -32,7 +33,7 @@ import { evaluateStagedAssessment } from "../.build/services/stagedAssessment.js
 import { createReviewItem, scheduleReview } from "../.build/learning/review.js";
 import { summarizeSkills } from "../.build/learning/scoring.js";
 import { createInitialState, shouldAutoOpenTutorial, useAppStore } from "../.build/state/store.js";
-import { migratePersistedState } from "../.build/state/migrations.js";
+import { CURRENT_STATE_SCHEMA, migratePersistedState } from "../.build/state/migrations.js";
 import { buildAiReviewPrompt, parseAiReview } from "../.build/ai/reviewArchitecture.js";
 import { serializeLearningData } from "../.build/services/learningExport.js";
 import {
@@ -139,7 +140,7 @@ test("unit: scheduler implements the specified weighted priority", () => {
 test("unit: v1 state migrates without losing user projects or responses", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 1, projects: [{ id: "keep-me" }], responses: [{ id: "response-keep" }], draftResponses: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 8);
+  assert.equal(migrated.schemaVersion, CURRENT_STATE_SCHEMA);
   assert.equal(migrated.projects[0].id, "keep-me");
   assert.equal(migrated.responses[0].id, "response-keep");
   assert.deepEqual(migrated.draftResponses, {});
@@ -149,7 +150,7 @@ test("unit: v1 state migrates without losing user projects or responses", () => 
 test("unit: v2 state migrates to v3 preserving user data and seeding the atlas", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 2, projects: [{ id: "v2-project" }], problemCards: undefined, diagnosticSessions: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 8);
+  assert.equal(migrated.schemaVersion, CURRENT_STATE_SCHEMA);
   assert.equal(migrated.projects[0].id, "v2-project");
   assert.equal(migrated.problemCards.length, 4);
   assert.deepEqual(migrated.diagnosticSessions, []);
@@ -163,7 +164,7 @@ test("unit: future state is rejected without downgrade", () => {
 test("unit: M015 migration adds empty personal content collections without losing v3 data", () => {
   const defaults = createInitialState();
   const migrated = migratePersistedState({ ...defaults, schemaVersion: 3, projects: [{ id: "keep-v3-project" }], personalContent: undefined, contentRevisionHistory: undefined, contentConflicts: undefined, obsidianPublishBatches: undefined }, defaults);
-  assert.equal(migrated.schemaVersion, 8);
+  assert.equal(migrated.schemaVersion, CURRENT_STATE_SCHEMA);
   assert.equal(migrated.projects[0].id, "keep-v3-project");
   assert.deepEqual(migrated.personalContent, []);
   assert.deepEqual(migrated.contentRevisionHistory, []);
@@ -1878,7 +1879,7 @@ test("unit: M016-LK-02 v4→v5 migration appends empty kernel collections and pr
   delete v4Fixture.learningEvents;
   delete v4Fixture.pausedLearningUnitIds;
   const migrated = migratePersistedState(v4Fixture, defaults);
-  assert.equal(migrated.schemaVersion, 8);
+  assert.equal(migrated.schemaVersion, CURRENT_STATE_SCHEMA);
   assert.deepEqual(migrated.learnerUnitStates, []);
   assert.deepEqual(migrated.learningEvents, []);
   assert.deepEqual(migrated.pausedLearningUnitIds, []);
@@ -1911,7 +1912,7 @@ test("unit: M016-LK-02 migration keeps kernel timestamps and rejects future sche
     onboarding: { ...defaults.onboarding, learningKernelOnboardingCompletedAt: 42 },
   }, defaults);
   assert.equal(junk.onboarding.learningKernelOnboardingCompletedAt, undefined);
-  assert.throws(() => migratePersistedState({ ...defaults, schemaVersion: 9 }, defaults), /数据库未被修改/);
+  assert.throws(() => migratePersistedState({ ...defaults, schemaVersion: CURRENT_STATE_SCHEMA + 1 }, defaults), /数据库未被修改/);
 });
 
 // ---------------------------------------------------------------------------
@@ -1989,7 +1990,7 @@ test("unit: M017 v5→v6 migration is additive and makes no inferred learning cl
   delete fixture.reasoningRecords;
   delete fixture.paperCards;
   const migrated = migratePersistedState(fixture, defaults);
-  assert.equal(migrated.schemaVersion, 8);
+  assert.equal(migrated.schemaVersion, CURRENT_STATE_SCHEMA);
   assert.equal(migrated.projects[0].id, "preserved-project");
   assert.deepEqual(migrated.lessonProgressByUnitId, {});
   assert.deepEqual(migrated.routineLogs, []);
@@ -2114,7 +2115,7 @@ test("integration: M018 onboarding CTA routes to Learn and schema 6→8 is addit
   const fixture = { ...defaults, schemaVersion: 6 };
   delete fixture.guideReadSectionIds; delete fixture.learningContentProgress; delete fixture.caseSessions; delete fixture.transferArtifacts; delete fixture.projectStudioRecords;
   const migrated = migratePersistedState(fixture, defaults);
-  assert.equal(migrated.schemaVersion, 8);
+  assert.equal(migrated.schemaVersion, CURRENT_STATE_SCHEMA);
   assert.deepEqual(migrated.guideReadSectionIds, []);
   assert.deepEqual(migrated.learningContentProgress, {});
   assert.deepEqual(migrated.caseSessions, []);
@@ -2387,14 +2388,14 @@ test("M018.1-29 schema 7→8 migration is lossless and zero-inference", () => {
   const fixture = { ...defaults, schemaVersion: 7, projects: [{ id: "keep-project" }] };
   delete fixture.learningContentProgress;
   const migrated = migratePersistedState(fixture, defaults);
-  assert.equal(migrated.schemaVersion, 8);
+  assert.equal(migrated.schemaVersion, CURRENT_STATE_SCHEMA);
   assert.deepEqual(migrated.learningContentProgress, {});
   assert.equal(migrated.projects[0].id, "keep-project");
   assert.deepEqual(migrated.learningEvents, fixture.learningEvents);
 });
 
 test("M018.1-30 future schema fails closed", () => {
-  assert.throws(() => migratePersistedState({ ...createInitialState(), schemaVersion: 9 }, createInitialState()), /数据库未被修改/);
+  assert.throws(() => migratePersistedState({ ...createInitialState(), schemaVersion: CURRENT_STATE_SCHEMA + 1 }, createInitialState()), /数据库未被修改/);
 });
 
 test("M018.1-31 public registry and assets contain no private path or identifier", () => {

@@ -1,24 +1,11 @@
-# Implementation Handoff — M018.1 End-to-End Learning Wiring
+# Handoff — M020 complete; stop after push
 
-Use a diff-based review from M018 commit `401c0ed8469d791b0e214f0ed6811b08a5f0a4a3`. Do not rescan unrelated history.
+Read the current milestone and `../M020_EXTENSIBLE_KNOWLEDGE_ARCHITECTURE_REPORT.md` before any later authorized work. Do not resume stale M018/M019 task instructions.
 
-## Read first
+Configured OpenCode / DeepSeek Pro was attempted, but failed on a log-directory permission and then `EPERM uv_spawn 'git'`; no OpenCode implementation was produced. Codex and bounded Codex collaborators completed M020 without changing that configured model/provider.
 
-1. `.agent/PRODUCT_CONSTITUTION.md`
-2. `.agent/SCIENTIFIC_GATES.md`
-3. `.agent/PROJECT_STATE.md`
-4. `.agent/CURRENT_MILESTONE.md`
-5. `M018_1_END_TO_END_WIRING_HANDOFF.md`
+Preserve schema 9 knowledge revision history and exact source/claim/learning hashes. Migration gaps are scientific review debt, not permission to infer missing fields. Canonical migrated wrappers and generated projections are pending. Grandfathered pre-M020 learning behavior is allowed only for exact seed bindings; updates trigger review holds. There is no activation or hold-release workflow in this milestone.
 
-## Implementation boundaries
+Validation completed: 201 regression tests + 1 isolated DOM workflow; seven new audits; old registry/localization/startup; privacy 4 tests. Foreground/browser/manual verification was not performed. Respect `.agent/TESTING_POLICY.md` and the existing localhost denial.
 
-- Distinct Guide, Concept, Method and Case contracts remain in `src/domain/learningArchitecture.ts`; `PracticeAssetV1` is used only for standardized practice.
-- `learningContentRegistry` is the canonical metadata source for Today, Learn, Guide links and Progress. Add content there only after providing valid capability/prerequisite mappings, provenance and distinct bound assets where required.
-- Learn/Explain and Guide reading are exposure. Only locked, versioned, scored Apply/review events are standardized competence. Transfer Artifacts remain separate real-context evidence.
-- `learningContentProgress` migration is empty and zero-inference. Do not reconstruct progress or competence from old prose, Guide history or artifacts.
-- Case reasoning, calibration and updates are separate append-only facts. Artifact identity is canonicalized by source and capability/concept context.
-- Preserve Content Studio scientific review, local SQLite/WAL/recovery, credentials, future-schema refusal and explicit Obsidian-write constraints.
-
-## Next permitted work
-
-Perform the user-authorized foreground trial and record observed defects. Do not bulk-generate curriculum, redesign the architecture, package, access a real Vault, merge to `main`, or promote generated scientific content automatically.
+Current user instruction: commit and push `codex/m020-extensible-knowledge-architecture`, then stop. No M021, main merge, curriculum expansion or activation.

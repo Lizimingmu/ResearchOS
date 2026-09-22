@@ -1,17 +1,16 @@
 # Project State
 
-Last updated: 2026-08-31
+Last updated: 2026-09-22
 
-- Product version remains 0.12.0; M019 is a source/content candidate patch and does not merge to `main`.
-- Branch: `codex/overnight-self-rescue-complete`; diff baseline: `55730c2`.
-- Approved baseline: commit `55730c23c0d19ff0c25cde20919d2cae7074e8ca`.
-- Frontend state schema / SQLite user version remain 8 / 2. No new learner-state migration or inferred competence was added.
-- The approved M018.1 architecture remains canonical: 297 registry entries, 9 verified core assets, exact Today/Review legality, capability-gated Paper fields, append-only Project/Case artifacts and at most two active learning threads.
-- M019 generated 374 isolated candidates: 288 Guide sections, 40 Concept Lessons, 21 Method Lessons, 12 Case Labs and 13 Studio Templates. Curriculum Manifest has 288 entries and the claim-source map has 361 records.
-- Candidate lifecycle is uniformly `ai_generated + pending + pending_review`; active generated = 0 and verified generated = 0. The exact preview banner is `待科学审核 · 不进入正式 Today · 不计标准化能力`.
-- Candidate assessment machine logic is fail-closed. It performs structural preflight only, returns at most `review_required`, exposes a display-only `recommendedNextRoute`, and always keeps `createsCompetence=false`.
-- Scientific packet references 78 of 85 evidence sources with no missing source ID and routes 248 high-risk claims: 182 Guide, 54 formal Concept/Method and 12 Case.
-- Final automated evidence: tests 178/178; localization 11/11; startup smoke; Learning Kernel 16/16; M018 registry 297/9; M015 32/32; curriculum, scientific packet, content, source-pack, Problem Atlas, accessibility and performance audits PASS.
-- Foreground UI/high-DPI/screen-reader evidence is unavailable because the in-app browser's saved permission rejects local preview URLs. The denial was respected and not bypassed.
-- Final-source Tauri packaging was attempted offline. The web build passes, but Windows native compilation is BLOCKED because MSVC `link.exe` is not installed; no current-source installer or packaged restart exists.
-- Next action: four-prototype targeted learning trial, then selective claim/content approval. Do not perform another architecture refactor or bulk-activate the 374 candidates.
+- Current milestone: M020 Extensible & Updatable Knowledge Architecture, implementation and background acceptance complete.
+- Branch: `codex/m020-extensible-knowledge-architecture`.
+- Approved baseline: commit `7a41b4926e3a2a408acce7c073b2351c4fc230cc`.
+- Product version remains 0.12.0; state schema is now 9; SQLite user version remains 2.
+- Canonical knowledge: six typed contracts, append-only revisions/decisions, source → claim → knowledge → exact learning revision/hash graph, pending import/update/projection flows.
+- Initial migration: 79 pending knowledge wrappers, 85 sources, 375 pending claims, 688 learning bindings. 327 bindings have no determined knowledge mapping; 328 carry review gaps. Unknown fields are not inferred.
+- Existing 297-entry learning registry and 9 core active assets are preserved. No M019 scientific prose, answer key, scoring rule or activation was changed. Existing untouched lessons use exact grandfathered bindings; affected content is held outside Today/Review/submission.
+- Protocol staging: five built-in WB/qPCR/IHC/flow/PDO examples and a general adapter; all imports stay pending. Two complete original staging packages were also tested independently.
+- Validation: typecheck PASS; full suite 201/201 + isolated DOM interaction 1/1; seven knowledge audits PASS; M018 registry, localization and isolated production startup PASS; privacy 4/4 PASS.
+- Browser/foreground/manual visual QA NOT RUN. Existing localhost permission denial was respected; no workaround browser was used.
+- The earlier independent learning/science audit was explicitly replaced by the user's M020 request. Its unfinished evidence remains outside this repo; M020 does not claim that prior audit is complete.
+- Stop after commit + push. No M021, publication, activation or merge to main.

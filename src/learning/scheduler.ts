@@ -4,6 +4,7 @@ import { learningUnits, practiceAssetBindings, prerequisiteEdges } from "../data
 import { learningContentRegistry } from "../data/learningArchitecture";
 import { canStartUnit } from "./learningKernelEngine";
 import { contentPrerequisitesMet } from "./learningArchitectureEngine";
+import { createKnowledgeLearningGate } from "../services/knowledge";
 
 export interface PrioritySignals {
   weakness: number;
@@ -42,10 +43,12 @@ const legalActivity = (stage: LearningStage, dueAt: string | undefined, now: Dat
 };
 
 export function generateLearningTodayTasks(state: AppStateData, now = new Date()): TodayLearningTaskV1[] {
+  const knowledgeAllowed = createKnowledgeLearningGate(state.knowledgeWorkspace);
   const paused = new Set(state.pausedLearningUnitIds);
   const activeCount = state.learnerUnitStates.filter((item) => ["learning", "guided", "independent_ready"].includes(item.stage) && !paused.has(item.unitId)).length;
   const candidates: TodayLearningTaskV1[] = [];
   for (const unit of learningUnits) {
+    if (!knowledgeAllowed(unit.id)) continue;
     if (unit.lifecycle !== "active" || unit.verificationStatus !== "verified" || paused.has(unit.id)) continue;
     const learner = state.learnerUnitStates.find((item) => item.unitId === unit.id);
     const stage = learner?.stage ?? "unseen";
@@ -100,11 +103,14 @@ const architectureProjectRelevance = (terms: string[], state: AppStateData): num
 };
 
 export function generateM018CurriculumTasks(state: AppStateData, now = new Date()): DailyTask[] {
+  const knowledgeAllowed = createKnowledgeLearningGate(state.knowledgeWorkspace);
   const dateKey = now.toISOString().slice(0, 10);
   const result: DailyTask[] = [];
   const contentProgressById = state.learningContentProgress ?? {};
   const progress = Object.values(contentProgressById);
-  const candidates = learningContentRegistry.filter((entry) => entry.lifecycle === "active" && entry.verificationStatus === "verified" && ["concept_lesson", "method_lesson", "case_lab"].includes(entry.contentType));
+  const candidates = learningContentRegistry.filter((entry) => entry.lifecycle === "active" && entry.verificationStatus === "verified" && ["concept_lesson", "method_lesson", "case_lab"].includes(entry.contentType)
+    && knowledgeAllowed(entry.id)
+    && (!entry.unitId || knowledgeAllowed(entry.unitId)));
   const stateFor = (unitId?: string) => unitId ? state.learnerUnitStates.find((item) => item.unitId === unitId) : undefined;
   const add = (entry: (typeof candidates)[number], activityType: DailyTask["learningActivityType"], thread: "foundation" | "project_overlay", priority: number, rationale: string) => {
     const learner = stateFor(entry.unitId);

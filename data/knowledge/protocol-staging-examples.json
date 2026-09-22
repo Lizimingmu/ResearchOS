@@ -1,0 +1,2282 @@
+[
+  {
+    "id": "wb",
+    "title": "Western blot：弱信号诊断",
+    "description": "既有 pending/unclassified staging 摘录；导入后仍需逐字段与科学审核。",
+    "knowledgeType": "protocol",
+    "sourcePath": "artifacts/m013-v3-staging/m013-batch01-foundation-wb-qpcr-ihc-20260824-staging.json",
+    "payload": {
+      "stagingSchemaVersion": 1,
+      "stagingId": "m013-batch01-foundation-wb-qpcr-ihc-20260824-staging",
+      "sourcePackId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+      "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+      "originalFileSha256": "12fa265cef02c238084ddaf2214fc20c8677a9b8478baa2cb88764a3b490b295",
+      "convertedAt": "2026-08-27T16:30:19.605Z",
+      "createdAt": "2026-08-24T21:16:00+08:00",
+      "createdBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "provenance": "Official NIH/CAP/NCBI sources, PubMed-indexed methodological literature, MIQE 2.0 (2025), and explicitly tiered vendor troubleshooting resources were manually checked for source identity, scope and claim support. Final ResearchOS claim_verified promotion is intentionally reserved for Codex/formal source-pack gate per M013.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
+      "excerptNote": "M020 机械选取单条既有 card 及显式依赖；原行不改写；不是完整 protocol。",
+      "sources": [
+        {
+          "id": "SRC-NCATS-AGM",
+          "schemaVersion": 1,
+          "sourceType": "consensus",
+          "organization": "NCBI Bookshelf / NIH NCATS and collaborators",
+          "title": "Assay Guidance Manual",
+          "authors": [
+            "Markossian S",
+            "Grossman A",
+            "Baskir H",
+            "et al."
+          ],
+          "year": 2004,
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK53196/",
+          "authorityTier": "A",
+          "domain": [
+            "assay_validation",
+            "controls",
+            "experimental_design"
+          ],
+          "version": "living manual",
+          "knowledgeStatus": "current",
+          "supersedes": [],
+          "supersededBy": [],
+          "verificationStatus": "pending",
+          "verificationScope": [
+            "identity",
+            "metadata",
+            "scope pre-review"
+          ],
+          "contentHash": "d91d5911874f6d09cc78782eda860e273d6d8aa848c7bc7957014476d639543e",
+          "retrievedAt": "2026-08-24T21:16:00+08:00",
+          "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+          "provenanceNote": "Authoritative assay-development manual; use chapter-specific attribution for specific claims.",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "SRC-NCATS-AGM",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+            ],
+            "converterNotes": [
+              "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+              "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+            ]
+          }
+        },
+        {
+          "id": "SRC-THERMO-WB",
+          "schemaVersion": 1,
+          "sourceType": "technical_resource",
+          "organization": "Thermo Fisher Scientific",
+          "title": "Western Blot Troubleshooting",
+          "authors": [],
+          "year": 2026,
+          "url": "https://www.thermofisher.com/jp/en/home/life-science/protein-biology/protein-biology-learning-center/protein-gel-electrophoresis-information/western-blot-troubleshooting.html",
+          "authorityTier": "B",
+          "domain": [
+            "western_blot",
+            "troubleshooting"
+          ],
+          "knowledgeStatus": "current",
+          "supersedes": [],
+          "supersededBy": [],
+          "verificationStatus": "pending",
+          "verificationScope": [
+            "identity",
+            "metadata",
+            "scope pre-review"
+          ],
+          "contentHash": "4366bf85b03ad5fad1c14645c6055c7b2acdf0e999db5f2741b0a42933f6b3af",
+          "retrievedAt": "2026-08-24T21:16:00+08:00",
+          "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+          "provenanceNote": "Vendor technical source. Appropriate for candidate failure causes/checks; product-specific concentrations/conditions are not universal truths.",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "SRC-THERMO-WB",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+            ],
+            "converterNotes": [
+              "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+              "authorityTier \"B\" 保留为来源包提案值；正式层级需 gate 评审。"
+            ]
+          }
+        }
+      ],
+      "evidenceClaims": [
+        {
+          "id": "CLM-EXP-004",
+          "claim": "Positive and negative controls can establish assay-performance reference points and help distinguish true biological findings from assay failure.",
+          "scope": "Biological assay development/validation.",
+          "qualification": "Control choice is assay- and endpoint-specific; not every assay has the same feasible controls.",
+          "sourceId": "SRC-NCATS-AGM",
+          "supportType": "direct",
+          "supportingLocation": "General concepts in assay development and validation; control samples",
+          "reviewerNote": "",
+          "domain": [
+            "experimental_design",
+            "controls"
+          ],
+          "knowledgeStatus": "current",
+          "verificationStatus": "pending",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "CLM-EXP-004",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+            ],
+            "converterNotes": []
+          }
+        },
+        {
+          "id": "CLM-WB-001",
+          "claim": "Weak or absent Western blot signal has multiple plausible technical causes, including inefficient transfer, low target abundance, antibody problems and detection/imaging conditions.",
+          "scope": "Western blot troubleshooting.",
+          "qualification": "These are candidate causes, not a diagnosis; reagent-specific settings remain system-specific.",
+          "sourceId": "SRC-THERMO-WB",
+          "supportType": "direct",
+          "supportingLocation": "General Western blot troubleshooting → Weak or no signal",
+          "reviewerNote": "",
+          "domain": [
+            "western_blot",
+            "troubleshooting"
+          ],
+          "knowledgeStatus": "current",
+          "verificationStatus": "pending",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "CLM-WB-001",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+            ],
+            "converterNotes": []
+          }
+        }
+      ],
+      "problemCards": [
+        {
+          "id": "PRB-WB-001",
+          "schemaVersion": 1,
+          "domain": "wet_lab",
+          "subdomain": "western_blot",
+          "problemType": "unclassified",
+          "titleCn": "Western blot 完全没有条带或条带很弱",
+          "titleEn": "Western blot: weak or no signal",
+          "aliases": [
+            "WB没条带",
+            "WB信号弱"
+          ],
+          "keywords": [],
+          "difficulty": "foundation",
+          "importance": 4,
+          "frequency": 4,
+          "observation": "目标蛋白条带明显弱于预期或完全不可见。",
+          "context": "western_blot",
+          "whyItMatters": "同一表型可由转膜、样本、抗体、检测或真实低表达等多层问题造成。",
+          "candidateCauseIds": [
+            "CAUSE-WB-001-A"
+          ],
+          "diagnosticPathId": "PATH-WB-001",
+          "redFlags": [],
+          "commonWrongActions": [
+            "直接增加曝光直到出现背景",
+            "不检查转膜就更换抗体",
+            "未检出直接写成目标不存在"
+          ],
+          "recommendedReasoning": [
+            "先定位样本/转膜/抗体/检测层级",
+            "优先获取能区分层级的信息",
+            "阳性对照和转膜QC优先级高"
+          ],
+          "claimBoundary": "assay performance未证实时，未检出不等于生物学阴性。",
+          "reviewerImplication": "关键阴性结论缺positive control或transfer QC时可信度低。",
+          "transferCaseIds": [
+            "TRF-WB-001"
+          ],
+          "misconceptionTags": [
+            "no_band_equals_no_protein"
+          ],
+          "relatedMethodIds": [],
+          "relatedProtocolIds": [],
+          "relatedPatternIds": [],
+          "evidenceClaimIds": [
+            "CLM-WB-001",
+            "CLM-EXP-004"
+          ],
+          "contentOrigin": "external_source_pack",
+          "verificationStatus": "pending",
+          "staging": {
+            "originalId": "PRB-WB-001",
+            "stagedMissing": [
+              "knowledgeStatus"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "importance",
+                "to": "importance（查找表 critical/high/medium→5/4/3）"
+              },
+              {
+                "from": "frequency",
+                "to": "frequency（查找表 very_common/common→4/3）"
+              },
+              {
+                "from": "diagnostic_path",
+                "to": "diagnosticPathId"
+              },
+              {
+                "from": "title_cn",
+                "to": "titleCn"
+              },
+              {
+                "from": "title_en",
+                "to": "titleEn"
+              },
+              {
+                "from": "symptom",
+                "to": "observation"
+              },
+              {
+                "from": "why_it_matters",
+                "to": "whyItMatters"
+              },
+              {
+                "from": "candidate_causes",
+                "to": "candidateCauseIds"
+              },
+              {
+                "from": "red_flags",
+                "to": "redFlags"
+              },
+              {
+                "from": "common_wrong_actions",
+                "to": "commonWrongActions"
+              },
+              {
+                "from": "recommended_reasoning",
+                "to": "recommendedReasoning"
+              },
+              {
+                "from": "statistical_implication",
+                "to": "statisticalImplication"
+              },
+              {
+                "from": "experimental_implication",
+                "to": "experimentalImplication"
+              },
+              {
+                "from": "bioinformatics_implication",
+                "to": "bioinformaticsImplication"
+              },
+              {
+                "from": "claim_boundary",
+                "to": "claimBoundary"
+              },
+              {
+                "from": "reviewer_implication",
+                "to": "reviewerImplication"
+              },
+              {
+                "from": "transfer_cases",
+                "to": "transferCaseIds"
+              },
+              {
+                "from": "misconception_tags",
+                "to": "misconceptionTags"
+              },
+              {
+                "from": "related_methods",
+                "to": "relatedMethodIds"
+              },
+              {
+                "from": "related_protocols",
+                "to": "relatedProtocolIds"
+              },
+              {
+                "from": "related_patterns",
+                "to": "relatedPatternIds"
+              },
+              {
+                "from": "evidence_claims",
+                "to": "evidenceClaimIds"
+              },
+              {
+                "from": "content_origin",
+                "to": "contentOrigin"
+              },
+              {
+                "from": "verification_status",
+                "to": "verificationStatus"
+              },
+              {
+                "from": "verified_at",
+                "to": "verifiedAt"
+              }
+            ],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+              "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+            ],
+            "converterNotes": [
+              "importance \"high\"→4（显式查找表）",
+              "frequency \"very_common\"→4（显式查找表）"
+            ]
+          }
+        }
+      ],
+      "diagnosticCauses": [
+        {
+          "id": "CAUSE-WB-001-A",
+          "problemId": "PRB-WB-001",
+          "labelCn": "需要区分transfer、antibody、sample abundance和detection层的问题",
+          "supportingEvidenceIds": [],
+          "contradictingEvidenceIds": [],
+          "staging": {
+            "originalId": "CAUSE-WB-001-A",
+            "stagedMissing": [
+              "mechanism",
+              "initialRank",
+              "layer",
+              "uncertaintyNote",
+              "evidenceClaimIds"
+            ],
+            "droppedFields": [
+              {
+                "field": "evidenceSources",
+                "reason": "SRC-* 来源引用不得推断为 evidenceClaimIds（逐条主张核验需正式评审）；原始值保留在源包中。"
+              },
+              {
+                "field": "priorPlausibility",
+                "reason": "先验可能性标签无规范对应字段；不得推断为 initialRank。"
+              },
+              {
+                "field": "severity",
+                "reason": "严重性判断需正式评审；不得机械转换。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "cause",
+                "to": "labelCn（脚本判定含中文，原文未改写）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": []
+          }
+        }
+      ],
+      "diagnosticChecks": [
+        {
+          "id": "CHK-WB-001-TRANSFER",
+          "problemId": "PRB-WB-001",
+          "questionCn": "膜上的total-protein/transfer QC是否正常？",
+          "informationSupplied": "异常优先排transfer；正常降低transfer failure。",
+          "discriminatesCauseIds": [
+            "CAUSE-WB-001-A"
+          ],
+          "expectedUpdate": "区分transfer vs downstream detection",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-WB-001"
+          ],
+          "staging": {
+            "originalId": "CHK-WB-001-TRANSFER",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-WB-001-A。"
+            ]
+          }
+        },
+        {
+          "id": "CHK-WB-001-POS",
+          "problemId": "PRB-WB-001",
+          "questionCn": "已知阳性样本是否有目标条带？",
+          "informationSupplied": "阳性也阴性时优先怀疑抗体/检测体系。",
+          "discriminatesCauseIds": [
+            "CAUSE-WB-001-A"
+          ],
+          "expectedUpdate": "高信息价值",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-WB-001",
+            "CLM-EXP-004"
+          ],
+          "staging": {
+            "originalId": "CHK-WB-001-POS",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-WB-001-A。"
+            ]
+          }
+        },
+        {
+          "id": "CHK-WB-001-AB",
+          "problemId": "PRB-WB-001",
+          "questionCn": "抗体是否经过WB应用验证并正确储存？",
+          "informationSupplied": "缺乏application-specific validation或失活增加抗体问题可能性。",
+          "discriminatesCauseIds": [
+            "CAUSE-WB-001-A"
+          ],
+          "expectedUpdate": "重新分配候选原因",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-WB-006"
+          ],
+          "staging": {
+            "originalId": "CHK-WB-001-AB",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-WB-001-A。"
+            ]
+          }
+        },
+        {
+          "id": "CHK-WB-001-DETECT",
+          "problemId": "PRB-WB-001",
+          "questionCn": "曝光/成像设置和目标丰度是否合理？",
+          "informationSupplied": "可区分低丰度/短曝光与真实阴性。",
+          "discriminatesCauseIds": [
+            "CAUSE-WB-001-A"
+          ],
+          "expectedUpdate": "减少单一原因判断",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-WB-001"
+          ],
+          "staging": {
+            "originalId": "CHK-WB-001-DETECT",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-WB-001-A。"
+            ]
+          }
+        }
+      ],
+      "diagnosticPaths": [
+        {
+          "id": "PATH-WB-001",
+          "problemId": "PRB-WB-001",
+          "nodes": [
+            {
+              "id": "n1",
+              "step": 1,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-WB-001-TRANSFER"
+              ],
+              "expectedCheckId": "CHK-WB-001-TRANSFER"
+            },
+            {
+              "id": "n2",
+              "step": 2,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-WB-001-POS"
+              ],
+              "expectedCheckId": "CHK-WB-001-POS"
+            },
+            {
+              "id": "n3",
+              "step": 3,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-WB-001-AB"
+              ],
+              "expectedCheckId": "CHK-WB-001-AB"
+            },
+            {
+              "id": "n4",
+              "step": 4,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-WB-001-DETECT"
+              ],
+              "expectedCheckId": "CHK-WB-001-DETECT"
+            }
+          ],
+          "staging": {
+            "originalId": "PATH-WB-001",
+            "stagedMissing": [
+              "finalRanking",
+              "finalLayer"
+            ],
+            "droppedFields": [
+              {
+                "field": "terminalLogic",
+                "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "nodes[].step+checkId",
+                "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+            ]
+          }
+        }
+      ],
+      "diagnosticEvidence": [
+        {
+          "id": "EVD-WB-NOSIG-01",
+          "problemId": "PRB-WB-001",
+          "result": "Total-protein staining shows adequate and even transfer.",
+          "sequenceOrder": 1,
+          "evidenceClaimId": "CLM-WB-001",
+          "staging": {
+            "originalId": "EVD-WB-NOSIG-01",
+            "stagedMissing": [
+              "sourceType",
+              "scope",
+              "affectsCauseIds",
+              "direction"
+            ],
+            "droppedFields": [
+              {
+                "field": "label",
+                "reason": "短标签无规范对应字段；不得推断为 scope。"
+              },
+              {
+                "field": "reasoningPrompt",
+                "reason": "无规范对应字段。"
+              },
+              {
+                "field": "expectedUpdate",
+                "reason": "无规范对应字段。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "evidenceReferences",
+                "to": "evidenceClaimId（唯一引用）"
+              },
+              {
+                "from": "reveal",
+                "to": "result（原文未改写）"
+              },
+              {
+                "from": "stage",
+                "to": "sequenceOrder"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": []
+          }
+        },
+        {
+          "id": "EVD-WB-NOSIG-02",
+          "problemId": "PRB-WB-001",
+          "result": "A known high-expression positive control also has no target band.",
+          "sequenceOrder": 2,
+          "staging": {
+            "originalId": "EVD-WB-NOSIG-02",
+            "stagedMissing": [
+              "evidenceClaimId",
+              "sourceType",
+              "scope",
+              "affectsCauseIds",
+              "direction"
+            ],
+            "droppedFields": [
+              {
+                "field": "label",
+                "reason": "短标签无规范对应字段；不得推断为 scope。"
+              },
+              {
+                "field": "reasoningPrompt",
+                "reason": "无规范对应字段。"
+              },
+              {
+                "field": "expectedUpdate",
+                "reason": "无规范对应字段。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "reveal",
+                "to": "result（原文未改写）"
+              },
+              {
+                "from": "stage",
+                "to": "sequenceOrder"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "evidenceReferences 含 2 条引用；规范模型为单条，未选择。"
+            ]
+          }
+        }
+      ],
+      "transferCases": [
+        {
+          "id": "TRF-WB-001",
+          "problemId": "PRB-WB-001",
+          "prompt": "下一步应优先排查哪个层级？",
+          "context": "WB无条带，但transfer QC正常，positive control也无目标条带。",
+          "contentOrigin": "external_source_pack",
+          "verificationStatus": "pending",
+          "staging": {
+            "originalId": "TRF-WB-001",
+            "stagedMissing": [
+              "mode",
+              "answerSchema",
+              "rubric",
+              "expected",
+              "misconceptionTags",
+              "farTransferFamily"
+            ],
+            "droppedFields": [
+              {
+                "field": "concept",
+                "reason": "概念标识不等于 misconceptionTags/farTransferFamily；不得推断。"
+              },
+              {
+                "field": "expectedPrinciples",
+                "reason": "原则标签不等于 rubric 文本；不得推断。"
+              },
+              {
+                "field": "evidenceClaims",
+                "reason": "规范训练案例类型无主张列表字段。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "（卡片 transfer_cases 反向解析）",
+                "to": "problemId"
+              },
+              {
+                "from": "prompt",
+                "to": "prompt（原文未改写）"
+              },
+              {
+                "from": "scenario",
+                "to": "context（原文未改写）"
+              }
+            ],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 未提供）",
+              "verificationStatus=pending（legacy 未提供，使用最低状态，未提升）"
+            ],
+            "converterNotes": [
+              "problemId 由唯一引用该案例的卡片 PRB-WB-001 解析。"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "qpcr",
+    "title": "RT-qPCR：ΔΔCq 方法边界",
+    "description": "既有 pending/unclassified staging 摘录；导入后仍需逐字段与科学审核。",
+    "knowledgeType": "protocol",
+    "sourcePath": "artifacts/m013-v3-staging/m013-batch01-foundation-wb-qpcr-ihc-20260824-staging.json",
+    "payload": {
+      "stagingSchemaVersion": 1,
+      "stagingId": "m013-batch01-foundation-wb-qpcr-ihc-20260824-staging",
+      "sourcePackId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+      "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+      "originalFileSha256": "12fa265cef02c238084ddaf2214fc20c8677a9b8478baa2cb88764a3b490b295",
+      "convertedAt": "2026-08-27T16:30:19.605Z",
+      "createdAt": "2026-08-24T21:16:00+08:00",
+      "createdBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "provenance": "Official NIH/CAP/NCBI sources, PubMed-indexed methodological literature, MIQE 2.0 (2025), and explicitly tiered vendor troubleshooting resources were manually checked for source identity, scope and claim support. Final ResearchOS claim_verified promotion is intentionally reserved for Codex/formal source-pack gate per M013.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
+      "excerptNote": "M020 机械选取单条既有 card 及显式依赖；原行不改写；不是完整 protocol。",
+      "sources": [
+        {
+          "id": "SRC-MIQE2",
+          "schemaVersion": 1,
+          "sourceType": "guideline",
+          "journal": "Clinical Chemistry",
+          "title": "MIQE 2.0: Revision of the Minimum Information for Publication of Quantitative Real-Time PCR Experiments Guidelines",
+          "authors": [
+            "Bustin SA",
+            "Ruijter JM",
+            "van den Hoff MJB",
+            "Kubista M",
+            "Pfaffl MW",
+            "Shipley GL",
+            "Tran N",
+            "Rödiger S",
+            "Untergasser A",
+            "Mueller R",
+            "Nolan T",
+            "Milavec M",
+            "Burns MJ",
+            "Huggett JF",
+            "Vandesompele J",
+            "Wittwer CT"
+          ],
+          "year": 2025,
+          "doi": "10.1093/clinchem/hvaf043",
+          "pmid": "40272429",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40272429/",
+          "authorityTier": "S",
+          "domain": [
+            "qpcr",
+            "rt_qpcr",
+            "experimental_design",
+            "statistics"
+          ],
+          "version": "2.0",
+          "knowledgeStatus": "current",
+          "supersedes": [
+            "MIQE-2009"
+          ],
+          "supersededBy": [],
+          "verificationStatus": "pending",
+          "verificationScope": [
+            "identity",
+            "metadata",
+            "scope pre-review"
+          ],
+          "contentHash": "220b246ffcd18ebc15e77b0bbd2fb803911baeb353461e5c62cdfe95876719d5",
+          "retrievedAt": "2026-08-24T21:16:00+08:00",
+          "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+          "provenanceNote": "Current qPCR/RT-qPCR guideline. Critical source for controls, efficiency-aware quantification, reference-gene validation and data analysis.",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "SRC-MIQE2",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+            ],
+            "converterNotes": [
+              "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+              "authorityTier \"S\" 保留为来源包提案值；正式层级需 gate 评审。"
+            ]
+          }
+        }
+      ],
+      "evidenceClaims": [
+        {
+          "id": "CLM-QPCR-003",
+          "claim": "MIQE 2.0 discourages relying on conventional ΔΔCq quantitative analysis because efficiency assumptions, replicate/reference-gene handling and information loss can bias or obscure inference.",
+          "scope": "Quantitative gene-expression qPCR under MIQE 2.0 recommendations.",
+          "qualification": "This is a current guideline recommendation, not a claim that every historical ΔΔCq result is automatically invalid.",
+          "sourceId": "SRC-MIQE2",
+          "supportType": "direct",
+          "supportingLocation": "Data Analysis → Fold-difference between groups",
+          "reviewerNote": "",
+          "domain": [
+            "qpcr",
+            "statistics",
+            "normalization"
+          ],
+          "knowledgeStatus": "current",
+          "verificationStatus": "pending",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "CLM-QPCR-003",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+            ],
+            "converterNotes": []
+          }
+        }
+      ],
+      "problemCards": [
+        {
+          "id": "PRB-QPCR-004",
+          "schemaVersion": 1,
+          "domain": "statistics",
+          "subdomain": "rt_qpcr",
+          "problemType": "unclassified",
+          "titleCn": "2^-ΔΔCq 是不是任何 RT-qPCR 都可以默认使用？",
+          "titleEn": "Is 2^-ΔΔCq a universal default for RT-qPCR?",
+          "aliases": [],
+          "keywords": [],
+          "difficulty": "advanced",
+          "importance": 4,
+          "frequency": 4,
+          "observation": "未检查target/reference efficiency和reference gene稳定性，直接默认2^-ΔΔCq。",
+          "context": "rt_qpcr",
+          "whyItMatters": "MIQE 2.0对传统ΔΔCq的效率假设、信息损失和replicate/reference处理提出明确批评。",
+          "candidateCauseIds": [
+            "CAUSE-QPCR-004-A"
+          ],
+          "diagnosticPathId": "PATH-QPCR-004",
+          "redFlags": [],
+          "commonWrongActions": [
+            "把MIQE建议误写成所有旧ΔΔCq研究都错误"
+          ],
+          "recommendedReasoning": [
+            "按MIQE 2.0审查效率校正、参照基因和sample-level normalization",
+            "明确方法及其假设"
+          ],
+          "claimBoundary": "应表述为MIQE 2.0不建议依赖传统ΔΔCq，而不是无条件宣布所有ΔΔCq结果无效。",
+          "reviewerImplication": "需要根据领域规范与数据审查分析是否可辩护。",
+          "transferCaseIds": [],
+          "misconceptionTags": [
+            "ddcq_universal"
+          ],
+          "relatedMethodIds": [],
+          "relatedProtocolIds": [],
+          "relatedPatternIds": [],
+          "evidenceClaimIds": [
+            "CLM-QPCR-003"
+          ],
+          "contentOrigin": "external_source_pack",
+          "verificationStatus": "pending",
+          "staging": {
+            "originalId": "PRB-QPCR-004",
+            "stagedMissing": [
+              "knowledgeStatus"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "importance",
+                "to": "importance（查找表 critical/high/medium→5/4/3）"
+              },
+              {
+                "from": "frequency",
+                "to": "frequency（查找表 very_common/common→4/3）"
+              },
+              {
+                "from": "diagnostic_path",
+                "to": "diagnosticPathId"
+              },
+              {
+                "from": "title_cn",
+                "to": "titleCn"
+              },
+              {
+                "from": "title_en",
+                "to": "titleEn"
+              },
+              {
+                "from": "symptom",
+                "to": "observation"
+              },
+              {
+                "from": "why_it_matters",
+                "to": "whyItMatters"
+              },
+              {
+                "from": "candidate_causes",
+                "to": "candidateCauseIds"
+              },
+              {
+                "from": "red_flags",
+                "to": "redFlags"
+              },
+              {
+                "from": "common_wrong_actions",
+                "to": "commonWrongActions"
+              },
+              {
+                "from": "recommended_reasoning",
+                "to": "recommendedReasoning"
+              },
+              {
+                "from": "statistical_implication",
+                "to": "statisticalImplication"
+              },
+              {
+                "from": "experimental_implication",
+                "to": "experimentalImplication"
+              },
+              {
+                "from": "bioinformatics_implication",
+                "to": "bioinformaticsImplication"
+              },
+              {
+                "from": "claim_boundary",
+                "to": "claimBoundary"
+              },
+              {
+                "from": "reviewer_implication",
+                "to": "reviewerImplication"
+              },
+              {
+                "from": "transfer_cases",
+                "to": "transferCaseIds"
+              },
+              {
+                "from": "misconception_tags",
+                "to": "misconceptionTags"
+              },
+              {
+                "from": "related_methods",
+                "to": "relatedMethodIds"
+              },
+              {
+                "from": "related_protocols",
+                "to": "relatedProtocolIds"
+              },
+              {
+                "from": "related_patterns",
+                "to": "relatedPatternIds"
+              },
+              {
+                "from": "evidence_claims",
+                "to": "evidenceClaimIds"
+              },
+              {
+                "from": "content_origin",
+                "to": "contentOrigin"
+              },
+              {
+                "from": "verification_status",
+                "to": "verificationStatus"
+              },
+              {
+                "from": "verified_at",
+                "to": "verifiedAt"
+              }
+            ],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+              "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+            ],
+            "converterNotes": [
+              "importance \"high\"→4（显式查找表）",
+              "frequency \"very_common\"→4（显式查找表）"
+            ]
+          }
+        }
+      ],
+      "diagnosticCauses": [
+        {
+          "id": "CAUSE-QPCR-004-A",
+          "problemId": "PRB-QPCR-004",
+          "labelCn": "默认ΔΔCq且未审查效率/normalization假设",
+          "supportingEvidenceIds": [],
+          "contradictingEvidenceIds": [],
+          "staging": {
+            "originalId": "CAUSE-QPCR-004-A",
+            "stagedMissing": [
+              "mechanism",
+              "initialRank",
+              "layer",
+              "uncertaintyNote",
+              "evidenceClaimIds"
+            ],
+            "droppedFields": [
+              {
+                "field": "evidenceSources",
+                "reason": "SRC-* 来源引用不得推断为 evidenceClaimIds（逐条主张核验需正式评审）；原始值保留在源包中。"
+              },
+              {
+                "field": "priorPlausibility",
+                "reason": "先验可能性标签无规范对应字段；不得推断为 initialRank。"
+              },
+              {
+                "field": "severity",
+                "reason": "严重性判断需正式评审；不得机械转换。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "cause",
+                "to": "labelCn（脚本判定含中文，原文未改写）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": []
+          }
+        }
+      ],
+      "diagnosticChecks": [
+        {
+          "id": "CHK-QPCR-004-EFF",
+          "problemId": "PRB-QPCR-004",
+          "questionCn": "target与reference amplification efficiency是否评估？",
+          "informationSupplied": "未评估则固定效率假设不可验证。",
+          "discriminatesCauseIds": [
+            "CAUSE-QPCR-004-A"
+          ],
+          "expectedUpdate": "增加ΔΔCq风险",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-QPCR-003"
+          ],
+          "staging": {
+            "originalId": "CHK-QPCR-004-EFF",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-QPCR-004-A。"
+            ]
+          }
+        },
+        {
+          "id": "CHK-QPCR-004-REF",
+          "problemId": "PRB-QPCR-004",
+          "questionCn": "reference gene是否验证稳定，replicates如何处理？",
+          "informationSupplied": "决定normalization与replicate handling是否可辩护。",
+          "discriminatesCauseIds": [
+            "CAUSE-QPCR-004-A"
+          ],
+          "expectedUpdate": "评估分析可信度",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-QPCR-002",
+            "CLM-QPCR-003"
+          ],
+          "staging": {
+            "originalId": "CHK-QPCR-004-REF",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-QPCR-004-A。"
+            ]
+          }
+        }
+      ],
+      "diagnosticPaths": [
+        {
+          "id": "PATH-QPCR-004",
+          "problemId": "PRB-QPCR-004",
+          "nodes": [
+            {
+              "id": "n1",
+              "step": 1,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-QPCR-004-EFF"
+              ],
+              "expectedCheckId": "CHK-QPCR-004-EFF"
+            },
+            {
+              "id": "n2",
+              "step": 2,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-QPCR-004-REF"
+              ],
+              "expectedCheckId": "CHK-QPCR-004-REF"
+            }
+          ],
+          "staging": {
+            "originalId": "PATH-QPCR-004",
+            "stagedMissing": [
+              "finalRanking",
+              "finalLayer"
+            ],
+            "droppedFields": [
+              {
+                "field": "terminalLogic",
+                "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "nodes[].step+checkId",
+                "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+            ]
+          }
+        }
+      ],
+      "diagnosticEvidence": [],
+      "transferCases": []
+    }
+  },
+  {
+    "id": "ihc",
+    "title": "IHC：阴性与检测失败",
+    "description": "既有 pending/unclassified staging 摘录；导入后仍需逐字段与科学审核。",
+    "knowledgeType": "protocol",
+    "sourcePath": "artifacts/m013-v3-staging/m013-batch01-foundation-wb-qpcr-ihc-20260824-staging.json",
+    "payload": {
+      "stagingSchemaVersion": 1,
+      "stagingId": "m013-batch01-foundation-wb-qpcr-ihc-20260824-staging",
+      "sourcePackId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+      "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+      "originalFileSha256": "12fa265cef02c238084ddaf2214fc20c8677a9b8478baa2cb88764a3b490b295",
+      "convertedAt": "2026-08-27T16:30:19.605Z",
+      "createdAt": "2026-08-24T21:16:00+08:00",
+      "createdBy": "OpenAI GPT-5.6 Sol external scientific source pre-review",
+      "provenance": "Official NIH/CAP/NCBI sources, PubMed-indexed methodological literature, MIQE 2.0 (2025), and explicitly tiered vendor troubleshooting resources were manually checked for source identity, scope and claim support. Final ResearchOS claim_verified promotion is intentionally reserved for Codex/formal source-pack gate per M013.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
+      "excerptNote": "M020 机械选取单条既有 card 及显式依赖；原行不改写；不是完整 protocol。",
+      "sources": [
+        {
+          "id": "SRC-MACNEIL-2020",
+          "schemaVersion": 1,
+          "sourceType": "protocol",
+          "journal": "BioTechniques",
+          "title": "Antibody validation for protein expression on tissue slides: a protocol for immunohistochemistry",
+          "authors": [
+            "MacNeil T",
+            "Vathiotis IA",
+            "Martinez-Morilla S",
+            "Yaghoobi V",
+            "Zugazagoitia J",
+            "Liu Y",
+            "Rimm DL"
+          ],
+          "year": 2020,
+          "doi": "10.2144/btn-2020-0095",
+          "pmid": "32852223",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32852223/",
+          "authorityTier": "A",
+          "domain": [
+            "ihc",
+            "if",
+            "antibody_validation"
+          ],
+          "knowledgeStatus": "current",
+          "supersedes": [],
+          "supersededBy": [],
+          "verificationStatus": "pending",
+          "verificationScope": [
+            "identity",
+            "metadata",
+            "scope pre-review"
+          ],
+          "contentHash": "2c214b144295065cef83aba9cd248b84cb3243bd6146b595d5abb8dcba53eff8",
+          "retrievedAt": "2026-08-24T21:16:00+08:00",
+          "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+          "provenanceNote": "Peer-reviewed IHC/IF antibody-validation protocol; supports orthogonal/independent evidence and reproducibility checks.",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "SRC-MACNEIL-2020",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+            ],
+            "converterNotes": [
+              "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+              "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+            ]
+          }
+        },
+        {
+          "id": "SRC-CST-IHC",
+          "schemaVersion": 1,
+          "sourceType": "technical_resource",
+          "organization": "Cell Signaling Technology",
+          "title": "Immunohistochemistry (IHC) Troubleshooting Guide & the Importance of Using Controls",
+          "authors": [],
+          "year": 2026,
+          "url": "https://www.cellsignal.com/learn-and-support/troubleshooting/ihc-troubleshooting-guide",
+          "authorityTier": "B",
+          "domain": [
+            "ihc",
+            "troubleshooting",
+            "controls"
+          ],
+          "knowledgeStatus": "current",
+          "supersedes": [],
+          "supersededBy": [],
+          "verificationStatus": "pending",
+          "verificationScope": [
+            "identity",
+            "metadata",
+            "scope pre-review"
+          ],
+          "contentHash": "9899d033fc2119af9079fa8e45a7c3d210dd9935b11d8abf805e0a6549bac339",
+          "retrievedAt": "2026-08-24T21:16:00+08:00",
+          "licenseNote": "Respect source-specific copyright/licensing; do not bundle long excerpts.",
+          "provenanceNote": "Vendor technical source for candidate causes such as positive-control failure, deparaffinization, endogenous background and secondary cross-reactivity.",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "SRC-CST-IHC",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+            ],
+            "converterNotes": [
+              "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+              "authorityTier \"B\" 保留为来源包提案值；正式层级需 gate 评审。"
+            ]
+          }
+        }
+      ],
+      "evidenceClaims": [
+        {
+          "id": "CLM-IHC-004",
+          "claim": "Little or no IHC staining should be interpreted using controls and assay context because the specimen may be truly negative or the staining system may have failed.",
+          "scope": "IHC troubleshooting.",
+          "qualification": "Vendor-specific settings are not universal; a validated high-expressing control is one useful discriminator.",
+          "sourceId": "SRC-CST-IHC",
+          "supportType": "qualified",
+          "supportingLocation": "Potential Problem: Little to No Staining",
+          "reviewerNote": "",
+          "domain": [
+            "ihc",
+            "troubleshooting",
+            "controls"
+          ],
+          "knowledgeStatus": "current",
+          "verificationStatus": "pending",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "CLM-IHC-004",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+            ],
+            "converterNotes": []
+          }
+        },
+        {
+          "id": "CLM-IHC-006",
+          "claim": "IHC antibody validation should be application-specific and can include expected localization, orthogonal assays, independent antibodies and reproducibility across runs/operators/lots.",
+          "scope": "Research/translational IHC/IF antibody validation.",
+          "qualification": "The exact validation strategy depends on target biology and intended use.",
+          "sourceId": "SRC-MACNEIL-2020",
+          "supportType": "direct",
+          "supportingLocation": "Protocol overview and Figures 1–4",
+          "reviewerNote": "",
+          "domain": [
+            "ihc",
+            "antibody_validation",
+            "reproducibility"
+          ],
+          "knowledgeStatus": "current",
+          "verificationStatus": "pending",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "CLM-IHC-006",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+            ],
+            "converterNotes": []
+          }
+        }
+      ],
+      "problemCards": [
+        {
+          "id": "PRB-IHC-001",
+          "schemaVersion": 1,
+          "domain": "wet_lab",
+          "subdomain": "ihc",
+          "problemType": "unclassified",
+          "titleCn": "IHC 完全不染，是样本真阴性还是实验失败？",
+          "titleEn": "IHC: true negative or assay failure?",
+          "aliases": [],
+          "keywords": [],
+          "difficulty": "foundation",
+          "importance": 5,
+          "frequency": 3,
+          "observation": "目标组织几乎无特异染色。",
+          "context": "ihc",
+          "whyItMatters": "真实低/阴性表达与技术失败可产生相同表型。",
+          "candidateCauseIds": [
+            "CAUSE-IHC-001-A"
+          ],
+          "diagnosticPathId": "PATH-IHC-001",
+          "redFlags": [],
+          "commonWrongActions": [
+            "无染色直接解释成蛋白不表达"
+          ],
+          "recommendedReasoning": [
+            "先验证检测体系在合适阳性材料中工作",
+            "再检查抗体验证与preanalytic/retrieval条件",
+            "最后解释生物学阴性"
+          ],
+          "claimBoundary": "无有效positive control时，不表达结论不充分。",
+          "reviewerImplication": "关键阴性证据缺assay-performance control时可能需补实验。",
+          "transferCaseIds": [
+            "TRF-IHC-001"
+          ],
+          "misconceptionTags": [
+            "negative_stain_equals_no_expression"
+          ],
+          "relatedMethodIds": [],
+          "relatedProtocolIds": [],
+          "relatedPatternIds": [],
+          "evidenceClaimIds": [
+            "CLM-IHC-004",
+            "CLM-IHC-006"
+          ],
+          "contentOrigin": "external_source_pack",
+          "verificationStatus": "pending",
+          "staging": {
+            "originalId": "PRB-IHC-001",
+            "stagedMissing": [
+              "knowledgeStatus"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "importance",
+                "to": "importance（查找表 critical/high/medium→5/4/3）"
+              },
+              {
+                "from": "frequency",
+                "to": "frequency（查找表 very_common/common→4/3）"
+              },
+              {
+                "from": "diagnostic_path",
+                "to": "diagnosticPathId"
+              },
+              {
+                "from": "title_cn",
+                "to": "titleCn"
+              },
+              {
+                "from": "title_en",
+                "to": "titleEn"
+              },
+              {
+                "from": "symptom",
+                "to": "observation"
+              },
+              {
+                "from": "why_it_matters",
+                "to": "whyItMatters"
+              },
+              {
+                "from": "candidate_causes",
+                "to": "candidateCauseIds"
+              },
+              {
+                "from": "red_flags",
+                "to": "redFlags"
+              },
+              {
+                "from": "common_wrong_actions",
+                "to": "commonWrongActions"
+              },
+              {
+                "from": "recommended_reasoning",
+                "to": "recommendedReasoning"
+              },
+              {
+                "from": "statistical_implication",
+                "to": "statisticalImplication"
+              },
+              {
+                "from": "experimental_implication",
+                "to": "experimentalImplication"
+              },
+              {
+                "from": "bioinformatics_implication",
+                "to": "bioinformaticsImplication"
+              },
+              {
+                "from": "claim_boundary",
+                "to": "claimBoundary"
+              },
+              {
+                "from": "reviewer_implication",
+                "to": "reviewerImplication"
+              },
+              {
+                "from": "transfer_cases",
+                "to": "transferCaseIds"
+              },
+              {
+                "from": "misconception_tags",
+                "to": "misconceptionTags"
+              },
+              {
+                "from": "related_methods",
+                "to": "relatedMethodIds"
+              },
+              {
+                "from": "related_protocols",
+                "to": "relatedProtocolIds"
+              },
+              {
+                "from": "related_patterns",
+                "to": "relatedPatternIds"
+              },
+              {
+                "from": "evidence_claims",
+                "to": "evidenceClaimIds"
+              },
+              {
+                "from": "content_origin",
+                "to": "contentOrigin"
+              },
+              {
+                "from": "verification_status",
+                "to": "verificationStatus"
+              },
+              {
+                "from": "verified_at",
+                "to": "verifiedAt"
+              }
+            ],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+              "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+            ],
+            "converterNotes": [
+              "importance \"critical\"→5（显式查找表）",
+              "frequency \"common\"→3（显式查找表）"
+            ]
+          }
+        }
+      ],
+      "diagnosticCauses": [
+        {
+          "id": "CAUSE-IHC-001-A",
+          "problemId": "PRB-IHC-001",
+          "labelCn": "需区分真实阴性、抗体/检测失败与preanalytic问题",
+          "supportingEvidenceIds": [],
+          "contradictingEvidenceIds": [],
+          "staging": {
+            "originalId": "CAUSE-IHC-001-A",
+            "stagedMissing": [
+              "mechanism",
+              "initialRank",
+              "layer",
+              "uncertaintyNote",
+              "evidenceClaimIds"
+            ],
+            "droppedFields": [
+              {
+                "field": "evidenceSources",
+                "reason": "SRC-* 来源引用不得推断为 evidenceClaimIds（逐条主张核验需正式评审）；原始值保留在源包中。"
+              },
+              {
+                "field": "priorPlausibility",
+                "reason": "先验可能性标签无规范对应字段；不得推断为 initialRank。"
+              },
+              {
+                "field": "severity",
+                "reason": "严重性判断需正式评审；不得机械转换。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "cause",
+                "to": "labelCn（脚本判定含中文，原文未改写）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": []
+          }
+        }
+      ],
+      "diagnosticChecks": [
+        {
+          "id": "CHK-IHC-001-POS",
+          "problemId": "PRB-IHC-001",
+          "questionCn": "已知高表达positive control是否正常染色？",
+          "informationSupplied": "正常支持样本可能真阴性；失败提示assay/antibody问题。",
+          "discriminatesCauseIds": [
+            "CAUSE-IHC-001-A"
+          ],
+          "expectedUpdate": "高信息价值",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-IHC-004"
+          ],
+          "staging": {
+            "originalId": "CHK-IHC-001-POS",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-IHC-001-A。"
+            ]
+          }
+        },
+        {
+          "id": "CHK-IHC-001-AB",
+          "problemId": "PRB-IHC-001",
+          "questionCn": "抗体是否有application-specific validation证据？",
+          "informationSupplied": "没有则提高抗体/特异性问题可能性。",
+          "discriminatesCauseIds": [
+            "CAUSE-IHC-001-A"
+          ],
+          "expectedUpdate": "评估核心reagent可信度",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-IHC-006"
+          ],
+          "staging": {
+            "originalId": "CHK-IHC-001-AB",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-IHC-001-A。"
+            ]
+          }
+        },
+        {
+          "id": "CHK-IHC-001-PRE",
+          "problemId": "PRB-IHC-001",
+          "questionCn": "fixation/retrieval/preanalytic条件是否与验证条件一致？",
+          "informationSupplied": "显著差异可解释信号下降。",
+          "discriminatesCauseIds": [
+            "CAUSE-IHC-001-A"
+          ],
+          "expectedUpdate": "定位preanalytic/analytic层",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-IHC-003"
+          ],
+          "staging": {
+            "originalId": "CHK-IHC-001-PRE",
+            "stagedMissing": [
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              },
+              {
+                "from": "discriminatingTests（原因侧）",
+                "to": "discriminatesCauseIds（按 legacy cause.discriminatingTests 反向解析）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "discriminatesCauseIds 由 legacy causes 的 discriminatingTests 反向解析：CAUSE-IHC-001-A。"
+            ]
+          }
+        }
+      ],
+      "diagnosticPaths": [
+        {
+          "id": "PATH-IHC-001",
+          "problemId": "PRB-IHC-001",
+          "nodes": [
+            {
+              "id": "n1",
+              "step": 1,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-IHC-001-POS"
+              ],
+              "expectedCheckId": "CHK-IHC-001-POS"
+            },
+            {
+              "id": "n2",
+              "step": 2,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-IHC-001-AB"
+              ],
+              "expectedCheckId": "CHK-IHC-001-AB"
+            },
+            {
+              "id": "n3",
+              "step": 3,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-IHC-001-PRE"
+              ],
+              "expectedCheckId": "CHK-IHC-001-PRE"
+            }
+          ],
+          "staging": {
+            "originalId": "PATH-IHC-001",
+            "stagedMissing": [
+              "finalRanking",
+              "finalLayer"
+            ],
+            "droppedFields": [
+              {
+                "field": "terminalLogic",
+                "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "nodes[].step+checkId",
+                "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+            ]
+          }
+        }
+      ],
+      "diagnosticEvidence": [
+        {
+          "id": "EVD-IHC-NEG-01",
+          "problemId": "PRB-IHC-001",
+          "result": "A known positive control stained in the same run is also negative.",
+          "sequenceOrder": 1,
+          "evidenceClaimId": "CLM-IHC-004",
+          "staging": {
+            "originalId": "EVD-IHC-NEG-01",
+            "stagedMissing": [
+              "sourceType",
+              "scope",
+              "affectsCauseIds",
+              "direction"
+            ],
+            "droppedFields": [
+              {
+                "field": "label",
+                "reason": "短标签无规范对应字段；不得推断为 scope。"
+              },
+              {
+                "field": "reasoningPrompt",
+                "reason": "无规范对应字段。"
+              },
+              {
+                "field": "expectedUpdate",
+                "reason": "无规范对应字段。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "evidenceReferences",
+                "to": "evidenceClaimId（唯一引用）"
+              },
+              {
+                "from": "reveal",
+                "to": "result（原文未改写）"
+              },
+              {
+                "from": "stage",
+                "to": "sequenceOrder"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": []
+          }
+        }
+      ],
+      "transferCases": [
+        {
+          "id": "TRF-IHC-001",
+          "problemId": "PRB-IHC-001",
+          "prompt": "与positive control也阴性相比，这条信息如何改变判断？",
+          "context": "目标样本无染色，但positive control同批次强阳性。",
+          "contentOrigin": "external_source_pack",
+          "verificationStatus": "pending",
+          "staging": {
+            "originalId": "TRF-IHC-001",
+            "stagedMissing": [
+              "mode",
+              "answerSchema",
+              "rubric",
+              "expected",
+              "misconceptionTags",
+              "farTransferFamily"
+            ],
+            "droppedFields": [
+              {
+                "field": "concept",
+                "reason": "概念标识不等于 misconceptionTags/farTransferFamily；不得推断。"
+              },
+              {
+                "field": "expectedPrinciples",
+                "reason": "原则标签不等于 rubric 文本；不得推断。"
+              },
+              {
+                "field": "evidenceClaims",
+                "reason": "规范训练案例类型无主张列表字段。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "（卡片 transfer_cases 反向解析）",
+                "to": "problemId"
+              },
+              {
+                "from": "prompt",
+                "to": "prompt（原文未改写）"
+              },
+              {
+                "from": "scenario",
+                "to": "context（原文未改写）"
+              }
+            ],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 未提供）",
+              "verificationStatus=pending（legacy 未提供，使用最低状态，未提升）"
+            ],
+            "converterNotes": [
+              "problemId 由唯一引用该案例的卡片 PRB-IHC-001 解析。"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "flow",
+    "title": "Flow：FMO 与 isotype",
+    "description": "既有 pending/unclassified staging 摘录；导入后仍需逐字段与科学审核。",
+    "knowledgeType": "protocol",
+    "sourcePath": "artifacts/m013-v3-staging/m013-batch07-wetlab-expanded-20260824-staging.json",
+    "payload": {
+      "stagingSchemaVersion": 1,
+      "stagingId": "m013-batch07-wetlab-expanded-20260824-staging",
+      "sourcePackId": "m013-batch07-wetlab-expanded-20260824",
+      "sourceArchive": "ResearchOS_M013_COMPLETE_SourcePacks_20260824.zip",
+      "originalFileSha256": "6e7446719cff11cb47dcab8861928fd8bf6c8d1cdffd592255a5e9f48ef1cafd",
+      "convertedAt": "2026-08-27T16:30:19.605Z",
+      "createdAt": "2026-08-24T22:05:00+08:00",
+      "createdBy": "OpenAI GPT-5.6 Sol external scientific source review",
+      "provenance": "Source-first external scientific pre-review. Source metadata and claim scope were manually pre-reviewed against authoritative guidelines, original methods, peer-reviewed benchmarks/reviews, or official technical resources. Final ResearchOS verification remains reserved for Codex/formal source-pack gate.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
+      "excerptNote": "M020 机械选取单条既有 card 及显式依赖；原行不改写；不是完整 protocol。",
+      "sources": [
+        {
+          "id": "SRC-FLOW-GUIDE-2021",
+          "schemaVersion": 1,
+          "sourceType": "guideline",
+          "journal": "European Journal of Immunology",
+          "title": "Guidelines for the use of flow cytometry and cell sorting in immunological studies (third edition)",
+          "authors": [],
+          "year": 2021,
+          "doi": "10.1002/eji.202170126",
+          "pmid": "34910301",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34910301/",
+          "authorityTier": "A",
+          "domain": [
+            "flow_cytometry"
+          ],
+          "knowledgeStatus": "current",
+          "supersedes": [],
+          "supersededBy": [],
+          "verificationStatus": "pending",
+          "verificationScope": [
+            "identity",
+            "metadata"
+          ],
+          "contentHash": "870f44fefc3b282859fedda3b95e81df82b7a6c418c7b5a5b3e734eec293a856",
+          "retrievedAt": "2026-08-24T22:05:00+08:00",
+          "licenseNote": "Check publisher/source terms before redistributing full text.",
+          "provenanceNote": "",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "SRC-FLOW-GUIDE-2021",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "contentOrigin=\"external_source_pack\"（legacy 来源行未提供 contentOrigin）"
+            ],
+            "converterNotes": [
+              "verificationStatus 由 \"metadata_verified\" 转为 \"pending\"：转换器不继承外部模型产生的验证结论，正式 gate 需重新签发。",
+              "authorityTier \"A\" 保留为来源包提案值；正式层级需 gate 评审。"
+            ]
+          }
+        }
+      ],
+      "evidenceClaims": [
+        {
+          "id": "CLM-FLOW-002",
+          "claim": "Fluorescence-minus-one and other appropriate controls can help define gates in multicolor flow cytometry; isotype controls answer different questions and are not universal substitutes for FMO controls.",
+          "scope": "",
+          "qualification": "",
+          "sourceId": "SRC-FLOW-GUIDE-2021",
+          "supportType": "qualified",
+          "supportingLocation": "Controls/gating sections",
+          "reviewerNote": "Externally pre-reviewed; final ResearchOS claim_verified promotion reserved for Codex/formal source-pack gate.",
+          "domain": [
+            "flow_cytometry",
+            "controls"
+          ],
+          "knowledgeStatus": "current",
+          "verificationStatus": "pending",
+          "contentOrigin": "external_source_pack",
+          "staging": {
+            "originalId": "CLM-FLOW-002",
+            "stagedMissing": [],
+            "droppedFields": [],
+            "fieldMap": [],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 主张行未提供 contentOrigin）"
+            ],
+            "converterNotes": []
+          }
+        }
+      ],
+      "problemCards": [
+        {
+          "id": "PRB-FLOW-003",
+          "schemaVersion": 1,
+          "domain": "wet_lab",
+          "subdomain": "flow_cytometry",
+          "problemType": "unclassified",
+          "titleCn": "isotype control 能代替 FMO control 吗？",
+          "titleEn": "Can an isotype control replace an FMO control?",
+          "aliases": [],
+          "keywords": [],
+          "difficulty": "intermediate",
+          "importance": 4,
+          "frequency": 3,
+          "context": "",
+          "whyItMatters": "FMO与isotype回答不同控制问题；FMO更直接反映其余fluorophores造成的spread对gate的影响。",
+          "candidateCauseIds": [],
+          "diagnosticPathId": "PATH-PRB-FLOW-003",
+          "redFlags": [],
+          "commonWrongActions": [],
+          "recommendedReasoning": [],
+          "transferCaseIds": [],
+          "misconceptionTags": [
+            "isotype_equals_fmo"
+          ],
+          "relatedMethodIds": [],
+          "relatedProtocolIds": [],
+          "relatedPatternIds": [],
+          "evidenceClaimIds": [
+            "CLM-FLOW-002"
+          ],
+          "contentOrigin": "external_source_pack",
+          "verificationStatus": "pending",
+          "staging": {
+            "originalId": "PRB-FLOW-003",
+            "stagedMissing": [
+              "knowledgeStatus",
+              "observation",
+              "claimBoundary",
+              "reviewerImplication"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "importance",
+                "to": "importance（查找表 critical/high/medium→5/4/3）"
+              },
+              {
+                "from": "frequency",
+                "to": "frequency（查找表 very_common/common→4/3）"
+              },
+              {
+                "from": "diagnostic_path",
+                "to": "diagnosticPathId"
+              },
+              {
+                "from": "title_cn",
+                "to": "titleCn"
+              },
+              {
+                "from": "title_en",
+                "to": "titleEn"
+              },
+              {
+                "from": "why_it_matters",
+                "to": "whyItMatters"
+              },
+              {
+                "from": "candidate_causes",
+                "to": "candidateCauseIds"
+              },
+              {
+                "from": "red_flags",
+                "to": "redFlags"
+              },
+              {
+                "from": "common_wrong_actions",
+                "to": "commonWrongActions"
+              },
+              {
+                "from": "recommended_reasoning",
+                "to": "recommendedReasoning"
+              },
+              {
+                "from": "statistical_implication",
+                "to": "statisticalImplication"
+              },
+              {
+                "from": "experimental_implication",
+                "to": "experimentalImplication"
+              },
+              {
+                "from": "bioinformatics_implication",
+                "to": "bioinformaticsImplication"
+              },
+              {
+                "from": "claim_boundary",
+                "to": "claimBoundary"
+              },
+              {
+                "from": "reviewer_implication",
+                "to": "reviewerImplication"
+              },
+              {
+                "from": "transfer_cases",
+                "to": "transferCaseIds"
+              },
+              {
+                "from": "misconception_tags",
+                "to": "misconceptionTags"
+              },
+              {
+                "from": "related_methods",
+                "to": "relatedMethodIds"
+              },
+              {
+                "from": "related_protocols",
+                "to": "relatedProtocolIds"
+              },
+              {
+                "from": "related_patterns",
+                "to": "relatedPatternIds"
+              },
+              {
+                "from": "evidence_claims",
+                "to": "evidenceClaimIds"
+              },
+              {
+                "from": "content_origin",
+                "to": "contentOrigin"
+              },
+              {
+                "from": "verification_status",
+                "to": "verificationStatus"
+              },
+              {
+                "from": "verified_at",
+                "to": "verifiedAt"
+              }
+            ],
+            "converterSupplied": [
+              "schemaVersion=1（v3 实体常量）",
+              "problemType=\"unclassified\"（legacy 无已评审类型；转换器与校验器不得从标题/标签/文本推断类型）",
+              "supersedes=[] 与 supersededBy=[]（legacy 无超集信息，非推断）"
+            ],
+            "converterNotes": [
+              "importance \"high\"→4（显式查找表）",
+              "frequency \"common\"→3（显式查找表）"
+            ]
+          }
+        }
+      ],
+      "diagnosticCauses": [],
+      "diagnosticChecks": [
+        {
+          "id": "CHK-PRB-FLOW-003-01",
+          "problemId": "PRB-FLOW-003",
+          "questionCn": "目的在控制nonspecific antibody binding还是gate spread？",
+          "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+          "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-FLOW-002"
+          ],
+          "staging": {
+            "originalId": "CHK-PRB-FLOW-003-01",
+            "stagedMissing": [
+              "discriminatesCauseIds",
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "legacy 无原因声明此检查为区分性检查。"
+            ]
+          }
+        },
+        {
+          "id": "CHK-PRB-FLOW-003-02",
+          "problemId": "PRB-FLOW-003",
+          "questionCn": "FMO是否可行？",
+          "informationSupplied": "获取该信息后应更新候选解释、证据等级或推断边界。",
+          "expectedUpdate": "用于区分技术、设计、统计、模型或解释层面的替代原因。",
+          "prerequisites": [],
+          "evidenceClaimIds": [
+            "CLM-FLOW-002"
+          ],
+          "staging": {
+            "originalId": "CHK-PRB-FLOW-003-02",
+            "stagedMissing": [
+              "discriminatesCauseIds",
+              "costCategory",
+              "availability"
+            ],
+            "droppedFields": [],
+            "fieldMap": [
+              {
+                "from": "question",
+                "to": "questionCn（脚本判定含中文，原文未改写）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "legacy 无原因声明此检查为区分性检查。"
+            ]
+          }
+        }
+      ],
+      "diagnosticPaths": [
+        {
+          "id": "PATH-PRB-FLOW-003",
+          "problemId": "PRB-FLOW-003",
+          "nodes": [
+            {
+              "id": "n1",
+              "step": 1,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-PRB-FLOW-003-01"
+              ],
+              "expectedCheckId": "CHK-PRB-FLOW-003-01"
+            },
+            {
+              "id": "n2",
+              "step": 2,
+              "availableEvidenceIds": [],
+              "permittedCheckIds": [
+                "CHK-PRB-FLOW-003-02"
+              ],
+              "expectedCheckId": "CHK-PRB-FLOW-003-02"
+            }
+          ],
+          "staging": {
+            "originalId": "PATH-PRB-FLOW-003",
+            "stagedMissing": [
+              "finalRanking",
+              "finalLayer"
+            ],
+            "droppedFields": [
+              {
+                "field": "terminalLogic",
+                "reason": "终止逻辑为自由文本；规范模型无对应字段，不得推断为 finalRanking/finalLayer。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "nodes[].step+checkId",
+                "to": "DiagnosticPathNode（step/expectedCheckId/permittedCheckIds）"
+              }
+            ],
+            "converterSupplied": [],
+            "converterNotes": [
+              "节点 question/requiredJudgment/lockedAnswer/stopCondition 无 legacy 对应字段，保留为缺失；availableEvidenceIds=[]（legacy 路径节点无证据引用）。"
+            ]
+          }
+        }
+      ],
+      "diagnosticEvidence": [],
+      "transferCases": []
+    }
+  },
+  {
+    "id": "pdo",
+    "title": "PDO：既有患者—孔层级迁移案例",
+    "description": "仅有既存类器官 transfer case，未声称完整 protocol，缺失字段全部进入复核。",
+    "knowledgeType": "protocol",
+    "sourcePath": "artifacts/m013-v3-staging/m013-batch01-foundation-wb-qpcr-ihc-20260824-staging.json",
+    "payload": {
+      "stagingSchemaVersion": 1,
+      "stagingId": "m013-batch01-foundation-wb-qpcr-ihc-20260824-staging",
+      "sourcePackId": "m013-batch01-foundation-wb-qpcr-ihc-20260824",
+      "originalFileSha256": "12fa265cef02c238084ddaf2214fc20c8677a9b8478baa2cb88764a3b490b295",
+      "convertedAt": "2026-08-27T16:30:19.605Z",
+      "createdAt": "2026-08-24T21:16:00+08:00",
+      "provenance": "Official NIH/CAP/NCBI sources, PubMed-indexed methodological literature, MIQE 2.0 (2025), and explicitly tiered vendor troubleshooting resources were manually checked for source identity, scope and claim support. Final ResearchOS claim_verified promotion is intentionally reserved for Codex/formal source-pack gate per M013.\n[M013-10 staging] 本 staging 文档由 ResearchOS M013-10 legacy→v3 staging converter 机械转换；未新增或改写任何科学主张；legacy externalPreReview 已剥离（外部模型预审不等于正式 gate）。",
+      "sources": [],
+      "evidenceClaims": [],
+      "problemCards": [],
+      "transferCases": [
+        {
+          "id": "TRF-001",
+          "prompt": "若目标是患者层面的药物效应，3个wells能否让每位患者n=3？",
+          "context": "5名患者，每位患者的organoid每种药做3个wells。",
+          "contentOrigin": "external_source_pack",
+          "verificationStatus": "pending",
+          "staging": {
+            "originalId": "TRF-001",
+            "stagedMissing": [
+              "problemId",
+              "mode",
+              "answerSchema",
+              "rubric",
+              "expected",
+              "misconceptionTags",
+              "farTransferFamily"
+            ],
+            "droppedFields": [
+              {
+                "field": "concept",
+                "reason": "概念标识不等于 misconceptionTags/farTransferFamily；不得推断。"
+              },
+              {
+                "field": "expectedPrinciples",
+                "reason": "原则标签不等于 rubric 文本；不得推断。"
+              },
+              {
+                "field": "evidenceClaims",
+                "reason": "规范训练案例类型无主张列表字段。"
+              }
+            ],
+            "fieldMap": [
+              {
+                "from": "prompt",
+                "to": "prompt（原文未改写）"
+              },
+              {
+                "from": "scenario",
+                "to": "context（原文未改写）"
+              }
+            ],
+            "converterSupplied": [
+              "contentOrigin=\"external_source_pack\"（legacy 未提供）",
+              "verificationStatus=pending（legacy 未提供，使用最低状态，未提升）"
+            ],
+            "converterNotes": [
+              "transfer case 被 2 张卡片引用（PRB-EXP-001, PRB-WB-005）；无法唯一解析，保留缺失。"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

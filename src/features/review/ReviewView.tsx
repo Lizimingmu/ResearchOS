@@ -7,6 +7,7 @@ import { methodConcepts } from "../../data/methods";
 import type { Confidence, ReviewItem } from "../../domain/types";
 import { isReviewDue } from "../../learning/review";
 import { useAppStore } from "../../state/store";
+import { createKnowledgeLearningGate } from "../../services/knowledge";
 
 function referenceFor(item: ReviewItem) {
   const method = methodConcepts.find((concept) => concept.id === item.conceptId);
@@ -25,10 +26,15 @@ function OtherPracticeReview({ item }: { item: ReviewItem }) {
 }
 
 export function ReviewView() {
+  const knowledgeWorkspace = useAppStore((state) => state.knowledgeWorkspace);
+  const knowledgeAllowed = useMemo(() => createKnowledgeLearningGate(knowledgeWorkspace), [knowledgeWorkspace]);
   const reviewItems = useAppStore((state) => state.reviewItems), learnerStates = useAppStore((state) => state.learnerUnitStates), selectLearningUnit = useAppStore((state) => state.selectLearningUnit), openLearningContentTask = useAppStore((state) => state.openLearningContentTask), selectJudgment = useAppStore((state) => state.selectJudgment);
   const [tab, setTab] = useState<"learning" | "other">("learning"), [selectedId, setSelectedId] = useState(reviewItems.find((item) => isReviewDue(item))?.id);
-  const due = useMemo(() => reviewItems.filter((item) => isReviewDue(item)), [reviewItems]);
+  const due = useMemo(() => reviewItems.filter((item) => isReviewDue(item) && knowledgeAllowed(item.conceptId)), [reviewItems, knowledgeAllowed]);
   const learningDue = learnerStates.filter((state) => {
+    if (!knowledgeAllowed(state.unitId)) return false;
+    const content = learningContentRegistry.find((entry) => entry.unitId === state.unitId);
+    if (content && !knowledgeAllowed(content.id)) return false;
     if (!state.dueAt || Date.parse(state.dueAt) > Date.now()) return false;
     const architectureContent = learningContentRegistry.some((entry) => entry.unitId === state.unitId && ["concept_lesson", "method_lesson"].includes(entry.contentType));
     return architectureContent ? state.stage === "review_eligible" : ["review_eligible", "consolidating", "transferable"].includes(state.stage);

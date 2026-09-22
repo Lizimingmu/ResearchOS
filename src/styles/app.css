@@ -722,3 +722,51 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 
 /* M017 calm apprenticeship surfaces */
 .guided-lesson-page,.today-plan,.progress-page,.practice-hub{max-width:1100px;margin:0 auto}.guided-lesson-header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.guided-lesson-header>div{display:flex;gap:10px;align-items:center}.guided-lesson-header h1{margin:4px 0}.guided-lesson-header p{display:flex;gap:6px;align-items:center}.guided-lesson-progress{height:4px;background:var(--line);border-radius:999px;overflow:hidden;margin:16px 0 30px}.guided-lesson-progress i{display:block;height:100%;background:var(--accent)}.guided-lesson-surface{max-width:760px;margin:0 auto;position:relative}.lesson-instruction,.lesson-practice,.lesson-complete{padding:30px;border:1px solid var(--line);border-radius:16px;background:var(--surface);display:flex;flex-direction:column;gap:16px}.lesson-instruction article+article{border-top:1px solid var(--line);padding-top:18px}.lesson-instruction h2,.lesson-practice h2{font-size:25px;line-height:1.3}.lesson-instruction p,.lesson-practice p{font-size:15px;line-height:1.75}.project-relevance{padding:14px;background:var(--accent-soft);border-radius:10px}.lesson-options{display:grid;gap:9px}.lesson-options button{text-align:left;padding:13px}.lesson-options button.selected{border-color:var(--accent);background:var(--accent-soft)}.lesson-hints,.lesson-feedback{padding:16px;border-radius:10px;background:var(--surface-2)}.lesson-feedback.correct{border-left:4px solid var(--success)}.lesson-feedback>div{margin-top:12px}.lesson-practice label{display:flex;flex-direction:column;gap:7px}.lesson-confidence{display:flex;align-items:center;gap:7px}.lesson-confidence button.selected{background:var(--accent);color:white}.lesson-navigation{display:flex;justify-content:space-between;align-items:center;margin-top:18px}.lesson-map{position:absolute;z-index:4;inset:0;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}.lesson-map>button{text-align:left}.lesson-map>button.completed{color:var(--success)}.today-plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.today-plan-grid>section{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--surface)}.today-core{grid-row:auto}.plan-label{font-size:11px;letter-spacing:.12em;color:var(--muted)}.recommendation-why{display:flex;flex-direction:column;gap:5px;padding:13px;background:var(--surface-2);margin:18px 0}.today-routine>div{display:flex;gap:8px;flex-wrap:wrap}.think-before-ai{margin-top:20px;border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--surface)}.think-before-ai header{display:flex;justify-content:space-between}.practice-tool-grid,.capability-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.practice-tool-grid button,.capability-grid article{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);text-align:left;display:flex;flex-direction:column;gap:9px}.capability-grid article>div{display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);padding-top:9px}.paper-card{display:flex;flex-direction:column;gap:9px}.paper-card label{display:flex;flex-direction:column;gap:4px;font-size:12px}.paper-field-locked{display:flex;flex-direction:column;gap:4px;border:1px dashed var(--line);border-radius:9px;padding:10px;color:var(--muted)}.apprenticeship-onboarding blockquote{padding:14px;border-left:3px solid var(--accent);background:var(--accent-soft)}.onboarding-actions{display:flex;justify-content:space-between;margin-top:16px}@media(max-width:900px){.today-plan-grid,.practice-tool-grid,.capability-grid{grid-template-columns:1fr}.today-core{grid-row:auto}.guided-lesson-header{flex-direction:column}}
+
+/* M020 knowledge maintenance: additive, scoped surfaces. */
+.m020-knowledge { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.m020-knowledge .m020-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.m020-knowledge .m020-heading > div { min-width: 0; }
+.m020-knowledge .settings-actions, .m020-queues { display: flex; flex-wrap: wrap; gap: 8px; }
+.m020-knowledge p { line-height: 1.7; }
+.m020-knowledge small { display: block; color: var(--muted); overflow-wrap: anywhere; line-height: 1.6; }
+.m020-knowledge details { padding: 12px; border: 1px solid var(--line); border-radius: 8px; margin: 8px 0; min-width: 0; }
+.m020-knowledge summary { cursor: pointer; font-weight: 600; line-height: 1.6; }
+.m020-knowledge details[open] > summary { margin-bottom: 12px; }
+.m020-knowledge summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.m020-knowledge pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; line-height: 1.7; max-height: 420px; overflow: auto; background: var(--surface-2); padding: 10px; }
+.m020-knowledge code { display: block; overflow-wrap: anywhere; font-size: 11px; }
+.m020-knowledge ul { padding-left: 20px; line-height: 1.7; }
+.m020-knowledge label { min-width: 0; }
+.m020-knowledge input[type="checkbox"] { width: 16px; height: 16px; flex: 0 0 auto; margin: 3px 0; }
+.m020-knowledge .form-grid { gap: 14px; }
+.m020-queues button.active { background: var(--accent-soft); border-color: var(--accent); }
+.m020-browser { display: grid; grid-template-columns: minmax(200px, 270px) minmax(0, 1fr); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.m020-unit-list { padding: 12px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px; max-height: 740px; overflow: auto; background: var(--surface-2); }
+.m020-unit-list button { display: flex; flex-direction: column; text-align: left; align-items: stretch; gap: 4px; padding: 10px; }
+.m020-unit-list button.selected { background: var(--accent-soft); border-color: var(--accent); }
+.m020-unit-detail { min-width: 0; padding: 20px; background: var(--surface); }
+.m020-search { display: flex; align-items: center; gap: 8px; }
+.m020-search input { flex: 1; max-width: 520px; }
+.m020-preview { border-left: 3px solid var(--warning); background: var(--surface-2); padding: 16px; border-radius: 8px; }
+.m020-impact-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.m020-impact-groups details { margin: 0; }
+.m020-diff-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.m020-diff-pair > div { min-width: 0; }
+.m020-evidence-list { max-height: 300px; overflow: auto; display: flex; flex-direction: column; gap: 10px; padding: 4px; }
+.m020-evidence-list > label, .m020-projection-types > label { display: flex; align-items: flex-start; gap: 8px; }
+.m020-projection-types { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+.m020-import-packs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.m020-import-packs button { display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 12px; }
+.m020-import-packs span { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.m020-metadata { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 8px 12px; font-size: 12px; padding: 14px; background: var(--surface-2); }
+.m020-metadata dt { color: var(--muted); }
+.m020-metadata dd { margin: 0; overflow-wrap: anywhere; line-height: 1.6; }
+.m020-candidate-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.m020-conflict { border-left: 3px solid var(--warning); padding: 10px; }
+@media (max-width: 980px) {
+  .m020-knowledge .m020-heading { flex-direction: column; }
+  .m020-browser { grid-template-columns: 1fr; }
+  .m020-unit-list { border-right: 0; border-bottom: 1px solid var(--line); max-height: 260px; }
+  .m020-knowledge .form-grid, .m020-diff-pair, .m020-import-packs, .m020-impact-groups { grid-template-columns: 1fr; }
+}

@@ -38,6 +38,11 @@ import { learningContentRegistry, researchCases } from "../data/learningArchitec
 import { applyLearningTransition, canStartUnit, createLearnerUnitState, type LearningTransitionInput } from "../learning/learningKernelEngine";
 import { createLearningContentProgress, missingContentPrerequisites, submitArchitecturePractice, type ArchitectureAttemptKind } from "../learning/learningArchitectureEngine";
 import type { PracticeResponseV1 } from "../domain/learningKernel";
+import type { KnowledgeWorkspace } from "../domain/knowledge";
+import { createInitialKnowledgeWorkspace } from "../data/knowledge";
+import { assertKnowledgeTransition } from "../services/knowledge";
+import { assertKnowledgeLearningAllowed, bindKnowledgeToLearningEvent } from "../services/knowledgeLearningSafety";
+import { knowledgeOverlayConflicts } from "../services/knowledgeOverlay";
 
 const providers: AIProvider[] = [
   { id: "openai", name: "OpenAI-compatible", template: "openai", baseUrl: "https://api.openai.com/v1", model: "gpt-5-mini", temperature: 0.2, maxTokens: 1200, hasApiKey: false },
@@ -86,6 +91,7 @@ export const createInitialState = (): AppStateData => {
   const atlas = seededAtlasCollections();
   return {
     schemaVersion: CURRENT_STATE_SCHEMA,
+    knowledgeWorkspace: createInitialKnowledgeWorkspace(),
     papers: examplePapers.map((paper) => ({ ...paper, tags: [...paper.tags] })),
     projects: [],
     responses: [],
@@ -133,6 +139,7 @@ export interface ToastMessage {
 }
 
 interface AppStore extends AppStateData {
+  setKnowledgeWorkspace: (workspace: KnowledgeWorkspace) => void;
   hydrated: boolean;
   persistenceStatus: "idle" | "saving" | "saved" | "error";
   lastSavedAt?: string;
@@ -236,6 +243,7 @@ interface AppStore extends AppStateData {
 function stateData(state: AppStore): AppStateData {
   return {
     schemaVersion: state.schemaVersion,
+    knowledgeWorkspace: state.knowledgeWorkspace,
     papers: state.papers,
     projects: state.projects,
     responses: state.responses,
@@ -325,6 +333,14 @@ export const useAppStore = create<AppStore>((set, get) => {
     paletteOpen: false,
     globalSearch: "",
 
+    setKnowledgeWorkspace: (workspace) => {
+      const errors = assertKnowledgeTransition(get().knowledgeWorkspace, workspace);
+      if (errors.length) throw new Error(`知识更新被拒绝：${errors.join("；")}`);
+      const current = get();
+      set({ knowledgeWorkspace: structuredClone(workspace), contentConflicts: knowledgeOverlayConflicts(current.knowledgeWorkspace, workspace, current.personalContent, current.contentConflicts) });
+      queuePersist();
+    },
+
     hydrate: async () => {
       try {
         const persisted = await loadPersistedState();
@@ -356,6 +372,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     selectLearningContent: (selectedLearningContentId) => set({ selectedLearningContentId, view: "learning" }),
     selectCase: (selectedCaseId) => set({ selectedCaseId, view: "case-lab" }),
     openLearningContentTask: ({ contentId, activityType, now }) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, contentId);
       const entry = learningContentRegistry.find((item) => item.id === contentId);
       if (!entry) throw new Error("学习内容不存在");
       if (entry.contentType === "case_lab") {
@@ -377,6 +394,7 @@ export const useAppStore = create<AppStore>((set, get) => {
       queuePersist();
     },
     setLearningContentPhase: (contentId, phase, patch) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, contentId);
       const entry = learningContentRegistry.find((item) => item.id === contentId);
       if (!entry) throw new Error("学习内容不存在");
       const now = new Date().toISOString();
@@ -390,17 +408,20 @@ export const useAppStore = create<AppStore>((set, get) => {
     recordLearningContentPractice: (contentId, attemptKind, response, confidence) => {
       const entry = learningContentRegistry.find((item) => item.id === contentId);
       if (!entry?.unitId) throw new Error("学习内容没有标准化 Kernel 单元");
+      const assetId = attemptKind === "review" ? entry.reviewAssetId : attemptKind === "remediation" ? entry.remediationAssetId : entry.applyAssetId;
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, contentId, entry.unitId, assetId);
       const now = new Date().toISOString();
       const result = submitArchitecturePractice({ entry, progress: get().learningContentProgress[contentId], currentState: get().learnerUnitStates.find((item) => item.unitId === entry.unitId), attemptKind, response, confidence, occurredAt: now, eventId: makeId("learning-event") });
       set((state) => ({
         learnerUnitStates: [result.state, ...state.learnerUnitStates.filter((item) => item.unitId !== entry.unitId)],
-        learningEvents: [result.event, ...state.learningEvents],
+        learningEvents: [bindKnowledgeToLearningEvent(state.knowledgeWorkspace, result.event), ...state.learningEvents],
         learningContentProgress: { ...state.learningContentProgress, [contentId]: result.progress },
       }));
       queuePersist();
       return { passed: result.passed, score: result.score };
     },
     startLearningUnit: (id, mode) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, id);
       const unit = learningUnitById.get(id);
       if (!unit) throw new Error("学习单元不存在");
       const existing = get().learnerUnitStates.find((item) => item.unitId === id);
@@ -416,13 +437,14 @@ export const useAppStore = create<AppStore>((set, get) => {
       queuePersist();
     },
     recordLearningTransition: (unitId, input) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, unitId, input.asset?.id);
       const unit = learningUnitById.get(unitId);
       if (!unit) throw new Error("学习单元不存在");
       const current = get().learnerUnitStates.find((item) => item.unitId === unitId);
       const result = applyLearningTransition(unit, current, { ...input, id: makeId("learning-event"), occurredAt: new Date().toISOString() });
       set((state) => ({
         learnerUnitStates: [result.state, ...state.learnerUnitStates.filter((item) => item.unitId !== unitId)],
-        learningEvents: [result.event, ...state.learningEvents],
+        learningEvents: [bindKnowledgeToLearningEvent(state.knowledgeWorkspace, result.event), ...state.learningEvents],
       }));
       queuePersist();
     },
@@ -469,6 +491,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     savePaperCard: (paperId, patch) => { set((state) => ({ paperCards: { ...state.paperCards, [paperId]: { paperId, ...patch, updatedAt: new Date().toISOString() } } })); queuePersist(); },
     markGuideSectionRead: (sectionId) => { set((state) => ({ guideReadSectionIds: [...new Set([...state.guideReadSectionIds, sectionId])] })); queuePersist(); },
     startCaseSession: (caseId) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, caseId);
       const researchCase = researchCases.find((item) => item.id === caseId);
       if (!researchCase) throw new Error("Case Lab 案例不存在");
       const entry = learningContentRegistry.find((item) => item.id === caseId && item.contentType === "case_lab");
@@ -483,6 +506,7 @@ export const useAppStore = create<AppStore>((set, get) => {
       return id;
     },
     lockCaseStage: (sessionId, entry) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, get().caseSessions.find((session) => session.id === sessionId)?.caseId);
       const now = new Date().toISOString();
       set((state) => ({ caseSessions: state.caseSessions.map((session) => {
         if (session.id !== sessionId) return session;
@@ -518,6 +542,7 @@ export const useAppStore = create<AppStore>((set, get) => {
       queuePersist();
     },
     completeCaseSession: (sessionId, finalResponse) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, get().caseSessions.find((session) => session.id === sessionId)?.caseId);
       const values = Object.values(finalResponse).map((value) => value.trim());
       if (values.length < 7 || values.some((value) => value.length < 4)) throw new Error("请完成 Final Task 的全部判断后再锁定");
       const now = new Date().toISOString();
@@ -604,6 +629,7 @@ export const useAppStore = create<AppStore>((set, get) => {
     rateReview: (reviewItemId, correctness, confidence) => {
       const item = get().reviewItems.find((candidate) => candidate.id === reviewItemId);
       if (!item) return;
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, item.conceptId);
       const outcome = scheduleReview(item, correctness, confidence);
       const resolved = Boolean(item.misconceptionId && item.isVariant && correctness >= 0.75);
       const reviewedAt = new Date().toISOString();
@@ -624,10 +650,12 @@ export const useAppStore = create<AppStore>((set, get) => {
       queuePersist();
     },
     addSkillEvidence: (evidence) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, evidence.conceptId, evidence.taskId);
       set((state) => ({ skillEvidence: [{ ...evidence, id: makeId("skill-evidence"), createdAt: new Date().toISOString() }, ...state.skillEvidence] }));
       queuePersist();
     },
     recordCalibration: ({ responseId, conceptId, conceptType, skillId, prompt, variantPrompt, difficulty, score }) => {
+      assertKnowledgeLearningAllowed(get().knowledgeWorkspace, conceptId);
       const response = get().responses.find((candidate) => candidate.id === responseId);
       if (!response) return;
       if (response.correctness !== undefined) {

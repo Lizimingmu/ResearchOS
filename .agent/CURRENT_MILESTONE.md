@@ -1,29 +1,13 @@
-# Current Milestone — M019 Overnight Self-Rescue Curriculum Audit
+# Current Milestone — M020 Extensible & Updatable Knowledge Architecture
 
-Execution status: **IMPLEMENTATION, MACHINE GATES AND HASH-BOUND INDEPENDENT REVIEW COMPLETE — CANDIDATES REMAIN PENDING HUMAN TRIAL**.
+Execution status: IMPLEMENTED AND BACKGROUND ACCEPTED; commit + push authorized, then stop.
 
-## Objective
+The exact user request is `M020_USER_REQUIREMENTS.md`; the implementation report is `../M020_EXTENSIBLE_KNOWLEDGE_ARCHITECTURE_REPORT.md`.
 
-Keep the M018.1 learning architecture frozen while building a complete self-rescue reference/curriculum candidate corpus, repairing deterministic learning-flow defects, and subjecting the result to scientific, evidence, pedagogy and fresh-system review without self-activating AI content.
+Completed: six canonical knowledge contracts, immutable revision history and status ledger, exact evidence/learning dependency impact, Chinese Add Knowledge/template/maintenance forms, seven local import formats, eight pending projection types, existing lesson and protocol staging adapters, additive schema 9 migration, and runtime maintenance holds around the unchanged Learning Kernel.
 
-## Completed scope
+Acceptance evidence: full suite 201/201, isolated DOM workflow 1/1, seven deterministic knowledge audit groups, legacy registry/localization/startup checks, and privacy 4/4. Confidence Interval, Pseudobulk, existing WB staging and synthetic guideline v1→v2 cases are covered. Negative fixtures cover malformed input, activation forgery, missing history/holds, stale changes, exact asset hashes and restart integrity.
 
-- Closed the Case prerequisite bypass, exact due-review drift, Cox discrimination/remediation, Paper capability and Project/Case idempotency defects with E2E regression coverage.
-- Added 10 Guide modules / 288 substantive sections, a 288-item Curriculum Manifest, 40 Concept Lessons, 21 Method Lessons, 12 Case Labs, 13 Studio Templates and 361 claim-source records.
-- Added/verified scientific sources and claim boundaries; high-risk routing now includes Guide, formal Concept/Method and Case claims.
-- Added role-distinct, semantic `case_table`, `evidence_matrix` and `decision_timeline` stimuli plus option-specific evidence expectations.
-- Replaced unsafe free-text auto-completion with fail-closed human-review preflight. Pending assessment previews cannot create competence or advance learner state.
-- Bound final review reports to the exact snapshot byte hash, claims hash and source-registry hash; stale review combinations fail the binding gate.
-- Completed four audit rounds, content inventory, consensus and readiness reporting.
+Deliberately unavailable: scientific activation/reapproval and lifting holds, automated literature monitoring, automatic answer-key generation, full missing-dependency annotation, visual/packaged-app acceptance. Existing curriculum content problems remain outside scope.
 
-## Deliberately not accepted
-
-- Bulk activation or verification of the 374 generated candidates.
-- Automatic semantic scoring of open reasoning/change-mind responses.
-- Full-library stimulus sufficiency: only Confidence Interval, Differential Analysis, KM/log-rank and PCA have completed the deep prototype materialization review.
-- Natural-Chinese/distractor validity, completion time, transfer validity and scoring agreement without target-learner/human evidence.
-- Foreground local-preview, high-DPI, screen-reader, current-source installer and packaged restart.
-
-## Next action
-
-Run a controlled human learning trial on the four deep prototypes and the verified Statistical Unit → Confounding → Cox → Case flow. Capture raw answers, time, confusion points and dual-rater agreement. Approve or revise items individually; do not redesign the architecture or activate the full corpus.
+Do not continue M021 or start further development without a new user request.

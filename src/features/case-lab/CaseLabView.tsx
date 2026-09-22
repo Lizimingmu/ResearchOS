@@ -3,9 +3,12 @@ import { useMemo, useState } from "react";
 import { learningContentRegistry, researchCases } from "../../data/learningArchitecture";
 import { missingContentPrerequisites } from "../../learning/learningArchitectureEngine";
 import { useAppStore } from "../../state/store";
+import { isKnowledgeLearningAllowed } from "../../services/knowledge";
+import { KnowledgeMaintenanceNotice } from "../../components/KnowledgeMaintenanceNotice";
 
 export function CaseLabView() {
   const selectedCaseId = useAppStore((state) => state.selectedCaseId);
+  const knowledgeWorkspace = useAppStore((state) => state.knowledgeWorkspace);
   const researchCase = researchCases.find((item) => item.id === selectedCaseId) ?? researchCases.find((item) => item.lifecycle === "active");
   const sessions = useAppStore((state) => state.caseSessions);
   const progress = useAppStore((state) => Object.values(state.learningContentProgress));
@@ -28,6 +31,7 @@ export function CaseLabView() {
   const pendingEntry = session?.pendingCalibrationStageId ? session.reasoningHistory.find((entry) => entry.stageId === session.pendingCalibrationStageId) : undefined;
   const timeline = useMemo(() => session?.reasoningHistory ?? [], [session]);
   if (!researchCase) return <div className="page case-lab"><div className="empty-state"><h1>没有可用的 Case Lab</h1></div></div>;
+  if (!isKnowledgeLearningAllowed(knowledgeWorkspace, researchCase.id)) return <div className="page case-lab"><KnowledgeMaintenanceNotice/></div>;
   const registryEntry = learningContentRegistry.find((item) => item.id === researchCase.id && item.contentType === "case_lab");
   const missing = registryEntry ? missingContentPrerequisites(registryEntry, { registry: learningContentRegistry, progress, states: learnerStates }) : [];
   const begin = () => setSessionId(start(researchCase.id));

@@ -42,3 +42,13 @@
 | M016-LK-08 | P0 | Diff-based product, pedagogy and scientific gate | Codex | Review implementation/report/changeset; accept or request bounded patch; no broad rescan absent risk | Yes |
 
 Deferred: M012-01…08 remain specified in Git commit `3f638a4` and may resume only after M013 ACCEPT.
+
+## M020 — current authorized milestone (2026-09-22)
+
+| ID | Status | Work | Acceptance |
+|---|---|---|---|
+| M020-01 | COMPLETE | Universal knowledge contracts and append-only versions | Six types, exact hashes, status/freshness policy; no activation |
+| M020-02 | COMPLETE | Evidence impact, migration and learning holds | Four acceptance scenarios; real staging imports; lossless history; malformed/forged updates rejected |
+| M020-03 | COMPLETE | Chinese Add Knowledge and maintenance UI | Templates, seven formats, eight pending projections, history and conflicts; isolated DOM interaction pass |
+| M020-04 | COMPLETE | Regression and independent review | 201 regression + 1 DOM test; seven new audits; privacy and legacy gates |
+| M020-05 | AUTHORIZED FINAL STEP | Commit and push exact requested branch, then stop | No M021, activation or merge to main |
