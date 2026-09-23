@@ -59,7 +59,7 @@ export interface StagedAssessmentAssetV1 {
   };
   maximumConclusionCn: string;
   materialization: {
-    contentVersion: "m019.1";
+    contentVersion: "m019.1" | "m019.1c";
     diseaseAreaCn: string;
     studyDesignCn: string;
     dataModalityCn: string;
@@ -75,6 +75,7 @@ export interface StagedAssessmentAssetV1 {
 
 export interface StagedConceptLessonV1 {
   schemaVersion: 1;
+  revision?: number;
   id: string;
   titleCn: string;
   titleEn: string;
@@ -99,6 +100,7 @@ export interface StagedConceptLessonV1 {
 
 export interface StagedMethodLessonV1 {
   schemaVersion: 1;
+  revision?: number;
   id: string;
   titleCn: string;
   titleEn: string;

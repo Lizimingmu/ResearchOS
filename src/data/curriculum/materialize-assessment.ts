@@ -1,5 +1,6 @@
 import type { AssessmentTaskContract, StagedAssessmentAssetV1 } from "../../domain/curriculum";
 import type { AssessmentActionKey, AssessmentRole, MaterializedAssessmentRole } from "./assessment-material-types";
+import { assessmentValidityOverrides,m0191cFlaggedLogicalIds,singleBestKeyManifest } from "./assessment-validity-adjudication";
 
 const allActionKeys: AssessmentActionKey[] = ["decision", "key_check", "boundary", "change_mind"];
 const specificityRepairIds = new Set([
@@ -21,12 +22,7 @@ const nearMissLabelRewrites: Record<string, string> = {
   "整体 P<0.05 证明存在阈值": "整体样条模型 P<0.05，因此把图中弯折点直接固定为临床阈值",
 };
 
-const actionLabels = (material: MaterializedAssessmentRole) => ({
-  decision: material.decisionCn,
-  key_check: material.keyCheckCn,
-  boundary: material.maximumBoundaryCn,
-  change_mind: material.changeMindCn,
-});
+const actionLabels=(material:MaterializedAssessmentRole,override?:Partial<Record<AssessmentActionKey,string>>)=>({decision:override?.decision??material.decisionCn,key_check:override?.key_check??material.keyCheckCn,boundary:override?.boundary??material.maximumBoundaryCn,change_mind:override?.change_mind??material.changeMindCn});
 
 const hashOrder = (id: string, length: number) => [...Array(length).keys()].sort((left, right) => {
   const score = (index: number) => [...`${id}:${index}`].reduce((sum, char) => ((sum * 31) + char.charCodeAt(0)) >>> 0, 0);
@@ -42,13 +38,8 @@ const contractFor = (id: string, role: AssessmentRole, material: MaterializedAss
   return role === "apply" ? "integrated_judgment" : role === "remediation" ? "error_localization" : "claim_rewrite";
 };
 
-const expectedActionsFor = (contract: AssessmentTaskContract, material: MaterializedAssessmentRole): AssessmentActionKey[] => {
-  if (contract === "classification") return ["decision"];
-  if (contract === "claim_rewrite") return ["boundary"];
-  if (contract === "error_localization") return ["key_check"];
-  if (contract === "choose_next_evidence") return ["change_mind"];
-  return material.requiredActionKeys;
-};
+const legacyExpectedActionsFor=(contract:AssessmentTaskContract,material:MaterializedAssessmentRole):AssessmentActionKey[]=>{if(contract==="classification")return["decision"];if(contract==="claim_rewrite")return["boundary"];if(contract==="error_localization")return["key_check"];if(contract==="choose_next_evidence")return["change_mind"];return material.requiredActionKeys;};
+const singleBestContracts=new Set<AssessmentTaskContract>(["classification","claim_rewrite","error_localization","choose_next_evidence"]);
 
 const promptFor = (contract: AssessmentTaskContract, maximumSelections: number) => ({
   multi_select_audit: `只依据刺激材料选择所有必要但不冗余的审计动作（最多 ${maximumSelections} 项），并逐项引用证据。`,
@@ -95,58 +86,23 @@ const stimulusFor = (material: MaterializedAssessmentRole, factsCn: string[]): S
   };
 };
 
-export function buildMaterializedAssessment(id: string, role: AssessmentRole, material: MaterializedAssessmentRole): StagedAssessmentAssetV1 {
-  const labels = actionLabels(material);
-  const taskContract = contractFor(id, role, material);
-  const assetId = `${id}-${role}-v2`;
-  const factsCn = factsFor(assetId, taskContract, material);
-  const expectedActionKeys = expectedActionsFor(taskContract, material);
-  const candidateActionKeys = ["multi_select_audit", "integrated_judgment", "ordering_sequence"].includes(taskContract) ? material.requiredActionKeys : allActionKeys;
-  const actionOptions = candidateActionKeys.map((key) => ({ id: `${id}-${role}-${key}`, labelCn: labels[key], key, kind: "action" as const, correct: expectedActionKeys.includes(key) }));
-  const distractorOptions = material.plausibleDistractorsCn.map((distractor, index) => ({ id: `${id}-${role}-distractor-${index + 1}`, labelCn: nearMissLabelRewrites[distractor.labelCn] ?? distractor.labelCn, key: `distractor_${index + 1}` as const, kind: "distractor" as const, correct: false as const }));
-  const rawOptions = [...actionOptions, ...distractorOptions];
-  const options = hashOrder(`${id}:${role}`, rawOptions.length).map((index) => rawOptions[index]);
-  const expectedOptionIds = taskContract === "ordering_sequence" ? expectedActionKeys.map((key) => `${id}-${role}-${key}`) : options.filter((option) => option.correct).map((option) => option.id);
-  const stimulus = stimulusFor(material, factsCn);
-  const optionFeedbackCn = Object.fromEntries(options.map((option) => {
-    if (option.kind === "action" && option.correct) {
-      const factIndices = factIndicesFor(id, taskContract, material, option.key);
-      return [option.id, `该判断由 ${factIndices.map((index) => `F${index + 1}`).join("+")} 共同支持：${factIndices.map((index) => `“${material.factsCn[index]}”`).join("；")}。它回答的是当前 ${taskContract} 任务。`];
-    }
-    if (option.kind === "action") {
-      return [option.id, `“${option.labelCn}”本身可能是后续审查的一部分，但当前任务是 ${taskContract}；它没有直接完成题目要求的判断焦点，因此不是本题答案。`];
-    }
-    const index = option.key === "distractor_1" ? 0 : 1;
-    const distractor = material.plausibleDistractorsCn[index];
-    return [option.id, `这里不成立：${distractor.whyWrongCn}。在“${distractor.whenMayHoldCn}”时它可能合理；本题材料不满足该条件，采用它会越过“${material.maximumBoundaryCn}”这一解释边界。`];
-  }));
-  const evidenceExpectations = expectedActionKeys.map((key) => {
-    const factIndices = factIndicesFor(id, taskContract, material, key);
-    const optionId = `${id}-${role}-${key}`;
-    return { optionId, allowedRowIds: factIndices.map((index) => material.stimulusFormat === "decision_timeline" ? `T${index}` : `F${index + 1}`), requiredFactFragmentsCn: factIndices.map((index) => material.factsCn[index].replace(/[\s，。；：、“”‘’（）()\-—]/g, "").slice(0, 10)), reasoningMarkersCn: key === "boundary" ? ["只能", "限于", "不足"] : key === "change_mind" ? ["若", "一旦", "更新"] : ["因为", "因此", "所以"] };
-  });
-  return {
-    id: assetId, role, taskContract, scenarioCn: material.scenarioCn,
-    promptCn: promptFor(taskContract, expectedActionKeys.length),
-    options: options.map(({ id: optionId, labelCn }) => ({ id: optionId, labelCn })), expectedOptionIds, stimulus,
-    reasoningCriteriaCn: [material.decisionCn, material.keyCheckCn, material.maximumBoundaryCn, material.changeMindCn],
-    feedbackCn: [`应完成的判断：${material.decisionCn}`, `必须核对：${material.keyCheckCn}`, `最大边界：${material.maximumBoundaryCn}`, `改变判断的证据：${material.changeMindCn}`],
-    optionFeedbackCn,
-    scoringRule: {
-      minimumEvidenceUnits: evidenceExpectations.reduce((sum, expectation) => sum + expectation.allowedRowIds.length, 0),
-      criticalErrorOptionIds: distractorOptions.map((option) => option.id),
-      evidenceExpectations,
-      partialCreditCn: "选择方向正确但证据行错配、没有排除半正确解释，或漏掉必要行动时，仅记录 review_required，不产生标准化能力。",
-      stopRuleCn: "任一半正确 distractor 被选中，或未给出与所选项对应的材料事实时，停止自动判定并送人工审核。",
-      changeMindCriteriaCn: [material.changeMindCn, material.maximumBoundaryCn],
-      changeMindActionMarkersCn: ["撤回", "收窄", "修改", "停止", "改为", "重新", "更新"],
-    },
-    maximumConclusionCn: material.maximumBoundaryCn,
-    materialization: {
-      contentVersion: "m019.1", diseaseAreaCn: material.diseaseAreaCn, studyDesignCn: material.studyDesignCn, dataModalityCn: material.dataModalityCn,
-      independentFactsCn: factsCn, representationPurposeCn: material.representationPurposeCn,
-      authorRationaleCn: expectedActionKeys.map((key) => `${key}: ${labels[key]} ← ${factIndicesFor(id, taskContract, material, key).map((index) => `F${index + 1}`).join("+")}`), blindReviewStatus: "pending",
-    },
-    hints: [], confidenceRequired: true, responseLocked: true,
-  };
+function buildAssessment(id:string,role:AssessmentRole,material:MaterializedAssessmentRole,legacy=false):StagedAssessmentAssetV1{
+ const logicalId=`${id}-${role}`,ov=legacy?undefined:assessmentValidityOverrides[logicalId],labels=actionLabels(material,ov?.actionLabelOverrides);
+ const taskContract=ov?.taskContract??contractFor(id,role,material),required=ov?.requiredActionKeys??material.requiredActionKeys;
+ const kd=!legacy&&singleBestContracts.has(taskContract)?singleBestKeyManifest[logicalId]:undefined;
+ if(!legacy&&singleBestContracts.has(taskContract)&&!kd)throw new Error(`Missing item-specific key: ${logicalId}`);
+ const expected=legacy?legacyExpectedActionsFor(taskContract,material):kd?[kd.expectedActionKey]:required;
+ const revised=!legacy&&m0191cFlaggedLogicalIds.has(logicalId),assetId=`${logicalId}-${revised?"v3":"v2"}`,factsCn=factsFor(`${logicalId}-v2`,taskContract,material);
+ const candidate=["multi_select_audit","integrated_judgment","ordering_sequence"].includes(taskContract)?required:allActionKeys;
+ const actions=candidate.map(key=>({id:`${id}-${role}-${key}`,labelCn:labels[key],key,kind:"action" as const,correct:expected.includes(key)}));
+ const distractors=material.plausibleDistractorsCn.map((x,index)=>({id:`${id}-${role}-distractor-${index+1}`,labelCn:nearMissLabelRewrites[x.labelCn]??x.labelCn,key:`distractor_${index+1}` as const,kind:"distractor" as const,correct:false as const}));
+ const raw=[...actions,...distractors],options=hashOrder(`${id}:${role}`,raw.length).map(i=>raw[i]);
+ const expectedOptionIds=taskContract==="ordering_sequence"?expected.map(key=>`${id}-${role}-${key}`):options.filter(x=>x.correct).map(x=>x.id),stimulus=stimulusFor(material,factsCn);
+ const optionFeedbackCn=Object.fromEntries(options.map(option=>{if(option.kind==="action"&&option.correct){const ix=factIndicesFor(id,taskContract,material,option.key);return[option.id,`该判断由 ${ix.map(i=>`F${i+1}`).join("+")} 支持，直接回答当前题目焦点。`];}if(option.kind==="action")return[option.id,`“${option.labelCn}”可能属于完整审查，但不是当前最优判断焦点。`];const j=option.key==="distractor_1"?0:1,d=material.plausibleDistractorsCn[j];return[option.id,`这里不成立：${d.whyWrongCn}。`];}));
+ const evidenceExpectations=expected.map(key=>{const ix=factIndicesFor(id,taskContract,material,key);return{optionId:`${id}-${role}-${key}`,allowedRowIds:ix.map(i=>material.stimulusFormat==="decision_timeline"?`T${i}`:`F${i+1}`),requiredFactFragmentsCn:ix.map(i=>material.factsCn[i].replace(/[\s，。；：、“”‘’（）()\-—]/g,"").slice(0,10)),reasoningMarkersCn:key==="boundary"?["只能","限于","不足"]:key==="change_mind"?["若","一旦","更新"]:["因为","因此","所以"]};});
+ const rationale=expected.map(key=>`${key}: ${labels[key]} ← ${factIndicesFor(id,taskContract,material,key).map(i=>`F${i+1}`).join("+")}`);
+ if(kd)rationale.push(`item-specific key manifest: ${kd.expectedActionKey}; basis=${kd.basis}`);if(ov?.adjudicationCn)rationale.push(`M019.1c adjudication: ${ov.adjudicationCn}`);
+ return{id:assetId,role,taskContract,scenarioCn:material.scenarioCn,promptCn:ov?.promptCn??promptFor(taskContract,expected.length),options:options.map(({id,labelCn})=>({id,labelCn})),expectedOptionIds,stimulus,reasoningCriteriaCn:[labels.decision,labels.key_check,labels.boundary,labels.change_mind],feedbackCn:[`应完成的判断：${labels.decision}`,`必须核对：${labels.key_check}`,`最大边界：${labels.boundary}`,`改变判断的证据：${labels.change_mind}`],optionFeedbackCn,scoringRule:{minimumEvidenceUnits:evidenceExpectations.reduce((s,x)=>s+x.allowedRowIds.length,0),criticalErrorOptionIds:distractors.map(x=>x.id),evidenceExpectations,partialCreditCn:"证据错配、漏掉必要判断或选择 distractor 时不产生标准化能力。",stopRuleCn:"存在关键错误或证据错配时送人工审核。",changeMindCriteriaCn:[labels.change_mind,labels.boundary],changeMindActionMarkersCn:["撤回","收窄","修改","停止","改为","重新","更新"]},maximumConclusionCn:labels.boundary,materialization:{contentVersion:revised?"m019.1c":"m019.1",diseaseAreaCn:material.diseaseAreaCn,studyDesignCn:material.studyDesignCn,dataModalityCn:material.dataModalityCn,independentFactsCn:factsCn,representationPurposeCn:material.representationPurposeCn,authorRationaleCn:rationale,blindReviewStatus:"pending"},hints:[],confidenceRequired:true,responseLocked:true};
 }
+export const buildMaterializedAssessment=(id:string,role:AssessmentRole,material:MaterializedAssessmentRole)=>buildAssessment(id,role,material,false);
+export const buildMaterializedAssessmentLegacyM0191b=(id:string,role:AssessmentRole,material:MaterializedAssessmentRole)=>buildAssessment(id,role,material,true);

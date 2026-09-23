@@ -1,7 +1,7 @@
 import type { StagedMethodLessonV1 } from "../../domain/curriculum";
 import { selfRescueGuideSections } from "../self-rescue-guide";
 import { methodAssessmentMaterial } from "./assessment-material";
-import { buildMaterializedAssessment } from "./materialize-assessment";
+import { buildMaterializedAssessment, buildMaterializedAssessmentLegacyM0191b } from "./materialize-assessment";
 import { methodTeachingMaterial } from "./method-teaching-material";
 
 interface MethodSeed {
@@ -86,7 +86,7 @@ const methodPrerequisites: Record<string, string[]> = {
   "cellchat-communication": ["staged-concept-statistical-unit", "staged-concept-pseudoreplication", "staged-concept-batch-effect", "staged-concept-evidence-claim", "staged-concept-composition-state"],
 };
 
-export const stagedMethodLessons: StagedMethodLessonV1[] = seeds.map((seed, index) => {
+const buildStagedMethodLessons=(legacy=false):StagedMethodLessonV1[]=>seeds.map((seed,index)=>{
   const material = methodAssessmentMaterial[seed.slug];
   if (!material) throw new Error(`Curriculum method missing materialized assessments: ${seed.slug}`);
   const teaching = methodTeachingMaterial[seed.slug];
@@ -102,9 +102,9 @@ export const stagedMethodLessons: StagedMethodLessonV1[] = seeds.map((seed, inde
   methodComparisonCn: teaching.methodComparisonCn,
   scientificQuestionCn: seed.question, inputsCn: seed.inputs, coreLogicCn: seed.core, outputsCn: seed.outputs, assumptionsCn: seed.assumptions,
   appropriateWhenCn: seed.use, inappropriateWhenCn: seed.avoid, misusePatternsCn: seed.misuse, reviewerChecksCn: seed.checks, paperAppearanceCn: seed.paper,
-  primaryApply: buildMaterializedAssessment(`staged-method-${seed.slug}`, "apply", material.apply),
-  remediation: buildMaterializedAssessment(`staged-method-${seed.slug}`, "remediation", material.remediation),
-  delayedReview: buildMaterializedAssessment(`staged-method-${seed.slug}`, "review", material.review),
+  ...(()=>{const b=legacy?buildMaterializedAssessmentLegacyM0191b:buildMaterializedAssessment,baseId=`staged-method-${seed.slug}`;const primaryApply=b(baseId,"apply",material.apply),remediation=b(baseId,"remediation",material.remediation),delayedReview=b(baseId,"review",material.review);return{...(!legacy&&[primaryApply,remediation,delayedReview].some(a=>a.id.endsWith("-v3"))?{revision:2}:{}),primaryApply,remediation,delayedReview};})(),
   sourceIds: seed.sources, estimatedMinutes: 20 + (index % 5) * 2, contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
   });
 });
+export const stagedMethodLessonsM0191b=buildStagedMethodLessons(true);
+export const stagedMethodLessons=buildStagedMethodLessons(false);

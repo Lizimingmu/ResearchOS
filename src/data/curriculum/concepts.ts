@@ -2,7 +2,7 @@ import type { CapabilityId } from "../../domain/learningArchitecture";
 import type { StagedConceptLessonV1 } from "../../domain/curriculum";
 import { selfRescueGuideSections } from "../self-rescue-guide";
 import { conceptAssessmentMaterial } from "./assessment-material";
-import { buildMaterializedAssessment } from "./materialize-assessment";
+import { buildMaterializedAssessment, buildMaterializedAssessmentLegacyM0191b } from "./materialize-assessment";
 
 const conceptRows = [
   "research-question|Research Question",
@@ -180,7 +180,7 @@ const conceptCases: Record<string, ConceptCaseBlueprint> = {
   "ai-cognitive-outsourcing": { worked: "研究者先独立审查一份 AI Cox 计划，按 5 项清单标出 time zero、cut-point、stepwise、数据泄漏和引用问题，再对照 AI 批评并逐项记录接受/拒绝依据。", remediation: "把另一份单细胞 AI 计划拆成输入契约、真值测试、供体层推断与引用核验表。", review: "先手写最小诊断研究方案，再审查 AI 的阈值、样本角色和因果措辞。", decision: "在调用 AI 前冻结自己的问题与判断，之后逐项验证并记录最终人类决定", keyCheck: "研究者能独立解释问题、复核代码/引用并为结论承担证据责任", nearMiss: "让 AI 先生成完整方案，再由研究者只检查语言是否流畅" },
 };
 
-export const stagedConceptLessons: StagedConceptLessonV1[] = conceptRows.map((row, index) => {
+const buildStagedConceptLessons=(legacy=false):StagedConceptLessonV1[]=>conceptRows.map((row,index)=>{
   const [slug, title] = row.split("|");
   const section = sectionFor(title);
   if (!section) throw new Error(`Curriculum concept missing Guide section: ${title}`);
@@ -196,10 +196,10 @@ export const stagedConceptLessons: StagedConceptLessonV1[] = conceptRows.map((ro
     whyItMattersCn: section.bodyCn[0], intuitionCn: section.bodyCn[1], preciseExplanationCn: section.bodyCn[2], workedExampleCn: blueprint.worked,
     explainPromptCn: `不用术语复述：请用两三句话解释「${section.titleCn}」会怎样改变一个生物医学研究的设计、分析或结论边界。`,
     explanationChecklistCn: [`说清研究对象和时间`, `指出「${section.titleCn}」作用的推断层级`, "给出一个会改变判断的反例", "没有把自由文本当成能力分数"],
-    primaryApply: buildMaterializedAssessment(id, "apply", material.apply),
-    remediation: buildMaterializedAssessment(id, "remediation", material.remediation),
-    delayedReview: buildMaterializedAssessment(id, "review", material.review),
+    ...(()=>{const b=legacy?buildMaterializedAssessmentLegacyM0191b:buildMaterializedAssessment;const primaryApply=b(id,"apply",material.apply),remediation=b(id,"remediation",material.remediation),delayedReview=b(id,"review",material.review);return{...(!legacy&&[primaryApply,remediation,delayedReview].some(a=>a.id.endsWith("-v3"))?{revision:2}:{}),primaryApply,remediation,delayedReview};})(),
     sourceIds: section.evidenceSourceIds, estimatedMinutes: 14 + (index % 4) * 2,
     contentOrigin: "ai_generated", verificationStatus: "pending", lifecycle: "pending_review",
   };
 });
+export const stagedConceptLessonsM0191b=buildStagedConceptLessons(true);
+export const stagedConceptLessons=buildStagedConceptLessons(false);
