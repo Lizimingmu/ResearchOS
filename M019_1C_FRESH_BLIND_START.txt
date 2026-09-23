@@ -1,0 +1,1 @@
+Read D:\Agents\ResearchOS\M019_1C_FRESH_EXTERNAL_BLIND_REVIEW_PROMPT.md and execute it exactly. You may read only that instruction file and D:\Agents\ResearchOS\artifacts\m019-1-strict-blind-assessment-packet.json. Do not inspect any other ResearchOS files, Git history, reports, source code, or answer keys. Complete all 183 items, write the frozen JSON, and stop.

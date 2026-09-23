@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import "./m020.mjs";
 import "./m019-1c.mjs";
+import "./pilot.mjs";
 import { test } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";

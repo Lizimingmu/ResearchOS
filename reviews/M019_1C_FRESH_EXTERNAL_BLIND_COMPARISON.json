@@ -1,0 +1,3357 @@
+{
+  "schemaVersion": 1,
+  "reviewMode": "FRESH_EXTERNAL_STRICT_BLIND_COMPARISON",
+  "gateStatus": "FAIL",
+  "frozenExternalReviewHash": "5994a89c9131fb3ba7dd1e6fe3a0721eb0f91ed8adb04b971205be2e3bd5042c",
+  "packetHash": "dc4ad6a03724a1c826d7e7c4e455f1acb4918437e39f54b2bf62489db32e1bde",
+  "stagedAssessmentSnapshotHash": "6d1992819d5a4478598c03e989427f73d02dae78a8d66e5ce9b88e6a46aa69b1",
+  "authorSourceCommit": "70e88bf540e783961c03230a5f3df547faf65708",
+  "totalCounts": {
+    "total": 183,
+    "agree": 157,
+    "disagree": 26,
+    "ambiguous": 0,
+    "agreementRate": 0.8579
+  },
+  "versionCounts": {
+    "v2": {
+      "total": 109,
+      "agree": 99,
+      "disagree": 10,
+      "agreementRate": 0.9083
+    },
+    "v3": {
+      "total": 74,
+      "agree": 58,
+      "disagree": 16,
+      "agreementRate": 0.7838
+    }
+  },
+  "targeted21Counts": {
+    "total": 21,
+    "agree": 21,
+    "disagree": 0,
+    "agreementRate": 1.0
+  },
+  "taskContractCounts": {
+    "choose_next_evidence": {
+      "total": 12,
+      "agree": 11,
+      "disagree": 1,
+      "agreementRate": 0.9167
+    },
+    "claim_rewrite": {
+      "total": 38,
+      "agree": 24,
+      "disagree": 14,
+      "agreementRate": 0.6316
+    },
+    "classification": {
+      "total": 20,
+      "agree": 14,
+      "disagree": 6,
+      "agreementRate": 0.7
+    },
+    "error_localization": {
+      "total": 36,
+      "agree": 31,
+      "disagree": 5,
+      "agreementRate": 0.8611
+    },
+    "integrated_judgment": {
+      "total": 43,
+      "agree": 43,
+      "disagree": 0,
+      "agreementRate": 1.0
+    },
+    "multi_select_audit": {
+      "total": 31,
+      "agree": 31,
+      "disagree": 0,
+      "agreementRate": 1.0
+    },
+    "ordering_sequence": {
+      "total": 3,
+      "agree": 3,
+      "disagree": 0,
+      "agreementRate": 1.0
+    }
+  },
+  "adjudicationSummary": {
+    "AUTHOR_KEY_WRONG": 1,
+    "REVIEWER_ERROR": 7,
+    "PROMPT_OPTION_MISMATCH": 18,
+    "STILL_AMBIGUOUS": 0
+  },
+  "disagreementAdjudications": [
+    {
+      "anonymousAssessmentId": "A009",
+      "assetId": "staged-concept-evidence-claim-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面作答要求选择收窄结论改写，O3为明确边界收窄，O1为正向分述动作，题面意图与答案类型存在结构性张力。"
+    },
+    {
+      "anonymousAssessmentId": "A014",
+      "assetId": "staged-concept-exploratory-confirmatory-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求修复分析错误，O2为审计记录事后选择的诊断动作，O1为修正报告结论的实施动作，选项层级存在诊断vs修复偏差。"
+    },
+    {
+      "anonymousAssessmentId": "A015",
+      "assetId": "staged-concept-exploratory-confirmatory-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写，O3为禁止事后亚组挽救的边界改写，O1为确证探索分述的正向改写，二者皆合理但侧重不同。"
+    },
+    {
+      "anonymousAssessmentId": "A021",
+      "assetId": "staged-concept-biological-technical-replicate-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写并指出收窄依据，O3直接陈述480视野不构成独立病例的收窄依据，O1为模型设计规范，题面要求指向O3。"
+    },
+    {
+      "anonymousAssessmentId": "A041",
+      "assetId": "staged-concept-standard-error-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求选择首要修复错误，O2为SE公式核对，O1为直接采用稳健SE估计，二者分别对应诊断与应用修复。"
+    },
+    {
+      "anonymousAssessmentId": "A048",
+      "assetId": "staged-concept-p-value-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求改写结论，O3明确否定中心差异已确认，O1定性未校正P为探索信号，二者均为合规改写。"
+    },
+    {
+      "anonymousAssessmentId": "A050",
+      "assetId": "staged-concept-multiple-testing-fdr-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求修复分析错误，O2强调拒绝事后缩小family，O1为主张保留完整92项BH结果，分别侧重拒绝错误与采用正确。"
+    },
+    {
+      "anonymousAssessmentId": "A057",
+      "assetId": "staged-concept-interaction-review-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "REVIEWER_ERROR",
+      "rationaleCn": "题面要求概括当前证据状态，O1直接提供积极的‘多重探索信号’分类命名，Reviewer所选O3为消极边界。"
+    },
+    {
+      "anonymousAssessmentId": "A077",
+      "assetId": "staged-concept-composition-state-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "adjudication": "AUTHOR_KEY_WRONG",
+      "rationaleCn": "题面明确警告‘不要把后续边界说明误当根因定位’，AuthorKey所选O3恰为边界说明，Reviewer所选O1为根因分析修复。"
+    },
+    {
+      "anonymousAssessmentId": "A078",
+      "assetId": "staged-concept-composition-state-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写，O3否定小胶质状态激活结论，O1优先支持组成变化，二者均为符合现有证据的主张调整。"
+    },
+    {
+      "anonymousAssessmentId": "A079",
+      "assetId": "staged-concept-batch-effect-apply-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "REVIEWER_ERROR",
+      "rationaleCn": "题面要求概括证据状态，O1给出组效应与批次‘不可识别’的正式统计学分类判定，Reviewer所选O3偏向算法局限陈述。"
+    },
+    {
+      "anonymousAssessmentId": "A080",
+      "assetId": "staged-concept-batch-effect-remediation-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求概括证据状态，O1为跨批平衡与桥接设计动作，O3为桥接证据限制的边界分类，题面分类要求与动作答案不完全匹配。"
+    },
+    {
+      "anonymousAssessmentId": "A084",
+      "assetId": "staged-concept-bulk-mixture-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写，O3否定细胞合成增强，O1提出高胶原区扩张解释，属于消极收窄与积极重释的并存选项。"
+    },
+    {
+      "anonymousAssessmentId": "A085",
+      "assetId": "staged-concept-rna-protein-apply-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "REVIEWER_ERROR",
+      "rationaleCn": "题面要求概括证据状态，O1给出翻译时滞的生物学动力学分类解释，优于单纯否定模态错误的消极判定O3。"
+    },
+    {
+      "anonymousAssessmentId": "A086",
+      "assetId": "staged-concept-rna-protein-remediation-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "REVIEWER_ERROR",
+      "rationaleCn": "题面要求概括证据状态，O1给出整合考虑生成、降解与分泌的完整证据分类，优于消极不删除判断O3。"
+    },
+    {
+      "anonymousAssessmentId": "A087",
+      "assetId": "staged-concept-rna-protein-review-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "REVIEWER_ERROR",
+      "rationaleCn": "题面要求概括证据状态，O1提出双机制兼容假设，优于单纯否定转录上调驱动沉积的O3。"
+    },
+    {
+      "anonymousAssessmentId": "A102",
+      "assetId": "staged-concept-claim-boundary-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求修订临床可用主张，O1降为单中心有限判别表现，O3陈述不能称外部可用，二者均属有效收窄。"
+    },
+    {
+      "anonymousAssessmentId": "A105",
+      "assetId": "staged-concept-robustness-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求处理注释敏感性，O1降为探索结果，O3明确禁止只保留显著方案，二者分别对应结论重构与规则重申。"
+    },
+    {
+      "anonymousAssessmentId": "A113",
+      "assetId": "staged-concept-evidence-redundancy-remediation-v3",
+      "version": "v3",
+      "taskContract": "choose_next_evidence",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "adjudication": "REVIEWER_ERROR",
+      "rationaleCn": "题面要求选择区分竞争解释的下一项证据，O2明确指出‘优先分析独立ELISA’这一具体证据流，Reviewer所选O4为更新规则。"
+    },
+    {
+      "anonymousAssessmentId": "A125",
+      "assetId": "staged-method-correlation-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "adjudication": "REVIEWER_ERROR",
+      "rationaleCn": "题面要求最先必须修复的分析错误，排查影响点是否为记录错误（O2）先于直接运行稳健回归（O1）。"
+    },
+    {
+      "anonymousAssessmentId": "A138",
+      "assetId": "staged-method-kaplan-logrank-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写，O1将阈值降为探索候选，O3明确不能报告已验证阈值，两者同构且均无过度推断。"
+    },
+    {
+      "anonymousAssessmentId": "A144",
+      "assetId": "staged-method-bootstrap-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写，O1结构化保留内部并标记外部不确定，O3陈述不能声称外部有效，语义高度重合。"
+    },
+    {
+      "anonymousAssessmentId": "A159",
+      "assetId": "staged-method-nmf-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求更新离散亚型主张，O1保留连续程序并撤回离散亚型，O3否定离散类别存在，均为合理改写。"
+    },
+    {
+      "anonymousAssessmentId": "A171",
+      "assetId": "staged-method-wgcna-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求改写结论，O1判定原模块未充分保存且性状未复现，O3指出同名颜色不构成验证，二者均成立。"
+    },
+    {
+      "anonymousAssessmentId": "A177",
+      "assetId": "staged-method-differential-abundance-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写，O1将N37降级为组成敏感候选，O3指出不能写为转化机制，均有效限制了推断。"
+    },
+    {
+      "anonymousAssessmentId": "A180",
+      "assetId": "staged-method-trajectory-pseudotime-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "adjudication": "PROMPT_OPTION_MISMATCH",
+      "rationaleCn": "题面要求结论改写，O1升级为部分支持方向非确定机制，O3定性为可检验候选路径，语义同向。"
+    }
+  ],
+  "records": [
+    {
+      "anonymousAssessmentId": "A001",
+      "assetId": "staged-concept-research-question-apply-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A002",
+      "assetId": "staged-concept-research-question-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A003",
+      "assetId": "staged-concept-research-question-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A004",
+      "assetId": "staged-concept-hypothesis-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A005",
+      "assetId": "staged-concept-hypothesis-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A006",
+      "assetId": "staged-concept-hypothesis-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A007",
+      "assetId": "staged-concept-evidence-claim-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A008",
+      "assetId": "staged-concept-evidence-claim-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A009",
+      "assetId": "staged-concept-evidence-claim-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A010",
+      "assetId": "staged-concept-association-causation-apply-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A011",
+      "assetId": "staged-concept-association-causation-remediation-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A012",
+      "assetId": "staged-concept-association-causation-review-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A013",
+      "assetId": "staged-concept-exploratory-confirmatory-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A014",
+      "assetId": "staged-concept-exploratory-confirmatory-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A015",
+      "assetId": "staged-concept-exploratory-confirmatory-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A016",
+      "assetId": "staged-concept-statistical-unit-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A017",
+      "assetId": "staged-concept-statistical-unit-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A018",
+      "assetId": "staged-concept-statistical-unit-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A019",
+      "assetId": "staged-concept-biological-technical-replicate-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A020",
+      "assetId": "staged-concept-biological-technical-replicate-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A021",
+      "assetId": "staged-concept-biological-technical-replicate-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A022",
+      "assetId": "staged-concept-pseudoreplication-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A023",
+      "assetId": "staged-concept-pseudoreplication-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A024",
+      "assetId": "staged-concept-pseudoreplication-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A025",
+      "assetId": "staged-concept-population-sample-apply-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A026",
+      "assetId": "staged-concept-population-sample-remediation-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A027",
+      "assetId": "staged-concept-population-sample-review-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A028",
+      "assetId": "staged-concept-confounding-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A029",
+      "assetId": "staged-concept-confounding-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A030",
+      "assetId": "staged-concept-confounding-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A031",
+      "assetId": "staged-concept-selection-bias-apply-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A032",
+      "assetId": "staged-concept-selection-bias-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A033",
+      "assetId": "staged-concept-selection-bias-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A034",
+      "assetId": "staged-concept-internal-external-validity-apply-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A035",
+      "assetId": "staged-concept-internal-external-validity-remediation-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A036",
+      "assetId": "staged-concept-internal-external-validity-review-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A037",
+      "assetId": "staged-concept-effect-size-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A038",
+      "assetId": "staged-concept-effect-size-remediation-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A039",
+      "assetId": "staged-concept-effect-size-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A040",
+      "assetId": "staged-concept-standard-error-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A041",
+      "assetId": "staged-concept-standard-error-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A042",
+      "assetId": "staged-concept-standard-error-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A043",
+      "assetId": "staged-concept-confidence-interval-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A044",
+      "assetId": "staged-concept-confidence-interval-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A045",
+      "assetId": "staged-concept-confidence-interval-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A046",
+      "assetId": "staged-concept-p-value-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A047",
+      "assetId": "staged-concept-p-value-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A048",
+      "assetId": "staged-concept-p-value-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A049",
+      "assetId": "staged-concept-multiple-testing-fdr-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A050",
+      "assetId": "staged-concept-multiple-testing-fdr-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A051",
+      "assetId": "staged-concept-multiple-testing-fdr-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A052",
+      "assetId": "staged-concept-power-apply-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A053",
+      "assetId": "staged-concept-power-remediation-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A054",
+      "assetId": "staged-concept-power-review-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A055",
+      "assetId": "staged-concept-interaction-apply-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A056",
+      "assetId": "staged-concept-interaction-remediation-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A057",
+      "assetId": "staged-concept-interaction-review-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A058",
+      "assetId": "staged-concept-overfitting-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A059",
+      "assetId": "staged-concept-overfitting-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A060",
+      "assetId": "staged-concept-overfitting-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A061",
+      "assetId": "staged-concept-data-leakage-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A062",
+      "assetId": "staged-concept-data-leakage-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A063",
+      "assetId": "staged-concept-data-leakage-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A064",
+      "assetId": "staged-concept-validation-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A065",
+      "assetId": "staged-concept-validation-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A066",
+      "assetId": "staged-concept-validation-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A067",
+      "assetId": "staged-concept-censoring-apply-v3",
+      "version": "v3",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A068",
+      "assetId": "staged-concept-censoring-remediation-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A069",
+      "assetId": "staged-concept-censoring-review-v2",
+      "version": "v2",
+      "taskContract": "ordering_sequence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A070",
+      "assetId": "staged-concept-hazard-ratio-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A071",
+      "assetId": "staged-concept-hazard-ratio-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A072",
+      "assetId": "staged-concept-hazard-ratio-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A073",
+      "assetId": "staged-concept-time-origin-apply-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A074",
+      "assetId": "staged-concept-time-origin-remediation-v2",
+      "version": "v2",
+      "taskContract": "ordering_sequence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A075",
+      "assetId": "staged-concept-time-origin-review-v2",
+      "version": "v2",
+      "taskContract": "ordering_sequence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A076",
+      "assetId": "staged-concept-composition-state-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A077",
+      "assetId": "staged-concept-composition-state-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A078",
+      "assetId": "staged-concept-composition-state-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A079",
+      "assetId": "staged-concept-batch-effect-apply-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A080",
+      "assetId": "staged-concept-batch-effect-remediation-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A081",
+      "assetId": "staged-concept-batch-effect-review-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A082",
+      "assetId": "staged-concept-bulk-mixture-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A083",
+      "assetId": "staged-concept-bulk-mixture-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A084",
+      "assetId": "staged-concept-bulk-mixture-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A085",
+      "assetId": "staged-concept-rna-protein-apply-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A086",
+      "assetId": "staged-concept-rna-protein-remediation-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A087",
+      "assetId": "staged-concept-rna-protein-review-v2",
+      "version": "v2",
+      "taskContract": "classification",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A088",
+      "assetId": "staged-concept-cluster-stability-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A089",
+      "assetId": "staged-concept-cluster-stability-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A090",
+      "assetId": "staged-concept-cluster-stability-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A091",
+      "assetId": "staged-concept-pseudobulk-apply-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A092",
+      "assetId": "staged-concept-pseudobulk-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A093",
+      "assetId": "staged-concept-pseudobulk-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A094",
+      "assetId": "staged-concept-cross-modal-validation-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A095",
+      "assetId": "staged-concept-cross-modal-validation-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A096",
+      "assetId": "staged-concept-cross-modal-validation-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A097",
+      "assetId": "staged-concept-alternative-explanation-apply-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A098",
+      "assetId": "staged-concept-alternative-explanation-remediation-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A099",
+      "assetId": "staged-concept-alternative-explanation-review-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A100",
+      "assetId": "staged-concept-claim-boundary-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A101",
+      "assetId": "staged-concept-claim-boundary-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A102",
+      "assetId": "staged-concept-claim-boundary-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A103",
+      "assetId": "staged-concept-robustness-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A104",
+      "assetId": "staged-concept-robustness-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A105",
+      "assetId": "staged-concept-robustness-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A106",
+      "assetId": "staged-concept-triangulation-apply-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A107",
+      "assetId": "staged-concept-triangulation-remediation-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A108",
+      "assetId": "staged-concept-triangulation-review-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A109",
+      "assetId": "staged-concept-minimal-sufficient-analysis-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A110",
+      "assetId": "staged-concept-minimal-sufficient-analysis-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A111",
+      "assetId": "staged-concept-minimal-sufficient-analysis-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A112",
+      "assetId": "staged-concept-evidence-redundancy-apply-v3",
+      "version": "v3",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A113",
+      "assetId": "staged-concept-evidence-redundancy-remediation-v3",
+      "version": "v3",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A114",
+      "assetId": "staged-concept-evidence-redundancy-review-v2",
+      "version": "v2",
+      "taskContract": "choose_next_evidence",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A115",
+      "assetId": "staged-concept-negative-result-apply-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A116",
+      "assetId": "staged-concept-negative-result-remediation-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A117",
+      "assetId": "staged-concept-negative-result-review-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A118",
+      "assetId": "staged-concept-ai-cognitive-outsourcing-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A119",
+      "assetId": "staged-concept-ai-cognitive-outsourcing-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A120",
+      "assetId": "staged-concept-ai-cognitive-outsourcing-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A121",
+      "assetId": "staged-method-differential-analysis-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A122",
+      "assetId": "staged-method-differential-analysis-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A123",
+      "assetId": "staged-method-differential-analysis-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A124",
+      "assetId": "staged-method-correlation-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A125",
+      "assetId": "staged-method-correlation-remediation-v2",
+      "version": "v2",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O2"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A126",
+      "assetId": "staged-method-correlation-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A127",
+      "assetId": "staged-method-linear-regression-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A128",
+      "assetId": "staged-method-linear-regression-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A129",
+      "assetId": "staged-method-linear-regression-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A130",
+      "assetId": "staged-method-logistic-regression-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A131",
+      "assetId": "staged-method-logistic-regression-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A132",
+      "assetId": "staged-method-logistic-regression-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A133",
+      "assetId": "staged-method-cox-regression-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A134",
+      "assetId": "staged-method-cox-regression-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A135",
+      "assetId": "staged-method-cox-regression-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A136",
+      "assetId": "staged-method-kaplan-logrank-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A137",
+      "assetId": "staged-method-kaplan-logrank-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A138",
+      "assetId": "staged-method-kaplan-logrank-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A139",
+      "assetId": "staged-method-restricted-cubic-spline-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A140",
+      "assetId": "staged-method-restricted-cubic-spline-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A141",
+      "assetId": "staged-method-restricted-cubic-spline-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A142",
+      "assetId": "staged-method-bootstrap-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A143",
+      "assetId": "staged-method-bootstrap-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A144",
+      "assetId": "staged-method-bootstrap-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A145",
+      "assetId": "staged-method-cross-validation-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A146",
+      "assetId": "staged-method-cross-validation-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A147",
+      "assetId": "staged-method-cross-validation-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A148",
+      "assetId": "staged-method-roc-auc-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A149",
+      "assetId": "staged-method-roc-auc-remediation-v3",
+      "version": "v3",
+      "taskContract": "classification",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A150",
+      "assetId": "staged-method-roc-auc-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A151",
+      "assetId": "staged-method-time-dependent-auc-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A152",
+      "assetId": "staged-method-time-dependent-auc-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A153",
+      "assetId": "staged-method-time-dependent-auc-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A154",
+      "assetId": "staged-method-pca-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A155",
+      "assetId": "staged-method-pca-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A156",
+      "assetId": "staged-method-pca-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A157",
+      "assetId": "staged-method-nmf-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A158",
+      "assetId": "staged-method-nmf-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A159",
+      "assetId": "staged-method-nmf-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A160",
+      "assetId": "staged-method-clustering-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A161",
+      "assetId": "staged-method-clustering-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A162",
+      "assetId": "staged-method-clustering-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A163",
+      "assetId": "staged-method-gsea-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A164",
+      "assetId": "staged-method-gsea-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A165",
+      "assetId": "staged-method-gsea-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A166",
+      "assetId": "staged-method-gsva-ssgsea-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A167",
+      "assetId": "staged-method-gsva-ssgsea-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A168",
+      "assetId": "staged-method-gsva-ssgsea-review-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A169",
+      "assetId": "staged-method-wgcna-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A170",
+      "assetId": "staged-method-wgcna-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A171",
+      "assetId": "staged-method-wgcna-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A172",
+      "assetId": "staged-method-pseudobulk-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A173",
+      "assetId": "staged-method-pseudobulk-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A174",
+      "assetId": "staged-method-pseudobulk-review-v2",
+      "version": "v2",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A175",
+      "assetId": "staged-method-differential-abundance-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A176",
+      "assetId": "staged-method-differential-abundance-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A177",
+      "assetId": "staged-method-differential-abundance-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A178",
+      "assetId": "staged-method-trajectory-pseudotime-apply-v2",
+      "version": "v2",
+      "taskContract": "integrated_judgment",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A179",
+      "assetId": "staged-method-trajectory-pseudotime-remediation-v3",
+      "version": "v3",
+      "taskContract": "error_localization",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A180",
+      "assetId": "staged-method-trajectory-pseudotime-review-v3",
+      "version": "v3",
+      "taskContract": "claim_rewrite",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1"
+      ],
+      "status": "DISAGREE"
+    },
+    {
+      "anonymousAssessmentId": "A181",
+      "assetId": "staged-method-cellchat-communication-apply-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A182",
+      "assetId": "staged-method-cellchat-communication-remediation-v2",
+      "version": "v2",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": false,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "AGREE"
+    },
+    {
+      "anonymousAssessmentId": "A183",
+      "assetId": "staged-method-cellchat-communication-review-v3",
+      "version": "v3",
+      "taskContract": "multi_select_audit",
+      "isTargetedRepair": true,
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "authorExpectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "status": "AGREE"
+    }
+  ],
+  "comparisonHash": "eaf574329b0f7d2defa7cd86e16989d42f4999cccb05bc76f4cc878274301e53"
+}

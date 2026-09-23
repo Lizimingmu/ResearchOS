@@ -1,0 +1,1827 @@
+{
+  "schemaVersion": 1,
+  "reviewMode": "FRESH_EXTERNAL_STRICT_BLIND",
+  "packetHash": "dc4ad6a03724a1c826d7e7c4e455f1acb4918437e39f54b2bf62489db32e1bde",
+  "stagedAssessmentSnapshotHash": "6d1992819d5a4478598c03e989427f73d02dae78a8d66e5ce9b88e6a46aa69b1",
+  "externalReviewHash": "711f6a876bf6bdb67fd7e881b58a8fb9521c3d1e57551b265b1a6f25f5e25a8a",
+  "itemCount": 183,
+  "records": [
+    {
+      "assessmentId": "staged-concept-research-question-apply-v3",
+      "anonymousAssessmentId": "A001",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-research-question-remediation-v3",
+      "anonymousAssessmentId": "A002",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-research-question-review-v2",
+      "anonymousAssessmentId": "A003",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "场景为冻结诊断问题与作答要求不一致，O1与O3均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-apply-v2",
+      "anonymousAssessmentId": "A004",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-remediation-v3",
+      "anonymousAssessmentId": "A005",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-review-v2",
+      "anonymousAssessmentId": "A006",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "检验机制预测与感染第2天结论改写同样合理，难定唯一。"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-apply-v2",
+      "anonymousAssessmentId": "A007",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-remediation-v3",
+      "anonymousAssessmentId": "A008",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-review-v3",
+      "anonymousAssessmentId": "A009",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "分别陈述与不能宣称指导治疗均属未越过证据改写。"
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-apply-v3",
+      "anonymousAssessmentId": "A010",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "要求概括证据，后门路径与未充分调整关联均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-remediation-v3",
+      "anonymousAssessmentId": "A011",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "寻找替代路径与概括证据状态不一致，O1与O3均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-review-v3",
+      "anonymousAssessmentId": "A012",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "ITT主问题与区间仅支持邀请策略重叠，难定唯一。"
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-apply-v2",
+      "anonymousAssessmentId": "A013",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-remediation-v2",
+      "anonymousAssessmentId": "A014",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-review-v3",
+      "anonymousAssessmentId": "A015",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "保留总体检验与事后亚组不能挽救试验两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-apply-v2",
+      "anonymousAssessmentId": "A016",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-remediation-v3",
+      "anonymousAssessmentId": "A017",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-review-v2",
+      "anonymousAssessmentId": "A018",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "确定患者诊断单位与患者性能不代新医院均属必要。"
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-apply-v2",
+      "anonymousAssessmentId": "A019",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-remediation-v3",
+      "anonymousAssessmentId": "A020",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-review-v3",
+      "anonymousAssessmentId": "A021",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "明确生物重复单位与480视野非独立标签同样合理。"
+    },
+    {
+      "assessmentId": "staged-concept-pseudoreplication-apply-v2",
+      "anonymousAssessmentId": "A022",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-pseudoreplication-remediation-v2",
+      "anonymousAssessmentId": "A023",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-pseudoreplication-review-v2",
+      "anonymousAssessmentId": "A024",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-apply-v3",
+      "anonymousAssessmentId": "A025",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "画选择漏斗与概括证据不一致，区分漏斗与未调整均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-remediation-v3",
+      "anonymousAssessmentId": "A026",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-review-v3",
+      "anonymousAssessmentId": "A027",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "设计权重估计与加权仍低估患病率均合理，难定唯一。"
+    },
+    {
+      "assessmentId": "staged-concept-confounding-apply-v2",
+      "anonymousAssessmentId": "A028",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-confounding-remediation-v2",
+      "anonymousAssessmentId": "A029",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-confounding-review-v2",
+      "anonymousAssessmentId": "A030",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-apply-v3",
+      "anonymousAssessmentId": "A031",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-remediation-v3",
+      "anonymousAssessmentId": "A032",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-review-v2",
+      "anonymousAssessmentId": "A033",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "识别验证偏倚与仅培养者敏感度被扭曲表达重叠。"
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-apply-v2",
+      "anonymousAssessmentId": "A034",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "求下一证据，多项为后续研究且无充分信息判唯一。"
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-remediation-v2",
+      "anonymousAssessmentId": "A035",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "多项验证动作均能区分偏倚，题面无法定唯一项。"
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-review-v2",
+      "anonymousAssessmentId": "A036",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "重校准与协议比较均为后续验证，无唯一区分证据。"
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-apply-v2",
+      "anonymousAssessmentId": "A037",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-remediation-v3",
+      "anonymousAssessmentId": "A038",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-review-v2",
+      "anonymousAssessmentId": "A039",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "并列绝对下降与净负担未达标两项改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-apply-v2",
+      "anonymousAssessmentId": "A040",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-remediation-v2",
+      "anonymousAssessmentId": "A041",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-review-v2",
+      "anonymousAssessmentId": "A042",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "以序列模型估计与840天非独立分配两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-apply-v2",
+      "anonymousAssessmentId": "A043",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-remediation-v3",
+      "anonymousAssessmentId": "A044",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-review-v3",
+      "anonymousAssessmentId": "A045",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-p-value-apply-v2",
+      "anonymousAssessmentId": "A046",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-p-value-remediation-v3",
+      "anonymousAssessmentId": "A047",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-p-value-review-v3",
+      "anonymousAssessmentId": "A048",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "把P=0.03视探索信号与不能宣称确认差异高度重叠。"
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-apply-v2",
+      "anonymousAssessmentId": "A049",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-remediation-v2",
+      "anonymousAssessmentId": "A050",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-review-v2",
+      "anonymousAssessmentId": "A051",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "预先定义检验族与四条仅为候选两结论改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-power-apply-v3",
+      "anonymousAssessmentId": "A052",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-power-remediation-v2",
+      "anonymousAssessmentId": "A053",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "功效计算题面无竞争解释，任务与作答要求不一致。"
+    },
+    {
+      "assessmentId": "staged-concept-power-review-v2",
+      "anonymousAssessmentId": "A054",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "事件规划题面无竞争解释，任务与作答要求不一致。"
+    },
+    {
+      "assessmentId": "staged-concept-interaction-apply-v3",
+      "anonymousAssessmentId": "A055",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-interaction-remediation-v3",
+      "anonymousAssessmentId": "A056",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "计算交互差与支持加性异质性两项均合理，难定唯一。"
+    },
+    {
+      "assessmentId": "staged-concept-interaction-review-v2",
+      "anonymousAssessmentId": "A057",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "将交互作探索信号与不能指导治疗均合理，难定唯一。"
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-apply-v2",
+      "anonymousAssessmentId": "A058",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-remediation-v3",
+      "anonymousAssessmentId": "A059",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-review-v2",
+      "anonymousAssessmentId": "A060",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "供体整体分折与不能称已泛化新患者两判断同样合理。"
+    },
+    {
+      "assessmentId": "staged-concept-data-leakage-apply-v2",
+      "anonymousAssessmentId": "A061",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-data-leakage-remediation-v2",
+      "anonymousAssessmentId": "A062",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-data-leakage-review-v2",
+      "anonymousAssessmentId": "A063",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-validation-apply-v2",
+      "anonymousAssessmentId": "A064",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-validation-remediation-v2",
+      "anonymousAssessmentId": "A065",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-validation-review-v2",
+      "anonymousAssessmentId": "A066",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-censoring-apply-v3",
+      "anonymousAssessmentId": "A067",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-censoring-remediation-v3",
+      "anonymousAssessmentId": "A068",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-censoring-review-v2",
+      "anonymousAssessmentId": "A069",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "按顺序选动作，但选项含限制主张而非执行动作。"
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-apply-v2",
+      "anonymousAssessmentId": "A070",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-remediation-v3",
+      "anonymousAssessmentId": "A071",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-review-v2",
+      "anonymousAssessmentId": "A072",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "修复时变暴露与原HR不能解释全程两项改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-time-origin-apply-v3",
+      "anonymousAssessmentId": "A073",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-time-origin-remediation-v2",
+      "anonymousAssessmentId": "A074",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "按顺序选动作，诊断判断非动作且与策略无先后。"
+    },
+    {
+      "assessmentId": "staged-concept-time-origin-review-v2",
+      "anonymousAssessmentId": "A075",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "按顺序选动作，含幸存者限制主张而非执行动作。"
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-apply-v2",
+      "anonymousAssessmentId": "A076",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-remediation-v3",
+      "anonymousAssessmentId": "A077",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-review-v3",
+      "anonymousAssessmentId": "A078",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "优先支持组成变化与不能称小胶质激活改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-apply-v2",
+      "anonymousAssessmentId": "A079",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "判定组与批次不可识别与事后算法不能恢复组效应重叠。"
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-remediation-v2",
+      "anonymousAssessmentId": "A080",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "平衡建库动作与桥接局限属于不同任务，选项重叠。"
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-review-v3",
+      "anonymousAssessmentId": "A081",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-apply-v2",
+      "anonymousAssessmentId": "A082",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-remediation-v3",
+      "anonymousAssessmentId": "A083",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-review-v3",
+      "anonymousAssessmentId": "A084",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "优先解释高胶原扩张与不能称合成增强改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-apply-v2",
+      "anonymousAssessmentId": "A085",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "解释轨迹与概括证据不一致，时滞与排除误差均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-remediation-v2",
+      "anonymousAssessmentId": "A086",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "列出机制与概括状态不一致，机制与不删结果均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-review-v2",
+      "anonymousAssessmentId": "A087",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "解释相反趋势与不能断言转录上调两项均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-cluster-stability-apply-v2",
+      "anonymousAssessmentId": "A088",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-cluster-stability-remediation-v2",
+      "anonymousAssessmentId": "A089",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-cluster-stability-review-v2",
+      "anonymousAssessmentId": "A090",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-apply-v3",
+      "anonymousAssessmentId": "A091",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-remediation-v3",
+      "anonymousAssessmentId": "A092",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-review-v2",
+      "anonymousAssessmentId": "A093",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "加入受者配对与20样本非20供体两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-cross-modal-validation-apply-v2",
+      "anonymousAssessmentId": "A094",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-cross-modal-validation-remediation-v2",
+      "anonymousAssessmentId": "A095",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-cross-modal-validation-review-v2",
+      "anonymousAssessmentId": "A096",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-apply-v2",
+      "anonymousAssessmentId": "A097",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "分选复现与区分预测均属后续判断，无法定唯一项。"
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-remediation-v2",
+      "anonymousAssessmentId": "A098",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "离体区分与试验更新均为后续验证，无法定唯一项。"
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-review-v2",
+      "anonymousAssessmentId": "A099",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "协议分层与重建更新均可解释差异，无唯一证据项。"
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-apply-v2",
+      "anonymousAssessmentId": "A100",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-remediation-v3",
+      "anonymousAssessmentId": "A101",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-review-v3",
+      "anonymousAssessmentId": "A102",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "改为内部有限判别与不能称外部可用两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-robustness-apply-v2",
+      "anonymousAssessmentId": "A103",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-robustness-remediation-v3",
+      "anonymousAssessmentId": "A104",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-robustness-review-v3",
+      "anonymousAssessmentId": "A105",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "降为探索结果与不能只留显著方案两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-apply-v2",
+      "anonymousAssessmentId": "A106",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "伪断点失败与限制环节均改变权重，无法定唯一项。"
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-remediation-v3",
+      "anonymousAssessmentId": "A107",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-review-v2",
+      "anonymousAssessmentId": "A108",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "独立扰动与请求证据表达重叠，无法确定最优项。"
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-apply-v2",
+      "anonymousAssessmentId": "A109",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-remediation-v3",
+      "anonymousAssessmentId": "A110",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-review-v2",
+      "anonymousAssessmentId": "A111",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "优先功能实验与同源预测不增信息两判断均合理。"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-apply-v3",
+      "anonymousAssessmentId": "A112",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-remediation-v3",
+      "anonymousAssessmentId": "A113",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "分析独立ELISA与不复现更新均属后续证据，合理性相当。"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-review-v2",
+      "anonymousAssessmentId": "A114",
+      "reviewerSelectedOptionIds": [
+        "O4"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "图表优先级题面无竞争解释，任务要求不一致。"
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-apply-v3",
+      "anonymousAssessmentId": "A115",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-remediation-v3",
+      "anonymousAssessmentId": "A116",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-review-v3",
+      "anonymousAssessmentId": "A117",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-apply-v2",
+      "anonymousAssessmentId": "A118",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-remediation-v3",
+      "anonymousAssessmentId": "A119",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-review-v2",
+      "anonymousAssessmentId": "A120",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "保留连续谱设计与不能让AI把开发当验证均合理。"
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-apply-v2",
+      "anonymousAssessmentId": "A121",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-remediation-v3",
+      "anonymousAssessmentId": "A122",
+      "reviewerSelectedOptionIds": [
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-review-v2",
+      "anonymousAssessmentId": "A123",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "不列为已验证蛋白与最多称探索信号高度重叠。"
+    },
+    {
+      "assessmentId": "staged-method-correlation-apply-v2",
+      "anonymousAssessmentId": "A124",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-correlation-remediation-v2",
+      "anonymousAssessmentId": "A125",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-correlation-review-v2",
+      "anonymousAssessmentId": "A126",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "拒绝细胞显著性当证据与最多描述共现改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-apply-v2",
+      "anonymousAssessmentId": "A127",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-remediation-v3",
+      "anonymousAssessmentId": "A128",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-review-v2",
+      "anonymousAssessmentId": "A129",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "采用混合模型与最多支持平均轨迹差异改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-apply-v2",
+      "anonymousAssessmentId": "A130",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-remediation-v3",
+      "anonymousAssessmentId": "A131",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-review-v2",
+      "anonymousAssessmentId": "A132",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "暂停原阈值部署与只能称排序可用两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-apply-v2",
+      "anonymousAssessmentId": "A133",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-remediation-v3",
+      "anonymousAssessmentId": "A134",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-review-v2",
+      "anonymousAssessmentId": "A135",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "要求补明绝对风险与最多支持相对关联改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-apply-v2",
+      "anonymousAssessmentId": "A136",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-remediation-v3",
+      "anonymousAssessmentId": "A137",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-review-v3",
+      "anonymousAssessmentId": "A138",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "降级为不稳定候选与不能报告已验证阈值均合理。"
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-apply-v2",
+      "anonymousAssessmentId": "A139",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-remediation-v3",
+      "anonymousAssessmentId": "A140",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-review-v3",
+      "anonymousAssessmentId": "A141",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-apply-v2",
+      "anonymousAssessmentId": "A142",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-remediation-v3",
+      "anonymousAssessmentId": "A143",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-review-v3",
+      "anonymousAssessmentId": "A144",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "保留为内部验证与不能覆盖站点漂移改写同样合理。"
+    },
+    {
+      "assessmentId": "staged-method-cross-validation-apply-v2",
+      "anonymousAssessmentId": "A145",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-cross-validation-remediation-v2",
+      "anonymousAssessmentId": "A146",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-cross-validation-review-v2",
+      "anonymousAssessmentId": "A147",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-apply-v2",
+      "anonymousAssessmentId": "A148",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-remediation-v3",
+      "anonymousAssessmentId": "A149",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-review-v3",
+      "anonymousAssessmentId": "A150",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-apply-v2",
+      "anonymousAssessmentId": "A151",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-remediation-v3",
+      "anonymousAssessmentId": "A152",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-review-v2",
+      "anonymousAssessmentId": "A153",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "要求按相同时点重算与5年AUC不能验3年均合理。"
+    },
+    {
+      "assessmentId": "staged-method-pca-apply-v2",
+      "anonymousAssessmentId": "A154",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-pca-remediation-v3",
+      "anonymousAssessmentId": "A155",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-pca-review-v2",
+      "anonymousAssessmentId": "A156",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "停止称为冻结PC1与最多称新方差轴高度重叠。"
+    },
+    {
+      "assessmentId": "staged-method-nmf-apply-v2",
+      "anonymousAssessmentId": "A157",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-nmf-remediation-v3",
+      "anonymousAssessmentId": "A158",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-nmf-review-v3",
+      "anonymousAssessmentId": "A159",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "撤回四离散亚型与相关不证离散类别两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-clustering-apply-v2",
+      "anonymousAssessmentId": "A160",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-clustering-remediation-v3",
+      "anonymousAssessmentId": "A161",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-clustering-review-v2",
+      "anonymousAssessmentId": "A162",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "拒绝重新聚类当外验与最多称分成三组改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-gsea-apply-v2",
+      "anonymousAssessmentId": "A163",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-gsea-remediation-v2",
+      "anonymousAssessmentId": "A164",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-gsea-review-v2",
+      "anonymousAssessmentId": "A165",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-gsva-ssgsea-apply-v2",
+      "anonymousAssessmentId": "A166",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-gsva-ssgsea-remediation-v2",
+      "anonymousAssessmentId": "A167",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-gsva-ssgsea-review-v2",
+      "anonymousAssessmentId": "A168",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-wgcna-apply-v2",
+      "anonymousAssessmentId": "A169",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-wgcna-remediation-v3",
+      "anonymousAssessmentId": "A170",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-wgcna-review-v3",
+      "anonymousAssessmentId": "A171",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "判定未充分保存与同名非验证两项改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-apply-v2",
+      "anonymousAssessmentId": "A172",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-remediation-v3",
+      "anonymousAssessmentId": "A173",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-review-v2",
+      "anonymousAssessmentId": "A174",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "降级为探索交互与最多称组织交互信号高度重叠。"
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-apply-v2",
+      "anonymousAssessmentId": "A175",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-remediation-v3",
+      "anonymousAssessmentId": "A176",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-review-v3",
+      "anonymousAssessmentId": "A177",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "降级为组成敏感候选与不能称转化机制改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-apply-v2",
+      "anonymousAssessmentId": "A178",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-remediation-v3",
+      "anonymousAssessmentId": "A179",
+      "reviewerSelectedOptionIds": [
+        "O1"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-review-v3",
+      "anonymousAssessmentId": "A180",
+      "reviewerSelectedOptionIds": [
+        "O3"
+      ],
+      "verdict": "AMBIGUOUS",
+      "reviewerNoteCn": "升级为部分支持与最多主张路径候选两改写均合理。"
+    },
+    {
+      "assessmentId": "staged-method-cellchat-communication-apply-v2",
+      "anonymousAssessmentId": "A181",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-cellchat-communication-remediation-v2",
+      "anonymousAssessmentId": "A182",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    },
+    {
+      "assessmentId": "staged-method-cellchat-communication-review-v3",
+      "anonymousAssessmentId": "A183",
+      "reviewerSelectedOptionIds": [
+        "O1",
+        "O2"
+      ],
+      "verdict": "CLEAR",
+      "reviewerNoteCn": ""
+    }
+  ]
+}

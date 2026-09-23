@@ -22,6 +22,7 @@ import type {
   ViewId,
 } from "../domain/types";
 import type { CaseReasoningEntryV1, LearningContentPhase, LearningContentProgressV1, ProjectStudioRecordV1, TransferArtifactV1 } from "../domain/learningArchitecture";
+import type { PilotFeedbackRecord } from "../data/pilot/pilotManifest";
 import type { DiagnosticSession, SourcePackDocument } from "../domain/problemAtlas";
 import type { LearningActivityType, LearningMode } from "../domain/learningKernel";
 import type { ContentConflict, ContentLifecycle, ContentPatchPack, ContentPatchPreview, ObsidianPublishBatch, PersonalContentEntry, PortableContentRecord } from "../domain/contentStudio";
@@ -125,6 +126,10 @@ export const createInitialState = (): AppStateData => {
     projectStudioRecords: [],
     obsidianConnection: undefined,
     obsidianPublishBatches: [],
+    pilotSessionId: "pilot-default-session",
+    isPilotMode: true,
+    pilotFeedback: [],
+    explanationAttempts: {},
     ...atlas,
   };
 };
@@ -238,6 +243,15 @@ interface AppStore extends AppStateData {
   cancelPublishBatch: (batchId: string) => void;
   exportReviewRoundTrip: (selectedKeys: string[], batchId?: string) => Promise<string>;
   checkReviewRoundTrip: (batchId: string) => Promise<{ feedback: ReturnType<typeof parseReviewFeedback>; candidates: ReviewPatchCandidate[] }>;
+  pilotSessionId: string;
+  isPilotMode: boolean;
+  pilotFeedback: PilotFeedbackRecord[];
+  explanationAttempts: Record<string, boolean>;
+  startPilotSession: () => void;
+  setPilotMode: (enabled: boolean) => void;
+  recordPilotFeedback: (feedback: Omit<PilotFeedbackRecord, "id" | "timestamp">) => void;
+  recordExplanationAttempt: (lessonId: string) => void;
+  resetPilotSession: () => void;
 }
 
 function stateData(state: AppStore): AppStateData {
@@ -288,6 +302,10 @@ function stateData(state: AppStore): AppStateData {
     projectStudioRecords: state.projectStudioRecords,
     obsidianConnection: state.obsidianConnection,
     obsidianPublishBatches: state.obsidianPublishBatches,
+    pilotSessionId: state.pilotSessionId,
+    isPilotMode: state.isPilotMode,
+    pilotFeedback: state.pilotFeedback,
+    explanationAttempts: state.explanationAttempts,
   };
 }
 
@@ -318,6 +336,10 @@ export const useAppStore = create<AppStore>((set, get) => {
   const todayTargetMarker = (targetId: string, now = new Date()) => `target:${now.toISOString().slice(0, 10)}:${targetId}`;
   return {
     ...initial,
+    pilotSessionId: initial.pilotSessionId ?? "pilot-default-session",
+    isPilotMode: initial.isPilotMode ?? true,
+    pilotFeedback: initial.pilotFeedback ?? [],
+    explanationAttempts: initial.explanationAttempts ?? {},
     hydrated: false,
     persistenceStatus: "idle",
     view: "today",
@@ -1145,6 +1167,51 @@ export const useAppStore = create<AppStore>((set, get) => {
       }));
       queuePersist();
       return { feedback, candidates };
+    },
+    startPilotSession: () => {
+      set((state) => ({
+        isPilotMode: true,
+        view: "today",
+        onboarding: state.onboarding.completed ? state.onboarding : { ...state.onboarding, completed: true, interests: ["临床观察研究"], familiarity: { "科研问题与假设": "new" } }
+      }));
+      queuePersist();
+    },
+    setPilotMode: (enabled: boolean) => {
+      set({ isPilotMode: enabled });
+      queuePersist();
+    },
+    recordPilotFeedback: (feedback) => {
+      const now = new Date().toISOString();
+      const entry: PilotFeedbackRecord = {
+        ...feedback,
+        id: makeId("pilot-fb"),
+        timestamp: now,
+      };
+      set((state) => ({
+        pilotFeedback: [...(state.pilotFeedback ?? []), entry],
+        toast: { id: makeId("toast"), tone: "success", text: "已保存试用反馈，感谢你的宝贵体验！" }
+      }));
+      queuePersist();
+    },
+    recordExplanationAttempt: (lessonId: string) => {
+      set((state) => ({
+        explanationAttempts: { ...(state.explanationAttempts ?? {}), [lessonId]: true }
+      }));
+      queuePersist();
+    },
+    resetPilotSession: () => {
+      const newSessionId = makeId("pilot-session");
+      set((state) => ({
+        pilotSessionId: newSessionId,
+        pilotFeedback: [],
+        explanationAttempts: {},
+        learningContentProgress: Object.fromEntries(
+          Object.entries(state.learningContentProgress).filter(([key]) => !key.startsWith("concept-statistical-unit") && !key.startsWith("concept-confounding") && !key.startsWith("staged-"))
+        ),
+        view: "today",
+        toast: { id: makeId("toast"), tone: "info", text: "已开始新的 Pilot Session，试用进度已重置。" }
+      }));
+      queuePersist();
     },
   };
 });

@@ -11,9 +11,11 @@ import type { ConceptLessonV1, LearningContentPhase, LearningContentRegistryEntr
 import type { PracticeResponseV1 } from "../../domain/learningKernel";
 import { contentPrerequisitesMet, type ArchitectureAttemptKind } from "../../learning/learningArchitectureEngine";
 import { useAppStore } from "../../state/store";
+import { useShallow } from "zustand/react/shallow";
 import { isKnowledgeLearningAllowed } from "../../services/knowledge";
 import { KnowledgeMaintenanceNotice } from "../../components/KnowledgeMaintenanceNotice";
 import { PracticeActivity } from "./PracticeActivity";
+import { PilotFeedbackModal } from "../pilot/PilotFeedbackModal";
 
 function HierarchyExplorer() {
   const [selected, setSelected] = useState<"patient" | "sample" | "cell">();
@@ -47,9 +49,11 @@ function ConceptSurface({ lesson, entry }: { lesson: ConceptLessonV1; entry: Lea
   const stored = useAppStore((state) => state.learningContentProgress[lesson.id]);
   const learner = useAppStore((state) => state.learnerUnitStates.find((item) => item.unitId === lesson.unitId));
   const setPhase = useAppStore((state) => state.setLearningContentPhase);
+  const recordExplanationAttempt = useAppStore((state) => state.recordExplanationAttempt);
   const [explanation, setExplanation] = useState("");
   const [hintOpen, setHintOpen] = useState(false);
   const [feedback, setFeedback] = useState<{ kind: ArchitectureAttemptKind; passed: boolean }>();
+  const [pilotFeedbackOpen, setPilotFeedbackOpen] = useState(false);
   const [revision, setRevision] = useState(0);
   const phase = feedback ? (feedback.kind === "review" ? "review" : feedback.kind === "remediation" ? "remediation" : "apply") : (stored?.phase ?? "learn");
   const Interaction = lesson.interaction ? interactions[lesson.interaction] : undefined;
@@ -58,14 +62,41 @@ function ConceptSurface({ lesson, entry }: { lesson: ConceptLessonV1; entry: Lea
     if (!feedback) { setFeedback({ kind, passed }); return; }
     setFeedback(undefined); setRevision((value) => value + 1);
     setPhase(lesson.id, kind === "review" ? (passed ? "review" : "apply") : passed ? "review" : "remediation", { remediationNeeded: !passed });
+    if (passed) {
+      setPilotFeedbackOpen(true);
+    }
   };
+  const submitExplanation = () => {
+    recordExplanationAttempt(lesson.id);
+    setPhase(lesson.id, "apply", { explainCompleted: true });
+  };
+  const defaultChecklist = [
+    "我有没有说清研究对象？",
+    "有没有说明独立单位？",
+    "有没有说明这个概念为什么影响结论？",
+    "有没有举一个反例？",
+  ];
+  const checklist = [...new Set([...(lesson.explanationChecklistCn ?? []), ...defaultChecklist])];
   const navItems: LearningContentPhase[] = ["learn", "explain", "apply", ...(stored?.remediationNeeded ? ["remediation" as const] : []), ...(learner?.competence.level && learner.competence.level !== "unassessed" ? ["review" as const] : [])];
   return <section className="concept-surface"><header><span className="eyebrow">Concept Lesson · Learn → Explain → Apply</span><h1>{lesson.titleCn}</h1><p>{lesson.titleEn}</p><nav>{navItems.map((item) => <button key={item} className={phase === item ? "active" : ""} disabled={item === "apply" && !stored?.explainCompleted} onClick={() => setPhase(lesson.id, item)}>{item}</button>)}</nav></header>
     {phase === "learn" && <div className="coherent-lesson"><article><strong>Why it matters</strong><p>{lesson.whyItMattersCn}</p></article><article><strong>Intuition</strong><p>{lesson.intuitionCn}</p></article><article><strong>Precise explanation</strong><p>{lesson.preciseExplanationCn}</p></article><article><strong>Worked example</strong><p>{lesson.workedExampleCn}</p></article>{Interaction && <Interaction/>}<button className="primary" onClick={() => setPhase(lesson.id, "explain")}>用自己的话解释 <ArrowRight size={14}/></button></div>}
-    {phase === "explain" && <div className="explain-phase"><h2>{lesson.explainPromptCn}</h2><textarea rows={6} value={explanation} onChange={(event) => setExplanation(event.target.value)} placeholder="写 1–3 句；系统不会把自由文本伪装成能力分数。"/><details><summary>完整解释通常应包含…</summary><ul>{lesson.explanationChecklistCn.map((item) => <li key={item}>{item}</li>)}</ul></details><button className="primary" disabled={explanation.trim().length < 12} onClick={() => setPhase(lesson.id, "apply", { explainCompleted: true })}>进入版本化 Apply</button></div>}
+    {phase === "explain" && <div className="explain-phase">
+      <span className="eyebrow">Explain Phase · 自己说一次</span>
+      <h2>用你自己的话解释这个概念</h2>
+      <p style={{ margin: "6px 0 14px", color: "var(--color-muted, #718096)", fontSize: "14px" }}>{lesson.explainPromptCn}</p>
+      <textarea rows={6} value={explanation} onChange={(event) => setExplanation(event.target.value)} placeholder="写 1–3 句；用你自己的话写出核心机制。系统不会把自由文本伪装成能力分数，仅记录真实表达尝试。"/>
+      <div style={{ marginTop: "12px", padding: "12px 16px", borderRadius: "8px", background: "var(--color-bg-subtle, #f7fafc)", border: "1px solid var(--color-border, #e2e8f0)" }}>
+        <strong style={{ display: "block", marginBottom: "6px", fontSize: "13px" }}>自检清单（思考是否覆盖）：</strong>
+        <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "13px", lineHeight: "1.7" }}>
+          {checklist.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </div>
+      <button className="primary" style={{ marginTop: "16px" }} disabled={explanation.trim().length < 8} onClick={submitExplanation}>我已尝试解释，进入版本化 Apply <ArrowRight size={14}/></button>
+    </div>}
     {phase === "apply" && <div className="apply-phase"><span className="eyebrow">Versioned Apply · locked response · no hints</span><p>{lesson.applyPromptCn}</p><ArchitecturePractice entry={entry} kind="apply" revision={revision} onAttemptFeedback={afterFeedback}/></div>}
     {phase === "remediation" && <div className="remediation"><h2>Adaptive Remediation</h2><p>{lesson.remediationExplanationCn}</p><button onClick={() => setHintOpen((value) => !value)}>{hintOpen ? "收起概念提示" : "查看概念提示（在新题前）"}</button>{hintOpen && <p>{lesson.remediationPromptCn}</p>}<ArchitecturePractice entry={entry} kind="remediation" revision={revision} onAttemptFeedback={afterFeedback}/></div>}
     {phase === "review" && (due ? <ArchitecturePractice entry={entry} kind="review" revision={revision} onAttemptFeedback={afterFeedback}/> : <section className="learning-wait"><h2>独立 Apply 已锁定</h2><p>能力状态：{learner?.competence.level ?? "unassessed"}。复习使用不同场景，并且只在到期后开放。</p>{learner?.dueAt && <p>到期时间：{new Date(learner.dueAt).toLocaleString("zh-CN")}</p>}</section>)}
+    <PilotFeedbackModal isOpen={pilotFeedbackOpen} lessonId={lesson.id} lessonTitle={lesson.titleCn} onClose={() => setPilotFeedbackOpen(false)} />
   </section>;
 }
 
@@ -78,20 +109,24 @@ function MethodSurface({ lesson, entry }: { lesson: MethodLessonV1; entry: Learn
   const [revision, setRevision] = useState(0);
   const phase = feedback ? (feedback.kind === "review" ? "review" : feedback.kind === "remediation" ? "remediation" : "apply") : (progress?.phase === "review" ? "review" : progress?.phase === "remediation" ? "remediation" : progress?.phase === "apply" ? "apply" : "learn");
   const due = learner?.stage === "review_eligible" && learner.dueAt ? Date.parse(learner.dueAt) <= Date.now() : false;
+  const [pilotFeedbackOpen, setPilotFeedbackOpen] = useState(false);
   const afterFeedback = (kind: ArchitectureAttemptKind, passed: boolean) => {
     if (!feedback) { setFeedback({ kind, passed }); return; }
     setFeedback(undefined); setRevision((value) => value + 1); setPhase(lesson.id, kind === "review" ? (passed ? "review" : "apply") : passed ? "review" : "remediation", { remediationNeeded: !passed });
+    if (passed) {
+      setPilotFeedbackOpen(true);
+    }
   };
   if (phase === "apply") return <section className="method-lesson"><header><span className="eyebrow">Method Lesson · Methods audit Apply</span><h1>{lesson.titleCn}</h1><p>{lesson.applyPromptCn}</p></header><ArchitecturePractice entry={entry} kind="apply" revision={revision} onAttemptFeedback={afterFeedback}/></section>;
   if (phase === "remediation") return <section className="method-lesson remediation"><header><span className="eyebrow">Method Lesson · targeted remediation</span><h1>{lesson.titleCn}</h1></header><p>{lesson.remediationExplanationCn}</p><button onClick={() => setHintOpen((value) => !value)}>{hintOpen ? "收起概念提示" : "查看概念提示（在新题前）"}</button>{hintOpen && <p>{lesson.remediationPromptCn}</p>}<ArchitecturePractice entry={entry} kind="remediation" revision={revision} onAttemptFeedback={afterFeedback}/></section>;
   if (phase === "review") return <section className="method-lesson"><header><span className="eyebrow">Method Lesson · delayed review</span><h1>{lesson.titleCn}</h1></header>{due ? <ArchitecturePractice entry={entry} kind="review" revision={revision} onAttemptFeedback={afterFeedback}/> : <section className="learning-wait"><h2>Methods audit 已锁定</h2><p>能力状态：{learner?.competence.level ?? "unassessed"}。新的 review 场景将在到期后开放。</p>{learner?.dueAt && <p>到期时间：{new Date(learner.dueAt).toLocaleString("zh-CN")}</p>}</section>}</section>;
-  return <section className="method-lesson"><header><span className="eyebrow">Method Lesson · extensible method contract</span><h1>{lesson.titleCn}</h1><p>{lesson.titleEn}</p></header><article><h2>Scientific question</h2><p>{lesson.scientificQuestionCn}</p></article><div className="method-grid"><article><h3>Input</h3><ul>{lesson.inputsCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h3>Output</h3><ul>{lesson.outputsCn.map((item) => <li key={item}>{item}</li>)}</ul></article></div><article><h2>Core logic</h2><p>{lesson.coreLogicCn}</p></article><article><h2>Critical assumptions</h2><ul>{lesson.assumptionsCn.map((item) => <li key={item}>{item}</li>)}</ul></article><div className="method-grid"><article><h3>Appropriate when</h3><ul>{lesson.appropriateWhenCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h3>Not appropriate when</h3><ul>{lesson.inappropriateWhenCn.map((item) => <li key={item}>{item}</li>)}</ul></article></div><article><h2>Common misuse</h2><ul>{lesson.misusePatternsCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h2>Reviewer checks</h2><ul>{lesson.reviewerChecksCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h2>How it appears in a paper</h2><p>{lesson.paperAppearanceCn}</p></article><button className="primary" onClick={() => setPhase(lesson.id, "apply", { explainCompleted: true })}>进入 Methods audit Apply</button></section>;
+  return <section className="method-lesson"><header><span className="eyebrow">Method Lesson · extensible method contract</span><h1>{lesson.titleCn}</h1><p>{lesson.titleEn}</p></header><article><h2>Scientific question</h2><p>{lesson.scientificQuestionCn}</p></article><div className="method-grid"><article><h3>Input</h3><ul>{lesson.inputsCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h3>Output</h3><ul>{lesson.outputsCn.map((item) => <li key={item}>{item}</li>)}</ul></article></div><article><h2>Core logic</h2><p>{lesson.coreLogicCn}</p></article><article><h2>Critical assumptions</h2><ul>{lesson.assumptionsCn.map((item) => <li key={item}>{item}</li>)}</ul></article><div className="method-grid"><article><h3>Appropriate when</h3><ul>{lesson.appropriateWhenCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h3>Not appropriate when</h3><ul>{lesson.inappropriateWhenCn.map((item) => <li key={item}>{item}</li>)}</ul></article></div><article><h2>Common misuse</h2><ul>{lesson.misusePatternsCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h2>Reviewer checks</h2><ul>{lesson.reviewerChecksCn.map((item) => <li key={item}>{item}</li>)}</ul></article><article><h2>How it appears in a paper</h2><p>{lesson.paperAppearanceCn}</p></article><button className="primary" onClick={() => setPhase(lesson.id, "apply", { explainCompleted: true })}>进入 Methods audit Apply</button><PilotFeedbackModal isOpen={pilotFeedbackOpen} lessonId={lesson.id} lessonTitle={lesson.titleCn} onClose={() => setPilotFeedbackOpen(false)} /></section>;
 }
 
 export function LearningArchitectureView({ onOpenLegacy }: { onOpenLegacy: () => void }) {
   const selectedId = useAppStore((state) => state.selectedLearningContentId);
   const select = useAppStore((state) => state.selectLearningContent);
-  const progress = useAppStore((state) => Object.values(state.learningContentProgress));
+  const progress = useAppStore(useShallow((state) => Object.values(state.learningContentProgress)));
   const states = useAppStore((state) => state.learnerUnitStates);
   const knowledgeWorkspace = useAppStore((state) => state.knowledgeWorkspace);
   const selectedConcept = conceptLessons.find((item) => item.id === selectedId) ?? (!methodLessons.some((item) => item.id === selectedId) ? conceptLessons[0] : undefined);

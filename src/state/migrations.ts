@@ -168,5 +168,9 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
       ? raw.obsidianConnection as unknown as AppStateData["obsidianConnection"]
       : defaults.obsidianConnection,
     obsidianPublishBatches: arrayOr(raw.obsidianPublishBatches, defaults.obsidianPublishBatches),
+    pilotSessionId: typeof raw.pilotSessionId === "string" ? raw.pilotSessionId : defaults.pilotSessionId,
+    isPilotMode: typeof raw.isPilotMode === "boolean" ? raw.isPilotMode : defaults.isPilotMode,
+    pilotFeedback: arrayOr(raw.pilotFeedback, defaults.pilotFeedback ?? []),
+    explanationAttempts: recordOr(raw.explanationAttempts, defaults.explanationAttempts ?? {}),
   };
 }

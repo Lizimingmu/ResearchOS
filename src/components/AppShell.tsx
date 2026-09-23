@@ -1,5 +1,5 @@
 import { lazy, Suspense, type PropsWithChildren } from "react";
-import { Command, Search } from "lucide-react";
+import { Command, MessageSquareQuote, Search } from "lucide-react";
 import { getNavigation } from "../app/navigation";
 import { t } from "../i18n";
 import { useAppStore } from "../state/store";
@@ -13,6 +13,8 @@ export function AppShell({ children }: PropsWithChildren) {
   const globalSearch = useAppStore((state) => state.globalSearch);
   const setGlobalSearch = useAppStore((state) => state.setGlobalSearch);
   const persistenceStatus = useAppStore((state) => state.persistenceStatus);
+  const isPilotMode = useAppStore((state) => state.isPilotMode);
+  const pilotFeedbackCount = useAppStore((state) => state.pilotFeedback?.length ?? 0);
   const locale = useAppStore((state) => state.settings.language);
   const navigation = getNavigation(locale);
   const active = navigation.find((item) => item.id === view) ?? { label: view === "learning" ? "学习单元" : "工作区" };
@@ -55,7 +57,21 @@ export function AppShell({ children }: PropsWithChildren) {
       <main className="workspace-main">
         <header className="workspace-titlebar">
           <div><span className="eyebrow">工作区</span><strong>{active.label}</strong></div>
-          <div className="titlebar-meta"><span>{t(locale, "shell.humanFirst")}</span><span>{t(locale, "shell.evidence")}</span></div>
+          <div className="titlebar-meta">
+            {isPilotMode && (
+              <button
+                type="button"
+                className="subtle"
+                style={{ display: "inline-flex", alignItems: "center", gap: "5px", padding: "3px 8px", fontSize: "12px", borderRadius: "6px" }}
+                onClick={() => setView("pilot-feedback")}
+              >
+                <MessageSquareQuote size={13} />
+                <span>试用反馈 ({pilotFeedbackCount})</span>
+              </button>
+            )}
+            <span>{t(locale, "shell.humanFirst")}</span>
+            <span>{t(locale, "shell.evidence")}</span>
+          </div>
         </header>
         <div className="workspace-content">{children}</div>
       </main>

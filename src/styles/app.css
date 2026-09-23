@@ -770,3 +770,231 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
   .m020-unit-list { border-right: 0; border-bottom: 1px solid var(--line); max-height: 260px; }
   .m020-knowledge .form-grid, .m020-diff-pair, .m020-import-packs, .m020-impact-groups { grid-template-columns: 1fr; }
 }
+
+
+/* ResearchOS Tomorrow Pilot-Ready Styles */
+.pilot-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.pilot-modal-card {
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+.pilot-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.pilot-modal-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.pilot-modal-header h2 {
+  font-size: 18px;
+  margin: 4px 0 0;
+}
+.pilot-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--muted);
+  border-radius: 6px;
+}
+.pilot-close-btn:hover {
+  background: var(--surface-2);
+  color: var(--foreground);
+}
+.pilot-modal-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.pilot-feedback-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pilot-question-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.pilot-choice-pills {
+  display: flex;
+  gap: 10px;
+}
+.pilot-pill {
+  flex: 1;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+.pilot-pill.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.pilot-tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pilot-tag-chip {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+.pilot-tag-chip.selected {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+.pilot-modal-body textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--surface);
+  resize: vertical;
+}
+.pilot-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px 20px;
+  border-top: 1px solid var(--line);
+}
+
+/* Pilot Feedback View */
+.pilot-feedback-page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.pilot-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+.pilot-stats-grid .stat-card {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+.stat-val {
+  font-size: 18px;
+  font-weight: bold;
+}
+.feedback-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pilot-record-card {
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.record-time {
+  margin-left: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.difficulty-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.difficulty-badge.too_easy {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+.difficulty-badge.just_right {
+  background: #c6f6d5;
+  color: #22543d;
+}
+.difficulty-badge.too_hard {
+  background: #fed7d7;
+  color: #742a2a;
+}
+.record-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.record-tag-chip {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  font-size: 12px;
+  color: var(--muted);
+}
+.record-freetext {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  font-style: italic;
+}
+.record-freetext.empty {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 13px;
+}
+@media (max-width: 768px) {
+  .pilot-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -427,6 +427,10 @@ export interface AppStateData {
   projectStudioRecords: ProjectStudioRecordV1[];
   obsidianConnection?: ObsidianConnectionSettings;
   obsidianPublishBatches: ObsidianPublishBatch[];
+  pilotSessionId?: string;
+  isPilotMode?: boolean;
+  pilotFeedback?: import("../data/pilot/pilotManifest").PilotFeedbackRecord[];
+  explanationAttempts?: Record<string, boolean>;
 }
 
 export interface AssessmentResult {
@@ -441,7 +445,7 @@ export interface AssessmentResult {
   domainScores?: Record<string, number>;
 }
 
-export type ViewId = "today" | "guide" | "learning" | "practice" | "curriculum-preview" | "case-lab" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings";
+export type ViewId = "today" | "guide" | "learning" | "practice" | "curriculum-preview" | "case-lab" | "library" | "paper-lab" | "methods" | "review" | "ai-audit" | "frontier" | "projects" | "skills" | "problem-atlas" | "content-studio" | "assessment" | "settings" | "pilot-feedback";
 
 export interface DailyTask {
   id: string;

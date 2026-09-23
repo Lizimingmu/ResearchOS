@@ -1,0 +1,1244 @@
+{
+  "generatedAt": "2026-09-24T02:45:00.000Z",
+  "gateStatus": "PILOT_ELIGIBLE",
+  "summary": {
+    "totalLessons": 61,
+    "eligibleLessons": 40,
+    "ineligibleLessons": 21,
+    "disagreementAssessmentsBlocked": 26,
+    "selectedPilotTopicsCount": 8
+  },
+  "disagreementAssessmentIds": [
+    "A009",
+    "A014",
+    "A015",
+    "A021",
+    "A041",
+    "A048",
+    "A050",
+    "A057",
+    "A077",
+    "A078",
+    "A079",
+    "A080",
+    "A084",
+    "A085",
+    "A086",
+    "A087",
+    "A102",
+    "A105",
+    "A113",
+    "A125",
+    "A138",
+    "A144",
+    "A159",
+    "A171",
+    "A177",
+    "A180"
+  ],
+  "disagreementAssetIds": [
+    "staged-concept-batch-effect-apply-v2",
+    "staged-concept-batch-effect-remediation-v2",
+    "staged-concept-biological-technical-replicate-review-v3",
+    "staged-concept-bulk-mixture-review-v3",
+    "staged-concept-claim-boundary-review-v3",
+    "staged-concept-composition-state-remediation-v3",
+    "staged-concept-composition-state-review-v3",
+    "staged-concept-evidence-claim-review-v3",
+    "staged-concept-evidence-redundancy-remediation-v3",
+    "staged-concept-exploratory-confirmatory-remediation-v2",
+    "staged-concept-exploratory-confirmatory-review-v3",
+    "staged-concept-interaction-review-v2",
+    "staged-concept-multiple-testing-fdr-remediation-v2",
+    "staged-concept-p-value-review-v3",
+    "staged-concept-rna-protein-apply-v2",
+    "staged-concept-rna-protein-remediation-v2",
+    "staged-concept-rna-protein-review-v2",
+    "staged-concept-robustness-review-v3",
+    "staged-concept-standard-error-remediation-v2",
+    "staged-method-bootstrap-review-v3",
+    "staged-method-correlation-remediation-v2",
+    "staged-method-differential-abundance-review-v3",
+    "staged-method-kaplan-logrank-review-v3",
+    "staged-method-nmf-review-v3",
+    "staged-method-trajectory-pseudotime-review-v3",
+    "staged-method-wgcna-review-v3"
+  ],
+  "selectedPilotTopics": [
+    {
+      "lessonId": "staged-concept-statistical-unit",
+      "titleCn": "统计单位",
+      "assessmentIds": [
+        "A016",
+        "A017",
+        "A018"
+      ],
+      "assetIds": [
+        "staged-concept-statistical-unit-apply-v2",
+        "staged-concept-statistical-unit-remediation-v3",
+        "staged-concept-statistical-unit-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-pseudoreplication",
+      "titleCn": "伪重复",
+      "assessmentIds": [
+        "A022",
+        "A023",
+        "A024"
+      ],
+      "assetIds": [
+        "staged-concept-pseudoreplication-apply-v2",
+        "staged-concept-pseudoreplication-remediation-v2",
+        "staged-concept-pseudoreplication-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-confounding",
+      "titleCn": "混杂",
+      "assessmentIds": [
+        "A028",
+        "A029",
+        "A030"
+      ],
+      "assetIds": [
+        "staged-concept-confounding-apply-v2",
+        "staged-concept-confounding-remediation-v2",
+        "staged-concept-confounding-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-confidence-interval",
+      "titleCn": "置信区间",
+      "assessmentIds": [
+        "A043",
+        "A044",
+        "A045"
+      ],
+      "assetIds": [
+        "staged-concept-confidence-interval-apply-v2",
+        "staged-concept-confidence-interval-remediation-v3",
+        "staged-concept-confidence-interval-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-hazard-ratio",
+      "titleCn": "风险率比",
+      "assessmentIds": [
+        "A070",
+        "A071",
+        "A072"
+      ],
+      "assetIds": [
+        "staged-concept-hazard-ratio-apply-v2",
+        "staged-concept-hazard-ratio-remediation-v3",
+        "staged-concept-hazard-ratio-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-alternative-explanation",
+      "titleCn": "替代解释",
+      "assessmentIds": [
+        "A097",
+        "A098",
+        "A099"
+      ],
+      "assetIds": [
+        "staged-concept-alternative-explanation-apply-v2",
+        "staged-concept-alternative-explanation-remediation-v2",
+        "staged-concept-alternative-explanation-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-selection-bias",
+      "titleCn": "选择偏倚",
+      "assessmentIds": [
+        "A031",
+        "A032",
+        "A033"
+      ],
+      "assetIds": [
+        "staged-concept-selection-bias-apply-v3",
+        "staged-concept-selection-bias-remediation-v3",
+        "staged-concept-selection-bias-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-internal-external-validity",
+      "titleCn": "内部效度与外部效度",
+      "assessmentIds": [
+        "A034",
+        "A035",
+        "A036"
+      ],
+      "assetIds": [
+        "staged-concept-internal-external-validity-apply-v2",
+        "staged-concept-internal-external-validity-remediation-v2",
+        "staged-concept-internal-external-validity-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    }
+  ],
+  "allLessons": [
+    {
+      "lessonId": "staged-concept-research-question",
+      "titleCn": "科研问题",
+      "assessmentIds": [
+        "A001",
+        "A002",
+        "A003"
+      ],
+      "assetIds": [
+        "staged-concept-research-question-apply-v3",
+        "staged-concept-research-question-remediation-v3",
+        "staged-concept-research-question-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-hypothesis",
+      "titleCn": "研究假设",
+      "assessmentIds": [
+        "A004",
+        "A005",
+        "A006"
+      ],
+      "assetIds": [
+        "staged-concept-hypothesis-apply-v2",
+        "staged-concept-hypothesis-remediation-v3",
+        "staged-concept-hypothesis-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-evidence-claim",
+      "titleCn": "证据与主张",
+      "assessmentIds": [
+        "A007",
+        "A008",
+        "A009"
+      ],
+      "assetIds": [
+        "staged-concept-evidence-claim-apply-v2",
+        "staged-concept-evidence-claim-remediation-v3",
+        "staged-concept-evidence-claim-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A009 (staged-concept-evidence-claim-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-association-causation",
+      "titleCn": "关联与因果",
+      "assessmentIds": [
+        "A010",
+        "A011",
+        "A012"
+      ],
+      "assetIds": [
+        "staged-concept-association-causation-apply-v3",
+        "staged-concept-association-causation-remediation-v3",
+        "staged-concept-association-causation-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-exploratory-confirmatory",
+      "titleCn": "探索性与确证性研究",
+      "assessmentIds": [
+        "A013",
+        "A014",
+        "A015"
+      ],
+      "assetIds": [
+        "staged-concept-exploratory-confirmatory-apply-v2",
+        "staged-concept-exploratory-confirmatory-remediation-v2",
+        "staged-concept-exploratory-confirmatory-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A014, A015 (staged-concept-exploratory-confirmatory-remediation-v2, staged-concept-exploratory-confirmatory-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-statistical-unit",
+      "titleCn": "统计单位",
+      "assessmentIds": [
+        "A016",
+        "A017",
+        "A018"
+      ],
+      "assetIds": [
+        "staged-concept-statistical-unit-apply-v2",
+        "staged-concept-statistical-unit-remediation-v3",
+        "staged-concept-statistical-unit-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-biological-technical-replicate",
+      "titleCn": "生物学重复与技术重复",
+      "assessmentIds": [
+        "A019",
+        "A020",
+        "A021"
+      ],
+      "assetIds": [
+        "staged-concept-biological-technical-replicate-apply-v2",
+        "staged-concept-biological-technical-replicate-remediation-v3",
+        "staged-concept-biological-technical-replicate-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A021 (staged-concept-biological-technical-replicate-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-pseudoreplication",
+      "titleCn": "伪重复",
+      "assessmentIds": [
+        "A022",
+        "A023",
+        "A024"
+      ],
+      "assetIds": [
+        "staged-concept-pseudoreplication-apply-v2",
+        "staged-concept-pseudoreplication-remediation-v2",
+        "staged-concept-pseudoreplication-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-population-sample",
+      "titleCn": "总体、样本与目标总体",
+      "assessmentIds": [
+        "A025",
+        "A026",
+        "A027"
+      ],
+      "assetIds": [
+        "staged-concept-population-sample-apply-v3",
+        "staged-concept-population-sample-remediation-v3",
+        "staged-concept-population-sample-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-confounding",
+      "titleCn": "混杂",
+      "assessmentIds": [
+        "A028",
+        "A029",
+        "A030"
+      ],
+      "assetIds": [
+        "staged-concept-confounding-apply-v2",
+        "staged-concept-confounding-remediation-v2",
+        "staged-concept-confounding-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-selection-bias",
+      "titleCn": "选择偏倚",
+      "assessmentIds": [
+        "A031",
+        "A032",
+        "A033"
+      ],
+      "assetIds": [
+        "staged-concept-selection-bias-apply-v3",
+        "staged-concept-selection-bias-remediation-v3",
+        "staged-concept-selection-bias-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-internal-external-validity",
+      "titleCn": "内部效度与外部效度",
+      "assessmentIds": [
+        "A034",
+        "A035",
+        "A036"
+      ],
+      "assetIds": [
+        "staged-concept-internal-external-validity-apply-v2",
+        "staged-concept-internal-external-validity-remediation-v2",
+        "staged-concept-internal-external-validity-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-effect-size",
+      "titleCn": "效应大小",
+      "assessmentIds": [
+        "A037",
+        "A038",
+        "A039"
+      ],
+      "assetIds": [
+        "staged-concept-effect-size-apply-v2",
+        "staged-concept-effect-size-remediation-v3",
+        "staged-concept-effect-size-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-standard-error",
+      "titleCn": "标准误",
+      "assessmentIds": [
+        "A040",
+        "A041",
+        "A042"
+      ],
+      "assetIds": [
+        "staged-concept-standard-error-apply-v2",
+        "staged-concept-standard-error-remediation-v2",
+        "staged-concept-standard-error-review-v2"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A041 (staged-concept-standard-error-remediation-v2)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-confidence-interval",
+      "titleCn": "置信区间",
+      "assessmentIds": [
+        "A043",
+        "A044",
+        "A045"
+      ],
+      "assetIds": [
+        "staged-concept-confidence-interval-apply-v2",
+        "staged-concept-confidence-interval-remediation-v3",
+        "staged-concept-confidence-interval-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-p-value",
+      "titleCn": "P 值",
+      "assessmentIds": [
+        "A046",
+        "A047",
+        "A048"
+      ],
+      "assetIds": [
+        "staged-concept-p-value-apply-v2",
+        "staged-concept-p-value-remediation-v3",
+        "staged-concept-p-value-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A048 (staged-concept-p-value-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-multiple-testing-fdr",
+      "titleCn": "多重检验与 FDR",
+      "assessmentIds": [
+        "A049",
+        "A050",
+        "A051"
+      ],
+      "assetIds": [
+        "staged-concept-multiple-testing-fdr-apply-v2",
+        "staged-concept-multiple-testing-fdr-remediation-v2",
+        "staged-concept-multiple-testing-fdr-review-v2"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A050 (staged-concept-multiple-testing-fdr-remediation-v2)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-power",
+      "titleCn": "统计功效",
+      "assessmentIds": [
+        "A052",
+        "A053",
+        "A054"
+      ],
+      "assetIds": [
+        "staged-concept-power-apply-v3",
+        "staged-concept-power-remediation-v2",
+        "staged-concept-power-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-interaction",
+      "titleCn": "交互作用",
+      "assessmentIds": [
+        "A055",
+        "A056",
+        "A057"
+      ],
+      "assetIds": [
+        "staged-concept-interaction-apply-v3",
+        "staged-concept-interaction-remediation-v3",
+        "staged-concept-interaction-review-v2"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A057 (staged-concept-interaction-review-v2)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-overfitting",
+      "titleCn": "过拟合",
+      "assessmentIds": [
+        "A058",
+        "A059",
+        "A060"
+      ],
+      "assetIds": [
+        "staged-concept-overfitting-apply-v2",
+        "staged-concept-overfitting-remediation-v3",
+        "staged-concept-overfitting-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-data-leakage",
+      "titleCn": "数据泄漏",
+      "assessmentIds": [
+        "A061",
+        "A062",
+        "A063"
+      ],
+      "assetIds": [
+        "staged-concept-data-leakage-apply-v2",
+        "staged-concept-data-leakage-remediation-v2",
+        "staged-concept-data-leakage-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-validation",
+      "titleCn": "验证的类型与独立性",
+      "assessmentIds": [
+        "A064",
+        "A065",
+        "A066"
+      ],
+      "assetIds": [
+        "staged-concept-validation-apply-v2",
+        "staged-concept-validation-remediation-v2",
+        "staged-concept-validation-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-censoring",
+      "titleCn": "删失",
+      "assessmentIds": [
+        "A067",
+        "A068",
+        "A069"
+      ],
+      "assetIds": [
+        "staged-concept-censoring-apply-v3",
+        "staged-concept-censoring-remediation-v3",
+        "staged-concept-censoring-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-hazard-ratio",
+      "titleCn": "风险率比",
+      "assessmentIds": [
+        "A070",
+        "A071",
+        "A072"
+      ],
+      "assetIds": [
+        "staged-concept-hazard-ratio-apply-v2",
+        "staged-concept-hazard-ratio-remediation-v3",
+        "staged-concept-hazard-ratio-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-time-origin",
+      "titleCn": "时间起点",
+      "assessmentIds": [
+        "A073",
+        "A074",
+        "A075"
+      ],
+      "assetIds": [
+        "staged-concept-time-origin-apply-v3",
+        "staged-concept-time-origin-remediation-v2",
+        "staged-concept-time-origin-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-composition-state",
+      "titleCn": "组成变化与状态变化",
+      "assessmentIds": [
+        "A076",
+        "A077",
+        "A078"
+      ],
+      "assetIds": [
+        "staged-concept-composition-state-apply-v2",
+        "staged-concept-composition-state-remediation-v3",
+        "staged-concept-composition-state-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A077, A078 (staged-concept-composition-state-remediation-v3, staged-concept-composition-state-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-batch-effect",
+      "titleCn": "批次效应",
+      "assessmentIds": [
+        "A079",
+        "A080",
+        "A081"
+      ],
+      "assetIds": [
+        "staged-concept-batch-effect-apply-v2",
+        "staged-concept-batch-effect-remediation-v2",
+        "staged-concept-batch-effect-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A079, A080 (staged-concept-batch-effect-apply-v2, staged-concept-batch-effect-remediation-v2)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-bulk-mixture",
+      "titleCn": "Bulk 组织是混合物",
+      "assessmentIds": [
+        "A082",
+        "A083",
+        "A084"
+      ],
+      "assetIds": [
+        "staged-concept-bulk-mixture-apply-v2",
+        "staged-concept-bulk-mixture-remediation-v3",
+        "staged-concept-bulk-mixture-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A084 (staged-concept-bulk-mixture-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-rna-protein",
+      "titleCn": "RNA 不等于蛋白",
+      "assessmentIds": [
+        "A085",
+        "A086",
+        "A087"
+      ],
+      "assetIds": [
+        "staged-concept-rna-protein-apply-v2",
+        "staged-concept-rna-protein-remediation-v2",
+        "staged-concept-rna-protein-review-v2"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A085, A086, A087 (staged-concept-rna-protein-apply-v2, staged-concept-rna-protein-remediation-v2, staged-concept-rna-protein-review-v2)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-cluster-stability",
+      "titleCn": "聚类稳定性",
+      "assessmentIds": [
+        "A088",
+        "A089",
+        "A090"
+      ],
+      "assetIds": [
+        "staged-concept-cluster-stability-apply-v2",
+        "staged-concept-cluster-stability-remediation-v2",
+        "staged-concept-cluster-stability-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-pseudobulk",
+      "titleCn": "Pseudobulk 的独立单位",
+      "assessmentIds": [
+        "A091",
+        "A092",
+        "A093"
+      ],
+      "assetIds": [
+        "staged-concept-pseudobulk-apply-v3",
+        "staged-concept-pseudobulk-remediation-v3",
+        "staged-concept-pseudobulk-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-cross-modal-validation",
+      "titleCn": "跨模态支持",
+      "assessmentIds": [
+        "A094",
+        "A095",
+        "A096"
+      ],
+      "assetIds": [
+        "staged-concept-cross-modal-validation-apply-v2",
+        "staged-concept-cross-modal-validation-remediation-v2",
+        "staged-concept-cross-modal-validation-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-alternative-explanation",
+      "titleCn": "替代解释",
+      "assessmentIds": [
+        "A097",
+        "A098",
+        "A099"
+      ],
+      "assetIds": [
+        "staged-concept-alternative-explanation-apply-v2",
+        "staged-concept-alternative-explanation-remediation-v2",
+        "staged-concept-alternative-explanation-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-claim-boundary",
+      "titleCn": "主张边界",
+      "assessmentIds": [
+        "A100",
+        "A101",
+        "A102"
+      ],
+      "assetIds": [
+        "staged-concept-claim-boundary-apply-v2",
+        "staged-concept-claim-boundary-remediation-v3",
+        "staged-concept-claim-boundary-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A102 (staged-concept-claim-boundary-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-robustness",
+      "titleCn": "稳健性",
+      "assessmentIds": [
+        "A103",
+        "A104",
+        "A105"
+      ],
+      "assetIds": [
+        "staged-concept-robustness-apply-v2",
+        "staged-concept-robustness-remediation-v3",
+        "staged-concept-robustness-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A105 (staged-concept-robustness-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-triangulation",
+      "titleCn": "三角验证",
+      "assessmentIds": [
+        "A106",
+        "A107",
+        "A108"
+      ],
+      "assetIds": [
+        "staged-concept-triangulation-apply-v2",
+        "staged-concept-triangulation-remediation-v3",
+        "staged-concept-triangulation-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-minimal-sufficient-analysis",
+      "titleCn": "最小充分分析",
+      "assessmentIds": [
+        "A109",
+        "A110",
+        "A111"
+      ],
+      "assetIds": [
+        "staged-concept-minimal-sufficient-analysis-apply-v2",
+        "staged-concept-minimal-sufficient-analysis-remediation-v3",
+        "staged-concept-minimal-sufficient-analysis-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-evidence-redundancy",
+      "titleCn": "证据佐证与冗余",
+      "assessmentIds": [
+        "A112",
+        "A113",
+        "A114"
+      ],
+      "assetIds": [
+        "staged-concept-evidence-redundancy-apply-v3",
+        "staged-concept-evidence-redundancy-remediation-v3",
+        "staged-concept-evidence-redundancy-review-v2"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A113 (staged-concept-evidence-redundancy-remediation-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-concept-negative-result",
+      "titleCn": "阴性结果解释",
+      "assessmentIds": [
+        "A115",
+        "A116",
+        "A117"
+      ],
+      "assetIds": [
+        "staged-concept-negative-result-apply-v3",
+        "staged-concept-negative-result-remediation-v3",
+        "staged-concept-negative-result-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-concept-ai-cognitive-outsourcing",
+      "titleCn": "AI 认知外包风险",
+      "assessmentIds": [
+        "A118",
+        "A119",
+        "A120"
+      ],
+      "assetIds": [
+        "staged-concept-ai-cognitive-outsourcing-apply-v2",
+        "staged-concept-ai-cognitive-outsourcing-remediation-v3",
+        "staged-concept-ai-cognitive-outsourcing-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-differential-analysis",
+      "titleCn": "组间比较与差异分析",
+      "assessmentIds": [
+        "A121",
+        "A122",
+        "A123"
+      ],
+      "assetIds": [
+        "staged-method-differential-analysis-apply-v2",
+        "staged-method-differential-analysis-remediation-v3",
+        "staged-method-differential-analysis-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-correlation",
+      "titleCn": "相关分析",
+      "assessmentIds": [
+        "A124",
+        "A125",
+        "A126"
+      ],
+      "assetIds": [
+        "staged-method-correlation-apply-v2",
+        "staged-method-correlation-remediation-v2",
+        "staged-method-correlation-review-v2"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A125 (staged-method-correlation-remediation-v2)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-method-linear-regression",
+      "titleCn": "线性回归",
+      "assessmentIds": [
+        "A127",
+        "A128",
+        "A129"
+      ],
+      "assetIds": [
+        "staged-method-linear-regression-apply-v2",
+        "staged-method-linear-regression-remediation-v3",
+        "staged-method-linear-regression-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-logistic-regression",
+      "titleCn": "Logistic 回归",
+      "assessmentIds": [
+        "A130",
+        "A131",
+        "A132"
+      ],
+      "assetIds": [
+        "staged-method-logistic-regression-apply-v2",
+        "staged-method-logistic-regression-remediation-v3",
+        "staged-method-logistic-regression-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-cox-regression",
+      "titleCn": "Cox 比例风险回归",
+      "assessmentIds": [
+        "A133",
+        "A134",
+        "A135"
+      ],
+      "assetIds": [
+        "staged-method-cox-regression-apply-v2",
+        "staged-method-cox-regression-remediation-v3",
+        "staged-method-cox-regression-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-kaplan-logrank",
+      "titleCn": "Kaplan–Meier 与 log-rank",
+      "assessmentIds": [
+        "A136",
+        "A137",
+        "A138"
+      ],
+      "assetIds": [
+        "staged-method-kaplan-logrank-apply-v2",
+        "staged-method-kaplan-logrank-remediation-v3",
+        "staged-method-kaplan-logrank-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A138 (staged-method-kaplan-logrank-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-method-restricted-cubic-spline",
+      "titleCn": "限制性立方样条",
+      "assessmentIds": [
+        "A139",
+        "A140",
+        "A141"
+      ],
+      "assetIds": [
+        "staged-method-restricted-cubic-spline-apply-v2",
+        "staged-method-restricted-cubic-spline-remediation-v3",
+        "staged-method-restricted-cubic-spline-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-bootstrap",
+      "titleCn": "Bootstrap",
+      "assessmentIds": [
+        "A142",
+        "A143",
+        "A144"
+      ],
+      "assetIds": [
+        "staged-method-bootstrap-apply-v2",
+        "staged-method-bootstrap-remediation-v3",
+        "staged-method-bootstrap-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A144 (staged-method-bootstrap-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-method-cross-validation",
+      "titleCn": "交叉验证",
+      "assessmentIds": [
+        "A145",
+        "A146",
+        "A147"
+      ],
+      "assetIds": [
+        "staged-method-cross-validation-apply-v2",
+        "staged-method-cross-validation-remediation-v2",
+        "staged-method-cross-validation-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-roc-auc",
+      "titleCn": "ROC / AUC",
+      "assessmentIds": [
+        "A148",
+        "A149",
+        "A150"
+      ],
+      "assetIds": [
+        "staged-method-roc-auc-apply-v2",
+        "staged-method-roc-auc-remediation-v3",
+        "staged-method-roc-auc-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-time-dependent-auc",
+      "titleCn": "时间依赖 AUC",
+      "assessmentIds": [
+        "A151",
+        "A152",
+        "A153"
+      ],
+      "assetIds": [
+        "staged-method-time-dependent-auc-apply-v2",
+        "staged-method-time-dependent-auc-remediation-v3",
+        "staged-method-time-dependent-auc-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-pca",
+      "titleCn": "主成分分析",
+      "assessmentIds": [
+        "A154",
+        "A155",
+        "A156"
+      ],
+      "assetIds": [
+        "staged-method-pca-apply-v2",
+        "staged-method-pca-remediation-v3",
+        "staged-method-pca-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-nmf",
+      "titleCn": "非负矩阵分解",
+      "assessmentIds": [
+        "A157",
+        "A158",
+        "A159"
+      ],
+      "assetIds": [
+        "staged-method-nmf-apply-v2",
+        "staged-method-nmf-remediation-v3",
+        "staged-method-nmf-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A159 (staged-method-nmf-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-method-clustering",
+      "titleCn": "聚类",
+      "assessmentIds": [
+        "A160",
+        "A161",
+        "A162"
+      ],
+      "assetIds": [
+        "staged-method-clustering-apply-v2",
+        "staged-method-clustering-remediation-v3",
+        "staged-method-clustering-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-gsea",
+      "titleCn": "GSEA",
+      "assessmentIds": [
+        "A163",
+        "A164",
+        "A165"
+      ],
+      "assetIds": [
+        "staged-method-gsea-apply-v2",
+        "staged-method-gsea-remediation-v2",
+        "staged-method-gsea-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-gsva-ssgsea",
+      "titleCn": "GSVA 与 ssGSEA",
+      "assessmentIds": [
+        "A166",
+        "A167",
+        "A168"
+      ],
+      "assetIds": [
+        "staged-method-gsva-ssgsea-apply-v2",
+        "staged-method-gsva-ssgsea-remediation-v2",
+        "staged-method-gsva-ssgsea-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-wgcna",
+      "titleCn": "WGCNA",
+      "assessmentIds": [
+        "A169",
+        "A170",
+        "A171"
+      ],
+      "assetIds": [
+        "staged-method-wgcna-apply-v2",
+        "staged-method-wgcna-remediation-v3",
+        "staged-method-wgcna-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A171 (staged-method-wgcna-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-method-pseudobulk",
+      "titleCn": "Pseudobulk",
+      "assessmentIds": [
+        "A172",
+        "A173",
+        "A174"
+      ],
+      "assetIds": [
+        "staged-method-pseudobulk-apply-v2",
+        "staged-method-pseudobulk-remediation-v3",
+        "staged-method-pseudobulk-review-v2"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    },
+    {
+      "lessonId": "staged-method-differential-abundance",
+      "titleCn": "差异丰度",
+      "assessmentIds": [
+        "A175",
+        "A176",
+        "A177"
+      ],
+      "assetIds": [
+        "staged-method-differential-abundance-apply-v2",
+        "staged-method-differential-abundance-remediation-v3",
+        "staged-method-differential-abundance-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A177 (staged-method-differential-abundance-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-method-trajectory-pseudotime",
+      "titleCn": "轨迹与伪时间",
+      "assessmentIds": [
+        "A178",
+        "A179",
+        "A180"
+      ],
+      "assetIds": [
+        "staged-method-trajectory-pseudotime-apply-v2",
+        "staged-method-trajectory-pseudotime-remediation-v3",
+        "staged-method-trajectory-pseudotime-review-v3"
+      ],
+      "eligible": false,
+      "reason": "Excluded: contains disputed assessments: A180 (staged-method-trajectory-pseudotime-review-v3)",
+      "competenceScoringAllowed": false
+    },
+    {
+      "lessonId": "staged-method-cellchat-communication",
+      "titleCn": "CellChat 与细胞通信推断",
+      "assessmentIds": [
+        "A181",
+        "A182",
+        "A183"
+      ],
+      "assetIds": [
+        "staged-method-cellchat-communication-apply-v2",
+        "staged-method-cellchat-communication-remediation-v2",
+        "staged-method-cellchat-communication-review-v3"
+      ],
+      "eligible": true,
+      "reason": "Passes all pilot safety checks (0 blind disagreements, 0 ambiguous, bindings resolved, valid materialization)",
+      "competenceScoringAllowed": true
+    }
+  ]
+}

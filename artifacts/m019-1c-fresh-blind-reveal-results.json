@@ -1,0 +1,2909 @@
+{
+  "agreeCount": 116,
+  "disagreeCount": 5,
+  "ambiguousCount": 62,
+  "results": [
+    {
+      "aid": "A001",
+      "assetId": "staged-concept-research-question-apply-v3",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A002",
+      "assetId": "staged-concept-research-question-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A003",
+      "assetId": "staged-concept-research-question-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "场景为冻结诊断问题与作答要求不一致，O1与O3均合理。"
+    },
+    {
+      "aid": "A004",
+      "assetId": "staged-concept-hypothesis-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A005",
+      "assetId": "staged-concept-hypothesis-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A006",
+      "assetId": "staged-concept-hypothesis-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "检验机制预测与感染第2天结论改写同样合理，难定唯一。"
+    },
+    {
+      "aid": "A007",
+      "assetId": "staged-concept-evidence-claim-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A008",
+      "assetId": "staged-concept-evidence-claim-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A009",
+      "assetId": "staged-concept-evidence-claim-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "分别陈述与不能宣称指导治疗均属未越过证据改写。"
+    },
+    {
+      "aid": "A010",
+      "assetId": "staged-concept-association-causation-apply-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "要求概括证据，后门路径与未充分调整关联均合理。"
+    },
+    {
+      "aid": "A011",
+      "assetId": "staged-concept-association-causation-remediation-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "寻找替代路径与概括证据状态不一致，O1与O3均合理。"
+    },
+    {
+      "aid": "A012",
+      "assetId": "staged-concept-association-causation-review-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "ITT主问题与区间仅支持邀请策略重叠，难定唯一。"
+    },
+    {
+      "aid": "A013",
+      "assetId": "staged-concept-exploratory-confirmatory-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A014",
+      "assetId": "staged-concept-exploratory-confirmatory-remediation-v2",
+      "authorOpts": [
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": false,
+      "status": "DISAGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A015",
+      "assetId": "staged-concept-exploratory-confirmatory-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "保留总体检验与事后亚组不能挽救试验两改写均合理。"
+    },
+    {
+      "aid": "A016",
+      "assetId": "staged-concept-statistical-unit-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A017",
+      "assetId": "staged-concept-statistical-unit-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A018",
+      "assetId": "staged-concept-statistical-unit-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "确定患者诊断单位与患者性能不代新医院均属必要。"
+    },
+    {
+      "aid": "A019",
+      "assetId": "staged-concept-biological-technical-replicate-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A020",
+      "assetId": "staged-concept-biological-technical-replicate-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A021",
+      "assetId": "staged-concept-biological-technical-replicate-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "明确生物重复单位与480视野非独立标签同样合理。"
+    },
+    {
+      "aid": "A022",
+      "assetId": "staged-concept-pseudoreplication-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A023",
+      "assetId": "staged-concept-pseudoreplication-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A024",
+      "assetId": "staged-concept-pseudoreplication-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A025",
+      "assetId": "staged-concept-population-sample-apply-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "画选择漏斗与概括证据不一致，区分漏斗与未调整均合理。"
+    },
+    {
+      "aid": "A026",
+      "assetId": "staged-concept-population-sample-remediation-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A027",
+      "assetId": "staged-concept-population-sample-review-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "设计权重估计与加权仍低估患病率均合理，难定唯一。"
+    },
+    {
+      "aid": "A028",
+      "assetId": "staged-concept-confounding-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A029",
+      "assetId": "staged-concept-confounding-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A030",
+      "assetId": "staged-concept-confounding-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A031",
+      "assetId": "staged-concept-selection-bias-apply-v3",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A032",
+      "assetId": "staged-concept-selection-bias-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A033",
+      "assetId": "staged-concept-selection-bias-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "识别验证偏倚与仅培养者敏感度被扭曲表达重叠。"
+    },
+    {
+      "aid": "A034",
+      "assetId": "staged-concept-internal-external-validity-apply-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "求下一证据，多项为后续研究且无充分信息判唯一。"
+    },
+    {
+      "aid": "A035",
+      "assetId": "staged-concept-internal-external-validity-remediation-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "多项验证动作均能区分偏倚，题面无法定唯一项。"
+    },
+    {
+      "aid": "A036",
+      "assetId": "staged-concept-internal-external-validity-review-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "重校准与协议比较均为后续验证，无唯一区分证据。"
+    },
+    {
+      "aid": "A037",
+      "assetId": "staged-concept-effect-size-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A038",
+      "assetId": "staged-concept-effect-size-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A039",
+      "assetId": "staged-concept-effect-size-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "并列绝对下降与净负担未达标两项改写均合理。"
+    },
+    {
+      "aid": "A040",
+      "assetId": "staged-concept-standard-error-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A041",
+      "assetId": "staged-concept-standard-error-remediation-v2",
+      "authorOpts": [
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": false,
+      "status": "DISAGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A042",
+      "assetId": "staged-concept-standard-error-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "以序列模型估计与840天非独立分配两改写均合理。"
+    },
+    {
+      "aid": "A043",
+      "assetId": "staged-concept-confidence-interval-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A044",
+      "assetId": "staged-concept-confidence-interval-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A045",
+      "assetId": "staged-concept-confidence-interval-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A046",
+      "assetId": "staged-concept-p-value-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A047",
+      "assetId": "staged-concept-p-value-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A048",
+      "assetId": "staged-concept-p-value-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "把P=0.03视探索信号与不能宣称确认差异高度重叠。"
+    },
+    {
+      "aid": "A049",
+      "assetId": "staged-concept-multiple-testing-fdr-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A050",
+      "assetId": "staged-concept-multiple-testing-fdr-remediation-v2",
+      "authorOpts": [
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": false,
+      "status": "DISAGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A051",
+      "assetId": "staged-concept-multiple-testing-fdr-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "预先定义检验族与四条仅为候选两结论改写均合理。"
+    },
+    {
+      "aid": "A052",
+      "assetId": "staged-concept-power-apply-v3",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A053",
+      "assetId": "staged-concept-power-remediation-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "功效计算题面无竞争解释，任务与作答要求不一致。"
+    },
+    {
+      "aid": "A054",
+      "assetId": "staged-concept-power-review-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "事件规划题面无竞争解释，任务与作答要求不一致。"
+    },
+    {
+      "aid": "A055",
+      "assetId": "staged-concept-interaction-apply-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A056",
+      "assetId": "staged-concept-interaction-remediation-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "计算交互差与支持加性异质性两项均合理，难定唯一。"
+    },
+    {
+      "aid": "A057",
+      "assetId": "staged-concept-interaction-review-v2",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "将交互作探索信号与不能指导治疗均合理，难定唯一。"
+    },
+    {
+      "aid": "A058",
+      "assetId": "staged-concept-overfitting-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A059",
+      "assetId": "staged-concept-overfitting-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A060",
+      "assetId": "staged-concept-overfitting-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "供体整体分折与不能称已泛化新患者两判断同样合理。"
+    },
+    {
+      "aid": "A061",
+      "assetId": "staged-concept-data-leakage-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A062",
+      "assetId": "staged-concept-data-leakage-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A063",
+      "assetId": "staged-concept-data-leakage-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A064",
+      "assetId": "staged-concept-validation-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A065",
+      "assetId": "staged-concept-validation-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A066",
+      "assetId": "staged-concept-validation-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A067",
+      "assetId": "staged-concept-censoring-apply-v3",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A068",
+      "assetId": "staged-concept-censoring-remediation-v3",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A069",
+      "assetId": "staged-concept-censoring-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "按顺序选动作，但选项含限制主张而非执行动作。"
+    },
+    {
+      "aid": "A070",
+      "assetId": "staged-concept-hazard-ratio-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A071",
+      "assetId": "staged-concept-hazard-ratio-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A072",
+      "assetId": "staged-concept-hazard-ratio-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "修复时变暴露与原HR不能解释全程两项改写均合理。"
+    },
+    {
+      "aid": "A073",
+      "assetId": "staged-concept-time-origin-apply-v3",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A074",
+      "assetId": "staged-concept-time-origin-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "按顺序选动作，诊断判断非动作且与策略无先后。"
+    },
+    {
+      "aid": "A075",
+      "assetId": "staged-concept-time-origin-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "按顺序选动作，含幸存者限制主张而非执行动作。"
+    },
+    {
+      "aid": "A076",
+      "assetId": "staged-concept-composition-state-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A077",
+      "assetId": "staged-concept-composition-state-remediation-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": false,
+      "status": "DISAGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A078",
+      "assetId": "staged-concept-composition-state-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "优先支持组成变化与不能称小胶质激活改写均合理。"
+    },
+    {
+      "aid": "A079",
+      "assetId": "staged-concept-batch-effect-apply-v2",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "判定组与批次不可识别与事后算法不能恢复组效应重叠。"
+    },
+    {
+      "aid": "A080",
+      "assetId": "staged-concept-batch-effect-remediation-v2",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "平衡建库动作与桥接局限属于不同任务，选项重叠。"
+    },
+    {
+      "aid": "A081",
+      "assetId": "staged-concept-batch-effect-review-v3",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A082",
+      "assetId": "staged-concept-bulk-mixture-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A083",
+      "assetId": "staged-concept-bulk-mixture-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A084",
+      "assetId": "staged-concept-bulk-mixture-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "优先解释高胶原扩张与不能称合成增强改写均合理。"
+    },
+    {
+      "aid": "A085",
+      "assetId": "staged-concept-rna-protein-apply-v2",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "解释轨迹与概括证据不一致，时滞与排除误差均合理。"
+    },
+    {
+      "aid": "A086",
+      "assetId": "staged-concept-rna-protein-remediation-v2",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "列出机制与概括状态不一致，机制与不删结果均合理。"
+    },
+    {
+      "aid": "A087",
+      "assetId": "staged-concept-rna-protein-review-v2",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "解释相反趋势与不能断言转录上调两项均合理。"
+    },
+    {
+      "aid": "A088",
+      "assetId": "staged-concept-cluster-stability-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A089",
+      "assetId": "staged-concept-cluster-stability-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A090",
+      "assetId": "staged-concept-cluster-stability-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A091",
+      "assetId": "staged-concept-pseudobulk-apply-v3",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A092",
+      "assetId": "staged-concept-pseudobulk-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A093",
+      "assetId": "staged-concept-pseudobulk-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "加入受者配对与20样本非20供体两改写均合理。"
+    },
+    {
+      "aid": "A094",
+      "assetId": "staged-concept-cross-modal-validation-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A095",
+      "assetId": "staged-concept-cross-modal-validation-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A096",
+      "assetId": "staged-concept-cross-modal-validation-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A097",
+      "assetId": "staged-concept-alternative-explanation-apply-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "分选复现与区分预测均属后续判断，无法定唯一项。"
+    },
+    {
+      "aid": "A098",
+      "assetId": "staged-concept-alternative-explanation-remediation-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "离体区分与试验更新均为后续验证，无法定唯一项。"
+    },
+    {
+      "aid": "A099",
+      "assetId": "staged-concept-alternative-explanation-review-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "协议分层与重建更新均可解释差异，无唯一证据项。"
+    },
+    {
+      "aid": "A100",
+      "assetId": "staged-concept-claim-boundary-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A101",
+      "assetId": "staged-concept-claim-boundary-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A102",
+      "assetId": "staged-concept-claim-boundary-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "改为内部有限判别与不能称外部可用两改写均合理。"
+    },
+    {
+      "aid": "A103",
+      "assetId": "staged-concept-robustness-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A104",
+      "assetId": "staged-concept-robustness-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A105",
+      "assetId": "staged-concept-robustness-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "降为探索结果与不能只留显著方案两改写均合理。"
+    },
+    {
+      "aid": "A106",
+      "assetId": "staged-concept-triangulation-apply-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "伪断点失败与限制环节均改变权重，无法定唯一项。"
+    },
+    {
+      "aid": "A107",
+      "assetId": "staged-concept-triangulation-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A108",
+      "assetId": "staged-concept-triangulation-review-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "独立扰动与请求证据表达重叠，无法确定最优项。"
+    },
+    {
+      "aid": "A109",
+      "assetId": "staged-concept-minimal-sufficient-analysis-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A110",
+      "assetId": "staged-concept-minimal-sufficient-analysis-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A111",
+      "assetId": "staged-concept-minimal-sufficient-analysis-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "优先功能实验与同源预测不增信息两判断均合理。"
+    },
+    {
+      "aid": "A112",
+      "assetId": "staged-concept-evidence-redundancy-apply-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A113",
+      "assetId": "staged-concept-evidence-redundancy-remediation-v3",
+      "authorOpts": [
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "分析独立ELISA与不复现更新均属后续证据，合理性相当。"
+    },
+    {
+      "aid": "A114",
+      "assetId": "staged-concept-evidence-redundancy-review-v2",
+      "authorOpts": [
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O4"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "图表优先级题面无竞争解释，任务要求不一致。"
+    },
+    {
+      "aid": "A115",
+      "assetId": "staged-concept-negative-result-apply-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A116",
+      "assetId": "staged-concept-negative-result-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A117",
+      "assetId": "staged-concept-negative-result-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A118",
+      "assetId": "staged-concept-ai-cognitive-outsourcing-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A119",
+      "assetId": "staged-concept-ai-cognitive-outsourcing-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A120",
+      "assetId": "staged-concept-ai-cognitive-outsourcing-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "保留连续谱设计与不能让AI把开发当验证均合理。"
+    },
+    {
+      "aid": "A121",
+      "assetId": "staged-method-differential-analysis-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A122",
+      "assetId": "staged-method-differential-analysis-remediation-v3",
+      "authorOpts": [
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A123",
+      "assetId": "staged-method-differential-analysis-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "不列为已验证蛋白与最多称探索信号高度重叠。"
+    },
+    {
+      "aid": "A124",
+      "assetId": "staged-method-correlation-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A125",
+      "assetId": "staged-method-correlation-remediation-v2",
+      "authorOpts": [
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": false,
+      "status": "DISAGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A126",
+      "assetId": "staged-method-correlation-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "拒绝细胞显著性当证据与最多描述共现改写均合理。"
+    },
+    {
+      "aid": "A127",
+      "assetId": "staged-method-linear-regression-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A128",
+      "assetId": "staged-method-linear-regression-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A129",
+      "assetId": "staged-method-linear-regression-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "采用混合模型与最多支持平均轨迹差异改写均合理。"
+    },
+    {
+      "aid": "A130",
+      "assetId": "staged-method-logistic-regression-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A131",
+      "assetId": "staged-method-logistic-regression-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A132",
+      "assetId": "staged-method-logistic-regression-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "暂停原阈值部署与只能称排序可用两改写均合理。"
+    },
+    {
+      "aid": "A133",
+      "assetId": "staged-method-cox-regression-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A134",
+      "assetId": "staged-method-cox-regression-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A135",
+      "assetId": "staged-method-cox-regression-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "要求补明绝对风险与最多支持相对关联改写均合理。"
+    },
+    {
+      "aid": "A136",
+      "assetId": "staged-method-kaplan-logrank-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A137",
+      "assetId": "staged-method-kaplan-logrank-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A138",
+      "assetId": "staged-method-kaplan-logrank-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "降级为不稳定候选与不能报告已验证阈值均合理。"
+    },
+    {
+      "aid": "A139",
+      "assetId": "staged-method-restricted-cubic-spline-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A140",
+      "assetId": "staged-method-restricted-cubic-spline-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A141",
+      "assetId": "staged-method-restricted-cubic-spline-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A142",
+      "assetId": "staged-method-bootstrap-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A143",
+      "assetId": "staged-method-bootstrap-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A144",
+      "assetId": "staged-method-bootstrap-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "保留为内部验证与不能覆盖站点漂移改写同样合理。"
+    },
+    {
+      "aid": "A145",
+      "assetId": "staged-method-cross-validation-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A146",
+      "assetId": "staged-method-cross-validation-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A147",
+      "assetId": "staged-method-cross-validation-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A148",
+      "assetId": "staged-method-roc-auc-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A149",
+      "assetId": "staged-method-roc-auc-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A150",
+      "assetId": "staged-method-roc-auc-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A151",
+      "assetId": "staged-method-time-dependent-auc-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A152",
+      "assetId": "staged-method-time-dependent-auc-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A153",
+      "assetId": "staged-method-time-dependent-auc-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "要求按相同时点重算与5年AUC不能验3年均合理。"
+    },
+    {
+      "aid": "A154",
+      "assetId": "staged-method-pca-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A155",
+      "assetId": "staged-method-pca-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A156",
+      "assetId": "staged-method-pca-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "停止称为冻结PC1与最多称新方差轴高度重叠。"
+    },
+    {
+      "aid": "A157",
+      "assetId": "staged-method-nmf-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A158",
+      "assetId": "staged-method-nmf-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A159",
+      "assetId": "staged-method-nmf-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "撤回四离散亚型与相关不证离散类别两改写均合理。"
+    },
+    {
+      "aid": "A160",
+      "assetId": "staged-method-clustering-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A161",
+      "assetId": "staged-method-clustering-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A162",
+      "assetId": "staged-method-clustering-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "拒绝重新聚类当外验与最多称分成三组改写均合理。"
+    },
+    {
+      "aid": "A163",
+      "assetId": "staged-method-gsea-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A164",
+      "assetId": "staged-method-gsea-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A165",
+      "assetId": "staged-method-gsea-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A166",
+      "assetId": "staged-method-gsva-ssgsea-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A167",
+      "assetId": "staged-method-gsva-ssgsea-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A168",
+      "assetId": "staged-method-gsva-ssgsea-review-v2",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A169",
+      "assetId": "staged-method-wgcna-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A170",
+      "assetId": "staged-method-wgcna-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A171",
+      "assetId": "staged-method-wgcna-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "判定未充分保存与同名非验证两项改写均合理。"
+    },
+    {
+      "aid": "A172",
+      "assetId": "staged-method-pseudobulk-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A173",
+      "assetId": "staged-method-pseudobulk-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A174",
+      "assetId": "staged-method-pseudobulk-review-v2",
+      "authorOpts": [
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": true,
+      "status": "AMBIGUOUS",
+      "noteCn": "降级为探索交互与最多称组织交互信号高度重叠。"
+    },
+    {
+      "aid": "A175",
+      "assetId": "staged-method-differential-abundance-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A176",
+      "assetId": "staged-method-differential-abundance-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A177",
+      "assetId": "staged-method-differential-abundance-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "降级为组成敏感候选与不能称转化机制改写均合理。"
+    },
+    {
+      "aid": "A178",
+      "assetId": "staged-method-trajectory-pseudotime-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A179",
+      "assetId": "staged-method-trajectory-pseudotime-remediation-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O1"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A180",
+      "assetId": "staged-method-trajectory-pseudotime-review-v3",
+      "authorOpts": [
+        "O1"
+      ],
+      "reviewerOpts": [
+        "O3"
+      ],
+      "reviewerVerdict": "AMBIGUOUS",
+      "keyMatches": false,
+      "status": "AMBIGUOUS",
+      "noteCn": "升级为部分支持与最多主张路径候选两改写均合理。"
+    },
+    {
+      "aid": "A181",
+      "assetId": "staged-method-cellchat-communication-apply-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A182",
+      "assetId": "staged-method-cellchat-communication-remediation-v2",
+      "authorOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    },
+    {
+      "aid": "A183",
+      "assetId": "staged-method-cellchat-communication-review-v3",
+      "authorOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerOpts": [
+        "O1",
+        "O2"
+      ],
+      "reviewerVerdict": "CLEAR",
+      "keyMatches": true,
+      "status": "AGREE",
+      "noteCn": ""
+    }
+  ]
+}

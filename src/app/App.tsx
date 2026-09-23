@@ -26,6 +26,7 @@ const views = {
   "content-studio": lazy(() => import("../features/content-studio/ContentStudioView").then((module) => ({ default: module.ContentStudioView }))),
   assessment: lazy(() => import("../features/assessment/AssessmentView").then((module) => ({ default: module.AssessmentView }))),
   settings: lazy(() => import("../features/settings/SettingsView").then((module) => ({ default: module.SettingsView }))),
+  "pilot-feedback": lazy(() => import("../features/pilot/PilotFeedbackView").then((module) => ({ default: module.PilotFeedbackView }))),
 };
 
 export function App() {

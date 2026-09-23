@@ -22,6 +22,7 @@ export interface LearningTransitionInput {
   highConfidenceConceptualError?: boolean;
   asset?: LearningEventAssetRef;
   response?: PracticeResponseV1;
+  competenceScoringAllowed?: boolean;
 }
 
 const competenceRank = { unassessed: 0, guided_only: 1, independent_once: 2, retained: 3, transferred: 4 } as const;
@@ -75,6 +76,7 @@ export function applyLearningTransition(
   const base = current ? structuredClone(current) : createLearnerUnitState(unit, input.occurredAt, input.mode);
   if (base.unitId !== unit.id || base.unitRevision !== unit.revision) throw new Error("学习状态与单元版本不匹配");
   const hintsUsed = [...new Set(input.hintsUsed ?? [])];
+  const competenceScoringAllowed = input.competenceScoringAllowed ?? true;
   let stage = base.stage;
   let competenceEligible = false;
   let level = base.competence.level;
@@ -105,47 +107,57 @@ export function applyLearningTransition(
   } else if (input.type === "guided_attempt") {
     if (!["guided", "learning"].includes(stage)) throw new Error("当前阶段不能提交引导练习");
     stage = input.outcome === "pass" ? "independent_ready" : "guided";
-    if (input.outcome === "pass") level = competenceRank[level] < competenceRank.guided_only ? "guided_only" : level;
+    if (input.outcome === "pass" && competenceScoringAllowed) level = competenceRank[level] < competenceRank.guided_only ? "guided_only" : level;
   } else if (input.type === "challenge_attempt") {
     if (hintsUsed.length > 0 || input.confidence == null) throw new Error("Challenge 必须无提示并记录信心");
-    competenceEligible = input.outcome === "pass";
+    competenceEligible = competenceScoringAllowed && input.outcome === "pass";
     if (input.outcome === "pass") {
       stage = "review_eligible";
-      level = competenceRank[level] < competenceRank.independent_once ? "independent_once" : level;
-      dueAt = addDays(input.occurredAt, unit.delayedReviewPlan.find((plan) => plan.role === "review")?.afterDays ?? 3);
+      if (competenceScoringAllowed) {
+        level = competenceRank[level] < competenceRank.independent_once ? "independent_once" : level;
+        dueAt = addDays(input.occurredAt, unit.delayedReviewPlan.find((plan) => plan.role === "review")?.afterDays ?? 3);
+      }
     } else {
       stage = "learning";
     }
   } else if (input.type === "independent_attempt") {
     if (stage !== "independent_ready") throw new Error("尚未进入独立练习阶段");
     if (hintsUsed.length > 0 || input.confidence == null) throw new Error("独立练习必须无提示并记录信心");
-    competenceEligible = input.outcome === "pass";
+    competenceEligible = competenceScoringAllowed && input.outcome === "pass";
     if (input.outcome === "pass") {
       stage = "review_eligible";
-      level = competenceRank[level] < competenceRank.independent_once ? "independent_once" : level;
-      dueAt = addDays(input.occurredAt, unit.delayedReviewPlan.find((plan) => plan.role === "review")?.afterDays ?? 3);
+      if (competenceScoringAllowed) {
+        level = competenceRank[level] < competenceRank.independent_once ? "independent_once" : level;
+        dueAt = addDays(input.occurredAt, unit.delayedReviewPlan.find((plan) => plan.role === "review")?.afterDays ?? 3);
+      }
     } else if (input.highConfidenceConceptualError) {
       stage = "guided";
     }
   } else if (input.type === "retrieval_attempt") {
     if (stage !== "review_eligible" || !base.dueAt || Date.parse(input.occurredAt) < Date.parse(base.dueAt)) throw new Error("延迟复习尚未到期");
-    competenceEligible = input.outcome === "pass";
+    competenceEligible = competenceScoringAllowed && input.outcome === "pass";
     if (input.outcome === "pass") {
       stage = "consolidating";
-      level = competenceRank[level] < competenceRank.retained ? "retained" : level;
-      dueAt = addDays(input.occurredAt, unit.delayedReviewPlan.find((plan) => plan.role === "far_transfer")?.afterDays ?? 14);
+      if (competenceScoringAllowed) {
+        level = competenceRank[level] < competenceRank.retained ? "retained" : level;
+        dueAt = addDays(input.occurredAt, unit.delayedReviewPlan.find((plan) => plan.role === "far_transfer")?.afterDays ?? 14);
+      }
     } else stage = "independent_ready";
   } else if (input.type === "variant_attempt" || input.type === "far_transfer_attempt") {
     if (!['consolidating', 'transferable'].includes(stage)) throw new Error("当前阶段不能记录迁移证据");
     if (stage === "consolidating" && (!base.dueAt || Date.parse(input.occurredAt) < Date.parse(base.dueAt))) throw new Error("远迁移练习尚未到期");
-    competenceEligible = input.outcome === "pass";
+    competenceEligible = competenceScoringAllowed && input.outcome === "pass";
     if (input.type === "far_transfer_attempt" && input.outcome === "pass") {
       stage = "transferable";
-      level = "transferred";
-      dueAt = addDays(input.occurredAt, 21);
+      if (competenceScoringAllowed) {
+        level = "transferred";
+        dueAt = addDays(input.occurredAt, 21);
+      }
     } else if (input.outcome !== "pass" && stage === "transferable") {
       stage = "consolidating";
-      level = "retained";
+      if (competenceScoringAllowed) {
+        level = "retained";
+      }
     }
   }
 

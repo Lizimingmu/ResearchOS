@@ -14,6 +14,7 @@ import {
   learningArchitectureUnitById,
 } from "../data/learningArchitecture";
 import { applyLearningTransition, createLearnerUnitState } from "./learningKernelEngine";
+import { isAssessmentCompetenceAllowed } from "../data/pilot/pilotManifest";
 
 export type ArchitectureAttemptKind = "apply" | "remediation" | "review";
 
@@ -43,7 +44,7 @@ export function submitArchitecturePractice(input: {
   confidence: 1 | 2 | 3 | 4;
   occurredAt: string;
   eventId: string;
-}): { state: LearnerUnitStateV1; event: LearningEventV1; progress: LearningContentProgressV1; passed: boolean; score: number } {
+}): { state: LearnerUnitStateV1; event: LearningEventV1; progress: LearningContentProgressV1; passed: boolean; score: number; competenceScoringAllowed?: boolean } {
   const assetId = input.attemptKind === "review" ? input.entry.reviewAssetId
     : input.attemptKind === "remediation" ? input.entry.remediationAssetId
       : input.entry.applyAssetId;
@@ -57,6 +58,7 @@ export function submitArchitecturePractice(input: {
   if (input.attemptKind !== "review" && asset.role !== "independent") throw new Error("Apply 必须使用 independent asset");
   if (asset.hints.length > 0 || !binding.lockRequired || !binding.confidenceRequired) throw new Error("独立 Apply/Review 必须锁定、无提示并记录信心");
   const scored = scorePracticeAsset(asset, input.response);
+  const competenceScoringAllowed = isAssessmentCompetenceAllowed(assetId);
   const current = input.currentState ?? createLearnerUnitState(unit, input.occurredAt, input.attemptKind === "review" ? "learning" : "challenge");
   const transition = applyLearningTransition(unit, current, {
     id: input.eventId,
@@ -70,6 +72,7 @@ export function submitArchitecturePractice(input: {
     highConfidenceConceptualError: !scored.passed && input.confidence >= 3,
     asset: { bindingId: binding.id, kind: binding.assetKind, id: asset.id, revision: asset.revision, hash: asset.contentHash },
     response: input.response,
+    competenceScoringAllowed,
   });
   const base = input.progress ?? createLearningContentProgress(input.entry, input.occurredAt);
   const progress: LearningContentProgressV1 = {
@@ -80,7 +83,7 @@ export function submitArchitecturePractice(input: {
     remediationAttempt: base.remediationAttempt + (input.attemptKind === "remediation" ? 1 : 0),
     updatedAt: input.occurredAt,
   };
-  return { ...transition, progress, passed: scored.passed, score: scored.score };
+  return { ...transition, progress, passed: scored.passed, score: scored.score, competenceScoringAllowed };
 }
 
 export function contentPrerequisitesMet(entry: LearningContentRegistryEntryV1, input: {
