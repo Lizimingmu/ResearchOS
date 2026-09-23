@@ -1,0 +1,30 @@
+{
+  "baseline": "4aca045cb5e4e211e1b1c31cf2d60910fa917ea0",
+  "target": "4b94a5b17561c2569d975c19a624cafc07adfa3d",
+  "before": {
+    "units": 79,
+    "claims": 375,
+    "sources": 85,
+    "bindings": 688,
+    "unresolved": 327
+  },
+  "after": {
+    "units": 406,
+    "claims": 460,
+    "sources": 85,
+    "bindings": 688,
+    "unresolved": 0
+  },
+  "addedSnapshots": {
+    "method_lesson": 85,
+    "guide": 229,
+    "studio_task": 13
+  },
+  "danglingBindings": 0,
+  "newScientificActivations": 0,
+  "legacyActivationChanges": 0,
+  "originalKnowledgePayloadChanges": 0,
+  "baselineReload": "PASS",
+  "baselineEvidenceUpdateReload": "PASS",
+  "formerlyUnresolvedGuideHold": "PASS"
+}

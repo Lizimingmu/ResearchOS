@@ -142,7 +142,7 @@ export function adaptMethodLesson(lesson: MethodLessonV1 | StagedMethodLessonV1,
 
 
 export function adaptLegacyMethodConcept(method: MethodConcept, claims: KnowledgeEvidenceClaim[], now: string): KnowledgeUnit {
-  const unit = createKnowledgeTemplate("method", { id: method.id, title: method.title, now, contentOrigin: method.contentOrigin });
+  const unit = createKnowledgeTemplate("method", { id: method.id, title: method.title, now, contentOrigin: origin(method.contentOrigin) });
   if (unit.knowledgeType !== "method") throw new Error("Legacy method template mismatch");
   unit.domain = [method.domain];
   unit.scientificQuestion = "";

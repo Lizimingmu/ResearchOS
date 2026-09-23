@@ -1,5 +1,6 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
-import { auditKnowledgeWorkspace } from "../services/knowledge";
+import { auditKnowledgeWorkspace, completeM020KnowledgeMappings } from "../services/knowledge";
+import { createM020KnowledgeBaseline } from "../data/knowledge";
 import { canonicalJson } from "../services/contentStudio";
 
 export const CURRENT_STATE_SCHEMA = 9;
@@ -28,11 +29,13 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
   }
 
   const settings = isRecord(raw.settings) ? raw.settings : {};
+  const knowledgeWorkspace = raw.knowledgeWorkspace === undefined ? undefined
+    : completeM020KnowledgeMappings(raw.knowledgeWorkspace, createM020KnowledgeBaseline(), defaults.knowledgeWorkspace);
   // A malformed canonical history is never silently replaced by today's seed.
   if (raw.knowledgeWorkspace !== undefined) {
-    const audit = auditKnowledgeWorkspace(raw.knowledgeWorkspace);
+    const audit = auditKnowledgeWorkspace(knowledgeWorkspace);
     if (!audit.ok) throw new Error(`知识版本历史无效，数据库未被修改：${audit.errors.join("；")}`);
-    const workspace = raw.knowledgeWorkspace as AppStateData["knowledgeWorkspace"];
+    const workspace = knowledgeWorkspace as AppStateData["knowledgeWorkspace"];
     const seed = defaults.knowledgeWorkspace;
     for (const collection of ["units", "sources", "claims", "learningBindings"] as const) {
       if (seed[collection].some((known, index) => canonicalJson(known) !== canonicalJson(workspace[collection][index]))) {
@@ -76,7 +79,7 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
     schemaVersion: CURRENT_STATE_SCHEMA,
     knowledgeWorkspace: raw.knowledgeWorkspace === undefined
       ? structuredClone(defaults.knowledgeWorkspace)
-      : structuredClone(raw.knowledgeWorkspace) as AppStateData["knowledgeWorkspace"],
+      : structuredClone(knowledgeWorkspace) as AppStateData["knowledgeWorkspace"],
     papers: arrayOr(raw.papers, defaults.papers),
     projects: arrayOr(raw.projects, defaults.projects),
     responses: arrayOr(raw.responses, defaults.responses),

@@ -186,7 +186,7 @@ function graphClosure(graph: KnowledgeImpact["graph"], roots: string[]): Set<str
   return reached;
 }
 
-function auditKnowledgeWorkspaceUnchecked(value: unknown): KnowledgeAudit {
+function auditKnowledgeWorkspaceUnchecked(value: unknown, legacyUnresolved = new Set<string>()): KnowledgeAudit {
   const groups: KnowledgeAudit["groups"] = { schema: [], dependency: [], supersession: [], freshness: [], learning_binding: [], update_impact: [], activation_safety: [] }, warnings: string[] = [];
   const result = (): KnowledgeAudit => { const errors = Object.entries(groups).flatMap(([k, es]) => es.map((e) => `${k}: ${e}`)); return { ok: !errors.length, errors, warnings, groups }; };
   if (!record(value) || value.schemaVersion !== 1) { groups.schema.push("知识工作区版本无效"); return result(); }
@@ -217,7 +217,7 @@ function auditKnowledgeWorkspaceUnchecked(value: unknown): KnowledgeAudit {
     else if (canonicalJson([...unique(b.knowledgeUnitIds)].sort()) !== canonicalJson(unique(b.knowledgeRevisionBindings.map((x) => x.knowledgeUnitId)).sort())) groups.learning_binding.push(`learning ${k} knowledgeUnitIds 与精确绑定不一致`);
     if (!["guide", "concept_lesson", "method_lesson", "protocol_lesson", "assessment", "case_lab", "studio_task"].includes(b.kind)) groups.learning_binding.push(`learning ${k} kind无效`);
     if (!Array.isArray(b.knowledgeRevisionBindings) || !b.knowledgeRevisionBindings.length) {
-      groups.learning_binding.push(`orphan learning ${k} 没有精确 KnowledgeUnit 绑定；M020.1 后不再允许用 warning 代替 canonical mapping。`);
+      if (!legacyUnresolved.has(canonicalJson(b))) groups.learning_binding.push(`orphan learning ${k} 没有精确 KnowledgeUnit 绑定；M020.1 后不再允许用 warning 代替 canonical mapping。`);
     }
   }
   for (const p of w.projections) {
@@ -307,6 +307,42 @@ export function auditKnowledgeWorkspace(value: unknown): KnowledgeAudit {
   }
 }
 export const validateKnowledgeWorkspace = (value: unknown): string[] => auditKnowledgeWorkspace(value).errors;
+
+/** Upgrade only the exact shipped M020 seed; validate its history before adding mappings. */
+export function completeM020KnowledgeMappings(value: unknown, baseline: KnowledgeWorkspace, seed: KnowledgeWorkspace): unknown {
+  if (!record(value)) return value;
+  const collections = ["units", "sources", "claims", "learningBindings"] as const;
+  if (!collections.every((key) => Array.isArray(value[key]) && baseline[key].every((known, index) => canonicalJson(known) === canonicalJson((value[key] as unknown[])[index])))) return value;
+  const legacy = value as unknown as KnowledgeWorkspace;
+  const audit = auditKnowledgeWorkspaceUnchecked(legacy, new Set(baseline.learningBindings.filter((b) => !b.knowledgeRevisionBindings.length).map((b) => canonicalJson(b))));
+  if (!audit.ok) throw new Error(`知识版本历史无效，数据库未被修改：${audit.errors.join("；")}`);
+  const next = copy(legacy);
+  // Existing payloads remain byte-identical; only the shipped mapping prefix is completed.
+  next.units = [...copy(seed.units), ...legacy.units.slice(baseline.units.length)];
+  next.sources = [...copy(seed.sources), ...legacy.sources.slice(baseline.sources.length)];
+  next.claims = [...copy(seed.claims), ...legacy.claims.slice(baseline.claims.length)];
+  next.learningBindings = [...copy(seed.learningBindings), ...legacy.learningBindings.slice(baseline.learningBindings.length)];
+  const added = new Set(seed.units.filter((u) => !baseline.units.some((old) => sameBinding(unitBinding(old), unitBinding(u)))).map((u) => refKey(u.id, u.revision)));
+  const graph = graphFor(next).graph;
+  // Previously applied evidence updates must also hold the newly discovered projections.
+  // Original candidates, receipts and holds are retained; only new dependency receipts append.
+  for (const candidate of legacy.candidates) {
+    const receipt = legacy.ledger.find((l) => l.changeId === candidate.id);
+    if (!receipt) continue;
+    const roots = [
+      ...legacy.sources.filter((s) => candidate.changedSourceIds.includes(s.id) && !candidate.sources.some((v) => v.id === s.id && v.revision <= s.revision)).map((s) => `source:${refKey(s.id, s.revision)}`),
+      ...legacy.claims.filter((s) => candidate.changedClaimIds.includes(s.id) && !candidate.claims.some((v) => v.id === s.id && v.revision <= s.revision)).map((s) => `claim:${refKey(s.id, s.revision)}`),
+    ];
+    const reached = graphClosure(graph, roots);
+    const addedAffected = next.units.filter((u) => added.has(refKey(u.id, u.revision)) && reached.has(`knowledge:${refKey(u.id, u.revision)}`));
+    for (const unit of addedAffected) next.ledger.push({ id: `m0201-ledger-${next.ledger.length + 1}`, changeId: candidate.id, at: "2026-09-23T00:00:00+08:00", reason: "M020.1 canonical mapping：已有证据更新的新增依赖需复核。", reviewer: "M020.1 deterministic migration", action: "review_required", target: unitBinding(unit), status: "REVIEW_REQUIRED" });
+    for (const binding of next.learningBindings.filter((b) => b.knowledgeRevisionBindings.some((r) => addedAffected.some((u) => sameBinding(r, unitBinding(u)))))) {
+      if (next.holds.some((h) => h.changeId === candidate.id && h.assetId === binding.assetId && h.assetRevision === binding.assetRevision && h.assetHash === binding.assetHash)) continue;
+      next.holds.push({ id: `m0201-hold-${next.holds.length + 1}`, changeId: candidate.id, assetId: binding.assetId, assetRevision: binding.assetRevision, assetHash: binding.assetHash, reason: "M020.1 canonical mapping：已有证据更新的新增依赖需复核。", createdAt: "2026-09-23T00:00:00+08:00", status: "REVIEW_REQUIRED" });
+    }
+  }
+  return next;
+}
 
 export function effectiveKnowledgeStatus(w: KnowledgeWorkspace, unit: KnowledgeUnit): KnowledgeStatus {
   return [...w.ledger].reverse().find((l) => sameBinding(l.target, unitBinding(unit)))?.status ?? unit.knowledgeStatus;

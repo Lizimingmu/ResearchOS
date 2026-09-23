@@ -1,6 +1,6 @@
 # M020.1 — Canonical Mapping Completion
 
-Baseline: `4aca045cb5e4e211e1b1c31cf2d60910fa917ea0`  
+Baseline: `4aca045cb5e4e211e1b1c31cf2d60910fa917ea0`
 Branch: `codex/m020.1-canonical-mapping-completion`
 
 ## Goal

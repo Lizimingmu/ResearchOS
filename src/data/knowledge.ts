@@ -22,7 +22,7 @@ export interface BuiltInProtocolImport {
 /** Mechanical excerpts of the existing staging corpus; never active lesson seeds. */
 export const builtInProtocolImports: BuiltInProtocolImport[] = protocolExamples.map((example) => ({ ...example, knowledgeType: "protocol" }));
 
-function buildInitialKnowledgeWorkspace(): KnowledgeWorkspace {
+function buildInitialKnowledgeWorkspace(completeMappings = true): KnowledgeWorkspace {
   const workspace = emptyKnowledgeWorkspace();
   const now = KNOWLEDGE_MIGRATION_AT;
   workspace.sources = evidenceSources.map((source) => adaptEvidenceSource(source, now, true));
@@ -67,20 +67,22 @@ function buildInitialKnowledgeWorkspace(): KnowledgeWorkspace {
   }
   for (const lesson of stagedConceptLessons) workspace.units.push(adaptConceptLesson(lesson, relatedClaims(lesson.id), now));
   for (const lesson of stagedMethodLessons) workspace.units.push(adaptMethodLesson(lesson, relatedClaims(lesson.id), now));
-  const explicitlyBridgedLegacyMethodIds = new Set([
-    ...conceptLessons.map((lesson) => lesson.conceptId),
-    ...methodLessons.map((lesson) => lesson.methodId),
-    "cox-ph",
-  ]);
-  for (const original of methodConcepts.filter((item) => !explicitlyBridgedLegacyMethodIds.has(item.id))) {
-    const claim = addLegacyClaim(original.id, original.coreConcept, original.sourceIds, original);
-    workspace.units.push(adaptLegacyMethodConcept(original, [claim], now));
+  if (completeMappings) {
+    const explicitlyBridgedLegacyMethodIds = new Set([
+      ...conceptLessons.map((lesson) => lesson.conceptId),
+      ...methodLessons.map((lesson) => lesson.methodId),
+      "cox-ph",
+    ]);
+    for (const original of methodConcepts.filter((item) => !explicitlyBridgedLegacyMethodIds.has(item.id))) {
+      const claim = addLegacyClaim(original.id, original.coreConcept, original.sourceIds, original);
+      workspace.units.push(adaptLegacyMethodConcept(original, [claim], now));
+    }
+    for (const guide of guideSections) {
+      const hasExplicitLessonOwner = [...guideIdsByKnowledge.values()].some((guideIds) => guideIds.includes(guide.id));
+      if (!hasExplicitLessonOwner) workspace.units.push(adaptGuideSectionSnapshot(guide, claimsByContent.get(guide.id) ?? [], now));
+    }
+    for (const studio of studioTemplates) workspace.units.push(adaptStudioTemplateSnapshot(studio, now));
   }
-  for (const guide of guideSections) {
-    const hasExplicitLessonOwner = [...guideIdsByKnowledge.values()].some((guideIds) => guideIds.includes(guide.id));
-    if (!hasExplicitLessonOwner) workspace.units.push(adaptGuideSectionSnapshot(guide, claimsByContent.get(guide.id) ?? [], now));
-  }
-  for (const studio of studioTemplates) workspace.units.push(adaptStudioTemplateSnapshot(studio, now));
   for (const kernel of kernels.filter((item) => !kernelKnowledgeIds.has(item.id))) {
     workspace.units.push(adaptKernelConcept(kernel, [kernelClaims.get(kernel.id)!], now));
     kernelKnowledgeIds.set(kernel.id, kernel.id);
@@ -138,10 +140,10 @@ function buildInitialKnowledgeWorkspace(): KnowledgeWorkspace {
   for (const original of methodConcepts.filter((item) => !workspace.learningBindings.some((binding) => binding.assetId === item.id))) {
     // Root independently reviewed this legacy identifier bridge against both
     // records and src-cox. It propagates maintenance holds, not text equivalence.
-    const ids = original.id === "cox-ph" ? ["method-cox-v1"] : [original.id];
+    const ids = original.id === "cox-ph" ? ["method-cox-v1"] : completeMappings ? [original.id] : [];
     const gaps = original.id === "cox-ph"
       ? ["M020 root review：cox-ph → method-cox-v1 仅为保守维护影响桥接；两篇正文未被判定为逐主张等价。"]
-      : [];
+      : completeMappings ? [] : ["旧 Methods 资产尚无明确 canonical KnowledgeUnit 对应；保留原课程行为并列为未解析迁移项。"];
     workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...original, lifecycle: original.status === "usable" ? "active" : "pending_review" }, "method_lesson", known(ids), gaps, original));
   }
   const assets = [...new Map([...practiceAssets, ...learningArchitecturePracticeAssets].map((asset) => [asset.id, asset])).values()];
@@ -152,18 +154,24 @@ function buildInitialKnowledgeWorkspace(): KnowledgeWorkspace {
   }
   for (const guide of guideSections) {
     const ids = [...guideIdsByKnowledge.entries()].filter(([, guideIds]) => guideIds.includes(guide.id)).map(([id]) => id);
-    workspace.learningBindings.push(makeKnowledgeLearningBinding(guide, "guide", known(ids.length ? ids : [guide.id])));
+    workspace.learningBindings.push(makeKnowledgeLearningBinding(guide, "guide", known(ids.length || !completeMappings ? ids : [guide.id])));
   }
   for (const item of [...researchCases, ...stagedCaseLabs]) {
     const unit = byId.get(item.id)!;
     workspace.learningBindings.push(makeKnowledgeLearningBinding(item, "case_lab", known([item.id, ...unit.prerequisiteIds])));
   }
-  for (const studio of studioTemplates) workspace.learningBindings.push(makeKnowledgeLearningBinding(studio, "studio_task", known([studio.id])));
+  for (const studio of studioTemplates) workspace.learningBindings.push(makeKnowledgeLearningBinding(studio, "studio_task", completeMappings ? known([studio.id]) : [], completeMappings ? [] : ["Studio 原模板没有显式 knowledge/prerequisite/source ID；不靠标签生成依赖。"]));
   workspace.learningBindings = [...new Map(workspace.learningBindings.map((binding) => [`${binding.assetId}:${binding.assetRevision}:${binding.assetHash}`, binding])).values()];
   return workspace;
 }
 
 let initialSnapshot: KnowledgeWorkspace | undefined;
+let m020Snapshot: KnowledgeWorkspace | undefined;
+/** Exact pre-completion seed, used only to recognize persisted M020 workspaces. */
+export function createM020KnowledgeBaseline(): KnowledgeWorkspace {
+  m020Snapshot ??= JSON.parse(JSON.stringify(buildInitialKnowledgeWorkspace(false))) as KnowledgeWorkspace;
+  return structuredClone(m020Snapshot);
+}
 /** Returns an isolated copy: persisted user revisions never mutate the built-in snapshot. */
 export function createInitialKnowledgeWorkspace(): KnowledgeWorkspace {
   // Match JSON persistence semantics before hashing history snapshots in tests

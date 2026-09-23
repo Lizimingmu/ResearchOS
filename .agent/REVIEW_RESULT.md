@@ -1,15 +1,9 @@
 # Review Result
 
-ACCEPT — M020 engineering scope; scientific candidates remain pending.
+ACCEPT — M020.1 canonical mapping completion, after minimal regression fixes.
 
-Review baseline: `7a41b4926e3a2a408acce7c073b2351c4fc230cc`. Requested branch: `codex/m020-extensible-knowledge-architecture`.
+Requested target: `4b94a5b17561c2569d975c19a624cafc07adfa3d`; baseline: `4aca045cb5e4e211e1b1c31cf2d60910fa917ea0`.
 
-The implementation provides persistent canonical knowledge contracts, versioned dependency impact, pending imports/projections, real staging adapters, maintenance UI and holds around existing learning pathways. It does not rewrite the Learning Kernel or M019 teaching corpus.
+Closed regressions: legacy Method origin type error; persisted M020 workspace rejection after mapping completion; one trailing-whitespace error. Migration recognizes the exact baseline, validates existing history, preserves learning records, completes mappings and propagates prior evidence-update holds to newly mapped projections.
 
-Closed review findings: persistence hash drift, duplicate freezing its base, restore removing a terminal status, malformed validator crashes, known-revision append bypass, forged activation/compatibility flags, deleted seed history, removed applied-update decisions/holds, legacy alias bypass, and conflated historical asset hashes. Negative regressions and independent probes cover these cases.
-
-Evidence: typecheck PASS; full suite 201/201; isolated DOM interaction 1/1; seven knowledge audits PASS; old registry/localization/startup PASS; privacy 4/4. No browser/foreground/manual visual acceptance is claimed.
-
-Accepted limitation: 327 unresolved learning mappings and 328 review-gap bindings are explicit quarantine/debt. No scientific review approval, answer-key validation, course activation or M021 authorization follows from this engineering ACCEPT.
-
-Commit and push as requested, then stop.
+Validation: typecheck PASS; full suite 204/204 plus DOM 1/1; seven knowledge audits PASS; privacy 4/4; whitespace gate PASS. Unresolved bindings 327 → 0; KnowledgeUnit 79 → 406; dangling bindings 0. No scientific activation or M019 scientific content/answer changes. Full evidence and scope are recorded in `M020_1_FINAL_VALIDATION.md`.

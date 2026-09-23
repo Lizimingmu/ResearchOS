@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { KNOWLEDGE_TYPES } from "../.build/domain/knowledge.js";
-import { createInitialKnowledgeWorkspace } from "../.build/data/knowledge.js";
+import { createInitialKnowledgeWorkspace, createM020KnowledgeBaseline } from "../.build/data/knowledge.js";
 import {
   createKnowledgeTemplate, knowledgeHash, validateKnowledgeUnit, auditKnowledgeWorkspace,
   assertKnowledgeTransition, isKnowledgeLearningAllowed, resolveHistoricalKnowledgeBinding,
@@ -296,6 +296,56 @@ test("M020.1 canonical mapping: every built-in learning asset has an exact Knowl
   assert.ok(impact.affectedGuides.includes(guideBinding.assetId));
   const next = apply(workspace, candidate);
   assert.equal(isKnowledgeLearningAllowed(next, guideBinding.assetId, guideBinding.assetRevision, guideBinding.assetHash), false);
+});
+
+test("M020.1 persisted M020 upgrade preserves learning history and rejects seed tampering", () => {
+  const initial = createInitialState(), baseline = createM020KnowledgeBaseline();
+  assert.equal(baseline.units.length, 79);
+  assert.equal(knowledgeHash(baseline), "sha256:0b5592e092ebb6a95c5e78896855a8f116287c258dcbd33709ec134f973a4c5b");
+  assert.equal(baseline.learningBindings.filter((b) => !b.knowledgeRevisionBindings.length).length, 327);
+  const raw = { ...migratePersistedState(initial, initial), knowledgeWorkspace: baseline, learningEvents: [{ id: "historical-event", unitId: "old-guide", unitHash: "historical-hash" }], reviewLogs: [{ id: "old-review" }], assessmentHistory: [{ id: "old-assessment" }] };
+  const frozen = JSON.stringify(raw);
+  const next = migratePersistedState(raw, initial);
+  assert.equal(JSON.stringify(raw), frozen);
+  for (const key of Object.keys(raw).filter((key) => key !== "knowledgeWorkspace")) assert.deepEqual(next[key], raw[key], key);
+  assert.deepEqual(next.knowledgeWorkspace, initial.knowledgeWorkspace);
+  assert.equal(JSON.stringify(migratePersistedState(JSON.parse(JSON.stringify(next)), initial)), JSON.stringify(next));
+  const broken = structuredClone(raw);
+  const tamperedBinding = broken.knowledgeWorkspace.learningBindings.find((b) => !b.knowledgeRevisionBindings.length);
+  tamperedBinding.legacyActive = !tamperedBinding.legacyActive;
+  assert.throws(() => migratePersistedState(broken, initial), /数据库未被修改/);
+  const orphan = structuredClone(initial.knowledgeWorkspace);
+  orphan.learningBindings[0].knowledgeUnitIds = [];
+  orphan.learningBindings[0].knowledgeRevisionBindings = [];
+  assert.equal(auditKnowledgeWorkspace(orphan).ok, false);
+});
+
+test("M020.1 old evidence updates retain receipts and hold newly mapped guides on reload", () => {
+  const initial = createInitialState(), seed = initial.knowledgeWorkspace, baseline = createM020KnowledgeBaseline();
+  const guide = seed.units.find((u) => u.id === "guide-v1-m01-t01");
+  const claim = seed.claims.find((c) => guide.evidenceLinks.some((e) => e.claimId === c.id) && c.sourceBindings.length);
+  const source = seed.sources.find((s) => s.id === claim.sourceBindings[0].sourceId);
+  const candidate = proposeKnowledgeChange(seed, { id: "pre-m0201-source", operation: "evidence_update", now, reason: "旧版已保存来源更新", sources: [rehash({ ...source, revision: source.revision + 1, provenance })] });
+  const updated = apply(seed, candidate);
+  const old = { ...updated,
+    units: [...baseline.units, ...updated.units.slice(seed.units.length)],
+    claims: [...baseline.claims, ...updated.claims.slice(seed.claims.length)],
+    learningBindings: baseline.learningBindings,
+    ledger: updated.ledger.filter((l) => baseline.units.some((u) => u.id === l.target.knowledgeUnitId)),
+    holds: updated.holds.filter((h) => baseline.learningBindings.some((b) => b.assetId === h.assetId && b.knowledgeRevisionBindings.length)),
+  };
+  const frozen = JSON.stringify(old);
+  const next = migratePersistedState({ ...initial, knowledgeWorkspace: old }, initial).knowledgeWorkspace;
+  assert.equal(JSON.stringify(old), frozen);
+  assert.deepEqual(next.candidates, old.candidates);
+  assert.deepEqual(next.sources, old.sources);
+  assert.deepEqual(next.ledger.slice(0, old.ledger.length), old.ledger);
+  assert.deepEqual(next.holds.slice(0, old.holds.length), old.holds);
+  assert.ok(next.holds.some((h) => h.assetId === guide.id));
+  assert.equal(auditKnowledgeWorkspace(next).ok, true);
+  assert.deepEqual(migratePersistedState({ ...initial, knowledgeWorkspace: next }, initial).knowledgeWorkspace, next);
+  old.ledger = []; old.holds = [];
+  assert.throws(() => migratePersistedState({ ...initial, knowledgeWorkspace: old }, initial), /数据库未被修改/);
 });
 
 test("M020 migration: canonical seed and all seven audits are deterministic", () => {
