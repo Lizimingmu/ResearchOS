@@ -19,6 +19,7 @@ const allowed = new Set([
   "guide-template-audit.mjs",
   "guide-source-linkage-audit.mjs",
   "m019-1-readiness-audit.mjs",
+  "single-best-key-validity-audit.mjs",
   "strict-blind-packet-audit.mjs",
   "strict-blind-snapshot-binding-audit.mjs",
 ]);

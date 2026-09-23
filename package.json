@@ -54,7 +54,8 @@
     "audit:knowledge-dependency": "npm run build && node scripts/run-knowledge-audit.mjs dependency",
     "audit:freshness": "npm run build && node scripts/run-knowledge-audit.mjs freshness",
     "audit:learning-binding": "npm run build && node scripts/run-knowledge-audit.mjs learning_binding",
-    "audit:privacy": "npm run build && node scripts/test-bundle.mjs && node --test-name-pattern=\"privacy|private path|API key field\" .test-build/suite.mjs"
+    "audit:privacy": "npm run build && node scripts/test-bundle.mjs && node --test-name-pattern=\"privacy|private path|API key field\" .test-build/suite.mjs",
+    "audit:single-best-key-validity": "npm run build && node scripts/run-m019-1-script.mjs single-best-key-validity-audit.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",
