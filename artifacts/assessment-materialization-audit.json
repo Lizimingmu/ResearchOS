@@ -7,57 +7,57 @@
     "caseLabs": 12,
     "fullyMaterialized": 183,
     "correctCountDistribution": {
-      "1": 109,
-      "2": 11,
-      "3": 27,
-      "4": 36
+      "1": 108,
+      "2": 13,
+      "3": 29,
+      "4": 33
     },
     "taskContractDistribution": {
-      "multi_select_audit": 30,
-      "classification": 15,
+      "multi_select_audit": 31,
+      "classification": 20,
       "claim_rewrite": 38,
-      "error_localization": 38,
-      "choose_next_evidence": 18,
-      "ordering_sequence": 6,
-      "integrated_judgment": 38
+      "error_localization": 36,
+      "choose_next_evidence": 12,
+      "ordering_sequence": 3,
+      "integrated_judgment": 43
     },
     "roleContractDistribution": {
       "apply": {
-        "multi_select_audit": 10,
-        "classification": 5,
+        "multi_select_audit": 11,
+        "classification": 6,
         "claim_rewrite": 0,
         "error_localization": 0,
-        "choose_next_evidence": 6,
-        "ordering_sequence": 2,
-        "integrated_judgment": 38
+        "choose_next_evidence": 3,
+        "ordering_sequence": 0,
+        "integrated_judgment": 41
       },
       "remediation": {
         "multi_select_audit": 10,
-        "classification": 5,
+        "classification": 8,
         "claim_rewrite": 0,
-        "error_localization": 38,
-        "choose_next_evidence": 6,
-        "ordering_sequence": 2,
-        "integrated_judgment": 0
+        "error_localization": 36,
+        "choose_next_evidence": 4,
+        "ordering_sequence": 1,
+        "integrated_judgment": 2
       },
       "review": {
         "multi_select_audit": 10,
-        "classification": 5,
+        "classification": 6,
         "claim_rewrite": 38,
         "error_localization": 0,
-        "choose_next_evidence": 6,
+        "choose_next_evidence": 5,
         "ordering_sequence": 2,
         "integrated_judgment": 0
       }
     },
     "roleContractTypes": {
-      "apply": 5,
-      "remediation": 5,
+      "apply": 4,
+      "remediation": 6,
       "review": 5
     },
     "instantiatedContractTypes": 7,
-    "variableFactCountAssessments": 70,
-    "multiFactEvidenceMappings": 55,
+    "variableFactCountAssessments": 67,
+    "multiFactEvidenceMappings": 72,
     "obviousDistractorFlags": 0,
     "duplicateDistractorFlags": 0,
     "materialSpecificityFlags": 0

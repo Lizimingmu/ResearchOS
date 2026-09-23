@@ -31,14 +31,28 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
   const settings = isRecord(raw.settings) ? raw.settings : {};
   let knowledgeWorkspace = raw.knowledgeWorkspace === undefined ? undefined
     : completeM020KnowledgeMappings(raw.knowledgeWorkspace, createM020KnowledgeBaseline(), createM0201KnowledgeBaseline());
-  if (knowledgeWorkspace && sourceVersion < 10) {
+  if (knowledgeWorkspace && (sourceVersion < 10 || knowledgeWorkspace !== raw.knowledgeWorkspace)) {
     const oldSeed = createM0201KnowledgeBaseline(), currentSeed = defaults.knowledgeWorkspace;
     const current = knowledgeWorkspace as AppStateData["knowledgeWorkspace"];
-    const exactPrefix = (expected: unknown[], actual: unknown[]) => expected.every((item, index) => canonicalJson(item) === canonicalJson(actual[index]));
+    const exactPrefix = (expected: unknown[], actual: unknown[]) => Array.isArray(actual) && expected.every((item, index) => canonicalJson(item) === canonicalJson(actual[index]));
     if (exactPrefix(oldSeed.units, current.units) && exactPrefix(oldSeed.sources, current.sources) && exactPrefix(oldSeed.claims, current.claims) && exactPrefix(oldSeed.learningBindings, current.learningBindings)) {
+      const previousAudit = auditKnowledgeWorkspace(current);
+      if (!previousAudit.ok) throw new Error(`知识版本历史无效，数据库未被修改：${previousAudit.errors.join("；")}`);
       const extras = current.learningBindings.slice(oldSeed.learningBindings.length);
       const currentKeys = new Set(currentSeed.learningBindings.map((item) => canonicalJson(item)));
-      knowledgeWorkspace = { ...current, learningBindings: [...structuredClone(currentSeed.learningBindings), ...extras.filter((item) => !currentKeys.has(canonicalJson(item)))] };
+      const holds = structuredClone(current.holds);
+      // A pedagogical revision inherits existing maintenance decisions for its exact science.
+      // Validate old receipts first; never repair a tampered or missing historical hold.
+      for (const binding of currentSeed.learningBindings.slice(oldSeed.learningBindings.length)) {
+        for (const receipt of current.ledger.filter((entry) => ["review_required", "supersede", "deprecate"].includes(entry.action)
+          && binding.knowledgeRevisionBindings.some((ref) => ref.knowledgeUnitId === entry.target.knowledgeUnitId && ref.revision === entry.target.revision && ref.hash === entry.target.hash))) {
+          if (holds.some((hold) => hold.changeId === receipt.changeId && hold.assetId === binding.assetId && hold.assetRevision === binding.assetRevision && hold.assetHash === binding.assetHash)) continue;
+          let id = `m0191c-hold-${holds.length + 1}`;
+          while (holds.some((hold) => hold.id === id)) id += "-new";
+          holds.push({ id, changeId: receipt.changeId, assetId: binding.assetId, assetRevision: binding.assetRevision, assetHash: binding.assetHash, reason: "M019.1c 教学版本继承既有知识维护要求。", createdAt: receipt.at, status: "REVIEW_REQUIRED" });
+        }
+      }
+      knowledgeWorkspace = { ...current, holds, learningBindings: [...structuredClone(currentSeed.learningBindings), ...extras.filter((item) => !currentKeys.has(canonicalJson(item)))] };
     }
   }
   // A malformed canonical history is never silently replaced by today's seed.

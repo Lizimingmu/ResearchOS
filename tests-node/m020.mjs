@@ -332,7 +332,7 @@ test("M020.1 old evidence updates retain receipts and hold newly mapped guides o
     claims: [...baseline.claims, ...updated.claims.slice(seed.claims.length)],
     learningBindings: baseline.learningBindings,
     ledger: updated.ledger.filter((l) => baseline.units.some((u) => u.id === l.target.knowledgeUnitId)),
-    holds: updated.holds.filter((h) => baseline.learningBindings.some((b) => b.assetId === h.assetId && b.knowledgeRevisionBindings.length)),
+    holds: updated.holds.filter((h) => baseline.learningBindings.some((b) => b.assetId === h.assetId && b.assetRevision === h.assetRevision && b.assetHash === h.assetHash && b.knowledgeRevisionBindings.length)),
   };
   const frozen = JSON.stringify(old);
   const next = migratePersistedState({ ...initial, knowledgeWorkspace: old }, initial).knowledgeWorkspace;

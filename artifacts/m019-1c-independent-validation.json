@@ -1,0 +1,126 @@
+{
+  "baseline": "bc708408b67f08d86b95d9b36ebf20aab1037362",
+  "requestedHead": "a78d5ef9f43f7b9c36de64b1f646e50a9c325005",
+  "inventory": {
+    "assessments": 183,
+    "v2": 109,
+    "v3": 74,
+    "flaggedLogicalItems": 74,
+    "manifestEntries": 109,
+    "actualSingleChoice": 108,
+    "targetedRepairs": 21
+  },
+  "science": {
+    "units": {
+      "count": 406,
+      "byteEquivalent": true,
+      "hash": "sha256:eb52ca3202cc93112217359235f27427083ca8f4b02d5a374943548cf2c6b107"
+    },
+    "sources": {
+      "count": 85,
+      "byteEquivalent": true,
+      "hash": "sha256:d65ee4e5e908b0a202867b45309df13c9848867592308bd117624f0440eb3acd"
+    },
+    "claims": {
+      "count": 460,
+      "byteEquivalent": true,
+      "hash": "sha256:248744786ad8271fdc610a2fb555120967e41fea0c79603e87d8d8a039d85a3d"
+    }
+  },
+  "bindings": {
+    "before": 688,
+    "after": 808,
+    "oldPrefixUnchanged": true,
+    "addedAssessments": 74,
+    "addedLessons": 46,
+    "dangling": 0,
+    "unresolved": 0,
+    "newActivation": 0
+  },
+  "nonAssessmentLessonProseUnchanged": true,
+  "unflaggedV2Unchanged": true,
+  "independentBaselineMigration": [
+    {
+      "name": "real baseline reconstructed",
+      "status": "PASS"
+    },
+    {
+      "name": "byte-equivalent units",
+      "status": "PASS"
+    },
+    {
+      "name": "byte-equivalent sources",
+      "status": "PASS"
+    },
+    {
+      "name": "byte-equivalent claims",
+      "status": "PASS"
+    },
+    {
+      "name": "v2 reconstructs exact baseline",
+      "status": "PASS"
+    },
+    {
+      "name": "remaining 109 v2 assessments unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "original binding prefix unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "science prose unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "schema9 roundtrip histories exact",
+      "status": "PASS"
+    },
+    {
+      "name": "schema9 applied update reload and v3 holds",
+      "status": "PASS"
+    }
+  ],
+  "checks": [
+    {
+      "check": "typecheck",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-typecheck.log"
+    },
+    {
+      "check": "test",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-test.log"
+    },
+    {
+      "check": "audit:assessment-materialization",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-audit-assessment-materialization.log"
+    },
+    {
+      "check": "audit:assessment-ambiguity",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-audit-assessment-ambiguity.log"
+    },
+    {
+      "check": "audit:single-best-key-validity",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-audit-single-best-key-validity.log"
+    },
+    {
+      "check": "audit:generated-lifecycle",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-audit-generated-lifecycle.log"
+    },
+    {
+      "check": "audit:knowledge",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-audit-knowledge.log"
+    },
+    {
+      "check": "audit:privacy",
+      "exitCode": 0,
+      "log": ".tmp/m019-1c-final-audit-privacy.log"
+    }
+  ]
+}

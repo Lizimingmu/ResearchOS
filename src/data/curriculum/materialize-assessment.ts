@@ -1,6 +1,6 @@
 import type { AssessmentTaskContract, StagedAssessmentAssetV1 } from "../../domain/curriculum";
 import type { AssessmentActionKey, AssessmentRole, MaterializedAssessmentRole } from "./assessment-material-types";
-import { assessmentValidityOverrides,m0191cFlaggedLogicalIds,singleBestKeyManifest } from "./assessment-validity-adjudication";
+import { assessmentValidityEvidence,assessmentValidityOverrides,m0191cFlaggedLogicalIds,singleBestKeyManifest } from "./assessment-validity-adjudication";
 
 const allActionKeys: AssessmentActionKey[] = ["decision", "key_check", "boundary", "change_mind"];
 const specificityRepairIds = new Set([
@@ -87,10 +87,12 @@ const stimulusFor = (material: MaterializedAssessmentRole, factsCn: string[]): S
 };
 
 function buildAssessment(id:string,role:AssessmentRole,material:MaterializedAssessmentRole,legacy=false):StagedAssessmentAssetV1{
+ if(!legacy&&assessmentValidityEvidence[`${id}-${role}`])material={...material,evidenceFactIndicesByAction:{...material.evidenceFactIndicesByAction,...assessmentValidityEvidence[`${id}-${role}`]}};
  const logicalId=`${id}-${role}`,ov=legacy?undefined:assessmentValidityOverrides[logicalId],labels=actionLabels(material,ov?.actionLabelOverrides);
  const taskContract=ov?.taskContract??contractFor(id,role,material),required=ov?.requiredActionKeys??material.requiredActionKeys;
- const kd=!legacy&&singleBestContracts.has(taskContract)?singleBestKeyManifest[logicalId]:undefined;
- if(!legacy&&singleBestContracts.has(taskContract)&&!kd)throw new Error(`Missing item-specific key: ${logicalId}`);
+ const requiresSingleKey=singleBestContracts.has(taskContract)||(taskContract==="integrated_judgment"&&required.length===1);
+ const kd=!legacy&&requiresSingleKey?singleBestKeyManifest[logicalId]:undefined;
+ if(!legacy&&requiresSingleKey&&!kd)throw new Error(`Missing item-specific key: ${logicalId}`);
  const expected=legacy?legacyExpectedActionsFor(taskContract,material):kd?[kd.expectedActionKey]:required;
  const revised=!legacy&&m0191cFlaggedLogicalIds.has(logicalId),assetId=`${logicalId}-${revised?"v3":"v2"}`,factsCn=factsFor(`${logicalId}-v2`,taskContract,material);
  const candidate=["multi_select_audit","integrated_judgment","ordering_sequence"].includes(taskContract)?required:allActionKeys;
@@ -98,7 +100,7 @@ function buildAssessment(id:string,role:AssessmentRole,material:MaterializedAsse
  const distractors=material.plausibleDistractorsCn.map((x,index)=>({id:`${id}-${role}-distractor-${index+1}`,labelCn:nearMissLabelRewrites[x.labelCn]??x.labelCn,key:`distractor_${index+1}` as const,kind:"distractor" as const,correct:false as const}));
  const raw=[...actions,...distractors],options=hashOrder(`${id}:${role}`,raw.length).map(i=>raw[i]);
  const expectedOptionIds=taskContract==="ordering_sequence"?expected.map(key=>`${id}-${role}-${key}`):options.filter(x=>x.correct).map(x=>x.id),stimulus=stimulusFor(material,factsCn);
- const optionFeedbackCn=Object.fromEntries(options.map(option=>{if(!revised){if(option.kind==="action"&&option.correct){const ix=factIndicesFor(id,taskContract,material,option.key);return[option.id,`该判断由 ${ix.map(i=>`F${i+1}`).join("+")} 共同支持：${ix.map(i=>`“${material.factsCn[i]}”`).join("；")}。它回答的是当前 ${taskContract} 任务。`];}if(option.kind==="action")return[option.id,`“${option.labelCn}”本身可能是后续审查的一部分，但当前任务是 ${taskContract}；它没有直接完成题目要求的判断焦点，因此不是本题答案。`];const j=option.key==="distractor_1"?0:1,d=material.plausibleDistractorsCn[j];return[option.id,`这里不成立：${d.whyWrongCn}。在“${d.whenMayHoldCn}”时它可能合理；本题材料不满足该条件，采用它会越过“${material.maximumBoundaryCn}”这一解释边界。`];}if(option.kind==="action"&&option.correct){const ix=factIndicesFor(id,taskContract,material,option.key);return[option.id,`该判断由 ${ix.map(i=>`F${i+1}`).join("+")} 支持，直接回答当前题目焦点。`];}if(option.kind==="action")return[option.id,`“${option.labelCn}”可能属于完整审查，但不是当前最优判断焦点。`];const j=option.key==="distractor_1"?0:1,d=material.plausibleDistractorsCn[j];return[option.id,`这里不成立：${d.whyWrongCn}。`];}));
+ const optionFeedbackCn=Object.fromEntries(options.map(option=>{if(!revised){if(option.kind==="action"&&option.correct){const ix=factIndicesFor(id,taskContract,material,option.key);return[option.id,`该判断由 ${ix.map(i=>`F${i+1}`).join("+")} 共同支持：${ix.map(i=>`“${material.factsCn[i]}”`).join("；")}。它回答的是当前 ${taskContract} 任务。`];}if(option.kind==="action")return[option.id,`“${option.labelCn}”本身可能是后续审查的一部分，但当前任务是 ${taskContract}；它没有直接完成题目要求的判断焦点，因此不是本题答案。`];const j=option.key==="distractor_1"?0:1,d=material.plausibleDistractorsCn[j];return[option.id,`这里不成立：${d.whyWrongCn}。在“${d.whenMayHoldCn}”时它可能合理；本题材料不满足该条件，采用它会越过“${material.maximumBoundaryCn}”这一解释边界。`];}if(option.kind==="action"&&option.correct){const ix=factIndicesFor(id,taskContract,material,option.key);return[option.id,`判断“${option.labelCn}”由 ${ix.map(i=>`F${i+1}`).join("+")} 支持，直接回答当前题目焦点。`];}if(option.kind==="action")return[option.id,`“${option.labelCn}”可能属于完整审查，但不是当前最优判断焦点。`];const j=option.key==="distractor_1"?0:1,d=material.plausibleDistractorsCn[j];return[option.id,`这里不成立：${d.whyWrongCn}。在“${d.whenMayHoldCn}”时它可能合理；本题材料不满足该条件，采用它会越过“${labels.boundary}”这一解释边界。`];}));
  const evidenceExpectations=expected.map(key=>{const ix=factIndicesFor(id,taskContract,material,key);return{optionId:`${id}-${role}-${key}`,allowedRowIds:ix.map(i=>material.stimulusFormat==="decision_timeline"?`T${i}`:`F${i+1}`),requiredFactFragmentsCn:ix.map(i=>material.factsCn[i].replace(/[\s，。；：、“”‘’（）()\-—]/g,"").slice(0,10)),reasoningMarkersCn:key==="boundary"?["只能","限于","不足"]:key==="change_mind"?["若","一旦","更新"]:["因为","因此","所以"]};});
  const rationale=expected.map(key=>`${key}: ${labels[key]} ← ${factIndicesFor(id,taskContract,material,key).map(i=>`F${i+1}`).join("+")}`);
  if(revised&&kd)rationale.push(`item-specific key manifest: ${kd.expectedActionKey}; basis=${kd.basis}`);if(revised&&ov?.adjudicationCn)rationale.push(`M019.1c adjudication: ${ov.adjudicationCn}`);

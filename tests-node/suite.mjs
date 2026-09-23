@@ -2526,7 +2526,7 @@ test("M019-D formal curriculum meets target sizes and assessment separation", ()
     assert.equal(new Set(assets.map((asset) => asset.scenarioCn)).size, 3);
     assert.ok(assets.every((asset) => asset.hints.length === 0 && asset.confidenceRequired && asset.responseLocked));
     assert.ok(assets.every((asset) => asset.expectedOptionIds.length > 0 && asset.expectedOptionIds.length < asset.options.length));
-    assert.ok(assets.every((asset) => asset.materialization?.contentVersion === "m019.1" && asset.materialization.independentFactsCn.length >= 3 && asset.materialization.independentFactsCn.length <= 7));
+    assert.ok(assets.every((asset) => asset.materialization?.contentVersion === (asset.id.endsWith("-v3") ? "m019.1c" : "m019.1") && asset.materialization.independentFactsCn.length >= 3 && asset.materialization.independentFactsCn.length <= 7));
     assert.ok(assets.every((asset) => asset.stimulus.rowsCn.length === asset.materialization.independentFactsCn.length));
     assert.equal(new Set(assets.map((asset) => asset.stimulus.format)).size, 3);
     assert.notEqual(assets[0].materialization.diseaseAreaCn, assets[2].materialization.diseaseAreaCn);

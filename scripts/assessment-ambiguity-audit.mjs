@@ -29,8 +29,9 @@ for (const asset of assessments) {
     if (dice(labels[left], labels[right]) >= 0.88) { classification = "AMBIGUOUS"; reasons.push(`near-duplicate options O${left + 1}/O${right + 1}`); }
   }
   const logicalId = asset.id.replace(/-v[23]$/, "");
-  const expectedAction = singleBestContracts.has(asset.taskContract) ? singleBestKeyManifest[logicalId]?.expectedActionKey : undefined;
-  if (singleBestContracts.has(asset.taskContract)) {
+  const isSingleBest = singleBestContracts.has(asset.taskContract) || asset.expectedOptionIds.length === 1;
+  const expectedAction = isSingleBest ? singleBestKeyManifest[logicalId]?.expectedActionKey : undefined;
+  if (isSingleBest) {
     if (!expectedAction) { classification = "AUTHOR_DEPENDENT"; reasons.push("single-best item lacks an item-specific key manifest entry"); }
     if (asset.expectedOptionIds.length !== 1) { classification = "AMBIGUOUS"; reasons.push("single-best contract has multiple expected options"); }
     const expectedId = asset.expectedOptionIds[0] ?? "";
@@ -44,7 +45,7 @@ for (const asset of assessments) {
 }
 
 const counts = Object.fromEntries(["CLEAR", "AMBIGUOUS", "AUTHOR_DEPENDENT"].map((classification) => [classification, results.filter((item) => item.classification === classification).length]));
-const singleBest = assessments.filter((asset) => singleBestContracts.has(asset.taskContract)).length;
+const singleBest = assessments.filter((asset) => singleBestContracts.has(asset.taskContract) || asset.expectedOptionIds.length === 1).length;
 const errors = [];
 if (assessments.length !== 183) errors.push(`expected 183 assessments, got ${assessments.length}`);
 if (counts.AMBIGUOUS) errors.push(`${counts.AMBIGUOUS} assessments remain ambiguous`);

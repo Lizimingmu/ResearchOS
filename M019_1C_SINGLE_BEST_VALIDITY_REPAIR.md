@@ -1,6 +1,6 @@
 # M019.1c Single-Best Assessment Validity Repair
 
-Baseline: `bc708408b67f08d86b95d9b36ebf20aab1037362`  
+Baseline: `bc708408b67f08d86b95d9b36ebf20aab1037362`
 Branch: `gpt/m019.1c-single-best-validity`
 
 ## What was repaired

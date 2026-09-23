@@ -1,0 +1,791 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "counts": {
+    "assessments": 183,
+    "singleBest": 108,
+    "flaggedV3": 74,
+    "ambiguityRepairs": 21
+  },
+  "byContract": {
+    "error_localization": [
+      "boundary",
+      "decision",
+      "key_check"
+    ],
+    "claim_rewrite": [
+      "boundary",
+      "decision"
+    ],
+    "classification": [
+      "boundary",
+      "decision"
+    ],
+    "choose_next_evidence": [
+      "change_mind",
+      "key_check"
+    ],
+    "integrated_judgment": [
+      "decision"
+    ]
+  },
+  "results": [
+    {
+      "assessmentId": "staged-concept-research-question-remediation-v3",
+      "logicalId": "staged-concept-research-question-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-research-question-review-v2",
+      "logicalId": "staged-concept-research-question-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-remediation-v3",
+      "logicalId": "staged-concept-hypothesis-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-hypothesis-review-v2",
+      "logicalId": "staged-concept-hypothesis-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-remediation-v3",
+      "logicalId": "staged-concept-evidence-claim-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-claim-review-v3",
+      "logicalId": "staged-concept-evidence-claim-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-apply-v3",
+      "logicalId": "staged-concept-association-causation-apply",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-remediation-v3",
+      "logicalId": "staged-concept-association-causation-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-association-causation-review-v3",
+      "logicalId": "staged-concept-association-causation-review",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-remediation-v2",
+      "logicalId": "staged-concept-exploratory-confirmatory-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "key_check",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-exploratory-confirmatory-review-v3",
+      "logicalId": "staged-concept-exploratory-confirmatory-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-remediation-v3",
+      "logicalId": "staged-concept-statistical-unit-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-statistical-unit-review-v2",
+      "logicalId": "staged-concept-statistical-unit-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-remediation-v3",
+      "logicalId": "staged-concept-biological-technical-replicate-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-biological-technical-replicate-review-v3",
+      "logicalId": "staged-concept-biological-technical-replicate-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-apply-v3",
+      "logicalId": "staged-concept-population-sample-apply",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-remediation-v3",
+      "logicalId": "staged-concept-population-sample-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-population-sample-review-v3",
+      "logicalId": "staged-concept-population-sample-review",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-remediation-v3",
+      "logicalId": "staged-concept-selection-bias-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-selection-bias-review-v2",
+      "logicalId": "staged-concept-selection-bias-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-apply-v2",
+      "logicalId": "staged-concept-internal-external-validity-apply",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-remediation-v2",
+      "logicalId": "staged-concept-internal-external-validity-remediation",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-internal-external-validity-review-v2",
+      "logicalId": "staged-concept-internal-external-validity-review",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-remediation-v3",
+      "logicalId": "staged-concept-effect-size-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-effect-size-review-v2",
+      "logicalId": "staged-concept-effect-size-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-remediation-v2",
+      "logicalId": "staged-concept-standard-error-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "key_check",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-standard-error-review-v2",
+      "logicalId": "staged-concept-standard-error-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-remediation-v3",
+      "logicalId": "staged-concept-confidence-interval-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-confidence-interval-review-v3",
+      "logicalId": "staged-concept-confidence-interval-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-p-value-remediation-v3",
+      "logicalId": "staged-concept-p-value-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-p-value-review-v3",
+      "logicalId": "staged-concept-p-value-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-remediation-v2",
+      "logicalId": "staged-concept-multiple-testing-fdr-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "key_check",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-multiple-testing-fdr-review-v2",
+      "logicalId": "staged-concept-multiple-testing-fdr-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-power-remediation-v2",
+      "logicalId": "staged-concept-power-remediation",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-power-review-v2",
+      "logicalId": "staged-concept-power-review",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-interaction-apply-v3",
+      "logicalId": "staged-concept-interaction-apply",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-interaction-remediation-v3",
+      "logicalId": "staged-concept-interaction-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-interaction-review-v2",
+      "logicalId": "staged-concept-interaction-review",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-remediation-v3",
+      "logicalId": "staged-concept-overfitting-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-overfitting-review-v2",
+      "logicalId": "staged-concept-overfitting-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-remediation-v3",
+      "logicalId": "staged-concept-hazard-ratio-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-hazard-ratio-review-v2",
+      "logicalId": "staged-concept-hazard-ratio-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-remediation-v3",
+      "logicalId": "staged-concept-composition-state-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-composition-state-review-v3",
+      "logicalId": "staged-concept-composition-state-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-apply-v2",
+      "logicalId": "staged-concept-batch-effect-apply",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-remediation-v2",
+      "logicalId": "staged-concept-batch-effect-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-batch-effect-review-v3",
+      "logicalId": "staged-concept-batch-effect-review",
+      "taskContract": "classification",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-remediation-v3",
+      "logicalId": "staged-concept-bulk-mixture-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-bulk-mixture-review-v3",
+      "logicalId": "staged-concept-bulk-mixture-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-apply-v2",
+      "logicalId": "staged-concept-rna-protein-apply",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-remediation-v2",
+      "logicalId": "staged-concept-rna-protein-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-rna-protein-review-v2",
+      "logicalId": "staged-concept-rna-protein-review",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-remediation-v3",
+      "logicalId": "staged-concept-pseudobulk-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-pseudobulk-review-v2",
+      "logicalId": "staged-concept-pseudobulk-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-apply-v2",
+      "logicalId": "staged-concept-alternative-explanation-apply",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-remediation-v2",
+      "logicalId": "staged-concept-alternative-explanation-remediation",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-alternative-explanation-review-v2",
+      "logicalId": "staged-concept-alternative-explanation-review",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-remediation-v3",
+      "logicalId": "staged-concept-claim-boundary-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-claim-boundary-review-v3",
+      "logicalId": "staged-concept-claim-boundary-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-robustness-remediation-v3",
+      "logicalId": "staged-concept-robustness-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-robustness-review-v3",
+      "logicalId": "staged-concept-robustness-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-apply-v2",
+      "logicalId": "staged-concept-triangulation-apply",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-remediation-v3",
+      "logicalId": "staged-concept-triangulation-remediation",
+      "taskContract": "integrated_judgment",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-triangulation-review-v2",
+      "logicalId": "staged-concept-triangulation-review",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-remediation-v3",
+      "logicalId": "staged-concept-minimal-sufficient-analysis-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-review-v2",
+      "logicalId": "staged-concept-minimal-sufficient-analysis-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-apply-v3",
+      "logicalId": "staged-concept-evidence-redundancy-apply",
+      "taskContract": "integrated_judgment",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-remediation-v3",
+      "logicalId": "staged-concept-evidence-redundancy-remediation",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "key_check",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-evidence-redundancy-review-v2",
+      "logicalId": "staged-concept-evidence-redundancy-review",
+      "taskContract": "choose_next_evidence",
+      "expectedActionKey": "change_mind",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-apply-v3",
+      "logicalId": "staged-concept-negative-result-apply",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-remediation-v3",
+      "logicalId": "staged-concept-negative-result-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-negative-result-review-v3",
+      "logicalId": "staged-concept-negative-result-review",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-remediation-v3",
+      "logicalId": "staged-concept-ai-cognitive-outsourcing-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-review-v2",
+      "logicalId": "staged-concept-ai-cognitive-outsourcing-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-remediation-v3",
+      "logicalId": "staged-method-differential-analysis-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "key_check",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-method-differential-analysis-review-v2",
+      "logicalId": "staged-method-differential-analysis-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-correlation-remediation-v2",
+      "logicalId": "staged-method-correlation-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "key_check",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-correlation-review-v2",
+      "logicalId": "staged-method-correlation-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-remediation-v3",
+      "logicalId": "staged-method-linear-regression-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-linear-regression-review-v2",
+      "logicalId": "staged-method-linear-regression-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-remediation-v3",
+      "logicalId": "staged-method-logistic-regression-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-logistic-regression-review-v2",
+      "logicalId": "staged-method-logistic-regression-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-remediation-v3",
+      "logicalId": "staged-method-cox-regression-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-cox-regression-review-v2",
+      "logicalId": "staged-method-cox-regression-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-remediation-v3",
+      "logicalId": "staged-method-kaplan-logrank-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-kaplan-logrank-review-v3",
+      "logicalId": "staged-method-kaplan-logrank-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-remediation-v3",
+      "logicalId": "staged-method-restricted-cubic-spline-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-restricted-cubic-spline-review-v3",
+      "logicalId": "staged-method-restricted-cubic-spline-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-remediation-v3",
+      "logicalId": "staged-method-bootstrap-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-bootstrap-review-v3",
+      "logicalId": "staged-method-bootstrap-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-remediation-v3",
+      "logicalId": "staged-method-roc-auc-remediation",
+      "taskContract": "classification",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-method-roc-auc-review-v3",
+      "logicalId": "staged-method-roc-auc-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_ambiguity_repaired"
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-remediation-v3",
+      "logicalId": "staged-method-time-dependent-auc-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-time-dependent-auc-review-v2",
+      "logicalId": "staged-method-time-dependent-auc-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-pca-remediation-v3",
+      "logicalId": "staged-method-pca-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-pca-review-v2",
+      "logicalId": "staged-method-pca-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-nmf-remediation-v3",
+      "logicalId": "staged-method-nmf-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-nmf-review-v3",
+      "logicalId": "staged-method-nmf-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-clustering-remediation-v3",
+      "logicalId": "staged-method-clustering-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-clustering-review-v2",
+      "logicalId": "staged-method-clustering-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-wgcna-remediation-v3",
+      "logicalId": "staged-method-wgcna-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-wgcna-review-v3",
+      "logicalId": "staged-method-wgcna-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-remediation-v3",
+      "logicalId": "staged-method-pseudobulk-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-pseudobulk-review-v2",
+      "logicalId": "staged-method-pseudobulk-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "boundary",
+      "basis": "external_blind_agree"
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-remediation-v3",
+      "logicalId": "staged-method-differential-abundance-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-differential-abundance-review-v3",
+      "logicalId": "staged-method-differential-abundance-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-remediation-v3",
+      "logicalId": "staged-method-trajectory-pseudotime-remediation",
+      "taskContract": "error_localization",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    },
+    {
+      "assessmentId": "staged-method-trajectory-pseudotime-review-v3",
+      "logicalId": "staged-method-trajectory-pseudotime-review",
+      "taskContract": "claim_rewrite",
+      "expectedActionKey": "decision",
+      "basis": "external_blind_disagreement_adjudicated"
+    }
+  ],
+  "errors": []
+}

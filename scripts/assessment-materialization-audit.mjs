@@ -13,16 +13,18 @@ const obviousDistractorCue = /(?:P|q)\s*[<≤=].*(?:证明|确证|必然)|(?:AI|
 const obviousDistractorFlags = [];
 const duplicateDistractorFlags = [];
 const materialSpecificityFlags = [];
+const expectedContentVersion = (asset) => asset.id.endsWith("-v3") ? "m019.1c" : "m019.1";
 
 for (const lesson of lessons) {
   const assets = [lesson.primaryApply, lesson.remediation, lesson.delayedReview];
   for (const asset of assets) {
     const material = asset.materialization;
-    if (!material || material.contentVersion !== "m019.1") { errors.push(`${asset.id} lacks M019.1 materialization`); continue; }
+    if (!material || material.contentVersion !== expectedContentVersion(asset)) { errors.push(`${asset.id} lacks matching assessment-version materialization`); continue; }
     if (material.independentFactsCn.length < 3 || material.independentFactsCn.length > 7 || new Set(material.independentFactsCn.map((fact) => fact.replace(/\s/g, ""))).size !== material.independentFactsCn.length) errors.push(`${asset.id} requires 3-7 distinct independent facts`);
     if (material.independentFactsCn.some((fact) => fact.trim().length < 10) || material.independentFactsCn.filter((fact) => concreteData.test(fact)).length < 2) materialSpecificityFlags.push(asset.id);
     if (!material.diseaseAreaCn || !material.studyDesignCn || !material.dataModalityCn || !material.representationPurposeCn) errors.push(`${asset.id} lacks context or representation purpose`);
-    if (material.authorRationaleCn.length !== asset.expectedOptionIds.length) errors.push(`${asset.id} rationale count does not match the author answer`);
+    const answerRationales = material.authorRationaleCn.filter((text) => /^(decision|key_check|boundary|change_mind):/.test(text));
+    if (answerRationales.length !== asset.expectedOptionIds.length || asset.expectedOptionIds.some((id) => answerRationales.filter((text) => id.endsWith(`-${text.split(":")[0]}`)).length !== 1)) errors.push(`${asset.id} rationale count does not match the author answer`);
     if (!validContracts.has(asset.taskContract)) errors.push(`${asset.id} has an invalid task contract`);
     if (asset.expectedOptionIds.length < 1 || asset.expectedOptionIds.length > 4) errors.push(`${asset.id} has a non-discriminating correct-answer count`);
     if (asset.options.length < asset.expectedOptionIds.length + 2) errors.push(`${asset.id} lacks two plausible distractors`);
@@ -71,7 +73,7 @@ if (multiFactEvidenceMappings < Math.ceil(assessments.length * 0.20)) errors.pus
 if (materialSpecificityFlags.length) errors.push(`material specificity flags remain: ${materialSpecificityFlags.join(", ")}`);
 if (obviousDistractorFlags.length) errors.push(`${obviousDistractorFlags.length} obvious distractor cues remain`);
 if (duplicateDistractorFlags.length) errors.push(`duplicate distractors within assessments: ${duplicateDistractorFlags.join(", ")}`);
-const report = { schemaVersion: 3, status: errors.length ? "FAIL" : "PASS", counts: { lessons: lessons.length, assessments: assessments.length, caseLabs: stagedCaseLabs.length, fullyMaterialized: assessments.filter((asset) => asset.materialization?.contentVersion === "m019.1").length, correctCountDistribution, taskContractDistribution, roleContractDistribution, roleContractTypes, instantiatedContractTypes, variableFactCountAssessments, multiFactEvidenceMappings, obviousDistractorFlags: obviousDistractorFlags.length, duplicateDistractorFlags: duplicateDistractorFlags.length, materialSpecificityFlags: materialSpecificityFlags.length }, obviousDistractorFlags, duplicateDistractorFlags, materialSpecificityFlags, errors };
+const report = { schemaVersion: 3, status: errors.length ? "FAIL" : "PASS", counts: { lessons: lessons.length, assessments: assessments.length, caseLabs: stagedCaseLabs.length, fullyMaterialized: assessments.filter((asset) => asset.materialization?.contentVersion === expectedContentVersion(asset)).length, correctCountDistribution, taskContractDistribution, roleContractDistribution, roleContractTypes, instantiatedContractTypes, variableFactCountAssessments, multiFactEvidenceMappings, obviousDistractorFlags: obviousDistractorFlags.length, duplicateDistractorFlags: duplicateDistractorFlags.length, materialSpecificityFlags: materialSpecificityFlags.length }, obviousDistractorFlags, duplicateDistractorFlags, materialSpecificityFlags, errors };
 await mkdir(path.resolve("artifacts"), { recursive: true });
 await writeFile(path.resolve("artifacts/assessment-materialization-audit.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(`Assessment materialization audit: ${report.status} (${report.counts.fullyMaterialized}/${assessments.length})`);

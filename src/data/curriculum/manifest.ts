@@ -3,7 +3,7 @@ import type { CurriculumClaimV1, CurriculumContentType, CurriculumManifestItemV1
 import { canonicalJson, sha256 } from "../../services/contentStudio";
 import { evidenceById } from "../evidence";
 import { selfRescueGuideHashes, selfRescueGuideSections } from "../self-rescue-guide";
-import { stagedConceptLessons } from "./concepts";
+import { stagedConceptLessons, stagedConceptLessonsM0191b } from "./concepts";
 import { stagedCaseLabs, studioTemplates } from "./cases";
 import { stagedMethodLessons } from "./methods";
 
@@ -76,7 +76,8 @@ const claim = (contentId: string, claimCn: string, sourceIds: string[], suffix: 
 
 export const curriculumClaims: CurriculumClaimV1[] = [
   ...selfRescueGuideSections.map((section) => claim(section.id, section.summaryCn, section.evidenceSourceIds, "guide-summary")),
-  ...stagedConceptLessons.map((lesson) => claim(lesson.id, lesson.primaryApply.maximumConclusionCn, lesson.sourceIds, "concept-boundary")),
+  // Pedagogical assessment repairs cannot silently rewrite existing canonical claims.
+  ...stagedConceptLessonsM0191b.map((lesson) => claim(lesson.id, lesson.primaryApply.maximumConclusionCn, lesson.sourceIds, "concept-boundary")),
   ...stagedMethodLessons.map((lesson) => claim(lesson.id, lesson.coreLogicCn, lesson.sourceIds, "method-core")),
   ...stagedCaseLabs.map((caseLab) => claim(caseLab.id, caseLab.stages.at(-1)?.calibrationCn ?? caseLab.initialContextCn, caseLab.sourceIds, "case-calibration")),
 ];

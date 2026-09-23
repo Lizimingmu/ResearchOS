@@ -132,16 +132,6 @@ function buildInitialKnowledgeWorkspace(completeMappings = true, includeCurrentA
     workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "method_lesson", known([lesson.id])));
     if ("primaryApply" in lesson) for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
   }
-  if (includeCurrentAssessmentRevisions) {
-    for (const lesson of stagedConceptLessons) {
-      workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "concept_lesson", known([lesson.id])));
-      for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
-    }
-    for (const lesson of stagedMethodLessons) {
-      workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "method_lesson", known([lesson.id])));
-      for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
-    }
-  }
   for (const kernel of kernels) workspace.learningBindings.push(makeKnowledgeLearningBinding(kernel, kernel.id === "method-cox-v1" ? "method_lesson" : "concept_lesson", known([kernelKnowledgeIds.get(kernel.id)!])));
   // Legacy review/calibration uses conceptId or methodId instead of lesson IDs.
   // These aliases come from explicit registry fields, never title similarity.
@@ -175,6 +165,16 @@ function buildInitialKnowledgeWorkspace(completeMappings = true, includeCurrentA
     workspace.learningBindings.push(makeKnowledgeLearningBinding(item, "case_lab", known([item.id, ...unit.prerequisiteIds])));
   }
   for (const studio of studioTemplates) workspace.learningBindings.push(makeKnowledgeLearningBinding(studio, "studio_task", completeMappings ? known([studio.id]) : [], completeMappings ? [] : ["Studio 原模板没有显式 knowledge/prerequisite/source ID；不靠标签生成依赖。"]));
+  if (includeCurrentAssessmentRevisions) {
+    for (const lesson of stagedConceptLessons) {
+      workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "concept_lesson", known([lesson.id])));
+      for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
+    }
+    for (const lesson of stagedMethodLessons) {
+      workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "method_lesson", known([lesson.id])));
+      for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
+    }
+  }
   workspace.learningBindings = [...new Map(workspace.learningBindings.map((binding) => [`${binding.assetId}:${binding.assetRevision}:${binding.assetHash}`, binding])).values()];
   return workspace;
 }

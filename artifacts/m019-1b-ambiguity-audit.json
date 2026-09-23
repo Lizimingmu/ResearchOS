@@ -3,20 +3,20 @@
   "status": "PASS",
   "counts": {
     "assessments": 183,
-    "singleBest": 109,
+    "singleBest": 108,
     "CLEAR": 183,
     "AMBIGUOUS": 0,
     "AUTHOR_DEPENDENT": 0
   },
   "results": [
     {
-      "assessmentId": "staged-concept-research-question-apply-v2",
+      "assessmentId": "staged-concept-research-question-apply-v3",
       "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-research-question-remediation-v2",
+      "assessmentId": "staged-concept-research-question-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -34,7 +34,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-hypothesis-remediation-v2",
+      "assessmentId": "staged-concept-hypothesis-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -52,31 +52,31 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-evidence-claim-remediation-v2",
+      "assessmentId": "staged-concept-evidence-claim-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-evidence-claim-review-v2",
+      "assessmentId": "staged-concept-evidence-claim-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-association-causation-apply-v2",
+      "assessmentId": "staged-concept-association-causation-apply-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-association-causation-remediation-v2",
+      "assessmentId": "staged-concept-association-causation-remediation-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-association-causation-review-v2",
+      "assessmentId": "staged-concept-association-causation-review-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
@@ -94,7 +94,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-exploratory-confirmatory-review-v2",
+      "assessmentId": "staged-concept-exploratory-confirmatory-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -106,7 +106,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-statistical-unit-remediation-v2",
+      "assessmentId": "staged-concept-statistical-unit-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -124,13 +124,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-biological-technical-replicate-remediation-v2",
+      "assessmentId": "staged-concept-biological-technical-replicate-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-biological-technical-replicate-review-v2",
+      "assessmentId": "staged-concept-biological-technical-replicate-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -154,19 +154,19 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-population-sample-apply-v2",
+      "assessmentId": "staged-concept-population-sample-apply-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-population-sample-remediation-v2",
+      "assessmentId": "staged-concept-population-sample-remediation-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-population-sample-review-v2",
+      "assessmentId": "staged-concept-population-sample-review-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
@@ -190,13 +190,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-selection-bias-apply-v2",
+      "assessmentId": "staged-concept-selection-bias-apply-v3",
       "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-selection-bias-remediation-v2",
+      "assessmentId": "staged-concept-selection-bias-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -232,8 +232,8 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-effect-size-remediation-v2",
-      "taskContract": "error_localization",
+      "assessmentId": "staged-concept-effect-size-remediation-v3",
+      "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
@@ -268,13 +268,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-confidence-interval-remediation-v2",
+      "assessmentId": "staged-concept-confidence-interval-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-confidence-interval-review-v2",
+      "assessmentId": "staged-concept-confidence-interval-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -286,13 +286,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-p-value-remediation-v2",
+      "assessmentId": "staged-concept-p-value-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-p-value-review-v2",
+      "assessmentId": "staged-concept-p-value-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -316,8 +316,8 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-power-apply-v2",
-      "taskContract": "choose_next_evidence",
+      "assessmentId": "staged-concept-power-apply-v3",
+      "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
@@ -334,13 +334,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-interaction-apply-v2",
+      "assessmentId": "staged-concept-interaction-apply-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-interaction-remediation-v2",
+      "assessmentId": "staged-concept-interaction-remediation-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
@@ -358,7 +358,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-overfitting-remediation-v2",
+      "assessmentId": "staged-concept-overfitting-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -406,14 +406,14 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-censoring-apply-v2",
-      "taskContract": "ordering_sequence",
+      "assessmentId": "staged-concept-censoring-apply-v3",
+      "taskContract": "multi_select_audit",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-censoring-remediation-v2",
-      "taskContract": "ordering_sequence",
+      "assessmentId": "staged-concept-censoring-remediation-v3",
+      "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
@@ -430,7 +430,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-hazard-ratio-remediation-v2",
+      "assessmentId": "staged-concept-hazard-ratio-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -442,8 +442,8 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-time-origin-apply-v2",
-      "taskContract": "ordering_sequence",
+      "assessmentId": "staged-concept-time-origin-apply-v3",
+      "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
@@ -466,13 +466,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-composition-state-remediation-v2",
+      "assessmentId": "staged-concept-composition-state-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-composition-state-review-v2",
+      "assessmentId": "staged-concept-composition-state-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -490,7 +490,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-batch-effect-review-v2",
+      "assessmentId": "staged-concept-batch-effect-review-v3",
       "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
@@ -502,13 +502,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-bulk-mixture-remediation-v2",
+      "assessmentId": "staged-concept-bulk-mixture-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-bulk-mixture-review-v2",
+      "assessmentId": "staged-concept-bulk-mixture-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -550,13 +550,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-pseudobulk-apply-v2",
+      "assessmentId": "staged-concept-pseudobulk-apply-v3",
       "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-pseudobulk-remediation-v2",
+      "assessmentId": "staged-concept-pseudobulk-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -610,13 +610,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-claim-boundary-remediation-v2",
+      "assessmentId": "staged-concept-claim-boundary-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-claim-boundary-review-v2",
+      "assessmentId": "staged-concept-claim-boundary-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -628,13 +628,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-robustness-remediation-v2",
+      "assessmentId": "staged-concept-robustness-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-robustness-review-v2",
+      "assessmentId": "staged-concept-robustness-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -646,8 +646,8 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-triangulation-remediation-v2",
-      "taskContract": "choose_next_evidence",
+      "assessmentId": "staged-concept-triangulation-remediation-v3",
+      "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
@@ -664,7 +664,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-minimal-sufficient-analysis-remediation-v2",
+      "assessmentId": "staged-concept-minimal-sufficient-analysis-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -676,13 +676,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-evidence-redundancy-apply-v2",
-      "taskContract": "choose_next_evidence",
+      "assessmentId": "staged-concept-evidence-redundancy-apply-v3",
+      "taskContract": "integrated_judgment",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-evidence-redundancy-remediation-v2",
+      "assessmentId": "staged-concept-evidence-redundancy-remediation-v3",
       "taskContract": "choose_next_evidence",
       "classification": "CLEAR",
       "reasons": []
@@ -694,20 +694,20 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-negative-result-apply-v2",
-      "taskContract": "choose_next_evidence",
+      "assessmentId": "staged-concept-negative-result-apply-v3",
+      "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-negative-result-remediation-v2",
-      "taskContract": "choose_next_evidence",
+      "assessmentId": "staged-concept-negative-result-remediation-v3",
+      "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-negative-result-review-v2",
-      "taskContract": "choose_next_evidence",
+      "assessmentId": "staged-concept-negative-result-review-v3",
+      "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
@@ -718,7 +718,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-concept-ai-cognitive-outsourcing-remediation-v2",
+      "assessmentId": "staged-concept-ai-cognitive-outsourcing-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -736,7 +736,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-differential-analysis-remediation-v2",
+      "assessmentId": "staged-method-differential-analysis-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -772,7 +772,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-linear-regression-remediation-v2",
+      "assessmentId": "staged-method-linear-regression-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -790,7 +790,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-logistic-regression-remediation-v2",
+      "assessmentId": "staged-method-logistic-regression-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -808,7 +808,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-cox-regression-remediation-v2",
+      "assessmentId": "staged-method-cox-regression-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -826,13 +826,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-kaplan-logrank-remediation-v2",
+      "assessmentId": "staged-method-kaplan-logrank-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-kaplan-logrank-review-v2",
+      "assessmentId": "staged-method-kaplan-logrank-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -844,13 +844,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-restricted-cubic-spline-remediation-v2",
+      "assessmentId": "staged-method-restricted-cubic-spline-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-restricted-cubic-spline-review-v2",
+      "assessmentId": "staged-method-restricted-cubic-spline-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -862,13 +862,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-bootstrap-remediation-v2",
+      "assessmentId": "staged-method-bootstrap-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-bootstrap-review-v2",
+      "assessmentId": "staged-method-bootstrap-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -898,13 +898,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-roc-auc-remediation-v2",
-      "taskContract": "error_localization",
+      "assessmentId": "staged-method-roc-auc-remediation-v3",
+      "taskContract": "classification",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-roc-auc-review-v2",
+      "assessmentId": "staged-method-roc-auc-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -916,7 +916,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-time-dependent-auc-remediation-v2",
+      "assessmentId": "staged-method-time-dependent-auc-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -934,7 +934,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-pca-remediation-v2",
+      "assessmentId": "staged-method-pca-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -952,13 +952,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-nmf-remediation-v2",
+      "assessmentId": "staged-method-nmf-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-nmf-review-v2",
+      "assessmentId": "staged-method-nmf-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -970,7 +970,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-clustering-remediation-v2",
+      "assessmentId": "staged-method-clustering-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -1024,13 +1024,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-wgcna-remediation-v2",
+      "assessmentId": "staged-method-wgcna-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-wgcna-review-v2",
+      "assessmentId": "staged-method-wgcna-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -1042,7 +1042,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-pseudobulk-remediation-v2",
+      "assessmentId": "staged-method-pseudobulk-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
@@ -1060,13 +1060,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-differential-abundance-remediation-v2",
+      "assessmentId": "staged-method-differential-abundance-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-differential-abundance-review-v2",
+      "assessmentId": "staged-method-differential-abundance-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -1078,13 +1078,13 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-trajectory-pseudotime-remediation-v2",
+      "assessmentId": "staged-method-trajectory-pseudotime-remediation-v3",
       "taskContract": "error_localization",
       "classification": "CLEAR",
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-trajectory-pseudotime-review-v2",
+      "assessmentId": "staged-method-trajectory-pseudotime-review-v3",
       "taskContract": "claim_rewrite",
       "classification": "CLEAR",
       "reasons": []
@@ -1102,7 +1102,7 @@
       "reasons": []
     },
     {
-      "assessmentId": "staged-method-cellchat-communication-review-v2",
+      "assessmentId": "staged-method-cellchat-communication-review-v3",
       "taskContract": "multi_select_audit",
       "classification": "CLEAR",
       "reasons": []
