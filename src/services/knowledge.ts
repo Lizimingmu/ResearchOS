@@ -217,8 +217,7 @@ function auditKnowledgeWorkspaceUnchecked(value: unknown): KnowledgeAudit {
     else if (canonicalJson([...unique(b.knowledgeUnitIds)].sort()) !== canonicalJson(unique(b.knowledgeRevisionBindings.map((x) => x.knowledgeUnitId)).sort())) groups.learning_binding.push(`learning ${k} knowledgeUnitIds 与精确绑定不一致`);
     if (!["guide", "concept_lesson", "method_lesson", "protocol_lesson", "assessment", "case_lab", "studio_task"].includes(b.kind)) groups.learning_binding.push(`learning ${k} kind无效`);
     if (!Array.isArray(b.knowledgeRevisionBindings) || !b.knowledgeRevisionBindings.length) {
-      if (b.migrationStatus === "REVIEW_REQUIRED" && strings(b.reviewGaps) && b.reviewGaps.length) warnings.push(`unresolved migration learning ${k} 没有知识绑定，保留显式审核缺口。`);
-      else groups.learning_binding.push(`orphan learning ${k} 没有知识绑定`);
+      groups.learning_binding.push(`orphan learning ${k} 没有精确 KnowledgeUnit 绑定；M020.1 后不再允许用 warning 代替 canonical mapping。`);
     }
   }
   for (const p of w.projections) {

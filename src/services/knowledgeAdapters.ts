@@ -1,6 +1,7 @@
-import type { ConceptLessonV1, MethodLessonV1 } from "../domain/learningArchitecture";
-import type { StagedConceptLessonV1, StagedMethodLessonV1, CurriculumClaimV1 } from "../domain/curriculum";
+import type { ConceptLessonV1, MethodLessonV1, ResearchGuideSectionV1 } from "../domain/learningArchitecture";
+import type { StagedConceptLessonV1, StagedMethodLessonV1, CurriculumClaimV1, StudioTemplateV1 } from "../domain/curriculum";
 import type { LearningUnitV1 } from "../domain/learningKernel";
+import type { MethodConcept } from "../domain/types";
 import type {
   KnowledgeUnit, KnowledgeEvidenceSource, KnowledgeEvidenceClaim, KnowledgeLearningBinding,
   KnowledgeOrigin, KnowledgeEvidenceLink, KnowledgeLearningKind, KnowledgeWorkspace,
@@ -137,6 +138,66 @@ export function adaptMethodLesson(lesson: MethodLessonV1 | StagedMethodLessonV1,
     commonMisuse: [...lesson.misusePatternsCn], reviewerChecks: [...lesson.reviewerChecksCn], paperAppearance: lesson.paperAppearanceCn,
   };
   return finishMigration(unit, lesson, now, claims, ["whyItMatters/domain：原课未提供可无歧义映射的字段。", "parameters/diagnostics：不把 reviewerChecks 猜作已指定参数或诊断方案。", "failureModes/alternativeExplanations：须科学审核补充。", "freshnessClass/复核日期/逐主张支持范围待确认。"]);
+}
+
+
+export function adaptLegacyMethodConcept(method: MethodConcept, claims: KnowledgeEvidenceClaim[], now: string): KnowledgeUnit {
+  const unit = createKnowledgeTemplate("method", { id: method.id, title: method.title, now, contentOrigin: method.contentOrigin });
+  if (unit.knowledgeType !== "method") throw new Error("Legacy method template mismatch");
+  unit.domain = [method.domain];
+  unit.scientificQuestion = "";
+  unit.whyItMatters = method.whyItMatters;
+  unit.preciseExplanation = [method.coreConcept];
+  unit.boundaries = [method.whenNotToUse].filter(Boolean);
+  unit.misconceptions = [method.commonWrongPractice].filter(Boolean);
+  unit.method = {
+    algorithmOrStatisticalLogic: method.coreConcept,
+    parameters: [],
+    diagnostics: [],
+    appropriateWhen: [method.whenToUse].filter(Boolean),
+    inappropriateWhen: [method.whenNotToUse].filter(Boolean),
+    commonMisuse: [method.commonWrongPractice].filter(Boolean),
+    reviewerChecks: [method.reviewerAttack].filter(Boolean),
+    paperAppearance: "",
+  };
+  return finishMigration(unit, method, now, claims, [
+    "M020.1 self-canonical snapshot：该 legacy method 绑定到自身不可变 KnowledgeUnit，不与其他课程按标题猜测等价。",
+    "scientificQuestion/inputs/outputs/assumptions/parameters/diagnostics/paperAppearance：原资产未提供明确结构化字段。",
+    "逐主张支持范围、freshnessClass 与复核日期仍需正式科学审核。",
+  ]);
+}
+
+export function adaptGuideSectionSnapshot(guide: ResearchGuideSectionV1, claims: KnowledgeEvidenceClaim[], now: string): KnowledgeUnit {
+  const unit = createKnowledgeTemplate("research_pattern", { id: guide.id, title: guide.titleCn, now, contentOrigin: guide.contentOrigin });
+  if (unit.knowledgeType !== "research_pattern") throw new Error("Guide snapshot template mismatch");
+  unit.aliases = [guide.titleEn].filter(Boolean);
+  unit.domain = [guide.chapterId];
+  unit.whyItMatters = guide.summaryCn;
+  unit.preciseExplanation = [guide.summaryCn, ...guide.bodyCn].filter(Boolean);
+  unit.pattern = { context: guide.summaryCn, evidenceLogic: [...guide.bodyCn], applicability: [] };
+  return finishMigration(unit, guide, now, claims, [
+    "M020.1 self-canonical snapshot：该 Guide section 只绑定自身历史正文，不按标题推断其与其他 Concept/Method 等价。",
+    "scientificQuestion/assumptions/boundaries/applicability：原 Guide 未提供可无歧义迁移的结构化字段。",
+    "knowledgeType 暂以 research_pattern 承载历史教学正文；后续可经人工审核提升为更具体类型。",
+    "逐主张支持范围、freshnessClass 与复核日期仍需正式科学审核。",
+  ]);
+}
+
+export function adaptStudioTemplateSnapshot(studio: StudioTemplateV1, now: string): KnowledgeUnit {
+  const unit = createKnowledgeTemplate("research_pattern", { id: studio.id, title: studio.titleCn, now, contentOrigin: studio.contentOrigin });
+  if (unit.knowledgeType !== "research_pattern") throw new Error("Studio snapshot template mismatch");
+  unit.domain = [studio.studioType];
+  unit.whyItMatters = studio.purposeCn;
+  unit.preciseExplanation = studio.fields.map((field) => `${field.labelCn}：${field.promptCn}`);
+  unit.pattern = {
+    context: studio.purposeCn,
+    evidenceLogic: studio.fields.map((field) => `${field.labelCn}：${field.promptCn}`),
+    applicability: [],
+  };
+  return finishMigration(unit, studio, now, [], [
+    "M020.1 self-canonical snapshot：Studio template 绑定自身不可变 KnowledgeUnit；未从字段名称猜测其他科学知识依赖。",
+    "Studio 是训练结构而非独立科学结论；evidenceLinks、适用域与逐主张科学依据仍待人工补充。",
+  ]);
 }
 
 export function adaptKernelConcept(lesson: LearningUnitV1, claims: KnowledgeEvidenceClaim[], now: string): KnowledgeUnit {

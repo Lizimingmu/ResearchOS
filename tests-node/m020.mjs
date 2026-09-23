@@ -277,14 +277,36 @@ test("M020 templates: all six types are structurally valid pending scientific re
   }
 });
 
+test("M020.1 canonical mapping: every built-in learning asset has an exact KnowledgeUnit owner", () => {
+  const workspace = createInitialKnowledgeWorkspace();
+  assert.equal(workspace.learningBindings.filter((item) => !item.knowledgeRevisionBindings.length).length, 0);
+  for (const assetId of ["guide-v1-m01-t01", "studio-project-definition", "dag-adjustment"]) {
+    const binding = workspace.learningBindings.find((item) => item.assetId === assetId);
+    assert.ok(binding, assetId);
+    assert.ok(binding.knowledgeRevisionBindings.length, assetId);
+    for (const bound of binding.knowledgeRevisionBindings) {
+      assert.ok(workspace.units.some((unit) => unit.id === bound.knowledgeUnitId && unit.revision === bound.revision && unit.hash === bound.hash), `${assetId} has a dangling canonical owner`);
+    }
+  }
+  const guideBinding = workspace.learningBindings.find((item) => item.assetId === "guide-v1-m01-t01");
+  const guideUnit = workspace.units.find((item) => item.id === guideBinding.knowledgeRevisionBindings[0].knowledgeUnitId);
+  assert.equal(guideUnit.migrationStatus, "REVIEW_REQUIRED");
+  const candidate = proposeKnowledgeChange(workspace, { id: "m0201-guide-update", operation: "revise", target: ref(guideUnit), unit: guideUnit, now, reason: "验证 canonical owner 更新会暂停其历史教学投影" });
+  const impact = previewKnowledgeImpact(workspace, candidate);
+  assert.ok(impact.affectedGuides.includes(guideBinding.assetId));
+  const next = apply(workspace, candidate);
+  assert.equal(isKnowledgeLearningAllowed(next, guideBinding.assetId, guideBinding.assetRevision, guideBinding.assetHash), false);
+});
+
 test("M020 migration: canonical seed and all seven audits are deterministic", () => {
   const a = createInitialKnowledgeWorkspace(), b = createInitialKnowledgeWorkspace();
   assert.deepEqual(a, b);
   const audit = auditKnowledgeWorkspace(a);
   assert.equal(audit.ok, true, audit.errors.join("\n"));
   assert.equal(Object.keys(audit.groups).length, 7);
-  assert.ok(a.units.length >= 64);
+  assert.ok(a.units.length >= 350);
   assert.ok(a.learningBindings.length >= 297);
+  assert.equal(a.learningBindings.filter((item) => !item.knowledgeRevisionBindings.length).length, 0);
   assert.ok(a.units.every((unit) => unit.provenance.originalPayload !== undefined));
   assert.ok(a.units.filter((unit) => unit.contentOrigin === "ai_generated").every((unit) => unit.verificationStatus === "pending" && unit.lifecycle !== "active"));
   a.units[0].title = "independent clone";

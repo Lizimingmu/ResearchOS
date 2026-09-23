@@ -1,7 +1,8 @@
 import type { KnowledgeWorkspace, KnowledgeEvidenceClaim } from "../domain/knowledge";
 import { createKnowledgeTemplate, emptyKnowledgeWorkspace, knowledgeHash } from "../services/knowledge";
 import {
-  adaptConceptLesson, adaptCurriculumClaim, adaptEvidenceSource, adaptKernelConcept, adaptMethodLesson,
+  adaptConceptLesson, adaptCurriculumClaim, adaptEvidenceSource, adaptGuideSectionSnapshot, adaptKernelConcept,
+  adaptLegacyMethodConcept, adaptMethodLesson, adaptStudioTemplateSnapshot,
   evidenceLinksFor, makeKnowledgeLearningBinding, makeMigratedClaim,
 } from "../services/knowledgeAdapters";
 import { evidenceSources } from "./evidence";
@@ -66,6 +67,20 @@ function buildInitialKnowledgeWorkspace(): KnowledgeWorkspace {
   }
   for (const lesson of stagedConceptLessons) workspace.units.push(adaptConceptLesson(lesson, relatedClaims(lesson.id), now));
   for (const lesson of stagedMethodLessons) workspace.units.push(adaptMethodLesson(lesson, relatedClaims(lesson.id), now));
+  const explicitlyBridgedLegacyMethodIds = new Set([
+    ...conceptLessons.map((lesson) => lesson.conceptId),
+    ...methodLessons.map((lesson) => lesson.methodId),
+    "cox-ph",
+  ]);
+  for (const original of methodConcepts.filter((item) => !explicitlyBridgedLegacyMethodIds.has(item.id))) {
+    const claim = addLegacyClaim(original.id, original.coreConcept, original.sourceIds, original);
+    workspace.units.push(adaptLegacyMethodConcept(original, [claim], now));
+  }
+  for (const guide of guideSections) {
+    const hasExplicitLessonOwner = [...guideIdsByKnowledge.values()].some((guideIds) => guideIds.includes(guide.id));
+    if (!hasExplicitLessonOwner) workspace.units.push(adaptGuideSectionSnapshot(guide, claimsByContent.get(guide.id) ?? [], now));
+  }
+  for (const studio of studioTemplates) workspace.units.push(adaptStudioTemplateSnapshot(studio, now));
   for (const kernel of kernels.filter((item) => !kernelKnowledgeIds.has(item.id))) {
     workspace.units.push(adaptKernelConcept(kernel, [kernelClaims.get(kernel.id)!], now));
     kernelKnowledgeIds.set(kernel.id, kernel.id);
@@ -123,10 +138,10 @@ function buildInitialKnowledgeWorkspace(): KnowledgeWorkspace {
   for (const original of methodConcepts.filter((item) => !workspace.learningBindings.some((binding) => binding.assetId === item.id))) {
     // Root independently reviewed this legacy identifier bridge against both
     // records and src-cox. It propagates maintenance holds, not text equivalence.
-    const ids = original.id === "cox-ph" ? ["method-cox-v1"] : [];
+    const ids = original.id === "cox-ph" ? ["method-cox-v1"] : [original.id];
     const gaps = original.id === "cox-ph"
       ? ["M020 root review：cox-ph → method-cox-v1 仅为保守维护影响桥接；两篇正文未被判定为逐主张等价。"]
-      : ["旧 Methods 资产尚无明确 canonical KnowledgeUnit 对应；保留原课程行为并列为未解析迁移项。"];
+      : [];
     workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...original, lifecycle: original.status === "usable" ? "active" : "pending_review" }, "method_lesson", known(ids), gaps, original));
   }
   const assets = [...new Map([...practiceAssets, ...learningArchitecturePracticeAssets].map((asset) => [asset.id, asset])).values()];
@@ -137,13 +152,13 @@ function buildInitialKnowledgeWorkspace(): KnowledgeWorkspace {
   }
   for (const guide of guideSections) {
     const ids = [...guideIdsByKnowledge.entries()].filter(([, guideIds]) => guideIds.includes(guide.id)).map(([id]) => id);
-    workspace.learningBindings.push(makeKnowledgeLearningBinding(guide, "guide", known(ids)));
+    workspace.learningBindings.push(makeKnowledgeLearningBinding(guide, "guide", known(ids.length ? ids : [guide.id])));
   }
   for (const item of [...researchCases, ...stagedCaseLabs]) {
     const unit = byId.get(item.id)!;
     workspace.learningBindings.push(makeKnowledgeLearningBinding(item, "case_lab", known([item.id, ...unit.prerequisiteIds])));
   }
-  for (const studio of studioTemplates) workspace.learningBindings.push(makeKnowledgeLearningBinding(studio, "studio_task", [], ["Studio 原模板没有显式 knowledge/prerequisite/source ID；不靠标签生成依赖。"]));
+  for (const studio of studioTemplates) workspace.learningBindings.push(makeKnowledgeLearningBinding(studio, "studio_task", known([studio.id])));
   workspace.learningBindings = [...new Map(workspace.learningBindings.map((binding) => [`${binding.assetId}:${binding.assetRevision}:${binding.assetHash}`, binding])).values()];
   return workspace;
 }
