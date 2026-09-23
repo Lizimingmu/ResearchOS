@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { stagedConceptLessons, stagedMethodLessons } from "../.build/data/curriculum/index.js";
 
-export const expectedAssessmentSourceCommitSha = "886a1462128adb83d850c70efd8aeb799bb5bf0c";
+export const expectedAssessmentSourceCommitSha = "70e88bf540e783961c03230a5f3df547faf65708";
 export const stableJson = (value) => JSON.stringify(value, (_key, child) => child && typeof child === "object" && !Array.isArray(child)
   ? Object.fromEntries(Object.entries(child).sort(([left], [right]) => left.localeCompare(right)))
   : child);

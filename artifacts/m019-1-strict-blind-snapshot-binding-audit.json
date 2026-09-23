@@ -8,10 +8,10 @@
     "mismatches": 0
   },
   "hashes": {
-    "sourceCommitSha": "195b53cc1d33f0c15364017041e88a448179415d",
-    "stagedAssessmentSnapshotHash": "4f66e9c7b3001e52ac4550bc4864504459439898f0891a5ff3b50a3d7133539d",
-    "strictBlindPacketHash": "7dd0f335ae73f4e9668d871016cd732ddbeabc5788d4b4e663848d676af14290",
-    "recomputedStrictBlindPacketHash": "7dd0f335ae73f4e9668d871016cd732ddbeabc5788d4b4e663848d676af14290"
+    "sourceCommitSha": "70e88bf540e783961c03230a5f3df547faf65708",
+    "stagedAssessmentSnapshotHash": "6d1992819d5a4478598c03e989427f73d02dae78a8d66e5ce9b88e6a46aa69b1",
+    "strictBlindPacketHash": "dc4ad6a03724a1c826d7e7c4e455f1acb4918437e39f54b2bf62489db32e1bde",
+    "recomputedStrictBlindPacketHash": "dc4ad6a03724a1c826d7e7c4e455f1acb4918437e39f54b2bf62489db32e1bde"
   },
   "mismatches": [],
   "errors": []
