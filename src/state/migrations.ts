@@ -1,9 +1,9 @@
 import type { AppStateData, ReviewItem, SkillEvidence } from "../domain/types";
 import { auditKnowledgeWorkspace, completeM020KnowledgeMappings } from "../services/knowledge";
-import { createM020KnowledgeBaseline } from "../data/knowledge";
+import { createM0201KnowledgeBaseline, createM020KnowledgeBaseline } from "../data/knowledge";
 import { canonicalJson } from "../services/contentStudio";
 
-export const CURRENT_STATE_SCHEMA = 9;
+export const CURRENT_STATE_SCHEMA = 10;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -29,8 +29,18 @@ export function migratePersistedState(raw: unknown, defaults: AppStateData): App
   }
 
   const settings = isRecord(raw.settings) ? raw.settings : {};
-  const knowledgeWorkspace = raw.knowledgeWorkspace === undefined ? undefined
-    : completeM020KnowledgeMappings(raw.knowledgeWorkspace, createM020KnowledgeBaseline(), defaults.knowledgeWorkspace);
+  let knowledgeWorkspace = raw.knowledgeWorkspace === undefined ? undefined
+    : completeM020KnowledgeMappings(raw.knowledgeWorkspace, createM020KnowledgeBaseline(), createM0201KnowledgeBaseline());
+  if (knowledgeWorkspace && sourceVersion < 10) {
+    const oldSeed = createM0201KnowledgeBaseline(), currentSeed = defaults.knowledgeWorkspace;
+    const current = knowledgeWorkspace as AppStateData["knowledgeWorkspace"];
+    const exactPrefix = (expected: unknown[], actual: unknown[]) => expected.every((item, index) => canonicalJson(item) === canonicalJson(actual[index]));
+    if (exactPrefix(oldSeed.units, current.units) && exactPrefix(oldSeed.sources, current.sources) && exactPrefix(oldSeed.claims, current.claims) && exactPrefix(oldSeed.learningBindings, current.learningBindings)) {
+      const extras = current.learningBindings.slice(oldSeed.learningBindings.length);
+      const currentKeys = new Set(currentSeed.learningBindings.map((item) => canonicalJson(item)));
+      knowledgeWorkspace = { ...current, learningBindings: [...structuredClone(currentSeed.learningBindings), ...extras.filter((item) => !currentKeys.has(canonicalJson(item)))] };
+    }
+  }
   // A malformed canonical history is never silently replaced by today's seed.
   if (raw.knowledgeWorkspace !== undefined) {
     const audit = auditKnowledgeWorkspace(knowledgeWorkspace);

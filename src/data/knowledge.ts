@@ -13,6 +13,8 @@ import {
 import { learningUnits, practiceAssets, practiceAssetBindings } from "./learningUnits";
 import { methodConcepts } from "./methods";
 import { curriculumClaims, stagedConceptLessons, stagedMethodLessons, stagedCaseLabs, studioTemplates } from "./curriculum";
+import { stagedConceptLessonsM0191b } from "./curriculum/concepts";
+import { stagedMethodLessonsM0191b } from "./curriculum/methods";
 import protocolExamples from "../../data/knowledge/protocol-staging-examples.json";
 
 export const KNOWLEDGE_MIGRATION_AT = "2026-09-22T00:00:00+08:00";
@@ -22,7 +24,9 @@ export interface BuiltInProtocolImport {
 /** Mechanical excerpts of the existing staging corpus; never active lesson seeds. */
 export const builtInProtocolImports: BuiltInProtocolImport[] = protocolExamples.map((example) => ({ ...example, knowledgeType: "protocol" }));
 
-function buildInitialKnowledgeWorkspace(completeMappings = true): KnowledgeWorkspace {
+function buildInitialKnowledgeWorkspace(completeMappings = true, includeCurrentAssessmentRevisions = true): KnowledgeWorkspace {
+  const canonicalConceptLessons = stagedConceptLessonsM0191b;
+  const canonicalMethodLessons = stagedMethodLessonsM0191b;
   const workspace = emptyKnowledgeWorkspace();
   const now = KNOWLEDGE_MIGRATION_AT;
   workspace.sources = evidenceSources.map((source) => adaptEvidenceSource(source, now, true));
@@ -44,8 +48,8 @@ function buildInitialKnowledgeWorkspace(completeMappings = true): KnowledgeWorks
   const kernelClaims = new Map(kernels.map((kernel) => [kernel.id, addLegacyClaim(`kernel-${kernel.id}`, kernel.blocks.map((block) => block.bodyCn).join("\n") || kernel.learningObjectives.join("\n"), kernel.evidenceSourceIds, kernel)]));
   const guideIdsByKnowledge = new Map<string, string[]>();
   for (const lesson of conceptLessons) guideIdsByKnowledge.set(lesson.id, guideSections.filter((guide) => guide.links.some((link) => link.type === "concept_lesson" && link.targetId === lesson.id)).map((guide) => guide.id));
-  for (const lesson of stagedConceptLessons) guideIdsByKnowledge.set(lesson.id, [lesson.guideSectionId]);
-  for (const lesson of [...methodLessons, ...stagedMethodLessons]) guideIdsByKnowledge.set(lesson.id, [...lesson.guideSectionIds]);
+  for (const lesson of canonicalConceptLessons) guideIdsByKnowledge.set(lesson.id, [lesson.guideSectionId]);
+  for (const lesson of [...methodLessons, ...canonicalMethodLessons]) guideIdsByKnowledge.set(lesson.id, [...lesson.guideSectionIds]);
   for (const guide of guideSections.filter((item) => !claimsByContent.has(item.id))) addLegacyClaim(guide.id, guide.summaryCn, guide.evidenceSourceIds, guide);
   const relatedClaims = (id: string) => [...new Map([
     ...(claimsByContent.get(id) ?? []),
@@ -65,8 +69,8 @@ function buildInitialKnowledgeWorkspace(completeMappings = true): KnowledgeWorks
     if (kernel) { unit.provenance.originalPayload = { lesson, kernelUnit: kernel }; unit.provenance.originalHash = knowledgeHash({ lesson, kernelUnit: kernel }); unit.domain = [kernel.domain]; unit.hash = knowledgeHash(unit); }
     workspace.units.push(unit); kernelKnowledgeIds.set(lesson.unitId, lesson.id);
   }
-  for (const lesson of stagedConceptLessons) workspace.units.push(adaptConceptLesson(lesson, relatedClaims(lesson.id), now));
-  for (const lesson of stagedMethodLessons) workspace.units.push(adaptMethodLesson(lesson, relatedClaims(lesson.id), now));
+  for (const lesson of canonicalConceptLessons) workspace.units.push(adaptConceptLesson(lesson, relatedClaims(lesson.id), now));
+  for (const lesson of canonicalMethodLessons) workspace.units.push(adaptMethodLesson(lesson, relatedClaims(lesson.id), now));
   if (completeMappings) {
     const explicitlyBridgedLegacyMethodIds = new Set([
       ...conceptLessons.map((lesson) => lesson.conceptId),
@@ -120,13 +124,23 @@ function buildInitialKnowledgeWorkspace(completeMappings = true): KnowledgeWorks
   for (const unit of workspace.units) unit.hash = knowledgeHash(unit);
   const byId = new Map(workspace.units.map((unit) => [unit.id, unit]));
   const known = (ids: string[]) => [...new Set(ids)].flatMap((id) => byId.has(id) ? [byId.get(id)!] : []);
-  for (const lesson of [...conceptLessons, ...stagedConceptLessons]) {
+  for (const lesson of [...conceptLessons, ...canonicalConceptLessons]) {
     workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "concept_lesson", known([lesson.id])));
     if ("primaryApply" in lesson) for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
   }
-  for (const lesson of [...methodLessons, ...stagedMethodLessons]) {
+  for (const lesson of [...methodLessons, ...canonicalMethodLessons]) {
     workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "method_lesson", known([lesson.id])));
     if ("primaryApply" in lesson) for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
+  }
+  if (includeCurrentAssessmentRevisions) {
+    for (const lesson of stagedConceptLessons) {
+      workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "concept_lesson", known([lesson.id])));
+      for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
+    }
+    for (const lesson of stagedMethodLessons) {
+      workspace.learningBindings.push(makeKnowledgeLearningBinding(lesson, "method_lesson", known([lesson.id])));
+      for (const asset of [lesson.primaryApply, lesson.remediation, lesson.delayedReview]) workspace.learningBindings.push(makeKnowledgeLearningBinding({ ...asset, lifecycle: "pending_review", verificationStatus: "pending" }, "assessment", known([lesson.id]), [], asset));
+    }
   }
   for (const kernel of kernels) workspace.learningBindings.push(makeKnowledgeLearningBinding(kernel, kernel.id === "method-cox-v1" ? "method_lesson" : "concept_lesson", known([kernelKnowledgeIds.get(kernel.id)!])));
   // Legacy review/calibration uses conceptId or methodId instead of lesson IDs.
@@ -167,10 +181,16 @@ function buildInitialKnowledgeWorkspace(completeMappings = true): KnowledgeWorks
 
 let initialSnapshot: KnowledgeWorkspace | undefined;
 let m020Snapshot: KnowledgeWorkspace | undefined;
+let m0201Snapshot: KnowledgeWorkspace | undefined;
 /** Exact pre-completion seed, used only to recognize persisted M020 workspaces. */
 export function createM020KnowledgeBaseline(): KnowledgeWorkspace {
-  m020Snapshot ??= JSON.parse(JSON.stringify(buildInitialKnowledgeWorkspace(false))) as KnowledgeWorkspace;
+  m020Snapshot ??= JSON.parse(JSON.stringify(buildInitialKnowledgeWorkspace(false, false))) as KnowledgeWorkspace;
   return structuredClone(m020Snapshot);
+}
+/** Exact M020.1 seed before the assessment-validity revision. */
+export function createM0201KnowledgeBaseline(): KnowledgeWorkspace {
+  m0201Snapshot ??= JSON.parse(JSON.stringify(buildInitialKnowledgeWorkspace(true, false))) as KnowledgeWorkspace;
+  return structuredClone(m0201Snapshot);
 }
 /** Returns an isolated copy: persisted user revisions never mutate the built-in snapshot. */
 export function createInitialKnowledgeWorkspace(): KnowledgeWorkspace {
